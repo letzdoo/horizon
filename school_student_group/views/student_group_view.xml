@@ -24,7 +24,7 @@
     <data>
       
       <!-- Top menu item -->
-      <menuitem name="Groups" id="menu_groups_program" icon="fa-book" web_icon="school,static/description/icon.png" sequence="20" />
+      <menuitem name="Groups" id="menu_groups_program" icon="fa-book" web_icon="school_student_group,static/description/icon.png" sequence="20" />
       
       <menuitem name="Student Groups" parent="menu_groups_program" id="menu_student_groups" sequence="10" />
       
