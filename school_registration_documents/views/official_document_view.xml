@@ -23,7 +23,7 @@
 <openerp>
     <data>
         
-        <menuitem name="Official Documents" parent="school_management.menu_main_contacts" id="menu_official_document" sequence="50" />
+        <menuitem name="Official Documents" parent="school_management.menu_contacts" id="menu_official_document" sequence="50" />
         
         <!-- Official Document List View -->
         <record id="view_official_document_list" model="ir.ui.view">
