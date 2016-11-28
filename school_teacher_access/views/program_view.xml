@@ -24,7 +24,7 @@
     <data>
         
         <!-- Top menu item -->
-        <menuitem name="Teachers" id="menu_main_program" icon="fa-book" web_icon="school_teacher_access,static/description/icon.png" sequence="1" />
+        <menuitem name="Teachers" id="menu_main_program" icon="fa-book" web_icon="membership,static/description/icon.png" sequence="1" />
     
         <menuitem name="My Information" parent="menu_main_program" id="menu_information" sequence="10" />
 
