@@ -22,7 +22,7 @@
 -->
 <openerp>
     <data>
-        <menuitem name="Administration" id="menu_school_admin" icon="fa-book" web_icon="school,static/description/icon.png" sequence="250" />
+        <menuitem name="Administration" id="menu_school_admin" icon="fa-book" web_icon="stock,static/description/icon.png" sequence="250" />
         
         <menuitem name="Programs" parent="menu_school_admin" id="menu_admin_program" sequence="20" />
         
