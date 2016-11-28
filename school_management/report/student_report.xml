@@ -127,7 +127,7 @@
             <field name="view_mode">pivot</field>
         </record>
         
-        <menuitem name="Reporting" id="menu_report" sequence="70" />
+        <menuitem name="Reporting" id="menu_report" sequence="70" web_icon="account,static/description/icon.png"/>
         
         <menuitem name="Teaching" id="menu_teaching_report" sequence="10" parent="menu_report"/>
         
