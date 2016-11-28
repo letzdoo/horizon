@@ -49,9 +49,9 @@
         </record>
 
         <!-- Top menu item -->
-        <menuitem name="Contacts" id="menu_main_contacts" icon="fa-user" web_icon="website_mail_channel,static/description/icon.png" sequence="40" />
+        <menuitem name="Contacts" id="menu_contacts" icon="fa-user" web_icon="website_mail_channel,static/description/icon.png" sequence="40" />
 
-        <menuitem name="Contacts" parent="menu_main_contacts" id="menu_contacts" sequence="1" />
+        <!-- <menuitem name="Contacts" parent="menu_main_contacts" id="menu_contacts" sequence="1" /> -->
 
         <record id="view_res_partner_filter" model="ir.ui.view">
             <field name="name">res.partner.select</field>
