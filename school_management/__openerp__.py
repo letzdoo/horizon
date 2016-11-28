@@ -25,7 +25,7 @@
     'author': 'be-Cloud.be (Jerome Sonnet)',
     'website': '',
     'category': 'School Management',
-    'depends': ['mail'],
+    'depends': ['mail', 'partner_contact_gender', 'partner_contact_birthdate', 'partner_firstname'],
     'init_xml': [],
     'update_xml': [
         'school_data.xml',
