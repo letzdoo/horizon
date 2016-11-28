@@ -26,7 +26,7 @@
         <!-- Top menu item -->
         <menuitem name="Teachers" id="menu_main_program" icon="fa-book" web_icon="membership,static/description/icon.png" sequence="1" />
     
-        <menuitem name="My Information" parent="menu_main_program" id="menu_information" sequence="10" />
+        <!-- <menuitem name="My Information" parent="menu_main_program" id="menu_information" sequence="10" /> -->
 
         <!-- Teacher dashboard view -->
         
@@ -125,7 +125,7 @@
           <field name="act_window_id" ref="action_report_school_groups" />
         </record>
 
-        <menuitem name="My Courses" parent="menu_information" id="menu_courses" action="action_report_school_groups" sequence="20" /> -->
+        <menuitem name="My Courses" parent="menu_main_program" id="menu_courses" action="action_report_school_groups" sequence="20" /> -->
         
         <record id="view_individual_students_filter" model="ir.ui.view">
             <field name="name">student.select</field>
