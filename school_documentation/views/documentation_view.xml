@@ -29,6 +29,6 @@
             <field name="target">new</field>
         </record>
 
-        <menuitem name="Documentation" id="menu_school_doc" icon="fa-book" web_icon="website_quote,static/description/icon.png" sequence="999" action="action_documentation" />
+        <menuitem name="Documentation" id="menu_school_doc" icon="fa-book" web_icon="hr_recruitment,static/description/icon.png" sequence="999" action="action_documentation" />
     </data>
 </openerp>
