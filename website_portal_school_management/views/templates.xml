@@ -368,14 +368,14 @@
         </div>
     </template>
 
-    <template id="layout_clean" inherit_id="website.layout" name="Editor" groups="website.group_website_publisher,website.group_website_designer">
+    <template id="layout_clean" inherit_id="website.layout" name="Editor">
         <xpath expr='//div[@id = "wrapwrap"]/header' position="attributes">
-            <attribute name="t-att-disabled">is_clean and 'disabled' or ''</attribute>
-            <attribute name="t-att-style">is_clean and 'display: none' or ''</attribute>
+            <attribute name="t-att-disabled" groups="website.group_website_publisher,website.group_website_designer">is_clean and 'disabled' or ''</attribute>
+            <attribute name="t-att-style" groups="website.group_website_publisher,website.group_website_designer">is_clean and 'display: none' or ''</attribute>
         </xpath>
         <xpath expr='//div[@id = "wrapwrap"]/footer' position="attributes">
-            <attribute name="t-att-disabled">is_clean and 'disabled' or ''</attribute>
-            <attribute name="t-att-style">is_clean and 'display: none' or ''</attribute>
+            <attribute name="t-att-disabled" groups="website.group_website_publisher,website.group_website_designer">is_clean and 'disabled' or ''</attribute>
+            <attribute name="t-att-style" groups="website.group_website_publisher,website.group_website_designer">is_clean and 'display: none' or ''</attribute>
         </xpath>
     </template>
 
