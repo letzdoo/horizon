@@ -166,7 +166,7 @@
           <field name="act_window_id" ref="action_report_school_student" />
         </record>
         
-        <menuitem name="My Students" parent="menu_information" id="menu_student" action="action_report_school_student" sequence="40"/>
+        <menuitem name="My Students" parent="menu_main_program" id="menu_student" action="action_report_school_student" sequence="40"/>
 
         <!-- Individual Course Tree View -->
         <record id="view_individual_course_dispense_tree" model="ir.ui.view">
@@ -194,7 +194,7 @@
             <field name="context">{"search_default_my_current_courses":1,"search_default_dispensed":1}</field>
         </record>
         
-        <menuitem name="My Dispenses" parent="menu_information" id="menu_dispense" action="action_report_school_dispense" sequence="50"/>
+        <menuitem name="My Dispenses" parent="menu_main_program" id="menu_dispense" action="action_report_school_dispense" sequence="50"/>
         
     </data>
 </openerp>
