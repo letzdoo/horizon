@@ -26,7 +26,7 @@
       <!-- Top menu item -->
       <menuitem name="Groups" id="menu_groups_program" icon="fa-book" web_icon="school_student_group,static/description/icon.png" sequence="20" />
       
-      <menuitem name="Student Groups" parent="menu_groups_program" id="menu_student_groups" sequence="10" />
+      <!-- <menuitem name="Student Groups" parent="menu_groups_program" id="menu_student_groups" sequence="10" /> -->
       
       <!--
     
@@ -237,7 +237,7 @@
           <field name="act_window_id" ref="action_student_group_form" />
         </record>
         
-        <menuitem id="menu_student_group_form" parent="menu_student_groups" action="action_student_group_form" sequence="25" />
+        <menuitem id="menu_student_group_form" parent="menu_groups_program" action="action_student_group_form" sequence="25" />
 
         <!-- Add evaluation to Individual Bloc form view -->
         <record id="individual_bloc_eval_form" model="ir.ui.view">

@@ -47,6 +47,6 @@
         <field name="target">new</field>
     </record>
     
-    <menuitem id="menu_linked_group_wizard_form" parent="menu_student_groups" action="action_linked_group_wizard_view" sequence="55" />
+    <menuitem id="menu_linked_group_wizard_form" parent="menu_groups_program" action="action_linked_group_wizard_view" sequence="55" />
     
 </odoo>
