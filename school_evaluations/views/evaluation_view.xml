@@ -347,7 +347,7 @@
             <field name="res_model">school.bloc</field>
         </record>
 
-        <menuitem id="school_evaluations.menu_school_eval" name="Evaluations" action="action_school_evaluations" icon="fa-envelope" web_icon="school_evaluations,static/description/icon.png" sequence="70" />
+        <menuitem id="school_evaluations.menu_school_eval" name="Evaluations" action="action_school_evaluations" icon="fa-envelope" web_icon="survey,static/description/icon.png" sequence="70" />
 
     </data>
 </openerp>
