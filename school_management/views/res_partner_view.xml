@@ -88,6 +88,17 @@
         </record>
 
         <!-- Add program for student form view -->
+        <record id="view_student_kanban_school" model="ir.ui.view">
+            <field name="name">view.res.partner.kanban.school</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.res_partner_kanban_view" />
+            <field eval="25" name="priority" />
+            <field name="arch" type="xml">
+                
+            </field>
+        </record>
+
+        <!-- Add program for student form view -->
         <record id="view_student_form_school" model="ir.ui.view">
             <field name="name">view.res.partner.form.school</field>
             <field name="model">res.partner</field>
