@@ -37,10 +37,11 @@ class StudentReport(models.Model):
     has_paid_current_minerval = fields.Integer(string="Has paid current minerval")
     dispenses = fields.Integer(string="Dispenses")
 
-    def init(self, cr):
+    @api.model_cr
+    def init(self):
         """ School Student main report """
-        tools.drop_view_if_exists(cr, 'school_student_report')
-        cr.execute(""" CREATE VIEW school_student_report AS (
+        tools.drop_view_if_exists(self._cr, 'school_student_report')
+        self._cr.execute(""" CREATE VIEW school_student_report AS (
             SELECT
                 school_individual_bloc.id as id,
                 school_year.id as year_id,

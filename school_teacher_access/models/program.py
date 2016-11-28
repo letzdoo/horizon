@@ -43,10 +43,11 @@ class TeacherReport(models.Model):
     dispenses = fields.Integer(string="Dispenses")
     waiting_dispenses = fields.Integer(string="Waiting Dispenses")
 
-    def init(self, cr):
+    @api.model_cr
+    def init(self):
         """ School Teacher Report """
-        tools.drop_view_if_exists(cr, 'school_teacher_report')
-        cr.execute(""" CREATE VIEW school_teacher_report AS (
+        tools.drop_view_if_exists(self._cr, 'school_teacher_report')
+        self._cr.execute(""" CREATE VIEW school_teacher_report AS (
             SELECT
                 CAST(CAST(school_individual_course.year_id AS text)||
                 CAST(school_individual_course.teacher_id AS text)||
