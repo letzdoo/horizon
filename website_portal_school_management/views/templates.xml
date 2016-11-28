@@ -368,7 +368,7 @@
         </div>
     </template>
 
-    <template id="layout_clean" inherit_id="website.layout" name="Editor" groups="base.group_website_publisher,base.group_website_designer">
+    <template id="layout_clean" inherit_id="website.layout" name="Editor" groups="website.group_website_publisher,website.group_website_designer">
         <xpath expr='//div[@id = "wrapwrap"]/header' position="attributes">
             <attribute name="t-att-disabled">is_clean and 'disabled' or ''</attribute>
             <attribute name="t-att-style">is_clean and 'display: none' or ''</attribute>
