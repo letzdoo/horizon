@@ -49,7 +49,7 @@
         </record>
 
         <!-- Top menu item -->
-        <menuitem name="Contacts" id="menu_main_contacts" icon="fa-user" web_icon="school,static/description/icon.png" sequence="40" />
+        <menuitem name="Contacts" id="menu_main_contacts" icon="fa-user" web_icon="mail,static/description/icon2.png" sequence="40" />
 
         <menuitem name="Contacts" parent="menu_main_contacts" id="menu_contacts" sequence="1" />
 
@@ -383,6 +383,7 @@
             <field name="view_id" ref="base.view_partner_form" />
             <field name="act_window_id" ref="action_archived_form" />
         </record>
+        
         <menuitem id="menu_archived_form" parent="menu_contacts" action="action_archived_form" sequence="99" />
 
     </data>
