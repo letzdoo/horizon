@@ -49,7 +49,7 @@
         </record>
 
         <!-- Top menu item -->
-        <menuitem name="Contacts" id="menu_main_contacts" icon="fa-user" web_icon="contacts,static/description/icon.png" sequence="40" />
+        <menuitem name="Contacts" id="menu_main_contacts" icon="fa-user" web_icon="website_mail_channel,static/description/icon.png" sequence="40" />
 
         <menuitem name="Contacts" parent="menu_main_contacts" id="menu_contacts" sequence="1" />
 
