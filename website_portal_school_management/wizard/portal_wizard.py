@@ -20,25 +20,22 @@
 ##############################################################################
 import logging
 
-from openerp.osv import fields, osv
-from openerp.tools.translate import _
-from openerp.tools import email_split
-from openerp import SUPERUSER_ID
-from openerp.exceptions import UserError
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
-class wizard(osv.osv_memory):
+class PortalWizard(models.TransientModel):
     _inherit = 'portal.wizard'
 
-    def onchange_portal_id(self, cr, uid, ids, portal_id, context=None):
+    @api.onchange('portal_id')
+    def onchange_portal_id(self):
         # for each partner, determine corresponding portal.wizard.user records
-        res_partner = self.pool.get('res.partner')
-        partner_ids = context and context.get('active_ids') or []
+        partner_ids = self.env.context.get('active_ids', [])
         contact_ids = set()
         user_changes = []
-        for partner in res_partner.browse(cr, SUPERUSER_ID, partner_ids, context):
+        for partner in self.env['res.partner'].sudo().browse(partner_ids):
             # do not get into child_ids here
+            #contact_partners = partner.child_ids or [partner]
             for contact in [partner]:
                 # make sure that each contact appears at most once in the list
                 if contact.id not in contact_ids:
@@ -46,10 +43,10 @@ class wizard(osv.osv_memory):
                     # default to in_portal = True
                     in_portal = True
                     if contact.user_ids:
-                        in_portal = portal_id in [g.id for g in contact.user_ids[0].groups_id]
+                        in_portal = self.portal_id in contact.user_ids[0].groups_id
                     user_changes.append((0, 0, {
                         'partner_id': contact.id,
                         'email': contact.email,
                         'in_portal': in_portal,
                     }))
-        return {'value': {'user_ids': user_changes}}
+        self.user_ids = user_changes
