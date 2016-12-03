@@ -24,7 +24,7 @@
   <data>
     
     <!-- Top menu item -->
-    <menuitem name="Individuals Programs" parent="menu_main_program" id="menu_individual_bloc" sequence="10" />
+    <menuitem name="Individuals Programs" id="menu_individual_bloc" icon="fa-book" web_icon="hr_recruitment,static/description/icon.png" sequence="15" />
 
     <!--
     
