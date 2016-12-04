@@ -62,12 +62,8 @@ class website_portal_school_management(http.Controller):
         
     @http.route(['/print_program/<model("school.program"):program>'], type='http', auth='public', website=True)
     def print_program(self, program, redirect=None, **post):
-        
-        report_obj = request.registry['report']
-        cr, uid, context = request.cr, request.uid, request.context
         reportname = 'school_management.report_program_details_content'
-        
-        pdf = report_obj.get_pdf(cr, uid, [program.id], reportname, data=None, context=None)
+        pdf = request.env['report'].sudo().with_context(set_viewport_size=True).get_pdf([program.id], reportname)
         pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
         return request.make_response(pdf, headers=pdfhttpheaders)
         
