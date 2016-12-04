@@ -39,8 +39,8 @@
     </template>
 
     <template id="school_course" name="Course">
-        <td t-if="course.url_ref"><a t-esc="course.title" t-att-href="course.url_ref" target="new"/><t t-if="course.teacher_id"><i> - <t t-esc="course.teacher_id.name"/></i></t></td>
-        <td t-if="not course.url_ref"><a t-esc="course.title" data-toggle="modal" data-target="#noDescription"/><t t-if="course.teacher_id"><i> - <t t-esc="course.teacher_id.name"/></i></t></td>
+        <td t-if="course.url_ref"><a t-esc="course.title" t-att-href="course.url_ref" target="new" style="cursor: hand;"/><t t-if="course.teacher_id"><i> - <t t-esc="course.teacher_id.name"/></i></t></td>
+        <td t-if="not course.url_ref"><a t-esc="course.title" data-toggle="modal" data-target="#noDescription" style="cursor: hand;"/><t t-if="course.teacher_id"><i> - <t t-esc="course.teacher_id.name"/></i></t></td>
     </template>
 
     <template id="no_description" name="No Description Modal">
