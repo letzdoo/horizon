@@ -36,7 +36,7 @@ class school_course_documentation(http.Controller):
             'course' : course,
             'doc' : course.documentation_id,
         }
-        return request.website.render("school_course_description.school_course", values)
+        return request.render("school_course_description.school_course", values)
         
     @http.route(['/course_doc/edit/<model("school.course"):course>'], type='http', auth='user', website=True)
     def course_doc_edit(self, course, redirect=None, **post):
@@ -51,4 +51,4 @@ class school_course_documentation(http.Controller):
             'course' : course,
             'doc' : draft_doc,
         }
-        return request.website.render("school_course_description.school_course_edit", values)
+        return request.render("school_course_description.school_course_edit", values)
