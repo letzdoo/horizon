@@ -39,8 +39,8 @@
     </template>
 
     <template id="school_course" name="Course">
-        <td t-if="course.url_ref"><a t-esc="course.title" t-att-href="course.url_ref" target="new" style="cursor: hand;"/><t t-if="course.teacher_id"><i> - <t t-esc="course.teacher_id.name"/></i></t></td>
-        <td t-if="not course.url_ref"><a t-esc="course.title" data-toggle="modal" data-target="#noDescription" style="cursor: hand;"/><t t-if="course.teacher_id"><i> - <t t-esc="course.teacher_id.name"/></i></t></td>
+        <td t-if="course.url_ref"><a t-esc="course.title" t-att-href="course.url_ref" target="new" style="cursor: pointer;"/><t t-if="course.teacher_id"><i> - <t t-esc="course.teacher_id.name"/></i></t></td>
+        <td t-if="not course.url_ref"><a t-esc="course.title" data-toggle="modal" data-target="#noDescription" style="cursor: pointer;"/><t t-if="course.teacher_id"><i> - <t t-esc="course.teacher_id.name"/></i></t></td>
     </template>
 
     <template id="no_description" name="No Description Modal">
@@ -105,8 +105,8 @@
                     </tr>
                     <tr t-foreach="course_group.course_ids" t-as="course">
                         <td></td>
-                        <td t-if="course.url_ref"><a t-esc="course.title" t-att-href="course.url_ref" target="new"/></td>
-                        <td t-if="not course.url_ref"><a t-esc="course.title" data-toggle="modal" data-target="#noDescription"/></td>
+                        <td t-if="course.url_ref"><a t-esc="course.title" t-att-href="course.url_ref" target="new" style="cursor: pointer;"/></td>
+                        <td t-if="not course.url_ref"><a t-esc="course.title" data-toggle="modal" data-target="#noDescription" style="cursor: pointer;"/></td>
                         <td class="text-center"><t t-esc="course.hours"/></td>
                         <td class="text-center"><t t-esc="course.credits"/></td>
                         <td class="text-center"><t t-esc="course.weight"/></td>
