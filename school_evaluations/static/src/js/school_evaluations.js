@@ -128,9 +128,9 @@ var EvaluationsAction = Widget.extend({
         var self = this;
         return new Model("res.users").call("read", [session.uid, ['id','name','current_year_id']]).then(
                     function(user) {
-                        self.user = user;
-                        self.year_id = self.user.current_year_id[0];
-                        self.year_name = self.user.current_year_id[1];
+                        self.user = user[0];
+                        self.year_id = user.current_year_id[0];
+                        self.year_name = user.current_year_id[1];
                         if(self.school_session == 1) {
                             self.$('h2.o_school_deliberation_title').text("Délibération Première Session " + self.year_name);
                         } else {
