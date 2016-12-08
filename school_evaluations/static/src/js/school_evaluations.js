@@ -121,7 +121,7 @@ var EvaluationsAction = Widget.extend({
         this.school_domain = 1;
         this.school_session = new Date().getMonth() < 7 ? 1 : 2;
         this.parent = parent;
-        this.parent.webclient.$el.find('#navbar').addClass('o_hidden');
+        this.parent.webclient.$el.find('.navbar').addClass('o_hidden');
     },
     
     start: function() {
