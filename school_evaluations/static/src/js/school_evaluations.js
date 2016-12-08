@@ -162,19 +162,31 @@ var EvaluationsAction = Widget.extend({
         this.groups = [
             {   
                 'id' : 0, 
-                'title' : "Bloc 1",
+                'title' : "Bac 1",
                 'blocs' : [],
                 'school_session' : this.school_session,
             },
             { 
                 'id' : 1, 
-                'title' : "Bloc 2",
+                'title' : "Bac 2",
                 'blocs' : [],
                 'school_session' : this.school_session,
             },
             { 
                 'id' : 2, 
-                'title' : "Bloc 3",
+                'title' : "Bac 3",
+                'blocs' : [],
+                'school_session' : this.school_session,
+            },
+            { 
+                'id' : 3, 
+                'title' : "Master 1",
+                'blocs' : [],
+                'school_session' : this.school_session,
+            },
+            { 
+                'id' : 4, 
+                'title' : "Master 2",
                 'blocs' : [],
                 'school_session' : this.school_session,
             },
