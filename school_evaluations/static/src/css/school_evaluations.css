@@ -1,6 +1,6 @@
 .sub_navbar {
   position: absolute;
-  top: 280px;
+  top: 400px;
   bottom: 57px;
   left: 0;
   right: 0;
@@ -91,8 +91,7 @@
 }
 
 .sidebar ul li a.active {
-    color: #ffffff;
-    background-color: #337ab7;
+    background-color: rgb(40,95,143);
 }
 
 .credits {
