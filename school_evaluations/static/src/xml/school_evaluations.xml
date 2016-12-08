@@ -309,12 +309,12 @@
                             <div class="btn-group" data-toggle="buttons">
                                 <!--<label t-att-class="'btn btn-primary center-block o_school_theatre ' + (school_domain == 2 ? 'active' : '')">
                                     <input type="radio">THEATRE</input>
-                                </label>
-                                <label t-att-class="'btn btn-primary center-block o_school_musique ' + (school_domain == 1 ? 'active' : '')">
-                                    <input type="radio">MUSIQUE</input>
                                 </label> #TODO: should generate this based on content -->
                                 <label t-att-class="'btn btn-primary center-block o_school_musique ' + (school_domain == 1 ? 'active' : '')">
-                                    <input type="radio">GEST ETUDES</input>
+                                    <input type="radio">ETABL</input>
+                                </label> 
+                                <label t-att-class="'btn btn-primary center-block o_school_theatre ' + (school_domain == 1 ? 'active' : '')">
+                                    <input type="radio">ETUDES</input>
                                 </label>
                             </div>
                         </div>
