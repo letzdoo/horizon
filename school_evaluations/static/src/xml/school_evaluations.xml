@@ -387,7 +387,7 @@
             <div class="bloc_form highlight" t-if="widget.bloc">
                 <div class="container bloc_header">
                     <div class="row">
-                        <span class="oe_form_field oe_form_field_image oe_avatar" data-original-title="" title="">
+                        <span class="col-md-2 oe_form_field oe_form_field_image oe_avatar" data-original-title="" title="">
                             <img border="1" name="image" t-att-src="widget.student_image" class="img-rounded" style="width: 100px; height: 100px;margin-top: 10px;margin-bottom: 10px;"/>
                         </span>
                         <span class="col-md-10">
