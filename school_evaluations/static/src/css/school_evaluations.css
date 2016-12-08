@@ -29,6 +29,10 @@
   overflow: scroll;
 }
 
+.o_school_evaluations {
+  height: 100%;
+}
+
 .o_school_evaluations .oe_form_container{
   transform: scale(1.2);
   -ms-transform: scale(1.2); /* IE 9 */
