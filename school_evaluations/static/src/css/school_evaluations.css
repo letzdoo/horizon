@@ -85,12 +85,20 @@
     }
 }
 
+.sidebar ul li {
+    border-bottom: 1px solid rgb(38,90,135);
+}
+
 .sidebar ul li a {
     padding : 5px;
     color : white;
 }
 
 .sidebar ul li a.active {
+    background-color: rgb(40,95,143);
+}
+
+.sidebar ul li a.hover {
     background-color: rgb(40,95,143);
 }
 
