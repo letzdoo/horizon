@@ -41,8 +41,10 @@
                     <field name="supplier" invisible="True" />
                     <field name="customer" invisible="True" />
                 </xpath>
-                <page name="sales_purchases" position="replace"/>
-                <!--
+                <page name="sales_purchases" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </page>
+                <!--<page name="accounting" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </page>-->
             </field>
@@ -95,7 +97,23 @@
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <field name="mobile" position="after">
+                    <!--<field name="has_paid_current_minerval" /> -->
+                    <field name="student" />
+                    <field name="student_current_program_name" attrs="{'invisible': [('student','=',False)]}" />
                 </field>
+                <xpath expr="//div[@class='oe_kanban_details']//ul" position="replace">
+                    <li t-if="record.student_current_program_name.value" class="o_text_overflow">
+                        <field name="student_current_program_name" />
+                    </li>
+                </xpath>
+                <!--<xpath expr="//div[@class='oe_kanban_partner_links']" position="inside">
+                    <t t-if="record.has_paid_current_minerval.raw_value == true">
+                        <span class="badge" attrs="{'invisible': [('student','=',False)]}"><i class="fa fa-check-square" aria-hidden="true"></i></span>
+                    </t>
+                    <t t-if="record.has_paid_current_minerval.raw_value == false">
+                        <span class="badge" attrs="{'invisible': [('student','=',False)]}"><i class="fa fa-square" aria-hidden="true"></i></span>
+                    </t>
+                </xpath>-->
             </field>
         </record>
 
@@ -106,11 +124,11 @@
             <field name="inherit_id" ref="view_partners_form_school" />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
-                <xpath expr="//div[@name='button_box']" position="inside">
+                <!--<xpath expr="//div[@name='button_box']" position="inside">
                     <button name="pay_current_minerval" type="object" class="oe_stat_button" icon="fa-eur" attrs="{'invisible': [('student','=',False)]}" groups="school_management.group_employee">
                         <field name="has_paid_current_minerval" widget="boolean_button" options='{"terminology": "active"}'/>
                     </button>
-                </xpath>
+                </xpath>-->
                 <xpath expr="//field[@name='employee']" position="after">
                     <field name="student_current_program_name" attrs="{'invisible': [('student','=',False)]}" />
                     <field name='email_personnel' />
@@ -118,6 +136,7 @@
                 <xpath expr="//group[@name='personal_information_group']" position="inside">
                     <field name="birthplace"/>
                     <field name="reg_number" />
+                    <field name="mat_number"/>
                 </xpath>
                 <xpath expr="//notebook[last()]" position="inside">
                     <page name="programs_list" string="Programs" attrs="{'invisible': [('student','=',False)]}">
@@ -128,14 +147,14 @@
                             </tree>
                         </field>
                     </page>
-                    <page name="minerval_list" string="Minervals" attrs="{'invisible': [('student','=',False)]}">
+                    <!--<page name="minerval_list" string="Minervals" attrs="{'invisible': [('student','=',False)]}">
                         <field name="minerval_ids">
                             <tree string="Minervals">
                                 <field name="year_id" />
                                 <field name="payment_date" />
                             </tree>
                         </field>
-                    </page>
+                    </page>-->
                 </xpath>
             </field>
         </record>
@@ -150,7 +169,7 @@
                     <field name="display_name" />
                     <field name="function" invisible="1" />
                     <field name="student_current_program_id" />
-                    <field name="has_paid_current_minerval" />
+                    <!--<field name="has_paid_current_minerval" />-->
                     <field name="email" />
                     <field name="user_id" invisible="1" />
                     <field name="is_company" invisible="1" />

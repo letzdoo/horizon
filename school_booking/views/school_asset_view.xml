@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2015 be-cloud.be
+#                       Jerome Sonnet <jerome.sonnet@be-cloud.be>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<openerp>
+  <data>
+
+    <menuitem name="Assets" parent="menu_main_booking" id="menu_assets" sequence="900" />
+    
+    <!-- Building Tree View -->
+    <record id="view_building_tree" model="ir.ui.view">
+      <field name="name">school.building.tree</field>
+      <field name="model">school.building</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <tree string="Buildings">
+          <field name="name" />
+          <field name="location" />
+        </tree>
+      </field>
+    </record>
+    
+    <!-- Building Form View -->
+    <record model="ir.ui.view" id="building_form">
+      <field name="name">school.building.view</field>
+      <field name="model">school.building</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Building">
+          <sheet>
+            <field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
+            <div class="oe_title">
+                <h1>
+                    <field name="name" default_focus="1" placeholder="Name"/>
+                </h1>
+                <h3 class="oe_fade">
+                    <field name="location" placeholder="Location"/>
+                </h3>
+            </div>
+            <group col="4">
+              <field name="monday"/>
+              <field name="monday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('monday','=',False)]}"/>
+              <field name="monday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('monday','=',False)]}"/>
+              <field name="tuesday"/>
+              <field name="tuesday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('tuesday','=',False)]}"/>
+              <field name="tuesday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('tuesday','=',False)]}"/>
+              <field name="wednesday"/>
+              <field name="wednesday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('wednesday','=',False)]}"/>
+              <field name="wednesday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('wednesday','=',False)]}"/>
+              <field name="thursday"/>
+              <field name="thursday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('thursday','=',False)]}"/>
+              <field name="thursday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('thursday','=',False)]}"/>
+              <field name="friday"/>
+              <field name="friday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('friday','=',False)]}"/>
+              <field name="friday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('friday','=',False)]}"/>
+              <field name="saturday"/>
+              <field name="saturday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('saturday','=',False)]}"/>
+              <field name="saturday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('saturday','=',False)]}"/>
+              <field name="sunday"/>
+              <field name="sunday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('sunday','=',False)]}"/>
+              <field name="sunday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('sunday','=',False)]}"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_building_filter" model="ir.ui.view">
+      <field name="name">building.select</field>
+      <field name="model">school.building</field>
+      <field name="arch" type="xml">
+        <search string="Search Building">
+          <field name="name" filter_domain="[('name','ilike',self)]" />
+          <group expand="1" string="Group By">
+            <filter string="Resource Type" context="{'group_by':['resource_type']}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_building_tree" model="ir.actions.act_window">
+      <field name="name">Buildings</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">school.building</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="search_view_id" ref="view_building_filter" />
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to add a building.
+        </p>
+        <p>
+          Horizon helps you easily track your buildings.
+        </p>
+      </field>
+    </record>
+
+    <record id="action_building_tree_tree_view1" model="ir.actions.act_window.view">
+      <field name="sequence" eval="1" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_building_tree" />
+      <field name="act_window_id" ref="action_building_tree" />
+    </record>
+    <record id="action_building_tree_form_view2" model="ir.actions.act_window.view">
+      <field name="sequence" eval="2" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="building_form" />
+      <field name="act_window_id" ref="action_building_tree" />
+    </record>
+
+    <menuitem id="menu_building_tree" parent="menu_assets" action="action_building_tree" sequence="99" />
+    
+    <!-- Asset Tree View -->
+    <record id="view_asset_tree" model="ir.ui.view">
+      <field name="name">school.asset.tree</field>
+      <field name="model">school.asset</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <tree string="Assets" editable="bottom">
+          <field name="sequence" widget="handle"/>
+          <field name="name"/>
+          <field name="category_id"/>
+          <field name="building_id"/>
+          <field name="asset_type_id"/>
+          <field name="responsible_id"/>
+          <field name="room_id"/>
+        </tree>
+      </field>
+    </record>
+    
+    <!-- Asset Form View -->
+    <record model="ir.ui.view" id="asset_form">
+      <field name="name">school.asset.view</field>
+      <field name="model">school.asset</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Asset">
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+                <button name="toggle_active" type="object" groups="base.group_no_one" class="oe_stat_button" icon="fa-archive">
+                    <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                </button>
+            </div>
+            <field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
+            <div class="oe_title">
+                <h1>
+                    <field name="name" default_focus="1" placeholder="Name"/>
+                </h1>
+            </div>
+            <group col="2">
+              <field name="asset_type_id"/>
+              <field name="is_room" invisible="1"/>
+              <field name="building_id" attrs="{'invisible': [('is_room','=',False)]}"/>
+              <field name="category_id" />
+              <field name="tag_ids" widget="many2many_tags"/>
+            </group>
+            <group col="4">
+              <field name="sequence"/>
+              <field name="require_validation"/>
+              <field name="responsible_id" attrs="{'invisible': [('require_validation','=',False)]}"/>
+              <field name="linked_to_room"/>
+              <field name="room_id" attrs="{'invisible': [('linked_to_room','=',False)]}"/>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers" />
+            <field name="message_ids" widget="mail_thread" />
+          </div>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_asset_filter" model="ir.ui.view">
+      <field name="name">asset.select</field>
+      <field name="model">school.asset</field>
+      <field name="arch" type="xml">
+        <search string="Search Asset">
+          <field name="name" filter_domain="[('name','ilike',self)]" />
+          <group expand="1" string="Group By">
+            <filter string="Resource Type" context="{'group_by':['resource_type']}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_asset_tree" model="ir.actions.act_window">
+      <field name="name">Assets</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">school.asset</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="search_view_id" ref="view_asset_filter" />
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to add a asset.
+        </p>
+        <p>
+          Horizon helps you easily track your assets.
+        </p>
+      </field>
+    </record>
+
+    <record id="action_asset_tree_tree_view1" model="ir.actions.act_window.view">
+      <field name="sequence" eval="1" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_asset_tree" />
+      <field name="act_window_id" ref="action_asset_tree" />
+    </record>
+    <record id="action_asset_tree_form_view2" model="ir.actions.act_window.view">
+      <field name="sequence" eval="2" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="asset_form" />
+      <field name="act_window_id" ref="action_asset_tree" />
+    </record>
+
+    <menuitem id="menu_asset_tree" parent="menu_assets" action="action_asset_tree" sequence="49" />
+    
+    <!-- Asset_type Tree View -->
+    <record id="view_asset_type_tree" model="ir.ui.view">
+      <field name="name">school.asset_type.tree</field>
+      <field name="model">school.asset_type</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <tree string="Asset_types">
+          <field name="name"/>
+          <field name="is_room"/>
+          <field name="has_responsible"/>
+          <field name="linked_to_room"/>
+        </tree>
+      </field>
+    </record>
+    
+    <!-- Asset Type Form View -->
+    <record model="ir.ui.view" id="asset_type_form">
+      <field name="name">school.asset_type.view</field>
+      <field name="model">school.asset_type</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Asset Type">
+          <sheet>
+            <div class="oe_title">
+                <h1>
+                    <field name="name" default_focus="1" placeholder="Name"/>
+                </h1>
+            </div>
+            <group col="2">
+              <field name="is_room"/>
+              <field name="has_responsible"/>
+              <field name="linked_to_room"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_asset_type_filter" model="ir.ui.view">
+      <field name="name">asset_type.select</field>
+      <field name="model">school.asset_type</field>
+      <field name="arch" type="xml">
+        <search string="Search Asset Type">
+          <field name="name" filter_domain="[('name','ilike',self)]" />
+        </search>
+      </field>
+    </record>
+
+    <record id="action_asset_type_tree" model="ir.actions.act_window">
+      <field name="name">Asset Type</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">school.asset_type</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="search_view_id" ref="view_asset_type_filter" />
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to add a asset_type.
+        </p>
+        <p>
+          Horizon helps you easily track your asset_types.
+        </p>
+      </field>
+    </record>
+
+    <record id="action_asset_type_tree_tree_view1" model="ir.actions.act_window.view">
+      <field name="sequence" eval="1" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_asset_type_tree" />
+      <field name="act_window_id" ref="action_asset_type_tree" />
+    </record>
+    <record id="action_asset_type_tree_form_view2" model="ir.actions.act_window.view">
+      <field name="sequence" eval="2" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="asset_type_form" />
+      <field name="act_window_id" ref="action_asset_type_tree" />
+    </record>
+
+    <menuitem id="menu_asset_type_tree" parent="menu_assets" action="action_asset_type_tree" sequence="79" />
+    
+    <record id="school_asset_category_form_view" model="ir.ui.view">
+        <field name="name">school.asset.category.form</field>
+        <field name="model">school.asset.category</field>
+        <field name="arch" type="xml">
+            <form string="Asset Categories">
+                <sheet>
+                    <field name="image_medium" widget='image' class="oe_avatar"/>
+                    <div class="oe_left">
+                        <group>
+                            <field name="name"/>
+                            <field name="parent_id"/>
+                            <field name="sequence"/>
+                        </group>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="school_asset_category_tree_view" model="ir.ui.view">
+        <field name="name">school.asset.category.tree</field>
+        <field name="model">school.asset.category</field>
+        <field name="field_parent" eval="False"/>
+        <field name="arch" type="xml">
+            <tree string="Asset Categories">
+                <field name="sequence" widget="handle"/>
+                <field name="display_name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="school_asset_category_action" model="ir.actions.act_window">
+        <field name="name">Asset Categories</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.asset.category</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new category.
+            </p><p>
+                Categories are used to browse your asset through the
+                touchscreen interface.
+            </p><p>
+                If you put a photo on the category, the layout of the
+                touchscreen interface will automatically. We suggest not to put
+                a photo on categories for small (1024x768) screens.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_asset_category_tree_tree_view1" model="ir.actions.act_window.view">
+      <field name="sequence" eval="1" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="school_asset_category_tree_view" />
+      <field name="act_window_id" ref="school_asset_category_action" />
+    </record>
+    <record id="action_asset_category_tree_form_view2" model="ir.actions.act_window.view">
+      <field name="sequence" eval="2" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="school_asset_category_form_view" />
+      <field name="act_window_id" ref="school_asset_category_action" />
+    </record>
+
+    <menuitem id="menu_asset_category" action="school_asset_category_action" parent="menu_assets" sequence="89" />
+    
+  </data>
+</openerp>

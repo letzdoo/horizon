@@ -3,9 +3,10 @@ Modules
 =======
 
 .. toctree::
-   :titlesonly:
+    :titlesonly:
 
-   programmes
-   evaluations
-   tools
-   users
+    programmes
+    evaluations
+    tools
+    users
+    accounting

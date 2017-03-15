@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2015 be-cloud.be
+#                       Jerome Sonnet <jerome.sonnet@be-cloud.be>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<openerp>
+    <data>
+        
+        <!-- Top menu item -->
+        <menuitem name="Statistics" id="menu_statistics" icon="fa-book" web_icon="school,static/description/icon.png" sequence="90" />
+      
+        <menuitem name="Saturn" parent="menu_statistics" id="menu_saturn" sequence="10" />
+        
+        <!-- Saturn Editor Form -->
+        <record model="ir.ui.view" id="saturn_editor_form">
+          <field name="name">school.saturn.editor.form.view</field>
+          <field name="model">school.individual_bloc</field>
+          <field name="type">form</field>
+          <field name="arch" type="xml">
+            <form string="Saturn Editor">
+                <h2>
+                    <field name='name'/>
+                </h2>
+                <group>
+                    <field name='is_saturn_validated'/>
+                </group>
+                <notebook>
+                    <page string="Section A">
+                        <group>
+                            <field name='field_a1'/>
+                            <field name='field_a2'/>
+                            <field name='field_a3'/>
+                            <field name='field_a4'/>
+                            <field name='field_a5'/>
+                            <field name='field_a6'/>
+                            <field name='field_a7'/>
+                            <field name='field_a8'/>
+                            <field name='field_a9'/>
+                            <field name='field_a10'/>
+                            <field name='field_a11'/>
+                            <field name='field_a12'/>
+                        </group>
+                    </page>
+                    <page string="Section B">
+                        <group>
+                            <field name='field_b1' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b2' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b3' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b4' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b5' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b6' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b7' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b8' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b9' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b10' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b11' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_b12' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                        </group>
+                    </page>
+                    <page string="Section C">
+                        <group>
+                            <field name='field_c1' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_c2' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_c3' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_c4' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_c5' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_c14' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_c19' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                        </group>
+                    </page>
+                    <page string="Section D">
+                        <group>
+                            <field name='field_d1' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <!--<field name='field_d2' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>-->
+                            <field name='field_d3' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_d4'/>
+                            <field name='field_d5'/>
+                            <field name='field_d6' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_d7' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_d8' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                        </group>
+                    </page>
+                    <page string="Section E" attrs="{'invisible': ['|','|',('field_a5','not in',('1B','1C')),('field_a8','!=','1'),('field_c3','!=','N')]}">
+                        <group>
+                            <field name='field_e1' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_e2' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_e3' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_e4' attrs="{'readonly': [('is_saturn_validated', '=', True)], 'invisible': [('field_e1','!=','1')]}"/>
+                            <field name='field_e5' attrs="{'readonly': [('is_saturn_validated', '=', True)], 'invisible': [('field_e1','!=','5')]}"/>
+                        </group>
+                    </page>
+                    <page string="Section F" attrs="{'invisible': ['|','|',('field_c3','!=','N'),('field_c14','!=','2'),('field_a8','not in',('2','3','4','5'))]}">
+                        <group>
+                            <field name='field_f1' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_f2' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_f3' attrs="{'readonly': [('is_saturn_validated', '=', True)], 'invisible': [('field_f2','==', False)]}"/>
+                            <field name='field_f4' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                            <field name='field_f5' attrs="{'readonly': [('is_saturn_validated', '=', True)], 'invisible': [('field_f4','==', False)]}"/>
+                            <field name='field_f10' attrs="{'readonly': [('is_saturn_validated', '=', True)], 'invisible': [('field_f2','!=','50')]}"/>
+                        </group>
+                    </page>
+                    <page string="Section G">
+                        <group string="Année n-1">
+                            <field name='field_g2'/>
+                            <field name='field_g3'/>
+                            <field name='field_g4'/>
+                            <field name='field_g5'/>
+                            <field name='field_g6'/>
+                            <field name='field_g27' attrs="{'readonly': [('is_saturn_validated', '=', True)]}"/>
+                        </group>
+                        <group string="Année n-2">
+                            <field name='field_g7'/>
+                            <field name='field_g8'/>
+                            <field name='field_g9'/>
+                            <field name='field_g10'/>
+                            <field name='field_g11'/>
+                        </group>
+                        <group string="Année n-3">
+                            <field name='field_g12'/>
+                            <field name='field_g13'/>
+                            <field name='field_g14'/>
+                            <field name='field_g15'/>
+                            <field name='field_g16'/>
+                        </group>
+                        <group string="Année n-4">
+                            <field name='field_g17'/>
+                            <field name='field_g18'/>
+                            <field name='field_g19'/>
+                            <field name='field_g20'/>
+                            <field name='field_g21'/>
+                        </group>
+                        <group string="Année n-5">
+                            <field name='field_g22'/>
+                            <field name='field_g23'/>
+                            <field name='field_g24'/>
+                            <field name='field_g25'/>
+                            <field name='field_g26'/>
+                        </group>
+                        <separator string="Edit History"/>
+                        <field name="student_historic_entry_ids">
+                            <tree string="History Lines" context="{'default_student_id' : student_id}" editable="bottom">
+                                <field name="year_id"/>
+                                <field name="activite"/>
+                                <field name="etablissement_id" />
+                                <field name="domain_id" />
+                                <field name="annee" />
+                                <field name="resultat" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Section H" attrs="{'invisible': [('is_final_bloc','=', False)]}">
+                        <group>
+                            <field name='is_final_bloc' invisible='1'/>
+                            <field name='field_h1' />
+                            <field name='field_h2' />
+                            <field name='field_h3' />
+                            <field name='field_h4' />
+                        </group>
+                    </page>
+                </notebook>
+            </form>
+          </field>
+        </record>
+        
+        <!-- Saturn Tree View -->
+        <record id="view_saturn_tree" model="ir.ui.view">
+          <field name="name">school.saturn.tree</field>
+          <field name="model">school.saturn</field>
+          <field eval="8" name="priority" />
+          <field name="arch" type="xml">
+            <tree string="Saturn">
+              <field name="create_uid"/>
+              <field name="__last_update"/>
+              <field name="bloc_count" />
+              <field name="student_count" />
+              <field name="year_id" />
+            </tree>
+          </field>
+        </record>
+    
+        <!-- Saturn Form View -->
+        <record model="ir.ui.view" id="saturn_form">
+          <field name="name">school.saturn.view</field>
+          <field name="model">school.saturn</field>
+          <field name="type">form</field>
+          <field name="arch" type="xml">
+            <form string="Saturn">
+              <header>
+                <button name="validate" type="object" states="draft" string="Validate" class="oe_highlight" />
+                <button name="draft" type="object" states="validated" string="Set to Draft" />
+                <field name="state" widget="statusbar" statusbar_visible="draft,validated" />
+              </header>
+              <sheet>
+                <div class="oe_button_box" name="button_box">
+                  <button type="object" class="oe_stat_button" icon="fa-table" name="action_program_list">
+                    <field name="bloc_count" widget="statinfo" string="Blocs"/>
+                  </button>
+                  <button type="object" class="oe_stat_button" icon="fa-users" name="action_student_list">
+                    <field name="student_count" widget="statinfo" string="Students"/>
+                  </button>
+                </div>
+                <div class="oe_title" colspan="4">
+                  <h1>
+                   <field name="name" readonly="1"/>
+                  </h1>
+                </div>
+                <field name="year_id" invisible="1"/>
+                <field name="bloc_ids" context="{'form_view_ref':'school_statistics_fields.saturn_editor_form'}">
+                    <tree string="Bloc" colors="green:is_saturn_validated">
+                      <field name="name"/>
+                      <field name="source_bloc_id"/>
+                      <field name="is_saturn_validated" invisible="1"/>
+                    </tree>
+                </field>  
+              </sheet>
+              <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers" />
+                <field name="message_ids" widget="mail_thread" />
+              </div>
+            </form>
+          </field>
+        </record>
+    
+        <record id="view_saturn_filter" model="ir.ui.view">
+          <field name="name">saturn.select</field>
+          <field name="model">school.saturn</field>
+          <field name="arch" type="xml">
+            <search string="Search Saturn">
+              <separator/>
+              <filter string="Current Year" name="current" domain="[('year_sequence','=','current')]" />
+              <filter string="Next Year" name="next" domain="[('year_sequence','=','next')]" />
+              <filter string="Previous Year" name="previous" domain="[('year_sequence','=','previous')]" />
+            </search>
+          </field>
+        </record>
+      
+      <record id="action_saturn_form" model="ir.actions.act_window">
+        <field name="name">Saturns</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.saturn</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref="view_saturn_filter" />
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Click to add a student group.
+            </p>
+            <p>
+              Odoo helps you easily track all activities related to student groups.
+            </p>
+          </field>
+        </record>
+        
+        <record id="action_saturn_tree_view1" model="ir.actions.act_window.view">
+          <field name="sequence" eval="1" />
+          <field name="view_mode">tree</field>
+          <field name="view_id" ref="view_saturn_tree" />
+          <field name="act_window_id" ref="action_saturn_form" />
+        </record>
+        <record id="action_saturn_form_view2" model="ir.actions.act_window.view">
+          <field name="sequence" eval="2" />
+          <field name="view_mode">form</field>
+          <field name="view_id" ref="saturn_form" />
+          <field name="act_window_id" ref="action_saturn_form" />
+        </record>
+        
+        <menuitem id="menu_saturn_form" parent="menu_saturn" action="action_saturn_form" sequence="25" />
+
+        <!-- Partner -->
+        <record id="view_partners_form_school_stat_fields" model="ir.ui.view">
+            <field name="name">view.res.partner.form.school.stat_fields</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="school_management.view_student_form_school" />
+            <field eval="18" name="priority" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook[last()]" position="inside">
+                    <page name="historylines" string="Student Statistics Details" attrs="{'invisible': [('student','=',False)]}">
+                        <field name="student_historic_entry_ids">
+                            <field name="condition"/>
+                            <separator string="History Lines"/>
+                            <tree string="History Lines" context="{'default_student_id' : active_id}" editable="bottom">
+                                <field name="year_id"/>
+                                <field name="activite"/>
+                                <field name="etablissement_id" />
+                                <field name="domain_id" />
+                                <field name="annee" />
+                                <field name="resultat" />
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

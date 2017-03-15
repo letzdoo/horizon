@@ -641,6 +641,9 @@
               <h1>
                <field name="title"/>
               </h1>
+              <span class="oe_fade">
+                  Id : <field name="id" options="{&quot;no_open&quot;:True}" class="oe_inline"/>
+              </span>
             </div>
             <group col="4">
               <field name="year_id" />
@@ -654,6 +657,7 @@
             </group>
             <field name="bloc_ids" context="{'default_program_id':active_id}">
               <tree string="Blocs">
+                <field name="id" string="Id"/>
                 <field name="name" />
                 <field name="total_hours" />
                 <field name="total_credits" />

@@ -1,0 +1,88 @@
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+main {
+  height: 100%;
+  overflow-y: auto;
+}
+
+nav {
+  height: 40px;
+  line-height: 40px;
+}
+
+nav .nav-title {
+  display: inline-block;
+  font-size: 16px;
+  padding: 0;
+}
+
+.navbar {
+  overflow-x:auto;
+}
+
+.navbar > table {
+  margin: 5px auto 0 auto;
+  width: auto;
+}
+
+.navbar-card {
+  margin: 16px;
+  width: 200px;
+  height: 200px;
+  min-height: 200px;
+}
+
+.navbar-card-title {
+  height: 55px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.card .card-title {
+  padding-left: 10px;
+  font-size: 18px;
+}
+
+.collapsible {
+  border: none;
+  box-shadow: none;
+}
+
+.collapsible-header {
+  border: none;
+  box-shadow: none;
+}
+
+.collapsible-body {
+  border: none;
+  box-shadow: none;
+}
+
+.fc-toolbar {
+  padding: 5px;
+}
+
+.fc-toolbar h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.fc .fc-axis {
+  padding: 0px 5px 0px 5px;
+}
+
+.calendar_body {
+  padding: 5px 100px 10px 40px;
+}
+
+.fc button:focus {
+    outline: none;
+    background-color: transparent;
+}

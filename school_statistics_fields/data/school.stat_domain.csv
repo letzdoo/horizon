@@ -1,0 +1,153 @@
+code,name
+u101,Théologie
+u101,Théologie
+u101,Études bibliques
+u101,Sciences religieuses
+u102,Philosophie
+u102,Philosophie
+u102,Ethique
+u102,Sciiences des religions
+u102,Sciences des religions et de la laïcité
+u104,Langues et lettres
+u104,Langues et littératures françaises et romanes - Orientation générale
+u104,Langues et littératures françaises et romanes - Français langue étrangère
+u104,Langues et littératures modernes - Orientation générale
+u104,Langues et littératures modernes - Germaniques
+u104,Langues et littératures modernes - Slaves
+u104,Langues et littératures modernes - Arabes
+u104,Langues et littératures modernes - Orientales
+u104,Langues et littératures anciennes - Classiques
+u104,Langues et littératures anciennes - Orientales
+u104,Langues et littératures modernes et anciennes
+u104,Linguistique
+u114,"Histoire, Art et Archéologie"
+u114,Histoire
+u114,Histoire de l'art et archéologie - Orientation générale
+u114,Histoire de l'art et archéologie - Musicologie
+u114,Histoire de l'art et archéologie - Archéométrie
+u113,Information et communication
+u113,Information et communication
+u113,Communication multilingue
+u113,Arts du spectacle
+u113,Sciences et technologies de l'information et de la communication
+u116,Sciences politiques et sociales
+u116,Sciences politiques - Orientation générale
+u116,Sciences politiques - Relations internationales
+u116,Administration publique
+u116,Études européennes
+u116,Sociologie et anthropologie
+u116,Sociologie
+u116,Anthropologie
+u116,Sciences humaines et sociales
+u116,Politique économique et sociale
+u116,Sciences du travail
+u116,Gestion des ressources humaines
+u116,Sciences de la population et du développement
+u106,Sciences juridiques
+u106,Droit
+u107,Criminologie
+u107,Criminologie
+u110,Sciences économiques et de gestion
+u110,Sciences économiques et de gestion
+u110,Sciences économiques - Orientation générale
+u110,Sciences économiques- Econométrie
+u110,Sciences de gestion
+u110,Gestion culturelle
+u110,Ingénieur de gestion
+u110,Traduction et interprétation
+u310,Traduction et interprétation
+u310,Traduction
+u310,Interprétation
+u115,Sciences psychologiques et de l'éducation
+u115,Sciences psychologiques et de l'éducation - Orientation générale
+u115,Sciences psychologiques et de l'éducation - Logopédie
+u115,Sciences psychologiques
+u115,Sciences de la famille et de la sexualité
+u115,Logopédie
+u115,Sciences de l'éducation
+u201,Sciences
+u201,Sciences mathématiques
+u201,Statistiques - Orientation générale
+u201,Statistiques - Biostatistique
+u201,Sciences actuarielles
+u201,Sciences informatiques
+u201,Sciences physiques
+u201,Sciences spatiales
+u201,Sciences chimiques
+u201,Sciences biologiques
+u201,Biochimie et biologie moléculaire et cellulaire
+u201,Biologie des organismes et écologie
+u201,Bioinformatique et modélisation
+u201,Sciences géologiques
+u201,Sciences géographiques - Orientation générale
+u201,Sciences géographiques - Climatologie
+u201,Sciences géographiques - Géomatique et géométrologie
+u201,Sciences et gestion du tourisme
+u201,Sciences et gestion de l'environnement
+u201,Océanographie
+u203,Sciences agronomiques et ingénierie biologique
+u203,Sciences de l'ingénieur - Bioingénieur
+u203,Bioingénieur : sciences et technologies de l'environnement
+u203,Bioingénieur : sciences agronomiques
+u203,Bioingénieur : chimie et bio-industries
+u203,Bioingénieur : gestion des forêts et des espaces naturels
+u203,Sciences agronomiques et industrie du vivant
+u203,Architecture du paysage
+u202,Sciences  de l'ingénieur
+u202,Sciences de l'ingénieur - Ingénieur civil
+u202,Ingénieur civil des mines et géologue
+u202,Ingénieur civil en chimie et science des matériaux
+u202,Ingénieur civil physicien
+u202,Ingénieur civil électricien
+u202,Ingénieur civil électromécanicien
+u202,Ingénieur civil en aérospatiale
+u202,Ingénieur civil mécanicien
+u202,Ingénieur civil biomédical
+u202,Ingénieur civil en informatique
+u202,Ingénieur civil en informatique et gestion
+u202,Ingénieur civil en mathématiques appliquées
+u202,Ingénieur civil des constructions
+u202,Sciences de l'ingénieur - Ingénieur civil architecte
+u202,Ingénieur civil architecte
+u204,Art de bâtir et urbanisme
+u204,Architecture
+u308,Sciences médicales
+u308,Médecine
+u308,Sciences de la santé publique
+u303,Sciences vétérinaires
+u303,Médecine vétérinaire
+u305, Sciences biomédicales et pharmaceutiques
+u305,Sciences biomédicales
+u305,Sciences pharmaceutiques
+u309,Sciences de la motricité
+u309,Sciences de la motricité - Orientation générale
+u309,Sciences de la motricité - Éducation physique
+u309,Kinésithérapie et réadaptation
+u302,Science dentaire
+u302,Sciences dentaires
+u302,Domaine universitaire : autres cycles et diplômes
+u500,université : diplôme complémentaire de 1er cycle (DEC1) - Tous domaines d'études confondus
+u600,université : diplôme complémentaire de 2ème cycle (DEC2) - Tous domaines d'études confondus
+u700,"université : AESS, AES et CAPAES  - Tous domaines d'études confondus"
+u800,"université : DES, DEA et doctorat avec thèse - Tous domaines d'études confondus "
+h101,Haute Ecole : 1er cycle type court catégorie agronomique
+h102,Haute Ecole : 1er cycle type court catégorie arts appliqués
+h103,Haute Ecole : 1er cycle type court catégorie économique
+h104,Haute Ecole : 1er cycle type court catégorie paramédical
+h105,Haute Ecole : 1er cycle type court catégorie pédagogique
+h106,Haute Ecole : 1er cycle type court catégorie sociale
+h107,Haute Ecole : 1er cycle type court catégorie technique
+h201,Haute Ecole : 1er ou 2ème cycle : type long catégorie agronomique
+h202,Haute Ecole : 1er ou 2ème cycle : type long catégorie économique
+h203,Haute Ecole : 1er ou 2ème cycle : type long catégorie paramédicale
+h204,Haute Ecole : 1er ou 2ème cycle : type long catégorie social
+h205,Haute Ecole : 1er ou 2ème cycle : type long catégorie technique
+h206,Haute Ecole : 1er ou 2ème cycle : type long catégorie traduction-interprétation
+h300,Haute Ecole : études de spécialisation du type court
+h400,Haute Ecole : AESS et CAPAES
+h500,Haute Ecole : DESS
+a101,Ecoles Supérieures des Arts : domaine de la musique
+a102,"Ecoles Supérieures des Arts : domaine des arts plastiques, visuels et de l'espace"
+a103,Ecoles Supérieures des Arts : domaine des arts du spectacle et techniques de diffusion et de communication
+a104,Ecoles Supérieures des Arts : domaine du théâtre et des arts de la parole
+a400,Ecoles Supérieures des Arts : AESS

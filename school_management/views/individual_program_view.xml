@@ -99,6 +99,25 @@
       </field>
     </record>
     
+    
+    <record id="view_individual_program_filter" model="ir.ui.view">
+      <field name="name">program.select</field>
+      <field name="model">school.individual_program</field>
+      <field name="arch" type="xml">
+        <search string="Search Blocs">
+          <field name="student_id" domain="[('type', '=', 'contact')]"/>
+          <group expand="1" string="Group By">
+            <filter string="Domain" context="{'group_by':'domain_id'}" />
+            <filter string="Cycle" context="{'group_by':'cycle_id'}" />
+            <filter string="Section" context="{'group_by':'section_id'}" />
+            <filter string="Track" context="{'group_by':'track_id'}" />
+            <filter string="Speciality" context="{'group_by':'speciality_id'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+    
+    
     <record id="action_individual_program_form" model="ir.actions.act_window">
       <field name="name">Individual Programs</field>
       <field name="type">ir.actions.act_window</field>
@@ -144,12 +163,43 @@
       <field name="arch" type="xml">
         <tree string="Individual Bloc" create="false">
           <field name="year_id" />
+          <field name="is_final_bloc" />
           <field name="student_id" />
           <field name="source_bloc_name" />
           <field name="total_credits" />
         </tree>
       </field>
     </record>
+    
+    <record id="act_program_2_course" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">school.individual_course</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_bloc_id': active_id}</field>
+        <field name="search_view_id" ref="view_individual_courses_filter" />
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Create a Course Group and add Courses to the program.
+          </p>
+        </field>
+    </record>
+    
+    
+    <record id="action_individual_bloc_course_tree_view" model="ir.actions.act_window.view">
+      <field name="sequence" eval="1" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_individual_course_tree" />
+      <field name="act_window_id" ref="act_program_2_course" />
+    </record>
+    
+    <record id="action_individual_bloc_course_form_view" model="ir.actions.act_window.view">
+      <field name="sequence" eval="2" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_individual_course_form" />
+      <field name="act_window_id" ref="act_program_2_course" />
+    </record>
+    
     
     <!-- Individual Bloc Form View -->
     <record model="ir.ui.view" id="individual_bloc_form">
@@ -159,6 +209,11 @@
       <field name="arch" type="xml">
         <form string="Individual Bloc">
           <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button class="oe_stat_button" icon="fa-list" type="action" name="%(school_management.act_program_2_course)d">
+                <field string="Courses" name="course_count" widget="statinfo" />
+              </button>
+            </div>
             <field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [150, 150]}"/>
             <div class="oe_title" style="padding-left: 130px;">
               <h1>
@@ -170,7 +225,8 @@
             </div>
             <group col="4">
               <field name="program_id" colspan="4"/>
-              <field name="year_id" colspan="4"/>
+              <field name="year_id"/>
+              <field name="is_final_bloc" />
               <field name="total_hours" />
               <field name="total_credits" />
             </group>
@@ -401,6 +457,7 @@
           <field name="name" />
           <field name="teacher_id" />
           <field name="dispense" />
+          <button type="object" icon="fa-book" name="open_program" string="Porgram"/>
         </tree>
       </field>
     </record>
@@ -418,6 +475,9 @@
     		            <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,paid"/>
     		        </header>-->
           <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button type="object" icon="fa-book" name="open_program" string="Porgram"/>
+            </div>
             <field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [150, 150]}"/>
             <div class="oe_title" style="padding-left: 130px;">
               <h1>
@@ -452,6 +512,7 @@
         <search string="Search Courses">
           <field name="student_id" domain="[('type', '=', 'contact')]"/>
           <field name="teacher_id" />
+          <field name="bloc_id" />
           <field name="source_bloc_id" string="Programme"/>
           <field name="source_course_id" string="Activité"/>
           <filter name="bloc_1" string="Bloc 1" domain="[('source_bloc_level', '=', 1)]"/>

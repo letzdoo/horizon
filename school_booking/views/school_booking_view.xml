@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2015 be-cloud.be
+#                       Jerome Sonnet <jerome.sonnet@be-cloud.be>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+
+<openerp>
+  <data>
+
+    <template id="assets_backend" name="school calendar assets" inherit_id="calendar.assets_backend">
+        <xpath expr="." position="inside">
+            <!--<link rel="stylesheet" href="/school_booking/static/src/css/booking_calendar.css"/>
+            <script type="text/javascript" src="/school_booking/static/src/js/booking_calendar.js"></script>-->
+        </xpath>
+    </template>
+
+    <!-- School Calendar Form View -->
+    <record model="ir.ui.view" id="calendar_form">
+      <field name="name">school.calendar.view</field>
+      <field name="model">school.calendar</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Calendar">
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+                <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                    <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                </button>
+            </div>
+            <div class="oe_title">
+                <h1>
+                    <field name="name" default_focus="1" placeholder="Name"/>
+                </h1>
+            </div>
+            <group cols="2">
+              <field name="year_id" />
+              <field name="from_date" />
+              <field name="to_date" />
+              <field name="leave_ids">
+                <tree string="Leaves" editable="bottom">
+                  <field name="from_date" />
+                  <field name="to_date" />
+                  <field name="partner_id" />
+                  <field name="asset_id" />
+                  <field name="category_id" />
+                </tree>
+              </field>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Booking" id="menu_main_booking" icon="fa-calendar" web_icon="hr_timesheet_sheet,static/description/icon.png" sequence="90" />
+
+    <!-- Booking Tree View -->
+    <record id="view_booking_tree" model="ir.ui.view">
+      <field name="name">school.booking.tree</field>
+      <field name="model">calendar.event</field>
+      <field eval="8" name="priority" />
+      <field name="arch" type="xml">
+        <tree string="Bookings">
+          <field name="state" invisible="1" />
+          <field name="name" />
+          <field name="room_id" />
+          <field name="start" />
+          <field name="stop" />
+          <field name="recurrency" />
+          <field name="final_date" />
+        </tree>
+      </field>
+    </record>
+    
+    <record model="ir.ui.view" id="booking_form">
+      <field name="name">school.booking.view</field>
+      <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form" />
+        <field eval="25" name="priority" />
+        <field name="arch" type="xml">
+            <xpath expr="//h2" position="after">
+              <group>
+                <field name="room_id"/>
+                <field name="asset_ids" widget="many2many_tags"/>
+              </group>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="booking_calendar_view" model="ir.ui.view">
+        <field name="name">school.booking.calendar.view</field>
+        <field name="model">calendar.event</field>
+        <field name="priority" eval="2"/>
+        <field name="arch" type="xml">
+            <calendar string="Bookings" date_start="start" date_stop="stop" date_delay="duration" all_day="allday" display="[name]" color="main_categ_id" event_open_popup="898" scheduler_group="room_id">
+                <field name="name"/>
+                <field name="room_id"/>
+                <field name="main_categ_id" invisible="1"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="view_booking_filter" model="ir.ui.view">
+      <field name="name">booking.select</field>
+      <field name="model">calendar.event</field>
+      <field name="arch" type="xml">
+        <search string="Search Booking">
+          <field name="name" filter_domain="[('name','ilike',self)]" />
+          <filter string="Recurring" name="recurring" domain="[('recurrency','=',True)]" />
+          <filter string="Student Booking" name="student" domain="[('categ_ids.name','=','Student Booking')]" />
+          <filter string="Teacher Booking" name="teacher" domain="[('categ_ids.name','=','Teacher Booking')]" />
+          <filter string="Management Booking" name="management" domain="[('categ_ids.name','=','Management Booking')]" />
+        </search>
+      </field>
+    </record>
+
+    <record id="action_booking_tree" model="ir.actions.act_window">
+      <field name="name">All Bookings</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">calendar.event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form,calendar</field>
+      <field name="search_view_id" ref="view_booking_filter" />
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to add a booking.
+        </p>
+        <p>
+          Horizon helps you easily track your bookings.
+        </p>
+      </field>
+    </record>
+
+    <record id="action_booking_stud_tree" model="ir.actions.act_window">
+      <field name="name">Student Bookings</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">calendar.event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form,calendar</field>
+      <field name="search_view_id" ref="view_booking_filter" />
+      <field name="context">{"search_default_student":1}</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to add a recurring booking.
+        </p>
+        <p>
+          Horizon helps you easily track your recurring bookings.
+        </p>
+      </field>
+    </record>
+
+    <record id="action_booking_tree_tree_view1" model="ir.actions.act_window.view">
+      <field name="sequence" eval="1" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_booking_tree" />
+      <field name="act_window_id" ref="action_booking_tree" />
+    </record>
+    <record id="action_booking_tree_form_view2" model="ir.actions.act_window.view">
+      <field name="sequence" eval="2" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="booking_form" />
+      <field name="act_window_id" ref="action_booking_tree" />
+    </record>
+    <record id="action_booking_calendar" model="ir.actions.act_window.view">
+      <field name="sequence" eval="3" />
+      <field name="view_mode">calendar</field>
+      <field name="view_id" ref="booking_calendar_view" />
+      <field name="act_window_id" ref="action_booking_tree" />
+    </record>
+
+    <menuitem id="menu_booking_tree" parent="menu_main_booking" action="action_booking_tree" sequence="49" />
+    
+    <menuitem id="menu_booking_rec_tree" parent="menu_main_booking" action="action_booking_stud_tree" sequence="99" />
+  </data>
+</openerp>

@@ -88,7 +88,7 @@
             <field name="arch" type="xml">
             <search string="Search Groups">
                 <field name="name" string="Nom de l'activité"/>
-                <filter name="my_groups" string="My Current Courses" domain="[('responsible_id.user_ids','=',uid)]" />
+                <filter name="my_groups" string="My Current Courses" domain="['|',('staff_ids.user_ids','=',uid),('responsible_id.user_ids','=',uid)]"/>
                 <field name="participant_ids" domain="[('type', '=', 'contact')]"/>
                 <field name="responsible_id" />
                 <field name="course_ids" string="Course"/>

@@ -72,6 +72,8 @@ class IndividualBloc(models.Model):
     
     year_id = fields.Many2one('school.year', string='Year')
     
+    is_final_bloc = fields.Boolean(string='Is final bloc')
+    
     student_id = fields.Many2one(related='program_id.student_id', string='Student', domain="[('student', '=', '1')]", readonly=True, store=True)
     student_name = fields.Char(related='student_id.name', string="Student Name", readonly=True, store=True)
     
@@ -136,7 +138,27 @@ class IndividualBloc(models.Model):
         except AccessError:  # no read access rights -> just ignore suggested recipients because this imply modifying followers
             pass
         return recipients
-            
+          
+    course_count = fields.Integer(compute='_compute_course_count', string="Course")
+
+    @api.multi
+    def _compute_course_count(self):
+        for bloc in self:
+            bloc.course_count = self.env['school.individual_course'].search_count([('bloc_id', '=', bloc.id)])
+
+    @api.multi
+    def open_courses(self):
+        """ Utility method used to add an "Open Courses" button in bloc views """
+        self.ensure_one()
+        return {
+            'name': _('Courses'),
+            'domain': [('bloc_id', '=', self.id)],
+            'res_model': 'school.individual_course',
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree,form',
+            'view_type': 'form',
+        }
+
 class IndividualCourseGroup(models.Model):
     '''Individual Course Group'''
     _name='school.individual_course_group'
@@ -259,8 +281,18 @@ class IndividualCourse(models.Model):
     source_bloc_cycle_id = fields.Many2one(related='course_group_id.bloc_id.source_bloc_cycle_id', string='Cycle', readonly=True, store=True)
     
     course_group_id = fields.Many2one('school.individual_course_group', string='Course Groups', ondelete='cascade', readonly=True)
-    bloc_id = fields.Many2one('school.individual_bloc', string='Bloc', related='course_group_id.bloc_id', readonly=True)
+    bloc_id = fields.Many2one('school.individual_bloc', string='Bloc', related='course_group_id.bloc_id', readonly=True, store=True)
     
+    @api.multi
+    def open_program(self):
+        """ Utility method used to add an "Open Bloc" button in course views """
+        self.ensure_one()
+        return {'type': 'ir.actions.act_window',
+                'res_model': 'school.individual_bloc',
+                'view_mode': 'form',
+                'res_id': self.bloc_id.id,
+                'target': 'current',
+                'flags': {'form': {'action_buttons': True}}}
     
 class IndividualCourseProxy(models.Model):
     _name = 'school.individual_course_proxy'

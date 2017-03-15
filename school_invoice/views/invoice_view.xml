@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2015 be-cloud.be
+#                       Jerome Sonnet <jerome.sonnet@be-cloud.be>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<openerp>
+    <data>
+
+        <!-- Add invoice to Individual Program form view -->
+        <record id="individual_bloc_invoice_form" model="ir.ui.view">
+            <field name="name">school.individual_bloc.invoice.view</field>
+            <field name="model">school.individual_bloc</field>
+            <field name="inherit_id" ref="school_evaluations.individual_bloc_eval_form" />
+            <field eval="25" name="priority" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_button_box']" position="inside">
+                    <button name="action_invoice_create"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o">
+                            <field name="invoice_count" widget="statinfo" string="Invoices"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_individual_bloc_filter_invoice" model="ir.ui.view">
+            <field name="name">individual_bloc.select.invoice</field>
+            <field name="model">school.individual_bloc</field>
+            <field name="inherit_id" ref="school_management.view_individual_bloc_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="before">
+                    <separator/>
+                    <filter name="to_invoice" string="To Invoice" domain="[('invoice_count', '=', 0)]" />
+                    <filter name="invoiced" string="Invoiced" domain="[('invoice_count', '=', 1)]" />
+                    <filter name="open" string="Open" domain="[('invoice_id.state', '=','open')])]" />
+                    <filter name="paid" string="Paid" domain="[('invoice_id.state', '=', 'paid')]" />
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_payment_term_line_school_form" model="ir.ui.view">
+            <field name="name">account.payment.term.line.form.school</field>
+            <field name="model">account.payment.term.line</field>
+            <field name="inherit_id" ref="account.view_payment_term_line_form" />
+            <field name="arch" type="xml">
+                <xpath expr="/form" position="replace">
+                    <form string="Payment Terms">
+                        <group>
+                            <group string="Term Type">
+                                <field name="value" widget="radio"/>
+                                <label for="value_amount" attrs="{'invisible':[('value','=', 'balance')]}"/>
+                                <div attrs="{'invisible':[('value','=', 'balance')]}">
+                                    <field name="value_amount" class="oe_inline"/>
+                                    <label string="%" class="oe_inline" attrs="{'invisible':[('value','!=','percent')]}"/>
+                                </div>
+                                <field name="sequence" invisible="1"/>
+                            </group>
+                            <group string="Due Date Computation">
+                                <label for="days"/>
+                                <div>
+                                    <field name="option" widget="radio"/>
+                                    <div class="o_row" attrs="{'invisible': [('option', 'in', ['last_day_following_month', 'last_day_current_month','next_day_in_year'])]}">
+                                        <field name="days"/>
+                                        days
+                                    </div>
+                                    <div class="o_row" attrs="{'invisible': [('option', 'not in', ['next_day_in_year'])]}">
+                                        Day <field name="day"/>
+                                    </div>
+                                    <div class="o_row" attrs="{'invisible': [('option', 'not in', ['next_day_in_year'])]}">
+                                        Month <field name="month"/>
+                                    </div>
+                                </div>
+                            </group>
+                        </group>
+                    </form>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

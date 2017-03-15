@@ -140,6 +140,9 @@ class StudentGroup(models.Model):
         elif self.type == 'F':
             if len(self.picked_participant_ids) > 0 :
                 raise ValidationError(_('Cannot pick participants on a FreeCourses type of group, please add Individual Courses instead.'))
+        elif self.type == 'P':
+            if len(self.picked_participant_ids) > 0 :
+                raise ValidationError(_('Cannot pick participants on a Project type of group, please add Individual Courses instead.')) # TODO Really why not ??
         else:
             self.participant_ids = self.picked_participant_ids
         self.participant_count = len(self.participant_ids)
@@ -148,16 +151,13 @@ class StudentGroup(models.Model):
     def onchange_individual_course_ids(self):
         if self.type == 'L':
             self.participant_ids = self.individual_course_ids.mapped('student_id')
+        elif self.type == 'P':
+            self.participant_ids = self.individual_course_ids.mapped('student_id')
         elif self.type == 'F':
             for ic in self.individual_course_ids:
                 if ic.source_course_id not in self.course_ids:
                     raise ValidationError(_('Individual Course %s does not match the course selection' % (ic.name)))
             self.participant_ids = self.individual_course_ids.mapped('student_id')
-        elif self.type == 'P':
-            student_ids = self.individual_course_ids.mapped('student_id')
-            for student in student_ids:
-                if student not in self.participant_ids:
-                    self.participant_ids |= student
         else:
             raise ValidationError(_('Cannot select Individual Courses on this type of group.'))
         self.participant_count = len(self.participant_ids)

@@ -1,11 +1,12 @@
-====================================================
-Bienvenu à la documentation de la Gestion des études
-====================================================
+:main-title: User Documentation
+:banner: banners/index.jpg
+
+=======
+Horizon
+=======
 
 .. rst-class:: index-tree
-
 .. toctree::
-    :titlesonly:
+    :maxdepth: 2
 
-    Index <self>
     applications

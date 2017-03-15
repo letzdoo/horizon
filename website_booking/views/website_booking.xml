@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2015 be-cloud.be
+#                       Jerome Sonnet <jerome.sonnet@be-cloud.be>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<openerp>
+    <data>
+        <template id="assets" name="website_booking assets">
+            <!--Import Google Icon Font-->
+            <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+            <!--Import materialize.css-->
+            <link type="text/css" rel="stylesheet" href="/website_booking/static/lib/materialize/css/materialize.css"  media="screen,projection"/>
+                  
+            <!--Import Fullcalendar css-->
+            <link rel="stylesheet" href="/web/static/src/css/base.css"/>
+            <link rel="stylesheet" href="/web_calendar/static/lib/fullcalendar/css/fullcalendar.css"/>
+            <link rel="stylesheet" href="/web_scheduler/static/lib/fullcalendar/scheduler.css" />
+            
+            <link rel="stylesheet" href="/website_booking/static/lib/timepicker/jquery.timepicker.css" />
+            
+            <link rel="stylesheet" href="/website_booking/static/src/css/main.css"/>
+            <link rel="stylesheet" href="/website_booking/static/src/css/fc-material.css"/>
+            <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css"/>
+            
+            <script src="https://apis.google.com/js/platform.js" async="" defer=""></script>
+            <script type="text/javascript" src="/web_calendar/static/lib/fullcalendar/js/fullcalendar.js"></script>
+            <script type="text/javascript" src="/web_calendar/static/lib/fullcalendar/js/locale-all.js"></script>
+            <script type="text/javascript" src="/web_scheduler/static/lib/fullcalendar/scheduler.js"></script>
+            <script type="text/javascript" src="/website_booking/static/lib/materialize/js/materialize.js"></script>
+            <script type="text/javascript" src="/website_booking/static/lib/timepicker/jquery.timepicker.js"></script>
+            <script type="text/javascript" src="/website_booking/static/src/js/browser.js"></script>
+        </template>
+    </data>
+</openerp>

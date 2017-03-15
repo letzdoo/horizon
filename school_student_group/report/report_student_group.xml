@@ -93,5 +93,125 @@
             </t>
         </t>
     </template>
+    
+    
+    <!-- report -->
+    <report 
+        id="report_student_group_attendance"
+        model="school.student_group"
+        string="Student Group Attendance"
+        report_type="qweb-pdf"
+        name="school_student_group.report_student_group_att"
+        file="school_student_group.report_student_group_att"
+        />
+        
+    <template id="report_student_group_att">
+        <t t-call="report.html_container">
+            <t t-set="data_report_margin_top" t-value="20" />
+            <t t-set="data_report_header_spacing" t-value="15" />
+            <t t-foreach="docs" t-as="group">
+                <t t-call="report.internal_layout">
+                <div class="page">
+                    <div class="container">
+                        <div class="panel panel-default" style="page-break-before:always;">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">
+                                <h3>Student listing for <span t-field="group.name" /></h3>
+                            </div>
+                            <!-- Table -->
+                            <table class="table table-bordered">
+                                <thead>
+                                    <colgroup>
+                                        <col style="width:2px" />
+                                        <!--<col style="width:10px" />-->
+                                        <col style="width:10px" />
+                                        <col style="width:5px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                        <col style="width:2px" />
+                                    </colgroup>
+                                    <tr>
+                                        <th>Row</th>
+                                        <!--<th>Photo</th>-->
+                                        <th>Last Name</th>
+                                        <th>First Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="group.participant_ids" t-as="partner">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="partner_index + 1" />
+                                            </td>
+                                            <!--<td>
+                                                <img t-att-src="partner.image_small and ('data:image/png;base64,' + partner.image_small) or '/web/static/src/img/placeholder.png'"
+                                                    class="img-rounded" t-att-alt="partner.name"/>
+                                            </td>-->
+                                            <td>
+                                                <span t-field="partner.lastname" />
+                                            </td>
+                                            <td>
+                                                <span t-field="partner.firstname" />
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                </t>
+            </t>
+        </t>
+    </template>
 
 </odoo>

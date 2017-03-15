@@ -47,7 +47,7 @@
                 <t t-call="report.external_layout">
                 <div class="page">
                     <div class="container">
-                        <div class="row" style="margin-top:400px;">
+                        <div class="row" style="margin-top:500px;">
                             <div class="col-xs-12 text-center">
                                 <h2>ATTENDANCE REPORT</h2>    
                                 <h2>ACADEMIC YEAR <span t-field="o.year_id"/></h2>    

@@ -34,7 +34,7 @@ class StudentReport(models.Model):
     program_id = fields.Many2one('school.program', string="Program")
     bloc_id = fields.Many2one('school.bloc', string="Bloc")
     gender = fields.Selection([('male', 'Male'),('female', 'Female')])
-    has_paid_current_minerval = fields.Integer(string="Has paid current minerval")
+    #has_paid_current_minerval = fields.Integer(string="Has paid current minerval")
     dispenses = fields.Integer(string="Dispenses")
 
     @api.model_cr
@@ -49,7 +49,6 @@ class StudentReport(models.Model):
                 school_program.id as program_id,
                 school_bloc.id as bloc_id,
                 res_partner.gender as gender,
-                (SELECT COUNT(school_minerval.id) from school_minerval WHERE school_minerval.student_id = res_partner.id AND school_minerval.year_id = school_year.id) AS has_paid_current_minerval,
                 (SELECT COUNT(school_individual_course.id) from school_individual_course,school_individual_course_group WHERE school_individual_course.dispense = TRUE AND school_individual_course_group.bloc_id = school_individual_bloc.id AND school_individual_course.course_group_id = school_individual_course_group.id) as dispenses
             FROM
                 school_individual_bloc,
@@ -64,3 +63,5 @@ class StudentReport(models.Model):
                 school_individual_bloc.source_bloc_id = school_bloc.id AND
                 school_bloc.program_id = school_program.id
         )""")
+        
+        # --(SELECT COUNT(school_minerval.id) from school_minerval WHERE school_minerval.student_id = res_partner.id AND school_minerval.year_id = school_year.id) AS has_paid_current_minerval,

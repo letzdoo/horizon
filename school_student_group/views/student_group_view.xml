@@ -41,6 +41,7 @@
           <field name="arch" type="xml">
             <kanban class="o_student_group_kanban">
               <field name="name" />
+              <field name="staff_ids"/>
               <field name="participant_count"/>
               <field name="type"/>
               <templates>
@@ -126,7 +127,8 @@
                     <field name="individual_course_ids" options="{'no_create': True, 'no_open': True}">
                       <tree string="Participants" default_order="student_id,name">
                         <field name="student_id" />
-                        <field name="source_bloc_name" />
+                        <field name="source_bloc_name" string="Bloc" />
+                        <field name="source_course_id" string="Course" />
                       </tree>
                     </field>
                   </page>
@@ -246,16 +248,14 @@
             <field name="inherit_id" ref="school_management.individual_bloc_form" />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='image']" position="before">
-                    <div class="oe_button_box" name="button_box">
-                        <button name="action_view_group"
-                            type="object"
-                            class="oe_stat_button"
-                            icon="fa-pencil-square-o"
-                            attrs="{'invisible': [('group_count', '=', 0)]}">
-                            <field name="group_count" widget="statinfo" string="Groups"/>
-                        </button>
-                    </div>
+                <xpath expr="//div[@class='oe_button_box']" position="inside">
+                    <button name="action_view_group"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-pencil-square-o"
+                        attrs="{'invisible': [('group_count', '=', 0)]}">
+                        <field name="group_count" widget="statinfo" string="Groups"/>
+                    </button>
                 </xpath>
             </field>
         </record>

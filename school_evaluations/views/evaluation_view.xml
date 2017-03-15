@@ -25,7 +25,7 @@
 
         <template id="assets_backend" name="school_evaluations_assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
-                <link rel="stylesheet" href="/school_evaluations/static/src/css/metisMenu.min.css" />
+                <link rel="stylesheet" href="/school_evaluations/static/src/css/metisMenu.min.css" /> <!-- TODO : change to not min version -->
                 <link rel="stylesheet" href="/school_evaluations/static/src/css/sb-admin-2.css" />
                 <link rel="stylesheet" href="/school_evaluations/static/src/css/school_evaluation_bloc.css" />
                 <link rel="stylesheet" href="/school_evaluations/static/src/css/school_evaluations.css" />
@@ -86,9 +86,9 @@
                     <header>
                         <button name="set_to_progress" type="object" states="draft" string="Progress" class="oe_highlight" />
                         <button name="set_to_awarded" type="object" states="progress" string="Awarded" class="oe_highlight" />
-                        <button name="set_to_abandonned" type="object" states="progress" string="Abandonned" class="oe_highlight" />
-                        <button name="set_to_draft" type="object" states="progress,awarded,abandonned" string="Reset to Draft" />
-                        <field name="state" widget="statusbar" statusbar_visible="draft,progress,awarded,abandonned" />
+                        <button name="set_to_abandoned" type="object" states="progress" string="Abandoned" class="oe_highlight" />
+                        <button name="set_to_draft" type="object" states="progress,awarded,abandoned" string="Reset to Draft" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,progress,awarded,abandoned" />
                     </header>
                 </xpath>
                 <xpath expr="//field[@name='required_credits']" position="after">            
@@ -137,7 +137,10 @@
                         <button name="set_to_awarded_second_session" type="object" states="postponed" string="Awarded" class="oe_highlight" />
                         <button name="set_to_failed" type="object" states="progress,postponed" string="Failed" class="oe_highlight" />
                         <button name="set_to_draft" type="object" states="progress,postponed,awarded_first_session,awarded_second_session,failed" string="Reset to Draft" />
-                        <field name="state" widget="statusbar" statusbar_visible="draft,progress,postponed,awarded_first_session,awarded_second_session,failed" />
+                        <button name="set_to_abandoned" type="object" states="draft,progress,postponed" string="Abandon" />
+                        <field name="state" widget="statusbar" states="draft,progress" statusbar_visible="draft,progress,postponed,awarded_first_session,failed,abandoned" />
+                        <field name="state" widget="statusbar" states="postponed" statusbar_visible="draft,postponed,awarded_second_session,failed,abandoned" />
+                        <field name="state" widget="statusbar" states="awarded_first_session,awarded_second_session,failed,abandoned" statusbar_visible="awarded_first_session,awarded_second_session,failed,abandoned" />
                     </header>
                 </xpath>
                 <xpath expr="//field[@name='course_group_ids']" position="before">

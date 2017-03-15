@@ -89,9 +89,16 @@ class IndividualProgram(models.Model):
     
     grade_year_id = fields.Many2one('school.year', string="Year")
     
+    graduation_date = fields.Date(string="Graduation date")
+    
     grade_comments = fields.Text(string="Grade Comments")
     
     evaluation = fields.Float(string="Evaluation",compute="compute_evaluation")
+    
+    @api.depends('grade')
+    def _onchange_grade(self):
+        if self.grade:
+            graduation_date = fields.Date.today()
     
     @api.depends('bloc_ids.evaluation','historical_bloc_1_eval','historical_bloc_2_eval')
     @api.one
@@ -138,19 +145,24 @@ class IndividualBloc(models.Model):
             ('awarded_first_session', 'Awarded in First Session'),
             ('awarded_second_session', 'Awarded in Second Session'),
             ('failed', 'Failed'),
+            ('abandoned','Abandoned'),
         ], string='Status', index=True, default='draft',
         copy=False,
         help=" * The 'Draft' status is used when results are not confirmed yet.\n"
              " * The 'In Progress' status is used during the courses.\n"
              " * The 'Postponed' status is used when a second session is required.\n"
              " * The 'Awarded' status is used when the bloc is awarded in either first or second session.\n"
-             " * The 'Failed' status is used during the bloc is definitively considered as failed.\n"
+             " * The 'Failed' status is used when the bloc is definitively considered as failed.\n"
+             " * The 'Abandoned' status is when the student abandoned his bloc.\n"
              ,track_visibility='onchange')
     
     total_acquiered_credits = fields.Integer(string="Acquiered Credits",compute="compute_credits", store=True)
     evaluation = fields.Float(string="Evaluation",compute="compute_evaluation")
     decision = fields.Text(string="Decision",track_visibility='onchange')
     exclude_from_deliberation = fields.Boolean(string='Exclude from Deliberation', default=False)
+    
+    first_session_result = fields.Float(string="Evaluation",compute="compute_evaluation")
+    second_session_result = fields.Float(string="Evaluation",compute="compute_evaluation")
     
     @api.multi
     def set_to_draft(self, context):
@@ -193,6 +205,10 @@ class IndividualBloc(models.Model):
             context = decision
             decision = None
         return self.write({'state': 'failed','decision' : decision})
+    
+    @api.multi
+    def set_to_abandoned(self, decision=None, context=None):
+        return self.write({'state': 'abandoned','decision' : None})
         
     @api.multi
     def report_send(self):
@@ -233,13 +249,19 @@ class IndividualBloc(models.Model):
     def compute_evaluation(self):
         _logger.debug('Trigger "compute_evaluation" on Bloc %s' % self.name)
         total = 0
+        total_first = 0
+        total_second = 0
         total_weight = 0
         for icg in self.course_group_ids:
             if icg.acquiered == 'A' and icg.total_weight > 0 : # if total_weight == 0 means full dispense
                 total += icg.final_result * icg.total_weight
+                total_first += icg.first_session_result * icg.total_weight
+                total_second += icg.second_session_result * icg.total_weight
                 total_weight += icg.total_weight
         if total_weight > 0 :
             self.evaluation = total / total_weight
+            self.first_session_result = total_first / total_weight
+            self.total_second = total_first / total_weight
         else:
             _logger.debug('total_weight is 0 on Bloc %s' % self.name)
             self.evaluation = None
