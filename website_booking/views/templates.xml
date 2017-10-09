@@ -26,7 +26,15 @@
             <t t-call="web.layout">
                 <t t-set="head">
                     <t t-call-assets="web.assets_common" t-css="false"/>
-                    <t t-call-assets="website.assets_backend" t-css="false"/>
+                    <script type="text/javascript">
+                        odoo.define('web.csrf', function (require) {
+                            var token = "<t t-esc="request.csrf_token(None)"/>";
+                            require('web.core').csrf_token = token;
+                            require('qweb').default_dict.csrf_token = token;
+                        });
+                        odoo.db_info = '<t t-raw="db_info"/>';
+                    </script>
+                    <t t-call-assets="web.assets_backend" t-css="false"/>
                     <t t-call-assets="website_booking.assets"/>
                     <script type="text/javascript">
                         $(function() {

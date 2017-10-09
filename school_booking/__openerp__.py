@@ -28,10 +28,10 @@
     'depends': ['school_management','calendar','web_calendar','web_scheduler'],
     'init_xml': [],
     'update_xml': [
+        'data/school_booking.xml',
         'views/school_booking_view.xml',
         'views/school_asset_view.xml',
         'security/ir.model.access.csv',
-        'data/school_booking.xml',
     ],
     'demo_xml': [],
     'description': '''

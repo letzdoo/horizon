@@ -27,7 +27,6 @@
     'category': 'School Management',
     'depends': [
         'school_booking',
-        'website',
     ],
     'data': [
         'views/website_booking.xml',

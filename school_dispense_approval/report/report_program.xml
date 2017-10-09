@@ -85,6 +85,6 @@
         <field name="context">{"search_default_current":1}</field>
     </record>
     
-    <menuitem id="menu_report_dispense_pivot" parent="school_management.menu_teaching_report" action="action_report_school_dispense" sequence="15"/>
+    <!-- <menuitem id="menu_report_dispense_pivot" parent="school_management.menu_teaching_report" action="action_report_school_dispense" sequence="15"/> -->
 
 </odoo>

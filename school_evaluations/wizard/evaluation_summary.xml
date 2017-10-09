@@ -31,8 +31,7 @@
             key2="client_action_multi" 
             target="new" />
             
-        <menuitem id="menu_report_evaluation_summary_wizard"
-            parent="school_management.menu_teaching_report" action="school_evaluation_summary_wizard_action" sequence="50"/>
+        <menuitem id="menu_report_evaluation_summary_wizard" parent="school_evaluations.menu_main_evaluation" action="school_evaluation_summary_wizard_action" sequence="900"/>
             
         <!-- wizard view -->
         <record id="evaluation_summary_wizard_view" model="ir.ui.view">
@@ -139,7 +138,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-10 col-xs-offset-1">
-                                    <u>Article 30 de l’annexe 4 du Règlement des études (présent sur le site internet de l’école :</u>
+                                    <u>Article 26 de l’annexe 4 du Règlement des études (présent sur le site internet de l’école :</u>
                                     « […] Tout recours relatif à une quelconque irrégularité, autre que la tricherie ou le plagiat, dans le déroulement des évaluations est adressé, sous pli recommandé, au secrétaire du jury, au plus tard dans les trois jours ouvrables qui suivent la notification des résultats des évaluations.
                                     L'introduction du recours peut également être faite par la remise d'un écrit au secrétaire. Dans ce cas, un accusé de réception est délivré.
                                     Le secrétaire du jury instruit le recours et, au plus tard dans les deux jours ouvrables de sa réception, fait rapport au président du jury.

@@ -1,0 +1,22 @@
+@charset "utf-8"
+
+@mixin transform($transform)
+    -webkit-transform: $transform
+    -moz-transform: $transform
+    -ms-transform: $transform
+    -o-transform: $transform
+    transform: $transform
+
+.oe_school_program
+    &:hover
+        cursor: pointer
+        @include transform(scale(1.02))
+
+.oe_school_program_details
+
+.oe_school_program_table
+    font-size: 85%
+
+.oe_school_course_group
+    background-color: #eeeeee
+    font-weight: bold

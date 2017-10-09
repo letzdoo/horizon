@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2015 be-cloud.be
+#                       Jerome Sonnet <jerome.sonnet@be-cloud.be>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<odoo>
+    <!--
+    
+    Description
+    
+    -->
+
+    <report id="report_diploma_for_student" 
+            model="school.course_documentation" 
+            string="Course Documentation" 
+            report_type="qweb-pdf" 
+            name="school_course_description.report_course_documentation_content" 
+            file="school_course_description.report_course_documentation_content"
+            attachment_use="True"
+            attachment="object.name+'-DESC-'+time.strftime('%d-%m-%Y')+'.pdf'"
+    />
+    
+    <template id="report_course_documentation_content">
+        <t t-call="report.html_container">
+            <t t-set="data_report_margin_top" t-value="30"/>
+            <t t-set="data_report_header_spacing" t-value="25"/>
+            <t t-foreach="docs" t-as="o">
+                <div class="page">
+                    <div class="container">
+                        <div class="row" style="margin-bottom:30px;">
+                            <h1>
+                                <t t-if="o.state == 'draft'">Draft </t>Course Description
+                            </h1>
+                            <h1>
+                                <span t-field="o.name"/>
+                            </h1>
+                            <h3 class="oe_fade">
+                                by <span t-field="o.author_id"/>
+                            </h3>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Course Informations</div>
+                            <div class="panel-body">
+                                <table class="table table-striped">
+                                    <colgroup>
+                                        <col style="width:250px"/>
+                                        <col style="width:100%"/>
+                                    </colgroup>
+                                    <tbody>
+                                      <tr>
+                                        <td>Cycle</td>
+                                        <td><span t-field="o.cycle_id"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Course Group</td>
+                                        <td><span t-field="o.course_group_id.ue_id"/> - <span t-field="o.course_group_id"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Level</td>
+                                        <td><span t-field="o.level"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Credits</td>
+                                        <td><span t-field="o.credits"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Hours</td>
+                                        <td><span t-field="o.hours"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Weight</td>
+                                        <td><span t-field="o.weight"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Mandatory</td>
+                                        <td><t t-if="o.mandatory"><input type="checkbox" value="" checked=""/></t><t t-if="not(o.mandatory)"><input type="checkbox" value=""/></t></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Language</td>
+                                        <td><span t-field="o.language"/></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Teachers</td>
+                                        <td><span t-esc="', '.join(map( lambda x: x.name, o.staff_ids))"/></td>
+                                      </tr>
+                                    </tbody>
+                                 </table>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Schedule - <span t-field="o.schedule"/></h3>
+                          </div>
+                          <div class="panel-body">
+                            <span style="padding:5px;" t-raw="o.schedule_text"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Content</h3>
+                          </div>
+                          <div class="panel-body">
+                            <span style="padding:5px;" t-raw="o.content"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Method</h3>
+                          </div>
+                          <div class="panel-body">
+                            <span style="padding:5px;" t-raw="o.method"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Learning outcomes</h3>
+                          </div>
+                          <div class="panel-body">
+                            <span style="padding:5px;" t-raw="o.learning_outcomes"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">References</h3>
+                          </div>
+                          <div class="panel-body">
+                            <span style="padding:5px;" t-raw="o.references"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Pre-Co requiered</h3>
+                          </div>
+                          <div class="panel-body">
+                            <span style="padding:5px;" t-raw="o.pre_co_requiered"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Evaluation method</h3>
+                          </div>
+                          <div class="panel-body">
+                            <span style="padding:5px;" t-raw="o.evaluation_method"/>
+                          </div>
+                        </div>
+                        <div class="row" style="margin-top:40px;margin-bottom:40px;">
+                            Imprimé le <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

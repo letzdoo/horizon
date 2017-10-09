@@ -43,7 +43,7 @@ class AssignProgram(models.TransientModel):
             program = self.env['school.individual_bloc'].create({'year_id':self.year_id.id,'student_id': self.student_id.id,'source_bloc_id':self.source_bloc_id.id,'program_id':self.program_id.id})
             program.assign_source_bloc()
             # Hack to recompute
-            self.student_id._get_student_current_program_id()
+            self.student_id._get_student_current_bloc_id()
             # Return an action showing the created program
             action = self.env.ref('school_management.action_individual_bloc_form')
             result = action.read()[0]
@@ -59,7 +59,7 @@ class AssignProgram(models.TransientModel):
                 program = self.env['school.individual_bloc'].create({'year_id':self.year_id.id,'student_id': student.id,'source_bloc_id':self.source_bloc_id,'program_id':self.program_id.id})
                 program.assign_source_bloc()
                 # Hack to recompute
-                student._get_student_current_program_id()
+                student._get_student_current_bloc_id()
                 ids.append(program.id)
             # Return an action showing the created programs
             action = self.env.ref('school_management.action_individual_bloc_form')

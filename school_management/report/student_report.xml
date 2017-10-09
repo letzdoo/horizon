@@ -41,8 +41,8 @@
 
     <template id="report_attendance_for_student_content">
         <t t-call="report.html_container">
-            <t t-set="data_report_margin_top" t-value="30"/>
-            <t t-set="data_report_header_spacing" t-value="25"/>
+            <t t-set="data_report_margin_top" t-value="55"/>
+            <t t-set="data_report_header_spacing" t-value="35"/>
             <t t-foreach="docs" t-as="o">
                 <t t-call="report.external_layout">
                 <div class="page">
@@ -127,12 +127,15 @@
             <field name="view_mode">pivot</field>
         </record>
         
-        <menuitem name="Reporting" id="menu_report" sequence="70" web_icon="account,static/description/icon.png"/>
+
+      
+      
+        <!-- <menuitem name="Reporting" id="menu_report" sequence="100" web_icon="account,static/description/icon.png"/>
         
         <menuitem name="Teaching" id="menu_teaching_report" sequence="10" parent="menu_report"/>
         
         <menuitem id="menu_report_student_tree" parent="menu_teaching_report" action="action_report_school_student" sequence="20"/>
-        
+        --> 
         <!-- Program Form View -->
         <record model="ir.ui.view" id="view_individual_course_pivot">
           <field name="name">school.course.pivot</field>
@@ -184,7 +187,7 @@
             <field name="context">{"search_default_my_current_courses":1}</field>
         </record>
         
-        <menuitem id="menu_report_teacher_pivot" parent="menu_teaching_report" action="action_report_school_teacher" sequence="5"/>
+        <!-- <menuitem id="menu_report_teacher_pivot" parent="menu_teaching_report" action="action_report_school_teacher" sequence="5"/> -->
         
     </data>
 </openerp>

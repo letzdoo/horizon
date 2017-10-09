@@ -20,6 +20,8 @@
 ##############################################################################
 import logging
 
+from datetime import date
+
 from openerp import api, fields, models, _
 from openerp.exceptions import UserError
 
@@ -76,12 +78,20 @@ class OfficialDocument(models.Model):
     is_available = fields.Boolean('Is Available',default = False)
     
     attachment_ids = fields.Many2many('ir.attachment','official_document_ir_attachment_rel', 'official_document_id','ir_attachment_id', 'Attachments', domain="[('res_model','=','res.partner'),('res_id','=',student_id)]")
+    attachment_count = fields.Integer(compute='_compute_attachment_count', string='# Attachments')
+
+    def _compute_attachment_count(self):
+        for doc in self:
+            doc.attachment_count = len(doc.attachment_ids)
     
     note = fields.Text('Notes')
+
+    expiry_date = fields.Date('Expiry Date')
+    has_expiry_date = fields.Boolean(related='type_id.has_expiry_date')
     
     @api.model
     def _needaction_domain_get(self):
-        return [('is_available', '=', False)]
+        return ['|',('is_available', '=', False),('expiry_date', '<', date.today())]
     
 class OfficialDocumentType(models.Model):
     '''Official Document'''
@@ -91,5 +101,6 @@ class OfficialDocumentType(models.Model):
     description = fields.Text('Description')
     note = fields.Text('Notes')
     default_add = fields.Boolean('Default Add', default=False)
+    has_expiry_date = fields.Boolean('Has Expiry Date', default=False)
     
     active = fields.Boolean('Active', default=True)

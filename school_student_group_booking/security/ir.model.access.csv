@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+school_weekly_booking_manager,school_weekly_booking_manager,model_school_weekly_booking,school_booking.group_booking_manager,1,1,1,1
+school_weekly_booking_employee,school_weekly_booking_employee,model_school_weekly_booking,school_management.group_employee,1,1,1,1
+school_weekly_booking_teacher,school_weekly_booking_teacher,model_school_weekly_booking,school_management.group_teacher,1,1,1,1

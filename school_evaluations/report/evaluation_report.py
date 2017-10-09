@@ -32,7 +32,8 @@ class ReportEvaluationByTeacherWizard(models.TransientModel):
     _description = "Evaluations by Teacher Report"
 
     year_id = fields.Many2one('school.year', string='Year', default=lambda self: self.env.user.current_year_id, ondelete='cascade')
-    teacher_id = fields.Many2one('res.partner', string='Teacher', ondelete='cascade')
+    teacher_id = fields.Many2one('res.partner', string='Teacher', ondelete='cascade', domain=[('teacher','=',True)])
+    teacher_ids = fields.Many2many('res.partner', 'report_evaluation_by_teacher_teacher_rel', 'report_id', 'teacher_id', string='Teachers', ondelete='cascade', domain=[('teacher','=',True)])
     display_results = fields.Boolean(string='Display Current Results')
     freeze_first_session = fields.Boolean(string='Freeze First Session')
     message = fields.Text(string="Message")
@@ -46,6 +47,8 @@ class ReportEvaluationByTeacherWizard(models.TransientModel):
         data['freeze_first_session'] = self.freeze_first_session
         if self.teacher_id:
             data['teacher_ids'] = [self.teacher_id.id] 
+        elif self.teacher_ids:
+            data['teacher_ids'] = self.teacher_ids.ids
         else:
             context = dict(self._context or {})
             data['teacher_ids'] = data.get('active_ids')

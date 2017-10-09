@@ -22,7 +22,6 @@
 -->
 <openerp>
     <data>
-
         <!-- Add boolean for teacher, student, employee on partner form view -->
         <record id="view_partners_form_school" model="ir.ui.view">
             <field name="name">view.res.partner.form.school</field>
@@ -30,28 +29,166 @@
             <field name="inherit_id" ref="base.view_partner_form" />
             <field eval="18" name="priority" />
             <field name="arch" type="xml">
-                <!--<xpath expr="//field[@name='parent_id']" position="replace">
-                    <field name="parent_id" placeholder="Company" domain="[('is_company', '=', True)]" context="{'default_is_company': True, 'default_supplier': supplier, 'default_customer': customer}" invisible="1" on_change="onchange_parent_id(parent_id)" />
-                </xpath>-->
-                <xpath expr="//field[@name='website']" position="after">
-                    <field name='initials' />
-                    <field name='student' />
-                    <field name='teacher' />
-                    <field name='employee' />
-                    <field name="supplier" invisible="True" />
-                    <field name="customer" invisible="True" />
+                <xpath expr="//sheet" position="replace">
+                <sheet>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div style="margin: 0 auto">
+                                <field name="image" widget="image" class="oe_avatar" options="{&quot;preview_image&quot;: &quot;image&quot;, &quot;size&quot;: [200, 200]}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name" default_focus="1" placeholder="Nom" attrs="{
+                                        'readonly': [('is_company', '=', False)],
+                                        'required': [('is_company', '=', True)]
+                                    }" on_change="1" modifiers="{'readonly': [['is_company', '=', false]], 'required': [['is_company', '=', true]]}" class="oe_inline"/> <field name='initials' placeholder="Initials" class="oe_inline"/>
+                                </h1>
+                                <h2 attrs="{'invisible': [('student','=',False)]}">
+                                    <field name="student_current_bloc_name" />
+                                </h2>
+                                <h3>
+                                    <field name="user_ids" invisible="1"/>
+                                    <field name="email" widget="email" attrs="{'required': [('user_ids','!=', [])]}" placeholder="Email"/>
+                                </h3>
+                                <div class="oe_edit_only">
+                    		        <group attrs="{'invisible': [('is_company', '=', True)]}" modifiers="{'invisible': [['is_company', '=', true]]}">
+                    				    <field name='student' />
+                                        <field name='teacher' />
+                                        <field name='employee' />
+                                        <field name="lastname" attrs="{'required': [('firstname', '=', False),('type','=','contact'),('is_company', '=', False)]}" on_change="1" modifiers="{'required': [['firstname', '=', false], ['type', '=', 'contact'], ['is_company', '=', false]]}"/>
+                    					<field name="firstname" attrs="{'required': [('lastname', '=', False),('type','=','contact'),('is_company', '=', False)]}" on_change="1" modifiers="{'required': [['lastname', '=', false], ['type', '=', 'contact'], ['is_company', '=', false]]}"/>
+                    				</group>
+                    			</div>
+                    			<field name="student_bloc_ids" attrs="{'invisible': [('student','=',False)]}">
+                                    <tree string="Blocs" default_order='year_id desc'>
+                                        <field name="year_id" />
+                                        <field name="source_bloc_name" />
+                                        <field name="total_credits" />
+                                    </tree>
+                                </field>
+                    			<field name="category_id" widget="many2many_tags" placeholder="Tags..."/>
+                    			<field name="function" placeholder="e.g. Sales Director" attrs="{'invisible': ['|',('is_company','=', True),('student','=',True)]}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div name="button_box" class="oe_button_box">
+                                <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                    <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                                </button>
+                            </div>         
+                        </div>
+                    </div>
+                    <notebook colspan="4">
+                        <page string="Contacts &amp; Addresses" autofocus="autofocus">
+                            <field name="is_company" invisible="1"/>
+                            <field name="parent_id" invisible="1"/>
+                            <field name="type" attrs="{'invisible': [('parent_id','=', False)]}" groups="base.group_no_one"/>
+                            <label for="street" string="Main Address"/>
+                            <div class="row">
+                                <div class="col-md-6 mb16">
+                                    <div class="o_address_format">
+                                        <div class="oe_edit_only">
+                                            <button name="open_parent" type="object" string="(edit)" class="oe_link" attrs="{'invisible': ['|', ('parent_id', '=', False), ('type', '!=', 'contact')]}"/>
+                                        </div>
+                                        <field name="street" placeholder="Street..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                        <field name="city" placeholder="City" class="o_address_city" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                        <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" context="{'country_id': country_id, 'zip': zip}"/>
+                                        <field name="zip" placeholder="ZIP" class="o_address_zip" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                        <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb16">
+                                    <group col="2">
+                                        <field name='email_personnel' />
+                                        <field name="phone" widget="phone"/>
+                                        <field name="mobile" widget="phone"/>
+                                        <field name="fax" widget="phone"/>
+                                    </group>
+                                </div>
+                            </div>
+                            <label for="child_ids" string="Alternative Addresses"/>
+                            <field name="child_ids" context="{'default_parent_id': active_id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_supplier': supplier, 'default_customer': customer, 'default_lang': lang,'default_name':name,'default_type':'invoice'}">
+                                <tree>
+                                    <field name="street"/>
+                                    <field name="city"/>
+                                    <field name="country_id"/>
+                                </tree>
+                                <form string="Contact / Address">
+                                    <sheet>
+                                        <field name="type" required="1" widget="radio" options="{'horizontal': true}" invisible="1"/>
+                                        <hr/>
+                                        <group>
+                                            <group attrs="{'invisible': [('type','=', 'contact')]}">
+                                                <label for="street" string="Address"/>
+                                                <div>
+                                                    <div class="o_address_format" name="div_address">
+                                                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                                                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                                        <field name="city" placeholder="City" class="o_address_city"/>
+                                                        <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)" context="{'country_id': country_id, 'zip': zip}"/>
+                                                        <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                                        <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"/>
+                                                    </div>
+                                                </div>
+                                            </group>
+                                            <group invisible="1">
+                                                <field name="name" string="Contact Name" attrs="{'required' : [('type', '=', 'contact')]}"/>
+                                                <field name="title" placeholder="e.g. Mr." attrs="{'invisible': [('type','&lt;&gt;', 'contact')]}"/>
+                                                <field name="function" placeholder="e.g. Sales Director" attrs="{'invisible': [('type','&lt;&gt;', 'contact')]}"/>
+                                                <field name="email"/>
+                                                <field name="phone" widget="phone"/>
+                                                <field name="mobile" widget="phone"/>
+                                                <field name="comment" placeholder="internal note..."/>
+                                            </group>
+                                        </group>
+                                        <field name="supplier" invisible="True"/>
+                                        <field name="customer" invisible="True"/>
+                                        <field name="lang" invisible="True"/>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                        <page name="personal_information_page" string="Informations personnelles" attrs="{'invisible': [('is_company','=',True)]}" modifiers="{'invisible': [['is_company', '=', true]]}">
+            				<group name="personal_information_group">
+            				    <field name="title" options="{&quot;no_open&quot;: True}" attrs="{'invisible': [('is_company', '=', True)]}"/>
+            				    <field name="lang"/>
+                                <field name='nationality_id' />
+                                <field name="birthplace"/>
+                                <field name="birthdate_date"/>
+                                <field name="reg_number" />
+                                <field name="mat_number"/>
+            				</group>
+            			</page>
+                        <page name="sales_purchases" string="Sales &amp; Purchases" invisible="1">
+                            <group name="container_row_2">
+                                <group string="Sale" name="sale">
+                                    <field name="customer"/>
+                                    <field name="user_id" context="{'default_groups_ref': ['base.group_partner_manager']}"/>
+                                </group>
+                                <group string="Purchase" name="purchase">
+                                    <field name="supplier"/>
+                                </group>
+                                <group string="Misc">
+                                    <field name="ref"/>
+                                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="internal_notes" string="Internal Notes">
+                            <field name="comment" placeholder="Internal note..."/>
+                        </page>
+                    </notebook>
+                </sheet>
                 </xpath>
-                <page name="sales_purchases" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </page>
-                <!--<page name="accounting" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </page>-->
             </field>
         </record>
 
         <!-- Top menu item -->
-        <menuitem name="Contacts" id="menu_contacts" icon="fa-user" web_icon="website_mail_channel,static/description/icon.png" sequence="40" />
+
+        <menuitem name="Contacts" id="menu_contacts" icon="fa-user" web_icon="school_management,static/description/icon_contact.png" sequence="40" />
 
         <!-- <menuitem name="Contacts" parent="menu_main_contacts" id="menu_contacts" sequence="1" /> -->
 
@@ -61,7 +198,7 @@
             <field name="arch" type="xml">
                 <search string="Search Partner">
                     <field name="name" filter_domain="['|','|',('display_name','ilike',self),('ref','=',self),('email','ilike',self)]" />
-                    <field name="student_current_program_name" filter_domain="[('student_current_program_name','ilike',self)]" string="Programme"/>
+                    <field name="student_current_bloc_name" filter_domain="[('student_current_bloc_name','ilike',self)]" string="Bloc"/>
                     <separator/>
                     <filter string="Persons" name="type_person" domain="[('is_company','=',0)]" />
                     <filter string="Companies" name="type_company" domain="[('is_company','=',1)]" />
@@ -72,10 +209,12 @@
                     <filter string="Others" name="other" domain="[('employee','=',0),('teacher','=',0),('student','=',0), ('parent_id', '=', False)]" />
                     <filter string="Archived" name="archived" domain="[('active','=',False),('type','=','contact')]" />
                     <separator/>
-                    <filter string="Registered" name="registered" domain="[('student_program_ids.year_sequence','=','current')]" />
-                    <filter string="No Program" name="no_program" domain="[('student_current_program_id','=',False)]" />
+                    <filter string="Registered current" name="registered_cur" domain="[('year_sequence','=','current')]" />
+                    <filter string="Registered previous" name="registered_prev" domain="[('year_sequence','=','previous')]" />
+                    <filter string="Registered next" name="registered_next" domain="[('year_sequence','=','next')]" />
+                    <filter string="Never registered" name="registered_never" domain="[('year_sequence','=','never')]" />
                     <group expand="0" name="group_by" string="Group By">
-                        <filter string="Program" context="{'group_by': 'student_current_program_name'}" />
+                        <filter string="Bloc" context="{'group_by': 'student_current_bloc_name'}" />
                     </group>
                     <!-- <separator/>
                    <field name="category_id" string="Tag" filter_domain="[('category_id','ilike', self)]"/>
@@ -99,11 +238,11 @@
                 <field name="mobile" position="after">
                     <!--<field name="has_paid_current_minerval" /> -->
                     <field name="student" />
-                    <field name="student_current_program_name" attrs="{'invisible': [('student','=',False)]}" />
+                    <field name="student_current_bloc_name" attrs="{'invisible': [('student','=',False)]}" />
                 </field>
                 <xpath expr="//div[@class='oe_kanban_details']//ul" position="replace">
-                    <li t-if="record.student_current_program_name.value" class="o_text_overflow">
-                        <field name="student_current_program_name" />
+                    <li t-if="record.student_current_bloc_name.value" class="o_text_overflow">
+                        <field name="student_current_bloc_name" />
                     </li>
                 </xpath>
                 <!--<xpath expr="//div[@class='oe_kanban_partner_links']" position="inside">
@@ -117,48 +256,6 @@
             </field>
         </record>
 
-        <!-- Add program for student form view -->
-        <record id="view_student_form_school" model="ir.ui.view">
-            <field name="name">view.res.partner.form.school</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="view_partners_form_school" />
-            <field eval="25" name="priority" />
-            <field name="arch" type="xml">
-                <!--<xpath expr="//div[@name='button_box']" position="inside">
-                    <button name="pay_current_minerval" type="object" class="oe_stat_button" icon="fa-eur" attrs="{'invisible': [('student','=',False)]}" groups="school_management.group_employee">
-                        <field name="has_paid_current_minerval" widget="boolean_button" options='{"terminology": "active"}'/>
-                    </button>
-                </xpath>-->
-                <xpath expr="//field[@name='employee']" position="after">
-                    <field name="student_current_program_name" attrs="{'invisible': [('student','=',False)]}" />
-                    <field name='email_personnel' />
-                </xpath>
-                <xpath expr="//group[@name='personal_information_group']" position="inside">
-                    <field name="birthplace"/>
-                    <field name="reg_number" />
-                    <field name="mat_number"/>
-                </xpath>
-                <xpath expr="//notebook[last()]" position="inside">
-                    <page name="programs_list" string="Programs" attrs="{'invisible': [('student','=',False)]}">
-                        <field name="student_program_ids">
-                            <tree string="Programs">
-                                <field name="year_id" />
-                                <field name="source_bloc_name" />
-                            </tree>
-                        </field>
-                    </page>
-                    <!--<page name="minerval_list" string="Minervals" attrs="{'invisible': [('student','=',False)]}">
-                        <field name="minerval_ids">
-                            <tree string="Minervals">
-                                <field name="year_id" />
-                                <field name="payment_date" />
-                            </tree>
-                        </field>
-                    </page>-->
-                </xpath>
-            </field>
-        </record>
-
         <!-- Speciality List View -->
         <record id="view_student_tree_school" model="ir.ui.view">
             <field name="name">school.res.partner.tree</field>
@@ -168,7 +265,7 @@
                 <tree string="Contacts">
                     <field name="display_name" />
                     <field name="function" invisible="1" />
-                    <field name="student_current_program_id" />
+                    <field name="student_current_bloc_id" />
                     <!--<field name="has_paid_current_minerval" />-->
                     <field name="email" />
                     <field name="user_id" invisible="1" />
@@ -212,13 +309,7 @@
         <record id="action_student_form_view2" model="ir.actions.act_window.view">
             <field name="sequence" eval="2" />
             <field name="view_mode">form</field>
-            <field name="view_id" ref="view_student_form_school" />
-            <field name="act_window_id" ref="action_student_form" />
-        </record>
-        <record id="action_student_form_view2" model="ir.actions.act_window.view">
-            <field name="sequence" eval="2" />
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="view_student_form_school" />
+            <field name="view_id" ref="view_partners_form_school" />
             <field name="act_window_id" ref="action_student_form" />
         </record>
         <menuitem id="menu_student_form" parent="menu_contacts" action="action_student_form" sequence="5" />
@@ -363,6 +454,7 @@
             <field name="view_id" ref="base.view_partner_form" />
             <field name="act_window_id" ref="action_other_form" />
         </record>
+        
         <menuitem id="menu_other_form" parent="menu_contacts" action="action_other_form" sequence="90" />
 
 

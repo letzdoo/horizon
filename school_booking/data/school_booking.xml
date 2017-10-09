@@ -31,5 +31,8 @@
         <record id="school_management_event_type" model="calendar.event.type">
             <field name="name">Management Booking</field>
         </record>
+        <record id="group_booking_manager" model="res.groups">
+            <field name="name">Gestion des réservations</field>
+        </record>
     </data>
 </openerp>

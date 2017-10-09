@@ -29,6 +29,7 @@ _logger = logging.getLogger(__name__)
 
 class Partner(models.Model):
     _inherit = 'res.partner'
+    
     out_inv_comm_algorithm = fields.Selection(selection_add=[('student_id', 'Student Id')])
 
 class Invoice(models.Model):
@@ -36,6 +37,7 @@ class Invoice(models.Model):
     
     final_payment_date = fields.Date(compute='_compute_final_payment_date')
     
+    @api.one
     @api.depends('residual')
     def _compute_final_payment_date(self):
         if self.residual == 0 :
@@ -55,9 +57,9 @@ class IndividualBloc(models.Model):
 
     invoice_id = fields.Many2one(
         'account.invoice', 'Invoice',
-        copy=False, readonly=True, track_visibility="onchange")
+        copy=False, track_visibility="onchange")
         
-    invoice_count = fields.Integer(compute='_compute_invoice_count',store=True)
+    invoice_count = fields.Integer(compute='_compute_invoice_count')
      
     @api.depends('invoice_id')  
     @api.one
@@ -83,8 +85,7 @@ class IndividualBloc(models.Model):
                     'origin': bloc.name,
                     'type': 'out_invoice',
                     'partner_id': bloc.student_id.id,
-                    'date_invoice': "2016-09-15",
-                    
+                    'date_invoice': '%s-09-15' % bloc.year_id.name[0:4],
                 })
                 bloc.write({'invoice_id': invoice.id})
                 invoice_ids.append(invoice.id)

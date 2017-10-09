@@ -46,13 +46,54 @@ class Partner(models.Model):
     reg_number = fields.Char('Registration Number')
     mat_number = fields.Char('Matricule Number')
     
-    #minerval_ids = fields.One2many('school.minerval', 'student_id', string='Minerval')
-    #has_paid_current_minerval = fields.Boolean(compute='_has_paid_current_minerval',string="Has paid current minerval", store=True)
+    student_current_bloc_id = fields.Many2one('school.individual_bloc', compute='_get_student_current_bloc_id', string='Bloc')
+    student_current_bloc_name = fields.Char(related='student_current_bloc_id.source_bloc_name', string='Current Bloc')
+    student_bloc_ids = fields.One2many('school.individual_bloc', 'student_id', string='Programs')
     
-    student_current_program_id = fields.Many2one('school.individual_bloc', compute='_get_student_current_program_id', string='Program', store=True)
-    student_current_program_name = fields.Char(related='student_current_program_id.source_bloc_name', string='Current Program', store=True)
-    student_program_ids = fields.One2many('school.individual_bloc', 'student_id', string='Programs')
+    year_sequence = fields.Selection([
+        ('current','Current'),
+        ('previous','Previous'),
+        ('next','Next'),
+        ('never','Never'),
+        ], string="Year Sequence", compute="_compute_year_sequence", search="_search_year_sequence")
     
+    @api.one
+    @api.depends('student_bloc_ids')
+    def _get_student_current_bloc_id(self):
+        for bloc in self.student_bloc_ids:
+            if bloc.year_id == self.env.user.current_year_id:
+                self.student_current_bloc_id = bloc
+                return
+        self.student_current_bloc_id = False
+
+    def _compute_year_sequence(self):
+        for item in self:
+            current_year_id = self.env.user.current_year_id
+            year_ids = item.student_bloc_ids.mapped('year_id.id')
+            if current_year_id.id in year_ids:
+                item.year_sequence = 'current'
+                return
+            if current_year_id.previous.id in year_ids:
+                item.year_sequence = 'previous'
+                return
+            if current_year_id.next.id in year_ids:
+                item.year_sequence = 'next'
+                return
+            item.year_sequence = 'never'
+    
+    def _search_year_sequence(self, operator, value):
+        current_year_id = self.env.user.current_year_id
+        year_ids = []
+        if 'never' in value:
+            return [('student_bloc_ids','=',False)]
+        if 'current' in value:
+            year_ids.append(current_year_id.id)
+        if 'previous' in value:
+            year_ids.append(current_year_id.previous.id)
+        if 'next' in value:
+            year_ids.append(current_year_id.next.id)
+        return [('student_bloc_ids.year_id','in',year_ids)]
+        
     student_current_course_ids = fields.One2many('school.individual_course', compute='_get_student_current_individual_course_ids', string='Courses')
     student_course_ids = fields.One2many('school.individual_course', 'student_id', string='Courses', domain="[('year_id', '=', self.env.user.current_year_id.id)]")
     
@@ -69,25 +110,6 @@ class Partner(models.Model):
     def _get_student_current_individual_course_ids(self):
         self.teacher_current_course_ids = self.env['school.individual_course_proxy'].search([['year_id', '=', self.env.user.current_year_id.id], ['student_id', '=', self.id]])
 
-    #@api.one
-    #@api.depends('minerval_ids')
-    #def _has_paid_current_minerval(self):
-    #    res = self.env['school.minerval'].search([['year_id', '=', self.env.user.current_year_id.id], ['student_id', '=', self.id]])
-    #    self.has_paid_current_minerval = len(res) > 0
-        
-    #@api.one
-    #@api.depends('has_paid_current_minerval')
-    #def pay_current_minerval(self):
-    #    if not self.has_paid_current_minerval:
-    #        self.env['school.minerval'].create({'student_id': self.id,'year_id': self.env.user.current_year_id.id})
-        
-    @api.one
-    @api.depends('student_program_ids')
-    def _get_student_current_program_id(self):
-        for program in self.student_program_ids:
-            if program.year_id == self.env.user.current_year_id:
-                self.student_current_program_id = program
-    
     @api.one
     def _get_teacher_current_course_session_ids(self):
         res = self.env['school.course_session'].search([['year_id', '=', self.env.user.current_year_id.id], ['teacher_id', '=', self.id]])
@@ -106,11 +128,3 @@ class Partner(models.Model):
             return tools.image_resize_image_big(image.encode('base64'))
         else:
             return super(Partner, self)._get_default_image(partner_type, is_company, parent_id)
-        
-#class Minerval(models.Model):
-#    '''Minerval'''
-#    _name = 'school.minerval'
-#    
-#    year_id = fields.Many2one('school.year', string='Year', readonly=True)
-#    student_id = fields.Many2one('res.partner', string='Student', domain="[('student', '=', '1')]", readonly=True)
-#    payment_date = fields.Date(string='Payment Date',default=fields.Date.context_today)

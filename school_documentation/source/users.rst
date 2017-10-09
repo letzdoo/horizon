@@ -54,8 +54,8 @@ droits.
 .. tip::
     Il faut veiller à remplir le champs *Année en cours*.
 
-Il faut impérativement remplir l'adresse "xxxx@crlg.be" dans le champs *Adresse électronique*
-ceci afin de permettre l'authentification *Google*.
+Il faut impérativement remplir l'adresse "xxxx@crlg.be" dans le champs *Adresse 
+électronique* ceci afin de permettre l'authentification *Google*.
 
 Dans le pannel *School Management* il convient de sélectionner au minima *employé*,
 mais également tous les groupes de fonctions que l'utilisateurs sera amené à utiliser.

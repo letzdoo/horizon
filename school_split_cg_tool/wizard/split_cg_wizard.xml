@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2015 be-cloud.be
+#                       Jerome Sonnet <jerome.sonnet@be-cloud.be>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<openerp>
+    <data>
+        <!-- Split Course Group Wizard View -->
+        <record model="ir.ui.view" id="split_cg_wizard_form">
+          <field name="name">school.split_cg_wizard.view</field>
+          <field name="model">school.split_cg_wizard</field>
+          <field name="type">form</field>
+          <field name="arch" type="xml">
+            <form string="Split Course Group Wizard">
+                <sheet>
+                    <field name="source_course_group_id"/>
+                    <field name="target_first_course_group_id"/>
+                    <field name="target_second_course_group_id"/>
+                    <separator string='Totals'/>
+                    <group>
+                        <field name="source_course_group_id_total_hours" string="Initial Hours"/>
+                        <field name="source_course_group_id_total_credits" string="Initial Credits"/>
+                    </group>
+                    <group col="4">
+                        <field name="target_first_course_group_id_total_hours" string="First Hours"/>
+                        <field name="target_second_course_group_id_total_hours" string="Second Hours"/>
+                        <field name="target_first_course_group_id_total_credits" string="First Credits"/>
+                        <field name="target_second_course_group_id_total_credits" string="Second Credits"/>
+                    </group>
+                    <group>                        
+                        <field name="total_total_hours" string="Total Hours"/>
+                        <field name="total_total_credits" string="Total Credits"/>
+                    </group>
+                    <!--<h2>First Course Group</h2>
+                    <group col="2" attrs="{'invisible': [('source_course_group_id','=',False)]}">
+                        <field name='target_first_sequence'/>
+                        <field name='target_first_level'/>
+                    </group>
+                    <field string="First Courses" name="target_first_course_ids" context="{'default_course_group_id':target_first_course_group_id}">
+                      <tree editable="bottom">
+                        <field name="name" />
+                        <field name="hours" />
+                        <field name="credits" />
+                        <field name="weight" />
+                      </tree>
+                    </field>
+                    <h2>Second Course Group</h2>
+                    <group col="2" attrs="{'invisible': [('source_course_group_id','=',False)]}">
+                        <field name='target_second_sequence'/>
+                        <field name='target_second_level'/>
+                    </group>
+                    <field  string="Second Courses" name="target_second_course_ids" context="{'default_course_group_id':target_second_course_group_id}">
+                      <tree editable="bottom">
+                        <field name="name" />
+                        <field name="hours" />
+                        <field name="credits" />
+                        <field name="weight" />
+                      </tree>
+                    </field>-->
+                    <footer>
+                        <button name="on_confirm" string="Confirm" type="object" default_focus="1" class="oe_highlight"/>
+                        or
+                        <button name="on_cancel" string="Cancel" type="object" class="oe_link"/>
+                    </footer>
+                </sheet>
+            </form>
+          </field>
+        </record>
+        
+        <record id="action_split_cg_wizard" model="ir.actions.act_window">
+            <field name="name">Split Course Group Wizard</field>
+            <field name="res_model">school.split_cg_wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="split_cg_wizard_form"/>
+            <field name="context">{'default_source_course_group_id': [active_id]}</field>
+            <field name="target">new</field>
+        </record>
+        
+        <!-- Add evaluation to Individual Course Group form view -->
+        <record id="split_cg_wizard_tree" model="ir.ui.view">
+            <field name="name">school.split_cg_wizard.tree.view</field>
+            <field name="model">school.course_group</field>
+            <field name="inherit_id" ref="school_management.view_course_group_tree" />
+            <field eval="25" name="priority" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='total_credits']" position="after">
+                    <button name="on_split" type="object" string="Split Course Group" icon="fa-scissors"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

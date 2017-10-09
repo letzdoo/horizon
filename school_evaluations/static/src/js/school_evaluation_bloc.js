@@ -96,6 +96,58 @@ var DetailResultDialog = Dialog.extend({
     
 });
 
+var DeliberateCourseGroupDialog = Dialog.extend({
+    template: 'DeliberateCourseGroupDialog',
+    
+    events: {
+        'change #comment-list': 'change_message',
+    },
+    
+    init: function(parent, options) {
+        this._super.apply(this, arguments);
+        this.title = options.title;
+        this.course_group = options.course_group;
+        this.parent = parent;
+        this.school_session = parent.school_session;
+        this.messages = [
+            '',
+            'Pertinence et singularité du travail artistique',
+            'Qualité particulière du travail artistique',
+            'Participation active et régulière aux activités d’enseignement',
+            'Caractère accidentel des échecs',
+            'Echecs limités en qualité et quantité',
+            'Pourcentage global et importance relative des échecs',
+            'Progrès réalisés d’une session à l’autre',
+            'La réussite des activités de remédiation'
+        ];
+        this.message = '';
+        this.set_buttons([
+        {
+            text: _t("Ok"),
+            classes: 'btn-primary',
+            close: true,
+            click: this.confirm_callback
+        },
+        {
+            text: _t("Cancel"),
+            close: true,
+            click: this.cancel_callback
+        }]);
+    },
+    
+    change_message: function() {
+        var self = this;
+        self.message = this.$('#comment-list').val();
+    },
+    
+    confirm_callback: function() {
+        var self=this;
+        new Model('school.individual_course_group').call("set_deliberated_to_ten",[self.course_group.id,self.school_session, self.messages[self.message]]).then(function(result) {
+            self.parent.update();
+        });
+    }
+});
+
 return Widget.extend({
     template: "BlocEditor",
     events: {
@@ -145,12 +197,6 @@ return Widget.extend({
             });
         },
         
-        "click .o_school_eval_details": function (event) {
-            var self = this;
-            event.preventDefault();
-            new DetailEvalDialog(this, {title : _t('Detailed Evaluation'), program : self.program}).open();
-        },
-        
         "click .o_school_edit_icg": function (event) {
             var self = this;
             event.preventDefault();
@@ -169,14 +215,7 @@ return Widget.extend({
             var self = this;
             var cg_id = $(event.target).data('course-group-id');
             event.preventDefault();
-            Dialog.confirm(self, _t("Merci de confirmer la délibération de cette unité d'enseignement comme étant acquise."), {
-                confirm_callback: function() {
-                    new Model('school.individual_course_group').call("set_deliberated_to_ten",[cg_id,self.school_session]).then(function(result) {
-                        self.update();
-                    });
-                },
-                title: _t("Délibération de l'unité d'enseignement"),
-            });
+            new DeliberateCourseGroupDialog(this, {title : _t('Deliberate Course Group'), course_group : self.course_groups[self.course_group_id_map[cg_id]]}).open();
         },
     },
     
@@ -184,7 +223,6 @@ return Widget.extend({
         this._super.apply(this, arguments);
         this.title = title;
         this.parent = parent;
-        this.school_session = parent.school_session;
     },
     
     start: function() {
@@ -194,6 +232,7 @@ return Widget.extend({
     
     read_ids: function(ids,idx) {
         var self = this;
+        this.school_session = this.parent.school_session;
         idx = idx || 0;
         return this.dataset.read_ids(ids,[]).then(function (results) {
                 self.ids = ids;
@@ -233,13 +272,7 @@ return Widget.extend({
             self.bloc = self.datarecord;
             self._read_bloc_data().done(
                 function(){
-                    if(self.$el.parent().children().size() > 1) {
-                        self.$el.parent().children()[0].remove();
-                        self.$el.parent().children()[0].remove();
-                    } else {
-                        self.$el.empty();
-                        self.$el.append( "<div class='o_evaluation_bloc_container'></div>" );
-                    }
+                    self.parent.hide_startup();
                     self.renderElement();
                 });
         });
@@ -249,136 +282,27 @@ return Widget.extend({
         var self = this;
         
         if(self.school_session == 1) {
-            switch(self.bloc.source_bloc_level) {
-                case "1" :
-                    if(self.bloc.total_acquiered_credits >= 60) {
-                        self.bloc_result = {
-                            'message' : _t(self.bloc.total_acquiered_credits+" crédits ECTS acquis ou valorisés, autorisé(e) à poursuivre son parcours sans restriction." ),
+            if (self.bloc.total_acquiered_credits >= self.bloc.total_credits) {
+                self.bloc_result = {
+                            'message' : _t("A validé tous les crédits ECTS de son PAE."),
                             'class' : "success",
                             'button_text' : _t("Réussite"),
                             'next_action' : "award",
-                        };
-                    }
-                    else {
-                        self.bloc_result = {
-                            'message' : _t("Moins de "+self.bloc.total_credits+" crédits ECTS acquis ou valorisés, les crédits non-acquis sont à présenter, le cas échéant, en seconde session."),
-                            'class' : "danger",
-                            'button_text' : _t("Ajourné"),
-                            'next_action' : "postpone",
-                        };
-                    }
-                    break;
-                case "2" :
-                    if(self.bloc.total_acquiered_credits >= 60) {
-                        self.bloc_result = {
-                            'message' : _t(self.bloc.total_acquiered_credits+" crédits ECTS acquis ou valorisés, autorisé(e) à poursuivre son parcours sans restriction." ),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                    }
-                    else {
-                        self.bloc_result = {
-                            'message' : _t("Moins de "+self.bloc.total_credits+" crédits ECTS acquis ou valorisés, les crédits non-acquis sont à présenter, le cas échéant, en seconde session."),
-                            'class' : "danger",
-                            'button_text' : _t("Ajourné"),
-                            'next_action' : "postpone",
-                        };
-                    }
-                    break;
-                case "3" :
-                    if(self.bloc.total_acquiered_credits >= 60) {
-                        self.bloc_result = {
-                            'message' : _t("180 crédits ECTS acquis ou valorisés, le jury confère le grade académique de Bachelier avec "),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                        if(self.program.evaluation >= 18){
-                            self.bloc_result.grade_text = _t("First Class Honor");
-                            self.bloc_result.grade = 'first_class';
-                        } else if (self.program.evaluation >= 16){
-                            self.bloc_result.grade_text = _t("Second Class Honor");
-                            self.bloc_result.grade = 'second_class';
-                        } else if (self.program.evaluation >= 14){
-                            self.bloc_result.grade_text = _t("Distinction");
-                            self.bloc_result.grade = 'distinction';
-                        } else if (self.program.evaluation >= 12){
-                            self.bloc_result.grade_text = _t("Satisfaction");
-                            self.bloc_result.grade = 'satisfaction';
-                        } else {
-                            self.bloc_result.grade_text = _t("Without Grade");
-                            self.bloc_result.grade = 'without';
-                        };
-                    }
-                    else {
-                        self.bloc_result = {
-                            'message' : _t("Moins de "+self.bloc.total_credits+" crédits ECTS acquis ou valorisés, les crédits non-acquis sont à présenter, le cas échéant, en seconde session."),
-                            'class' : "danger",
-                            'button_text' : _t("Ajourné"),
-                            'next_action' : "postpone",
-                        };
-                    }
-                    break;
-                case "4" :
-                    if(self.bloc.total_acquiered_credits >= 60) {
-                        self.bloc_result = {
-                            'message' : _t(self.bloc.total_acquiered_credits+" crédits ECTS acquis ou valorisés, autorisé(e) à poursuivre son parcours sans restriction." ),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                    }
-                    else {
-                        self.bloc_result = {
-                            'message' : _t("Moins de "+self.bloc.total_credits+" crédits ECTS acquis ou valorisés, les crédits non-acquis sont à présenter, le cas échéant, en seconde session."),
-                            'class' : "danger",
-                            'button_text' : _t("Ajourné"),
-                            'next_action' : "postpone",
-                        };
-                    }
-                    break;
-                case "5" :
-                    if(self.bloc.total_acquiered_credits >= 60) {
-                        self.bloc_result = {
-                            'message' : _t("120 crédits ECTS acquis ou valorisés, le jury confère le grade académique de Master avec "),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                        if(self.program.evaluation >= 18){
-                            self.bloc_result.grade_text = _t("First Class Honor");
-                            self.bloc_result.grade = 'first_class';
-                        } else if (self.program.evaluation >= 16){
-                            self.bloc_result.grade_text = _t("Second Class Honor");
-                            self.bloc_result.grade = 'second_class';
-                        } else if (self.program.evaluation >= 14){
-                            self.bloc_result.grade_text = _t("Distinction");
-                            self.bloc_result.grade = 'distinction';
-                        } else if (self.program.evaluation >= 12){
-                            self.bloc_result.grade_text = _t("Satisfaction");
-                            self.bloc_result.grade = 'satisfaction';
-                        } else {
-                            self.bloc_result.grade_text = _t("Without Grade");
-                            self.bloc_result.grade = 'without';
-                        };
-                    }
-                    else {
-                        self.bloc_result = {
-                            'message' : _t("Moins de "+self.bloc.total_credits+" crédits ECTS acquis ou valorisés, les crédits non-acquis sont à présenter, le cas échéant, en seconde session."),
-                            'class' : "danger",
-                            'button_text' : _t("Ajourné"),
-                            'next_action' : "postpone",
-                        };
-                    }
-                    break;
-            }
+                }
+            } else {
+                self.bloc_result = {
+                    'message' : _t("N'a pas validé tous les crédits ECTS de son PAE et est ajourné(e)."),
+                    'class' : "danger",
+                    'button_text' : _t("Ajourné"),
+                    'next_action' : "postpone",
+                };
+            } 
         } else {
             switch(self.bloc.source_bloc_level) {
                 case "1" :
                     if(self.bloc.total_acquiered_credits >= 60) {
                         self.bloc_result = {
-                            'message' : _t(self.bloc.total_acquiered_credits+" crédits ECTS acquis ou valorisés, autorisé(e) à poursuivre son parcours sans restriction." ),
+                            'message' : _t("A validé 60 ECTS et est autorisé(e) à poursuivre son parcours sans restriction" ),
                             'class' : "success",
                             'button_text' : _t("Réussite"),
                             'next_action' : "award",
@@ -386,7 +310,7 @@ return Widget.extend({
                     }
                     else if(self.bloc.total_acquiered_credits >= 45) {
                         self.bloc_result = {
-                            'message' : _t("Au moins 45 crédits ECTS acquis ou valorisés, autorisé(e) à poursuivre son parcours tout en finalisant les crédits non-acquis."),
+                            'message' : _t("A validé au moins 45 ECTS et est autorisé à poursuivre son parcours tout en représentant les UE non validées."),
                             'class' : "warning",
                             'button_text' : _t("Réussite"),
                             'next_action' : "award",
@@ -394,7 +318,7 @@ return Widget.extend({
                     } 
                     else if(self.bloc.total_acquiered_credits >= 30) {
                         self.bloc_result = {
-                            'message' : _t("Au moins 30 crédits ECTS acquis ou valorisés, impossibilité de poursuivre son parcours mais autorisé à compléter, avec l'accord du jury, son programme annuel."),
+                            'message' : _t("A validé au moins de 30 ECTS mais moins de 45. Peut compléter son programme ou non avec accord du jury."),
                             'class' : "danger",
                             'button_text' : _t("Échec"),
                             'next_action' : "failed",
@@ -402,133 +326,20 @@ return Widget.extend({
                     } 
                     else {
                         self.bloc_result = {
-                            'message' : _t("Moins de 30 crédits ECTS acquis ou valorisés, impossibilité de poursuivre son parcours et pas de possibilité de compléter son programme annuel."),
+                            'message' : _t("A validé moins de 30 ECTS. N’a pas rempli les conditions de réussite de son programme."),
                             'class' : "danger",
                             'button_text' : _t("Échec"),
                             'next_action' : "failed",
                         };
                     }
                     break;
-                case "2" :
-                    if(self.bloc.total_acquiered_credits >= 60) {
-                        self.bloc_result = {
-                            'message' : _t(self.bloc.total_acquiered_credits+" crédits ECTS acquis ou valorisés, autorisé(e) à poursuivre son parcours sans restriction." ),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                    }
-                    else {
-                        self.bloc_result = {
-                            'message' : _t(self.bloc.total_acquiered_credits+" crédits ECTS acquis ou valorisés, autorisé(e) à poursuivre son parcours."),
-                            'class' : "warning",
-                            'button_text' : _t("Poursuite"),
-                            'next_action' : "award",
-                        };
-                    }
-                    break;
-                case "3" :
-                    if(self.bloc.total_acquiered_credits >= self.bloc.total_credits) {
-                        self.bloc_result = {
-                            'message' : _t("180 crédits ECTS acquis ou valorisés, le jury confère le grade académique de Bachelier avec "),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                        if(self.program.evaluation >= 18){
-                            self.bloc_result.grade_text = _t("First Class Honor");
-                            self.bloc_result.grade = 'first_class';
-                        } else if (self.program.evaluation >= 16){
-                            self.bloc_result.grade_text = _t("Second Class Honor");
-                            self.bloc_result.grade = 'second_class';
-                        } else if (self.program.evaluation >= 14){
-                            self.bloc_result.grade_text = _t("Distinction");
-                            self.bloc_result.grade = 'distinction';
-                        } else if (self.program.evaluation >= 12){
-                            self.bloc_result.grade_text = _t("Satisfaction");
-                            self.bloc_result.grade = 'satisfaction';
-                        } else {
-                            self.bloc_result.grade_text = _t("Without Grade");
-                            self.bloc_result.grade = 'without';
-                        };
-                    }
-                    else if(self.bloc.total_credits - self.bloc.total_acquiered_credits <= 15) {
-                        self.bloc_result = {
-                            'message' : _t("Au moins 165 crédits ECTS acquis ou valorisés, autorisation d'accéder au programme de Master, les crédits résiduels devront être acquis avant toute délibération en Master."),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                    } 
-                    else {
-                        self.bloc_result = {
-                            'message' : _t("Moins de 165 crédits ECTS acquis ou valorisés, pas de possibilité d'accéder au programme de Master."),
-                            'class' : "danger",
-                            'button_text' : _t("Échec"),
-                            'next_action' : "failed",
-                        };
-                    }
-                    break;
-                case "4" :
-                    if(self.bloc.total_acquiered_credits >= 60) {
-                        self.bloc_result = {
-                            'message' : _t(self.bloc.total_acquiered_credits+" crédits ECTS acquis ou valorisés, autorisé(e) à poursuivre son parcours sans restriction." ),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                    }
-                    else {
-                        self.bloc_result = {
-                            'message' : _t(self.bloc.total_acquiered_credits+" crédits ECTS acquis ou valorisés, autorisé(e) à poursuivre son parcours."),
-                            'class' : "warning",
-                            'button_text' : _t("Poursuite"),
-                            'next_action' : "award",
-                        };
-                    }
-                    break;
-                case "5" :
-                    if(self.bloc.total_acquiered_credits >= self.bloc.total_credits) {
-                        self.bloc_result = {
-                            'message' : _t("180 crédits ECTS acquis ou valorisés, le jury confère le grade académique de Bachelier avec "),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                        if(self.program.evaluation >= 18){
-                            self.bloc_result.grade_text = _t("First Class Honor");
-                            self.bloc_result.grade = 'first_class';
-                        } else if (self.program.evaluation >= 16){
-                            self.bloc_result.grade_text = _t("Second Class Honor");
-                            self.bloc_result.grade = 'second_class';
-                        } else if (self.program.evaluation >= 14){
-                            self.bloc_result.grade_text = _t("Distinction");
-                            self.bloc_result.grade = 'distinction';
-                        } else if (self.program.evaluation >= 12){
-                            self.bloc_result.grade_text = _t("Satisfaction");
-                            self.bloc_result.grade = 'satisfaction';
-                        } else {
-                            self.bloc_result.grade_text = _t("Without Grade");
-                            self.bloc_result.grade = 'without';
-                        };
-                    }
-                    else if(self.bloc.total_credits - self.bloc.total_acquiered_credits <= 15) {
-                        self.bloc_result = {
-                            'message' : _t("Au moins 165 crédits ECTS acquis ou valorisés, autorisation d'accéder au programme de Master, les crédits résiduels devront être acquis avant toute délibération en Master."),
-                            'class' : "success",
-                            'button_text' : _t("Réussite"),
-                            'next_action' : "award",
-                        };
-                    } 
-                    else {
-                        self.bloc_result = {
-                            'message' : _t("Moins de 165 crédits ECTS acquis ou valorisés, pas de possibilité d'accéder au programme de Master."),
-                            'class' : "danger",
-                            'button_text' : _t("Échec"),
-                            'next_action' : "failed",
-                        };
-                    }
-                    break;
+                default :
+                    self.bloc_result = {
+                        'message' : _t("Cycle en cours." ),
+                        'class' : "success",
+                        'button_text' : _t("Réussite"),
+                        'next_action' : "award",
+                    };
             }
         }
     },
@@ -543,7 +354,8 @@ return Widget.extend({
             unique: (self.datarecord.__last_update || '').replace(/[^0-9]/g, '')
         });
         
-        return new Model('school.individual_course_group').query(['id','name','title','course_ids','dispense','final_result_bool','acquiered','first_session_computed_result','first_session_deliberated_result_bool','second_session_computed_result','second_session_deliberated_result_bool','second_session_result_bool','final_result','total_credits','total_weight']).filter([['id', 'in', self.bloc.course_group_ids]]).all().then(
+        return new Model('school.individual_course_group').query(['id','name','title','course_ids','dispense','final_result_bool','acquiered','first_session_computed_result','first_session_deliberated_result_bool','second_session_computed_result','second_session_deliberated_result_bool','second_session_result_bool','final_result','total_credits','total_weight'])
+        .filter([['id', 'in', self.bloc.course_group_ids],['is_ghost_cg','=',false]]).all().then(
             function(course_groups) {
                 self.course_groups = course_groups;
                 var all_course_ids = [];
@@ -569,19 +381,19 @@ return Widget.extend({
                         self.program = program[0];
                         switch (self.program.grade) {
                           case "without":
-                            self.program.grade_text = "Sans grade";
+                            self.program.grade_text = "sans grade";
                             break;
                           case "satisfaction":
-                            self.program.grade_text = "Satisfaction";
+                            self.program.grade_text = "avec Satisfaction";
                             break;
                           case "distinction":
-                            self.program.grade_text = "Distinction";
+                            self.program.grade_text = "avec Distinction";
                             break;
                           case "second_class":
-                            self.program.grade_text = "la Grande Distinction";
+                            self.program.grade_text = "avec la Grande Distinction";
                             break;
                           case "first_class":
-                            self.program.grade_text = "la Plus Grande Distinction";
+                            self.program.grade_text = "avec la Plus Grande Distinction";
                             break;
                         };
                         new Model('school.individual_program').call('compute_evaluation_details', [self.program.id]).then(function(results){

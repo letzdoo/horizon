@@ -69,7 +69,7 @@
     </record>
 
     <!-- Top menu item -->
-    <menuitem name="Booking" id="menu_main_booking" icon="fa-calendar" web_icon="hr_timesheet_sheet,static/description/icon.png" sequence="90" />
+    <menuitem name="Booking" id="menu_main_booking" icon="fa-calendar" web_icon="hr_timesheet_sheet,static/description/icon.png" sequence="90" groups="school_booking.group_booking_manager"/>
 
     <!-- Booking Tree View -->
     <record id="view_booking_tree" model="ir.ui.view">

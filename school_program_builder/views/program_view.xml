@@ -71,6 +71,7 @@
       <field eval="8" name="priority" />
       <field name="arch" type="xml">
         <tree string="Building Blocs">
+          <field name="year_id"/>
           <field name="name" />
           <field name="total_hours" />
           <field name="total_credits" />

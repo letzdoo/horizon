@@ -21,12 +21,20 @@
 */
 .sub_navbar {
   position: absolute;
-  top: 450px;
+  top: 460px;
   bottom: 57px;
   left: 0;
   right: 0;
-  overflow-y:auto;  
-  overflow-x:hidden; 
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+a.o_school_group_item {
+  color: white;
+}
+
+a.o_school_bloc_item {
+  color: white;
 }
 
 .bloc_form {
@@ -127,23 +135,33 @@
 
 .sidebar ul li a:hover {
     background-color: rgb(40,95,143);
+    color: #ffffff;
+    background-color: #00545c;
 }
 
-.credits {
+.openerp .badge {
+    color: #ffffff;
+    background-color: #00545c !important;
+}
+
+.btn_credits {
   color: #ffffff;
-  background-color: #337ab7;
-  border-color: #2d6da3;
+  background-color: #00c853;
+  border-color: #00c853;
+  padding: 0;
+  width: 100%;
+}
+
+.btn_moyenne {
+  color: #fff;
+  background-color: #fbc02d;
+  border-color: #fbc02d;
+  padding: 0;
+  width: 100%;
 }
 
 .openerp .badge {
   background-color: #337ab7;
-}
-
-.moyenne {
-  color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
-  padding: 0;
 }
 
 .score_value {
@@ -174,4 +192,22 @@
 .vertical-align {
   display: flex;
   align-items: center;
+}
+
+.label-success {
+    background-color: #00c853;
+}
+
+.progress {
+    height: 40px;
+}
+
+.progress-bar {
+    height: 100%;
+    font-size: 30px;
+    line-height: 40px;
+}
+
+.progress-bar-success {
+    background-color: #00c853;
 }

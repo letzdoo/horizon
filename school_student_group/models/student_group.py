@@ -261,7 +261,7 @@ class IndividualCourse(models.Model):
                     new_group = self.env['school.student_group'].create({
                         'type': 'L',
                         'year_id': ic.year_id.id,
-                        'responsible_id': self.teacher_id.id,
+                        'responsible_id': ic.teacher_id.id,
                         # 'student_ids' : (0, _, student_ids.ids), TODO DOES NOT WORK, WHY ??
                     })
                     # set all students in as only one theacher

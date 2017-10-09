@@ -36,6 +36,7 @@ class IndividualProgram(models.Model):
     name = fields.Char(compute='_compute_name',string='Name', readonly=True, store=True)
     
     student_id = fields.Many2one('res.partner', string='Student', domain="[('student', '=', '1')]", required=True)
+    student_name = fields.Char(related='student_id.name', string="Student Name", readonly=True, store=True)
     
     image = fields.Binary('Image', attachment=True, related='student_id.image')
     image_medium = fields.Binary('Image', attachment=True, related='student_id.image_medium')
@@ -48,15 +49,24 @@ class IndividualProgram(models.Model):
     section_id = fields.Many2one(related='speciality_id.section_id', string='Section',store=True)
     track_id = fields.Many2one(related='speciality_id.track_id', string='Track',store=True)
     
-    required_credits = fields.Integer(related='cycle_id.required_credits',string='Required Credits')
-    required_credits = fields.Integer(related='cycle_id.required_credits',string='Required Credits')
+    required_credits = fields.Integer(related='cycle_id.required_credits',string='Requiered Credits')
     
     @api.one
     @api.depends('cycle_id.name','speciality_id.name','student_id.name')
     def _compute_name(self):
         self.name = "%s - %s - %s" % (self.student_id.name,self.cycle_id.name,self.speciality_id.name)
-    
+        
     bloc_ids = fields.One2many('school.individual_bloc', 'program_id', string='Individual Blocs')
+    highest_level =  fields.Integer(compute='_compute_highest_level',string='Highest Level', store=True)
+
+    @api.one
+    @api.depends('bloc_ids.source_bloc_level')
+    def _compute_highest_level(self):
+        levels = self.bloc_ids.mapped('source_bloc_level')
+        if levels:
+            self.highest_level = max(levels)
+        else:
+            self.highest_level = 0
 
 class IndividualBloc(models.Model):
     '''Individual Bloc'''
@@ -77,15 +87,31 @@ class IndividualBloc(models.Model):
     student_id = fields.Many2one(related='program_id.student_id', string='Student', domain="[('student', '=', '1')]", readonly=True, store=True)
     student_name = fields.Char(related='student_id.name', string="Student Name", readonly=True, store=True)
     
-    source_bloc_id = fields.Many2one('school.bloc', string="Source Bloc")
+    source_bloc_id = fields.Many2one('school.bloc', string="Source Bloc", ondelete="restrict")
     source_bloc_name = fields.Char(related='source_bloc_id.name', string="Source Bloc Name", readonly=True, store=True)
     source_bloc_title = fields.Char(related='source_bloc_id.title', string="Source Bloc Title", readonly=True, store=True)
     source_bloc_level = fields.Selection([('0','Free'),('1','Bac 1'),('2','Bac 2'),('3','Bac 3'),('4','Master 1'),('5','Master 2'),],related='source_bloc_id.level', string="Source Bloc Level", readonly=True, store=True)
-    source_bloc_domain_id = fields.Many2one(related='source_bloc_id.domain_id', string='Domain', readonly=True, store=True)
-    source_bloc_speciality_id = fields.Many2one(related='source_bloc_id.speciality_id', string='Speciality', readonly=True, store=True)
-    source_bloc_section_id = fields.Many2one(related='source_bloc_id.section_id', string='Section', readonly=True, store=True)
-    source_bloc_track_id = fields.Many2one(related='source_bloc_id.track_id', string='Track', readonly=True, store=True)
-    source_bloc_cycle_id = fields.Many2one(related='source_bloc_id.cycle_id', string='Cycle', readonly=True, store=True)
+    
+    source_bloc_domain_id = fields.Many2one('school.domain',compute='compute_speciality', string='Domain', readonly=True, store=True)
+    source_bloc_speciality_id = fields.Many2one('school.speciality',compute='compute_speciality', string='Speciality', readonly=True, store=True)
+    source_bloc_section_id = fields.Many2one('school.section',compute='compute_speciality', string='Section', readonly=True, store=True)
+    source_bloc_track_id = fields.Many2one('school.track',compute='compute_speciality', string='Track', readonly=True, store=True)
+    source_bloc_cycle_id = fields.Many2one('school.cycle',compute='compute_speciality', string='Cycle', readonly=True, store=True)
+    
+    @api.depends('source_bloc_id.speciality_id','program_id.speciality_id')
+    @api.multi
+    def compute_speciality(self):
+        for bloc in self:
+            if bloc.source_bloc_id.speciality_id :
+                bloc.source_bloc_speciality_id = bloc.source_bloc_id.speciality_id
+                bloc.source_bloc_domain_id = bloc.source_bloc_id.domain_id
+                bloc.source_bloc_section_id = bloc.source_bloc_id.section_id
+                bloc.source_bloc_track_id = bloc.source_bloc_id.track_id
+            elif bloc.program_id.speciality_id :
+                bloc.source_bloc_speciality_id = bloc.program_id.speciality_id
+                bloc.source_bloc_domain_id = bloc.program_id.domain_id
+                bloc.source_bloc_section_id = bloc.program_id.section_id
+                bloc.source_bloc_track_id = bloc.program_id.track_id
     
     image = fields.Binary('Image', attachment=True, related='student_id.image')
     image_medium = fields.Binary('Image', attachment=True, related='student_id.image_medium')
@@ -111,13 +137,13 @@ class IndividualBloc(models.Model):
             _logger.info(courses)
             cg.write({'course_ids': courses})
 
-    @api.depends('course_group_ids.total_hours','course_group_ids.total_credits','course_group_ids.total_weight')
+    @api.depends('course_group_ids.total_hours','course_group_ids.total_credits','course_group_ids.total_weight','course_group_ids.is_ghost_cg')
     @api.one
     def _get_courses_total(self):
         _logger.debug('Trigger "_get_courses_total" on Course Group %s' % self.name)
-        self.total_hours = sum(course_group.total_hours for course_group in self.course_group_ids)
-        self.total_credits = sum(course_group.total_credits for course_group in self.course_group_ids)
-        self.total_weight = sum(course_group.total_weight for course_group in self.course_group_ids)
+        self.total_hours = sum(course_group.total_hours for course_group in self.course_group_ids if not course_group.is_ghost_cg)
+        self.total_credits = sum(course_group.total_credits for course_group in self.course_group_ids if not course_group.is_ghost_cg)
+        self.total_weight = sum(course_group.total_weight for course_group in self.course_group_ids if not course_group.is_ghost_cg)
 
     @api.one
     @api.depends('year_id.name','student_id.name')
@@ -168,6 +194,7 @@ class IndividualCourseGroup(models.Model):
     _order = 'sequence'
     
     name = fields.Char(related="source_course_group_id.name", readonly=True)
+    ue_id = fields.Char(related="source_course_group_id.ue_id", readonly=True)
     title = fields.Char(related="source_course_group_id.title", readonly=True, store=True)
     
     sequence = fields.Integer(related="source_course_group_id.sequence", readonly=True, store=True)
@@ -180,7 +207,7 @@ class IndividualCourseGroup(models.Model):
     image_medium = fields.Binary('Image', attachment=True, related='student_id.image_medium')
     image_small = fields.Binary('Image', attachment=True, related='student_id.image_small')
     
-    source_course_group_id = fields.Many2one('school.course_group', string="Source Course Group")
+    source_course_group_id = fields.Many2one('school.course_group', string="Source Course Group", ondelete="restrict")
     
     bloc_id = fields.Many2one('school.individual_bloc', string="Bloc", ondelete='cascade', readonly=True)
 
@@ -196,12 +223,14 @@ class IndividualCourseGroup(models.Model):
 
     course_ids = fields.One2many('school.individual_course', 'course_group_id', string='Courses',track_visibility='onchange')
     
+    is_ghost_cg = fields.Boolean(string='Is Ghost Course Group', default=False)
+    
     total_credits = fields.Integer(compute='_get_courses_total', string='Credits', store=True)
     total_hours = fields.Integer(compute='_get_courses_total', string='Hours', store=True)
     total_weight = fields.Float(compute='_get_courses_total', string='Total Weight', store=True)
     weight = fields.Integer(related="source_course_group_id.weight",string='Weight', store=True)
     
-    code_ue =  fields.Char(related="source_course_group_id.code_ue", readonly=True)
+    ue_id =  fields.Char(related="source_course_group_id.ue_id", readonly=True)
     
     @api.onchange('source_course_group_id')
     def onchange_source_cg(self):
@@ -268,7 +297,7 @@ class IndividualCourse(models.Model):
     
     dispense = fields.Boolean(string="Dispensed",default=False,track_visibility='onchange')
     
-    source_course_id = fields.Many2one('school.course', string="Source Course", auto_join=True)
+    source_course_id = fields.Many2one('school.course', string="Source Course", auto_join=True, ondelete="restrict")
     
     source_bloc_id = fields.Many2one('school.bloc', string="Source Bloc", related='course_group_id.bloc_id.source_bloc_id', readonly=True, store=True)
     source_bloc_name = fields.Char(related='course_group_id.bloc_id.source_bloc_name', string="Source Course Bloc Name", readonly=True, store=True)

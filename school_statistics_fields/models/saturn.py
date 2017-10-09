@@ -112,8 +112,8 @@ class StudentHistoryEntry(models.Model):
         ('10','Chômage'),
         ('11','Autre (année sabbatique, préparation à l''enseignement supérieur autre que dans le cadre de l''enseignement secondaire,...)'),
         ], string="Activité", required=True)
-    etablissement_id = fields.Many2one('school.stat_etablissement', string="Etablissement", required=True)
-    domain_id = fields.Many2one('school.stat_domain', string="Domaine", required=True)
+    etablissement_id = fields.Many2one('school.stat_etablissement', string="Etablissement")
+    domain_id = fields.Many2one('school.stat_domain', string="Domaine")
     annee = fields.Selection([
             ('11','1re Bac'),
             ('12','2e Bac'),
@@ -127,11 +127,11 @@ class StudentHistoryEntry(models.Model):
             ('32','2e Spécialisation'),
             ('40','Doctorat'),
             ('99','Autres (CAPAES, AESS, Année préparatoire, etc.)'),
-        ], string="Année", required=True)
+        ], string="Année")
     resultat = fields.Selection([
             ('1','Réussite'),
             ('2','Refusé'),
-        ],string="Résultat", required=True)
+        ],string="Résultat")
 
 class Domain(models.Model):
     '''Domain'''

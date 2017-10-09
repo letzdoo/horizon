@@ -10,3 +10,4 @@ Modules
     tools
     users
     accounting
+    description

@@ -20,7 +20,7 @@
 ##############################################################################
 import logging
 
-from openerp import api, fields, models, _
+from openerp import api, fields, models, tools, _
 from openerp.exceptions import UserError
 from openerp.tools.safe_eval import safe_eval
 
@@ -206,11 +206,14 @@ class CourseGroup(models.Model):
     
     description = fields.Text(string='Description')
     
-    course_ids = fields.One2many('school.course', 'course_group_id', string='Courses', copy=True, ondelete="cascade")
+    teacher_id = fields.Many2one('res.partner',string='Teacher',domain="[('teacher', '=', '1')]", copy=True)
+    
+    course_ids = fields.One2many('school.course', 'course_group_id', domain=['|',('active','=',False),('active','=',True)], string='Courses', copy=True, ondelete="cascade")
 
     bloc_ids = fields.Many2many('school.bloc','school_bloc_course_group_rel', id1='group_id', id2='bloc_id',string='Blocs', copy=False)
     
     name = fields.Char(string='Name', compute='compute_ue_name', store=True)
+    ue_id = fields.Char(string="UE Id", compute='compute_ue_name', store=True)
     
     @api.depends('title','level','speciality_id.name', 'cycle_id.short_name')
     @api.multi
@@ -220,14 +223,8 @@ class CourseGroup(models.Model):
                 course_g.name = "%s - %s - %s%s" % (course_g.title, course_g.speciality_id.name, course_g.cycle_id.short_name, course_g.level)
             else:
                 course_g.name = "%s - %s - %s" % (course_g.title, course_g.speciality_id.name, course_g.cycle_id.short_name)
+            course_g.ue_id = "UE-%s" % course_g.id
             
-    code_ue = fields.Char(string='Code UE', compute='compute_code_ue', store=True)
-    
-    @api.multi
-    def compute_code_ue(self):
-        for course_g in self:
-            course_g.code_ue = "UE " % ()
-    
     total_credits = fields.Integer(compute='_get_courses_total', string='Total Credits')
     total_hours = fields.Integer(compute='_get_courses_total', string='Total Hours')
     total_weight = fields.Float(compute='_get_courses_total', string='Total Weight')
@@ -250,13 +247,23 @@ class CourseGroup(models.Model):
     
     notes = fields.Text(string='Notes')
     
+    @api.one
+    def onchange_check_programs(self, course_id):
+        for bloc_id in self.bloc_ids:
+            if bloc_id.program_id.state in ('published','archived') and not self.env.user._is_admin() :
+                raise UserError('Cannot change credits or hours of courses used in an active or archived program : %s in %s' % (course_id.name, bloc_id.name))
+    
 class Course(models.Model):
     '''Course'''
     _name = 'school.course'
     _description = 'Course'
     _inherit = ['mail.thread']
+    _order = 'sequence'
     
     sequence = fields.Integer(string='Sequence')
+    
+    active = fields.Boolean(related="course_group_id.active", store=True, readonly=True)
+    
     title = fields.Char(required=True, string='Title')
     
     description = fields.Text(string='Description')
@@ -284,7 +291,7 @@ class Course(models.Model):
     
     has_second_session = fields.Boolean(string="Has a second session", default=True)
     
-    @api.depends('title','level','speciality_id.name', 'cycle_id.short_name')
+    @api.depends('title','level','speciality_id.name', 'cycle_id.short_name', 'course_group_id.level')
     @api.multi
     def compute_name(self):
         for course in self:
@@ -294,6 +301,12 @@ class Course(models.Model):
                 course.name = "%s - %s - %s" % (course.title, course.speciality_id.name, course.cycle_id.short_name)
     
     teacher_ids = fields.Many2many('res.partner','course_id','teacher_id',string='Teachers',domain="[('teacher', '=', '1')]")
+    
+    @api.onchange('hours','credits')
+    @api.one
+    def onchange_check_programs(self):
+        self.course_group_id.onchange_check_programs(self)
+        
 
 class ReportProgram(models.AbstractModel):
     _name = 'report.school_management.report_program'
@@ -310,6 +323,7 @@ class ReportProgram(models.AbstractModel):
 
 class Competency(models.Model):
     '''Competency'''
+    _order = 'name'
     _name = 'school.competency'
     _order = 'sequence asc'
     sequence = fields.Integer(string='Sequence')
@@ -319,6 +333,7 @@ class Competency(models.Model):
     
 class Domain(models.Model):
     '''Domain'''
+    _order = 'name'
     _name = 'school.domain'
     name = fields.Char(required=True, string='Name', size=40)
     description = fields.Text(string='Description')
@@ -326,6 +341,7 @@ class Domain(models.Model):
     
 class Cycle(models.Model):
     '''Cycle'''
+    _order = 'name'
     _name = 'school.cycle'
     
     name = fields.Char(required=True, string='Name', size=60)
@@ -340,12 +356,14 @@ class Cycle(models.Model):
     
 class Section(models.Model):
     '''Section'''
+    _order = 'name'
     _name = 'school.section'
     name = fields.Char(required=True, string='Name', size=40)
     description = fields.Text(string='Description')
     
 class Track(models.Model):
     '''Track'''
+    _order = 'name'
     _name = 'school.track'
     name = fields.Char(required=True, string='Name', size=40)
     description = fields.Text(string='Description')
@@ -353,6 +371,7 @@ class Track(models.Model):
 class Speciality(models.Model):
     '''Speciality'''
     _name = 'school.speciality'
+    _order = 'name'
     name = fields.Char(required=True, string='Name', size=40)
     description = fields.Text(string='Description')
     domain_id = fields.Many2one('school.domain', string='Domain')
@@ -363,9 +382,24 @@ class Speciality(models.Model):
 	        ('uniq_speciality', 'unique(domain_id, name)', 'There shall be only one speciality in a domain'),
     ]
     
+#    def init(self, cr):
+#        """ School Specialities View """
+#        tools.drop_view_if_exists(cr, 'school_speciality_view')
+#        cr.execute(""" 
+#            create view school_speciality_view as select 
+#                s.id, 
+#                s.name as speciality, 
+#                d.name as domain, 
+#                c.name as section, 
+#                t.name as track 
+#                from school_speciality s, school_domain d, school_section c, school_track t 
+#                where s.domain_id = d.id and s.section_id = c.id and s.track_id = t.id
+#        )""")
+    
 class Year(models.Model):
     '''Year'''
     _name = 'school.year'
+    _order = 'name'
     name = fields.Char(required=True, string='Name', size=15)
     short_name = fields.Char(required=True, string='Short Name', size=5)
     
@@ -388,6 +422,5 @@ class Users(models.Model):
         # duplicate list to avoid modifying the original reference
         self.SELF_READABLE_FIELDS = list(self.SELF_READABLE_FIELDS)
         self.SELF_READABLE_FIELDS.extend(['current_year_id'])
-        return init_res
     
     current_year_id = fields.Many2one('school.year', string="Current Year")

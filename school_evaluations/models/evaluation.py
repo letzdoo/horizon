@@ -22,14 +22,16 @@ import logging
 from openerp import api, fields, models, _
 from openerp.exceptions import UserError, ValidationError
 
+from openerp.addons import decimal_precision as dp
+
 _logger = logging.getLogger(__name__)
 
 class CourseGroup(models.Model):
     '''Course Group'''
     _inherit = 'school.course_group'
     
-    # TODO document this and add help field
-    enable_exclusion_bool = fields.Boolean(string='Enable exclusion evaluation', default=True)
+    ## If set a course with an evaluation < 10 will make this course group not acquiered.
+    enable_exclusion_bool = fields.Boolean(string='Enable exclusion evaluation', default=False)
     
 class IndividualProgram(models.Model):
     '''Individual Program'''
@@ -47,6 +49,8 @@ class IndividualProgram(models.Model):
              " * The 'Abandonned' status is used if a student leave the program.\n"
              ,track_visibility='onchange')
     
+    abandonned_date = fields.Date('Abandonned Date')
+    
     @api.multi
     def set_to_draft(self, context):
         # TODO use a workflow to make sure only valid changes are used.
@@ -58,26 +62,31 @@ class IndividualProgram(models.Model):
         return self.write({'state': 'progress'})
     
     @api.multi
-    def set_to_awarded(self, context, grade=None, grade_year_id=None, grade_comments=None):
+    def set_to_awarded(self, context, grade_year_id=None, grade=None, grade_comments=None):
         # TODO use a workflow to make sure only valid changes are used.
         if(grade):
             self.write({'state': 'awarded',
                            'grade' : grade,
                            'grade_year_id' : grade_year_id,
-                           'grade_comments' : grade_comments,})
+                           'grade_comments' : grade_comments,
+                           'graduation_date' : fields.Date.today(),
+            })
         else:
-            self.write({'state': 'awarded'})
+            self.write({'state': 'awarded',
+                        'grade_year_id' : grade_year_id,
+                        'graduation_date' : fields.Date.today(),
+            })
         
     @api.multi
     def set_to_abandonned(self, context):
         # TODO use a workflow to make sure only valid changes are used.
-        return self.write({'state': 'abandonned'})
+        return self.write({'state': 'abandonned','abandonned_date':fields.Date.today()})
     
-    historical_bloc_1_eval = fields.Float(string="Hist Bloc 1 Eval")
-    historical_bloc_1_credits = fields.Integer(string="Hist Bloc 1 ECTS")
+    historical_bloc_1_eval = fields.Float(string="Hist Bloc 1 Eval",track_visibility='onchange',digits=dp.get_precision('Evaluation'))
+    historical_bloc_1_credits = fields.Integer(string="Hist Bloc 1 ECTS",track_visibility='onchange')
     
-    historical_bloc_2_eval = fields.Float(string="Hist Bloc 2 Eval")
-    historical_bloc_2_credits = fields.Integer(string="Hist Bloc 2 ECTS")
+    historical_bloc_2_eval = fields.Float(string="Hist Bloc 2 Eval",track_visibility='onchange',digits=dp.get_precision('Evaluation'))
+    historical_bloc_2_credits = fields.Integer(string="Hist Bloc 2 ECTS",track_visibility='onchange')
     
     grade = fields.Selection([
             ('without','Without Grade'),
@@ -85,29 +94,46 @@ class IndividualProgram(models.Model):
             ('distinction','Distinction'),
             ('second_class', 'Second Class Honor'),
             ('first_class', 'First Class Honor'),
-        ],string="Grade")
+        ],string="Grade",track_visibility='onchange')
     
-    grade_year_id = fields.Many2one('school.year', string="Year")
+    grade_year_id = fields.Many2one('school.year', string="Graduation year",track_visibility='onchange')
     
-    graduation_date = fields.Date(string="Graduation date")
+    graduation_date = fields.Date(string="Graduation Date",track_visibility='onchange')
     
-    grade_comments = fields.Text(string="Grade Comments")
+    grade_comments = fields.Text(string="Grade Comments",track_visibility='onchange')
     
-    evaluation = fields.Float(string="Evaluation",compute="compute_evaluation")
+    evaluation = fields.Float(string="Evaluation",compute="compute_evaluation",digits=dp.get_precision('Evaluation'))
+    
+    total_registered_credits = fields.Integer(compute='_get_total_acquiered_credits', string='Registered Credits',track_visibility='onchange')
+    total_acquiered_credits = fields.Integer(compute='_get_total_acquiered_credits', string='Acquiered Credits', store=True,track_visibility='onchange')
+
+    program_completed = fields.Boolean(compute='_get_total_acquiered_credits', string="Program Completed", store=True,track_visibility='onchange')
+
+    @api.depends('required_credits', 'bloc_ids.state','bloc_ids.total_acquiered_credits','historical_bloc_1_credits','historical_bloc_2_credits')
+    @api.one
+    def _get_total_acquiered_credits(self):
+        _logger.debug('Trigger "_get_total_acquiered_credits" on Program %s' % self.name)
+        total = sum(bloc_id.total_acquiered_credits if bloc_id.state in ['awarded_first_session','awarded_second_session','failed'] else 0 for bloc_id in self.bloc_ids)
+        total_current = sum(bloc_id.total_credits if bloc_id.state in ['progress','postponed'] else 0 for bloc_id in self.bloc_ids)
+        self.total_acquiered_credits = total + self.historical_bloc_1_credits + self.historical_bloc_2_credits
+        self.program_completed = self.total_acquiered_credits >= self.required_credits
     
     @api.depends('grade')
     def _onchange_grade(self):
         if self.grade:
             graduation_date = fields.Date.today()
-    
+        self.total_registered_credits = self.total_acquiered_credits + total_current
+        self.program_completed = self.required_credits > 0 and self.total_acquiered_credits >= self.required_credits
+
     @api.depends('bloc_ids.evaluation','historical_bloc_1_eval','historical_bloc_2_eval')
     @api.one
     def compute_evaluation(self):
         total = 0
         count = 0
         for bloc in self.bloc_ids:
-            total += bloc.evaluation
-            count += 1
+            if bloc.evaluation > 0 : # if all is granted do not count
+                total += bloc.evaluation
+                count += 1
         if self.historical_bloc_1_eval > 0:
             total += self.historical_bloc_1_eval
             count += 1
@@ -156,13 +182,21 @@ class IndividualBloc(models.Model):
              " * The 'Abandoned' status is when the student abandoned his bloc.\n"
              ,track_visibility='onchange')
     
-    total_acquiered_credits = fields.Integer(string="Acquiered Credits",compute="compute_credits", store=True)
-    evaluation = fields.Float(string="Evaluation",compute="compute_evaluation")
+    total_acquiered_credits = fields.Integer(compute="compute_credits",string="Acquiered Credits",store=True)
+    total_acquiered_hours = fields.Integer(compute="compute_credits",string="Acquiered Hours",store=True)
+    total_not_acquiered_credits = fields.Integer(compute='compute_credits', string='Not Acquiered Credits',store=True)
+    total_not_acquiered_hours = fields.Integer(compute='compute_credits', string='Not Acquiered Hours',store=True)
+    total_dispensed_credits = fields.Integer(compute="compute_credits",string="Dispensed Credits",store=True)
+    total_dispensed_hours = fields.Integer(compute="compute_credits",string="Dispensed Hours",store=True)
+    total_not_dispensed_credits = fields.Integer(compute="compute_credits",string="Not Dispensed Credits",store=True)
+    total_not_dispensed_hours = fields.Integer(compute='compute_credits', string='Not Dispensed Hours',store=True)
+    
+    evaluation = fields.Float(string="Evaluation",compute="compute_evaluation",digits=dp.get_precision('Evaluation'))
     decision = fields.Text(string="Decision",track_visibility='onchange')
     exclude_from_deliberation = fields.Boolean(string='Exclude from Deliberation', default=False)
     
-    first_session_result = fields.Float(string="Evaluation",compute="compute_evaluation")
-    second_session_result = fields.Float(string="Evaluation",compute="compute_evaluation")
+    first_session_result = fields.Float(string="Evaluation",compute="compute_evaluation",digits=dp.get_precision('Evaluation'))
+    second_session_result = fields.Float(string="Evaluation",compute="compute_evaluation",digits=dp.get_precision('Evaluation'))
     
     @api.multi
     def set_to_draft(self, context):
@@ -238,22 +272,27 @@ class IndividualBloc(models.Model):
             'context': ctx,
         }
         
-    @api.depends('course_group_ids.total_credits','course_group_ids.acquiered')
+    @api.depends('course_group_ids.total_credits','course_group_ids.total_hours','course_group_ids.acquiered','course_group_ids.dispense', 'course_group_ids.first_session_computed_result_bool', 'course_group_ids.is_ghost_cg')
     @api.one
     def compute_credits(self):
-        _logger.debug('Trigger "compute_credits" on Bloc %s' % self.name)
-        self.total_acquiered_credits = sum([icg.total_credits for icg in self.course_group_ids if icg.acquiered == 'A'])
-      
-    @api.depends('course_group_ids.final_result','course_group_ids.total_weight','course_group_ids.acquiered')
+        self.total_acquiered_credits = sum([icg.total_credits for icg in self.course_group_ids if icg.acquiered == 'A' and not icg.is_ghost_cg])
+        self.total_acquiered_hours = sum([icg.total_hours for icg in self.course_group_ids if icg.acquiered == 'A' and not icg.is_ghost_cg])
+        self.total_not_acquiered_credits = self.total_credits - self.total_acquiered_credits
+        self.total_not_acquiered_hours = self.total_hours - self.total_acquiered_hours
+        self.total_dispensed_credits = sum([icg.total_credits for icg in self.course_group_ids if icg.dispense and not icg.is_ghost_cg])
+        self.total_dispensed_hours = sum([icg.total_hours for icg in self.course_group_ids if icg.dispense and not icg.is_ghost_cg])
+        self.total_not_dispensed_credits = self.total_credits - self.total_dispensed_credits
+        self.total_not_dispensed_hours = self.total_hours - self.total_dispensed_hours
+        
+    @api.depends('course_group_ids.final_result','course_group_ids.total_weight','course_group_ids.acquiered', 'course_group_ids.is_ghost_cg')
     @api.one
     def compute_evaluation(self):
-        _logger.debug('Trigger "compute_evaluation" on Bloc %s' % self.name)
         total = 0
         total_first = 0
         total_second = 0
         total_weight = 0
         for icg in self.course_group_ids:
-            if icg.acquiered == 'A' and icg.total_weight > 0 : # if total_weight == 0 means full dispense
+            if icg.acquiered == 'A' and icg.total_weight > 0 and not icg.is_ghost_cg : # if total_weight == 0 means full dispense
                 total += icg.final_result * icg.total_weight
                 total_first += icg.first_session_result * icg.total_weight
                 total_second += icg.second_session_result * icg.total_weight
@@ -273,16 +312,20 @@ class IndividualCourseGroup(models.Model):
     
     # Actions
     @api.one
-    def set_deliberated_to_ten(self, session = 1):
+    def set_deliberated_to_ten(self, session = 1, message=''):
         if session == 1:
             self.write({
-                'first_session_deliberated_result' : max(self.first_session_computed_result, 10),
-                'first_session_deliberated_result_bool' : True
+                #'first_session_deliberated_result' : max(self.first_session_computed_result, 10),
+                'first_session_deliberated_result' : self.first_session_computed_result,
+                'first_session_deliberated_result_bool' : True,
+                'first_session_note': message,
             })
         else:
             self.write({
-                'second_session_deliberated_result' : max(self.second_session_computed_result, 10) if self.second_session_computed_result_bool else max(self.first_session_computed_result, 10),
-                'second_session_deliberated_result_bool' : True
+                #'second_session_deliberated_result' : max(self.second_session_computed_result, 10) if self.second_session_computed_result_bool else max(self.first_session_computed_result, 10),
+                'second_session_deliberated_result' : self.second_session_computed_result if self.second_session_computed_result_bool else self.first_session_computed_result,
+                'second_session_deliberated_result_bool' : True,
+                'second_session_note': message,
             })
     
     state = fields.Selection([
@@ -301,28 +344,28 @@ class IndividualCourseGroup(models.Model):
     
     ## First Session ##
     
-    first_session_computed_result = fields.Float(compute='compute_average_results', string='First Session Computed Result', store=True, digits=(5, 2))
+    first_session_computed_result = fields.Float(compute='compute_average_results', string='First Session Computed Result', store=True, digits=dp.get_precision('Evaluation'))
     first_session_computed_result_bool= fields.Boolean(compute='compute_average_results', string='First Session Computed Active', store=True)
     first_session_computed_exclusion_result_bool= fields.Boolean(compute='compute_average_results', string='First Session Exclusion Result', store=True)
     
     first_session_deliberated_result = fields.Char(string='First Session Deliberated Result',track_visibility='onchange')
     first_session_deliberated_result_bool= fields.Boolean(string='First Session Deliberated Active',track_visibility='onchange')
     
-    first_session_result= fields.Float(compute='compute_first_session_results', string='First Session Result', store=True, digits=(5, 2))
+    first_session_result= fields.Float(compute='compute_first_session_results', string='First Session Result', store=True, digits=dp.get_precision('Evaluation'))
     first_session_result_bool= fields.Boolean(compute='compute_first_session_results', string='First Session Active', store=True)
     first_session_acquiered = fields.Selection(([('A', 'Acquired'),('NA', 'Not Acquired')]), compute='compute_first_session_acquiered', string='First Session Acquired Credits',default='NA',store=True,required=True,track_visibility='onchange')
     first_session_note = fields.Text(string='First Session Notes')
     
     ## Second Session ##
     
-    second_session_computed_result = fields.Float(compute='compute_average_results', string='Second Session Computed Result', store=True, digits=(5, 2))
+    second_session_computed_result = fields.Float(compute='compute_average_results', string='Second Session Computed Result', store=True,digits=dp.get_precision('Evaluation'))
     second_session_computed_result_bool= fields.Boolean(compute='compute_average_results', string='Second Session Computed Active', store=True)
     second_session_computed_exclusion_result_bool= fields.Boolean(compute='compute_average_results', string='Second Session Exclusion Result', store=True)
     
     second_session_deliberated_result = fields.Char(string='Second Session Deliberated Result', digits=(5, 2),track_visibility='onchange')
     second_session_deliberated_result_bool= fields.Boolean(string='Second Session Deliberated Active',track_visibility='onchange')
     
-    second_session_result= fields.Float(compute='compute_second_session_results', string='Second Session Result', store=True, digits=(5, 2))
+    second_session_result= fields.Float(compute='compute_second_session_results', string='Second Session Result', store=True,digits=dp.get_precision('Evaluation'))
     second_session_result_bool= fields.Boolean(compute='compute_second_session_results', string='Second Session Active', store=True)
     second_session_acquiered = fields.Selection(([('A', 'Acquired'),('NA', 'Not Acquired')]), compute='compute_second_session_acquiered',string='Second Session Acquired Credits',default='NA',store=True,required=True,track_visibility='onchange')
     second_session_note = fields.Text(string='Second Session Notes')
@@ -331,7 +374,7 @@ class IndividualCourseGroup(models.Model):
     
     dispense =  fields.Boolean(compute='compute_dispense', string='Dispense',default=False,track_visibility='onchange', store=True)
     
-    final_result = fields.Float(compute='compute_final_results', string='Final Result', store=True, digits=(5, 2),track_visibility='onchange')
+    final_result = fields.Float(compute='compute_final_results', string='Final Result', store=True,digits=dp.get_precision('Evaluation'),track_visibility='onchange')
     final_result_disp = fields.Char(string='Final Result Display', compute='compute_results_disp')
     final_result_bool = fields.Boolean(compute='compute_final_results', string='Final Active')
     
@@ -344,7 +387,7 @@ class IndividualCourseGroup(models.Model):
         if not self.final_result_bool:
             self.final_result_disp = ""
         if self.dispense:
-            self.final_result_disp = "D"
+            self.final_result_disp = "Val"
         else :
             self.final_result_disp = "%.2f" % self.final_result
     
@@ -383,7 +426,6 @@ class IndividualCourseGroup(models.Model):
                 self.first_session_computed_result_bool = True
                 if ic.first_session_result < 10 :
                     self.first_session_computed_exclusion_result_bool = True
-                
             # Compute Second Session
             if ic.second_session_result_bool :
                 running_second_session_result += ic.second_session_result * ic.c_weight
@@ -428,12 +470,14 @@ class IndividualCourseGroup(models.Model):
             self.first_session_result = 0
             self.first_session_result_bool = False
     
-    @api.depends('first_session_result_bool','first_session_result')
+    @api.depends('first_session_result_bool','first_session_result','first_session_computed_exclusion_result_bool')
     @api.one
     def compute_first_session_acquiered(self):
         _logger.debug('Trigger "compute_first_session_acquiered" on Course Group %s' % self.name)
         self.first_session_acquiered = 'NA'
-        if self.enable_exclusion_bool :
+        if self.first_session_deliberated_result_bool:
+            self.first_session_acquiered = 'A'
+        elif self.enable_exclusion_bool :
             if self.first_session_result >= 10 and (not self.first_session_computed_exclusion_result_bool or self.first_session_deliberated_result_bool):
                 self.first_session_acquiered = 'A'
         else:
@@ -467,7 +511,9 @@ class IndividualCourseGroup(models.Model):
     def compute_second_session_acquiered(self):
         _logger.debug('Trigger "compute_second_session_acquiered" on Course Group %s' % self.name)
         self.second_session_acquiered = self.first_session_acquiered
-        if self.enable_exclusion_bool :
+        if self.first_session_deliberated_result_bool:
+            self.first_session_acquiered = 'A'
+        elif self.enable_exclusion_bool :
             if self.second_session_result >= 10 and (not self.second_session_computed_exclusion_result_bool or self.second_session_deliberated_result_bool):
                 self.second_session_acquiered = 'A'
         else:    
@@ -539,7 +585,7 @@ class IndividualCourse(models.Model):
     
     ## First Session ##
     
-    first_session_result= fields.Float(compute='compute_results', string='First Session Result', store=True, group_operator='avg')
+    first_session_result= fields.Float(compute='compute_results', string='First Session Result', store=True, group_operator='avg',digits=dp.get_precision('Evaluation'))
     first_session_result_bool = fields.Boolean(compute='compute_results', string='First Session Active', store=True)
     first_session_note = fields.Text(string='First Session Notes')
     
@@ -550,13 +596,13 @@ class IndividualCourse(models.Model):
         if not self.first_session_result_bool:
             self.first_session_result_disp = ""
         if self.dispense:
-            self.first_session_result_disp = "D"
+            self.first_session_result_disp = "Val"
         else :
             self.first_session_result_disp = "%.2f" % self.first_session_result
     
     ## Second Session ##
     
-    second_session_result= fields.Float(compute='compute_results', string='Second Session Result', store=True, group_operator='avg')
+    second_session_result= fields.Float(compute='compute_results', string='Second Session Result', store=True, group_operator='avg',digits=dp.get_precision('Evaluation'))
     second_session_result_bool = fields.Boolean(compute='compute_results', string='Second Session Active', store=True)
     second_session_note = fields.Text(string='Second Session Notes')
 
@@ -620,7 +666,7 @@ class IndividualCourse(models.Model):
                     raise UserError(_('Cannot decode %s in June Result, please encode a Float eg "12.00".' % self.jun_result))
                     
         if self.type in ['S','D','T']:
-            f = False
+            f = -1
             if self.jan_result :
                 try:
                     f = self._parse_result(self.jan_result)
@@ -635,7 +681,7 @@ class IndividualCourse(models.Model):
                     self.first_session_result = 0
                     self.first_session_result_bool = False
                     raise UserError(_('Cannot decode %s in June Result, please encode a Float eg "12.00".' % self.jun_result))
-            if f :
+            if f >= 0 :
                 self.first_session_result = f
                 self.first_session_result_bool = True
             if self.sept_result :

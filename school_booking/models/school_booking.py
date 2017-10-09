@@ -68,14 +68,3 @@ class Event(models.Model):
     def _get_main_categ_id(self):
         if self.categ_ids:
             self.main_categ_id = self.categ_ids[0]
-    
-# class Assets(models.Model):
-#     _name = 'school.calendar.assets'
-
-#     user_id = fields.Many2one('res.users', 'Me', default=lambda self: self.env.user)
-#     asset_id = fields.Many2one('school.asset', string='Asset', required=True)
-#     active = fields.Boolean('Active', default=True)
-
-#     @api.model
-#     def unlink_from_asset_id(self, asset_id):
-#         return self.search([('asset_id', '=', asset_id)]).unlink()

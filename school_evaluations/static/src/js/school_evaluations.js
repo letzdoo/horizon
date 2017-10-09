@@ -31,6 +31,8 @@ var data = require('web.data');
 var session = require('web.session');
 
 var BlocEditor = require('school_evaluations.school_evaluations_bloc_editor');
+var ProgramEditor = require('school_evaluations.school_evaluations_program_editor');
+
 
 var QWeb = core.qweb;
 var _t = core._t;
@@ -138,6 +140,8 @@ var EvaluationsAction = Widget.extend({
     init: function(parent, title) {
         this._super.apply(this, arguments);
         this.title = title;
+        this.model = new Model('school.individual_bloc');
+        this.program_model = new Model('school.individual_program');
         this.context = new data.CompoundContext();
         this.school_domain = 2;
         this.school_session = new Date().getMonth() < 7 || new Date().getMonth() > 10 ? 1 : 2;
@@ -159,11 +163,7 @@ var EvaluationsAction = Widget.extend({
                         }
                 }).then(
                     function() {
-                        self.model = new Model('school.individual_bloc');
                         self.update_blocs();
-        
-                        self.evaluation_bloc_editor = new BlocEditor(self, {});
-                        self.evaluation_bloc_editor.appendTo(self.$('.o_evaluation_bloc_container'));
                 });
     },
 
@@ -186,43 +186,99 @@ var EvaluationsAction = Widget.extend({
                 'title' : "Bac 1",
                 'blocs' : [],
                 'school_session' : this.school_session,
+                'is_program' : false, // TODO : Can link to the editor class rather than this
             },
             { 
                 'id' : 1, 
-                'title' : "Bac 2",
+                'title' : "Bachelier",
                 'blocs' : [],
                 'school_session' : this.school_session,
+                'is_program' : false,
             },
             { 
                 'id' : 2, 
-                'title' : "Bac 3",
+                'title' : "Cycle Bachelier",
                 'blocs' : [],
                 'school_session' : this.school_session,
+                'is_program' : true,
             },
             { 
                 'id' : 3, 
-                'title' : "Master 1",
+                'title' : "Master",
                 'blocs' : [],
                 'school_session' : this.school_session,
+                'is_program' : false,
             },
             { 
                 'id' : 4, 
-                'title' : "Master 2",
+                'title' : "Cycle Master",
                 'blocs' : [],
                 'school_session' : this.school_session,
+                'is_program' : true,
             },
             
         ];
         var defs = [];
-        for (var i=0, ii=this.groups.length; i<ii; i++) {
-            defs.push(this.model.query(['id','name','student_id','student_name','source_bloc_level','source_bloc_title','state']).context(this.context).order_by('student_name').filter(self.build_domain()).filter([['source_bloc_level', '=', i+1]]).all().then(
-                function(data){
-                    if(data.length > 0){
-                        self.groups[data[0].source_bloc_level-1].blocs = data;
-                    }
+        defs.push(this.model.query(['id','name','student_id','student_name','source_bloc_level','source_bloc_title','state'])
+                            .context(this.context)
+                            .order_by('student_name')
+                            .filter(self.build_domain())
+                            .filter([['source_bloc_level', '=', 1]])
+                            .all().then(
+            function(data){
+                if(data.length > 0){
+                    self.groups[0].blocs = data;
                 }
-            ));
-        }
+            }
+        ));
+        defs.push(this.model.query(['id','name','student_id','student_name','source_bloc_level','source_bloc_title','state'])
+                            .context(this.context)
+                            .order_by('student_name')
+                            .filter(self.build_domain())
+                            .filter(['|',['source_bloc_level', '=', 2],['source_bloc_level', '=', 3]])
+                            .all().then(
+            function(data){
+                if(data.length > 0){
+                    self.groups[1].blocs = data;
+                }
+            }
+        ));
+        defs.push(this.program_model.query()
+                            .context(this.context)
+                            .order_by('student_name')
+                            .filter([['state','in',['progress']],['cycle_id.short_name', '=', 'B'],['program_completed', '=', true],['domain_id','=',this.school_domain]])
+                            .all().then(
+            function(data){
+                if(data.length > 0){
+                    self.groups[2].blocs = data;
+                }
+            }
+        ));
+        defs.push(this.model.query(['id','name','student_id','student_name','source_bloc_level','source_bloc_title','state'])
+                            .context(this.context)
+                            .order_by('student_name')
+                            .filter(self.build_domain())
+                            .filter(['|',['source_bloc_level', '=', 4],['source_bloc_level', '=', 5]])
+                            .all().then(
+            function(data){
+                if(data.length > 0){
+                    self.groups[3].blocs = data;
+                }
+            }
+        ));
+        defs.push(this.program_model.query()
+                            .context(this.context)
+                            .order_by('student_name')
+                            .filter([['state','in',['progress']],['cycle_id.short_name', '=', 'M'],['program_completed', '=', true]])
+                            .filter([['state','in',['progress']],['cycle_id.short_name', '=', 'M'],['program_completed', '=', true],['domain_id','=',this.school_domain]])
+                            .all().then(
+            function(data){
+                if(data.length > 0){
+                    self.groups[4].blocs = data;
+                }
+            }
+        ));
+
         $.when.apply($,defs).then(function(){
             self.render_sidebar();
         });  
@@ -236,31 +292,44 @@ var EvaluationsAction = Widget.extend({
     
     set_group: function(group_id) {
         var self = this;
-        if(this.groups[group_id]) {
+        var group = this.groups[group_id];
+        if(group) {
             this.$(".sub_sidebar").hide();
-            var $sidebar = $(QWeb.render("SubSideBar", this.groups[group_id]));
+            var $sidebar = $(QWeb.render("SubSideBar", group));
             this.$(".sub_sidebar").html($sidebar);
             this.$('.sub_navbar').metisMenu();
-            
-            var group = this.groups[group_id];
             var ids = [];
             for (var i=0, ii=group.blocs.length; i<ii; i++) {
                 ids.push(group.blocs[i].id);
             }
-            
-            this.evaluation_bloc_editor.read_ids(ids).then(
+            if(group.is_program) {
+                self.editor = new ProgramEditor(self, {});
+            } else {
+                self.editor = new BlocEditor(self, {});
+            }
+            self.$('.editor').remove();
+            self.show_startup();
+            self.editor.appendTo(self.$('.o_evaluation_editor'));
+            self.editor.read_ids(ids).then(
                 function(){
                     self.$(".sub_sidebar").show();
                 } 
-            );
-            
+            );    
         } else {
             this.$(".sub_sidebar").empty();
         }
     },
     
     set_bloc: function(bloc_id) {
-        this.evaluation_bloc_editor.set_bloc_id(bloc_id);
+        this.editor.set_bloc_id(bloc_id);
+    },
+    
+    show_startup: function() {
+        this.$('.o_startup_screen').removeClass('o_hidden');
+    },
+    
+    hide_startup: function() {
+        this.$('.o_startup_screen').addClass('o_hidden');
     },
     
 });

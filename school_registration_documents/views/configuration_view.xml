@@ -32,6 +32,7 @@
                 <tree string="Official Document Type">
                     <field name="name" />
                     <field name="default_add" />
+                    <field name="has_expiry_date"/>
                 </tree>
             </field>
         </record>
@@ -54,6 +55,7 @@
                             <field name="description" />
                             <field name="note" />
                             <field name="default_add" />
+                            <field name="has_expiry_date"/>
                         </group>
                     </sheet>
                 </form>

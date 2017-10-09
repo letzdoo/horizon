@@ -23,12 +23,14 @@
 <openerp>
   <data>
     <!-- Top menu item -->
-    <menuitem name="Programs" id="menu_main_program" icon="fa-book" web_icon="website_forum_doc,static/description/icon.png" sequence="60" />
+
+    <menuitem name="Programs" id="menu_main_program" icon="fa-book" web_icon="school_management,static/description/icon.png" sequence="60"  groups="school_management.group_program_management,school_management.group_registration"/>
+
+
+    <menuitem name="Programs" parent="menu_main_program" id="menu_program" sequence="5" />
 
     <menuitem name="Course Groups" parent="menu_main_program" id="menu_course_groups" sequence="10" />
     
-    <menuitem name="Programs" parent="menu_main_program" id="menu_program" sequence="5" />
-
     <!--
     
         Course Group
@@ -42,6 +44,7 @@
       <field name="arch" type="xml">
         <kanban class="o_course_group_kanban">
           <field name="name" />
+          <field name="ue_id" />
           <templates>
             <t t-name="kanban-box">
               <div class="oe_kanban_global_click o_course_group_kanban">
@@ -50,6 +53,7 @@
                     <div class="o_primary">
                       <strong><field name="name" /></strong>
                     </div>
+                    <div class="o_secondary"><field name="ue_id" /></div>
                   </div>
                   <div class="container o_kanban_card_content o_visible">
                     <div class="row">
@@ -78,9 +82,11 @@
       <field eval="8" name="priority" />
       <field name="arch" type="xml">
         <tree string="Course Group">
+          <field name="ue_id"/>
           <field name="speciality_id"/>
           <field name="cycle_id"/>
           <field name="name" />
+          <field name="teacher_id"/>
           <field name="total_hours" />
           <field name="total_credits" />
         </tree>
@@ -111,11 +117,15 @@
               <h1>
                <field name="name"/>
               </h1>
+              <h3 class="oe_fade">
+                <field name="ue_id" class="oe_inline"/>
+              </h3>
             </div>
             <group col="4">
               <field name="speciality_id" colspan="4"/>
               <field name="cycle_id" colspan="4"/>
               <field name="title" colspan="4"/>
+              <field name="teacher_id" colspan="4"/>
               <field name="sequence" />
               <field name="level" />
               <field name="total_hours" />
@@ -163,6 +173,8 @@
       <field name="arch" type="xml">
         <search string="Search Course Group">
           <field name="name" filter_domain="[( 'name', 'ilike', self)]" />
+          <field name="ue_id" filter_domain="[( 'ue_id', 'ilike', self)]"/>
+          <field name="speciality_id" filter_domain="[( 'speciality_id.name', 'ilike', self)]"/>
           <group expand="1" string="Group By">
             <filter string="Domain" context="{'group_by':['domain_id']}" />
             <filter string="Speciality" context="{'group_by':['speciality_id']}" />
@@ -521,7 +533,17 @@
       <field name="model">school.bloc</field>
       <field name="arch" type="xml">
         <search string="Search Bloc">
-          <field name="title" filter_domain="[( 'title', 'ilike',self)]" />
+          <field name="title" filter_domain="[('title', 'ilike',self)]" />
+          <filter string="Current Year" name="current" domain="[('year_sequence','=','current')]" />
+          <filter string="Next Year" name="next" domain="[('year_sequence','=','next')]" />
+          <filter string="Previous Year" name="previous" domain="[('year_sequence','=','previous')]" />
+          <group expand="1" string="Group By">
+            <filter string="Domain" context="{'group_by':'domain_id'}" />
+            <filter string="Cycle" context="{'group_by':'cycle_id'}" />
+            <filter string="Section" context="{'group_by':'section_id'}" />
+            <filter string="Track" context="{'group_by':'track_id'}" />
+            <filter string="Speciality" context="{'group_by':'speciality_id'}" />
+          </group>
         </search>
       </field>
     </record>
@@ -562,8 +584,8 @@
       <field name="view_id" ref="bloc_form" />
       <field name="act_window_id" ref="action_bloc_form" />
     </record>
-    <!-- <menuitem id="menu_bloc_form" parent="menu_program" action="action_bloc_form" sequence="5" /> -->
-
+    <menuitem id="menu_bloc_form" parent="menu_program" action="action_bloc_form" sequence="50" />
+    
     <!--
     
         Program
@@ -697,6 +719,10 @@
           <filter string="Current Year" name="current" domain="[('year_sequence','=','current')]" />
           <filter string="Next Year" name="next" domain="[('year_sequence','=','next')]" />
           <filter string="Previous Year" name="previous" domain="[('year_sequence','=','previous')]" />
+          <separator />
+          <filter string="Draft" name="draft" domain="[('state','=','draft')]" />
+          <filter string="Published" name="draft" domain="[('state','=','published')]" />
+          <filter string="Archived" name="archived" domain="[('state','=','archived')]" />
           <group expand="1" string="Group By">
             <filter string="Domain" context="{'group_by':'domain_id'}" />
             <filter string="Cycle" context="{'group_by':'cycle_id'}" />

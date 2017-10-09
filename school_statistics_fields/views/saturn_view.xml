@@ -26,8 +26,6 @@
         <!-- Top menu item -->
         <menuitem name="Statistics" id="menu_statistics" icon="fa-book" web_icon="school,static/description/icon.png" sequence="90" />
       
-        <menuitem name="Saturn" parent="menu_statistics" id="menu_saturn" sequence="10" />
-        
         <!-- Saturn Editor Form -->
         <record model="ir.ui.view" id="saturn_editor_form">
           <field name="name">school.saturn.editor.form.view</field>
@@ -282,13 +280,13 @@
           <field name="act_window_id" ref="action_saturn_form" />
         </record>
         
-        <menuitem id="menu_saturn_form" parent="menu_saturn" action="action_saturn_form" sequence="25" />
+        <menuitem id="menu_saturn_form" parent="menu_statistics" action="action_saturn_form" sequence="25" />
 
         <!-- Partner -->
         <record id="view_partners_form_school_stat_fields" model="ir.ui.view">
             <field name="name">view.res.partner.form.school.stat_fields</field>
             <field name="model">res.partner</field>
-            <field name="inherit_id" ref="school_management.view_student_form_school" />
+            <field name="inherit_id" ref="school_management.view_partners_form_school" />
             <field eval="18" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//notebook[last()]" position="inside">

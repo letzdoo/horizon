@@ -30,6 +30,7 @@
     'update_xml': [
         'data/school_student_group_booking.xml',
         'views/school_student_group_booking.xml',
+        'security/ir.model.access.csv',
     ],
     'demo_xml': [],
     'description': '''

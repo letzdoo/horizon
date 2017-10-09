@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2015 be-cloud.be
+#                       Jerome Sonnet <jerome.sonnet@be-cloud.be>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<odoo>
+    <data>
+
+        <record id="announcements" model="res.groups">
+            <field name="name">Gestion des annonces</field>
+        </record>
+
+        <record model="mail.channel" id="channel_announce">
+            <field name="name">announcements</field>
+            <field name="group_ids" eval="[(4, ref('school_login_screen.announcements'))]"/>
+            <field name="group_public_id" eval="ref('school_login_screen.announcements')"/>
+            <field name="description">General announcements on the login screen.</field>
+        </record>
+
+    </data>
+</odoo>

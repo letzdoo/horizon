@@ -21,7 +21,7 @@
 ##############################################################################
 -->
 <openerp>
-    <data>
+  <data>
         <!-- Course Documentation List View -->
         <record id="view_course_documentation_list" model="ir.ui.view">
             <field name="name">school.course_documentation.tree</field>
@@ -30,6 +30,7 @@
             <field name="arch" type="xml">
                 <tree string="Course Documentation">
                     <field name="course_id" string="Course"/>
+                    <field name="author_id"/>
                     <field name="state" />
                 </tree>
             </field>
@@ -40,8 +41,21 @@
             <field name="model">school.course_documentation</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string="Course" create="0">
-                    <header>
+                <form string="Course">
+                    <script>
+                      // TODO : Hack as summernote seem to focus at the end
+                      $(function(){ //wait for document ready
+                      
+                        setTimeout(function(){
+                          top_el = $("input.ui-autocomplete-input")[0]
+                          if(top_el){
+                            top_el.focus();
+                          }
+                        }, 100) //execute your function after 1 second.
+                      
+                      });
+                    </script>
+                    <header groups="school_management.group_employee">
         	            <button name="publish" type="object" states="draft" string="Publish" class="oe_highlight" groups="school_management.group_employee"/>
                         <button name="unpublish" type="object" states="published,archived" string="Reset to Draft" groups="school_management.group_employee"/>
                         <button name="archive" type="object" states="published" string="Archive" groups="school_management.group_employee"/>
@@ -50,68 +64,52 @@
                     <sheet>
                         <div class="oe_title">
                           <h1>
-                            Course Description - <field name="course_id" class="oe_inline" readonly="1"/>
+                            Course Description - <field name="course_id" class="oe_inline" style="width: 800px !important;" domain="[('cycle_id.short_name','!=','MB')]" options="{'no_create': True}" attrs="{'readonly':[('state','!=','draft')]}"/>
                           </h1>
+                          <h3 class="oe_fade">
+                            by <field name="author_id" class="oe_inline" readonly="1"/>
+                          </h3>
                         </div>
+                        <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
+                          <p>
+                          La mise à disposition aux étudiants des descriptifs est une obligation légale du décret « paysage ».
+                          </p>
+                          <p>
+                          Le descriptif d'unité d'enseignement est en réalité la forme officielle, mais celui-ci n'est en fait que la somme des descriptifs d'activités d'apprentissage qui le composent. Il existe cependant un responsable unique pour chaque unité d'enseignement. La liste de ces responsables d'unités a été validée en CGP et sera publiée dans le Règlement des Études.
+                          Toutes les activités d'apprentissage du programme (1er et 2ème cycle) doivent présenter un descriptif en bonne et due forme pour chaque année, même les cours à choix ! Ces descriptifs doivent correspondre fidèlement aux profils d'enseignement mis en ligne sur le site internet du conservatoire.
+                          </p>                          
+                          <p>
+                          La finalisation des descriptifs est attendue pour le 28 août 2017, à fin de publication sur le site internet du CrLg pour le 15 septembre. A cette date, ces documents deviennent les références légales pour chaque programme de cours de chaque étudiant.
+                          </p>                          
+                          <p>
+                          En principe, toutes les activités doivent s'organiser sur un seul quadrimestre. Il existe cependant une liste d'exemptions que l'on retrouve dans le vade-mecum du ComDel (http://www.comdel.be/wp-content/uploads/2017/03/VDM-Paysage_mars2017.pdf , Article 79, pages 115-116). Ainsi, nous profitons de la dérogation ouverte en premier cycle pour organiser l'ensemble des activités sous un mode annuel, avec une forte incitation à organiser une évaluation partielle en session de janvier. La liste des exemptions pour le second cycle (master) est plus limitée : « activités d’apprentissage qui, par leur nature, échappent à la quadrimestrialisation : évaluations, stages, activités d’intégration professionnelle, projets tels que le mémoire, le travail de fin d’études, le cours artistique principal, etc  ». A moins de remettre au CGP une raison valable attestant de l'impossibilité de quadrimestrialiser une activité sortant de cette liste, nous demandons aux pédagogues responsables de fonctionner sur cette règle quadrimestrielle.
+                          </p>                          
+                          <p>
+                          Le référentiel de compétences officiel de 2ème cycle (liste des acquis d'apprentissage terminaux de master) n'est toujours pas officialisé par le conseil d'administration de l'ARES. En réalité, la procédure de validation vient seulement d'être votée par l'ARES ce 27 juin dernier ! Un référentiel commun entre domaines musique des différentes ESA de la communauté française a été réalisé et avalisé par les directions respectives. A défaut de document officiel, nous vous proposons de conserver le pré-projet réalisé l'année passée.
+                          </p>
+                        </div>
+                        <group col="4">
+                          <field name="cycle_id" readonly="1" colspan="4"/>
+                          <field name="course_group_id" readonly="1"/>
+                          <field name="level" readonly="1"/>
+                          <field name="credits" readonly="1"/>
+                          <field name="hours" readonly="1"/>
+                          <field name="weight" readonly="1"/>
+                          <field name="mandatory" attrs="{'readonly':[('state','!=','draft')]}"/>
+                          <newline/>
+                          <field name="language" attrs="{'readonly':[('state','!=','draft')]}"/>
+                          <newline/>
+                          <field name="staff_ids" colspan="4" widget="many2many_tags" attrs="{'readonly':[('state','!=','draft')]}"/>
+                        </group>
                         <div class="panel panel-default">
                           <div class="panel-heading">
-                            <h3 class="panel-title">Content</h3>
+                            <h3 class="panel-title">Remarques</h3>
                           </div>
                           <div class="panel-body">
-                            <field name="content"/>
-                          </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h3 class="panel-title">Method</h3>
-                          </div>
-                          <div class="panel-body">
-                            <field name="method"/>
-                          </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h3 class="panel-title">Learning outcomes</h3>
-                          </div>
-                          <div class="panel-body">
-                            <field name="learning_outcomes"/>
-                          </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h3 class="panel-title">Competencies</h3>
-                          </div>
-                          <div class="panel-body">
-                            <field name="competencies"/>
-                          </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h3 class="panel-title">Evaluation method</h3>
-                          </div>
-                          <div class="panel-body">
-                            <field name="evaluation_method"/>
-                          </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h3 class="panel-title">Staff</h3>
-                          </div>
-                          <div class="panel-body">
-                            <field name="staff_ids">
-                                <tree string="Staff">
-                                    <field name="teacher_id" />
-                                    <field name="role" />
-                                </tree>
-                            </field>
+                            <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
+                              <p>Vous pouvez écrire ici vos remarques et commentaires à propose de cette fiche.</p>
                             </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h3 class="panel-title">Language</h3>
-                          </div>
-                          <div class="panel-body">
-                            <field name="language"/>
+                            <field name="remarks" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
                           </div>
                         </div>
                         <div class="panel panel-default">
@@ -119,15 +117,244 @@
                             <h3 class="panel-title">Schedule</h3>
                           </div>
                           <div class="panel-body">
-                            <field name="schedule"/>
+                            <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
+                            Ce volet comporte une modification importante depuis la mise en application du décret paysage. La notion de «cours» n'apparaît plus en tant que telle dans le décret paysage (ce qui ne signifie cependant pas pour autant qu'elle disparaisse) au profit de la notion plus large d'«activité d'apprentissage»(article 76) :
+                            «Les activités d'apprentissage comportent :
+                            1° des enseignements organisés par l'établissement, notamment des cours magistraux, exercices dirigés, travaux pratiques, travaux de laboratoire, séminaires, exercices de création et recherche en atelier, excursions, visites et stages;
+                            2° des activités individuelles ou en groupe, notamment des préparations, travaux, recherches d'information, travaux de fin d'études, projets et activités d'intégration professionnelle;
+                            3° des activités d'étude, d'autoformation et d'enrichissement personnel ;
+                            4° des acquisitions de compétences en entreprise dans le cadre de l'enseignement en alternance.
+                            <p>
+                            Toutes peuvent faire l'objet d'une évaluation et peuvent être exprimées en termes de crédits.»
+                            </p>
+                            Il sera donc indiqué dans le volume horaire:
+                            <ul>
+                                <li>le nombre d'heures de cours (le minimum est défini par l'arrêté du 17/07/2002 disponible ici:http://www.gallilex.cfwb.be/document/pdf/27034_003.pdf ),</li>
+                                <li>le nombre d'heures de travaux dirigés, répétitions, master-classes, séminaires, visites, ...</li>
+                                <li>le nombre d'heures de stages,</li>
+                                <li>le nombre d'heures d'évaluation.</li>
+                                <li>Le solde par rapport à l'investissement de temps de travail complet de l'étudiant défini par le nombre de crédits associé sera le temps moyen de travail personnel de l'étudiant.</li>
+                            </ul>
+                            
+                            <h4>Exemples:</h4>
+                            volume horairede l'AA «banjo»:
+                            <ul>
+                                <li>60 heures de cours individuel,</li>
+                                <li>2 heures d'auditions et d'évaluations,</li>
+                                <li>30 heures de travail de groupe,</li>
+                                <li>10 heures de master-classes.</li>
+                            </ul>
+                            volume horaire de l'AA d'«écoute critique de la discographie consacrée au banjo» :
+                            <ul>
+                                <li>15 heures de cours collectif,</li>
+                                <li>2 heures d'examen.</li>
+                            </ul>
+                            <p>
+                            Le volume horaire total doit correspondre à celui indiqué dans le profil d'enseignement correspondant.
+                            </p>
+                            Note: certains pédagogues préfèrent fournir une description moins précise ou moins contraignante en terme d'heures destinées à chaque type d'enseignement. A partir du moment ou la description est suffisamment compréhensible pour l'étudiant, cela reste admissible.
+                            Exemple: «volume horaire: 100 heures. En moyenne, un cours individuel est dispensé par semaine par le professeur responsable de l'activité; le solde des heures se répartit entre cours collectifs, présence au cours individuel d'autres étudiants, auditions et master-classes».
+                            </div>
+                            <group col="4">
+                              <field name="schedule" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            </group>
+                            <field name="schedule_text" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
                           </div>
                         </div>
                         <div class="panel panel-default">
                           <div class="panel-heading">
-                            <h3 class="panel-title">Rooms</h3>
+                            <h3 class="panel-title">Content</h3>
                           </div>
                           <div class="panel-body">
-                            <field name="rooms"/>
+                            <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
+                              C'est le coeur du descriptif : un résumé extensif
+                              <ul>
+                                <li>de l'organisation générale de l'activité (rythme et longueur des cours, répétitions, stages,...)</li>
+                                <li>de la matière vue au cours,</li>
+                                <li>du contenu des stages,</li>
+                                <li>du contenu des travaux pratiques (comme les répétitions) et/ou écrits demandés,</li>
+                                <li>du travail personnel et d'autoformation demandé à l'étudiant.</li>
+                              </ul>
+                              <h4>Exemple:</h4>
+                              l'activité d'apprentissage «banjo» est axée :
+                              <ul>
+                                <li>sur des cours individuels à raison d'une heure par semaine avec le pédagogue responsable choisi par l'étudiant en début de cycle et d'une heure par semaine avec un des assistants,</li>
+                                <li>sur des sessions en groupe de travail (6 sessions de 2h30),</li>
+                                <li>sur l'organisation de 2 master-classes de 5 heures dispensées par des personnalités artistiques de haut niveau dans l'univers du banjo.</li>
+                              </ul>
+                              <p>
+                              La moitié des cours individuels mettront l'accent sur l'acquisition du répertoire du Tenessee et de la Nouvelle-Orléans entre 1840 et 1920, sur les styles bluegrass et dixieland ; l'autre moitié abordera le banjo dans la musique  contemporaine. Les assistants veilleront à la résolution des difficultés techniques instrumentales.
+                              </p>
+                              <p>
+                              Les groupes de travail réaliseront des études comparées de styles, fourniront des rapports après chaque session, présenteront en audition (au mois de mai) une synthèse musicale de leurs analyses.
+                              </p>
+                              <p>
+                              Il est attendu que chaque étudiant développe sa pratique du banjo 4 cordes et du banjo ténor par un travail journalier de qualité.
+                              </p>
+                              <p>
+                              Note: la réduction de crédits dans certaines activités de deuxième cycle (notamment le «cours artistique principal») au profit du TFE, en plus du développement des finalités spécialisées implique dans certains cas une révision des contenus, acquis d'apprentissage et évaluations de manière à être en concordance avec cette nouvelle structure, en terme de temps de travail et d'objectifs
+                              </p>
+                            </div>
+                            <field name="content" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Method</h3>
+                          </div>
+                          <div class="panel-body">
+                            <field name="method" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Learning outcomes</h3>
+                          </div>
+                          <div class="panel-body">
+                            <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
+                              <p>En lien avec le référentiel de compétence qui suit (acquis d'apprentissage terminaux du cycle, ou A.A.T.), déterminer les compétences minimales de l'étudiant dont il devra prouver l'acquis lors des évaluations. Il est évident que dans les activités artistiques, certaines notions restent subjectives et ne pourront être évaluées de manière fiable qu'en fin de cycle.</p>
+                              
+                              <p>Référentiels de compétence : acquis d'apprentissage terminaux :</p>
+
+                              A la fin du 1er cycle, l’étudiant doit être capable :
+                              <ul>
+                                <li>A.A.T. 1. de produire (instrument, voix et écriture) en faisant la preuve de sa maîtrise technique et musicale, de sa connaissance du répertoire, de créativité et d’autonomie ;</li>
+                                <li>A.A.T. 2. de comprendre et de manipuler les éléments constitutifs des systèmes musicaux qu’il est amené à utiliser : écouter, déchiffrer et retranscrire par un système de notation ;</li>
+                                <li>A.A.T. 3. d’analyser et de mettre en œuvre des outils permettant une analyse au service de l’interprétation des œuvres ;</li>
+                                <li>A.A.T. 4. d’établir des liens pertinents avec le contexte esthétique, historique et sociologique des œuvres et de développer un intérêt pour d’autres champs musicaux ;</li>
+                                <li>A.A.T. 5. de travailler en ensembles et de développer les qualités relationnelles nécessaires aux travaux en groupe ;</li>
+                                <li>A.A.T. 6. de s’orienter dans la littérature et la documentation musicales, d’apprécier les différents supports en mettant en œuvre des démarches analytiques et de faire des choix pertinents ;</li>
+                                <li>A.A.T. 7. d’acquérir une maîtrise suffisante de sa voix et de son corps en tant qu’outil du musicien.</li>
+                              </ul>
+                              
+                              Au domaine de la musique du Conservatoire royal de Liège, le grade de master est décerné aux étudiants qui ont acquis
+                              <ul>
+                                <li>des connaissances et compétences générales qui font suite à celles qui relèvent du niveau de bachelier, rehaussant leurs niveaux d'excellence dans leurs pratiques artistiques (A.A.T. 1),</li>
+                                <li>des connaissances et compétences hautement spécialisées, le cas échéant relatives à un débouché professionnel ciblé par le type de finalité choisi (A.A.T. 2) ;</li>
+                                <li>ces connaissances et ces compétences fournissent une base pour développer ou mettre en œuvre des idées ou des propositions artistiques</li>
+                                <li>de manière originale, le plus souvent dans le cadre d'une recherche artistique ou dans le cadre d'un développement d'une création ou d'une interprétation (A.A.T. 3),</li>
+                                <li>de manière concertée et argumentée, en s'intégrant dans un projet de groupe ou d'ensemble (A.A.T. 4);</li>
+                                <li>sont capables d'appliquer, de mobiliser, d'articuler et de valoriser ces connaissances et ces compétences en vue de s'adapter à des contextes artistiques étendus, pluridisciplinaires, transversaux et novateurs (A.A.T. 5) ;</li>
+                                <li>sont capables de mobiliser ces connaissances et ces compétences, d'en maîtriser la complexité et la richesse ainsi que de formuler des opinions, des jugements critiques ou des propositions artistiques en y intégrant une réflexion sur les responsabilités artistiques, sociétales ou éthiques (A.A.T 6) ;.</li>
+                                <li>sont capables de transmettre, partager, communiquer leur art et les résultats de leur recherche artistique de manière optimale au public, averti ou non, et avec ses pairs, sous toutes leurs formes, passées et actuelles (A.A.T. 7);</li>
+                                <li>ont développé et intégré un fort degré d'autonomie qui leur permet de poursuivre leur formation, d'acquérir de nouveaux savoirs et de développer de nouvelles compétences pour pouvoir évoluer dans de nouveaux contextes artistiques (A.A.T. 8).</li>
+                              </ul>
+                              
+                              <h4>Exemple:</h4>
+                              
+                              En fin d'activité, l'étudiant devra faire preuve de compétences spécifiques suffisantes en :
+                              <ul>
+                                <li>vélocité de la main gauche et qualité de vibrato dans le répertoire dixieland (A.A.T. 1 et 7)</li>
+                                <li>technique du pouce dans le style bluegrass (A.A.T. 1 et 7)</li>
+                                <li>analyse comparative de styles abordés (A.A.T. 2, 3, 4, 5, 6)</li>
+                                <li>connaissance des notations contemporaines du banjo (A.A.T. 2, 6)</li>
+                                <li>lecture du répertoire technique basique (A.A.T. 1)</li>
+                                <li>improvisation de style sur une grille d'accord simple (A.A.T. 1, 4 et 7)</li>
+                                <li>bases d'interprétation du style bluegrass (A.A.T. 1 et 7)</li>
+                              </ul>
+                            </div>
+                            <field name="learning_outcomes" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">References</h3>
+                          </div>
+                          <div class="panel-body">
+                            <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
+                              Reprendre ici tous les documents (livres, travaux, études, partitions,...) et sources multimedia (disques, videos, sites internets,...) de référence.
+                              <h4>Exemple:</h4>
+                              <ul>
+                                <li>«Le banjopour les nuls» (Johnny Cash, 4ème édition, 1963)</li>
+                                <li>«L'école azerbaïdjanaise du banjo» (Stéphane De May, 2010)</li>
+                                <li>www.banjoforever.com</li>
+                                <li>l'intégrale des disques de Pete Seeger</li>
+                              </ul>
+                            </div>
+                            <field name="references" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Pre-Co Requiered</h3>
+                          </div>
+                          <div class="panel-body">
+                            <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
+                              <p>Les prérequis et co-requis doivent être défini au niveau des unités d'enseignement. Nous vous invitons néanmoins à les renseigner ici.</p>
+                            </div>
+                            <field name="pre_co_requiered" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h3 class="panel-title">Evaluation method</h3>
+                          </div>
+                          <div class="panel-body">
+                            <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
+                              Les modes d'évaluations et leurs pondérations respectives doivent être établis avec précision. De nouveaux concepts sont apparus avec le nouveau règlement des études, disponible sur le site internet du Conservatoire royal de Liège: (Menu principal > l’école > réglementation des études > Règlement des études).
+                              <p>
+                                Nous vous invitons à consulter avec soin le Titre 5 (évaluations) de ce document (article 68 et suivants).
+                              </p>
+                              <p>
+                                Les différents modes d'évaluation sont :
+                                <ul>
+                                  <li>l'évaluation artistique: mode d'évaluation de compétences artistiques sous la forme d'une performance publique de l'étudiant, soumise à l'appréciation d'un jury artistique;</li>
+                                  <li>l'évaluation continue: évaluation permanente qui s'exerce à tout moment de l'apprentissage, pouvant prendre la forme d'une évaluation informelle du ou des enseignants donnant lieu à une cote d'année, ou d'une succession d'évaluations partielles; une note de stage ou une note sur un travail rendu par l'étudiant participent de l'évaluation continue;</li>
+                                  <li>l'examen: épreuve écrite ou orale; l'examen est toujours public;</li>
+                                </ul>
+                              </p>
+                              <p>
+                                Remarques:
+                                <ul>
+                                  <li>L'acception d'«évaluation artistique» au sens du Règlement général des Études est l'addition d'une évaluation artistique devant jury et d'une évaluation continue sous forme d'une note d'année, valant chacune pour 50% des points. La performance devant jury est en principe réalisée en début de 3ème quadrimestre, mais peut cependant être présentée (en une ou plusieurs parties) à d'autres moments de l'année. Une fois obtenue, la note est alors réputée rattachée à chacune des sessions d’examens de l’année académique. En année de fin de cycle, le jury de l'évaluation de la dernière activité liée au cours artistique principal est obligatoirement majoritairement externe;</li>
+                                  <li>L'évaluation continue peut être informelle (évaluation de la participation au cours tout au long de l'activité par exemple) ou être l'addition d'une série de notes attribuées en cours d'année, suite à des auditions, des contrôles, des travaux pratiques ou écrits. La pondération entre ces différentes notes doit cependant être bien définie et claire pour l'étudiant.</li>
+                                  <li>L'examen (écrit ou oral) doit suivre les nouvelles règles du décret paysage:</li>
+                                	<ul>
+                                    <li>en première année de premier cycle (B1), l'étudiant doit avoir un maximum d'occasions de présenter l'examen (jusqu'à 3 fois pour les activités qui se déroulent entièrement au premier quadrimestre);</li>
+                                    <li>en ce qui concerne les activités se déroulant tout au long de l'année (sur 2 quadrimestres), un examen partiel doit être organisé en fin de premier quadrimestre; si cet examen partiel est réussi, il dispense de la matière de premier quadrimestre lors de l'examen de fin de second quadrimestre; s'il est raté, la matière de l'examen de juin porte sur toute la matière; si l'examen de juin est raté, dans tous les cas de figure, l'examen de septembre porte sur toute la matière; l'étudiant doit connaître à l'avance, de manière précise, la pondération de l'examen partiel.</li>
+                                  </ul>
+                                  <li>Plusieurs modes d'évaluation peuvent, selon les cas, être utilisés conjointement(évaluation artistique, continue, examen écrit, examen oral, note de travail) ; dans ce cas l'étudiant doit connaître à l'avance, de manière précise, la pondération entre les différents modes d'évaluation.</li>
+                                  <li>Des évaluations, même partielles, peuvent être organisées dans le courant de l’année académique. Les périodes prévues pour ces évaluations doivent apparaître dans les descriptifs d’activités d’apprentissage.</li>
+                                  <li>Lorsque l’évaluation prend la forme d’une évaluation continue, la description de l’unité d’enseignement doit indiquer quelles seront les modalités d’évaluation en cas de deuxième ou troisième inscription à l’évaluation (par exemple: pas de possibilité de nouvelle évaluation (report de la note à chaque session),  possibilité d'examen oral en sessions de juin et septembre, travail à réaliser sur un sujet donné,...)</li>
+                                  <li>Pour les étudiants de première année de premier cycle, la participation aux épreuves de la session d’évaluation du premier quadrimestre est une condition d'admission aux autres évaluations de l'année académique.</li>
+                                </ul>
+                              </p>
+                              <p>
+                                <h4>Exemples:</h4>
+                                <p>
+                                L'AA «écoute critique de la discographie consacrée au banjo» de première année de premier cycle, se déroulant sur le premier quadrimestre, fera l'objet d'une évaluation continue valant pour 60 % des points:
+                                </p>
+                                <ul>
+                                	<li>2/3 de ces points seront attribués par l'enseignement responsable sur base de la qualité de participation au cours de l'étudiant;</li>
+                                	<li>le 1/3 restant portera sur l'évaluation d'un rapport écrit, remis par l'étudiant au plus tard le 1er décembre(tout retard non justifié entraînera une note de 2/20) ;</li>
+                                	<li>d'un examen écrit valant pour 40 % des points (note: la participation à cet examen fait partie des conditions d'admission aux autres évaluations de l'année académique !)</li>
+                              	</ul>
+                                En cas d'échec de l'AA, l'étudiant pourra présenter un nouveau rapport et un nouvel examen lors des sessions de fin de 2ème ou de 3ème quadrimestre(date de remise du rapport: au plus tard le premier jour de la session d'examen) ; la note d'évaluation continue portant sur la qualité de participation au cours ne fera cependant pas l'objet d'une nouvelle possibilité d'évaluation et sera réputée attachée à chacune des sessions de l'année académique.
+                              </p>
+                              <p>
+                              l'AA «banjo» BLOC 2 fera l'objet d'une évaluation artistique devant un jury interne valant pour 50 % des points; cette évaluation se déroulera en deux parties, valant chacune pour moitié des points:
+                              <ul>
+                              	<li>la première en session de fin de premier quadrimestre aura pour objet le répertoire technique bluegrass et dixieland; programme de 4 pièces (30 minutes minimum);l'étudiant jouera 2 pièces choisies par le jury ;</li>
+                              	<li>la seconde en session de fin de second quadrimestre aura pour objet l'interprétation des styles; programme de 4 pièces (30 minutes minimum), dont 2 pièces contemporaines;  l'étudiant jouera 2 pièces choisies par le jury.</li>
+                              </ul>
+                              d'une évaluation continue valant pour 50 % des points:
+                              <ul>
+                              	<li>10 % pour chacune des 3 auditions organisées en cours d'année ; les dates d'auditions seront communiquées au moins 3 semaines à l'avance; les programmes (de 20 minutes minimum) sont au choix de l'étudiant;</li>
+                              	<li>les 20 % restants pour l'évaluation des rapports de travail de groupe (10%) et de l'audition de groupe du mois de mai (10 % )(20 minutes minimum au choix du groupe).</li>
+                            	</ul>
+                            	En cas d'échec, il n'y aura pas de possibilité de nouvelle évaluation.
+                              </p>
+                              <p>
+                              <h4>Note d'échec de l'unité:</h4>
+                              Article 97 du Règlement des Études: Les pédagogues responsables d'activités d'apprentissage peuvent appliquer le principe de note minimum permettant la réussite de l’unité d’enseignement. Toute note inférieure à celle-ci correspond à un déficit grave dans une activité d’apprentissage témoignant d’acquis insuffisants pour que l’unité d’enseignement puisse être réussie. Cette note minimum doit être prévue dans le descriptif d’activité d’apprentissage concerné en concertation avec les enseignants responsables des autres activités d’apprentissage de l’unité d’enseignement. Les enseignants qui attribuent une note d’échec de l’unité d’enseignement à un étudiant doivent en informer la Commission des Études et justifier le bien-fondé de leur décision. La moyenne globale de l’unité d’enseignement est descendue au niveau de la note d’échec de l’unité d’enseignement quelles que soient les notes obtenues pour les autres activités d’apprentissage, à moins que la moyenne ne soit déjà inférieure à cette cote.
+                              </p>
+                              <p>
+                              <h4>Exemple:</h4>
+                              L'AA «écoute critique de la discographie consacrée au banjo» fait l'objet d'une note d'échec automatique de l'unité d'enseignement du cours artistique principal «formation instrumentale / cordes / banjo» de 6/20: cela signifie qu'une note de 6/20 ou moins lors de l'évaluation de l'AA entraîne la descente de la note de l'UE du cours artistique principal à 6/20 au maximum.
+                              Si par exemple un étudiant à une note de 2/20 (note de présence) en «écoute critique de la discographie consacrée au banjo» et une note de 72/120 en «banjo», la note de l'UE devrait être de 74/140, soit 10,6 / 20, entraînant une réussite; la présence de la note d'échec automatique de l'unité d'enseignement fait descendre cette note à 6/20.
+                              </p>
+                            </div>
+                            <field name="evaluation_method" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
                           </div>
                         </div>
                     </sheet>
@@ -135,12 +362,26 @@
             </field>
         </record>
         
+        <record id="view_course_documentation_filter" model="ir.ui.view">
+            <field name="name">course_documentation.select</field>
+            <field name="model">school.course_documentation</field>
+            <field name="arch" type="xml">
+            <search string="Search Groups">
+                <field name="name" string="Nom de l'activité"/>
+                <field name="author_id"/>
+                <filter name="my_desc" string="Mes descriptifs" domain="[('author_id','=',uid)]"/>
+            </search>
+            </field>
+        </record>
+        
         <record id="action_course_documentation_list" model="ir.actions.act_window">
             <field name="name">Course Documentation</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.course_documentation</field>
+            <field name="search_view_id" ref="view_course_documentation_filter" />
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_my_desc":1}</field>
         </record>
         
         <record id="action_course_documentation_tree_view1" model="ir.actions.act_window.view">
@@ -150,7 +391,10 @@
             <field name="act_window_id" ref="action_course_documentation_list" />
         </record>
         
-        <menuitem id="menu_course_documentation_list" parent="school_management.menu_course_groups" action="action_course_documentation_list" sequence="400" />
+        <!-- Top menu item -->
+        <menuitem name="Course Description" id="menu_course_description" icon="fa-book" web_icon="note,static/description/icon.png" sequence="61" groups="school_management.group_program_management,school_evaluations.group_evaluations,school_management.group_teacher"/>
+
+        <menuitem id="menu_course_documentation_list" parent="school_course_description.menu_course_description" action="action_course_documentation_list" sequence="10" />
         
         <record id="action_new_course_documentation" model="ir.actions.act_window">
             <field name="name">New Course Documentation</field>

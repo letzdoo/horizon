@@ -35,26 +35,34 @@ class CourseDocumentation(models.Model):
             ('published', 'Published'),
             ('archived', 'Archived'),
         ], string='Status', index=True, readonly=True, default='draft',
-        #track_visibility='onchange', TODO : is this useful for this case ?
+        track_visibility='onchange',
         copy=False,
         help=" * The 'Draft' status is used when a new program is created and not published yet.\n"
              " * The 'Published' status is when a program is published and available for use.\n"
              " * The 'Archived' status is used when a program is obsolete and not publihed anymore.")
     
-    course_id = fields.Many2one('school.course', string='Course')
+    course_id = fields.Many2one('school.course', string='Course', required=True)
+    
+    course_ids = fields.Many2many('school.course', 'school_doc_course_rel', 'doc_id', 'course_id', string='All Courses')
     
     name = fields.Char(related='course_id.name')
+    
+    remarks = fields.Char(string="Remarks")
+    
+    cycle_id = fields.Many2one(related='course_id.cycle_id')
+    level = fields.Integer(related='course_id.level')
+    course_group_id = fields.Many2one(related='course_id.course_group_id')
     
     @api.model
     def _needaction_domain_get(self):
         return [('state', '=', 'draft')]
     
-    @api.one
-    @api.constrains('state', 'course_id')
-    def _check_uniqueness(self):
-        num_active = self.env['school.course_documentation'].search_count([['course_id', '=', self.course_id.id],['state','=','published']])
-        if num_active > 1:
-            raise ValidationError("Only on documentation shall be published at a given time")
+    #@api.one
+    #@api.constrains('state', 'course_id')
+    #def _check_uniqueness(self):
+    #    num_active = self.env['school.course_documentation'].search_count([['course_id', '=', self.course_id.id],['state','=','published']])
+    #    if num_active > 1:
+    #        raise ValidationError("Only on documentation shall be published at a given time")
     
     @api.multi
     def unpublish(self):
@@ -71,23 +79,69 @@ class CourseDocumentation(models.Model):
     def archive(self):
         return self.write({'state': 'archived'})
 
+    author_id = fields.Many2one('res.users', string='Author')
+
+    staff_ids = fields.Many2many('res.partner', 'school_desc_res_partner_rel', 'desc_id', 'res_partner_id', string='Teachers', domain=[('teacher', '=', 1)])
+    credits = fields.Integer(related='course_id.credits', 
+        help="""Le nombre de crédits correspondant à l'activité est également une information préremplie par l'administration, en se  référant au profil d'enseignement du cursus.
+             ECTS signifie European Credits Transfer System, faisant référence au processus de Bologne. Au sens du décret paysage, 1 ECTS correspond à un investissement de temps de travail complet (cours, travaux, stages, travail personnel, évaluation,...) de la part de l'étudiant d'environ 30 heures.
+             Un programme annuel de 60 crédits correspond donc en moyenne à un investissement de temps de travail complet de la part de l'étudiant d'environ 1800 heures.""")
+    hours = fields.Integer(related='course_id.hours')
+    weight = fields.Float(related='course_id.weight', 
+        help="""Poids de l'évaluation de l'activité dans l'évaluation totale de l'unité. Cette pondération est définie par le tableau du règlement des études
+            
+            Crédits de              Coefficient               Cote finale sur
+            l'activité              multiplicateur
+            considérée             
+                1 à 3                   1                       20
+                4 à 6                   2                       40
+                7 à 10                  3                       60
+                11 à 14                 4                       80
+                15 à 19                 5                       100
+                20 et plus              6                       120
+            (Domaine de la Musique)
+                20 à 23 (DTAP)          6                       120
+                24 à 29 (DTAP)          9                       180
+                30 et plus (DTAP)       12                      240
+            
+            La pondération n'est évidemment pas nécessaire si l'UE ne comprend qu'une AA...
+            Exemple:
+            •	L'AA «banjo»vaut 23 crédits et possède donc une pondération 6 pour une cote finale d'évaluation sur 120;
+            •	L'AA «écoute critique de la discographie consacrée au banjo» vaut 1 crédit et possède donc une pondération 1 pour une cote finale d'évaluation sur 20;
+            •	L'UE «finalité principale» du « formation instrumentale / cordes / banjo» vaut au final 24 crédits avec une cote finale sur 140, somme des cotes des 2 AA. Cette cote finale est ensuite ramenée sur 20 pour l'encodage sur «Horizon»
+            
+            Note: Il est conservé la notion de pondération de l'UE au sein du programme du cycle à fin de calcul de la moyenne d'année ou du cycle. Cette moyenne ne conserve qu'un intérêt informatif pour les décisions de réussite de certaines unités d'enseignement par le jury de cycle ou pour l'attribution des mentions en fin de cycle. La pondération n'est pas demandée dans les descriptifs d'activités, elle est prévue par l'article 96 du Règlement des Études.	
+            """)
+    
+    mandatory = fields.Boolean(string="Mandatory", default=True)
+    
+    schedule = fields.Selection([('Q1','Q1'),('Q2','Q2'),('Q1Q2','Q1 & Q2'),('O','Other')], string="Schedule", required=True, default="Q1")
+    schedule_text = fields.Text(string="Schedule Text")
+    
     content = fields.Text(string="Content")
     method = fields.Text(string="Method")
     learning_outcomes = fields.Text(string="Learning outcomes")
-    competencies = fields.Text(string="Competencies")
+    references = fields.Text(string="References")
     evaluation_method = fields.Text(string="Evaluation method")
-    staff_ids = fields.One2many("school.course_staff", 'doc_id', string='Staff', copy=True)
-    language = fields.Text(string="Language")
-    schedule = fields.Text(string="Schedule")
-    rooms = fields.Text(string="Rooms")
+    #skills = fields.Text(string="Skills")
+    pre_co_requiered = fields.Text(string="Pre-Co requiered")
     
-class CourseStaff(models.Model):
-    '''CourseStaff'''
-    _name = 'school.course_staff'
-    _description = 'Staff of a course'
-    doc_id = fields.Many2one('school.course_documentation', string='Documentation')
-    teacher_id = fields.Many2one('res.partner', string='Teacher', domain=[('teacher', '=', True)])
-    role = fields.Char(string="Role")
+    language = fields.Selection([('F','French'),('E','English'),('O','Other')], string="Language", required=True, default="F",
+            help="""La langue d'enseignement et d'évaluation est en principe le français. L'obligation n'est totale que pour les masters à finalité didactique (pour lesquels une connaissance approfondie de la langue française est exigée). Des exceptions existent cependant au niveau des travaux de fin d'études, des enseignements de langues étrangères (évidemment...) et des activités d'intégration professionnelle.
+                D'après le décret paysage (article 75), «de manière générale, toute activité d'apprentissage d'un cursus de premier ou deuxième cycle peut être organisée et évaluée dans une autre langue si elle est organisée également en français; cette obligation est satisfaite pour les options ou pour les activités au choix individuel de l'étudiant, s'il existe au moins un autre choix possible d'options ou d'activités organisées en français.»
+                Pour le reste, «des activités peuvent être dispensées et évaluées dans une autre langue :
+                1° dans le premier cycle d'études, à raison d'au plus un quart des crédits;
+                2° pour les études menant au grade académique de master, sauf pour les crédits spécifiques à la finalité didactique, à raison de la moitié des crédits.»""")
+    
+    @api.model
+    def default_get(self, fields):
+        res = super(CourseDocumentation, self).default_get(fields)
+        if 'author_id' in fields:
+            res['author_id'] = self.env.user.id
+        if 'staff_ids' in fields:
+            if self.env.user.partner_id:
+                res['staff_ids'] = [(6, False, [self.env.user.partner_id.id])]
+        return res
     
 class Course(models.Model):
     '''Course'''
@@ -95,8 +149,21 @@ class Course(models.Model):
     
     documentation_id = fields.Many2one('school.course_documentation', string='Documentation', compute='compute_documentation_id')
     
+    documentation_ids = fields.Many2many('school.course_documentation', 'school_doc_course_rel', 'course_id', 'doc_id', string='All Docs')
+    
+    all_documentation_ids = fields.One2many('school.course_documentation', 'course_id', string='All Documentations')
+
+    all_documentation_count = fields.Integer(string="Documentation Count", compute="_compute_count")
+    
+    @api.one
+    @api.depends('all_documentation_ids')
+    def _compute_count(self):
+        self.all_documentation_count = len(self.all_documentation_ids)
+    
     @api.one
     def compute_documentation_id(self):
-        doc_ids = self.env['school.course_documentation'].search([['course_id', '=', self.id],['state','=','published']])
-        if doc_ids :
-            self.documentation_id = doc_ids[0]
+        docs = self.documentation_ids.filtered(lambda r: r.state == 'published')
+        if docs:
+            self.documentation_id = docs[0]
+        else:
+            self.documentation_id = False

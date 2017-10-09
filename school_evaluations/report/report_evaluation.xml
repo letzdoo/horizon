@@ -186,7 +186,7 @@
                                 <!-- Table -->
                                 <table class="table table-condensed table-bordered result_table">
                                     <colgroup>
-                                        <col style="width:300px"/>
+                                        <col style="width:500px"/>
                                         <col style="width:75px"/>
                                         <col style="width:75px"/>
                                         <col style="width:75px"/>
@@ -197,7 +197,6 @@
                                             <th>Résultats</th>
                                             <th>ECTS</th>
                                             <th>Acquis</th>
-                                            <th>Sec Sess</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -213,16 +212,19 @@
                                                     <t t-esc="course_group.total_credits"/>
                                                 </td>
                                                 <td>
-                                                    <span class="label label-success" t-if="course_group.acquiered == 'A'">Acquis</span>
-                                                    <span class="label label-warning" t-if="course_group.acquiered == 'NA'">Non Acquis</span>
-                                                </td>
-                                                <td>
+                                                    <t t-if="course_group.dispense">
+                                                        <span class="label label-info">Val</span>
+                                                    </t>
+                                                    <t t-if="not course_group.dispense">
+                                                        <span class="label label-success" t-if="course_group.acquiered == 'A'">Acquis</span>
+                                                        <span class="label label-warning" t-if="course_group.acquiered == 'NA'">Non Acquis</span>
+                                                    </t>
                                                 </td>
                                             </tr>
                                             <t t-foreach="course_group.course_ids" t-as="course">
                                                 <tr style="font-style: italic;font-size:80%;">
                                                     <td>
-                                                        <t t-esc="course.title"/> - <t t-esc="course.level"/> <i t-if="course.teacher_id" class="oe_fade"> - <t t-esc="course.teacher_id.name"/></i></td>
+                                                        <t t-esc="course.title"/> - <t t-esc="course.level"/> <i t-if="course.teacher_id" class="oe_fade"> - <t t-esc="course.teacher_id.name"/><span t-if="not course.source_course_id.has_second_session">*</span></i></td>
                                                     <td style=" text-align: right;">
                                                         <t t-if="course.second_session_result_bool">
                                                             <t t-esc="course.second_session_result_disp"/>
@@ -233,10 +235,6 @@
                                                     </td>
                                                     <td/>
                                                     <td/>
-                                                    <td>
-                                                        <span t-if="course.source_course_id.has_second_session">Oui</span>
-                                                        <span t-if="not course.source_course_id.has_second_session">Non</span>
-                                                    </td>
                                                 </tr>
                                             </t>
                                         </t>
@@ -245,14 +243,13 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-xs-10 col-xs-offset-1" style="font-size:small">
+                                * Pas de seconde session possible pour cette activité.
+                            </div>
+                        </div>    
+                        <div class="row">
                             <div class="col-xs-10 col-xs-offset-1">
-                                <h4><t t-esc="o.decision"/>
-                                <t t-if="o.program_id.grade">
-                                    <span t-field="o.program_id.grade"/>
-                                </t>
-                                <t t-if="o.program_id.grade_comments">
-                                    au motif <span t-field="o.program_id.grade_comments"/>
-                                </t></h4>
+                                <h4>A acquis ou valorisé <t t-esc="o.total_acquiered_credits"/> crédits ECTS. <t t-if="o.total_credits == o.total_acquiered_credits">A réussi l'ensemble de son PAE.</t></h4>
                             </div>
                         </div>
                         <div class="row" style="margin-bottom:80px;">
@@ -286,6 +283,70 @@
     
     -->
 
+    <report id="report_deliberation_program_annexe" 
+            model="school.individual_program" 
+            string="Deliberation Report Program" 
+            report_type="qweb-pdf" 
+            name="school_evaluations.report_deliberation_annexe_program" 
+            file="school_evaluations.report_deliberation_annexe_program"
+    />
+
+
+    <template id="report_deliberation_annexe_program">
+        <t t-call="report.html_container">
+            <t t-set="data_report_margin_top" t-value="40"/>
+            <t t-set="data_report_header_spacing" t-value="35"/>
+            <t t-call="report.external_layout">
+                <div class="page">
+                    <div class="container" style="margin-left:60px;margin-right:60px;">
+                        <div class="row mb32">
+                            <div class="col-xs-12 text-center">
+                                <h3>PROCÈS VERBAL DE DÉLIBÉRATION</h3>
+                                <h3>Conservatoire royal de Liège<br/>Boulevard Piercot, 29, 4000 LIÈGE</h3>
+                            </div>
+                        </div>
+                        <t t-foreach="docs" t-as="o">
+                        <div class="row">
+                            <div class="col-xs-12 mb16">
+                                <t t-if="o.student_id.gender == 'male'">Monsieur</t><t t-if="o.student_id.gender == 'female'">Madame</t> <span t-field="o.student_id"/>
+                                a obtenu le grade académique de <br/><span t-field="o.cycle_id.grade"/> en <span t-field="o.domain_id.long_name"/> : <span t-field="o.speciality_id"/> 
+                                <br/><t t-if="o.grade == 'without'"><span t-field="o.grade"/></t><t t-if="o.grade != 'without'">avec <span t-field="o.grade"/></t>
+                                <t t-if="o.grade_comments">au motif de <span t-field="o.grade_comments"/></t>
+                            </div>
+                        </div> 
+                        </t>
+                    </div>
+                    <div class="container" style="margin-left:60px;margin-right:60px;page-break-before:always;">
+                        <div class="row" style="margin-top:60px;">
+                            <div class="col-xs-10">
+                                Remarques : 
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:150px;">
+                            <div class="col-xs-6">
+                                Le/La Président-e du jury
+                            </div>
+                            <div class="col-xs-6">
+                                Le/La Secrétaire du jury
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:120px;">
+                            <div class="col-xs-6">
+                                Les Membres du jury
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:200px;">
+                            <div class="col-xs-9">
+                                Imprimé le <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
     <report id="report_deliberation_annexe" 
             model="school.individual_bloc" 
             string="Deliberation Report" 
@@ -297,8 +358,8 @@
 
     <template id="report_deliberation_annexe_content">
         <t t-call="report.html_container">
-            <t t-set="data_report_margin_top" t-value="30"/>
-            <t t-set="data_report_header_spacing" t-value="25"/>
+            <t t-set="data_report_margin_top" t-value="40"/>
+            <t t-set="data_report_header_spacing" t-value="35"/>
             <t t-call="report.external_layout">
                 <div class="page">
                     <div class="container" style="margin-left:60px;margin-right:60px;">
@@ -310,7 +371,7 @@
                         </div>
                     </div>
                     <t t-foreach="docs" t-as="o">
-                    <div class="container" style="page-break-before:always;" >
+                    <div class="container" style="page-break-before:always;">
                         <div class="row">
                             <div class="col-xs-8 col-xs-offset-1">
                                 <h4>Fiche de résultats - <t t-esc="o.name"/></h4>    
@@ -346,14 +407,24 @@
                                                     <t t-esc="course_group.title"/>
                                                 </td>
                                                 <td style=" text-align: right;">
-                                                    <t t-esc="course_group.final_result_disp"/>
+                                                    <t t-if="course_group.first_session_deliberated_result_bool or course_group.second_session_deliberated_result_bool">
+                                                        E
+                                                    </t>
+                                                    <t t-if="course_group.final_result_bool and not(course_group.first_session_deliberated_result_bool) and not(course_group.second_session_deliberated_result_bool)">
+                                                        <t t-esc="course_group.final_result_disp"/>
+                                                    </t>
                                                 </td>
                                                 <td style=" text-align: right;">
                                                     <t t-esc="course_group.total_credits"/>
                                                 </td>
                                                 <td>
-                                                    <span class="label label-success" t-if="course_group.acquiered == 'A'">Acquis</span>
-                                                    <span class="label label-warning" t-if="course_group.acquiered == 'NA'">Non Acquis</span>
+                                                    <t t-if="course_group.dispense">
+                                                        <span class="label label-info btn" t-att-data-course-group-id="course_group.id">Val</span>
+                                                    </t>
+                                                    <t t-if="not(course_group.dispense)">
+                                                        <span class="label label-success" t-if="course_group.acquiered == 'A'">Acq</span>
+                                                        <span class="label label-warning btn o_set_delib" t-if="course_group.acquiered == 'NA'" t-att-data-course-group-id="course_group.id">NoAcq</span>
+                                                    </t>
                                                 </td>
                                             </tr>
                                             <t t-foreach="course_group.course_ids" t-as="course">
@@ -361,14 +432,14 @@
                                                     <td>
                                                         <t t-esc="course.title"/> - <t t-esc="course.level"/> <i t-if="course.teacher_id" class="oe_fade"> - <t t-esc="course.teacher_id.name"/></i></td>
                                                     <td style=" text-align: right;">
-                                                        
+                                                        <t t-if="course_group.final_result_bool and not(course_group.first_session_deliberated_result_bool) and not(course_group.second_session_deliberated_result_bool)">
                                                         <t t-if="course.second_session_result_bool">
                                                             <t t-esc="course.second_session_result_disp"/>
                                                         </t>
                                                         <t t-if="course.second_session_result_bool == False">
                                                             <t t-esc="course.first_session_result_disp"/>
                                                         </t>
-                                                        
+                                                        </t>
                                                     </td>
                                                     <td/>
                                                     <td/>
@@ -381,6 +452,11 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-10 col-xs-offset-1">
+                                <h4>A acquis ou valorisé <t t-esc="o.total_acquiered_credits"/> crédits ECTS. <t t-if="o.total_credits == o.total_acquiered_credits">A réussi l'ensemble de son PAE.</t></h4>
+                            </div>
+                        </div>
+                        <!--<div class="row">
+                            <div class="col-xs-10 col-xs-offset-1">
                                 <h4><t t-esc="o.decision"/>
                                 <t t-if="o.program_id.grade">
                                     <span t-field="o.program_id.grade"/>
@@ -389,7 +465,7 @@
                                     au motif <span t-field="o.program_id.grade_comments"/>
                                 </t></h4>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                     </t>
                     <div class="container" style="margin-left:60px;margin-right:60px;page-break-before:always;">
@@ -436,8 +512,10 @@
             <form string="Evaluations by teatcher">
                 <group col="4">
                     <field name="year_id" create="false" delete='false' colspan="4"/>
+                    <field name="teacher_ids" colspan="4" widget="many2many_tags"/>
                     <field name="display_results" />
                     <field name="freeze_first_session" />
+                    <h3>Message</h3>
                     <field name="message" colspan="4" nolabel="1" default="Merci de ramener le document au secrétariat." />
                 </group>
                 <footer>
@@ -466,7 +544,7 @@
         <field name="target">new</field>
     </record>
 
-    <!-- <menuitem id="menu_evaluation_report_by_teacher" name="Evaluation by Teacher" action="action_evaluation_report_by_teacher" parent="school_management.menu_individual_bloc" /> -->
+    <menuitem id="menu_evaluation_report_by_teacher" name="Evaluation by Teacher" action="action_evaluation_report_by_teacher" parent="menu_main_evaluation" sequence="900" />
 
     <!--  Add wizard -->
     <act_window name="Evaluation by Teacher"

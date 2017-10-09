@@ -24,7 +24,8 @@
     <data>
       
       <!-- Top menu item -->
-      <menuitem name="Groups" id="menu_groups_program" icon="fa-book" web_icon="school_student_group,static/description/icon.png" sequence="20" />
+
+      <menuitem name="Groups" id="menu_groups_program" icon="fa-book" web_icon="school_student_group,static/description/icon.png" sequence="50" />
       
       <!-- <menuitem name="Student Groups" parent="menu_groups_program" id="menu_student_groups" sequence="10" /> -->
       
@@ -289,15 +290,17 @@
             <field name="inherit_id" ref="school_management.course_form" />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
-                <xpath expr="//sheet" position="inside">
-                    <field name="group_ids">
-                        <tree string="Course Session">
-                            <field name="year_id" />
-                            <field name="responsible_id" />
-                            <field name="short_name" />
-                            <field name="participant_count" />
-                        </tree>
-                    </field>
+                <xpath expr="//notebook" position="inside">
+                    <page name="student_groups" string="Student Groups">
+                      <field name="group_ids">
+                          <tree string="Student Groups">
+                              <field name="year_id" />
+                              <field name="responsible_id" />
+                              <field name="short_name" />
+                              <field name="participant_count" />
+                          </tree>
+                      </field>
+                    </page>
                 </xpath>
             </field>
         </record>
