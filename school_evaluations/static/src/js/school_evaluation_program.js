@@ -107,7 +107,7 @@ return Widget.extend({
         },
     },
     
-    
+
     init: function(parent, title) {
         this._super.apply(this, arguments);
         this.title = title;
@@ -179,22 +179,19 @@ return Widget.extend({
         
         switch (self.program.grade) {
           case "without":
-            self.program.grade_text = "sans grade";
+            self.program.grade_text = "Sans grade";
             break;
           case "satisfaction":
-            self.program.grade_text = "avec Satisfaction";
+            self.program.grade_text = "Satisfaction";
             break;
           case "distinction":
-            self.program.grade_text = "avec Distinction";
+            self.program.grade_text = "Distinction";
             break;
           case "second_class":
-            self.program.grade_text = "avec la Grande Distinction";
+            self.program.grade_text = "la Grande Distinction";
             break;
           case "first_class":
-            self.program.grade_text = "avec la Plus Grande Distinction";
-            break;
-          default:
-            self.program.grade_text = "sans grade";
+            self.program.grade_text = "la Plus Grande Distinction";
             break;
         };
         

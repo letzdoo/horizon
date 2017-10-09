@@ -270,6 +270,7 @@ var EvaluationsAction = Widget.extend({
         defs.push(this.program_model.query()
                             .context(this.context)
                             .order_by('student_name')
+                            .filter([['state','in',['progress']],['cycle_id.short_name', '=', 'M'],['program_completed', '=', true]])
                             .filter([['state','in',['progress']],['cycle_id.short_name', '=', 'M'],['program_completed', '=', true],['domain_id','=',this.school_domain]])
                             .all().then(
             function(data){

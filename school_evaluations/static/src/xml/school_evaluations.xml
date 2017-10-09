@@ -622,21 +622,17 @@
                         </span>
                     </div>
                     <div class="row vertical-align" style="margin-bottom: 10px;">
-                        <div class="col-md-2">
-                            <button class="btn btn_credits" type="button">
-                                Cycle<br/><span class="score_value"><t t-esc="widget.program.total_acquiered_credits"/></span>
-                            </button>
+                        <div class="col-md-2 text-center credits">
+                            Cycle<br/><span class="score_value"><t t-esc="widget.program.total_acquiered_credits"/></span>
                         </div>
-                        <div class="col-md-2" >
-                            <button class="btn btn_moyenne" type="button">
-                                Moyenne<br/><span class="score_value"><t t-esc="Math.round(widget.program.evaluation*10)/10"/></span>
-                            </button>
+                        <div class="col-md-2 text-center moyenne o_school_eval_details" >
+                            moyenne du cycle<br/><span class="score_value"><t t-esc="Math.round(widget.program.evaluation*10)/10"/></span>
                         </div>  
                         <div class="col-md-7">
-                            <div class="alert alert-success" role="alert"><span style="font-size: large;">A obtenu <t t-esc="widget.program.total_acquiered_credits"/> crédits ECTS et est sanctionné <span t-esc="widget.program.grade_text"/></span></div>
+                            <div class="alert alert-success" role="alert">A obtenu 180 crédits ECTS et est sanctionné avec Distinction</div>
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-lg btn-success btn-award">Réussite</button>
+                            <button type="button" class="btn btn-lg btn-success">Réussite</button>
                         </div>    
                     </div>
                     <!--<div class="row vertical-align">

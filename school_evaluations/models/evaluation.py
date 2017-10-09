@@ -116,6 +116,12 @@ class IndividualProgram(models.Model):
         total = sum(bloc_id.total_acquiered_credits if bloc_id.state in ['awarded_first_session','awarded_second_session','failed'] else 0 for bloc_id in self.bloc_ids)
         total_current = sum(bloc_id.total_credits if bloc_id.state in ['progress','postponed'] else 0 for bloc_id in self.bloc_ids)
         self.total_acquiered_credits = total + self.historical_bloc_1_credits + self.historical_bloc_2_credits
+        self.program_completed = self.total_acquiered_credits >= self.required_credits
+    
+    @api.depends('grade')
+    def _onchange_grade(self):
+        if self.grade:
+            graduation_date = fields.Date.today()
         self.total_registered_credits = self.total_acquiered_credits + total_current
         self.program_completed = self.required_credits > 0 and self.total_acquiered_credits >= self.required_credits
 
