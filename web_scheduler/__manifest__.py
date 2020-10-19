@@ -32,7 +32,7 @@ Extend calendar view to support scheduler.
     'license': 'AGPL-3',
     'author': 'be-Cloud.be (Jerome Sonnet)',
     'website': '',
-    'depends': ['web_calendar'],
+    'depends': ['web'],
     'data': [
         'views/web_scheduler.xml',
     ],
