@@ -7,13 +7,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-31 11:57+0000\n"
-"PO-Revision-Date: 2023-05-31 11:57+0000\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2023-05-31 12:25+0000\n"
+"Last-Translator: Weblate Admin <weblate@ito-invest.lu>\n"
+"Language-Team: French (Belgium) <https://weblate.ito-invest.lu/projects/"
+"horizon-16-0/horizon-16-0-school_webservices/fr_BE/>\n"
+"Language: fr_BE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: school_webservices
 #: model_terms:ir.ui.view,arch_db:school_webservices.view_res_company_form_webservices
@@ -28,7 +31,7 @@ msgstr ""
 #. module: school_webservices
 #: model:ir.model,name:school_webservices.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Sociétés"
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_school_webservice__create_uid
@@ -48,22 +51,22 @@ msgstr ""
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_school_webservice__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_res_company__fase_code
 msgid "FASE code"
-msgstr ""
+msgstr "Code FASE"
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_school_webservice__group_id
 msgid "Group"
-msgstr ""
+msgstr "Groupe"
 
 #. module: school_webservices
 #: model_terms:ir.ui.view,arch_db:school_webservices.view_webservice_form
 msgid "History"
-msgstr ""
+msgstr "Hsitorique"
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_school_webservice__id
@@ -78,12 +81,12 @@ msgstr ""
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_school_webservice__last_response
 msgid "Last Response"
-msgstr ""
+msgstr "Dernière réponse"
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_school_webservice__last_send
 msgid "Last Send"
-msgstr ""
+msgstr "Dernier envoi"
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_school_webservice__write_uid
@@ -98,7 +101,7 @@ msgstr ""
 #. module: school_webservices
 #: model_terms:ir.ui.view,arch_db:school_webservices.view_webservice_form
 msgid "Refresh"
-msgstr ""
+msgstr "Raffraichir"
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_school_webservice__wsdl_url
@@ -115,7 +118,7 @@ msgstr ""
 #: code:addons/school_webservices/models/school_webservices.py:0
 #, python-format
 msgid "Web Service response : %s"
-msgstr ""
+msgstr "Réponse du Web Service : %s"
 
 #. module: school_webservices
 #: model:ir.actions.act_window,name:school_webservices.action_webservice_list
@@ -127,26 +130,26 @@ msgstr ""
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_res_company__webservices_certificate
 msgid "Web Services Certificate"
-msgstr ""
+msgstr "Certificat pour les Web Services"
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_res_company__webservices_key_passwd
 msgid "Web Services Key Password"
-msgstr ""
+msgstr "Clé du certificat pour les Web Services"
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_res_company__webservices_key
 msgid "Web Services Keys"
-msgstr ""
+msgstr "Clés pour les Web Services"
 
 #. module: school_webservices
 #. odoo-python
 #: code:addons/school_webservices/models/school_webservices.py:0
 #, python-format
 msgid "You are not allowed to use the service %s."
-msgstr ""
+msgstr "Vous n'êtes pas autorisé à utiliser ce service %s."
 
 #. module: school_webservices
 #: model:ir.model.fields,field_description:school_webservices.field_school_webservice__name
 msgid "name"
-msgstr ""
+msgstr "Nom"
