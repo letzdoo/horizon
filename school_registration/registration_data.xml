@@ -35,4 +35,35 @@
         <field name="sequence">25</field>
         <field name="category">upload_file</field>
     </record>
+    <record id="formio_builder_js_options" model="formio.builder.js.options">
+        <field name="name">registration_formio_builder_js_options</field>
+        <field name="value">
+        {
+            'editForm': {
+                'file': [
+                    {
+                        'key': 'file',
+                        'components': [
+                            {'key': 'storage', 'defaultValue': 'url'},
+                            {'key': 'url', 'defaultValue': '/formio/storage/filestore'},
+                        ]
+                    }
+                ]
+            }
+        }
+        </field>
+    </record>
+    <record id="new_contact_form_builder" model="formio.builder">
+        <field name="name">new_contact</field>
+        <field name="title">Nouveau contact</field>
+        <field name="wizard">1</field>
+        <field name="wizard_on_next_page_save_draft">True</field>
+        <field name="portal">True</field>
+        <field name="portal_submit_done_url">/my/formio</field>
+        <field name="formio_version_id" ref="formio_builder_version"/>
+        <field name="formio_js_options_id" ref="formio_builder_js_options"/>
+        <field name="schema">
+        {}
+        </field>
+    </record>
 </odoo>

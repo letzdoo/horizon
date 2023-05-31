@@ -530,7 +530,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_bloc_filter_eval
 #: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_program_eval_filter
 msgid "Draft"
-msgstr "Brouillons"
+msgstr "Brouillon"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.evaluation_summary_content
@@ -708,6 +708,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_evaluation_by_teacher_content
 msgid "First Name"
 msgstr "Prénom"
+
 
 #. module: school_evaluations
 #: model:ir.model.fields.selection,name:school_evaluations.selection__school_evaluation_summary_wizard__session__first
@@ -1052,6 +1053,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_evaluations.evaluation_summary_content
 msgid "Name"
 msgstr "Nom"
+
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_courses_filter_eval
@@ -1449,6 +1451,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:school_evaluations.field_school_individual_course_summary__state
 msgid "State"
 msgstr "Etat"
+
 
 #. module: school_evaluations
 #: model:ir.model.fields.selection,name:school_evaluations.selection__school_individual_course_summary__state__6_success
