@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-04-23 09:49+0000\n"
-"PO-Revision-Date: 2023-05-31 11:52+0000\n"
+"PO-Revision-Date: 2023-05-31 12:25+0000\n"
 "Last-Translator: Weblate Admin <weblate@ito-invest.lu>\n"
 "Language-Team: French (Belgium) <https://weblate.ito-invest.lu/projects/"
 "horizon-16-0/horizon-16-0-school_management/fr_BE/>\n"
@@ -394,7 +394,7 @@ msgstr ""
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_res_partner_filter
 msgid "Companies"
-msgstr ""
+msgstr "Sociétés"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_res_partner_filter
@@ -700,7 +700,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:school_management.selection__school_program__state__draft
 #: model_terms:ir.ui.view,arch_db:school_management.view_program_filter
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.individual_program_form
@@ -1947,7 +1947,7 @@ msgstr "Spécialités"
 #: model:ir.model.fields,field_description:school_management.field_res_users__secondary_state_id
 #: model_terms:ir.ui.view,arch_db:school_management.view_partners_form_school
 msgid "State"
-msgstr "État"
+msgstr "Etat"
 
 #. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_school_individual_program__state
