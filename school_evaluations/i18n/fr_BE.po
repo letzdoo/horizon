@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-31 08:38+0000\n"
-"PO-Revision-Date: 2023-05-31 11:52+0000\n"
+"PO-Revision-Date: 2023-05-31 12:25+0000\n"
 "Last-Translator: Weblate Admin <weblate@ito-invest.lu>\n"
 "Language-Team: French (Belgium) <https://weblate.ito-invest.lu/projects/"
 "horizon-16-0/horizon-16-0-school_evaluations/fr_BE/>\n"
@@ -530,7 +530,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_bloc_filter_eval
 #: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_program_eval_filter
 msgid "Draft"
-msgstr "Brouillon"
+msgstr "Brouillons"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.evaluation_summary_content
@@ -707,7 +707,7 @@ msgstr ""
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_evaluation_by_teacher_content
 msgid "First Name"
-msgstr ""
+msgstr "Prénom"
 
 #. module: school_evaluations
 #: model:ir.model.fields.selection,name:school_evaluations.selection__school_evaluation_summary_wizard__session__first
@@ -977,7 +977,7 @@ msgstr ""
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_evaluation_by_teacher_content
 msgid "Last Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: school_evaluations
 #: model:ir.model.fields,field_description:school_evaluations.field_school_evaluation_summary_wizard__write_uid
@@ -1051,7 +1051,7 @@ msgstr ""
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.evaluation_summary_content
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.view_individual_courses_filter_eval
@@ -1448,7 +1448,7 @@ msgstr ""
 #. module: school_evaluations
 #: model:ir.model.fields,field_description:school_evaluations.field_school_individual_course_summary__state
 msgid "State"
-msgstr ""
+msgstr "Etat"
 
 #. module: school_evaluations
 #: model:ir.model.fields.selection,name:school_evaluations.selection__school_individual_course_summary__state__6_success
