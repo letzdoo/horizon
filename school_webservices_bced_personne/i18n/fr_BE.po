@@ -7,13 +7,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-31 11:57+0000\n"
-"PO-Revision-Date: 2023-05-31 11:57+0000\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2023-05-31 12:25+0000\n"
+"Last-Translator: Weblate Admin <weblate@ito-invest.lu>\n"
+"Language-Team: French (Belgium) <https://weblate.ito-invest.lu/projects/"
+"horizon-16-0/horizon-16-0-school_webservices_bced_personne/fr_BE/>\n"
+"Language: fr_BE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
@@ -23,6 +26,11 @@ msgid ""
 "                                be used for the student.\n"
 "                            </span>"
 msgstr ""
+"<span>\n"
+"                                En appuyant sur le bouton ci-dessous, un "
+"nouvel enregistrement sera créé auprès du BCED et un numéro bis sera \n"
+"                                utilisé pour l'étudiant concerné.\n"
+"                            </span>"
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
@@ -33,6 +41,15 @@ msgid ""
 "                                of the information, is perfromed on a weekly basis.\n"
 "                            </span>"
 msgstr ""
+"<span>\n"
+"                                En appuyant sur le bouton ci-dessous, une "
+"inscription sera enregistrée auprès du BCED pour cet entrée.\n"
+"                                La fiche de l'étudiant sera reliée à "
+"l'enregistrement du BCED et ses informations seront mises à jour. Une mise à "
+"jour \n"
+"                                des informations se fera toutes les semaines."
+"\n"
+"                            </span>"
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
@@ -40,16 +57,21 @@ msgid ""
 "<span>Please provide the legal context you will make use of the information "
 "provided by BCED.</span>"
 msgstr ""
+"<span>Merci de spécifier le contexte légal dans lequel les information du "
+"BCED seront utilisées.</span>"
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
 msgid "<strong>Great!</strong> This student has a record in BCED."
 msgstr ""
+"<strong>Parfait !</strong> cet étudiant est déjà enregistré auprès du BCED."
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
 msgid "<strong>Warning!</strong> This student has no record in BCED."
 msgstr ""
+"<strong>Attention !</strong> Cet étudiant n'est pas enregistré auprès du "
+"BCED."
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.view_partner_form_inherit_bced_personne
@@ -59,18 +81,18 @@ msgstr ""
 #. module: school_webservices_bced_personne
 #: model:res.groups,name:school_webservices_bced_personne.bced_allowed_group
 msgid "BCED Access Allowed"
-msgstr ""
+msgstr "Accès autorisé au Web Service BCED"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model,name:school_webservices_bced_personne.model_school_bced_inscription
 msgid "BCED Inscription"
-msgstr ""
+msgstr "Inscriptions auprès du BCED"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_res_partner__inscription_count
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_res_users__inscription_count
 msgid "BCED Inscription Count"
-msgstr ""
+msgstr "Nombre d'inscriptions auprès du BCED"
 
 #. module: school_webservices_bced_personne
 #: model:ir.actions.act_window,name:school_webservices_bced_personne.action_bced_inscription
@@ -83,14 +105,14 @@ msgstr ""
 #. module: school_webservices_bced_personne
 #: model:ir.model,name:school_webservices_bced_personne.model_school_bced_personne_summary
 msgid "BCED Personne Summary"
-msgstr ""
+msgstr "Résumé d'une entrée BCED"
 
 #. module: school_webservices_bced_personne
 #: model:ir.actions.act_window,name:school_webservices_bced_personne.action_bced_personne_view
 #: model:ir.model,name:school_webservices_bced_personne.model_school_bced_personne_wizard
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
 msgid "BCED Personne Wizard"
-msgstr ""
+msgstr "Outil de gestion du BCED"
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
@@ -98,27 +120,31 @@ msgid ""
 "Be aware that you should be authorized to make use of this information and that all usage of \n"
 "                            BCED data and services is under strict regulation and is logged for use control."
 msgstr ""
+"Merci de vérifier que vous êtes autorisé à utiliser ces informations, toutes "
+"les utilisations du service et \n"
+"                            des données du BCED sont soumis à une régulation "
+"stricte et sont conservée pour un contrôle d'utilisation."
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_summary__birthdate
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__student_birthdate_date
 msgid "Birth Date"
-msgstr ""
+msgstr "Date de naissance"
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_personne_wizard__state__candidate_bced
 msgid "Candidate BCED"
-msgstr ""
+msgstr "Enregistrement candidat"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__candidate_person_ids
 msgid "Candidate Persons"
-msgstr ""
+msgstr "Personnes candidates"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model,name:school_webservices_bced_personne.model_res_partner
@@ -128,7 +154,7 @@ msgstr ""
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
 msgid "Create BCED Personne"
-msgstr ""
+msgstr "Crée un enregistrement BCED"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription__create_uid
@@ -147,19 +173,19 @@ msgstr ""
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_summary__data
 msgid "Data"
-msgstr ""
+msgstr "Données"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription__display_name
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_summary__display_name
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_personne_wizard__state__draft
 msgid "Draft"
-msgstr ""
+msgstr "Brouillons"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription__end_date
@@ -171,35 +197,35 @@ msgstr "Date de fin"
 #: code:addons/school_webservices_bced_personne/wizard/bced_personne.py:0
 #, python-format
 msgid "Error while creating a bis number : %s"
-msgstr ""
+msgstr "Erreur lors de la création du numéro bis : %s"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "Error while getting person : %sstatus"
-msgstr ""
+msgstr "Erreur lors de la consultation de l'enregistrement BCED : %s"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "Error while publishing inscription with code  %s : %s "
-msgstr ""
+msgstr "Erreur lors de l'inscription auprès du BCED %s : %s "
 
 #. module: school_webservices_bced_personne
 #. odoo-python
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "Error while publishing inscription with code %s : %s"
-msgstr ""
+msgstr "Erreur lors de l'inscription auprès du BCED %s : %s"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "Error while publishing person : %sstatus"
-msgstr ""
+msgstr "Erreur lors de la création de l'enregistrement : %s"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
@@ -207,18 +233,18 @@ msgstr ""
 #: code:addons/school_webservices_bced_personne/wizard/bced_personne.py:0
 #, python-format
 msgid "Error while updating contact information : %s"
-msgstr ""
+msgstr "Erreur lors de la mise à jour des informations du contact : %s"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_summary__firstname
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__student_firstname
 msgid "First Name"
-msgstr ""
+msgstr "Prénom"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_personne_wizard__state__bced
 msgid "Has BCED"
-msgstr ""
+msgstr "Enregistré au BCED"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription__id
@@ -237,7 +263,7 @@ msgstr ""
 #: code:addons/school_webservices_bced_personne/models/res_company.py:0
 #, python-format
 msgid "Information updated from BCED"
-msgstr ""
+msgstr "Information de contacts mise à jour"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription____last_update
@@ -250,7 +276,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_summary__lastname
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__student_lastname
 msgid "Last Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription__write_uid
@@ -270,28 +296,28 @@ msgstr ""
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription__legal_context
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__legal_context
 msgid "Legal Context"
-msgstr ""
+msgstr "Contexte légal"
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
 msgid "Link to BCED Personne"
-msgstr ""
+msgstr "Lien vers le BCED"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__student_name
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_res_users__national_id
 msgid "National ID"
-msgstr ""
+msgstr "Niss"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_summary__niss
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__student_niss
 msgid "Niss"
-msgstr ""
+msgstr "Niss"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_personne_wizard__state__no_bced
@@ -304,14 +330,14 @@ msgstr ""
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "No partner provided"
-msgstr ""
+msgstr "Pas de contact sélectionné"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "No record provided"
-msgstr ""
+msgstr "Pas d'enregistrement fournis"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
@@ -320,16 +346,17 @@ msgstr ""
 msgid ""
 "No reference found for this partner, please submit first to BCDE service."
 msgstr ""
+"Pas de référence trouvée pour ce contact, merci de l'inscrire auprès du BCED."
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription__partner_id
 msgid "Partner"
-msgstr ""
+msgstr "Contact"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_personne_wizard__legal_context__empty
 msgid "Please select a legal context"
-msgstr ""
+msgstr "Merci de sélectionner un contexte légal"
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.view_bced_inscription_form
@@ -339,7 +366,7 @@ msgstr "Publier"
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription__reference
 msgid "Reference"
-msgstr ""
+msgstr "Référence"
 
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.view_bced_inscription_form
@@ -349,45 +376,45 @@ msgstr "Révoquer"
 #. module: school_webservices_bced_personne
 #: model_terms:ir.ui.view,arch_db:school_webservices_bced_personne.bced_personne_view
 msgid "Search BCED"
-msgstr ""
+msgstr "Recherche BCED"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__selected_person_id
 msgid "Selected Person"
-msgstr ""
+msgstr "Sélectionner un enregistrement"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_inscription__start_date
 msgid "Start Date"
-msgstr ""
+msgstr "Date de début"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__state
 msgid "State"
-msgstr ""
+msgstr "Etat"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_wizard__student_id
 msgid "Student"
-msgstr ""
+msgstr "Etudiant"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_inscription__legal_context__student
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_personne_wizard__legal_context__student
 msgid "This partner applies to become a student"
-msgstr ""
+msgstr "Ce contact s'est enregistré pour devenir étudiant"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_inscription__legal_context__teacher
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_personne_wizard__legal_context__teacher
 msgid "This partner applies to become a teacher"
-msgstr ""
+msgstr "Ce contact s'est enregistré pour devenir enseignant"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_inscription__legal_context__employee
 #: model:ir.model.fields.selection,name:school_webservices_bced_personne.selection__school_bced_personne_wizard__legal_context__employee
 msgid "This partner applies to become an employee"
-msgstr ""
+msgstr "Ce contact s'est enregistré pour devenir employé"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model,name:school_webservices_bced_personne.model_res_users
@@ -405,12 +432,12 @@ msgstr ""
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "Web Service response : %s"
-msgstr ""
+msgstr "Réponse du Web Service : %s"
 
 #. module: school_webservices_bced_personne
 #: model:ir.model.fields,field_description:school_webservices_bced_personne.field_school_bced_personne_summary__wizard_id
 msgid "Wizard"
-msgstr ""
+msgstr "Outil"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
@@ -418,6 +445,8 @@ msgstr ""
 #, python-format
 msgid "You must have a birthdate on the partner to get a bis number"
 msgstr ""
+"Le contact doit avoir une date de naissance encodée pour créer un "
+"enregistrement bis"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
@@ -425,13 +454,15 @@ msgstr ""
 #, python-format
 msgid "You must have a birthdate on the partner to search for a person"
 msgstr ""
+"Le contact doit avoir une date de naissance encodée pour permettre la "
+"recherche"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "You must have a fase code on current company to test this service"
-msgstr ""
+msgstr "Un code FASE doit être encodé sur l'école pour tester ce service."
 
 #. module: school_webservices_bced_personne
 #. odoo-python
@@ -439,20 +470,21 @@ msgstr ""
 #, python-format
 msgid "You must have a firstname on the partner to get a bis number"
 msgstr ""
+"Le contact doit avoir une prénom encodé pour créer un enregistrement bis"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "You must have a lastname on the partner to get a bis number"
-msgstr ""
+msgstr "Le contact doit avoir une nom encodé pour créer un enregistrement bis"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "You must have a lastname on the partner to search for a person"
-msgstr ""
+msgstr "Le contact doit avoir une nom encodé pour permettre la recherche"
 
 #. module: school_webservices_bced_personne
 #. odoo-python
@@ -462,10 +494,12 @@ msgstr ""
 #, python-format
 msgid "You must have a national id on current user to test this service"
 msgstr ""
+"Vous devez avec un numéro Niss encodé sur votre utilisateur pour utiliser ce "
+"service. Merci de contacter l'administrateur."
 
 #. module: school_webservices_bced_personne
 #. odoo-python
 #: code:addons/school_webservices_bced_personne/models/school_webservices.py:0
 #, python-format
 msgid "You must provide an inscription to publish"
-msgstr ""
+msgstr "Il faut sélectionner une inscription pour la publier"
