@@ -412,8 +412,8 @@
                               </strong>
                               <span class="text-muted" t-esc="record.uid.value"/>
                               <span class="o_kanban_record_subtitle"><span t-esc="record.state.value"/></span>
-                              <span t-if="record._compute_missing_eval_count.value &gt; 0" class="translate-middle badge rounded-pill bg-danger">
-                                <t t-esc="record._compute_missing_eval_count.value"/>
+                              <span t-if="record.missing_eval_count.value &gt; 0" class="translate-middle badge rounded-pill bg-danger">
+                                <t t-esc="record.missing_eval_count.value"/>
                                 <span class="visually-hidden">évaluation(s) manquante(s)</span>
                               </span>
                           </div>
