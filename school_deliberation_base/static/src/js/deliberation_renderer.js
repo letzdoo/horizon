@@ -75,7 +75,7 @@ odoo.define('deliberation.DeliberationRenderer', function (require) {
                             <button class="btn btn_credits" type="button">
                                 Evaluation<br/><span class="score_value">${record.evaluation}</span>
                             </button>
-                            <button class="btn btn_credits" type="button">
+                            <button class="btn btn_credits mt-2" type="button">
                                 ECTS Total<br/><span class="score_value">${record.total_acquiered_credits}/${record.total_registered_credits}</span>
                             </button>
                         </div>
@@ -89,10 +89,14 @@ odoo.define('deliberation.DeliberationRenderer', function (require) {
                 $div.append($list);
                 if(record.total_acquiered_credits >= record.total_registered_credits) {
                     $div.append(`
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-lg btn_credits">Délibérer</button>
+                            <div class="col-md-1">
+                                <button type="button" class="btn btn_credits">Délibérer</button>
                             </div>
                     `);
+                } else {
+                    $div.append(
+                        $('<button>').addClass('deliberation_next_button btn btn-lg').text('Next').click(ev => this.trigger_up('deliberate_next_bloc'))
+                    );
                 }
                 $col2.append($div);
             }
