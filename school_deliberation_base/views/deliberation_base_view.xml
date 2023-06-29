@@ -329,7 +329,6 @@
                               <div class="col">
                                 <span class="badge badge-primary" t-esc="record.state.value"/>
                               </div>
-                              <t t-debug='pdb'/>
                               <div class="col" t-if="record.total_acquiered_credits.raw_value &gt;= record.total_registered_credits.raw_value">
                                 <span class="badge badge-success"><t t-esc="record.total_acquiered_credits.value"/>/<t t-esc="record.total_registered_credits.value"/></span>
                               </div>
