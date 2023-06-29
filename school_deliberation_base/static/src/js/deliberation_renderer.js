@@ -75,6 +75,9 @@ odoo.define('deliberation.DeliberationRenderer', function (require) {
                             <button class="btn btn_credits" type="button">
                                 Evaluation<br/><span class="score_value">${record.evaluation}</span>
                             </button>
+                            <button class="btn btn_credits" type="button">
+                                ECTS Total<br/><span class="score_value">${record.total_acquiered_credits}/${record.total_registered_credits}</span>
+                            </button>
                         </div>
                 `);
                 var $list = $('<h2>',{class : 'col-md-8'});
@@ -84,11 +87,13 @@ odoo.define('deliberation.DeliberationRenderer', function (require) {
                     $list.append($span);
                 }
                 $div.append($list);
-                $div.append(`
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-lg program_award">Délibérer</button>
-                        </div>
-                `);
+                if(record.total_acquiered_credits >= record.total_registered_credits) {
+                    $div.append(`
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-lg btn_credits">Délibérer</button>
+                            </div>
+                    `);
+                }
                 $col2.append($div);
             }
             
