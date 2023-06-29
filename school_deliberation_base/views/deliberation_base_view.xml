@@ -309,6 +309,7 @@
           <field name="total_registered_credits"/>
           <templates>
             <t t-name="kanban-box">
+              <div class="o_kanban_image_fill_left" t-attf-style="background-image: url(#{kanban_image('res.partner', 'image_128', record.student_id.raw_value)})" role="img"/>
               <div class="o_kanban_record_top">
                   <div class="o_kanban_record_headings">
                       <div class="o_kanban_record_title">
@@ -323,7 +324,7 @@
                               <div class="col">
                                 <span class="badge badge-primary" t-esc="record.state.value"/>
                               </div>
-                              <div class="col" t-if="record.total_acquiered_credits.value &gt;= record.total_registered_credits.value">
+                              <div class="col" t-if="record.total_acquiered_credits.value >= record.total_registered_credits.value">
                                 <span class="badge badge-success"><t t-esc="record.total_acquiered_credits.value"/>/<t t-esc="record.total_registered_credits.value"/></span>
                               </div>
                               <div class="col" t-else="1">
