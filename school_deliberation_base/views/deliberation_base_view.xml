@@ -309,8 +309,13 @@
           <field name="total_registered_credits"/>
           <templates>
             <t t-name="kanban-box">
-              <div class="o_kanban_image_fill_left" t-attf-style="background-image: url(#{kanban_image('res.partner', 'image_128', record.student_id.raw_value)})" role="img"/>
-              <div class="o_kanban_record_top">
+              <div t-attf-class="deliberation_bloc_{{record.state.raw_value}} oe_kanban_global_click o_kanban_record_has_image_fill o_deliberation_bloc_kanban o_kanban_record">
+                <div class="o_kanban_record_top">
+                  <div class="o_kanban_image">
+                    <div class="o_kanban_image_wrapper">
+                      <img t-attf-src="#{kanban_image('res.partner', 'image_128', record.student_id.raw_value)}"/>
+                    </div>
+                  </div>
                   <div class="o_kanban_record_headings">
                       <div class="o_kanban_record_title">
                           <strong><span t-esc="record.name.value"/></strong>
@@ -324,7 +329,8 @@
                               <div class="col">
                                 <span class="badge badge-primary" t-esc="record.state.value"/>
                               </div>
-                              <div class="col" t-if="record.total_acquiered_credits.value >= record.total_registered_credits.value">
+                              <t t-debug='pdb'/>
+                              <div class="col" t-if="record.total_acquiered_credits.raw_value &gt;= record.total_registered_credits.raw_value">
                                 <span class="badge badge-success"><t t-esc="record.total_acquiered_credits.value"/>/<t t-esc="record.total_registered_credits.value"/></span>
                               </div>
                               <div class="col" t-else="1">
@@ -334,6 +340,7 @@
                           </div>
                       </div>
                   </div>
+                </div>
               </div>
             </t>
           </templates>
