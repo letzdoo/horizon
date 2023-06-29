@@ -90,7 +90,7 @@ odoo.define('deliberation.DeliberationRenderer', function (require) {
                 if(record.total_acquiered_credits >= record.total_registered_credits) {
                     $div.append(`
                             <div class="col-md-1">
-                                <button type="button" class="btn btn_credits">Délibérer</button>
+                                <button type="button" class="btn btn_credits program_award">Délibérer</button>
                             </div>
                     `);
                 } else {
