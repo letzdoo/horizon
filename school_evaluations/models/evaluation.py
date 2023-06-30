@@ -356,50 +356,42 @@ class IndividualBloc(models.Model):
     @api.depends('course_group_ids.total_credits','course_group_ids.total_hours','course_group_ids.acquiered','course_group_ids.first_session_computed_result_bool', 'course_group_ids.is_ghost_cg')
     def compute_credits(self):
         for rec in self:
-            if rec.state in ['progress','postponed','awarded_first_session','awarded_second_session'] :
-                rec.total_acquiered_credits = sum([icg.total_credits for icg in rec.course_group_ids if icg.acquiered == 'A' and not icg.is_ghost_cg])
-                rec.total_acquiered_hours = sum([icg.total_hours for icg in rec.course_group_ids if icg.acquiered == 'A' and not icg.is_ghost_cg])
-                rec.total_not_acquiered_credits = rec.total_credits - rec.total_acquiered_credits
-                rec.total_not_acquiered_hours = rec.total_hours - rec.total_acquiered_hours
-                if rec.level == '1A1C' :
-                    if rec.total_acquiered_credits == rec.total_credits :
-                        rec.decision = 'A validé tous les ECTS et est autorisé(e) à poursuivre son parcours sans restriction.'
-                    elif rec.total_acquiered_credits < 45 and rec.total_acquiered_credits >= 30 :
-                        rec.decision = 'A validé au moins de 30 ECTS mais moins de 45. Peut compléter son programme ou non avec accord du jury.'
-                    elif rec.total_acquiered_credits < 30 :
-                        rec.decision = 'A validé moins de 30 ECTS. N’a pas rempli les conditions de réussite de son programme.'
-                    else :
-                        rec.decision = 'A validé au moins 45 ECTS et est autorisé à poursuivre son parcours tout en représentant les UE non validées.'
+            rec.total_acquiered_credits = sum([icg.total_credits for icg in rec.course_group_ids if icg.acquiered == 'A' and not icg.is_ghost_cg])
+            rec.total_acquiered_hours = sum([icg.total_hours for icg in rec.course_group_ids if icg.acquiered == 'A' and not icg.is_ghost_cg])
+            rec.total_not_acquiered_credits = rec.total_credits - rec.total_acquiered_credits
+            rec.total_not_acquiered_hours = rec.total_hours - rec.total_acquiered_hours
+            if rec.level == '1A1C' :
+                if rec.total_acquiered_credits == rec.total_credits :
+                    rec.decision = 'A validé tous les ECTS et est autorisé(e) à poursuivre son parcours sans restriction.'
+                elif rec.total_acquiered_credits < 45 and rec.total_acquiered_credits >= 30 :
+                    rec.decision = 'A validé au moins de 30 ECTS mais moins de 45. Peut compléter son programme ou non avec accord du jury.'
+                elif rec.total_acquiered_credits < 30 :
+                    rec.decision = 'A validé moins de 30 ECTS. N’a pas rempli les conditions de réussite de son programme.'
                 else :
-                    rec.decision = 'Cycle en cours.'
-            else:
-                # Don't compute if draft or finished
-                pass
-
+                    rec.decision = 'A validé au moins 45 ECTS et est autorisé à poursuivre son parcours tout en représentant les UE non validées.'
+            else :
+                rec.decision = 'Cycle en cours.'
+        
     @api.depends('course_group_ids.final_result','course_group_ids.total_weight','course_group_ids.acquiered', 'course_group_ids.is_ghost_cg')
     def compute_evaluation(self):
         for rec in self:
-            if rec.state in ['progress','postponed'] :
-                total = 0
-                total_first = 0
-                total_second = 0
-                total_weight = 0
-                for icg in rec.course_group_ids:
-                    if icg.acquiered == 'A' :
-                        total += icg.final_result * icg.total_weight
-                        total_first += icg.first_session_result * icg.total_weight
-                        total_second += icg.second_session_result * icg.total_weight
-                        total_weight += icg.total_weight
-                if total_weight > 0 :
-                    rec.evaluation = total / total_weight
-                    rec.first_session_result = total_first / total_weight
-                    rec.second_session_result = total_second / total_weight
-                else:
-                    _logger.debug('total_weight is 0 on Bloc %s' % rec.name)
-                    rec.evaluation = None
+            total = 0
+            total_first = 0
+            total_second = 0
+            total_weight = 0
+            for icg in rec.course_group_ids:
+                if icg.acquiered == 'A' :
+                    total += icg.final_result * icg.total_weight
+                    total_first += icg.first_session_result * icg.total_weight
+                    total_second += icg.second_session_result * icg.total_weight
+                    total_weight += icg.total_weight
+            if total_weight > 0 :
+                rec.evaluation = total / total_weight
+                rec.first_session_result = total_first / total_weight
+                rec.second_session_result = total_second / total_weight
             else:
-                # Don't compute if draft or finished
-                pass
+                _logger.debug('total_weight is 0 on Bloc %s' % rec.name)
+                rec.evaluation = None
         
 class IndividualCourseGroup(models.Model):
     '''Individual Course Group'''
