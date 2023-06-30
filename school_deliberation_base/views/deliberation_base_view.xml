@@ -404,28 +404,42 @@
           <field name="student_id"/>
           <field name="uid"/>
           <field name="state"/>
+          <field name="total_acquiered_credits"/>
+          <field name="total_credits"/>
           <field name="missing_eval_count"/>
           <templates>
             <t t-name="kanban-box">
-              <div t-attf-class="deliberation_bloc_{{record.state.raw_value}} oe_kanban_global_click o_kanban_record_has_image_fill o_deliberation_bloc_kanban o_kanban_record" style="width:500px;">
-                  <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image: url(#{kanban_image('res.partner', 'image_128', record.student_id.raw_value)})" role="img"/>
-                  <div class="oe_kanban_details ml8">
-                      <div class="o_kanban_record_top">
-                          <div class="o_kanban_record_headings">
-                              <strong class="o_kanban_record_title">
-                                  <div>
-                                      <strong><span t-esc="record.name.value"/></strong>
-                                  </div>
-                              </strong>
-                              <span class="text-muted" t-esc="record.uid.value"/>
-                              <span class="o_kanban_record_subtitle"><span t-esc="record.state.value"/></span>
-                              <span t-if="record.missing_eval_count.value &gt; 0" class="translate-middle badge rounded-pill bg-danger">
-                                <t t-esc="record.missing_eval_count.value"/>
-                                <span class="visually-hidden">évaluation(s) manquante(s)</span>
-                              </span>
+              <div t-attf-class="deliberation_bloc_{{record.state.raw_value}} oe_kanban_global_click o_kanban_record_has_image_fill o_deliberation_bloc_kanban o_kanban_record">
+                <div class="o_kanban_record_top">
+                  <div class="o_kanban_image">
+                    <div class="o_kanban_image_wrapper">
+                      <img t-attf-src="#{kanban_image('res.partner', 'image_128', record.student_id.raw_value)}"/>
+                    </div>
+                  </div>
+                  <div class="o_kanban_record_headings">
+                      <div class="o_kanban_record_title">
+                          <strong><span t-esc="record.name.value"/></strong>
+                      </div>
+                      <div class="o_kanban_record_subtitle">
+                        <span class="text-muted" t-esc="record.uid.value"/>
+                      </div>
+                      <div class="o_kanban_record_details">
+                          <div class="container mt-2 h3">
+                            <div class="row">
+                              <div class="col">
+                                <span class="badge badge-primary" t-esc="record.state.value"/>
+                              </div>
+                              <div class="col" t-if="record.total_acquiered_credits.raw_value &gt;= record.total_credits.raw_value">
+                                <span class="badge badge-success"><t t-esc="record.total_acquiered_credits.value"/>/<t t-esc="record.total_credits.value"/></span>
+                              </div>
+                              <div class="col" t-else="1">
+                                <span class="badge badge-warning"><t t-esc="record.total_acquiered_credits.value"/>/<t t-esc="record.total_credits.value"/></span>
+                              </div>
+                            </div>
                           </div>
                       </div>
                   </div>
+                </div>
               </div>
             </t>
           </templates>
