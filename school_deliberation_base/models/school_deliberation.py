@@ -154,7 +154,7 @@ class IndividualProgram(models.Model):
                 'type': 'ir.actions.act_window',
                 'name': 'Deliberate Program',
                 'target': 'new',
-                'flags': { 'action_buttons': False, 'headless': True },
+                'flags': { 'action_buttons': False, 'headless': True},
                 'res_model':  'school.program_deliberation',
                 'res_id': program_deliberation_ids[0].id,
                 'context': self._context,
@@ -165,7 +165,7 @@ class IndividualProgram(models.Model):
                 'type': 'ir.actions.act_window',
                 'name': 'Deliberate Program',
                 'target': 'new',
-                'flags': { 'action_buttons': False, 'headless': True },
+                'flags': { 'action_buttons': False, 'headless': True},
                 'res_model':  'school.program_deliberation',
                 'context': self._context,
                 'views': [[False, 'form']],
@@ -186,9 +186,9 @@ class IndividualBloc(models.Model):
             count = 0
             for cg in rec.course_group_ids.filtered(lambda r: r.state in ['5_progress']) :
                 for c in cg.course_ids:
-                    if rec.state != 'progress' and not c.first_session_result_bool:
+                    if rec.state == 'progress' and not c.first_session_result_bool:
                         count = count + 1
-                    if rec.state != 'postponed' and not c.second_session_result_bool:
+                    if rec.state == 'postponed' and not c.second_session_result_bool:
                         count = count + 1
             rec.missing_eval_count = count
     
@@ -207,7 +207,6 @@ class IndividualBloc(models.Model):
             'views': [[self.env.ref('school_deliberation_base.deliberation_bloc_kanban_view').id,'kanban']],
         }
         
-        
     def action_deliberate_bloc(self):
         self.ensure_one()
         bloc_deliberation_ids = self.env['school.bloc_deliberation'].search([
@@ -219,8 +218,8 @@ class IndividualBloc(models.Model):
                 'type': 'ir.actions.act_window',
                 'name': 'Deliberate Bloc',
                 'target': 'new',
-                'flags': { 'action_buttons': True, 'headless': True },
-                'res_model':  'school.bloc_deliberation',
+                'flags': {'action_buttons': True, 'headless': True},
+                'res_model': 'school.bloc_deliberation',
                 'res_id': bloc_deliberation_ids[0].id,
                 'context': self._context,
                 'views': [[False, 'form']],
