@@ -42,7 +42,7 @@ class school_course_documentation(http.Controller):
     def course_group_doc(self, cg, redirect=None, **post):
         values = {
             'course' : cg,
-            'doc' : course.documentation_id,
+            'doc' : cg.documentation_id,
         }
         return request.website.render("school_course_description.school_course", values)
         
