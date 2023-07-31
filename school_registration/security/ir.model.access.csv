@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+school_registration_employee,school_registration_employee,model_school_registration,school_management.group_employee,1,1,1,1
