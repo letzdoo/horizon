@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -18,6 +19,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+
 import logging
 import time
 import werkzeug.utils
@@ -28,14 +30,14 @@ import dateutil
 import dateutil.parser
 import dateutil.relativedelta
 
-from odoo import api, fields
+from odoo import api, fields, models
 from odoo import http
 from odoo.http import request
 
 _logger = logging.getLogger(__name__)
 
+
 class GoogleServiceController(http.Controller):
-    
     @http.route('/google_documents/authorize', type='http', auth='user')
     def google_drive_service_authorize(self, state, code, scope, redirect=None, *args, **kw):
         _logger.info('Authorize response : %s %s %s' % (state, code, scope))

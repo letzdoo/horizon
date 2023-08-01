@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -27,6 +28,7 @@ from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
+
 
 class Partner(models.Model):
     '''Partner'''
