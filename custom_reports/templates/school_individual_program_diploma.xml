@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <template id="report_school_individual_program_diploma_content_page" name="Program Details Content">
-        
         <head>
-
-            <!-- <meta charset="utf-8"/>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1"></meta> -->
-
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-          
-          
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap"
+                  rel="stylesheet"/>
             <title>Diplôme</title>
-            <style>
 
-              p{
+            <style>
+                p{
                 margin:0px;
                 padding:0px;
-              }
-          
-          
-              h1,h2,h3,h4,h5,h6,h7,h8{
+                }
+
+
+                h1,h2,h3,h4,h5,h6,h7,h8{
                 position: relative;
                 font-size:1.15em;
                 line-height: 1.1;
@@ -30,95 +23,93 @@
                 color: black;
                 margin:0px;
                 padding:0px;
-              }
-          
-              .diploma__wrapper{
+                }
+
+                .diploma__wrapper{
                 background: white;
                 padding:1.5cm;
                 text-align:center;
-              }
-          
-              .diploma__inside{
+                }
+
+                .diploma__inside{
                 border: 1px solid black;
                 padding:0.5cm;
-              }
-          
-              .diploma__place{
+                }
+
+                .diploma__place{
                 margin-bottom:20px;
-              }
-          
-              .place__title{
+                }
+
+                .place__title{
                 margin-bottom:2px;
-              }
-          
-              .intro__title{
+                }
+
+                .intro__title{
                 font-size:1.3em;
-              }
-          
-              .intro__section{
+                }
+
+                .intro__section{
                 font-size:1.1em;
                 font-weight:500;
-              }
-          
-              .logo__logo{
+                }
+
+                .logo__logo{
                 width:45px;
                 height:auto;
                 display:inline-block;
-              }
-          
-              .diploma__logo{
+                }
+
+                .diploma__logo{
                 margin:15px 0px;
-              }
-          
-              .diploma__name{
+                }
+
+                .diploma__name{
                 font-size:1.5em;
                 font-weight:500;
                 margin-bottom:5px;
-          
-              }
-          
-              .diploma__name em{
+
+                }
+
+                .diploma__name em{
                 font-style:normal;
                 font-weight:700;
-              }
-          
-              .diploma__infos{
+                }
+
+                .diploma__infos{
                 margin-top:30px;
-              }
-          
-              .text--important{
+                }
+
+                .text--important{
                 font-size:1.2em;
                 font-weight:700;
                 font-style:normal;
-              }
-          
-              .diploma__rank{
+                }
+
+                .diploma__rank{
                 margin-top:10px;
-              }
-          
-              .rank__name{
+                }
+
+                .rank__name{
                 margin-bottom:20px;
-              }
-          
-              .diploma__footer{
+                }
+
+                .diploma__footer{
                 margin-top:60px;
-              }
-          
-              .signatures__list{
+                }
+
+                .signatures__list{
                 margin-bottom:30px;
-              }
-          
-              .signature__item{
+                }
+
+                .signature__item{
                 width:24.5%;
                 display:inline-block;
                 font-weight:700;
-              }
-          
-          
-          
+                }
             </style>
-          </head>
-            <div class="diploma__wrapper" style="line-height: 1.5;
+
+        </head>
+        <div class="diploma__wrapper" style="line-height: 1.5;
             font-size: 12px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -126,7 +117,7 @@
             font-weight: 400;
             color:black;
             margin:0px auto;">
-              <div class="diploma__inside">
+            <div class="diploma__inside">
 
                 <!-- Setting useful variables -->
                 <t t-set="instrument_name" t-value="doc.source_program_id.speciality_id.name"/>
@@ -136,132 +127,168 @@
                 <t t-set="student_gender" t-value="True if doc.student_id.gender == 'male' else False"/>
                 <t t-set="student_birth_place_city" t-value="doc.student_id.birthplace"/>
                 <t t-set="student_birth_place_country" t-value="doc.student_id.birthcountry.name"/>
-                <t t-set="student_birth_date_formatted" t-value="doc.return_date_formatted(doc.student_id.birthdate_date)"/>
+                <t t-set="student_birth_date_formatted"
+                   t-value="doc.return_date_formatted(doc.student_id.birthdate_date)"/>
                 <t t-set="student_first_name" t-value="doc.student_id.firstname"/>
                 <t t-set="student_family_name" t-value="doc.student_id.lastname"/>
-                <t t-if="doc.grade" t-set="student_success_grade" t-value="dict(doc.fields_get(allfields=['grade'])['grade']['selection'])[doc.grade]"/>
+                <t t-if="doc.grade" t-set="student_success_grade"
+                   t-value="dict(doc.fields_get(allfields=['grade'])['grade']['selection'])[doc.grade]"/>
                 <t t-set="student_diploma_grade" t-value="doc.source_program_id.cycle_id.grade"/>
                 <t t-set="min_required_credits" t-value="doc.required_credits"/>
 
                 <div class="diploma__place">
-                  <h2 class="place__title">COMMUNAUTÉ FRANÇAISE DE BELGIQUE</h2>
-                  <p>Enseignement supérieur de plein exercice de type <t t-esc="cycle_type"/></p>
+                    <h2 class="place__title">COMMUNAUTÉ FRANÇAISE DE BELGIQUE</h2>
+                    <p>Enseignement supérieur de plein exercice de type
+                        <t t-esc="cycle_type"/>
+                    </p>
                 </div>
-          
+
                 <div class="diploma__intro">
-                  <h1 class="intro__title">Conservatoire royal de Liège</h1>
-                  <p>École supérieure des Arts</p>
-                  <p>Boulevard Piercot, 29 – 4000 Liège</p>
-                  <p class="intro__section">Domaine de la Musique</p>
+                    <h1 class="intro__title">Conservatoire royal de Liège</h1>
+                    <p>École supérieure des Arts</p>
+                    <p>Boulevard Piercot, 29 – 4000 Liège</p>
+                    <p class="intro__section">Domaine de la Musique</p>
                 </div>
-          
+
                 <div class="diploma__logo">
-                  <img src="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png" alt="Logo du Conservatoire Royal de Liège" class="logo__logo" />
+                    <img src="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png"
+                         alt="Logo du Conservatoire Royal de Liège" class="logo__logo"/>
                 </div>
 
-          
                 <div class="diploma__context">
-                  <p>Vu le décret du 7 novembre 2013 définissant le paysage de l’enseignement supérieur et l’organisation académique des études ;</p>
-                  <p>Nous, Présidente, Secrétaire et Membres du jury chargé de conférer le grade académique concerné, déclarons que :</p>
+                    <p>Vu le décret du 7 novembre 2013 définissant le paysage de l’enseignement supérieur et
+                        l’organisation académique des études ;
+                    </p>
+                    <p>Nous, Présidente, Secrétaire et Membres du jury chargé de conférer le grade académique concerné,
+                        déclarons que :
+                    </p>
                 </div>
-          
+
                 <div class="diploma__infos">
-                  <p class="diploma__name"><t t-esc="student_first_name"/> <em><t t-esc="student_family_name"/></em></p>
-                  <p>Né<t t-if="not student_gender">e</t> à <t t-esc="student_birth_place_city"/> 
-                    <t t-if="student_birth_place_country">
-                      (<t t-esc="student_birth_place_country"/>)
+                    <p class="diploma__name">
+                        <t t-esc="student_first_name"/>
+                        <em>
+                            <t t-esc="student_family_name"/>
+                        </em>
+                    </p>
+                    <p>Né<t t-if="not student_gender">e</t> à
+                        <t t-esc="student_birth_place_city"/>
+                        <t t-if="student_birth_place_country">
+                            (<t t-esc="student_birth_place_country"/>)
+                        </t>
+                        , le
+                        <t t-esc="student_birth_date_formatted"/>
+                    </p>
+                    <p>a obtenu en l’année académique
+                        <em class="text--important">
+                            <t t-esc="promotion_year"/>
+                        </em>
+                    </p>
+                    <p>le grade académique de</p>
+                    <p class="text-important diploma__rank">
+                        <t t-esc="program_title"/>
+                    </p>
+                    <p class="rank__name">
+                        <t t-if="student_success_grade" t-esc="student_success_grade"/>
+                    </p>
+
+                    <p>En foi de quoi, nous lui avons délivré le présent diplôme, attestant que les prescriptions
+                        légales relatives aux conditions d’accès, aux programmes,
+                    </p>
+                    <p>au nombre de crédits y associés (minimum
+                        <t t-if="bac">180</t>
+                        <t t-if="master">120</t>
+                        crédits) et à la publicité des examens ont été observées.
+                    </p>
+
+                    <t t-if="bac_dict or master_dict">
+                        <div style="margin-top:20px !important;">
+
+                        </div>
+                        <p>Nous déclarons qu’
+                            <t t-if="student_gender">il</t>
+                            <t t-else="">elle</t>
+                            a prêté publiquement le serment de Socrate au terme duquel
+                            <t t-if="student_gender">il</t>
+                            <t t-else="">elle</t>
+                            s’engage à mettre toutes ses forces et toute sa compétence au
+                        </p>
+                        <p>service de l’éducation de tous les élèves qui lui seront confiés.</p>
                     </t>
-                    , le <t t-esc="student_birth_date_formatted"/></p>
-                  <p>a obtenu en l’année académique <em class="text--important"><t t-esc="promotion_year"/></em></p>
-                  <p>le grade académique de</p>
-                  <!-- <p class="text-important diploma__rank">Bachelier en musique : <t t-esc="instrument_name"/></p> -->
-                  <p class="text-important diploma__rank"><t t-esc="program_title"/></p>
-                  <p class="rank__name"><t t-if="student_success_grade" t-esc="student_success_grade"/></p>
-          
-                  <p>En foi de quoi, nous lui avons délivré le présent diplôme, attestant que les prescriptions légales relatives aux conditions d’accès, aux programmes,</p>
-                  <p>au nombre de crédits y associés (minimum <t t-if="bac">180</t><t t-if="master">120</t> crédits) et à la publicité des examens ont été observées.</p>
-                   
-                  <t t-if="bac_dict or master_dict">
-                    <div style="margin-top:20px !important;">
-
-                    </div>
-                    <p>Nous déclarons qu’<t t-if="student_gender">il</t><t t-else="">elle</t> a prêté publiquement le serment de Socrate au terme duquel <t t-if="student_gender">il</t><t t-else="">elle</t> s’engage à mettre toutes ses forces et toute sa compétence au</p>
-                    <p>service de l’éducation de tous les élèves qui lui seront confiés.</p>
-                  </t>
-
                 </div>
-          
+
                 <div class="diploma__footer">
-                  <ul class="signatures__list">
-                    <li class="signature__item">L’Autorité académique</li>
-                    <li class="signature__item">La Présidente du jury</li>
-                    <li class="signature__item">Le Secrétaire du jury</li>
-                    <li class="signature__item"><t t-if="student_gender">Le</t><t t-else="">La</t> titulaire</li>
-                  </ul>
-                  <div t-if="bac_dict or master_dict" style="margin-top:50px !important;"></div>
-                  <div t-if="not bac_dict and not master_dict" style="margin-top:100px !important;"></div>
-                  <p class="footer__text" >Un supplément est annexé au présent diplôme. Il atteste notamment la liste des enseignements du programme d’études suivi par l’étudiant<t t-if="not student_gender">e</t>, les conditions d’accès aux études </p>
-                  <p class="footer__text">et les évaluations sanctionnées par le grade académique conféré.</p>
+                    <ul class="signatures__list">
+                        <li class="signature__item">L’Autorité académique</li>
+                        <li class="signature__item">La Présidente du jury</li>
+                        <li class="signature__item">Le Secrétaire du jury</li>
+                        <li class="signature__item">
+                            <t t-if="student_gender">Le</t>
+                            <t t-else="">La</t>
+                            titulaire
+                        </li>
+                    </ul>
+                    <div t-if="bac_dict or master_dict" style="margin-top:50px !important;"></div>
+                    <div t-if="not bac_dict and not master_dict" style="margin-top:100px !important;"></div>
+                    <p class="footer__text">Un supplément est annexé au présent diplôme. Il atteste notamment la liste
+                        des enseignements du programme d’études suivi par l’étudiant<t t-if="not student_gender">e</t>,
+                        les conditions d’accès aux études
+                    </p>
+                    <p class="footer__text">et les évaluations sanctionnées par le grade académique conféré.</p>
                 </div>
-              </div>
             </div>
-       
-        
+        </div>
     </template>
-    
+
     <!-- General Report Diploma -->
     <template id="report_school_individual_program_diploma_general">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
-            <t t-call="custom_reports.custom_diploma_layout">
+                <t t-call="custom_reports.custom_diploma_layout">
 
-              <!-- Conditions to choose the appropriate report based on program -->
-              <t t-if="doc.is_program_didact">
-                <!-- Didactic programs -->
-                <t t-if="doc.is_bac">
-                  <!-- Didactic Bachelor -->
-                  <t t-set="bac" t-value="True"/>  
-                  <t t-set="bac_dict" t-value="True"/>
-                </t>
-                <t t-else="">
-                  <!-- Didactic Master -->
-                  <t t-set="master" t-value="True"/>  
-                  <t t-set="master_dict" t-value="True"/>
-                </t>
-              </t>
-              <t t-else="">
-                <!-- Non-Didactic programs -->
-                <t t-if="doc.is_bac">
-                  <!-- Non-Didactic Bachelor -->
-                  <t t-set="bac" t-value="True"/>  
-                </t>
-                <t t-else="">
-                  <!-- Non-Didactic Master -->
-                  <t t-set="master" t-value="True"/>  
-                </t>
-              </t>
+                    <!-- Conditions to choose the appropriate report based on program -->
+                    <t t-if="doc.is_program_didact">
+                        <!-- Didactic programs -->
+                        <t t-if="doc.is_bac">
+                            <!-- Didactic Bachelor -->
+                            <t t-set="bac" t-value="True"/>
+                            <t t-set="bac_dict" t-value="True"/>
+                        </t>
+                        <t t-else="">
+                            <!-- Didactic Master -->
+                            <t t-set="master" t-value="True"/>
+                            <t t-set="master_dict" t-value="True"/>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        <!-- Non-Didactic programs -->
+                        <t t-if="doc.is_bac">
+                            <!-- Non-Didactic Bachelor -->
+                            <t t-set="bac" t-value="True"/>
+                        </t>
+                        <t t-else="">
+                            <!-- Non-Didactic Master -->
+                            <t t-set="master" t-value="True"/>
+                        </t>
+                    </t>
 
-              <div class="page">
-                  <t t-call="custom_reports.report_school_individual_program_diploma_content_page"/>
-              </div>
-                
-            </t>
+                    <div class="page">
+                        <t t-call="custom_reports.report_school_individual_program_diploma_content_page"/>
+                    </div>
+
+                </t>
             </t>
         </t>
     </template>
 
     <!-- One button for all reports -->
-    <report 
-        id="report_school_general_diploma_report"
-        model="school.individual_program"
-        string="Imprimer Diplôme"
-        report_type="qweb-pdf"
-        name="custom_reports.report_school_individual_program_diploma_general"
-        file="custom_reports.report_school_individual_program_diploma_general"
-        paperformat="custom_reports.paperformat_diploma"
-        />
-  
-
-   
-
+    <report
+            id="report_school_general_diploma_report"
+            model="school.individual_program"
+            string="Imprimer Diplôme"
+            report_type="qweb-pdf"
+            name="custom_reports.report_school_individual_program_diploma_general"
+            file="custom_reports.report_school_individual_program_diploma_general"
+            paperformat="custom_reports.paperformat_diploma"
+    />
 </odoo>

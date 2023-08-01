@@ -1,35 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    
     <template id="report_school_individual_program_supplement_content_page" name="Program Details Content supplement">
-        
         <head>
-
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
             <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-          
-          
             <title>Supplémént Diplôme</title>
             <style>
-          
-          
-              <!-- html{
-                background: grey;
-              }
-          
-              body {
-          
-                line-height: 1.5;
-                font-size: 12px;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 400;
-                color:black;
-                margin:0px auto;
-              } -->
-          
               p{
                 margin:0px;
                 padding:0px;
@@ -47,8 +24,6 @@
               }
           
               .pdf__page{
-                <!-- width:21cm;
-                height: 29.7cm; -->
                 background: white;
                 margin:0px auto;
                 position: relative;
@@ -65,7 +40,6 @@
               .page__wrapper{
                 padding:1.5cm;
               }
-          
           
               .diploma__place{
                 margin-bottom:20px;
@@ -112,7 +86,6 @@
                 font-size:1.5em;
                 font-weight:500;
                 margin-bottom:5px;
-          
               }
           
               .diploma__name em{
@@ -178,7 +151,6 @@
                 font-style:normal;
               }
           
-          
               .footer__page{
                 color: #b1b1b1;
                 font-size: 0.95em;
@@ -204,7 +176,6 @@
                 font-size: 1.1em;
               }
           
-          
                   .text--special{
                     font-style: italic;
                     font-weight: 400;
@@ -218,7 +189,6 @@
                 .info__value, .requirement__item{
                   font-weight: 400;
                 }
-          
           
           
                 .info__item .text--special{
@@ -327,21 +297,15 @@
                     <p>Ce modèle de supplément au diplôme suit le modèle élaboré par la Commission européenne, le Conseil de l’Europe et l’UNESCO. Le supplément au diplôme vise à fournir des données indépendantes et suffisantes pour améliorer la « transparence » internationale et la reconnaissance académique et professionnelle équitable des qualifications (diplômes, acquis universitaires, certificats, brevets, etc.). Il est destiné à décrire la nature, le niveau, le contexte, le contenu et le statut des études accomplies avec succès par la personne désignée par la qualification originale à laquelle ce présent supplément est annexé. Il doit être dépourvu de tout jugement de valeur, déclaration d’équivalence ou suggestion de reconnaissance. Toutes les informations requises par les huits parties doivent être fournies. Lorsqu’une information fait défaut, une explication doit être donnée. </p>
                     <p class="complement__more">This Diploma Supplement model follows the model developed by the European Commission, Council of Europe and UNESCO. The purpose of the supplement is to provide sufficient independent data to improve the international “transparency” and fair academic and professional recognition of qualification (diplomas, degrees, certificates, etc.). It is designed to provide a desciption of the nature, level, context, content and status of the studies that were pursued and successfully completed by the individual named on the orignial qualification to which this supplement is appended. It should be free from any value judgements, equivalence statements or suggestions about recognition. Information in all eight sections should be provided. Where information is not provided, an explanation should give the reason why. </p>
                   </div>
-          
-                  
-                  
-          
                   <!-- <p class="footer__page">Page 1 sur 5</p> -->
               </div>
             </div>
           
             <div class="pdf__page">
               <div class="page__wrapper">
-
                 <p class="complement__footer">
                   <em>AVERTISSEMENT: ce présent supplément ne vaut qu’accompagné du diplôme officiel.</em> / <span class="text--special">This Diploma Supplement is only valid if presented with the official diploma.</span>
                 </p>
-
           
                 <h2 style="margin-top:20px;" class="title--section">1. INFORMATIONS SUR <t t-if="student_gender">LE</t><t t-else="">LA</t> TITULAIRE DU DIPLÔME / <span class="text--special">Information identifying the holder of the qualification</span></h2>
           
@@ -352,7 +316,6 @@
                   <li class="info__item"><span class="info__number">1.4.</span> Numéro de matricule  / <span class="text--special">Identification number </span><span class="info__value"> : <t t-esc="student_matricule"/></span></li>
                 </ul>
           
-          
                 <h2 class="title--section">2. INFORMATIONS SUR LE DIPLÔME / <span class="text--special">Information identifying the qualification</span></h2>
           
                 <ul class="infos__list">
@@ -362,7 +325,6 @@
                   <li class="info__item"><span class="info__number">2.4.</span>(Si différent du 2.3.) Nom et statut de l’/des établissement(s) ayant dispensé les cours  / <span class="text--special">If different from 2.3.) Name and status of institution(s) administering studies</span><span class="info__value"> : <br/>Non applicable</span></li>
                   <li class="info__item"><span class="info__number">2.5.</span>Langue(s) de formation et d’évaluation / <span class="text--special">Language(s) of instruction and examination</span><span class="info__value"> : <br/>Français</span></li>
                 </ul>
-          
           
                 <h2 class="title--section">3. INFORMATIONS SUR LE NIVEAU DE QUALIFICATION / <span class="text--special">Information on the level of the qualification</span></h2>
           
@@ -445,7 +407,6 @@
                         <li class="requirement__item">Démontrer une attitude positive envers la volonté de s’engager et de s’intéresser au développement personnel et professionnel continu tout au long de la vie.</li>
                       </ul>
                     </t>
-                    
                     
                   </li>
           

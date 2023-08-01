@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_individual_program_custom" model="ir.ui.view">
         <field name="name">school.individual_program.view.custom</field>
         <field name="model">school.individual_program</field>
-        <field name="inherit_id" ref="school_management.individual_program_form" />
-        <field eval="19" name="priority" />
+        <field name="inherit_id" ref="school_management.individual_program_form"/>
+        <field eval="19" name="priority"/>
         <field name="arch" type="xml">
             <xpath expr="//h5[2]" position="after">
                 <h5 class="o_row row no-gutters d-flex">
                     <div class="col">
-                      <label for="is_program_didact" invisible="1"/>
-                      <span>Programme didactique:</span>
-                      <span><field name="is_program_didact"/></span>
+                        <label for="is_program_didact" invisible="1"/>
+                        <span>Programme didactique:</span>
+                        <span>
+                            <field name="is_program_didact"/>
+                        </span>
                     </div>
                     <div class="col">
                         <label for="is_bac" invisible="1"/>
                         <span>Bachelier:</span>
-                        <span><field name="is_bac"/></span>
-                      </div>
+                        <span>
+                            <field name="is_bac"/>
+                        </span>
+                    </div>
                 </h5>
             </xpath>
         </field>
     </record>
-
 </odoo>
