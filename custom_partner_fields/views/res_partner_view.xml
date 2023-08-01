@@ -1,58 +1,46 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <record id="view_partners_custom_fields" model="ir.ui.view">
         <field name="name">view.res.partner.form.school</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form" />
-        <field eval="19" name="priority" />
+        <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//h1//field[@name='name']/.." position="after">
                 <field name="second_first_name" string="Autre(s) prénom(s)"/>
             </xpath>
-            
         </field>
     </record>
-
 
     <record id="view_student_form_school_pages" model="ir.ui.view">
         <field name="name">view.res.partner.form.school.pages</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="school_management.view_partners_form_school" />
-        <field eval="25" name="priority" />
+        <field name="inherit_id" ref="school_management.view_partners_form_school"/>
         <field name="arch" type="xml">
-            
             <xpath expr="//notebook[last()]" position="inside">
-                <page
-                    name="access_titles_page"
-                    string="Titre d'accès"
-                >
+                <page name="access_titles_page" string="Titre d'accès">
                     <group>
-                        <field name="admission_exam_date" />
-                        <field name="access_titles_ids">
+                        <field name="admission_exam_date"/>
+                        <field name="access_titles_ids" mode="tree">
                             <tree>
-                                <field name="name" />
-                                <field name="title" />
-                                <field name="establishment" />
-                                <field name="city" />
-                                <field name="country" />
-                                <field name="date" />
+                                <field name="name"/>
+                                <field name="title"/>
+                                <field name="establishment"/>
+                                <field name="city"/>
+                                <field name="country"/>
+                                <field name="date"/>
                             </tree>
                         </field>
                     </group>
                 </page>
-        
-                <page
-                    name="erasmus_page"
-                    string="Divers"
-                >
+
+                <page name="erasmus_page" string="Divers">
                     <group>
                         <field name="memoir_titles_ids">
                             <tree>
                                 <field name="name"/>
                             </tree>
                         </field>
-                        <field name="internships_ids">
+                        <field name="internships_ids" mode="tree">
                             <tree>
                                 <field name="establishment"/>
                                 <field name="city"/>
@@ -61,7 +49,7 @@
                                 <field name="end_date"/>
                             </tree>
                         </field>
-                        <field name="erasmus_ids">
+                        <field name="erasmus_ids" mode="tree">
                             <tree>
                                 <field name="establishment"/>
                                 <field name="city"/>
@@ -76,6 +64,4 @@
             </xpath>
         </field>
     </record>
-    
-
 </odoo>
