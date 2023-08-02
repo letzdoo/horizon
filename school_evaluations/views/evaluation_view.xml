@@ -85,15 +85,23 @@
                             </button>
                     </div>
                 </xpath>-->
-                <xpath expr="//field[@name='required_credits']" position="after">         
+                <xpath expr="//group[@name='required_credits_section']" position="inside">
                     <field name="total_registered_credits" />
                     <field name="total_acquiered_credits" />
-                    <field name="evaluation" />
-                    <field name="grade" />
-                    <field name="grade_year_id" />
-                    <newline/>
-                    <field name="grade_comments" colspan="4"/>
                 </xpath>
+                <xpath expr="//group[@name='required_credits_section']" position="after">
+                    <group>
+                        <field name="evaluation" />
+                        <field name="grade"/>
+                        <field name="grade_year_id"/>
+                    </group>
+                    <group style="width:100%;">
+                        <field name="grade_comments"/>
+                    </group>
+                </xpath>
+<!--                    <newline/>-->
+<!--                    <field name="grade_comments"/>-->
+<!--                </xpath>-->
                 <xpath expr="//field[@name='bloc_ids']/kanban/field[@name='total_credits']" position="after">
                     <field name="evaluation"/>
                     <field name="state"/>

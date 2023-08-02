@@ -10,14 +10,14 @@
                 <h5 class="o_row row no-gutters d-flex">
                     <div class="col">
                         <label for="is_program_didact" invisible="1"/>
-                        <span>Programme didactique:</span>
+                        <span>Programme didactique: </span>
                         <span>
                             <field name="is_program_didact"/>
                         </span>
                     </div>
                     <div class="col">
                         <label for="is_bac" invisible="1"/>
-                        <span>Bachelier:</span>
+                        <span>Bachelier: </span>
                         <span>
                             <field name="is_bac"/>
                         </span>
