@@ -35,4 +35,8 @@
         <field name="sequence">25</field>
         <field name="category">upload_file</field>
     </record>
+    <record id="res_partner_category_registration_request" model="res.partner.category">
+        <field name="name">REGISTRATION_REQUEST</field>
+        <field name="color">1</field>
+    </record>
 </odoo>
