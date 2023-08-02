@@ -92,40 +92,47 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Course Group">
-                <!--<header>
-                              <button name="transfert_confirm" states="draft" string="Validate" class="oe_highlight" groups="account.group_account_invoice"/>
-                              <button name="transfert_cancel" states="draft,confirmed" string="Cancel Transfert" groups="account.group_account_invoice"/>
-                              <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,paid"/>
-                          </header>-->
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="toggle_active" type="object"
-                                class="oe_stat_button" icon="fa-archive">
-                            <field name="active" widget="boolean_button"
-                                   options='{"terminology": "archive"}'/>
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
                         </button>
                     </div>
-                    <group col="2">
-                        <div class="oe_title">
-                            <h1>
-                                <field name="name"/>
-                            </h1>
-                            <div class="oe_fade">
-                                <field name="uid" readonly="1"/>
-                            </div>
-                        </div>
-                    </group>
-                    <group col="4">
-                        <field name="title" colspan="4"/>
-                        <field name="responsible_id" colspan="4"/>
-                        <field name="sequence"/>
-                        <field name="level"/>
-                        <field name="quadri"/>
-                        <field name="mandatory"/>
-                        <field name="cg_grouping" create="0"/>
-                        <field name="total_hours"/>
-                        <field name="total_credits"/>
-                        <field name="total_weight"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name"/>
+                        </h1>
+                    </div>
+                    <div class="oe_fade">
+                        <field name="uid" readonly="1"/>
+                    </div>
+
+<!--                    <group col="2">-->
+<!--                        <div class="oe_title">-->
+<!--                            <h1>-->
+<!--                                <field name="name"/>-->
+<!--                            </h1>-->
+<!--                            <div class="oe_fade">-->
+<!--                                <field name="uid" readonly="1"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </group>-->
+                    <group>
+                        <group>
+                            <field name="title"/>
+                            <field name="responsible_id"/>
+                            <field name="sequence"/>
+                            <field name="level"/>
+                            <field name="quadri"/>
+                            <field name="mandatory"/>
+                            <field name="cg_grouping" create="0"/>
+                        </group>
+                        <group>
+                            <field name="total_hours"/>
+                            <field name="total_credits"/>
+                            <field name="total_weight"/>
+                        </group>
                     </group>
                     <field name="course_ids" context="{'default_course_group_id':active_id}">
                         <tree string="Courses">
