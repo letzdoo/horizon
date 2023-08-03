@@ -294,31 +294,32 @@
                           </header>-->
                 <sheet>
                     <div class="oe_title">
+                        <label for="name"/>
                         <h1>
-                            <field name="name"/>
+                            <field name="name" placeholder="Name"/>
                         </h1>
                         <div class="oe_fade">
                             <field name="uid" readonly="1"/>
                         </div>
                     </div>
-                    <group col="2">
-                        <!--<field name="course_group_id" colspan="4" readonly="1"/>
-                        <field name="name" colspan="4" />-->
-                        <field name="sequence"/>
-                        <field name="title" colspan="4"/>
-                        <field name="course_group_id" colspan="4"/>
-                        <field name="hours"/>
-                        <field name="credits"/>
-                        <field name="weight"/>
-                        <field name="course_organization"/>
-                        <field name="course_type"/>
-                        <field name="quadri"/>
-                    </group>
-                    <group col="4">
-                        <field name="has_second_session"/>
-                        <field name="is_annual"/>
-                        <field name="url_ref" widget="url" text="Description" invisible="1"/>
-                        <field name="level" invisible="1"/>
+                    <group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="title"/>
+                            <field name="course_group_id"/>
+                            <field name="hours"/>
+                            <field name="credits"/>
+                            <field name="weight"/>
+                        </group>
+                        <group>
+                            <field name="course_organization"/>
+                            <field name="course_type"/>
+                            <field name="quadri"/>
+                            <field name="has_second_session"/>
+                            <field name="is_annual"/>
+                            <field name="url_ref" widget="url" text="Description" invisible="1"/>
+                            <field name="level" invisible="1"/>
+                        </group>
                     </group>
                     <notebook>
                         <page string="Blocs">
@@ -495,27 +496,31 @@
             <form string="Bloc">
                 <sheet>
                     <div class="oe_title">
+                        <label for="name"/>
                         <h1>
-                            <field name="name"/>
+                            <field name="name" placeholder="Name"/>
                         </h1>
                         <div class="oe_fade">
                             <field name="uid" readonly="1"/>
                         </div>
                     </div>
-                    <group col="4">
-                        <field name="title" colspan="4"/>
-                        <field name="sequence"/>
-                        <field name="level"/>
-                        <field name="bloc_group"/>
-                        <field name="total_hours"/>
-                        <field name="total_credits"/>
-                        <field name="program_id"/>
-                        <field name="total_weight"/>
+                    <group>
+                        <group>
+                            <field name="title"/>
+                            <field name="sequence"/>
+                            <field name="level"/>
+                            <field name="bloc_group"/>
+                        </group>
+                        <group>
+                            <field name="total_hours"/>
+                            <field name="total_credits"/>
+                            <field name="program_id"/>
+                            <field name="total_weight"/>
+                        </group>
                     </group>
 
-
-                    <field name="course_group_ids" widget="many2many_kanban" class="o_kanban_mobile">
-                        <kanban quick_create="false" create="true" delete="true" default_order="cg_grouping_sequence">
+                    <field name="course_group_ids">
+                        <kanban class="o_kanban_mobile" quick_create="false" create="true" delete="true" default_order="cg_grouping_sequence">
                             <field name="uid"/>
                             <field name="name"/>
                             <field name="total_hours"/>
@@ -523,29 +528,29 @@
                             <field name="cg_grouping_sequence"/>
                             <templates>
                                 <t t-name="kanban-box">
-                                    <t t-js="ctx">
+<!--                                    <t t-js="ctx">-->
 
-                                        ctx['new_group'] = ctx['record'].cg_grouping.raw_value != this.horizon_group;
-                                        this.horizon_group = ctx['record'].cg_grouping.raw_value
+<!--                                        ctx['new_group'] = ctx['record'].cg_grouping.raw_value != this.horizon_group;-->
+<!--                                        this.horizon_group = ctx['record'].cg_grouping.raw_value-->
 
-                                    </t>
-                                    <t t-if="new_group">
-                                        <div>
-                                            <h3>
-                                                <field name="cg_grouping"/>
-                                            </h3>
-                                        </div>
-                                    </t>
+<!--                                    </t>-->
+<!--                                    <t t-if="new_group">-->
+<!--                                        <div>-->
+<!--                                            <h3>-->
+<!--                                                <field name="cg_grouping"/>-->
+<!--                                            </h3>-->
+<!--                                        </div>-->
+<!--                                    </t>-->
                                     <div style="position: relative;width:100%">
                                         <div class="o_kanban_record_top">
                                             <div class="row o_kanban_record_headings">
-                                                <div class="col-12 col-md-2">
+                                                <div class="col-4">
                                                     <a type="object" name="action_open_form"
                                                        class="oe_highlight btn btn-primary">
                                                         <field name="uid"/>
                                                     </a>
                                                 </div>
-                                                <div class="col-12 col-md-7">
+                                                <div class="col-4">
                                                     <field name="name"/>
                                                     <br/>
                                                     <i>
@@ -553,14 +558,14 @@
                                                     </i>
                                                 </div>
 
-                                                <div class="col-2">
+                                                <div class="col-4">
                                                     Heures :
                                                     <field name="total_hours"/>
                                                     <br/>
                                                     ECTS :
                                                     <field name="total_credits"/>
                                                 </div>
-                                                <div class="col-1">
+                                                <div class="col-2">
                                                     <a class="oe_edit_only fa fa-trash" type="delete"/>
                                                 </div>
                                             </div>

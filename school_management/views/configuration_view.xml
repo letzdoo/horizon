@@ -64,6 +64,39 @@
         <menuitem name="Programs" parent="menu_school_admin" id="menu_admin_program" sequence="20" />
         
         <!-- Cycle List View -->
+        <record id="view_school_cycle_form" model="ir.ui.view">
+            <field name="name">school.cycle.form</field>
+            <field name="model">school.cycle</field>
+            <field name="arch" type="xml">
+                <form string="Cycles">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="short_name"/>
+                                <field name="required_credits"/>
+                                <field name="type"/>
+                                <field name="grade"/>
+                            </group>
+                            <group>
+                                <field name="grade_code"/>
+                                <field name="certification_profile"/>
+                                <field name="slug_grade"/>
+                                <field name="slug_subtype"/>
+                                <field name="grade_order"/>
+                                <field name="subtype"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_cycle_list" model="ir.ui.view">
             <field name="name">school.cycle.tree</field>
             <field name="model">school.cycle</field>
@@ -84,7 +117,6 @@
             <field name="name">Cycles</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.cycle</field>
-            
             <field name="view_mode">tree,form</field>
         </record>
         
@@ -104,6 +136,29 @@
         <menuitem id="menu_cycle_list" parent="menu_admin_program" action="action_cycle_list" sequence="15" />
         
         <!-- Speciality List View -->
+        <record id="view_speciality_form" model="ir.ui.view">
+            <field name="name">school.speciality.form</field>
+            <field name="model">school.speciality</field>
+            <field name="arch" type="xml">
+                <form string="Specialities">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="domain_id"/>
+                                <field name="track_id"/>
+                                <field name="section_id"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_speciality_list" model="ir.ui.view">
             <field name="name">school.speciality.tree</field>
             <field name="model">school.speciality</field>
@@ -122,7 +177,6 @@
             <field name="name">Specialities</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.speciality</field>
-            
             <field name="view_mode">tree,form</field>
         </record>
         
