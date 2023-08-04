@@ -632,9 +632,6 @@
                   <field name="image_512" readonly="1" widget="image" class="oe_left oe_inline" options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"/>
                 </div>
                 <div class="col-8">
-<!--                  <h2>-->
-<!--                    <field name="name"/>-->
-<!--                  </h2>-->
                   <h3 class="o_row row no-gutters d-flex">
                       <div class="col">
                         <h2>
@@ -658,36 +655,8 @@
                 <field name="weight"/>
               </group>
             </group>
-<!--            <separator string="Results" colspan="4"/>-->
             <notebook>
-                <page string="Results" name="results">
-                    <group>
-                      <group>
-                        <field name="partial_result"/>
-                        <field name="second_result"/>
-                        <field name="final_result"/>
-                      </group>
-                    </group>
-                </page>
-                <page string="Archive" name="archive">
-                    <group>
-                      <group>
-                        <field name="jun_result"/>
-                        <field name="sept_result"/>
-                      </group>
-                    </group>
 
-                    <group>
-                      <group string="First Session">
-                        <field name="first_session_result"/>
-                        <field name="first_session_note"/>
-                      </group>
-                      <group string="Second Session">
-                        <field name="second_session_result"/>
-                        <field name="second_session_note"/>
-                      </group>
-                    </group>
-                </page>
             </notebook>
           </sheet>
         </form>
