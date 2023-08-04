@@ -474,16 +474,21 @@
                 </div>
               </div>
             </div>
-            <group col="4">
-              <field name="state" hidden="1"/>
-              <field name="tag_ids" widget="many2many_tags" colspan="4"/>
-              <field name="program_id" colspan="4" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
-              <field name="year_id" colspan="4" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
-              <field name="is_final_bloc" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
-              <field name="is_light_bloc" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
-              <field name="total_hours" />
-              <field name="total_credits" />
+            <group>
+              <group>
+                <field name="state"/>
+                <field name="tag_ids" widget="many2many_tags"/>
+                <field name="program_id" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
+                <field name="year_id" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
+                <field name="is_final_bloc" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
+                <field name="is_light_bloc" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
+              </group>
+              <group name="fields_second_group">
+                <field name="total_hours"/>
+                <field name="total_credits"/>
+              </group>
             </group>
+
             <label for="new_source_course_group_id" class="oe_edit_only" string="Add new UE : "/><field name="new_source_course_group_id" class="oe_edit_only"/>
             <field name="course_group_ids" widget="many2many_kanban" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}">
               <kanban quick_create="false" create="true" delete="true" group_create="false" class="o_kanban_mobile">
@@ -499,25 +504,34 @@
                           <div style="position: relative;width:100%;" t-attf-class="horizon_cgs">
                               <div class="o_kanban_record_top">
                                 <div class="row o_kanban_record_headings">
-                                  <div class="col-12 col-md-2">
-                                    <a type="object" name="action_open_form" class="oe_highlight btn btn-primary"><field name="uid"/></a>
-                                  </div>
-                                  <div class="col-12 col-md-7">
-                                    <div class="row m-2">
-                                      <h5><field name="name"/><br/></h5>
-                                      <!--<i><field name="responsible_id"/></i>-->
+<!--                                  <div class="col-12 col-md-2">-->
+<!--                                    <a type="object" name="action_open_form" class="oe_highlight btn btn-primary"><field name="uid"/></a>-->
+<!--                                  </div>-->
+<!--                                  <div class="col-12 col-md-7">-->
+<!--                                    <div class="row m-2">-->
+<!--                                      <h5><field name="name"/><br/></h5>-->
+<!--                                      &lt;!&ndash;<i><field name="responsible_id"/></i>&ndash;&gt;-->
+<!--                                    </div>-->
+<!--                                  </div>-->
+
+                                  <div class="row">
+                                    <div class="col-12">
+                                      <a type="object" name="action_open_form" class="col-12 oe_highlight btn btn-primary"><field name="uid"/></a>
                                     </div>
-                                    <div class="row m-2">
-                                      <div class="col-12 col-md-4"><b><field name="total_credits"/> ECTS</b></div>
-                                      <div class="col-12 col-md-4"><field name="total_hours"/> Heures</div>
-                                      <div class="col-12 col-md-4">
-                                        <a type="object" name="action_open_source_form"><i class="fa fa-book mr-2"></i>UE Source (<field name="source_course_group_uid"/>)</a>
-                                      </div>
+                                    <h5>
+                                      <br/>
+                                      <field name="name"/><br/></h5>
+                                    <div><b><field name="total_credits"/> ECTS</b></div>
+                                    <div><field name="total_hours"/> Heures</div>
+                                    <div>
+                                      <br/>
+                                      <a type="object" name="action_open_source_form"><i class="fa fa-book mr-2"></i>UE Source (<field name="source_course_group_uid"/>)</a>
                                     </div>
                                   </div>
-                                  <div class="col-12 col-md-3 horizon_cgs_evals">
-                                    <a t-if="! read_only_mode" class="oe_highlight btn btn-primary" type="delete" style="font-size: xx-large;position: absolute; right: 20px; padding: 4px; diplay: inline-block">X</a>
-                                  </div>
+                                </div>
+
+                                <div class="horizon_cgs_evals">
+                                  <a t-if="! read_only_mode" class="oe_highlight btn btn-primary" type="delete" style="font-size: xx-large;position: absolute; right: 20px; padding: 4px; diplay: inline-block">X</a>
                                 </div>
                               </div>
                           </div>
@@ -605,6 +619,81 @@
         
     -->
 
+  <record id="view_school_individual_course_form" model="ir.ui.view">
+      <field name="name">school.individual_course.form</field>
+      <field name="model">school.individual_course</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Individual Course">
+          <sheet>
+            <div class="container">
+              <div class="row">
+                <div class="h-100 d-inline-block" style="width: 150px;">
+                  <field name="image_512" readonly="1" widget="image" class="oe_left oe_inline" options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"/>
+                </div>
+                <div class="col-8">
+<!--                  <h2>-->
+<!--                    <field name="name"/>-->
+<!--                  </h2>-->
+                  <h3 class="o_row row no-gutters d-flex">
+                      <div class="col">
+                        <h2>
+                          <field name="name"/>
+                        </h2>
+                        <label for="uid" invisible="1"/>
+                        <small class="oe_grey" ><field name="uid" readonly="1"/> for <field name="source_course_id" readonly="1"/></small>
+                      </div>
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <group>
+              <group>
+                <field name="teacher_id"/>
+                <field name="teacher_choice_id"/>
+              </group>
+              <group>
+                <field name="hours"/>
+                <field name="credits"/>
+                <field name="weight"/>
+              </group>
+            </group>
+<!--            <separator string="Results" colspan="4"/>-->
+            <notebook>
+                <page string="Results" name="results">
+                    <group>
+                      <group>
+                        <field name="partial_result"/>
+                        <field name="second_result"/>
+                        <field name="final_result"/>
+                      </group>
+                    </group>
+                </page>
+                <page string="Archive" name="archive">
+                    <group>
+                      <group>
+                        <field name="jun_result"/>
+                        <field name="sept_result"/>
+                      </group>
+                    </group>
+
+                    <group>
+                      <group string="First Session">
+                        <field name="first_session_result"/>
+                        <field name="first_session_note"/>
+                      </group>
+                      <group string="Second Session">
+                        <field name="second_session_result"/>
+                        <field name="second_session_note"/>
+                      </group>
+                    </group>
+                </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
     <!-- Individual Course Tree View -->
     <record id="view_individual_course_group_tree" model="ir.ui.view">
       <field name="name">school.individual_course_group.tree</field>
@@ -648,17 +737,17 @@
                 </div>
               </div>
             </div>
-                <!--<h3 class="oe_fade">
-                 <field name="bloc_id" options='{"no_open":True}'/>
-                </h3>-->
-            <group col="2">
-              <field name="source_course_group_id" />
-              <field name="responsible_id" />
-              <!--<field name="weight" />-->
-              <field name="bloc_id" />
-              <field name="total_weight" />
-              <field name="total_hours" />
-              <field name="total_credits" />
+            <group>
+              <group>
+                <field name="source_course_group_id"/>
+                <field name="responsible_id"/>
+                <field name="bloc_id"/>
+              </group>
+              <group>
+                <field name="total_weight"/>
+                <field name="total_hours"/>
+                <field name="total_credits"/>
+              </group>
             </group>
             <separator string="Courses" colspan="4"/>
             <field name="course_ids" colspan="4">
