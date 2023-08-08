@@ -29,8 +29,8 @@
                         <div class="col-12 col-md-6 text-center text-md-start text-muted hz_footer_brand_name">
                             <span><strong>Horizon</strong> - High School Management for Odoo</span>
                         </div>
-                        <div class="col-12 col-md-6 text-center text-sm-end text-muted hz_copyright">
-                            <span class="me-2">Copyright &amp;copy; <span t-esc="time.strftime('%Y')" /> Ito-Invest &amp; Neodiensis</span>
+                        <div class="col-12 col-md-6 text-center text-md-end text-muted hz_copyright">
+                            <span class="me-2">Copyright &amp;copy; <span t-esc="time.strftime('%Y')" /> Ito-Invest</span>
                         </div>
                     </div>
                 </div>

@@ -22,7 +22,7 @@
     'name': 'Website CRLG Portal',
     'version': '0.1',
     'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet) & Neodiensis',
+    'author': 'ito-invest (Jerome Sonnet)',
     'website': '',
     'category': 'School Management',
     'depends': [
