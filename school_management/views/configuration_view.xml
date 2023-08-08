@@ -25,6 +25,27 @@
         <menuitem name="Administration" id="menu_school_admin" web_icon="stock,static/description/icon.png" sequence="250" />
         
         <!-- Year List View -->
+        <record id="view_year_form" model="ir.ui.view">
+            <field name="name">school.year.form</field>
+            <field name="model">school.year</field>
+            <field name="arch" type="xml">
+                <form string="Year">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="short_name"/>
+                            </group>
+                            <group>
+                                <field name="previous"/>
+                                <field name="next"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_year_list" model="ir.ui.view">
             <field name="name">school.year.tree</field>
             <field name="model">school.year</field>
@@ -64,6 +85,39 @@
         <menuitem name="Programs" parent="menu_school_admin" id="menu_admin_program" sequence="20" />
         
         <!-- Cycle List View -->
+        <record id="view_school_cycle_form" model="ir.ui.view">
+            <field name="name">school.cycle.form</field>
+            <field name="model">school.cycle</field>
+            <field name="arch" type="xml">
+                <form string="Cycles">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="short_name"/>
+                                <field name="required_credits"/>
+                                <field name="type"/>
+                                <field name="grade"/>
+                            </group>
+                            <group>
+                                <field name="grade_code"/>
+                                <field name="certification_profile"/>
+                                <field name="slug_grade"/>
+                                <field name="slug_subtype"/>
+                                <field name="grade_order"/>
+                                <field name="subtype"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_cycle_list" model="ir.ui.view">
             <field name="name">school.cycle.tree</field>
             <field name="model">school.cycle</field>
@@ -84,7 +138,6 @@
             <field name="name">Cycles</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.cycle</field>
-            
             <field name="view_mode">tree,form</field>
         </record>
         
@@ -104,6 +157,29 @@
         <menuitem id="menu_cycle_list" parent="menu_admin_program" action="action_cycle_list" sequence="15" />
         
         <!-- Speciality List View -->
+        <record id="view_speciality_form" model="ir.ui.view">
+            <field name="name">school.speciality.form</field>
+            <field name="model">school.speciality</field>
+            <field name="arch" type="xml">
+                <form string="Specialities">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="domain_id"/>
+                                <field name="track_id"/>
+                                <field name="section_id"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_speciality_list" model="ir.ui.view">
             <field name="name">school.speciality.tree</field>
             <field name="model">school.speciality</field>
@@ -122,7 +198,6 @@
             <field name="name">Specialities</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.speciality</field>
-            
             <field name="view_mode">tree,form</field>
         </record>
         
@@ -142,6 +217,23 @@
         <menuitem id="menu_speciality_list" parent="menu_admin_program" action="action_speciality_list" sequence="20" />
         
         <!-- Section List View -->
+        <record id="view_section_form" model="ir.ui.view">
+            <field name="name">school.section.form</field>
+            <field name="model">school.section</field>
+            <field name="arch" type="xml">
+                <form string="Sections">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_section_list" model="ir.ui.view">
             <field name="name">school.section.tree</field>
             <field name="model">school.section</field>
@@ -177,6 +269,24 @@
         <menuitem id="menu_section_list" parent="menu_admin_program" action="action_section_list" sequence="30" />
         
         <!-- Track List View -->
+        <record id="view_track_form" model="ir.ui.view">
+            <field name="name">school.track.form</field>
+            <field name="model">school.track</field>
+            <field name="arch" type="xml">
+                <form string="Tracks">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="slug"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_track_list" model="ir.ui.view">
             <field name="name">school.track.tree</field>
             <field name="model">school.track</field>
@@ -212,6 +322,24 @@
         <menuitem id="menu_track_list" parent="menu_admin_program" action="action_track_list" sequence="40" />
         
         <!-- Course Group Group List View -->
+        <record id="view_course_group_group_form" model="ir.ui.view">
+            <field name="name">school.course_group_group.form</field>
+            <field name="model">school.course_group_group</field>
+            <field name="arch" type="xml">
+                <form string="Groups">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sequence"/>
+                                <field name="active"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id="view_course_group_group_list" model="ir.ui.view">
             <field name="name">school.course_group_group.tree</field>
             <field name="model">school.course_group_group</field>
@@ -228,7 +356,6 @@
             <field name="name">Course Group Group</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.course_group_group</field>
-            
             <field name="view_mode">tree,form</field>
         </record>
         

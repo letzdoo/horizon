@@ -21,6 +21,44 @@
 ##############################################################################
 -->
 <odoo>
+
+
+        <record id="school_individual_course_form_inherited" model="ir.ui.view">
+            <field name="name">school.individual_course.form.inherited</field>
+            <field name="model">school.individual_course</field>
+            <field name="inherit_id" ref="school_management.view_school_individual_course_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Results" name="results">
+                    <group>
+                      <group>
+                        <field name="partial_result"/>
+                        <field name="second_result"/>
+                        <field name="final_result"/>
+                      </group>
+                    </group>
+                </page>
+                <page string="Archive" name="archive">
+                    <group>
+                      <group>
+                        <field name="jun_result"/>
+                        <field name="sept_result"/>
+                      </group>
+                    </group>
+                    <group>
+                      <group string="First Session">
+                        <field name="first_session_result"/>
+                        <field name="first_session_note"/>
+                      </group>
+                      <group string="Second Session">
+                        <field name="second_session_result"/>
+                        <field name="second_session_note"/>
+                      </group>
+                    </group>
+                </page>
+                </xpath>
+            </field>
+        </record>
     
     
         <!-- Top menu item -->
@@ -85,15 +123,23 @@
                             </button>
                     </div>
                 </xpath>-->
-                <xpath expr="//field[@name='required_credits']" position="after">         
+                <xpath expr="//group[@name='required_credits_section']" position="inside">
                     <field name="total_registered_credits" />
                     <field name="total_acquiered_credits" />
-                    <field name="evaluation" />
-                    <field name="grade" />
-                    <field name="grade_year_id" />
-                    <newline/>
-                    <field name="grade_comments" colspan="4"/>
                 </xpath>
+                <xpath expr="//group[@name='required_credits_section']" position="after">
+                    <group>
+                        <field name="evaluation" />
+                        <field name="grade"/>
+                        <field name="grade_year_id"/>
+                    </group>
+                    <group style="width:100%;">
+                        <field name="grade_comments"/>
+                    </group>
+                </xpath>
+<!--                    <newline/>-->
+<!--                    <field name="grade_comments"/>-->
+<!--                </xpath>-->
                 <xpath expr="//field[@name='bloc_ids']/kanban/field[@name='total_credits']" position="after">
                     <field name="evaluation"/>
                     <field name="state"/>
@@ -230,11 +276,10 @@
                         <field name="state" widget="statusbar" states="awarded_first_session,awarded_second_session,failed,abandoned" statusbar_visible="awarded_first_session,awarded_second_session,failed,abandoned" />
                     </header>
                 </xpath>
-                <xpath expr="//field[@name='total_credits']" position="after">
-                    <newline/>
+                <xpath expr="//group[@name='fields_second_group']" position="inside">
                     <field name="total_acquiered_credits"/>
                     <field name="evaluation"/>
-                    <field name="decision" colspan="4"/>
+                    <field name="decision"/>
                 </xpath>
                 <xpath expr="//field[@name='course_group_ids']/kanban/field[@name='total_credits']" position="after">
                     <field name="state"/>

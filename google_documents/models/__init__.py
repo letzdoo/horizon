@@ -1,4 +1,5 @@
 # -*- encoding: utf-8 -*-
+
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -18,6 +19,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+
 from . import google_drive_folder_mixin
 from . import res_partner
 from . import ir_actions_report

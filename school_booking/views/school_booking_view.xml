@@ -22,6 +22,18 @@
 -->
 
 <odoo>
+    <record id="school_year_form_inherited" model="ir.ui.view">
+            <field name="name">school.year.form.inherited</field>
+            <field name="model">school.year</field>
+            <field name="inherit_id" ref="school_management.view_year_form"/>
+            <field name="arch" type="xml">
+                <field name="short_name" position="after">
+                    <field name="calendar_id"/>
+                </field>
+            </field>
+    </record>
+
+
     <!-- School Calendar Form View -->
     <record model="ir.ui.view" id="calendar_form">
       <field name="name">school.calendar.view</field>

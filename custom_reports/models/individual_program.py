@@ -1,18 +1,13 @@
-import logging
-import locale
-from nis import match
-from unittest import case
+# -*- coding: utf-8 -*-
+
 
 from odoo import api, fields, models, tools, _
-from odoo.exceptions import UserError, AccessError
 
-_logger = logging.getLogger(__name__)
 
 class IndividualProgramInherit(models.Model):
     _inherit = 'school.individual_program'
 
     is_program_didact = fields.Boolean(string="Didactic program", help="Indicates whether the program is didactic or not")
-
     is_bac = fields.Boolean(string="Bachelor Program", help="Indicates whether the program is a Bachelor or not, in which case is is a master's program. This field is used to determine the diploma report.")
 
     def return_date_formatted(self, date):

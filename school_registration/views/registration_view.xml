@@ -271,4 +271,17 @@
         </field>
     </record>
 
+    <!-- Registration request confirmation portal template -->
+    <template id="registration_request_confirmation_template" name="Registration Confirmed">
+        <t t-call="portal.portal_layout">
+          <div class="alert alert-info">
+                <p>
+                    <strong>Thank you for your registration request.</strong>
+                </p>
+                <p>
+                    Your request has been sent to the school administration. You will receive an email with information request to complete the process.
+                </p>
+          </div>
+        </t>
+    </template>
 </odoo>

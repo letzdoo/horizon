@@ -22,16 +22,16 @@
 -->
 <odoo>
     <!-- Add program for student form view -->
-        <record id="act_report_xml_view_google_docs" model="ir.ui.view">
-            <field name="name">ir.actions.report.google.docs</field>
-            <field name="model">ir.actions.report</field>
-            <field name="inherit_id" ref="base.act_report_xml_view" />
-            <field name="priority">50</field>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='attachment']" position="after">
-                    <field name="google_drive_enabled"/>
-                    <field name="google_drive_patner_field"/>
-                </xpath>
-            </field>
-        </record>
+    <record id="act_report_xml_view_google_docs" model="ir.ui.view">
+        <field name="name">ir.actions.report.google.docs</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view"/>
+        <field name="priority">50</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='attachment']" position="after">
+                <field name="google_drive_enabled"/>
+                <field name="google_drive_patner_field"/>
+            </xpath>
+        </field>
+    </record>
 </odoo>

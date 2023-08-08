@@ -1,10 +1,11 @@
-from dataclasses import field
-import string
-from odoo import api, fields, models
+# -*- coding: utf-8 -*-
+
+from odoo import api, fields, models, _
 
 
 class Erasmus(models.Model):
     _name = "custom_partner_fields.erasmus"
+    _description = 'Erasmus'
 
     establishment = fields.Char(string="Etablissement")
     city = fields.Char(string="Ville")
@@ -18,8 +19,9 @@ class Erasmus(models.Model):
     partner_id = fields.Many2one("res.partner", string="Contact")
 
 
-class Internship(models.Model): 
+class Internship(models.Model):
     _name = "custom_partner_fields.internship"
+    _description = 'Internship'
 
     establishment = fields.Char(string="Etablissement")
     city = fields.Char(string="Ville")
@@ -33,6 +35,7 @@ class Internship(models.Model):
 
 class MemoirTitle(models.Model):
     _name = "custom_partner_fields.memoir_title"
+    _description = 'Memoir Title'
 
     name = fields.Char(string="Titre du mémoire/TFE")
     partner_id = fields.Many2one("res.partner", string="Contact")
@@ -40,6 +43,7 @@ class MemoirTitle(models.Model):
 
 class TitleAccess(models.Model):
     _name = "custom_partner_fields.access_title"
+    _description = 'Title Access'
 
     name = fields.Char(string="Name of the access title", help="e.g.: Titre d'accés 1er cycle (art. 107)")
     title = fields.Char(string="Intitulé")

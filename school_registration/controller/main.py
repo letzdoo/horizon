@@ -1,5 +1,4 @@
 # -*- encoding: utf-8 -*-
-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,6 +18,29 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+import logging
 
-from . import models
-from . import controller
+from odoo import fields, http, SUPERUSER_ID, _
+from odoo.exceptions import AccessError, MissingError
+from odoo.http import request
+from odoo.addons.portal.controllers.portal import CustomerPortal
+
+_logger = logging.getLogger(__name__)
+
+class CustomerPortal(CustomerPortal):
+
+    @http.route(['/confirm_registration'], type='http', auth="user", website=True)
+    def portal_order_page(self, **kw):
+        partner_id = request.env.user.partner_id
+
+        tag_id = request.env.ref('school_registration.res_partner_category_registration_request')
+
+        partner_id.write({
+            'category_id' : [(4,request.env.ref('school_registration.res_partner_category_registration_request').id)]
+        })
+
+        values = {
+            'partner_id': partner_id,
+        }
+
+        return request.render('school_registration.registration_request_confirmation_template', values)
