@@ -103,10 +103,6 @@
                             <group>
                                 <field name="grade_code"/>
                                 <field name="certification_profile"/>
-                                <field name="slug_grade"/>
-                                <field name="slug_subtype"/>
-                                <field name="grade_order"/>
-                                <field name="subtype"/>
                             </group>
                         </group>
 
@@ -278,7 +274,6 @@
                         <group>
                             <group>
                                 <field name="name"/>
-                                <field name="slug"/>
                                 <field name="description"/>
                             </group>
                         </group>
