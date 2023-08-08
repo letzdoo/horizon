@@ -142,6 +142,7 @@ class programmes(http.Controller):
             # Données pour le rendu
             template = "website_school_management.programmes_liste"
             values = {
+                'main_object': programs,
                 'program_list': programs,
                 'breadcrumb' : breadcrumb,
                 'options' : options,
@@ -160,6 +161,7 @@ class programmes(http.Controller):
             breadcrumb = self._get_breadcrumb(program, 7)
             template = 'website_school_management.programme_fiche'
             values = {
+                'main_object': program,
                 'program': program,
                 'breadcrumb' : breadcrumb,
             }
@@ -191,6 +193,7 @@ class programmes(http.Controller):
         course = request.env['school.course'].sudo().search([('id','=',course_id)])
         if course:
             values = {
+                'main_object': course,
                 'course' : course,
             }
             return request.render("website_school_management.cours_fiche", values)

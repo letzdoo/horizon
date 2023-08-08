@@ -3,6 +3,10 @@ import re
 from odoo import api, fields, models
 from odoo.addons.http_routing.models.ir_http import slugify_one
 
+from odoo.http import request
+from werkzeug.urls import url_join
+from odoo.addons.http_routing.models.ir_http import url_for
+
 class ProgramWeb(models.Model):
     _inherit = 'school.program'
 
@@ -33,6 +37,29 @@ class ProgramWeb(models.Model):
             match = re.match(r".*\((.*)\)$", prog.title)
             if match and match.group(1):
                 prog.specialization = match.group(1).capitalize()
+
+    def get_website_meta(self):
+        company = request.website.company_id.sudo()
+        img_field = 'social_default_image' if request.website.has_social_default_image else 'logo'
+        if len(self) == 1:
+            title = self.name
+        else:
+            title = "Programmes de cours"
+        return {
+            'opengraph_meta': {
+                'og:type': 'website',
+                'og:title': title,
+                'og:site_name': company.name,
+                'og:url': url_join(request.httprequest.url_root, url_for(request.httprequest.path)),
+                'og:image': request.website.image_url(request.website, img_field),
+            },
+            'twitter_meta': {
+                'twitter:card': 'summary_large_image',
+                'twitter:title': title,
+                'twitter:image': request.website.image_url(request.website, img_field, size='300x300'),
+            },
+            'meta_description': title
+        }
 
 class CycleWeb(models.Model):
     _inherit = 'school.cycle'
@@ -102,3 +129,29 @@ class SpecialityWeb(models.Model):
     def compute_slug(self):
         for spec in self:
             spec.slug = slugify_one(spec.name)
+
+class CourseWeb(models.Model):
+    _inherit = 'school.course'
+
+    def get_website_meta(self):
+        company = request.website.company_id.sudo()
+        img_field = 'social_default_image' if request.website.has_social_default_image else 'logo'
+        if len(self) == 1:
+            title = self.name
+        else:
+            title = "Cours"
+        return {
+            'opengraph_meta': {
+                'og:type': 'website',
+                'og:title': title,
+                'og:site_name': company.name,
+                'og:url': url_join(request.httprequest.url_root, url_for(request.httprequest.path)),
+                'og:image': request.website.image_url(request.website, img_field),
+            },
+            'twitter_meta': {
+                'twitter:card': 'summary_large_image',
+                'twitter:title': title,
+                'twitter:image': request.website.image_url(request.website, img_field, size='300x300'),
+            },
+            'meta_description': title
+        }
