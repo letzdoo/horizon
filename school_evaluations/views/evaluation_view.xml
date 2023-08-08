@@ -185,25 +185,23 @@
                       </div>
                     </div>
                 </xpath>
-                <xpath expr="//field[@name='course_group_summaries']/kanban" position="attributes">
-                  <attribute name="default_order">state,uid</attribute>
-                </xpath>
                 <xpath expr="//field[@name='course_group_summaries']/kanban/field[@name='total_credits']" position="after">
                     <field name="state"/>
                     <field name="trials"/>
                     <field name="final_result_disp"/>
                 </xpath>
-                <xpath expr="//div[contains(@t-attf-class, 'horizon_cgs')]" position="attributes">
-                    <attribute name="t-attf-class">horizon_cgs horizon_cgs_{{record.state.raw_value}}</attribute>
+                <xpath expr="//field[@name='course_group_summaries']/kanban" position="attributes">
+                  <attribute name="default_order">state,uid</attribute>
                 </xpath>
-                <xpath expr="//div[contains(@class, 'horizon_cgs_evals')]" position="inside">
-                  <div class="col-12">
-                    <a type="object" name="action_delete_course_group" class="oe_highlight btn btn-primary float-right mr8 ml8" states="9_draft">Delete</a>
-                    <a type="object" name="action_candidate_valuate_course_group" class="oe_highlight btn btn-primary float-right mr8 ml8" states="9_draft,7_failed">Valuate</a>
-                    <!--<a type="object" name="action_confirm_valuate_course_group" class="oe_highlight btn btn-primary float-right mr8 ml8" states="2_candidate">Confirm</a>
-                    <a type="object" name="action_valuate_course_group" class="oe_highlight btn btn-primary float-right mr8 ml8" states="1_confirmed">Validate</a>-->
-                  </div>
-                </xpath>
+<!--                <xpath expr="//div[contains(@t-attf-class, 'horizon_cgs')]" position="attributes">-->
+<!--                    <attribute name="t-attf-class">horizon_cgs horizon_cgs_{{record.state.raw_value}}</attribute>-->
+<!--                </xpath>-->
+<!--                <xpath expr="//div[contains(@class, 'horizon_cgs_evals')]" position="inside">-->
+<!--                  <div class="col-12">-->
+<!--                    <a type="object" name="action_delete_course_group" class="oe_highlight btn btn-primary float-right mr8 ml8" states="9_draft">Delete</a>-->
+<!--                    <a type="object" name="action_candidate_valuate_course_group" class="oe_highlight btn btn-primary float-right mr8 ml8" states="9_draft,7_failed">Valuate</a>-->
+<!--                  </div>-->
+<!--                </xpath>-->
             </field>
         </record>
         
