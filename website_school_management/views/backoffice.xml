@@ -13,4 +13,17 @@
         </field>
     </record>
 
+    <record id="cycle_form" model="ir.ui.view">
+        <field name="name">Cycle form extension for Website</field>
+        <field name="inherit_id" ref="school_management.view_school_cycle_form" />
+        <field name="model">school.cycle</field>
+        <field name="type">form</field>
+        <field eval="17" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='certification_profile']" position="after">
+                <field name="subtype" placeholder="Finality,..."/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
