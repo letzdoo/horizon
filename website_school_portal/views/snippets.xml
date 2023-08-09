@@ -3,11 +3,18 @@
 
     <!-- Template générique du snippet -->
     <template id="hz_generic_insert_snippet" name="Snippet générique Horizon">
-        <section class="hz_generic_insert_snippet" data-template-name="hz_horizon_access">
+        <section class="hz_generic_insert_snippet o_not_editable" data-template-name="hz_horizon_access">
             <div class="container">
                 <div class="dynamic_snippet_template"/>
             </div>
         </section>
+    </template>
+
+    <!-- Template snippet loader -->
+    <template id="hz_snippet_loader">
+        <div class="d-flex justify-content-center o_not_editable" t-ignore="true">
+            <span class="mx-5 my-5">Chargement en cours...</span>
+        </div>
     </template>
 
     <!-- Template snippet connexion -->

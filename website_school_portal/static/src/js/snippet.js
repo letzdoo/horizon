@@ -11,6 +11,9 @@ odoo.define('website_school_portal.snippet', function (require) {
          */
         _fetchData: async function () {
             var template = this.$target[0].dataset.templateName;
+            if (document.querySelector('body.editor_enable')) {
+                template = 'hz_snippet_loader';
+            }
             const html = await this._rpc({
                 route: '/hz_generic_insert_snippet/' + template,
             });
