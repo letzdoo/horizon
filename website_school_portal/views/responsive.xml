@@ -50,104 +50,91 @@
     			
     			<div id="content" class="container">
 					<div class="content-body">
-						<span class="subheading-span d-block text-danger text-uppercase font-weight-bold mb-4 pb-md-0 mb-xl-4 pb-xl-3">BOOKING</span>
-						<h2 class="mb-0 mb-2 mb-lg-1">Réserver une salle</h2>
-						<a href="https://sites.google.com/crlg.be/valves-etudiants/vie-%C3%A9tudiante/locaux-implantation-forgeur" class="float-link d-inline-flex align-items-center text-info text-uppercase font-weight-bold pt-1 pb-1">VOIR LE rêglement <i class="icon icon-arrow-right"></i></a>
-						<form action="#" class="pt-4 pt-lg-2 mt-4 mt-lg-5">
+						<h1 class="mt-5 mb-0 mb-2 mb-lg-1">Réserver une salle</h1>
+						<a href="https://sites.google.com/crlg.be/valves-etudiants/vie-%C3%A9tudiante/locaux-implantation-forgeur" class="text-info text-uppercase pt-1 pb-1">Voir le règlement</a>
+						<form action="#" class="pt-4 pt-lg-2 mt-4 mt-lg-5 pb-4">
 							<t t-if="user.has_group('school_management.group_student')"><input id="event_type" type="hidden" value="6"/></t>
 							<t t-if="user.has_group('school_management.group_teacher')"><input id="event_type" type="hidden" value="7"/></t>
 							<t t-if="user.has_group('school_management.group_employee')"><input id="event_type" type="hidden" value="8"/></t>
 							<input id="description" type="hidden" t-att-value="user.name"/>
-							<div class="form-row mb-4 mb-md-5 mb-lg-4">
-								<div class="col-12 col-md-6 col-lg-12 col-xl-6 d-flex pr-md-6 mb-4 mb-md-0 mb-lg-4 mb-xl-0">
+							<div class="row mb-2">
+								<div class="col-12">
 									<t t-if="user.has_group('school_management.group_student')">
-									<div class="form-group mr-4">
-										<label class="d-block text-uppercase font-weight-bold">Aujourd'hui</label>
-										<button id="today" class="form-control input-sm input-font-lg text-center bg-danger border border-danger border-0" type="button"><t t-esc="today.strftime('%d / %m  ')"/></button>
-									</div>
-									<div class="form-group">
-										<label class="d-block text-uppercase font-weight-bold">demain</label>
-										<button type="button" id="tomorrow" class="form-control input-font-lg text-center"><t t-esc="tomorrow.strftime('%d / %m  ')"/></button>
-									</div>
-									<input id="day" name="day" type="hidden" value="0"/>
-									<input id="selected_date" name="selected_date" type="hidden" value="0"/>
+										<div class="row">
+											<div class="col-12 col-sm-4 col-lg-3">
+												<label class="text-uppercase font-weight-bold">Aujourd'hui</label>
+												<button id="today" class="form-control input-sm input-font-lg text-center bg-danger border border-danger border-0" type="button"><t t-esc="today.strftime('%d / %m  ')"/></button>
+											</div>
+											<div class="col-12 col-sm-4 col-lg-3">
+												<label class="text-uppercase font-weight-bold">Demain</label>
+												<button type="button" id="tomorrow" class="form-control input-font-lg text-center"><t t-esc="tomorrow.strftime('%d / %m  ')"/></button>
+											</div>
+										</div>
+										<input id="day" name="day" type="hidden" value="0"/>
+										<input id="selected_date" name="selected_date" type="hidden" value="0"/>
 									</t>
 									<t t-if="not user.has_group('school_management.group_student')">
-									<div class="form-group" style="width:180px;">
-									  <style>
-									    #selected_date {
-                                            position: relative;
-                                            color-scheme: dark;
-                                        }
-
-                                        #selected_date:before {
-                                            top: 3px; left: 3px;
-                                            content: attr(data-date);
-                                        }
-                                        
-                                        #selected_date::-webkit-datetime-edit, #selected_date::-webkit-inner-spin-button, #selected_date::-webkit-clear-button {
-                                            display: none;
-                                        }
-                                        
-                                        #selected_date::-webkit-calendar-picker-indicator {
-                                            position: absolute;
-                                            top: 3px;
-                                            right: 0;
-                                            opacity: 1;
-                                            margin: 12px;
-                                        }
-									  </style>
-										<label class="d-block text-uppercase font-weight-bold">Date</label>
-										<input id="day" name="day" type="hidden" value="0"/>
-										<input type="date" name="selected_date" id="selected_date" class="form-control input-font-lg text-center" data-date="" data-date-format="ddd DD/MM" t-att-value="today.strftime('%Y-%m-%d')"/>
-										<script>
-                                            $("#selected_date").on("change", function() {
-                                                this.setAttribute(
-                                                    "data-date",
-                                                    moment(this.value, "YYYY-MM-DD").locale('fr')
-                                                    .format( this.getAttribute("data-date-format") )
-                                                );
-                                                this.setAttribute(
-                                                        "value",
-                                                        this.value);
-                                            }).trigger("change")
-										</script>
-									</div>
+										<div class="row">
+											<div class="col-12 col-sm-4 col-lg-3">
+												<label class="text-uppercase font-weight-bold">Date</label>
+												<input id="day" name="day" type="hidden" value="0"/>
+												<input class="w-100" type="date" name="selected_date" id="selected_date" data-date="" data-date-format="ddd DD/MM" t-att-value="today.strftime('%Y-%m-%d')"/>
+												<script>
+													$("#selected_date").on("change", function() {
+														this.setAttribute(
+															"data-date",
+															moment(this.value, "YYYY-MM-DD").locale('fr')
+															.format( this.getAttribute("data-date-format") )
+														);
+														this.setAttribute(
+																"value",
+																this.value);
+													}).trigger("change")
+												</script>
+											</div>
+										</div>
 									</t>
 								</div>
-								<div class="col-12 col-md-6 col-lg-12 col-xl-6 d-flex">
-									<div class="form-group mr-4 ml-md-auto ml-lg-0">
-										<label class="d-block text-uppercase font-weight-bold" for="beginningHour">Heure début</label>
-										<select id="from_hour" name="from_hour">
-											<option t-att-value="" t-att-hidden="True" t-att-selected="True" t-att-disabled="True">Heure de début...</option>
-											<t t-foreach="from_hours" t-as="from_hour">
-												<option t-att-value="from_hour"><t t-esc="from_hour"/></option>
-											</t>
-										</select>
-									</div>
-									<div class="form-group">
-										<label class="d-block text-uppercase font-weight-bold" for="endTime">Heure fin</label>
-										<select id="to_hour" name="to_hour">
-											<option t-att-value="" t-att-hidden="True" t-att-selected="True" t-att-disabled="True">Heure de fin...</option>
-											<t t-foreach="to_hours" t-as="to_hour">
-												<option t-att-value="to_hour"><t t-esc="to_hour"/></option>
-											</t>
-										</select>
-										<!-- <input id="to_hour" type="text" data-length="10" class="invalid form-control no-appearance time-select input-sm input-font-lg text-center"/> -->
+							</div>
+							<div class="row mb-2">
+								<div class="col-12">
+									<div class="row">
+										<div class="col-12 col-sm-4 col-lg-3">
+											<label class="text-uppercase font-weight-bold" for="beginningHour">Heure début</label>
+											<select class="w-100" id="from_hour" name="from_hour">
+												<option t-att-value="" t-att-hidden="True" t-att-selected="True" t-att-disabled="True">Heure de début...</option>
+												<t t-foreach="from_hours" t-as="from_hour">
+													<option t-att-value="from_hour"><t t-esc="from_hour"/></option>
+												</t>
+											</select>
+										</div>
+										<div class="col-12 col-sm-4 col-lg-3">
+											<label class="text-uppercase font-weight-bold" for="endTime">Heure fin</label>
+											<select class="w-100" id="to_hour" name="to_hour">
+												<option t-att-value="" t-att-hidden="True" t-att-selected="True" t-att-disabled="True">Heure de fin...</option>
+												<t t-foreach="to_hours" t-as="to_hour">
+													<option t-att-value="to_hour"><t t-esc="to_hour"/></option>
+												</t>
+											</select>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="form-group pt-2 pt-md-3 pr-lg-6 mb-3 mb-lg-5">
-								<label class="d-block text-uppercase font-weight-bold" for="endTime">local</label>
-								<select id="room" class="custom-select" disabled="">
-									<option selected="">Selectionnez un local...</option>
-								</select>
+							<div class="row mb-2">
+								<div class="col-12 col-sm-4 col-lg-3">
+									<label class="text-uppercase font-weight-bold" for="endTime">local</label>
+									<select id="room" class="w-100" disabled="">
+										<option selected="">Selectionnez un local...</option>
+									</select>
+								</div>
 							</div>
-							<div class="form-group pt-3">
-								<button type="button" id="request-booking" class="btn btn-danger" disabled="">Envoyer ma demande</button>
+							<div class="row mb-2 mt-4">
+								<div class="col-12 col-sm-4 col-lg-3">
+									<button type="button" id="request-booking" class="btn btn-danger" disabled="">Envoyer ma demande</button>
+								</div>
 							</div>
 						</form>
-          	            <div id="horizon-error" class="btn btn-warning btn-block p-2 font-weight-bold" style="display: none;"/>
+          	            <div id="horizon-error" class="btn btn-warning btn-block p-2 font-weight-bold mb-4" style="display: none;"/>
 					</div>
 				</div>
     		</t>
