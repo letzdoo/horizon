@@ -43,7 +43,7 @@
 
         <!-- Création page Valves Étudiants en db  -->
         <record id="page_valves_etudiants_crlg" model="website.page">
-            <field name="name">Valves Étudiants</field>
+            <field name="name">Valves étudiants</field>
             <field name="website_published">True</field>
             <field name="url">/etudiants-info</field>
             <field name="view_id" ref="website_crlg_portal.valves_etudiants_crlg"/>
@@ -51,7 +51,7 @@
 
         <!-- Création page Valves Étudiants en db  -->
         <record id="page_valves_professeurs_crlg" model="website.page">
-            <field name="name">Valves Professeurs</field>
+            <field name="name">Valves professeurs</field>
             <field name="website_published">True</field>
             <field name="url">/professeurs-info</field>
             <field name="view_id" ref="website_crlg_portal.valves_professeurs_crlg"/>
