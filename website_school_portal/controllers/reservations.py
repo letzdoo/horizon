@@ -16,7 +16,7 @@ from odoo.addons.auth_oauth.controllers.main import OAuthLogin as Home
 _logger = logging.getLogger(__name__)
 
 # Gestion des différentes routes pour les programmes de cours
-class reservations(http.Controller):
+class ReservationsController(http.Controller):
     @http.route('/reservations/creation', type='http', auth='user', website=True)
     def responsive_booking_new(self, debug=False, **k):
 

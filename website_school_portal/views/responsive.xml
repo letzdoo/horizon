@@ -224,7 +224,7 @@
     <template id="hz_blocs" name="Mon programme individuel">
         <t t-call="website.layout">
                 <div class="container">
-                    <span class="subheading-span d-block text-danger text-uppercase font-weight-bold mb-3 mb-md-4 pb-md-2 mb-xl-4 pb-xl-2">PROGRAMME ANNUEL</span>
+					<h1 class="mt-5 mb-2">Mon programme individuel</h1>
                     <!-- accordion section -->
                     <section class="accordion-section pt-md-1 d-evaluation" t-foreach="blocs" t-as="bloc">
                         <h2 class="mb-0 mb-1"><t t-esc="bloc.source_bloc_speciality_id.name"/></h2>
@@ -317,7 +317,7 @@
     <template id="hz_documents" name="Mes documents">
             <t t-call="website.layout">
                 <div class="container">
-						<span class="subheading-span d-block text-danger text-uppercase font-weight-bold mb-3 mb-md-4 pb-md-2 mb-xl-4 pb-xl-2">DOCUMENTS</span>
+						<h1 class="mt-5 mb-2">Mes documents</h1>
 						<!-- accordion section -->
 						<section class="pt-md-1" t-foreach="official_document_ids" t-as="doc">
 							<a t-att-href="'/web/content/%i?download=true' % doc.online_attachment_id.id">
