@@ -147,4 +147,13 @@
             </div>
         </xpath>
     </template>
+
+    <template id="_crlg_custom_footer_links" inherit_id="website_school_portal._hz_custom_footer_links" name="CRLG Footer Links">
+        <xpath expr="//ul[hasclass('hz_footer-links')]" position="inside"> 
+            <t t-if="(website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.student == True or website.env.user.partner_id.employee == True)">
+                <li><a href="/reservations/mes-reservations">Mes réservations</a></li>
+                <li><a href="/reservations/creation">Réserver une salle</a></li>
+            </t>
+        </xpath>
+    </template>
 </odoo>
