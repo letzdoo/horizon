@@ -42,13 +42,16 @@ class ProgramWeb(models.Model):
         company = request.website.company_id.sudo()
         img_field = 'social_default_image' if request.website.has_social_default_image else 'logo'
         if len(self) == 1:
-            title = self.name
+            title = self.title
+            description = "%s - Programme de cours" % self.name
         else:
             title = "Programmes de cours"
+            description = "Programmes de cours - Recherche - %s résultats" % len(self)
         return {
             'opengraph_meta': {
                 'og:type': 'website',
                 'og:title': title,
+                'og:description': description,
                 'og:site_name': company.name,
                 'og:url': url_join(request.httprequest.url_root, url_for(request.httprequest.path)),
                 'og:image': request.website.image_url(request.website, img_field),
@@ -56,9 +59,10 @@ class ProgramWeb(models.Model):
             'twitter_meta': {
                 'twitter:card': 'summary_large_image',
                 'twitter:title': title,
+                'twitter:description': description,
                 'twitter:image': request.website.image_url(request.website, img_field, size='300x300'),
             },
-            'meta_description': title
+            'meta_description': description
         }
 
 class CycleWeb(models.Model):
@@ -138,12 +142,15 @@ class CourseWeb(models.Model):
         img_field = 'social_default_image' if request.website.has_social_default_image else 'logo'
         if len(self) == 1:
             title = self.name
+            description = "%s (%s - %s)" % (self.name, self.cycle_id.name, self.course_group_id.name)
         else:
             title = "Cours"
+            description = "Cours - Recherche - %s résultats" % len(self)
         return {
             'opengraph_meta': {
                 'og:type': 'website',
                 'og:title': title,
+                'og:description': description,
                 'og:site_name': company.name,
                 'og:url': url_join(request.httprequest.url_root, url_for(request.httprequest.path)),
                 'og:image': request.website.image_url(request.website, img_field),
@@ -151,7 +158,8 @@ class CourseWeb(models.Model):
             'twitter_meta': {
                 'twitter:card': 'summary_large_image',
                 'twitter:title': title,
+                'twitter:description': description,
                 'twitter:image': request.website.image_url(request.website, img_field, size='300x300'),
             },
-            'meta_description': title
+            'meta_description': description
         }
