@@ -211,7 +211,7 @@
 						</ul>
 						<div class="row mb-4">
 							<div class="col-12">
-								<a class="btn btn-danger" style="margin-right:12px;" href="/reservations/creation">Réserver une salle</a>
+								<a class="btn btn-danger me-3" href="/reservations/creation">Réserver une salle</a>
 								<a class="btn btn-danger" href="/reservations/recherche">Rechercher</a>
 								<!-- <a class="btn btn-danger" href="/booking#category_id=16" target="_blank">Planning des réservations</a> -->
 							</div>
