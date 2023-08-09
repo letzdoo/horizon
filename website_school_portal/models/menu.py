@@ -49,7 +49,7 @@ class Menu(models.Model):
                 })
             
             self.env['website.menu'].create({
-                    'name': "Créer une réservation",
+                    'name': "Réserver une salle",
                     'url': "/reservations/creation",
                     'page_id': None,
                     'parent_id': parent.id,
