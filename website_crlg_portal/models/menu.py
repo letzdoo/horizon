@@ -11,11 +11,38 @@ class Menu(models.Model):
     def init_crlg_menu(self):
         _logger.info("Init crlg menu")
         menus = self.env["website.menu"].search([])
-        for record in menus:
-            if record.url == '/etudiants-info':
-                record.public = False
-                record.student = True
-                record.teacher = True
-            elif record.url == '/professeurs-info':
-                record.public = False
-                record.teacher = True
+
+        website_id = self.env["website"].get_current_website().id
+        valves_menus = self.env["website.menu"].search([("url", "=", "/etudiants-info"), ('website_id', '=', website_id)])
+
+         # Ajout des points de menu des valves
+        if len(valves_menus) == 0:
+            default_main_menu_id = self.env["website.menu"].search([('parent_id', '=', None), ('website_id', '=', website_id)]).id
+
+            self.env['website.menu'].create({
+                    'name': "Valves étudiants",
+                    'url': "/etudiants-info",
+                    'page_id': None,
+                    'parent_id': default_main_menu_id,
+                    'website_id': website_id,
+                    'sequence' : 30,
+                    'public' : False,
+                    'student' : True,
+                    'teacher' : True,
+                    'employee' : True,
+                })
+            
+            self.env['website.menu'].create({
+                    'name': "Valves professeurs",
+                    'url': "/professeurs-info",
+                    'page_id': None,
+                    'parent_id': default_main_menu_id,
+                    'website_id': website_id,
+                    'sequence' : 40,
+                    'public' : False,
+                    'student' : False,
+                    'teacher' : True,
+                    'employee' : True,
+                })
+            
+            self.env.cr.commit()

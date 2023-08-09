@@ -23,9 +23,7 @@
 <odoo>
     <function model="website" name="init_horizon" />
     
-    <data noupdate="1">
-        <function model="website.menu" name="init_school_portal_menu" />
-    </data>
+    <function model="website.menu" name="init_school_portal_menu" />
 
     <!-- Ajout des options de visibilité d'un point de menu  -->
     <record id="hz_website_menus_visibility_form_view" model="ir.ui.view">

@@ -24,6 +24,9 @@
     <data>
         <function model="website" name="init_crlg" />
 
+        <!-- Initialisation des colonnes en db des points de menu  -->
+        <function model="website.menu" name="init_crlg_menu" />
+
         <!-- Template page  -->
 		<template id="valves_etudiants_crlg" name="Valves Étudiants">
             <t t-call="website.layout">
@@ -53,24 +56,5 @@
             <field name="url">/professeurs-info</field>
             <field name="view_id" ref="website_crlg_portal.valves_professeurs_crlg"/>
         </record>
-		
-		<!-- Création point de menu Valves Étudiants en db  -->
-        <record id="menu_valves_etudiants_crlg" model="website.menu">
-            <field name="name">Valves Étudiants</field>
-            <field name="url">/etudiants-info</field>
-            <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">30</field>
-        </record>
-
-        <!-- Création point de menu Valves Professeurs en db  -->
-        <record id="menu_valves_professeurs_crlg" model="website.menu">
-            <field name="name">Valves Professeurs</field>
-            <field name="url">/professeurs-info</field>
-            <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">40</field>
-        </record>
-
-        <!-- Initialisation des colonnes en db des points de menu  -->
-        <function model="website.menu" name="init_crlg_menu" />
     </data>
 </odoo>
