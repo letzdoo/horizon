@@ -50,7 +50,7 @@
     			
     			<div id="content" class="container">
 					<div class="content-body">
-						<h1 class="mt-5 mb-0 mb-2 mb-lg-1">Réserver une salle</h1>
+						<h1 class="mt-5 mb-2">Réserver une salle</h1>
 						<a href="https://sites.google.com/crlg.be/valves-etudiants/vie-%C3%A9tudiante/locaux-implantation-forgeur" class="text-info text-uppercase pt-1 pb-1">Voir le règlement</a>
 						<form action="#" class="pt-4 pt-lg-2 mt-4 mt-lg-5 pb-4">
 							<t t-if="user.has_group('school_management.group_student')"><input id="event_type" type="hidden" value="6"/></t>
@@ -78,7 +78,7 @@
 											<div class="col-12 col-sm-4 col-lg-3">
 												<label class="text-uppercase font-weight-bold">Date</label>
 												<input id="day" name="day" type="hidden" value="0"/>
-												<input class="w-100" type="date" name="selected_date" id="selected_date" data-date="" data-date-format="ddd DD/MM" t-att-value="today.strftime('%Y-%m-%d')"/>
+												<input class="w-100 form-control" type="date" name="selected_date" id="selected_date" data-date="" data-date-format="ddd DD/MM" t-att-value="today.strftime('%Y-%m-%d')"/>
 												<script>
 													$("#selected_date").on("change", function() {
 														this.setAttribute(
@@ -101,7 +101,7 @@
 									<div class="row">
 										<div class="col-12 col-sm-4 col-lg-3">
 											<label class="text-uppercase font-weight-bold" for="beginningHour">Heure début</label>
-											<select class="w-100" id="from_hour" name="from_hour">
+											<select class="w-100 form-select" id="from_hour" name="from_hour">
 												<option t-att-value="" t-att-hidden="True" t-att-selected="True" t-att-disabled="True">Heure de début...</option>
 												<t t-foreach="from_hours" t-as="from_hour">
 													<option t-att-value="from_hour"><t t-esc="from_hour"/></option>
@@ -110,7 +110,7 @@
 										</div>
 										<div class="col-12 col-sm-4 col-lg-3">
 											<label class="text-uppercase font-weight-bold" for="endTime">Heure fin</label>
-											<select class="w-100" id="to_hour" name="to_hour">
+											<select class="w-100 form-select" id="to_hour" name="to_hour">
 												<option t-att-value="" t-att-hidden="True" t-att-selected="True" t-att-disabled="True">Heure de fin...</option>
 												<t t-foreach="to_hours" t-as="to_hour">
 													<option t-att-value="to_hour"><t t-esc="to_hour"/></option>
@@ -123,7 +123,7 @@
 							<div class="row mb-2">
 								<div class="col-12 col-sm-4 col-lg-3">
 									<label class="text-uppercase font-weight-bold" for="endTime">local</label>
-									<select id="room" class="w-100" disabled="">
+									<select id="room" class="w-100 form-select" disabled="">
 										<option selected="">Selectionnez un local...</option>
 									</select>
 								</div>
@@ -151,31 +151,30 @@
     			
     			<div id="content" class="container">
 					<div class="content-body">
-						<span class="subheading-span d-block text-danger text-uppercase font-weight-bold mb-4 pb-md-0 mb-xl-4 pb-xl-3">BOOKING SEARCH</span>
+						<h1 class="mt-5 mb-2">Recherche de réservations</h1>
+						<a href="/reservations/mes-reservations" class="text-danger pt-1 pb-1">← Retour vers mes réservations</a>
 						<form action="#" class="pt-4 pt-lg-2 mt-4 mt-lg-5">
-							<div class="form-row mb-4 mb-md-5 mb-lg-4">
-								<div class="col-12 col-md-6 col-lg-12 col-xl-6 d-flex pr-md-6 mb-4 mb-md-0 mb-lg-4 mb-xl-0">
-									<div class="form-group mr-4">
-										<label class="d-block text-uppercase font-weight-bold">Aujourd'hui</label>
-										<button id="today" class="form-control input-sm input-font-lg text-center bg-danger border border-danger border-0" type="button"><t t-esc="datetime.datetime.today().strftime('%d / %m  ')"/></button>
-									</div>
-									<div class="form-group">
-										<label class="d-block text-uppercase font-weight-bold">demain</label>
-										<button type="button" id="tomorrow" class="form-control input-sm input-font-lg text-center"><t t-esc="(datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d / %m  ')"/></button>
-									</div>
-									<input id="day" type="hidden" value="0"/>
+							<div class="row mb-4">
+								<div class="col-12 col-sm-4 col-lg-3">
+									<label class="text-uppercase font-weight-bold">Aujourd'hui</label>
+									<button id="today" class="form-control input-sm input-font-lg text-center bg-danger border border-danger border-0" type="button"><t t-esc="datetime.datetime.today().strftime('%d / %m  ')"/></button>
 								</div>
-								<div class="col-12">
-									<div class="form-group mr-4 ml-md-auto ml-lg-0">
-										<input id="query" type="text" data-length="30" class="form-control no-appearance time-select input-lg input-font-lg"/>
-									</div>
+								<div class="col-12 col-sm-4 col-lg-3">
+									<label class="text-uppercase font-weight-bold">Demain</label>
+									<button type="button" id="tomorrow" class="form-control input-sm input-font-lg text-center"><t t-esc="(datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d / %m  ')"/></button>
+								</div>
+								<input id="day" type="hidden" value="0"/>
+							</div>
+							<div class="row mb-4">
+								<div class="col-12 col-sm-8 col-lg-6">								
+									<input id="query" type="text" data-length="30" class="form-control no-appearance time-select input-lg input-font-lg" placeholder="Critère de recherche..."/>						
 								</div>
 							</div>
 							<div class="form-group pt-3">
 								<button type="button" id="search-booking" class="btn btn-danger">Rechercher</button>
 							</div>
 						</form>
-						<span class="subheading-span d-block text-danger text-uppercase font-weight-bold mb-4 pb-md-0 mb-xl-4 pb-xl-3 mt-4">RESULTATS</span>
+						<p class="subheading-span d-block text-danger text-uppercase mb-4 pb-md-0 mb-xl-4 pb-xl-3 mt-4">RÉSULTATS</p>
 						<ul id="booking-list" class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
 						</ul>
 					</div>
@@ -187,8 +186,7 @@
             <t t-call="website.layout">
     			<div id="content" class="container">
 					<div class="content-body">
-						<span class="subheading-span d-block text-danger text-uppercase font-weight-bold mb-4 pb-md-0 mb-xl-4 pb-xl-3">BOOKING</span>
-						<h2 class="mb-0 mb-2">Mes réservations</h2>
+						<h1 class="mt-5 mb-2">Mes réservations</h1>
 						<h5>Aujourd'hui</h5>
 						<i t-if='len(bookings) == 0'>Aucune réservation</i>
 						<ul class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
@@ -211,10 +209,12 @@
 								</div>
 							</li>
 						</ul>
-						<div>
-							<a class="btn btn-danger" href="/reservations/creation" style="margin: 10px;">Réserver une salle</a>
-							<a class="btn btn-danger" href="/reservations/recherche" style="margin: 10px;">Rechercher</a>
-							<a class="btn btn-danger" href="/booking#category_id=16" style="margin: 10px;" target="_blank">Planning des réservations</a>
+						<div class="row mb-4">
+							<div class="col-12">
+								<a class="btn btn-danger" style="margin-right:12px;" href="/reservations/creation">Réserver une salle</a>
+								<a class="btn btn-danger" href="/reservations/recherche">Rechercher</a>
+								<!-- <a class="btn btn-danger" href="/booking#category_id=16" target="_blank">Planning des réservations</a> -->
+							</div>
 						</div>
 					</div>
 				</div>

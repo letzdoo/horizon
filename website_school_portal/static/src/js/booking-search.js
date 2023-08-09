@@ -1,21 +1,10 @@
 /* global $, moment */
 
 $(document).ready(function(){
-    
-    $('#today').on('click',function() {
-        $('#today').addClass("bg-danger border border-danger border-0")
-        $('#tomorrow').removeClass("bg-danger border border-danger border-0")
-        $('#day').prop( "value", "0" );
-    });
-    
-    $('#tomorrow').on('click',function() {
-        $('#today').removeClass("bg-danger border border-danger border-0")
-        $('#tomorrow').addClass("bg-danger border border-danger border-0")
-        $('#day').prop( "value", "1" );
-    });   
-    
-    $('#search-booking').on('click',function() {
-        var self = this;
+
+    search();
+
+    function search() {
         var query = $('#query').val();
         var day = $('#day').val();
         var start = moment().local().set('hour',0).set('minutes',0).set('seconds',0).set('milliseconds',0);
@@ -57,5 +46,25 @@ $(document).ready(function(){
             }
          },
         });
+    }
+    
+    $('#today').on('click',function() {
+        $('#today').addClass("bg-danger border border-danger border-0")
+        $('#tomorrow').removeClass("bg-danger border border-danger border-0")
+        $('#day').prop( "value", "0" );
+
+        search();
+    });
+    
+    $('#tomorrow').on('click',function() {
+        $('#today').removeClass("bg-danger border border-danger border-0")
+        $('#tomorrow').addClass("bg-danger border border-danger border-0")
+        $('#day').prop( "value", "1" );
+
+        search();
+    });   
+    
+    $('#search-booking').on('click',function() {
+        search();
     });
 });
