@@ -129,7 +129,7 @@ class Event(models.Model):
             
                     # Constraint on student events
                     
-                    student_event = self.env['ir.model.data'].xmlid_to_object('school_booking.school_student_event_type')
+                    student_event = self.env.ref('school_booking.school_student_event_type')
                     
                     if student_event in rec.categ_ids:
                         
