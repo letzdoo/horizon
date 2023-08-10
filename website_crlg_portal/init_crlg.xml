@@ -28,14 +28,14 @@
         <function model="website.menu" name="init_crlg_menu" />
 
         <!-- Template page  -->
-		<template id="valves_etudiants_crlg" name="Valves Étudiants">
+		<template id="valves_etudiants_crlg" name="Valves étudiants">
             <t t-call="website.layout">
                 <div id="wrap" class="oe_structure oe_empty"/>
             </t>
         </template>
 
         <!-- Template page  -->
-		<template id="valves_professeurs_crlg" name="Valves Professeurs">
+		<template id="valves_professeurs_crlg" name="Valves professeurs">
             <t t-call="website.layout">
                 <div id="wrap" class="oe_structure oe_empty"/>
             </t>

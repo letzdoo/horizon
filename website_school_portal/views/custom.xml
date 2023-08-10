@@ -197,12 +197,10 @@
             <li t-foreach="configurator_footer_links" t-as="link">
                 <a t-att-href="link['href']" t-esc="link['text']"/>
             </li>
-            <li><a href="/contactus">Nous contacter</a></li>
+            <li class="hz_contact_link"><a href="/contactus">Nous contacter</a></li>
             <t t-if="(website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.student == True or website.env.user.partner_id.employee == True)">
-                <li><a href="/etudiants-info">Valves étudiants</a></li>
-            </t>
-            <t t-if="(website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.employee == True)">
-                <li><a href="/professeurs-info">Valves professeurs</a></li>
+                <li><a href="/reservations/mes-reservations">Mes réservations</a></li>
+                <li><a href="/reservations/creation">Réserver une salle</a></li>
             </t>
         </ul>
     </template>

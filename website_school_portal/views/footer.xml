@@ -63,7 +63,7 @@
                                 </ul>
                                 <hr/>
                                 <section class="s_title o_colored_level o_we_force_no_transition" data-name="Recherche">
-                                    <div class="s_allow_columns container">
+                                    <div class="s_allow_columns container o_not_editable">
                                         <form method="get" data-snippet="s_searchbar_input" class="o_searchbar_form s_searchbar_input" action="/website/search" data-name="Rechercher">
                                             <div role="search" class="input-group ">
                                                 <input type="search" name="search" class="search-query form-control oe_search_box None" placeholder="Recherche…" data-search-type="all" data-limit="0" data-display-image="false" data-display-description="false" data-display-extra-link="false" data-display-detail="false" data-order-by="name asc" autocomplete="off"/>
@@ -75,7 +75,7 @@
                                         </form>
                                     </div>
                                 </section>
-                                <div class="s_social_media text-start o_not_editable" data-snippet="s_social_media" data-name="Social Media" contenteditable="false">
+                                <div class="s_social_media text-start o_not_editable mt-3" data-snippet="s_social_media" data-name="Social Media" contenteditable="false">
                                     <h5 class="s_social_media_title d-none" contenteditable="true">Follow us</h5>
                                     <t t-call="website_school_portal.hz_socials" />
                                 </div>
