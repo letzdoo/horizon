@@ -15,3 +15,5 @@ class ResCompanyCRLG(models.Model):
         company.social_facebook = "https://www.facebook.com/ConservatoireLiege/"
         company.social_youtube = "https://www.youtube.com/channel/UCq7wqH7okutMExNgr_CMEVQ/videos"
         company.social_instagram = "https://www.instagram.com/conservatoireroyalliege/"
+        company.social_twitter = "https://twitter.com/c_r_l_g"
+        company.social_linkedin = "https://www.linkedin.com/school/conservatoire-royal-de-li-ge/"
