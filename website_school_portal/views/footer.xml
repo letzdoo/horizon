@@ -105,6 +105,31 @@
             <i class="fa fa-linkedin rounded-circle shadow-sm"/>
         </a>
     </template>
+
+    <template id="hz_share"  inherit_id="website.layout" name="Horizon Share">
+        <xpath expr="//main/*[last()]" position="after">
+            <div id="hz_share_footer" data-snippet="s_share" class="w-100 s_share text-center o_no_link_popover my-2" data-name="Partager">
+                <h5 class="me-2 d-none d-md-inline me-2">Partager:</h5>
+                <span class="d-inline-block d-md-none fs-1 me-3 my-1"><i class="fa fa-share-alt-square "/></span>
+                
+                <a href="https://www.facebook.com/sharer/sharer.php?u={url}" target="_blank" class="s_share_facebook ">
+                    <i class="fa fa-facebook rounded shadow-sm"></i>
+                </a>
+                <a href="https://twitter.com/intent/tweet?text={title}&amp;url={url}" target="_blank" class="s_share_twitter ">
+                    <i class="fa fa-twitter rounded shadow-sm"></i>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={url}" target="_blank" class="s_share_linkedin ">
+                    <i class="fa fa-linkedin rounded shadow-sm"></i>
+                </a>
+                <a href="https://wa.me/?text={title}" target="_blank" class="s_share_whatsapp ">
+                    <i class="fa fa-whatsapp rounded shadow-sm"></i>
+                </a>
+                <a href="mailto:?body={url}&amp;subject={title}" class="s_share_email ">
+                    <i class="fa fa-envelope rounded shadow-sm"></i>
+                </a>
+            </div>
+        </xpath>
+    </template>
     
 </odoo>
 
