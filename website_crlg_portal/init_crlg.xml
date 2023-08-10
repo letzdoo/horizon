@@ -23,6 +23,7 @@
 <odoo>
     <data>
         <function model="website" name="init_crlg" />
+        <function model="res.company" name="init_crlg_social_medias" />
 
         <!-- Initialisation des colonnes en db des points de menu  -->
         <function model="website.menu" name="init_crlg_menu" />
