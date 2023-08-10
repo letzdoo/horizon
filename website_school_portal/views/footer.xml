@@ -107,7 +107,7 @@
     </template>
 
     <template id="hz_share"  inherit_id="website.layout" name="Horizon Share">
-        <xpath expr="//main/*[last()]" position="after">
+        <xpath expr="//main" position="after">
             <div id="hz_share_footer" data-snippet="s_share" class="w-100 s_share text-center o_no_link_popover my-2" data-name="Partager">
                 <h5 class="me-2 d-none d-md-inline me-2">Partager:</h5>
                 <span class="d-inline-block d-md-none fs-1 me-3 my-1"><i class="fa fa-share-alt-square "/></span>
