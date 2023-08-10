@@ -86,6 +86,15 @@
             <field name="state" widget="statusbar" statusbar_visible="draft,active,archived" />
           </header>
           <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button class="oe_stat_button" icon="fa-bars">
+                  Valorisations: <field nolabel="1" name="valuation_followup_count" widget="statinfo"/>
+              </button>
+              <button class="oe_stat_button" icon="fa-bars" string="Individual Bloc Count">
+                  <field string="Bloc Count " name="individual_bloc_count" widget="statinfo"/>
+              </button>
+            </div>
+
             <div class="oe_title">
               <h1>
                 <field name="name" />
@@ -95,8 +104,8 @@
               <field name="year_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
               <field name="secretary_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-              <field name="valuation_followup_count" />
-              <field name="individual_bloc_count" />
+<!--              <field name="valuation_followup_count" />-->
+<!--              <field name="individual_bloc_count" />-->
             </group>
             <group col="2">
               <field name="individual_bloc_ids" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
