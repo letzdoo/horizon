@@ -1,4 +1,5 @@
-# -*- encoding: utf-8 -*-
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -18,36 +19,17 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Website CRLG Portal',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': [
-        'website_school_portal'
-    ],
-    'data': [
-        'init_crlg.xml',
-        'views/footer.xml',
-        'views/custom.xml',
-    ],
-    'assets': {
-        'web._assets_primary_variables': [
-            'website_crlg_portal/static/src/scss/variables.scss',
-        ],
-        'web.assets_frontend': [
-            'website_crlg_portal/static/src/scss/main.scss',
-        ]
-    },
-    'description': '''
-        This module initializes appearance and contents for CRLG Horizon Portal.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
-    'images': [
-        'static/description/icon.png',
-    ],
-}
+-->
+<odoo>
+
+    <template id="crlg_footer_links" inherit_id="website_school_portal.hz_footer" name="CRLG Footer Links">
+        <xpath expr="//li[hasclass('hz_contact_link')]" position="after"> 
+            <t t-if="(website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.student == True or website.env.user.partner_id.employee == True)">
+                <li><a href="/etudiants-info">Valves étudiants</a></li>
+            </t>
+            <t t-if="(website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.employee == True)">
+                <li><a href="/professeurs-info">Valves professeurs</a></li>
+            </t>
+        </xpath>
+    </template>
+</odoo>

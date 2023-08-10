@@ -44,13 +44,23 @@
                 <section class="s_text_block pt40 pb16" data-snippet="s_text_block" data-name="Text">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-2 pt24 pb24">
-                                <t t-call="website_school_portal._hz_custom_footer_links" />
+                            <div class="col-lg-2 pt24 pb24 o_not_editable">
+                                <h5 class="mb-3">Liens utiles</h5>
+                                <ul class="list-unstyled hz_footer-links">
+                                    <li class="hz_contact_link"><a href="/contactus">Nous contacter</a></li>
+                                    <t t-if="website.env.is_admin() or website.env.user.partner_id.student == True">
+                                        <li><a href="/mes-donnes/mon-programme">Mon programme annuel</a></li>
+                                    </t>
+                                    <t t-if="website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.student == True or website.env.user.partner_id.employee == True">
+                                        <li><a href="/reservations/mes-reservations">Mes réservations</a></li>
+                                        <li><a href="/reservations/creation">Réserver une salle</a></li>
+                                    </t>
+                                </ul>
                             </div>
                             <div class="col-lg-5 pt24 pb24" >
                                 <t t-call="website_school_portal._hz_custom_footer_description" />
                             </div>
-                            <div id="connect" class="col-lg-4 offset-lg-1 pt24 pb24">
+                            <div id="connect" class="col-lg-4 offset-lg-1 pt24 pb24 o_not_editable">
                                 <h5 class="mb-3"><t t-esc="res_company.name"/></h5>
                                 <ul class="list-unstyled">
                                     <li><i class="fa fa-map-signs fa-fw me-2 mt-2 align-top"/><div class="d-inline-block">
@@ -63,7 +73,7 @@
                                 </ul>
                                 <hr/>
                                 <section class="s_title o_colored_level o_we_force_no_transition" data-name="Recherche">
-                                    <div class="s_allow_columns container o_not_editable">
+                                    <div class="s_allow_columns container">
                                         <form method="get" data-snippet="s_searchbar_input" class="o_searchbar_form s_searchbar_input" action="/website/search" data-name="Rechercher">
                                             <div role="search" class="input-group ">
                                                 <input type="search" name="search" class="search-query form-control oe_search_box None" placeholder="Recherche…" data-search-type="all" data-limit="0" data-display-image="false" data-display-description="false" data-display-extra-link="false" data-display-detail="false" data-order-by="name asc" autocomplete="off"/>

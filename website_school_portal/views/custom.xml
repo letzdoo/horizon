@@ -190,18 +190,54 @@
         </div>
     </template>
 
-    <template id="_hz_custom_footer_links" name="Horizon Footer Links"> 
-        <h5 class="mb-3">Liens utiles</h5>
-        <ul class="list-unstyled hz_footer-links">
-            <t t-set="configurator_footer_links" t-value="[]"/>
-            <li t-foreach="configurator_footer_links" t-as="link">
-                <a t-att-href="link['href']" t-esc="link['text']"/>
-            </li>
-            <li class="hz_contact_link"><a href="/contactus">Nous contacter</a></li>
-            <t t-if="(website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.student == True or website.env.user.partner_id.employee == True)">
-                <li><a href="/reservations/mes-reservations">Mes réservations</a></li>
-                <li><a href="/reservations/creation">Réserver une salle</a></li>
-            </t>
-        </ul>
+    <template id="_hz_my_student_no_form" name="Horizon Student Not registered"> 
+        <div class="oe_structure">
+            <h5>Bienvenue !</h5>
+            <p>Votre compte d'accès à notre plateforme est bien créé.</p>
+            <p>Afin de poursuivre votre inscription comme étudiant pour l'année académique à venir, vous devez à présent <u>
+                    <strong>compléter</strong>
+                </u> votre <strong>fiche signalétique</strong>.</p>
+            <p>Attention, merci de noter que, pour compléter votre fiche individuelle, les documents suivants sont indispensables:</p>
+            <ul>
+                <li>votre document d'identité (format PDF, max 1MB)</li>
+                <li>photo d’identité (png, jpg, max 1MB)</li>
+                <li>les pièces justificatives sur votre occupation au cours des 5 années précédentes (format PDF)</li>
+            </ul>
+        </div>
     </template>
+
+    <template id="_hz_my_student_info_form" name="Horizon Student registering"> 
+        <div class="oe_structure">
+            <p>Avant de pouvoir vous inscrire comme étudiant pour l'année académique à venir, vous devez <u>
+                    <strong>poursuivre le remplissage</strong>
+                </u> de votre <strong>fiche signalétique</strong>.</p>
+            <p>N'oubliez pas que, pour compléter votre fiche individuelle, les documents suivants sont indispensables:</p>
+            <ul>
+                <li>votre document d'identité (format PDF, max 1MB)</li>
+                <li>photo d’identité (png, jpg, max 1MB)</li>
+                <li>les pièces justificatives sur votre occupation au cours des 5 années précédentes (format PDF)</li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="_hz_my_student_info_form_complete" name="Horizon Student waiting registration"> 
+        <div class="oe_structure">
+            <p style="text-align: center;">
+               <span class="fa fa-check-square-o fa-5x o_animate o_anim_pulse o_visible"/>
+            </p>
+            <p>Votre fiche signalétique a bien été envoyée. Nous vous recontactons dès que celle-ci aura été traitée.</p>
+        </div>
+    </template>
+
+    <template id="_hz_my_student" name="Horizon Student registered"> 
+        <div class="oe_structure">
+            <h3>Ressources utiles:</h3>
+            <ul>
+                <li><a href="/mes-donnees/mon-programme">Mon programme annuel</a></li>
+                <li><a href="/appointment">Mon conseiller pédagogique (rendez-vous)</a></li>
+                <li><a href="/reservations/mes-reservations">Mes réservations de locaux</a></li>
+            </ul>
+        </div>
+    </template>
+
 </odoo>

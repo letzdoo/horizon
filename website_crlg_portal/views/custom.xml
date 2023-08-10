@@ -147,15 +147,4 @@
             </div>
         </xpath>
     </template>
-
-    <template id="_crlg_custom_footer_links" inherit_id="website_school_portal._hz_custom_footer_links" name="CRLG Footer Links">
-        <xpath expr="//li[hasclass('hz_contact_link')]" position="inside"> 
-            <t t-if="(website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.student == True or website.env.user.partner_id.employee == True)">
-                <li><a href="/etudiants-info">Valves étudiants</a></li>
-            </t>
-            <t t-if="(website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.employee == True)">
-                <li><a href="/professeurs-info">Valves professeurs</a></li>
-            </t>
-        </xpath>
-    </template>
 </odoo>
