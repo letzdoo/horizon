@@ -42,46 +42,50 @@
             div.hz-editor-mode-only {display: none;}
             body.editor_enable div.hz-editor-mode-only {display: block !important;}
             </style>
-            <h1 t-out="user_id.partner_id.name" />
-            <ul>
-                <li t-if="user_id.partner_id.student == True">Étudiant</li>
-                <li t-if="user_id.partner_id.teacher == True">Enseignant</li>
-                <li t-if="user_id.partner_id.employee == True">Employé</li>
-                <li t-if="user_id._is_admin()">Administrateur du système</li>
-            </ul>
-            <t t-call="website_school_portal.hz_account_student" t-if="user_id.partner_id.student == True" />
-            <t t-call="website_school_portal.hz_account_teacher" t-if="user_id.partner_id.teacher == True" />
-            <t t-call="website_school_portal.hz_account_employee" t-if="user_id.partner_id.employee == True" />
-            <t t-if="user_id._is_admin()">
-                <div class="hz-editor-mode-only mt-5">
+            <div class="o_portal_my_home">
+                <h1 t-out="user_id.partner_id.name" />
+                <ul class="d-flex list-unstyled">
+                    <li t-if="user_id.partner_id.student == True" ><span class="badge bg-primary rounded-pill me-1">Étudiant</span></li>
+                    <li t-if="user_id.partner_id.teacher == True"><span class="badge bg-primary rounded-pill me-1">Enseignant</span></li>
+                    <li t-if="user_id.partner_id.employee == True"><span class="badge bg-primary rounded-pill me-1">Employé</span></li>
+                    <li t-if="user_id._is_admin()" ><span class="badge bg-primary rounded-pill me-1">Administrateur du système</span></li>
+                </ul>
+                <t t-call="website_school_portal.hz_account_student" t-if="user_id.partner_id.student == True" />
+                <t t-call="website_school_portal.hz_account_teacher" t-if="user_id.partner_id.teacher == True" />
+                <t t-call="website_school_portal.hz_account_employee" t-if="user_id.partner_id.employee == True" />
+                <h3>Documents</h3>
+                <div class="o_portal_docs list-group">
+                    <div class="o_portal_doc_spinner spinner-border text-o-color-2 align-self-center mt-5"/>
+                    <p class="o_portal_no_doc_message d-none">No Documents to display</p>
+                </div>
+                <div class="hz-editor-mode-only mt-5" groups="website.group_website_designer">
                     <div class="alert alert-warning">
                         <i class="fa fa-warning"/>
                         <span>Vous ne voyez cette section que pour pouvoir l'éditer !</span>
                     </div>
-                
-                    <h2>Section étudiant</h2>
                     <t t-call="website_school_portal.hz_account_student" />
-                    <h2>Section enseignant</h2>
                     <t t-call="website_school_portal.hz_account_teacher" />
-                    <h2>Section employé</h2>
                     <t t-call="website_school_portal.hz_account_employee" />
                 </div>
-            </t>
-
+            </div>
         </xpath>
     </template>
 
     <template id="hz_account_student" name="Horizon Student Account Page" priority="32">
+        <h2>Profil étudiant</h2>
         <p>...</p>
+        
     </template>
 
     <template id="hz_account_teacher" name="Horizon Teacher Account Page" priority="32">
-        <p>...</p>
+        <h2>Profil enseignant</h2>
+        <p>Pas encore d'informations spécifiques pour les profils enseignants...</p>
 
     </template>
 
     <template id="hz_account_employee" name="Horizon Employee Account Page" priority="32">
-        <p>...</p>
+        <h2>Profil employé</h2>
+        <p>Pas encore d'informations spécifiques pour les profils employés...</p>
 
     </template>
 
