@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 
 class MesDonneesController(http.Controller):
 
-    @http.route('/mes-donnees/mon-programme', type='http', auth='user', website=True) # TODO >>> website_school_portal >>> controller mes-donnees >>> route /mes-donnees/mon-programme
+    @http.route('/mes-donnees/mon-programme', type='http', auth='user', website=True)
     def responsive_blocs(self, debug=False, **k):
         if not (request.env.user.partner_id.student or request.env.is_admin()):
             return Response(template='website_school_portal.hz_page_403', status=403)
@@ -19,7 +19,7 @@ class MesDonneesController(http.Controller):
         }
         return request.render('website_school_portal.hz_blocs', values)
     
-    @http.route('/mes-donnees/mes-documents', type='http', auth='user', website=True) # TODO >>> website_school_portal >>> controller mes-donnees >>> route /mes-donnees/mes-documents
+    @http.route('/mes-donnees/mes-documents', type='http', auth='user', website=True)
     def responsive_documents(self, debug=False, **k):
         if not (request.env.user.partner_id.student or request.env.is_admin()):
             return Response(template='website_school_portal.hz_page_403', status=403)
