@@ -46,7 +46,7 @@ class BookingController(http.Controller):
     def covid_tool(self, debug=False, **k):
         return request.render('website_booking.covid')
 
-    @http.route('/booking', type='http', auth='public', website=True)
+    @http.route('/booking', type='http', auth='public', website=True, sitemap=False)
     def booking_browser(self, debug=False, **k):
         session_info = request.env['ir.http'].session_info()
         context = {
@@ -54,7 +54,7 @@ class BookingController(http.Controller):
         }
         return request.render('website_booking.index',qcontext=context)
     
-    @http.route('/booking_mobile', type='http', auth='public', website=True)
+    @http.route('/booking_mobile', type='http', auth='public', website=True, sitemap=False)
     def booking_mobile_browser(self, debug=False, **k):
         now = datetime.now()
         next_day = now + timedelta(days= 7-now.weekday() if now.weekday()>3 else 1)

@@ -30,7 +30,7 @@ _logger = logging.getLogger(__name__)
 
 class school_course_documentation(http.Controller):
     
-    @http.route(['/course_doc/<model("school.course"):course>'], type='http', auth='public', website=True)
+    @http.route(['/course_doc/<model("school.course"):course>'], type='http', auth='public', website=True, sitemap=False)
     def course_doc(self, course, redirect=None, **post):
         values = {
             'course' : course,
@@ -38,7 +38,7 @@ class school_course_documentation(http.Controller):
         }
         return request.website.render("school_course_description.school_course", values)
         
-    @http.route(['/course_group_doc/<model("school.course_group"):cg>'], type='http', auth='public', website=True)
+    @http.route(['/course_group_doc/<model("school.course_group"):cg>'], type='http', auth='public', website=True, sitemap=False)
     def course_group_doc(self, cg, redirect=None, **post):
         values = {
             'course' : cg,
@@ -46,7 +46,7 @@ class school_course_documentation(http.Controller):
         }
         return request.website.render("school_course_description.school_course", values)
         
-    @http.route(['/course_doc/edit/<model("school.course"):course>'], type='http', auth='user', website=True)
+    @http.route(['/course_doc/edit/<model("school.course"):course>'], type='http', auth='user', website=True, sitemap=False)
     def course_doc_edit(self, course, redirect=None, **post):
         draft_doc = course.env['school.course_documentation'].search([['course_id', '=', course.id],['state','=','draft']])
         if not draft_doc:
