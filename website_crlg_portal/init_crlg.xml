@@ -48,6 +48,7 @@
             <field name="website_published">True</field>
             <field name="url">/etudiants-info</field>
             <field name="view_id" ref="website_crlg_portal.valves_etudiants_crlg"/>
+            <field name="website_indexed">False</field>
         </record>
 
         <!-- Création page Valves Étudiants en db  -->
@@ -56,6 +57,7 @@
             <field name="website_published">True</field>
             <field name="url">/professeurs-info</field>
             <field name="view_id" ref="website_crlg_portal.valves_professeurs_crlg"/>
+            <field name="website_indexed">False</field>
         </record>
     </data>
 </odoo>
