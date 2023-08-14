@@ -81,10 +81,40 @@ class programmes(http.Controller):
     def _sitemap_programs(env, rule, qs):
         searchParams = [('state', '=', 'published'), ('domain_name', '!=', None), ('track_name', '!=', None)]
         programs = env['school.program'].search(searchParams)
+
+        breadcrumb = set()
+
         for prog in programs:
             loc = '/programme/%s' % slug(prog)
             if not qs or qs.lower() in loc:
                 yield {'loc': loc}
+
+            if prog.year_name:
+                url = '/programmes/' + prog.year_name
+                breadcrumb.add(url)
+                if prog.domain_slug:
+                    url = url + '/' + prog.domain_slug
+                    breadcrumb.add(url)
+                    if prog.track_slug:
+                        url = url + '/' + prog.track_slug
+                        breadcrumb.add(url)
+                        if prog.speciality_slug:
+                            url = url + '/' + prog.speciality_slug
+                            breadcrumb.add(url)
+                            if prog.cycle_grade_slug:
+                                url = url + '/' + prog.cycle_grade_slug
+                                breadcrumb.add(url)
+                                if prog.cycle_subtype_slug:
+                                    url = url + '/' + prog.cycle_subtype_slug
+                                    breadcrumb.add(url)
+                                    if prog.specialization_slug:
+                                        url = url + '/' + prog.specialization_slug
+                                        breadcrumb.add(url)
+
+        for url in breadcrumb:
+            if not qs or qs.lower() in url:
+                yield {'loc': url, 'priority': 0.4}
+        
 
     @http.route([
         '/programmes',
@@ -95,7 +125,7 @@ class programmes(http.Controller):
         '/programmes/<string:year>/<string:domain>/<string:track>/<string:speciality>/<string:cycle_type>',
         '/programmes/<string:year>/<string:domain>/<string:track>/<string:speciality>/<string:cycle_type>/<string:cycle_subtype>',
         '/programmes/<string:year>/<string:domain>/<string:track>/<string:speciality>/<string:cycle_type>/<string:cycle_subtype>/<string:specialization>',
-        ], type='http', auth='public', website = True, sitemap=False)
+        ], type='http', auth='public', website = True, sitemap=True)
     def programmes(self, year = None, domain = None, track = None, speciality = None, cycle_type = None, cycle_subtype = None, specialization = None, **post):
         # Préparation des paramètres de recherche
         searchParams = [('state', '=', 'published'), ('domain_name', '!=', None), ('track_name', '!=', None)]
