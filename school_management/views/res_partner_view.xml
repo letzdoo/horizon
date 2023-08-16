@@ -52,21 +52,21 @@
                               Id : <field name="id" options="{&quot;no_open&quot;:True}" class="oe_inline"/>
                         </span>
                         <group>
-                            <field name="category_id" widget="many2many_tags" placeholder="Tags..."/>
-                            <field name="user_ids" invisible="1"/>
-                            <field name="email" widget="email" placeholder="Email"/>
-                        </group>
-                        <div class="oe_edit_only">
-            		        <group>
-            				    <field name='student' />
-                                <field name='teacher' />
-                                <field name='employee' />
-                                <field name='lastname' />
-            					<field name='firstname' />
+                            <group>
+                                <field name="category_id" widget="many2many_tags" placeholder="Tags..."/>
+                                <field name="user_ids" invisible="1"/>
+                                <field name="email" widget="email" placeholder="Email"/>
+            				    <field name='student'/>
+                                <field name='teacher'/>
+                            </group>
+                            <group>
+                                <field name='employee'/>
+                                <field name='lastname'/>
+            					<field name='firstname'/>
+                                <field name="function" placeholder="e.g. Sales Director"/>
+                                <field name="active" invisible="1"/>
             				</group>
-            			</div>
-            			<field name="function" placeholder="e.g. Sales Director"/>
-            			<field name="active" invisible="1"/>
+                        </group>
                     </div>
                 </xpath>
                 <xpath expr="//notebook" position="replace">
@@ -104,8 +104,8 @@
                                                 <div class="row">
                                                   <div class="col-9">
                                                   </div>
-                                                  <div class="col-3">
-                                                      <button type="object" name="action_open_form" class="oe_highlight btn btn-primary">Open</button>
+                                                  <div class="col-3" style="margin-right:10px;margin-top:5px;">
+                                                      <button type="object" name="action_open_form" style="margin-right:10px;margin-top:5px;" class="oe_highlight btn btn-primary">Open</button>
                                                   </div>
                                                 </div>
                                               </div>
@@ -148,8 +148,8 @@
                                                 <div class="row">
                                                   <div class="col-9">
                                                   </div>
-                                                  <div class="col-3">
-                                                      <button type="object" name="action_open_form" class="oe_highlight btn btn-primary">Open</button>
+                                                  <div class="col-3" style="margin-right:10px;margin-top:5px;">
+                                                      <button type="object" name="action_open_form" style="margin-right:10px;margin-top:5px;" class="oe_highlight btn btn-primary">Open</button>
                                                   </div>
                                                 </div>
                                               </div>
@@ -164,52 +164,56 @@
                             <field name="parent_id" invisible="1"/>
                             <field name="type" attrs="{'invisible': [('parent_id','=', False)]}" groups="base.group_no_one"/>
                             <div class="row" groups="school_management.group_employee">
-                                <div class="col-3 mb16">
-                                    <label for="street" string="Main Address"/>
-                                    <div class="o_address_format">
-                                        <div class="oe_edit_only">
-                                            <button name="open_parent" type="object" string="(edit)" class="oe_link"/>
+                                <group>
+                                    <group string="Main Address">
+                                        <label for="street" string="Main Address"/>
+                                        <div class="o_address_format">
+                                            <div class="oe_edit_only">
+                                                <button name="open_parent" type="object" string="(edit)" class="oe_link"/>
+                                            </div>
+                                            <field name="street" placeholder="Street..." class="o_address_street" />
+                                            <field name="street2" placeholder="Street 2..." class="o_address_street" />
+                                            <field name="city" placeholder="City" class="o_address_city" />
+                                            <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"  context="{'country_id': country_id, 'zip': zip}"/>
+                                            <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                                            <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
                                         </div>
-                                        <field name="street" placeholder="Street..." class="o_address_street" />
-                                        <field name="street2" placeholder="Street 2..." class="o_address_street" />
-                                        <field name="city" placeholder="City" class="o_address_city" />
-                                        <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"  context="{'country_id': country_id, 'zip': zip}"/>
-                                        <field name="zip" placeholder="ZIP" class="o_address_zip" />
-                                        <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
-                                    </div>
-                                </div>
-                                <div class="col-3 mb16 ">
-                                    <label for="secondary_street" string="Alternative Address"/>
-                                    <div class="o_address_format">
-                                        <field name="secondary_street" placeholder="Street..." class="o_address_street" />
-                                        <field name="secondary_street2" placeholder="Street 2..." class="o_address_street" />
-                                        <field name="secondary_city" placeholder="City" class="o_address_city" />
-                                        <field name="secondary_state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"  context="{'country_id': country_id, 'zip': zip}"/>
-                                        <field name="secondary_zip" placeholder="ZIP" class="o_address_zip" />
-                                        <field name="secondary_country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
-                                    </div>
-                                </div>
-                                <div class="col-6 mb16">
-                                    <group col="2">
-                                        <field name='email_personnel' />
+                                    </group>
+                                    <group string="Alternative Address">
+                                        <label for="secondary_street" string="Alternative Address"/>
+                                        <div class="o_address_format">
+                                            <field name="secondary_street" placeholder="Street..." class="o_address_street" />
+                                            <field name="secondary_street2" placeholder="Street 2..." class="o_address_street" />
+                                            <field name="secondary_city" placeholder="City" class="o_address_city" />
+                                            <field name="secondary_state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"  context="{'country_id': country_id, 'zip': zip}"/>
+                                            <field name="secondary_zip" placeholder="ZIP" class="o_address_zip" />
+                                            <field name="secondary_country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" />
+                                        </div>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group string="Other Info">
+                                        <field name='email_personnel'/>
                                         <field name="phone" widget="phone"/>
                                         <field name="mobile" widget="phone"/>
-                                        <!--<field name="fax" widget="phone"/>-->
                                     </group>
-                                </div>
+                                </group>
                             </div>
                         </page>
                         <page name="personal_information_page" string="Informations personnelles" groups="school_management.group_employee">
             				<group name="personal_information_group">
+            				  <group>
             				    <field name="title" options="{&quot;no_open&quot;: True}"/>
             				    <field name="lang"/>
-            				    <field name='gender' />
-                                <!--<field name='nationality_id' />-->
-                                <field name='nationality_ids' widget="many2many_tags"/>
+            				    <field name="gender"/>
+                                <field name="nationality_ids" widget="many2many_tags"/>
+            				  </group>
+            				  <group>
                                 <field name="birthplace"/>
                                 <field name="birthdate_date"/>
-                                <field name="reg_number" />
+                                <field name="reg_number"/>
                                 <field name="mat_number"/>
+            				  </group>
             				</group>
             			</page>
             		</notebook>
