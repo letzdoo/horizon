@@ -36,13 +36,13 @@
 
     <!--ASSETS-->
 
-    <record id="website_event.s_bookings_000_scss" model="ir.asset">
+    <record id="website_booking.s_bookings_000_scss" model="ir.asset">
         <field name="name">Bookings 000 SCSS</field>
         <field name="bundle">web.assets_frontend</field>
         <field name="path">website_booking/static/src/snippets/s_bookings/000.scss</field>
     </record>
 
-    <record id="website_event.s_bookings_000_js" model="ir.asset">
+    <record id="website_booking.s_bookings_000_js" model="ir.asset">
         <field name="name">Bookings 000 JS</field>
         <field name="bundle">web.assets_frontend</field>
         <field name="path">website_booking/static/src/snippets/s_bookings/000.js</field>
