@@ -30,7 +30,6 @@
     ],
     'data': [
         'views/website_booking.xml',
-        'views/templates.xml',
     ],
     'qweb': ['static/src/xml/*.xml'],
     'description': '''

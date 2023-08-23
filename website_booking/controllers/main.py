@@ -41,15 +41,7 @@ class BookingLoginController(Home):
         return self.list_providers()
 
 class BookingController(http.Controller):
-    
-    @http.route('/booking', type='http', auth='public', website=True, sitemap=False)
-    def booking_browser(self, debug=False, **k):
-        session_info = request.env['ir.http'].session_info()
-        context = {
-            'session_info': session_info,
-        }
-        return request.render('website_booking.index',qcontext=context)
-    
+       
     @http.route('/booking/category', type='json', auth='public', website=True)
     def booking_category(self, id=False, debug=False, **k):
         return request.env['school.asset.category'].sudo().search_read([('id', '=', id)],['name','display_name','sequence','parent_id','is_leaf'])
