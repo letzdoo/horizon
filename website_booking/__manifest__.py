@@ -33,7 +33,10 @@
         'views/website_booking.xml',
         'views/snippets.xml',
     ],
-    'assets': {  
+    'assets': {
+        'website.assets_wysiwyg': [
+            '/website_booking/static/src/snippets/s_bookings/options.js',
+        ],  
     },
     'description': '''
         This module adds an interface for Booking management on the web site.
