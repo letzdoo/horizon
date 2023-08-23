@@ -31,8 +31,10 @@
     ],
     'data': [
         'views/website_booking.xml',
+        'views/snippets.xml',
     ],
-    'qweb': ['static/src/xml/*.xml'],
+    'assets': {  
+    },
     'description': '''
         This module adds an interface for Booking management on the web site.
     ''',
