@@ -81,5 +81,4 @@
 
         <menuitem name="Online Booking" id="menu_school_booking" web_icon="calendar,static/description/icon.png" sequence="25" action="action_website_booking" />
 
-    
 </odoo>
