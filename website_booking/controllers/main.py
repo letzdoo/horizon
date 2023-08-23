@@ -42,10 +42,6 @@ class BookingLoginController(Home):
 
 class BookingController(http.Controller):
     
-    @http.route('/covid', type='http', auth='public', website=True)
-    def covid_tool(self, debug=False, **k):
-        return request.render('website_booking.covid')
-
     @http.route('/booking', type='http', auth='public', website=True, sitemap=False)
     def booking_browser(self, debug=False, **k):
         session_info = request.env['ir.http'].session_info()
@@ -54,18 +50,6 @@ class BookingController(http.Controller):
         }
         return request.render('website_booking.index',qcontext=context)
     
-    @http.route('/booking_mobile', type='http', auth='public', website=True, sitemap=False)
-    def booking_mobile_browser(self, debug=False, **k):
-        now = datetime.now()
-        next_day = now + timedelta(days= 7-now.weekday() if now.weekday()>3 else 1)
-        next_next_day = next_day + timedelta(days= 7-next_day.weekday() if next_day.weekday()>3 else 1)
-        next_next_next_day = next_next_day + timedelta(days= 7-next_next_day.weekday() if next_next_day.weekday()>3 else 1)
-        values = {
-            'day_0' : next_next_day,
-            'day_1' : next_next_next_day,
-        }
-        return request.render('website_booking.index_mobile', values)
-        
     @http.route('/booking/category', type='json', auth='public', website=True)
     def booking_category(self, id=False, debug=False, **k):
         return request.env['school.asset.category'].sudo().search_read([('id', '=', id)],['name','display_name','sequence','parent_id','is_leaf'])
@@ -149,11 +133,7 @@ class BookingController(http.Controller):
         ]
         ret = request.env['calendar.event'].sudo().with_context({'virtual_id': True}).search_read(domain,event_fields,order='start ASC')
         return ret
-        
-    @http.route('/booking/editor', type='http', auth='user', website=True)
-    def booking_editor(self, debug=False, **k):
-        return request.render('website_booking.editor')
-        
+               
     @http.route('/booking/rooms', type='json', auth='user', website=True)
     def booking_rooms(self, start, end, self_id, debug=False, **k):
         start = fields.Datetime.to_string(dateutil.parser.parse(start)+dateutil.relativedelta.relativedelta(seconds=+1))
@@ -172,12 +152,8 @@ class BookingController(http.Controller):
                 ('room_id', '<>', False),
                 ('id', '!=', self_id),
             ]
-        _logger.info('Get all rooms')
         all_rooms_ids = request.env['school.asset'].search( [['asset_type_id.is_room','=',True],['booking_policy','=','available']] )
-        _logger.info('Get all events')
         busy_rooms_ids = request.env['calendar.event'].sudo().with_context({'virtual_id': True}).search(domain)
-        _logger.info('Filter events - results %s' % busy_rooms_ids)
         busy_rooms_ids = busy_rooms_ids.filtered(lambda r : r.start <= dateutil.parser.parse(end)).filtered(lambda r : r.stop >= dateutil.parser.parse(start)).mapped('room_id')
-        _logger.info('Filter done')
         return (all_rooms_ids - busy_rooms_ids).read(['name'])
         
