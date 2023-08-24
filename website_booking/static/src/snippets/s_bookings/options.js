@@ -1,9 +1,8 @@
 /** @odoo-module **/
 
 import options from 'web_editor.snippets.options';
-import dynamicSnippetOptions from 'website.s_dynamic_snippet_options';
 
-const dynamicSnippetBookingsOptions = dynamicSnippetOptions.extend({
+const snippetBookingsOptions = options.Class.extend({
     /**
      * @override
      */
@@ -55,4 +54,4 @@ const dynamicSnippetBookingsOptions = dynamicSnippetOptions.extend({
 
 });
 
-options.registry.bookings_snippet = dynamicSnippetBookingsOptions;
+options.registry.bookings_snippet = snippetBookingsOptions;

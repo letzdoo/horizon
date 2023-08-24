@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2023 ito-invest.lu
+#                       Jerome Sonnet <jerome.sonnet@ito-invest.lu>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="website_booking.browser_calendar">
+        <div id='fc_calendar'/>
+    </t>
+    <t t-name="website_booking.browser_navigation">
+        <table>
+            <tr class="categories"/>
+        </table>
+    </t>
+    <t t-name="website_booking.browser_navigation_card">
+        <td class="nav-wrapper">
+            <t t-if="!widget.to_parent">
+            <a t-att-class="(widget.is_active ? 'cat_button btn btn-primary active' : 'cat_button btn btn-primary')" t-att-data-category-id="widget.category.id"><span t-esc="widget.category.name"/></a>
+            </t>
+            <t t-if="widget.to_parent">
+            <a class="cat_button btn btn-secondary" t-att-data-category-id="widget.category.id">Retour...</a>
+            </t>
+        </td>
+    </t>
+</templates>
