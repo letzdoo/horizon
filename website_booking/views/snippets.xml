@@ -30,7 +30,7 @@
     <template id="s_bookings" name="Bookings">
         <section class="s_bookings">
             <div class="s_bookings_navbar" style="padding:5px;"/>
-            <div class="calendar_body container" >
+            <div class="calendar_body container-fluid pr32 pl32" >
                 <div class="row">
                     <div class="col s12 l12">
                         <div class='s_bookings_calendar'/>
