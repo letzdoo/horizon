@@ -56,7 +56,7 @@
             <field name="model">school.year</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Year">
+                <tree>
                     <field name="name" />
                     <field name="short_name" />
                     <field name="previous" />
@@ -134,7 +134,7 @@
             <field name="model">school.cycle</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Cycles">
+                <tree>
                     <field name="name" />
                     <field name="code" />
                     <field name="short_name" />
@@ -201,7 +201,7 @@
             <field name="model">school.speciality</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Specialities">
+                <tree>
                     <field name="name" />
                     <field name="domain_id" />
                     <field name="section_id" />
@@ -260,7 +260,7 @@
             <field name="model">school.section</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Sections">
+                <tree>
                     <field name="name" />
                 </tree>
             </field>
@@ -317,7 +317,7 @@
             <field name="model">school.track</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Tracks">
+                <tree>
                     <field name="name" />
                 </tree>
             </field>
@@ -375,7 +375,7 @@
             <field name="model">school.course_group_group</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Groups">
+                <tree>
                     <field name="sequence" widget="handle" />
                     <field name="name" />
                 </tree>
@@ -421,7 +421,7 @@
             <field name="model">school.domain</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Domains">
+                <tree>
                     <field name="name" />
                 </tree>
             </field>

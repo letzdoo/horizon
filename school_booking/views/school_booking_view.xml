@@ -57,7 +57,7 @@
               <field name="from_date" />
               <field name="to_date" />
               <field name="leave_ids">
-                <tree string="Leaves" editable="bottom">
+                <tree editable="bottom">
                   <field name="from_date" />
                   <field name="to_date" />
                   <field name="partner_id" />

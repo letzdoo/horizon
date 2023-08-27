@@ -29,7 +29,7 @@
             <field name="model">school.prerequisit</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Prerequisits" editable="bottom">
+                <tree editable="bottom">
                     <field name="course_id" string="Course Group"/>
                     <field name="preriquisit_id" />
                 </tree>
@@ -59,7 +59,7 @@
             <field name="model">school.corequisit</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Corequisits" editable="bottom">
+                <tree editable="bottom">
                     <field name="course_id" string="Course Group"/>
                     <field name="coriquisit_id" />
                 </tree>

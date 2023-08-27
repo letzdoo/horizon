@@ -35,7 +35,7 @@
                     <button class="btn btn-primary float-end" name="action_refresh_google_drive_files" icon="fa-refresh"
                             string="Refresh" type="object"/>
                     <field name="google_drive_files" mode="tree">
-                        <tree string="Google Documents" create="0" delete="0">
+                        <tree create="0" delete="0">
                             <field name="name"/>
                             <field name="mimeType"/>
                             <field name="url" widget="url" string="Google Drive" text="Open"/>

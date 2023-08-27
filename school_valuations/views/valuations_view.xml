@@ -66,7 +66,7 @@
       <field name="model">school.valuation_followup</field>
       <field eval="8" name="priority" />
       <field name="arch" type="xml">
-        <tree string="Valuations Followup" create="0">
+        <tree create="0">
           <field name="uid"/>
           <field name="student_id"/>
           <field name="title" />

@@ -28,7 +28,7 @@
             <field name="model">res.partner</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Covid Followup Contacts" create="0">
+                <tree create="0">
                     <field name="name"/>
                     <field name="last_covid_followup_date"/>
                     <field name="last_covid_followup_type"/>
@@ -69,7 +69,7 @@
                               </div>
                           </div>
                         <field name="covid_followup_ids" context="{'default_student_id': active_id}">
-                            <tree string="COVID Followup" default_order='date desc'>
+                            <tree default_order='date desc'>
                                 <field name="reporting_date"/>
                                 <field name="reporting_type"/>
                                 <field name="author_id"/>

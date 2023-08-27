@@ -44,7 +44,7 @@
         <field name="model">school.individual_program</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Individual Program">
+            <tree>
                 <field name="student_id" />
                 <field name="source_program_id" />
                 <field name="required_credits" />
@@ -380,7 +380,7 @@
         <field name="model">school.individual_bloc</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Individual Bloc" create="false">
+            <tree create="false">
                 <field name="year_id" />
                 <field name="student_id" />
                 <field name="source_bloc_name" />
@@ -439,7 +439,7 @@
                     </group>
                     <separator string="Course Group" colspan="4" />
                     <field name="ind_course_group_ids" colspan="4">
-                        <tree string="Course Groups">
+                        <tree>
                             <field name="uid" />
                             <field name="year_id" />
                             <field name="name" />
@@ -572,7 +572,7 @@
         <field name="model">school.individual_course</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Individual Course" editable="top" create="0">
+            <tree editable="top" create="0">
                 <field name="year_id" readonly="1" />
                 <field name="student_id" />
                 <field name="name" />
@@ -1064,7 +1064,7 @@
         <field name="model">school.individual_course_group</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Individual Course Group" create="0">
+            <tree create="0">
                 <field name="uid" />
                 <field name="source_course_group_uid" />
                 <field name="year_id" />
@@ -1128,7 +1128,7 @@
                     </group>
                     <separator string="Courses" colspan="4" />
                     <field name="course_ids" colspan="4">
-                        <tree string="Courses">
+                        <tree>
                             <field name="name" />
                             <field name="hours" />
                             <field name="credits" />

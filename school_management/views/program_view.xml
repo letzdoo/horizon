@@ -75,7 +75,7 @@
         <field name="model">school.course_group</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Course Group">
+            <tree>
                 <field name="uid" />
                 <field name="name" />
                 <field name="responsible_id" />
@@ -147,7 +147,7 @@
                         name="course_ids"
                         context="{'default_course_group_id':active_id}"
                     >
-                        <tree string="Courses">
+                        <tree>
                             <field name="uid" />
                             <field name="name" />
                             <field name="hours" />
@@ -158,7 +158,7 @@
                     <notebook>
                         <page string="Blocs">
                             <field name="bloc_ids" readonly="1">
-                                <tree string="Blocs">
+                                <tree>
                                     <field name="uid" />
                                     <field name="name" />
 
@@ -286,7 +286,7 @@
         <field name="model">school.course</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Courses" create="0">
+            <tree create="0">
                 <field name="uid" />
                 <field name="name" />
                 <field name="hours" />
@@ -345,7 +345,7 @@
                     <notebook>
                         <page string="Blocs">
                             <field name="bloc_ids" readonly="1">
-                                <tree string="Blocs">
+                                <tree>
                                     <field name="uid" />
                                     <field name="name" />
                                     <field name="year_id" />
@@ -364,7 +364,7 @@
                         </page>
                         <page string="Teachers">
                             <field name="teacher_ids">
-                                <tree string="Teachers">
+                                <tree>
                                     <field name="name" />
                                 </tree>
                             </field>
@@ -505,7 +505,7 @@
         <field name="model">school.bloc</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Blocs">
+            <tree>
                 <field name="uid" />
                 <field name="name" />
                 <field name="bloc_group" />
@@ -766,7 +766,7 @@
         <field name="model">school.program</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree string="Program">
+            <tree>
                 <field name="uid" />
                 <field name="name" />
                 <field name="total_hours" />
@@ -883,7 +883,7 @@
                                 </t>
                             </templates>
                         </kanban>
-                        <!--<tree string="Blocs">
+                        <!--<tree>
                           <field name="id" string="Id"/>
                           <field name="name" />
                           <field name="total_hours" />
@@ -894,7 +894,7 @@
                         <!--  <page string="Détails des blocs">
                             <h2><field name="bloc1_title" attrs="{'invisible':[('bloc1_course_group_ids','=',[])]}"/></h2>
                             <field name="bloc1_course_group_ids" attrs="{'invisible':[('bloc1_course_group_ids','=',[])]}">
-                              <tree string="Course Group" create="0" delete="0">
+                              <tree create="0" delete="0">
                                 <field name="uid"/>
                                 <field name="name"/>
                                 <field name="total_hours"/>
@@ -903,7 +903,7 @@
                             </field>
                             <h2><field name="bloc2_title" attrs="{'invisible':[('bloc2_course_group_ids','=',[])]}"/></h2>
                             <field name="bloc2_course_group_ids" attrs="{'invisible':[('bloc2_course_group_ids','=',[])]}">
-                              <tree string="Course Group" create="0" delete="0">
+                              <tree create="0" delete="0">
                                 <field name="uid"/>
                                 <field name="name"/>
                                 <field name="total_hours"/>
@@ -912,7 +912,7 @@
                             </field>
                             <h2><field name="bloc3_title" attrs="{'invisible':[('bloc3_course_group_ids','=',[])]}"/></h2>
                             <field name="bloc3_course_group_ids" attrs="{'invisible':[('bloc3_course_group_ids','=',[])]}">
-                              <tree string="Course Group" create="0" delete="0">
+                              <tree create="0" delete="0">
                                 <field name="uid"/>
                                 <field name="name"/>
                                 <field name="total_hours"/>

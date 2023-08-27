@@ -496,7 +496,7 @@
             <field name="model">res.partner</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Contacts">
+                <tree>
                     <field name="display_name" />
                     <field name="function" invisible="1" />
                     <!--<field name="has_paid_current_minerval" />-->
@@ -593,7 +593,7 @@
                     attrs="{'invisible': [('teacher','=',False)]}"
                 >
                         <field name="teacher_current_course_ids">
-                            <tree string="Current Course">
+                            <tree>
                                 <field name="name" />
                                 <field name="teacher_id" invisible="1" />
                                 <field name="source_course_id" invisible="1" />

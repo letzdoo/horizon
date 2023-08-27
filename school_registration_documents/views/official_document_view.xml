@@ -28,7 +28,7 @@
             <field name="model">school.official_document</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Official Document" create="0" default_order="student_id">
+                <tree create="0" default_order="student_id">
                     <field name="student_id" />
                     <field name="type_id" />
                     <field name="is_available"/>
