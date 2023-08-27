@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,40 +18,44 @@
 #
 ##############################################################################
 {
-    'name': 'School management',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['mail','partner_contact_gender','partner_second_lastname','partner_contact_birthdate','partner_contact_birthplace'],
-    'init_xml': [],
-    'data': [
-        'school_data.xml',
-        'views/res_partner_view.xml',
-        'views/program_view.xml',
-        'views/individual_program_view.xml',
-        'views/configuration_view.xml',
-        'report/report_program.xml',
-        'sequences/school_sequence.xml',
-        'security/ir.model.access.csv',
+    "name": "School management",
+    "version": "0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": [
+        "mail",
+        "partner_contact_gender",
+        "partner_second_lastname",
+        "partner_contact_birthdate",
+        "partner_contact_birthplace",
     ],
-    'demo': [
-        'school_data_demo.xml'
+    "init_xml": [],
+    "data": [
+        "school_data.xml",
+        "views/res_partner_view.xml",
+        "views/program_view.xml",
+        "views/individual_program_view.xml",
+        "views/configuration_view.xml",
+        "report/report_program.xml",
+        "sequences/school_sequence.xml",
+        "security/ir.model.access.csv",
     ],
-    'assets': {
-        'web._assets_primary_variables': [
-            'school_management/static/src/scss/primary_variables.scss'
+    "demo": ["school_data_demo.xml"],
+    "assets": {
+        "web._assets_primary_variables": [
+            "school_management/static/src/scss/primary_variables.scss"
         ],
-        'web.report_assets_common': [
-            'school_management/static/src/css/pure-nr.css',
-            'school_management/static/src/css/reports.css',
+        "web.report_assets_common": [
+            "school_management/static/src/css/pure-nr.css",
+            "school_management/static/src/css/reports.css",
         ],
     },
-    'description': '''
+    "description": """
         This module adds management tools for a school.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    """,
+    "active": False,
+    "installable": True,
+    "application": True,
 }

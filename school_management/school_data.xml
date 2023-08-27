@@ -54,25 +54,25 @@
     <record id="year_2022_2023" model="school.year">
         <field name="name">2022-2023</field>
         <field name="short_name">22-23</field>
-        <field name="previous" ref="year_2021_2022"/>
+        <field name="previous" ref="year_2021_2022" />
     </record>
 
     <record id="year_2023_2024" model="school.year">
         <field name="name">2023-2024</field>
         <field name="short_name">23-24</field>
-        <field name="previous" ref="year_2022_2023"/>
+        <field name="previous" ref="year_2022_2023" />
     </record>
 
     <record id="year_2024_2025" model="school.year">
         <field name="name">2024-2025</field>
         <field name="short_name">24-25</field>
-        <field name="previous" ref="year_2023_2024"/>
+        <field name="previous" ref="year_2023_2024" />
     </record>
 
     <record id="year_2025_2026" model="school.year">
         <field name="name">2025-2026</field>
         <field name="short_name">25-26</field>
-        <field name="previous" ref="year_2024_2025"/>
+        <field name="previous" ref="year_2024_2025" />
     </record>
 
     <record id="sequence_school_program" model="ir.sequence">
@@ -82,9 +82,9 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-        <field name="company_id"></field>
+        <field name="company_id" />
     </record>
-    
+
     <record id="sequence_school_bloc" model="ir.sequence">
         <field name="name">School Bloc Sequence</field>
         <field name="code">school.bloc</field>
@@ -92,9 +92,9 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-        <field name="company_id"></field>
+        <field name="company_id" />
     </record>
-    
+
     <record id="sequence_school_course_group" model="ir.sequence">
         <field name="name">School Course Group Sequence</field>
         <field name="code">school.course_group</field>
@@ -102,9 +102,9 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-        <field name="company_id"></field>
+        <field name="company_id" />
     </record>
-    
+
     <record id="sequence_school_course" model="ir.sequence">
         <field name="name">School Course Sequence</field>
         <field name="code">school.course</field>
@@ -112,9 +112,9 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-        <field name="company_id"></field>
+        <field name="company_id" />
     </record>
-    
+
     <record id="sequence_school_individual_program" model="ir.sequence">
         <field name="name">School Individual Program Sequence</field>
         <field name="code">school.individual_program</field>
@@ -122,9 +122,9 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-        <field name="company_id"></field>
+        <field name="company_id" />
     </record>
-    
+
     <record id="sequence_school_individual_bloc" model="ir.sequence">
         <field name="name">School Individual Bloc Sequence</field>
         <field name="code">school.individual_bloc</field>
@@ -132,9 +132,9 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-        <field name="company_id"></field>
+        <field name="company_id" />
     </record>
-    
+
     <record id="sequence_school_individual_course_group" model="ir.sequence">
         <field name="name">School Individual Course Group Sequence</field>
         <field name="code">school.individual_course_group</field>
@@ -142,9 +142,9 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-        <field name="company_id"></field>
+        <field name="company_id" />
     </record>
-    
+
     <record id="sequence_school_individual_course" model="ir.sequence">
         <field name="name">School Individual Course Sequence</field>
         <field name="code">school.individual_course</field>
@@ -152,7 +152,7 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-        <field name="company_id"></field>
+        <field name="company_id" />
     </record>
 
 </odoo>

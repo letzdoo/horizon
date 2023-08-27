@@ -5,7 +5,7 @@
     'description': """Custom Partner Fields""",
 
     'author': "Deuse",
-    'website': "https://deuse.be",
+    'website': "https://github.com/ito-invest-lu/horizon",
     'version': '16.0.0.1',
 
     'depends': ['base', 'school_management'],

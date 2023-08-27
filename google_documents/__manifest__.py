@@ -25,7 +25,7 @@
     'version': '16.0.0.1',
     'license': 'AGPL-3',
     'author': 'ito-invest.lu (Jerome Sonnet)',
-    'website': '',
+    'website': 'https://github.com/ito-invest-lu/horizon',
     'category': 'Documents',
     'depends': ['base', 'web', 'google_account'],
     'init_xml': [],

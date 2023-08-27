@@ -23,7 +23,7 @@
     'version': '0.1',
     'license': 'AGPL-3',
     'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
+    'website': 'https://github.com/ito-invest-lu/horizon',
     'category': 'School Contacts',
     'depends': ['contacts','partner_contact_gender','partner_contact_birthdate','partner_contact_birthplace','partner_firstname'],
     'init_xml': [],

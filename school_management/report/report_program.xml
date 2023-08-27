@@ -23,16 +23,23 @@
 <odoo>
 
     <!-- report -->
-    <report id="report_program" model="school.program" string="Program" report_type="qweb-pdf" name="school_management.report_program_details_content" file="school_management.report_program_details_content" />
+    <report
+        id="report_program"
+        model="school.program"
+        string="Program"
+        report_type="qweb-pdf"
+        name="school_management.report_program_details_content"
+        file="school_management.report_program_details_content"
+    />
 
     <template id="website_program_details_content" name="Program Details Content">
-        
+
         <section class="row">
             <div class="col-md-4"><h4>PROFIL D’ENSEIGNEMENT</h4></div>
             <div class="col-md-6"><h4><t t-esc="program.name" /></h4></div>
             <div class="col-md-2"><h4><t t-esc="program.year_id.name" /></h4></div>
         </section>
-        <hr/>
+        <hr />
         <section>
             <div class="row">
                 <div class="col-md-2"><font color="grey">DOMAINE</font></div>
@@ -44,22 +51,28 @@
             </div>
             <div class="row">
                 <div class="col-md-2"><font color="grey">SECTION</font></div>
-                <div class="col-md-10"><t t-esc="program.speciality_id.section_id.name" /></div>
+                <div class="col-md-10"><t
+                        t-esc="program.speciality_id.section_id.name"
+                    /></div>
             </div>
             <div class="row">
                 <div class="col-md-2"><font color="grey">ORIENTATION</font></div>
-                <div class="col-md-10"><t t-esc="program.speciality_id.track_id.name" /></div>
+                <div class="col-md-10"><t
+                        t-esc="program.speciality_id.track_id.name"
+                    /></div>
             </div>
             <div class="row">
                 <div class="col-md-2"><font color="grey">SPÉCIALITÉ</font></div>
                 <div class="col-md-10"><t t-esc="program.speciality_id.name" /></div>
             </div>
         </section>
-        <hr/>
+        <hr />
         <section class="row" t-if="program.description">
             <div class="col-md-12"><h4>VADE MECUM</h4></div>
-            <div class="col-md-12" style='white-space: pre-wrap;'><t t-esc="program.description"/></div>
-            <hr/>
+            <div class="col-md-12" style='white-space: pre-wrap;'><t
+                    t-esc="program.description"
+                /></div>
+            <hr />
         </section>
         <!--<section class="row" t-if="program.competency_ids">
             <div class="col-md-12"><h4>RÉFÉRENTIELS DE COMPÉTENCES ATTENDUES</h4></div>
@@ -81,71 +94,107 @@
             </div>
         </section>
         <section class="row" t-foreach="program.bloc_ids" t-as="bloc">
-            <t t-call="school_management.website_school_bloc"/>
+            <t t-call="school_management.website_school_bloc" />
         </section>
-        <hr/>
+        <hr />
     </template>
 
     <template id="website_school_bloc" name="Bloc">
         <div class="col-md-12">
             <table class="table table-condensed oe_school_program_table">
-                <caption style="font-size: 100%;">Grille du bloc - <t t-esc="bloc.name"/></caption>
+                <caption style="font-size: 100%;">Grille du bloc - <t
+                        t-esc="bloc.name"
+                    /></caption>
                 <colgroup>
-                    <col style="width:75px"/>
-                    <col style="width:400px"/>
-                    <col style="width:60px"/>
-                    <col style="width:60px"/>
-                    <col style="width:60px"/>
-                    <col style="width:150px"/>
-                    <col style="width:150px"/>
+                    <col style="width:75px" />
+                    <col style="width:400px" />
+                    <col style="width:60px" />
+                    <col style="width:60px" />
+                    <col style="width:60px" />
+                    <col style="width:150px" />
+                    <col style="width:150px" />
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>Code UE</th> 
-                        <th>Unités d’enseignement</th> 
-                        <th class="text-center">Heures</th> 
+                        <th>Code UE</th>
+                        <th>Unités d’enseignement</th>
+                        <th class="text-center">Heures</th>
                         <th class="text-center">ECTS</th>
                         <th class="text-center">Pond</th>
                         <th>Pré-requis</th>
                         <th>Co-requis</th>
-                    </tr> 
+                    </tr>
                 </thead>
                 <tbody>
                     <t t-foreach="bloc.course_group_ids" t-as="course_group">
                     <tr class="oe_school_course_group">
-                        <td><t t-esc="course_group.uid"/></td>
-                        <td><t t-esc="course_group.title"/><br/><i style="color:grey;"><t t-esc="course_group.responsible_id.name"/></i></td>
-                        <td class="text-center"><t t-esc="course_group.total_hours"/></td>
-                        <td class="text-center"><t t-esc="course_group.total_credits"/></td>
-                        <td></td>
-                        <td style="font-size: x-small;"><t t-if="course_group.pre_requisit_ids"><span t-esc="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"/></t></td>
-                        <td style="font-size: x-small;"><t t-if="course_group.co_requisit_ids"><span t-esc="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"/></t></td>
+                        <td><t t-esc="course_group.uid" /></td>
+                        <td><t t-esc="course_group.title" /><br /><i
+                                    style="color:grey;"
+                                ><t t-esc="course_group.responsible_id.name" /></i></td>
+                        <td class="text-center"><t
+                                    t-esc="course_group.total_hours"
+                                /></td>
+                        <td class="text-center"><t
+                                    t-esc="course_group.total_credits"
+                                /></td>
+                        <td />
+                        <td style="font-size: x-small;"><t
+                                    t-if="course_group.pre_requisit_ids"
+                                ><span
+                                        t-esc="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"
+                                    /></t></td>
+                        <td style="font-size: x-small;"><t
+                                    t-if="course_group.co_requisit_ids"
+                                ><span
+                                        t-esc="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"
+                                    /></t></td>
                     </tr>
                     <tr t-foreach="course_group.course_ids" t-as="course">
-                        <td></td>
+                        <td />
                         <td t-if="course.url_ref">
-                            <a t-esc="course.title" data-toggle="modal" data-target="#noDescription" style="cursor: pointer;"/>
-                            <br/><t t-foreach="course.teacher_ids" t-as="teacher"><i style="color:grey;" t-esc="teacher.name"/><t t-if="teacher_index &lt; (teacher_size - 1)">,</t></t>
+                            <a
+                                    t-esc="course.title"
+                                    data-toggle="modal"
+                                    data-target="#noDescription"
+                                    style="cursor: pointer;"
+                                />
+                            <br /><t t-foreach="course.teacher_ids" t-as="teacher"><i
+                                        style="color:grey;"
+                                        t-esc="teacher.name"
+                                    /><t
+                                        t-if="teacher_index &lt; (teacher_size - 1)"
+                                    >,</t></t>
                         </td>
                         <td t-if="not course.url_ref">
-                            <a t-esc="course.title" data-toggle="modal" data-target="#noDescription" style="cursor: pointer;"/>
-                            <br/><t t-foreach="course.teacher_ids" t-as="teacher"><i style="color:grey;"  t-esc="teacher.name"/><t t-if="teacher_index &lt; (teacher_size - 1)">,</t></t>
+                            <a
+                                    t-esc="course.title"
+                                    data-toggle="modal"
+                                    data-target="#noDescription"
+                                    style="cursor: pointer;"
+                                />
+                            <br /><t t-foreach="course.teacher_ids" t-as="teacher"><i
+                                        style="color:grey;"
+                                        t-esc="teacher.name"
+                                    /><t
+                                        t-if="teacher_index &lt; (teacher_size - 1)"
+                                    >,</t></t>
                         </td>
-                        <td class="text-center"><t t-esc="course.hours"/></td>
-                        <td class="text-center"><t t-esc="course.credits"/></td>
-                        <td class="text-center"><t t-esc="course.weight"/></td>
-                        <td></td>
-                        <td></td>
+                        <td class="text-center"><t t-esc="course.hours" /></td>
+                        <td class="text-center"><t t-esc="course.credits" /></td>
+                        <td class="text-center"><t t-esc="course.weight" /></td>
+                        <td />
+                        <td />
                     </tr>
                     </t>
                     <tr>
-                        <td></td>
+                        <td />
                         <td class="text-right">Total :</td>
-                        <td class="text-center"><t t-esc="bloc.total_hours"/></td>
-                        <td class="text-center"><t t-esc="bloc.total_credits"/></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td class="text-center"><t t-esc="bloc.total_hours" /></td>
+                        <td class="text-center"><t t-esc="bloc.total_credits" /></td>
+                        <td />
+                        <td />
+                        <td />
                     </tr>
                 </tbody>
             </table>
@@ -157,22 +206,31 @@
             <t t-set="data_report_margin_top" t-value="45" />
             <t t-set="data_report_header_spacing" t-value="40" />
             <t t-foreach="docs" t-as="program">
-            <t t-set="o" t-value="program"/> 
+            <t t-set="o" t-value="program" />
             <t t-call="web.external_layout">
                 <div class="page">
-                    <t t-call="school_management.website_program_details_content"/>
+                    <t t-call="school_management.website_program_details_content" />
                 </div>
             </t>
             </t>
         </t>
     </template>
 
-    <report id="report_individual_bloc" model="school.individual_bloc" string="Individual Bloc Description" report_type="qweb-pdf" name="school_management.report_individual_bloc_content" file="school_management.report_individual_bloc_content" />
+    <report
+        id="report_individual_bloc"
+        model="school.individual_bloc"
+        string="Individual Bloc Description"
+        report_type="qweb-pdf"
+        name="school_management.report_individual_bloc_content"
+        file="school_management.report_individual_bloc_content"
+    />
 
     <!--Email template -->
     <record id="email_template_report_individual_bloc" model="mail.template">
         <field name="name">Individual Bloc - Send by Email</field>
-        <field name="email_to">${(object.student_id.email and '%s &lt;%s&gt;' % (object.student_id.name, object.student_id.email) or '')|safe}</field>
+        <field
+            name="email_to"
+        >${(object.student_id.email and '%s &lt;%s&gt;' % (object.student_id.name, object.student_id.email) or '')|safe}</field>
         <field name="subject">Individual Bloc</field>
         <field name="partner_to">${object.student_id.id}</field>
         <field name="model_id" ref="model_school_individual_bloc" />
@@ -195,84 +253,110 @@
     </record>
 
     <template id="school_bloc" name="Bloc">
-        <div class="table-responsive" data-oe-model="school_bloc" t-att-data-oe-id="bloc.id">
+        <div
+            class="table-responsive"
+            data-oe-model="school_bloc"
+            t-att-data-oe-id="bloc.id"
+        >
             <table class="table table-sm oe_school_program_table">
                 <colgroup>
-                    <col style="width:150px"/>
-                    <col style="width:55%"/>
-                    <col style="width:60px"/>
-                    <col style="width:60px"/>
-                    <col style="width:60px"/>
-                    <col style="width:100px"/>
+                    <col style="width:150px" />
+                    <col style="width:55%" />
+                    <col style="width:60px" />
+                    <col style="width:60px" />
+                    <col style="width:60px" />
+                    <col style="width:100px" />
                 </colgroup>
                 <thead style="display: table-row-group;">
                     <tr>
-                        <th>Code UE</th> 
-                        <th>Unités d’enseignement</th> 
-                        <th class="text-center">Heures</th> 
+                        <th>Code UE</th>
+                        <th>Unités d’enseignement</th>
+                        <th class="text-center">Heures</th>
                         <th class="text-center">ECTS</th>
                         <th class="text-center">Pond</th>
                         <!--
                         <th>Pré/Co-requis</th>-->
                         <th>Statut</th>
-                    </tr> 
+                    </tr>
                 </thead>
                 <tbody>
                     <t t-foreach="bloc.course_group_ids" t-as="course_group">
                     <tr class="oe_school_course_group">
-                        <td><t t-esc="course_group.uid"/></td>
-                        <td><t t-esc="course_group.name"/></td>
-                        <td class="text-center"><t t-esc="course_group.total_hours"/></td>
-                        <td class="text-center"><t t-esc="course_group.total_credits"/></td>
-                        <td></td>
+                        <td><t t-esc="course_group.uid" /></td>
+                        <td><t t-esc="course_group.name" /></td>
+                        <td class="text-center"><t
+                                    t-esc="course_group.total_hours"
+                                /></td>
+                        <td class="text-center"><t
+                                    t-esc="course_group.total_credits"
+                                /></td>
+                        <td />
                         <!--<td class="text-center">Aucun</td>-->
                         <td>
                             <t t-if="course_group.acquiered == 'A'">Valid.</t>
                         </td>
                     </tr>
-                    <tr t-foreach="course_group.course_ids" t-as="course" class="font-italic">
-                        <td></td>
-                        <td t-if="course.url_ref"><a t-esc="course.title" t-att-href="course.url_ref" target="new"/></td>
-                        <td t-if="not course.url_ref"><t t-esc="course.title"/></td>
-                        <td class="text-center"><t t-esc="course.hours"/></td>
+                    <tr
+                            t-foreach="course_group.course_ids"
+                            t-as="course"
+                            class="font-italic"
+                        >
+                        <td />
+                        <td t-if="course.url_ref"><a
+                                    t-esc="course.title"
+                                    t-att-href="course.url_ref"
+                                    target="new"
+                                /></td>
+                        <td t-if="not course.url_ref"><t t-esc="course.title" /></td>
+                        <td class="text-center"><t t-esc="course.hours" /></td>
                         <td class="text-center"><!--<t t-esc="course.credits"/>--></td>
-                        <td class="text-center"><t t-esc="course.weight"/></td>
+                        <td class="text-center"><t t-esc="course.weight" /></td>
                         <!--<td></td>-->
-                        <td></td>
+                        <td />
                     </tr>
                     </t>
                     <tr>
-                        <td></td>
+                        <td />
                         <td class="text-right">Total :</td>
-                        <td class="text-center"><t t-esc="bloc.total_hours"/></td>
-                        <td class="text-center"><t t-esc="bloc.total_credits"/></td>
-                        <td></td>
+                        <td class="text-center"><t t-esc="bloc.total_hours" /></td>
+                        <td class="text-center"><t t-esc="bloc.total_credits" /></td>
+                        <td />
                         <!--<td></td>-->
-                        <td></td>
+                        <td />
                     </tr>
                 </tbody>
             </table>
         </div>
     </template>
-      
+
     <template id="report_individual_bloc_content">
-        <t t-set="company" t-value="docs.env.company"/>
+        <t t-set="company" t-value="docs.env.company" />
         <t t-call="web.report_layout">
             <t t-foreach="docs" t-as="bloc">
                 <div class="header">
-                    <img alt="" src="/school_management/static/src/img/HeaderCRLG.png" title=""/>
+                    <img
+                        alt=""
+                        src="/school_management/static/src/img/HeaderCRLG.png"
+                        title=""
+                    />
                 </div>
-                <div class="article" t-att-data-oe-model="bloc and bloc._name" t-att-data-oe-id="bloc and bloc.id" t-att-data-oe-lang="bloc and bloc.env.context.get('lang')" style="margin: 0cm 1.5cm;">
-                    <h2><t t-esc="bloc.name"/></h2>
-                    <h4>Basé sur <t t-esc="bloc.source_bloc_id.name"/></h4>
-                    <h5><t t-esc="bloc.uid"/></h5>
+                <div
+                    class="article"
+                    t-att-data-oe-model="bloc and bloc._name"
+                    t-att-data-oe-id="bloc and bloc.id"
+                    t-att-data-oe-lang="bloc and bloc.env.context.get('lang')"
+                    style="margin: 0cm 1.5cm;"
+                >
+                    <h2><t t-esc="bloc.name" /></h2>
+                    <h4>Basé sur <t t-esc="bloc.source_bloc_id.name" /></h4>
+                    <h5><t t-esc="bloc.uid" /></h5>
                     <table class="pure-table pure-table-horizontal horizon-table">
                       <colgroup>
-                          <col style="width:180px"/>
-                          <col style="width:650px"/>
-                          <col style="width:120px"/>
-                          <col style="width:120px"/>
-                          <col style="width:120px"/>
+                          <col style="width:180px" />
+                          <col style="width:650px" />
+                          <col style="width:120px" />
+                          <col style="width:120px" />
+                          <col style="width:120px" />
                       </colgroup>
                       <thead>
                         <tr>
@@ -296,16 +380,16 @@
                       <t t-foreach="bloc.course_group_ids" t-as="course_group">
                       <tr class="major_row">
                         <td>
-                          <t t-esc="course_group.source_course_group_id.uid"/>
+                          <t t-esc="course_group.source_course_group_id.uid" />
                         </td>
                         <td>
-                          <t t-esc="course_group.title"/>
+                          <t t-esc="course_group.title" />
                         </td>
                         <td>
-                          <t t-esc="course_group.total_hours"/>
+                          <t t-esc="course_group.total_hours" />
                         </td>
                         <td>
-                          <t t-esc="course_group.total_credits"/>
+                          <t t-esc="course_group.total_credits" />
                         </td>
                         <td>
                         </td>
@@ -315,15 +399,15 @@
                         <td>
                         </td>
                         <td>
-                            <t t-esc="course.title"/>
+                            <t t-esc="course.title" />
                         </td>
                         <td>
-                          <t t-esc="course.hours"/>
+                          <t t-esc="course.hours" />
                         </td>
                         <td>
                         </td>
                         <td>
-                          <t t-esc="course.weight"/>
+                          <t t-esc="course.weight" />
                         </td>
                       </tr>
                       </t>
@@ -335,36 +419,41 @@
                             Total :
                           </td>
                           <td>
-                            <t t-esc="bloc.total_hours"/>
+                            <t t-esc="bloc.total_hours" />
                           </td>
                           <td>
-                            <t t-esc="bloc.total_credits"/>
+                            <t t-esc="bloc.total_credits" />
                           </td>
                           <td>
                           </td>
                         </tr>
                     </table>
-                    <p/>
-                    <p/>
+                    <p />
+                    <p />
                     <table class="pure-table">
                       <tr>
                         <td colspan="2" rowspan="1">
                           <p>
-                              Date et signature de l'étudiant<br/>
-                              Le <span t-esc="bloc.student_signature_date and bloc.student_signature_date.strftime('%d-%m-%Y')"/>
+                              Date et signature de l'étudiant<br />
+                              Le <span
+                                        t-esc="bloc.student_signature_date and bloc.student_signature_date.strftime('%d-%m-%Y')"
+                                    />
                           </p>
-                          <img style="height:70px;width:210px;" t-att-src="bloc.student_signature and image_data_uri(bloc.student_signature)"/>
+                          <img
+                                    style="height:70px;width:210px;"
+                                    t-att-src="bloc.student_signature and image_data_uri(bloc.student_signature)"
+                                />
                         </td>
                       </tr>
                       <tr>
                         <td colspan="2" rowspan="1">
                           <p>Avis de la commission des études</p>
                           <p>
-                              Programme annuel approuvé par la commission des études (séance(s) : 
+                              Programme annuel approuvé par la commission des études (séance(s) :
                               <t t-foreach="bloc.approuval_ids" t-as="app">
-                                  <t t-esc="app.date.strftime('%d-%m-%Y')"/>
+                                  <t t-esc="app.date.strftime('%d-%m-%Y')" />
                                   <t t-if="not app_first and not app_last">
-                                      , 
+                                      ,
                                   </t>
                               </t>)
                           </p>
@@ -375,24 +464,40 @@
                           <p>
                               Signature de la présidente de la commission des études
                           </p>
-                          <img style="height:70px;width:210px;" t-att-src="image_data_uri(company.director_signature)"/>
+                          <img
+                                    style="height:70px;width:210px;"
+                                    t-att-src="image_data_uri(company.director_signature)"
+                                />
                         </td>
                         <td>
                           <p>
                              Signature du secrétaire de la commission des études
                           </p>
-                          <img style="height:70px;width:210px;" t-att-src="image_data_uri(company.secretary_signature)"/>
+                          <img
+                                    style="height:70px;width:210px;"
+                                    t-att-src="image_data_uri(company.secretary_signature)"
+                                />
                         </td>
                       </tr>
                     </table>
-                    <p>Imprimé <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"/></p>
+                    <p>Imprimé <span
+                            t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
+                        /></p>
                 </div>
             </t>
         </t>
     </template>
 
-    <report id="report_attendance_for_student" model="school.individual_bloc" string="Attendance Report for Student" report_type="qweb-pdf" name="school_management.report_attendance_for_student_content" file="school_management.report_attendance_for_student_content"
-        attachment_use="True" attachment="object.name+'-ATT-'+time.strftime('%d-%m-%Y')+'.pdf'" />
+    <report
+        id="report_attendance_for_student"
+        model="school.individual_bloc"
+        string="Attendance Report for Student"
+        report_type="qweb-pdf"
+        name="school_management.report_attendance_for_student_content"
+        file="school_management.report_attendance_for_student_content"
+        attachment_use="True"
+        attachment="object.name+'-ATT-'+time.strftime('%d-%m-%Y')+'.pdf'"
+    />
 
     <template id="report_attendance_for_student_content">
         <t t-call="web.html_container">
@@ -402,21 +507,32 @@
                     <div class="page" style="padding-left: 50px;padding-right: 50px;">
                         <section class="text-center">
                             <h2>ATTENDANCE REPORT</h2>
-                            <h2>ACADEMIC YEAR <span style="color:#495057;" t-field="o.year_id"/></h2>
+                            <h2>ACADEMIC YEAR <span
+                                    style="color:#495057;"
+                                    t-field="o.year_id"
+                                /></h2>
                         </section>
-                        <hr/>
+                        <hr />
                         <section class="col-10 col-offset-1" style="margin-top:80px;">
                                 Je soussigné, Nathanaël HARCQ, Directeur du CONSERVATOIRE ROYAL DE LIEGE certifie par la présente que
                         </section>
                         <section style="margin-top:40px;">
                             <div class="col-9 col-offset-2">
-                                <b><span t-field="o.student_id.name"/>, né<t t-if="o.student_id.gender == 'female'">e</t> le <span t-field="o.student_id.birthdate_date"/> à <span t-field="o.student_id.birthplace"/></b>
+                                <b><span t-field="o.student_id.name" />, né<t
+                                        t-if="o.student_id.gender == 'female'"
+                                    >e</t> le <span
+                                        t-field="o.student_id.birthdate_date"
+                                    /> à <span t-field="o.student_id.birthplace" /></b>
                             </div>
                         </section>
                         <section style="margin-top:40px;">
                             <div class="col-10 col-offset-1">
-                                est régulièrement inscrit<t t-if="o.student_id.gender == 'female'">e</t> aux cours du jour de l'Enseignement Supérieur Artistique de type
-                                <span t-field="o.source_bloc_cycle_id.type"/> pour l'année <span t-field="o.year_id"/>.
+                                est régulièrement inscrit<t
+                                    t-if="o.student_id.gender == 'female'"
+                                >e</t> aux cours du jour de l'Enseignement Supérieur Artistique de type
+                                <span
+                                    t-field="o.source_bloc_cycle_id.type"
+                                /> pour l'année <span t-field="o.year_id" />.
                                 <p style="margin-top:10px;">
                                     Les cours sont donnés du 15 septembre au 30 juin.
                                 </p>
@@ -429,7 +545,17 @@
                         </section>
                         <section style="margin-top:20px;">
                             <div class="col-8 col-offset-2">
-                                <b><span t-field="o.source_bloc_cycle_id"/> - <span t-field="o.source_bloc_id.level"/> du domaine <span t-field="o.source_bloc_domain_id"/>, section <span t-field="o.source_bloc_section_id"/>, option <span t-field="o.source_bloc_track_id"/>, spécialité <span t-field="o.source_bloc_speciality_id"/>.</b>
+                                <b><span t-field="o.source_bloc_cycle_id" /> - <span
+                                        t-field="o.source_bloc_id.level"
+                                    /> du domaine <span
+                                        t-field="o.source_bloc_domain_id"
+                                    />, section <span
+                                        t-field="o.source_bloc_section_id"
+                                    />, option <span
+                                        t-field="o.source_bloc_track_id"
+                                    />, spécialité <span
+                                        t-field="o.source_bloc_speciality_id"
+                                    />.</b>
                             </div>
                         </section>
                         <section style="margin-top:50px;">
@@ -439,12 +565,14 @@
                         </section>
                         <section style="margin-top:80px;">
                             <div class="col-4 col-offset-7">
-                                LIEGE, le <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"/>
+                                LIEGE, le <span
+                                    t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"
+                                />
                             </div>
                         </section>
                         <section style="margin-top:80px;">
                             <div class="col-4 col-offset-7">
-                                Le Directeur,<br/>
+                                Le Directeur,<br />
                                 Nathanaël HARCQ
                             </div>
                         </section>

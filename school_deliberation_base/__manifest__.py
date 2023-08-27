@@ -23,7 +23,7 @@
     'version': '14.0.0.0.1',
     'license': 'AGPL-3',
     'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
+    'website': 'https://github.com/ito-invest-lu/horizon',
     'category': 'School Management',
     'depends': ['school_evaluations'],
     'init_xml': [],

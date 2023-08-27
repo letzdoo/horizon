@@ -10,7 +10,7 @@ Web List View Fixed Table Header
 * Fixed (sticky) list view table header, very helpful when dealing with many record.
 """,
     'author': 'Andre Leander',
-    'website': 'leeshienwen@gmail.com',
+    'website': 'https://github.com/ito-invest-lu/horizon',
     'depends': ['web','base'],
     'data': [
         'views/web_list_view_sticky.xml',

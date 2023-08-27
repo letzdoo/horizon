@@ -31,7 +31,7 @@ Extend calendar view to support scheduler.
 """,
     'license': 'AGPL-3',
     'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
+    'website': 'https://github.com/ito-invest-lu/horizon',
     'depends': ['web'],
     'data': [
         'views/web_scheduler.xml',

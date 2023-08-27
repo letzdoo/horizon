@@ -5,7 +5,7 @@
     'description': """This module adds custom reports that canbe printed.""",
 
     'author': "Deuse",
-    'website': "https://deuse.be",
+    'website': "https://github.com/ito-invest-lu/horizon",
     'version': '16.0.0.1',
 
     'depends': ['school_management', "base", "partner_contact_gender", "partner_contact_birthdate", "partner_firstname", "custom_partner_fields"],

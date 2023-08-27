@@ -24,9 +24,13 @@
 
 
     <!-- Top menu item -->
-    <menuitem name="Individuals Programs" id="menu_individual_bloc"
-              web_icon="hr_recruitment,static/description/icon.png" sequence="12"
-              groups="school_management.group_registration"/>
+    <menuitem
+        name="Individuals Programs"
+        id="menu_individual_bloc"
+        web_icon="hr_recruitment,static/description/icon.png"
+        sequence="12"
+        groups="school_management.group_registration"
+    />
 
     <!--
 
@@ -38,12 +42,12 @@
     <record id="view_individual_program_tree" model="ir.ui.view">
         <field name="name">school.individual_program.tree</field>
         <field name="model">school.individual_program</field>
-        <field eval="8" name="priority"/>
+        <field eval="8" name="priority" />
         <field name="arch" type="xml">
             <tree string="Individual Program">
-                <field name="student_id"/>
-                <field name="source_program_id"/>
-                <field name="required_credits"/>
+                <field name="student_id" />
+                <field name="source_program_id" />
+                <field name="required_credits" />
             </tree>
         </field>
     </record>
@@ -56,92 +60,107 @@
         <field name="arch" type="xml">
             <form string="Individual Program">
                 <sheet>
-                    <widget name="web_ribbon" text="Cycle" bg_color="bg-warning"/>
+                    <widget name="web_ribbon" text="Cycle" bg_color="bg-warning" />
                     <div class="container" style="margin-left:0px;">
                         <div class="row">
                             <div class="h-100 d-inline-block" style="width: 150px;">
-                                <field name="image_512" readonly="1" widget="image" class="oe_left oe_inline"
-                                       options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"/>
+                                <field
+                                    name="image_512"
+                                    readonly="1"
+                                    widget="image"
+                                    class="oe_left oe_inline"
+                                    options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
+                                />
                             </div>
                             <div class="col-8">
                                 <h2>
-                                    <field name="student_id"/>
+                                    <field name="student_id" />
                                 </h2>
                                 <h5 class="o_row row no-gutters d-flex">
                                     <div class="col">
-                                        <label for="year_id" invisible="1"/>
+                                        <label for="year_id" invisible="1" />
                                         <span>Année de début de cycle:</span>
                                         <span>
-                                            <field name="year_id"/>
+                                            <field name="year_id" />
                                         </span>
                                     </div>
                                 </h5>
                                 <h5 class="o_row row no-gutters d-flex">
                                     <div class="col">
-                                        <label for="source_program_id" invisible="1"/>
-                                        <span>Cycle basé sur le profil d'enseignement:</span>
+                                        <label for="source_program_id" invisible="1" />
+                                        <span
+                                        >Cycle basé sur le profil d'enseignement:</span>
                                         <span>
-                                            <field name="source_program_id"/>
+                                            <field name="source_program_id" />
                                         </span>
                                     </div>
                                 </h5>
                                 <h3 class="o_row row no-gutters d-flex">
                                     <div class="col">
-                                        <label for="uid" class="oe_edit_only"/>
+                                        <label for="uid" class="oe_edit_only" />
                                         <small class="oe_grey">
-                                            <field name="uid"/>
+                                            <field name="uid" />
                                         </small>
                                     </div>
                                 </h3>
-                                <field name="cycle_id" invisible="1"/>
-                                <field name="speciality_id" invisible="1"/>
+                                <field name="cycle_id" invisible="1" />
+                                <field name="speciality_id" invisible="1" />
                             </div>
                         </div>
                     </div>
                     <group>
                         <group name="required_credits_section">
-                            <field name="required_credits" readonly="1"/>
+                            <field name="required_credits" readonly="1" />
                         </group>
                     </group>
                     <div id="paes" class="mb-4">
                         <h2>Programmes Annuels de l'Etudiant (PAE)</h2>
                         <field name="bloc_ids">
-                            <kanban quick_create="false" create="false" class="o_kanban_mobile">
-                                <field name="uid"/>
-                                <field name="year_id"/>
-                                <field name="name"/>
-                                <field name="total_hours"/>
-                                <field name="total_credits"/>
+                            <kanban
+                                quick_create="false"
+                                create="false"
+                                class="o_kanban_mobile"
+                            >
+                                <field name="uid" />
+                                <field name="year_id" />
+                                <field name="name" />
+                                <field name="total_hours" />
+                                <field name="total_credits" />
                                 <templates>
                                     <t t-name="kanban-box">
-                                        <div style="position: relative; border-top : 10px solid #28a745;">
+                                        <div
+                                            style="position: relative; border-top : 10px solid #28a745;"
+                                        >
                                             <div class="oe_module_vignette container">
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <h5>
-                                                            <field name="uid"/>
+                                                            <field name="uid" />
                                                         </h5>
                                                     </div>
                                                     <div class="col-6 text-right">
-                                                        <field name="year_id"/>
+                                                        <field name="year_id" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-6">
                                                         Heures :
-                                                        <field name="total_hours"/>
+                                                        <field name="total_hours" />
                                                     </div>
                                                     <div class="col-6">
                                                         ECTS :
-                                                        <field name="total_credits"/>
+                                                        <field name="total_credits" />
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-9">
                                                     </div>
                                                     <div class="col-3">
-                                                        <button type="object" name="action_open_form"
-                                                                class="oe_highlight btn btn-primary">Open
+                                                        <button
+                                                            type="object"
+                                                            name="action_open_form"
+                                                            class="oe_highlight btn btn-primary"
+                                                        >Open
                                                         </button>
                                                     </div>
                                                 </div>
@@ -156,43 +175,78 @@
                         <h2 style="margin-top:25px;">Unités d'enseignement</h2>
                         <field name="course_group_summaries" widget="many2many">
                             <kanban class="o_wvisitor_kanban" sample="1">
-                                <field name="uid"/>
-                                <field name="name"/>
-                                <field name="total_hours"/>
-                                <field name="total_credits"/>
-                                <field name="course_group_id"/>
+                                <field name="uid" />
+                                <field name="name" />
+                                <field name="total_hours" />
+                                <field name="total_credits" />
+                                <field name="course_group_id" />
                                 <templates>
                                     <t t-name="kanban-box">
-                                        <div class="oe_kanban_global_click o_wvisitor_kanban_card">
-                                            <div class="o_kanban_detail_ungrouped row mx-0">
-                                                <div style="width:100%;height:45px;border:1px solid gray;background-color:#F8F8F8;">
-                                                    <div style="width:75%;height:45px;display:inline-block;float:left">
-                                                        <a type="object" name="action_open_form"
-                                                           class="oe_highlight btn btn-primary" style="margin-top:5px;">
-                                                            <field name="uid"/>
+                                        <div
+                                            class="oe_kanban_global_click o_wvisitor_kanban_card"
+                                        >
+                                            <div
+                                                class="o_kanban_detail_ungrouped row mx-0"
+                                            >
+                                                <div
+                                                    style="width:100%;height:45px;border:1px solid gray;background-color:#F8F8F8;"
+                                                >
+                                                    <div
+                                                        style="width:75%;height:45px;display:inline-block;float:left"
+                                                    >
+                                                        <a
+                                                            type="object"
+                                                            name="action_open_form"
+                                                            class="oe_highlight btn btn-primary"
+                                                            style="margin-top:5px;"
+                                                        >
+                                                            <field name="uid" />
                                                         </a>
-                                                        <span class="h5" style="margin-left:15px;margin-top:10px;">
-                                                            <field name="name"/>
+                                                        <span
+                                                            class="h5"
+                                                            style="margin-left:15px;margin-top:10px;"
+                                                        >
+                                                            <field name="name" />
                                                         </span>
                                                     </div>
-                                                    <div style="width:25%;height:45px;display:inline-block;float:right">
-                                                        <a type="object" name="action_open_source_form"
-                                                           style="font-weight:bold;">
-                                                            <i class="fa fa-book mr-2" style="margin-top:17.5px;"/>
+                                                    <div
+                                                        style="width:25%;height:45px;display:inline-block;float:right"
+                                                    >
+                                                        <a
+                                                            type="object"
+                                                            name="action_open_source_form"
+                                                            style="font-weight:bold;"
+                                                        >
+                                                            <i
+                                                                class="fa fa-book mr-2"
+                                                                style="margin-top:17.5px;"
+                                                            />
                                                             UE Source
                                                         </a>
-                                                        <span style="margin-left:10px;display:inline-block;width:85px;height:95%;background-color:#FFB448;float:right;padding:2px;">
-                                                            <h5 style="text-align:center;color:white;margin-top:5px;">
+                                                        <span
+                                                            style="margin-left:10px;display:inline-block;width:85px;height:95%;background-color:#FFB448;float:right;padding:2px;"
+                                                        >
+                                                            <h5
+                                                                style="text-align:center;color:white;margin-top:5px;"
+                                                            >
                                                                 ECTS
-                                                                <br/>
-                                                                <field name="total_credits"/>
+                                                                <br />
+                                                                <field
+                                                                    name="total_credits"
+                                                                />
                                                             </h5>
                                                         </span>
-                                                        <span style="display:inline-block;width:85px;height:95%;background-color:#5AC0FF;float:right;padding:2px;">
-                                                            <h5 style="text-align:center;color:white;margin-top:5px;">
+                                                        <span
+                                                            style="display:inline-block;width:85px;height:95%;background-color:#5AC0FF;float:right;padding:2px;"
+                                                        >
+                                                            <h5
+                                                                style="text-align:center;color:white;margin-top:5px;"
+                                                            >
                                                                 Heures
-                                                                <br/>
-                                                                <field name="total_hours"/>
+                                                                <br />
+                                                                <field
+                                                                    name="total_hours"
+                                                                />
                                                             </h5>
                                                         </span>
                                                     </div>
@@ -206,8 +260,8 @@
                     </div>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
                 </div>
             </form>
         </field>
@@ -218,19 +272,55 @@
         <field name="model">school.individual_program</field>
         <field name="arch" type="xml">
             <search string="Search Programs">
-                <field name="student_id" domain="[('type', '=', 'contact')]"/>
-                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
-                <separator/>
-                <filter name="music" string="Musique" domain="[('domain_id', '=', 1)]"/>
-                <filter name="theatre" string="Théatre" domain="[('domain_id', '=', 2)]"/>
-                <separator/>
+                <field name="student_id" domain="[('type', '=', 'contact')]" />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active','=',False)]"
+                />
+                <separator />
+                <filter
+                    name="music"
+                    string="Musique"
+                    domain="[('domain_id', '=', 1)]"
+                />
+                <filter
+                    name="theatre"
+                    string="Théatre"
+                    domain="[('domain_id', '=', 2)]"
+                />
+                <separator />
                 <group expand="1" string="Group By">
-                    <filter string="State" name="state_group" context="{'group_by':'state'}"/>
-                    <filter string="Domain" name="domain_id_group" context="{'group_by':'domain_id'}"/>
-                    <filter string="Cycle" name="cycle_id_group" context="{'group_by':'cycle_id'}"/>
-                    <filter string="Section" name="section_id_group" context="{'group_by':'section_id'}"/>
-                    <filter string="Track" name="track_id_group" context="{'group_by':'track_id'}"/>
-                    <filter string="Speciality" name="speciality_id_group" context="{'group_by':'speciality_id'}"/>
+                    <filter
+                        string="State"
+                        name="state_group"
+                        context="{'group_by':'state'}"
+                    />
+                    <filter
+                        string="Domain"
+                        name="domain_id_group"
+                        context="{'group_by':'domain_id'}"
+                    />
+                    <filter
+                        string="Cycle"
+                        name="cycle_id_group"
+                        context="{'group_by':'cycle_id'}"
+                    />
+                    <filter
+                        string="Section"
+                        name="section_id_group"
+                        context="{'group_by':'section_id'}"
+                    />
+                    <filter
+                        string="Track"
+                        name="track_id_group"
+                        context="{'group_by':'track_id'}"
+                    />
+                    <filter
+                        string="Speciality"
+                        name="speciality_id_group"
+                        context="{'group_by':'speciality_id'}"
+                    />
                 </group>
             </search>
         </field>
@@ -243,7 +333,7 @@
 
         <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
-        <field name="search_view_id" ref="view_individual_program_filter"/>
+        <field name="search_view_id" ref="view_individual_program_filter" />
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Please add individual program from Student view.
@@ -251,22 +341,32 @@
         </field>
     </record>
 
-    <record id="action_individual_program_tree_view1" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1"/>
+    <record
+        id="action_individual_program_tree_view1"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="1" />
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_individual_program_tree"/>
-        <field name="act_window_id" ref="action_individual_program_form"/>
+        <field name="view_id" ref="view_individual_program_tree" />
+        <field name="act_window_id" ref="action_individual_program_form" />
     </record>
 
-    <record id="action_individual_program_form_view2" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2"/>
+    <record
+        id="action_individual_program_form_view2"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="2" />
         <field name="view_mode">form</field>
-        <field name="view_id" ref="individual_program_form"/>
-        <field name="act_window_id" ref="action_individual_program_form"/>
+        <field name="view_id" ref="individual_program_form" />
+        <field name="act_window_id" ref="action_individual_program_form" />
     </record>
 
-    <menuitem id="menu_individual_program_form" parent="menu_individual_bloc" action="action_individual_program_form"
-              sequence="10"/>
+    <menuitem
+        id="menu_individual_program_form"
+        parent="menu_individual_bloc"
+        action="action_individual_program_form"
+        sequence="10"
+    />
 
     <!--
 
@@ -278,15 +378,15 @@
     <record id="view_individual_bloc_tree" model="ir.ui.view">
         <field name="name">school.individual_bloc.tree</field>
         <field name="model">school.individual_bloc</field>
-        <field eval="8" name="priority"/>
+        <field eval="8" name="priority" />
         <field name="arch" type="xml">
             <tree string="Individual Bloc" create="false">
-                <field name="year_id"/>
-                <field name="student_id"/>
-                <field name="source_bloc_name"/>
-                <field name="total_credits"/>
-                <field name="is_final_bloc"/>
-                <field name="is_light_bloc"/>
+                <field name="year_id" />
+                <field name="student_id" />
+                <field name="source_bloc_name" />
+                <field name="total_credits" />
+                <field name="is_final_bloc" />
+                <field name="is_light_bloc" />
             </tree>
         </field>
     </record>
@@ -300,22 +400,27 @@
         <field name="arch" type="xml">
             <form string="Course Summary">
                 <sheet>
-                    <widget name="web_ribbon" text="Unité" bg_color="bg-primary"/>
+                    <widget name="web_ribbon" text="Unité" bg_color="bg-primary" />
                     <div class="container" style="margin-left:0px;">
                         <div class="row">
                             <div class="h-100 d-inline-block" style="width: 150px;">
-                                <field name="image_512" readonly="1" widget="image" class="oe_left oe_inline"
-                                       options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"/>
+                                <field
+                                    name="image_512"
+                                    readonly="1"
+                                    widget="image"
+                                    class="oe_left oe_inline"
+                                    options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
+                                />
                             </div>
                             <div class="col-8">
                                 <h2>
-                                    <field name="name"/>
+                                    <field name="name" />
                                 </h2>
                                 <h3 class="o_row row no-gutters d-flex">
                                     <div class="col">
-                                        <label for="uid" invisible="1"/>
+                                        <label for="uid" invisible="1" />
                                         <small class="oe_grey">
-                                            <field name="uid" readonly="1"/>
+                                            <field name="uid" readonly="1" />
                                         </small>
                                     </div>
                                 </h3>
@@ -326,20 +431,20 @@
                      <field name="bloc_id" options='{"no_open":True}'/>
                     </h3>-->
                     <group col="2">
-                        <field name="course_group_id"/>
-                        <field name="responsible_id"/>
+                        <field name="course_group_id" />
+                        <field name="responsible_id" />
                         <!--<field name="weight" />-->
-                        <field name="total_hours"/>
-                        <field name="total_credits"/>
+                        <field name="total_hours" />
+                        <field name="total_credits" />
                     </group>
-                    <separator string="Course Group" colspan="4"/>
+                    <separator string="Course Group" colspan="4" />
                     <field name="ind_course_group_ids" colspan="4">
                         <tree string="Course Groups">
-                            <field name="uid"/>
-                            <field name="year_id"/>
-                            <field name="name"/>
-                            <field name="total_hours"/>
-                            <field name="total_credits"/>
+                            <field name="uid" />
+                            <field name="year_id" />
+                            <field name="name" />
+                            <field name="total_hours" />
+                            <field name="total_credits" />
                         </tree>
                     </field>
                 </sheet>
@@ -352,38 +457,96 @@
         <field name="model">school.individual_course</field>
         <field name="arch" type="xml">
             <search string="Search Courses">
-                <field name="student_id" domain="[('type', '=', 'contact')]"/>
-                <field name="teacher_id"/>
-                <field name="bloc_id"/>
-                <field name="source_bloc_id" string="Programme"/>
-                <field name="source_course_id" string="Activité"/>
-                <filter name="bloc_1" string="Bloc 1" domain="[('source_bloc_level', '=', 1)]"/>
-                <filter name="bloc_2" string="Bloc 2" domain="[('source_bloc_level', '=', 2)]"/>
-                <filter name="bloc_3" string="Bloc 3" domain="[('source_bloc_level', '=', 3)]"/>
-                <filter name="master_1" string="Master 1" domain="[('source_bloc_level', '=', 4)]"/>
-                <filter name="master_2" string="Master 2" domain="[('source_bloc_level', '=', 5)]"/>
-                <filter name="agg" string="Agregation" domain="[('source_bloc_level', '=', 6)]"/>
-                <separator/>
-                <filter string="No teacher" name="no_teacher" domain="[('teacher_id','=', False)]"/>
-                <separator/>
-                <filter string="Current Year" name="current" domain="[('year_sequence','=','current')]"/>
-                <filter string="Next Year" name="next" domain="[('year_sequence','=','next')]"/>
-                <filter string="Previous Year" name="previous" domain="[('year_sequence','=','previous')]"/>
-                <separator/>
-                <filter name="my_current_courses" string="My Current Courses"
-                        domain="[('teacher_id.user_ids','=',uid),('year_sequence','=','current')]"/>
+                <field name="student_id" domain="[('type', '=', 'contact')]" />
+                <field name="teacher_id" />
+                <field name="bloc_id" />
+                <field name="source_bloc_id" string="Programme" />
+                <field name="source_course_id" string="Activité" />
+                <filter
+                    name="bloc_1"
+                    string="Bloc 1"
+                    domain="[('source_bloc_level', '=', 1)]"
+                />
+                <filter
+                    name="bloc_2"
+                    string="Bloc 2"
+                    domain="[('source_bloc_level', '=', 2)]"
+                />
+                <filter
+                    name="bloc_3"
+                    string="Bloc 3"
+                    domain="[('source_bloc_level', '=', 3)]"
+                />
+                <filter
+                    name="master_1"
+                    string="Master 1"
+                    domain="[('source_bloc_level', '=', 4)]"
+                />
+                <filter
+                    name="master_2"
+                    string="Master 2"
+                    domain="[('source_bloc_level', '=', 5)]"
+                />
+                <filter
+                    name="agg"
+                    string="Agregation"
+                    domain="[('source_bloc_level', '=', 6)]"
+                />
+                <separator />
+                <filter
+                    string="No teacher"
+                    name="no_teacher"
+                    domain="[('teacher_id','=', False)]"
+                />
+                <separator />
+                <filter
+                    string="Current Year"
+                    name="current"
+                    domain="[('year_sequence','=','current')]"
+                />
+                <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('year_sequence','=','next')]"
+                />
+                <filter
+                    string="Previous Year"
+                    name="previous"
+                    domain="[('year_sequence','=','previous')]"
+                />
+                <separator />
+                <filter
+                    name="my_current_courses"
+                    string="My Current Courses"
+                    domain="[('teacher_id.user_ids','=',uid),('year_sequence','=','current')]"
+                />
                 <group expand="1" string="Group By">
-                    <filter string="Source Course" name="source_course_id_group"
-                            context="{'group_by':'source_course_id'}"/>
-                    <separator/>
-                    <filter string="Domain" name="source_bloc_domain_id_group"
-                            context="{'group_by':'source_bloc_domain_id'}"/>
-                    <filter string="Cycle" name="source_bloc_cycle_id_group"
-                            context="{'group_by':'source_bloc_cycle_id'}"/>
-                    <filter string="Section" name="source_bloc_section_id_group"
-                            context="{'group_by':'source_bloc_section_id'}"/>
-                    <filter string="Track" name="source_bloc_track_id_group"
-                            context="{'group_by':'source_bloc_track_id'}"/>
+                    <filter
+                        string="Source Course"
+                        name="source_course_id_group"
+                        context="{'group_by':'source_course_id'}"
+                    />
+                    <separator />
+                    <filter
+                        string="Domain"
+                        name="source_bloc_domain_id_group"
+                        context="{'group_by':'source_bloc_domain_id'}"
+                    />
+                    <filter
+                        string="Cycle"
+                        name="source_bloc_cycle_id_group"
+                        context="{'group_by':'source_bloc_cycle_id'}"
+                    />
+                    <filter
+                        string="Section"
+                        name="source_bloc_section_id_group"
+                        context="{'group_by':'source_bloc_section_id'}"
+                    />
+                    <filter
+                        string="Track"
+                        name="source_bloc_track_id_group"
+                        context="{'group_by':'source_bloc_track_id'}"
+                    />
                 </group>
             </search>
         </field>
@@ -395,7 +558,7 @@
 
         <field name="view_mode">tree,form</field>
         <field name="context">{'search_default_bloc_id': active_id}</field>
-        <field name="search_view_id" ref="view_individual_courses_filter"/>
+        <field name="search_view_id" ref="view_individual_courses_filter" />
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Create a Course Group and add Courses to the program.
@@ -407,14 +570,19 @@
     <record id="view_individual_course_tree" model="ir.ui.view">
         <field name="name">school.individual_course.tree</field>
         <field name="model">school.individual_course</field>
-        <field eval="8" name="priority"/>
+        <field eval="8" name="priority" />
         <field name="arch" type="xml">
             <tree string="Individual Course" editable="top" create="0">
-                <field name="year_id" readonly="1"/>
-                <field name="student_id"/>
-                <field name="name"/>
-                <field name="teacher_id"/>
-                <button type="object" icon="fa-book" name="open_program" string="Program"/>
+                <field name="year_id" readonly="1" />
+                <field name="student_id" />
+                <field name="name" />
+                <field name="teacher_id" />
+                <button
+                    type="object"
+                    icon="fa-book"
+                    name="open_program"
+                    string="Program"
+                />
             </tree>
         </field>
     </record>
@@ -433,48 +601,65 @@
                           </header>-->
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button type="object" icon="fa-book" name="open_program" string="Porgram"/>
+                        <button
+                            type="object"
+                            icon="fa-book"
+                            name="open_program"
+                            string="Porgram"
+                        />
                     </div>
-                    <field name="image_512" widget="image" class="oe_left oe_inline"
-                           options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [150, 150]}"/>
+                    <field
+                        name="image_512"
+                        widget="image"
+                        class="oe_left oe_inline"
+                        options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [150, 150]}"
+                    />
                     <div class="oe_title" style="padding-left: 130px;">
                         <h1>
-                            <field name="name"/>
+                            <field name="name" />
                         </h1>
                         <h3 class="oe_fade">
-                            <field name="bloc_id" options='{"no_open":True}'/>
+                            <field name="bloc_id" options='{"no_open":True}' />
                         </h3>
                     </div>
                     <group col="4">
-                        <field name="source_course_id" colspan="4"/>
-                        <field name="teacher_id"/>
-                        <field name="teacher_choice_id"/> <!--TODO set a domain like "[('id','in','source_course_id.teacher_ids')]" -->
-                        <field name="hours"/>
-                        <field name="credits"/>
-                        <field name="weight"/>
+                        <field name="source_course_id" colspan="4" />
+                        <field name="teacher_id" />
+                        <field
+                            name="teacher_choice_id"
+                        /> <!--TODO set a domain like "[('id','in','source_course_id.teacher_ids')]" -->
+                        <field name="hours" />
+                        <field name="credits" />
+                        <field name="weight" />
                     </group>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
                 </div>
             </form>
         </field>
     </record>
 
 
-    <record id="action_individual_bloc_course_tree_view" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1"/>
+    <record
+        id="action_individual_bloc_course_tree_view"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="1" />
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_individual_course_tree"/>
-        <field name="act_window_id" ref="act_program_2_course"/>
+        <field name="view_id" ref="view_individual_course_tree" />
+        <field name="act_window_id" ref="act_program_2_course" />
     </record>
 
-    <record id="action_individual_bloc_course_form_view" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2"/>
+    <record
+        id="action_individual_bloc_course_form_view"
+        model="ir.actions.act_window.view"
+    >
+        <field name="sequence" eval="2" />
         <field name="view_mode">form</field>
-        <field name="view_id" ref="view_individual_course_form"/>
-        <field name="act_window_id" ref="act_program_2_course"/>
+        <field name="view_id" ref="view_individual_course_form" />
+        <field name="act_window_id" ref="act_program_2_course" />
     </record>
 
 
@@ -486,32 +671,39 @@
         <field name="arch" type="xml">
             <form string="Individual Bloc">
                 <sheet>
-                    <widget name="web_ribbon" text="PAE"/>
+                    <widget name="web_ribbon" text="PAE" />
                     <div class="container" style="margin-left:0px;">
                         <div class="row">
                             <div class="h-100 d-inline-block" style="width: 150px;">
-                                <field name="image_512" readonly="1" widget="image" class="oe_left oe_inline"
-                                       options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"/>
+                                <field
+                                    name="image_512"
+                                    readonly="1"
+                                    widget="image"
+                                    class="oe_left oe_inline"
+                                    options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
+                                />
                             </div>
                             <div class="col-8">
                                 <h2>
-                                    <field name="name"/>
+                                    <field name="name" />
                                 </h2>
                                 <h3 class="o_row row no-gutters d-flex">
                                     <div class="col">
-                                        <label for="source_bloc_id" invisible="1"/>
+                                        <label for="source_bloc_id" invisible="1" />
                                         <span class="oe_grey">Based on</span>
                                         <span class="oe_grey">
-                                            <field name="source_bloc_id"
-                                                   attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
+                                            <field
+                                                name="source_bloc_id"
+                                                attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"
+                                            />
                                         </span>
                                     </div>
                                 </h3>
                                 <h3 class="o_row row no-gutters d-flex">
                                     <div class="col">
-                                        <label for="uid" class="oe_edit_only"/>
+                                        <label for="uid" class="oe_edit_only" />
                                         <small class="oe_grey">
-                                            <field name="uid" readonly="1"/>
+                                            <field name="uid" readonly="1" />
                                         </small>
                                     </div>
                                 </h3>
@@ -520,67 +712,128 @@
                     </div>
                     <group>
                         <group>
-                            <field name="state"/>
-                            <field name="tag_ids" widget="many2many_tags"/>
-                            <field name="program_id" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
-                            <field name="year_id" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
-                            <field name="is_final_bloc" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
-                            <field name="is_light_bloc" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"/>
+                            <field name="state" />
+                            <field name="tag_ids" widget="many2many_tags" />
+                            <field
+                                name="program_id"
+                                attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"
+                            />
+                            <field
+                                name="year_id"
+                                attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"
+                            />
+                            <field
+                                name="is_final_bloc"
+                                attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"
+                            />
+                            <field
+                                name="is_light_bloc"
+                                attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"
+                            />
                         </group>
                         <group name="fields_second_group">
-                            <field name="total_hours"/>
-                            <field name="total_credits"/>
+                            <field name="total_hours" />
+                            <field name="total_credits" />
                         </group>
                     </group>
 
-                    <label for="new_source_course_group_id" class="oe_edit_only" string="Add new UE : "/>
-                    <field name="new_source_course_group_id" class="oe_edit_only"/>
-                    <field name="course_group_ids" widget="many2many" attrs="{'readonly': ['!',('state', 'in', ('draft'))]}">
-                        <kanban class="o_wvisitor_kanban" sample="1" create="true" delete="true">
-                            <field name="uid"/>
-                            <field name="name"/>
-                            <field name="total_hours"/>
-                            <field name="total_credits"/>
-                            <field name="source_course_group_id"/>
-                            <field name="source_course_group_uid"/>
+                    <label
+                        for="new_source_course_group_id"
+                        class="oe_edit_only"
+                        string="Add new UE : "
+                    />
+                    <field name="new_source_course_group_id" class="oe_edit_only" />
+                    <field
+                        name="course_group_ids"
+                        widget="many2many"
+                        attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"
+                    >
+                        <kanban
+                            class="o_wvisitor_kanban"
+                            sample="1"
+                            create="true"
+                            delete="true"
+                        >
+                            <field name="uid" />
+                            <field name="name" />
+                            <field name="total_hours" />
+                            <field name="total_credits" />
+                            <field name="source_course_group_id" />
+                            <field name="source_course_group_uid" />
 
                             <templates>
                                 <t t-name="kanban-box">
-                                    <div class="oe_kanban_global_click o_wvisitor_kanban_card">
+                                    <div
+                                        class="oe_kanban_global_click o_wvisitor_kanban_card"
+                                    >
                                         <div class="o_kanban_detail_ungrouped row mx-0">
-                                            <div style="width:100%;height:45px;border:1px solid gray;background-color:#F8F8F8;">
-                                                <div style="width:75%;height:45px;display:inline-block;float:left">
-                                                    <a type="object" name="action_open_form" class="oe_highlight btn btn-primary" style="margin-top:5px;">
-                                                        <field name="uid"/>
+                                            <div
+                                                style="width:100%;height:45px;border:1px solid gray;background-color:#F8F8F8;"
+                                            >
+                                                <div
+                                                    style="width:75%;height:45px;display:inline-block;float:left"
+                                                >
+                                                    <a
+                                                        type="object"
+                                                        name="action_open_form"
+                                                        class="oe_highlight btn btn-primary"
+                                                        style="margin-top:5px;"
+                                                    >
+                                                        <field name="uid" />
                                                     </a>
-                                                    <span class="h5" style="margin-left:15px;margin-top:10px;">
-                                                        <field name="name"/>
+                                                    <span
+                                                        class="h5"
+                                                        style="margin-left:15px;margin-top:10px;"
+                                                    >
+                                                        <field name="name" />
                                                     </span>
                                                 </div>
-                                                <div style="width:25%;height:45px;display:inline-block;float:right">
-                                                    <a type="object" name="action_open_source_form" style="font-weight:bold;">
-                                                        <i class="fa fa-book mr-2" style="margin-top:17.5px;"/>
+                                                <div
+                                                    style="width:25%;height:45px;display:inline-block;float:right"
+                                                >
+                                                    <a
+                                                        type="object"
+                                                        name="action_open_source_form"
+                                                        style="font-weight:bold;"
+                                                    >
+                                                        <i
+                                                            class="fa fa-book mr-2"
+                                                            style="margin-top:17.5px;"
+                                                        />
                                                         UE Source
                                                     </a>
-                                                    <span style="margin-left:10px;display:inline-block;width:85px;height:95%;background-color:#FFB448;float:right;padding:2px;">
-                                                        <h5 style="text-align:center;color:white;margin-top:5px;">
+                                                    <span
+                                                        style="margin-left:10px;display:inline-block;width:85px;height:95%;background-color:#FFB448;float:right;padding:2px;"
+                                                    >
+                                                        <h5
+                                                            style="text-align:center;color:white;margin-top:5px;"
+                                                        >
                                                             ECTS
-                                                            <br/>
-                                                            <field name="total_credits"/>
+                                                            <br />
+                                                            <field
+                                                                name="total_credits"
+                                                            />
                                                         </h5>
                                                     </span>
-                                                    <span style="display:inline-block;width:85px;height:95%;background-color:#5AC0FF;float:right;padding:2px;">
-                                                        <h5 style="text-align:center;color:white;margin-top:5px;">
+                                                    <span
+                                                        style="display:inline-block;width:85px;height:95%;background-color:#5AC0FF;float:right;padding:2px;"
+                                                    >
+                                                        <h5
+                                                            style="text-align:center;color:white;margin-top:5px;"
+                                                        >
                                                             Heures
-                                                            <br/>
-                                                            <field name="total_hours"/>
+                                                            <br />
+                                                            <field name="total_hours" />
                                                         </h5>
                                                     </span>
                                                 </div>
                                                 <div class="horizon_cgs_evals">
-                                                    <a t-if="! read_only_mode" class="oe_highlight btn btn-primary"
-                                                       type="delete"
-                                                       style="font-size: xx-large;position: absolute; right: 20px; padding: 4px; diplay: inline-block">
+                                                    <a
+                                                        t-if="! read_only_mode"
+                                                        class="oe_highlight btn btn-primary"
+                                                        type="delete"
+                                                        style="font-size: xx-large;position: absolute; right: 20px; padding: 4px; diplay: inline-block"
+                                                    >
                                                         X
                                                     </a>
                                                 </div>
@@ -593,8 +846,8 @@
                     </field>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
                 </div>
             </form>
         </field>
@@ -605,35 +858,102 @@
         <field name="model">school.individual_bloc</field>
         <field name="arch" type="xml">
             <search string="Search Blocs">
-                <field name="student_id" domain="[('type', '=', 'contact')]"/>
-                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
-                <field name="source_bloc_id" string="Programme"/>
-                <field name="source_bloc_domain_id"/>
-                <filter name="bloc_1" string="Bac 1" domain="[('source_bloc_level', '=', 1)]"/>
-                <filter name="bloc_2" string="Bac 2" domain="[('source_bloc_level', '=', 2)]"/>
-                <filter name="bloc_3" string="Bac 3" domain="[('source_bloc_level', '=', 3)]"/>
-                <filter name="bloc_4" string="Master 1" domain="[('source_bloc_level', '=', 4)]"/>
-                <filter name="bloc_5" string="Master 2" domain="[('source_bloc_level', '=', 5)]"/>
-                <filter name="agg" string="Agregation" domain="[('source_bloc_level', '=', 6)]"/>
-                <separator/>
-                <filter name="music" string="Musique" domain="[('source_bloc_domain_id', '=', 1)]"/>
-                <filter name="theatre" string="Théatre" domain="[('source_bloc_domain_id', '=', 2)]"/>
-                <separator/>
-                <filter string="Current Year" name="current" domain="[('year_sequence','=','current')]"/>
-                <filter string="Next Year" name="next" domain="[('year_sequence','=','next')]"/>
-                <filter string="Previous Year" name="previous" domain="[('year_sequence','=','previous')]"/>
+                <field name="student_id" domain="[('type', '=', 'contact')]" />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active','=',False)]"
+                />
+                <field name="source_bloc_id" string="Programme" />
+                <field name="source_bloc_domain_id" />
+                <filter
+                    name="bloc_1"
+                    string="Bac 1"
+                    domain="[('source_bloc_level', '=', 1)]"
+                />
+                <filter
+                    name="bloc_2"
+                    string="Bac 2"
+                    domain="[('source_bloc_level', '=', 2)]"
+                />
+                <filter
+                    name="bloc_3"
+                    string="Bac 3"
+                    domain="[('source_bloc_level', '=', 3)]"
+                />
+                <filter
+                    name="bloc_4"
+                    string="Master 1"
+                    domain="[('source_bloc_level', '=', 4)]"
+                />
+                <filter
+                    name="bloc_5"
+                    string="Master 2"
+                    domain="[('source_bloc_level', '=', 5)]"
+                />
+                <filter
+                    name="agg"
+                    string="Agregation"
+                    domain="[('source_bloc_level', '=', 6)]"
+                />
+                <separator />
+                <filter
+                    name="music"
+                    string="Musique"
+                    domain="[('source_bloc_domain_id', '=', 1)]"
+                />
+                <filter
+                    name="theatre"
+                    string="Théatre"
+                    domain="[('source_bloc_domain_id', '=', 2)]"
+                />
+                <separator />
+                <filter
+                    string="Current Year"
+                    name="current"
+                    domain="[('year_sequence','=','current')]"
+                />
+                <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('year_sequence','=','next')]"
+                />
+                <filter
+                    string="Previous Year"
+                    name="previous"
+                    domain="[('year_sequence','=','previous')]"
+                />
                 <group expand="1" string="Group By">
-                    <filter string="State" name="state_group" context="{'group_by':'state'}"/>
-                    <filter string="Domain" name="source_bloc_domain_id_group"
-                            context="{'group_by':'source_bloc_domain_id'}"/>
-                    <filter string="Cycle" name="source_bloc_cycle_id_group"
-                            context="{'group_by':'source_bloc_cycle_id'}"/>
-                    <filter string="Section" name="source_bloc_section_id_group"
-                            context="{'group_by':'source_bloc_section_id'}"/>
-                    <filter string="Track" name="source_bloc_track_id_group"
-                            context="{'group_by':'source_bloc_track_id'}"/>
-                    <filter string="Speciality" name="source_bloc_speciality_id_group"
-                            context="{'group_by':'source_bloc_speciality_id'}"/>
+                    <filter
+                        string="State"
+                        name="state_group"
+                        context="{'group_by':'state'}"
+                    />
+                    <filter
+                        string="Domain"
+                        name="source_bloc_domain_id_group"
+                        context="{'group_by':'source_bloc_domain_id'}"
+                    />
+                    <filter
+                        string="Cycle"
+                        name="source_bloc_cycle_id_group"
+                        context="{'group_by':'source_bloc_cycle_id'}"
+                    />
+                    <filter
+                        string="Section"
+                        name="source_bloc_section_id_group"
+                        context="{'group_by':'source_bloc_section_id'}"
+                    />
+                    <filter
+                        string="Track"
+                        name="source_bloc_track_id_group"
+                        context="{'group_by':'source_bloc_track_id'}"
+                    />
+                    <filter
+                        string="Speciality"
+                        name="source_bloc_speciality_id_group"
+                        context="{'group_by':'source_bloc_speciality_id'}"
+                    />
                 </group>
             </search>
         </field>
@@ -646,7 +966,7 @@
 
         <field name="view_mode">tree,form</field>
         <field name="context">{"search_default_current":1}</field>
-        <field name="search_view_id" ref="view_individual_bloc_filter"/>
+        <field name="search_view_id" ref="view_individual_bloc_filter" />
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Please add individual program from Student view.
@@ -655,21 +975,25 @@
     </record>
 
     <record id="action_individual_bloc_tree_view1" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1"/>
+        <field name="sequence" eval="1" />
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_individual_bloc_tree"/>
-        <field name="act_window_id" ref="action_individual_bloc_form"/>
+        <field name="view_id" ref="view_individual_bloc_tree" />
+        <field name="act_window_id" ref="action_individual_bloc_form" />
     </record>
 
     <record id="action_individual_bloc_form_view2" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2"/>
+        <field name="sequence" eval="2" />
         <field name="view_mode">form</field>
-        <field name="view_id" ref="individual_bloc_form"/>
-        <field name="act_window_id" ref="action_individual_bloc_form"/>
+        <field name="view_id" ref="individual_bloc_form" />
+        <field name="act_window_id" ref="action_individual_bloc_form" />
     </record>
 
-    <menuitem id="menu_individual_bloc_form" parent="menu_individual_bloc" action="action_individual_bloc_form"
-              sequence="30"/>
+    <menuitem
+        id="menu_individual_bloc_form"
+        parent="menu_individual_bloc"
+        action="action_individual_bloc_form"
+        sequence="30"
+    />
 
     <!--
 
@@ -687,20 +1011,28 @@
                     <div class="container">
                         <div class="row">
                             <div class="h-100 d-inline-block" style="width: 150px;">
-                                <field name="image_512" readonly="1" widget="image" class="oe_left oe_inline"
-                                       options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"/>
+                                <field
+                                    name="image_512"
+                                    readonly="1"
+                                    widget="image"
+                                    class="oe_left oe_inline"
+                                    options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
+                                />
                             </div>
                             <div class="col-8">
                                 <h3 class="o_row row no-gutters d-flex">
                                     <div class="col">
                                         <h2>
-                                            <field name="name"/>
+                                            <field name="name" />
                                         </h2>
-                                        <label for="uid" invisible="1"/>
+                                        <label for="uid" invisible="1" />
                                         <small class="oe_grey">
-                                            <field name="uid" readonly="1"/>
+                                            <field name="uid" readonly="1" />
                                             for
-                                            <field name="source_course_id" readonly="1"/>
+                                            <field
+                                                name="source_course_id"
+                                                readonly="1"
+                                            />
                                         </small>
                                     </div>
                                 </h3>
@@ -709,13 +1041,13 @@
                     </div>
                     <group>
                         <group>
-                            <field name="teacher_id"/>
-                            <field name="teacher_choice_id"/>
+                            <field name="teacher_id" />
+                            <field name="teacher_choice_id" />
                         </group>
                         <group>
-                            <field name="hours"/>
-                            <field name="credits"/>
-                            <field name="weight"/>
+                            <field name="hours" />
+                            <field name="credits" />
+                            <field name="weight" />
                         </group>
                     </group>
                     <notebook>
@@ -730,14 +1062,14 @@
     <record id="view_individual_course_group_tree" model="ir.ui.view">
         <field name="name">school.individual_course_group.tree</field>
         <field name="model">school.individual_course_group</field>
-        <field eval="8" name="priority"/>
+        <field eval="8" name="priority" />
         <field name="arch" type="xml">
             <tree string="Individual Course Group" create="0">
-                <field name="uid"/>
-                <field name="source_course_group_uid"/>
-                <field name="year_id"/>
-                <field name="student_id"/>
-                <field name="name"/>
+                <field name="uid" />
+                <field name="source_course_group_uid" />
+                <field name="year_id" />
+                <field name="student_id" />
+                <field name="name" />
             </tree>
         </field>
     </record>
@@ -750,24 +1082,32 @@
         <field name="arch" type="xml">
             <form string="Course Group">
                 <sheet>
-                    <widget name="web_ribbon" text="Unité" bg_color="bg-primary"/>
+                    <widget name="web_ribbon" text="Unité" bg_color="bg-primary" />
                     <div class="container">
                         <div class="row">
                             <div class="h-100 d-inline-block" style="width: 150px;">
-                                <field name="image_512" readonly="1" widget="image" class="oe_left oe_inline"
-                                       options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"/>
+                                <field
+                                    name="image_512"
+                                    readonly="1"
+                                    widget="image"
+                                    class="oe_left oe_inline"
+                                    options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
+                                />
                             </div>
                             <div class="col-8">
                                 <h2>
-                                    <field name="name"/>
+                                    <field name="name" />
                                 </h2>
                                 <h3 class="o_row row no-gutters d-flex">
                                     <div class="col">
-                                        <label for="uid" invisible="1"/>
+                                        <label for="uid" invisible="1" />
                                         <small class="oe_grey">
-                                            <field name="uid" readonly="1"/>
+                                            <field name="uid" readonly="1" />
                                             for
-                                            <field name="source_course_group_uid" readonly="1"/>
+                                            <field
+                                                name="source_course_group_uid"
+                                                readonly="1"
+                                            />
                                         </small>
                                     </div>
                                 </h3>
@@ -776,30 +1116,30 @@
                     </div>
                     <group>
                         <group>
-                            <field name="source_course_group_id"/>
-                            <field name="responsible_id"/>
-                            <field name="bloc_id"/>
+                            <field name="source_course_group_id" />
+                            <field name="responsible_id" />
+                            <field name="bloc_id" />
                         </group>
                         <group>
-                            <field name="total_weight"/>
-                            <field name="total_hours"/>
-                            <field name="total_credits"/>
+                            <field name="total_weight" />
+                            <field name="total_hours" />
+                            <field name="total_credits" />
                         </group>
                     </group>
-                    <separator string="Courses" colspan="4"/>
+                    <separator string="Courses" colspan="4" />
                     <field name="course_ids" colspan="4">
                         <tree string="Courses">
-                            <field name="name"/>
-                            <field name="hours"/>
-                            <field name="credits"/>
-                            <field name="weight"/>
-                            <field name="source_course_id" invisible="1"/>
+                            <field name="name" />
+                            <field name="hours" />
+                            <field name="credits" />
+                            <field name="weight" />
+                            <field name="source_course_id" invisible="1" />
                         </tree>
                     </field>
                 </sheet>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
                 </div>
             </form>
         </field>
@@ -810,29 +1150,77 @@
         <field name="model">school.individual_course_group</field>
         <field name="arch" type="xml">
             <search string="Search Courses">
-                <field name="uid" string="UID"/>
-                <field name="student_id" domain="[('type', '=', 'contact')]"/>
-                <field name="source_course_group_id" string="Activité"/>
-                <filter name="bloc_1" string="Bloc 1" domain="[('source_bloc_level', '=', 1)]"/>
-                <filter name="bloc_2" string="Bloc 2" domain="[('source_bloc_level', '=', 2)]"/>
-                <filter name="bloc_3" string="Bloc 3" domain="[('source_bloc_level', '=', 3)]"/>
-                <filter name="master_1" string="Master 1" domain="[('source_bloc_level', '=', 4)]"/>
-                <filter name="master_2" string="Master 2" domain="[('source_bloc_level', '=', 5)]"/>
-                <filter name="agg" string="Agregation" domain="[('source_bloc_level', '=', 6)]"/>
-                <separator/>
-                <filter string="Current Year" name="current" domain="[('year_sequence','=','current')]"/>
-                <filter string="Next Year" name="next" domain="[('year_sequence','=','next')]"/>
-                <filter string="Previous Year" name="previous" domain="[('year_sequence','=','previous')]"/>
-                <separator/>
+                <field name="uid" string="UID" />
+                <field name="student_id" domain="[('type', '=', 'contact')]" />
+                <field name="source_course_group_id" string="Activité" />
+                <filter
+                    name="bloc_1"
+                    string="Bloc 1"
+                    domain="[('source_bloc_level', '=', 1)]"
+                />
+                <filter
+                    name="bloc_2"
+                    string="Bloc 2"
+                    domain="[('source_bloc_level', '=', 2)]"
+                />
+                <filter
+                    name="bloc_3"
+                    string="Bloc 3"
+                    domain="[('source_bloc_level', '=', 3)]"
+                />
+                <filter
+                    name="master_1"
+                    string="Master 1"
+                    domain="[('source_bloc_level', '=', 4)]"
+                />
+                <filter
+                    name="master_2"
+                    string="Master 2"
+                    domain="[('source_bloc_level', '=', 5)]"
+                />
+                <filter
+                    name="agg"
+                    string="Agregation"
+                    domain="[('source_bloc_level', '=', 6)]"
+                />
+                <separator />
+                <filter
+                    string="Current Year"
+                    name="current"
+                    domain="[('year_sequence','=','current')]"
+                />
+                <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('year_sequence','=','next')]"
+                />
+                <filter
+                    string="Previous Year"
+                    name="previous"
+                    domain="[('year_sequence','=','previous')]"
+                />
+                <separator />
                 <group expand="1" string="Group By">
-                    <filter string="Domain" name="source_bloc_domain_id_group"
-                            context="{'group_by':'source_bloc_domain_id'}"/>
-                    <filter string="Cycle" name="source_bloc_cycle_id_group"
-                            context="{'group_by':'source_bloc_cycle_id'}"/>
-                    <filter string="Section" name="source_bloc_section_id_group"
-                            context="{'group_by':'source_bloc_section_id'}"/>
-                    <filter string="Track" name="source_bloc_track_id_group"
-                            context="{'group_by':'source_bloc_track_id'}"/>
+                    <filter
+                        string="Domain"
+                        name="source_bloc_domain_id_group"
+                        context="{'group_by':'source_bloc_domain_id'}"
+                    />
+                    <filter
+                        string="Cycle"
+                        name="source_bloc_cycle_id_group"
+                        context="{'group_by':'source_bloc_cycle_id'}"
+                    />
+                    <filter
+                        string="Section"
+                        name="source_bloc_section_id_group"
+                        context="{'group_by':'source_bloc_section_id'}"
+                    />
+                    <filter
+                        string="Track"
+                        name="source_bloc_track_id_group"
+                        context="{'group_by':'source_bloc_track_id'}"
+                    />
                 </group>
             </search>
         </field>
@@ -845,7 +1233,7 @@
 
         <field name="view_mode">tree,form</field>
         <field name="context">{"search_default_current":1}</field>
-        <field name="search_view_id" ref="view_individual_course_groups_filter"/>
+        <field name="search_view_id" ref="view_individual_course_groups_filter" />
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Please add individual program from Student view.
@@ -854,21 +1242,25 @@
     </record>
 
     <record id="action_individual_bloc_tree_view1" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1"/>
+        <field name="sequence" eval="1" />
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_individual_course_group_tree"/>
-        <field name="act_window_id" ref="action_individual_course_group_form"/>
+        <field name="view_id" ref="view_individual_course_group_tree" />
+        <field name="act_window_id" ref="action_individual_course_group_form" />
     </record>
 
     <record id="action_individual_bloc_form_view2" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2"/>
+        <field name="sequence" eval="2" />
         <field name="view_mode">form</field>
-        <field name="view_id" ref="individual_course_group_form"/>
-        <field name="act_window_id" ref="action_individual_course_group_form"/>
+        <field name="view_id" ref="individual_course_group_form" />
+        <field name="act_window_id" ref="action_individual_course_group_form" />
     </record>
 
-    <menuitem id="menu_individual_course_group_form" parent="menu_individual_bloc"
-              action="action_individual_course_group_form" sequence="40"/>
+    <menuitem
+        id="menu_individual_course_group_form"
+        parent="menu_individual_bloc"
+        action="action_individual_course_group_form"
+        sequence="40"
+    />
 
 
     <!--
@@ -884,7 +1276,7 @@
 
         <field name="view_mode">tree,form</field>
         <field name="context">{"search_default_current":1}</field>
-        <field name="search_view_id" ref="view_individual_courses_filter"/>
+        <field name="search_view_id" ref="view_individual_courses_filter" />
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Please add individual program from Student view.
@@ -893,21 +1285,25 @@
     </record>
 
     <record id="action_individual_bloc_tree_view1" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1"/>
+        <field name="sequence" eval="1" />
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_individual_course_tree"/>
-        <field name="act_window_id" ref="action_individual_course_form"/>
+        <field name="view_id" ref="view_individual_course_tree" />
+        <field name="act_window_id" ref="action_individual_course_form" />
     </record>
 
     <record id="action_individual_bloc_form_view2" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2"/>
+        <field name="sequence" eval="2" />
         <field name="view_mode">form</field>
-        <field name="view_id" ref="view_individual_course_form"/>
-        <field name="act_window_id" ref="action_individual_course_form"/>
+        <field name="view_id" ref="view_individual_course_form" />
+        <field name="act_window_id" ref="action_individual_course_form" />
     </record>
 
-    <menuitem id="menu_individual_course_form" parent="menu_individual_bloc" action="action_individual_course_form"
-              sequence="70"/>
+    <menuitem
+        id="menu_individual_course_form"
+        parent="menu_individual_bloc"
+        action="action_individual_course_form"
+        sequence="70"
+    />
 
 
 </odoo>

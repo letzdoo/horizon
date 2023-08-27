@@ -22,8 +22,8 @@
 -->
 <odoo noupdate="1">
 
-    <!-- 
-        Make some contacts part of the school types        
+    <!--
+        Make some contacts part of the school types
     -->
 
     <record id="base.res_partner_address_1" model="res.partner">
@@ -57,8 +57,8 @@
         <field name="employee">1</field>
     </record>
 
-    <!-- 
-        Programs        
+    <!--
+        Programs
     -->
 
     <record id="cycle_1" model="school.cycle">
@@ -83,7 +83,7 @@
 
     <record id='spec_1' model='school.speciality'>
         <field name="name">Violon</field>
-        <field name="domain_id" ref="domain_1"/>
+        <field name="domain_id" ref="domain_1" />
     </record>
 
     <record id="school_course_1" model="school.course">
@@ -93,7 +93,7 @@
         <field name="weight">1</field>
         <field name="has_second_session">1</field>
         <field name="is_annual">1</field>
-        <field name="teacher_ids" eval="[(4, ref('base.res_partner_address_10'))]"/>
+        <field name="teacher_ids" eval="[(4, ref('base.res_partner_address_10'))]" />
     </record>
 
     <record id="school_course_2" model="school.course">
@@ -103,7 +103,10 @@
         <field name="weight">2</field>
         <field name="has_second_session">0</field>
         <field name="is_annual">0</field>
-        <field name="teacher_ids" eval="[(4, ref('base.res_partner_address_7')), (4, ref('base.res_partner_address_11'))]"/>
+        <field
+            name="teacher_ids"
+            eval="[(4, ref('base.res_partner_address_7')), (4, ref('base.res_partner_address_11'))]"
+        />
     </record>
 
     <record id="school_course_3" model="school.course">
@@ -113,7 +116,7 @@
         <field name="weight">1</field>
         <field name="has_second_session">1</field>
         <field name="is_annual">1</field>
-        <field name="teacher_ids" eval="[(4, ref('base.res_partner_address_7'))]"/>
+        <field name="teacher_ids" eval="[(4, ref('base.res_partner_address_7'))]" />
     </record>
 
     <record id="school_course_4" model="school.course">
@@ -123,33 +126,45 @@
         <field name="weight">2</field>
         <field name="has_second_session">0</field>
         <field name="is_annual">0</field>
-        <field name="teacher_ids" eval="[(4, ref('base.res_partner_address_10')), (4, ref('base.res_partner_address_11'))]"/>
+        <field
+            name="teacher_ids"
+            eval="[(4, ref('base.res_partner_address_10')), (4, ref('base.res_partner_address_11'))]"
+        />
     </record>
 
     <record id="school_course_group_1" model="school.course_group">
         <field name="title">Course Group Number 1</field>
-        <field name="responsible_id" ref="base.res_partner_address_10"/>
-        <field name="course_ids" eval="[(4, ref('school_management.school_course_1')), (4, ref('school_management.school_course_2'))]"/>
+        <field name="responsible_id" ref="base.res_partner_address_10" />
+        <field
+            name="course_ids"
+            eval="[(4, ref('school_management.school_course_1')), (4, ref('school_management.school_course_2'))]"
+        />
     </record>
 
     <record id="school_course_group_2" model="school.course_group">
         <field name="title">Course Group Number 2</field>
-        <field name="responsible_id" ref="base.res_partner_address_7"/>
-        <field name="course_ids" eval="[(4, ref('school_management.school_course_3')), (4, ref('school_management.school_course_4'))]"/>
+        <field name="responsible_id" ref="base.res_partner_address_7" />
+        <field
+            name="course_ids"
+            eval="[(4, ref('school_management.school_course_3')), (4, ref('school_management.school_course_4'))]"
+        />
     </record>
 
     <record id="school_bloc_1" model="school.bloc">
         <field name="title">Bloc Number 1</field>
         <field name="sequence">1</field>
-        <field name="course_group_ids" eval="[(4, ref('school_management.school_course_group_1')), (4, ref('school_management.school_course_group_2'))]"/>
+        <field
+            name="course_group_ids"
+            eval="[(4, ref('school_management.school_course_group_1')), (4, ref('school_management.school_course_group_2'))]"
+        />
     </record>
 
     <record id="school_program_1" model="school.program">
         <field name="title">Program Number 1</field>
-        <field name="year_id" ref="school_management.year_2023_2024"/>
-        <field name="cycle_id" ref="school_management.cycle_1"/>
-        <field name="speciality_id" ref="school_management.spec_1"/>
-        <field name="bloc_ids" eval="[(4, ref('school_management.school_bloc_1'))]"/>
+        <field name="year_id" ref="school_management.year_2023_2024" />
+        <field name="cycle_id" ref="school_management.cycle_1" />
+        <field name="speciality_id" ref="school_management.spec_1" />
+        <field name="bloc_ids" eval="[(4, ref('school_management.school_bloc_1'))]" />
         <field name="ares_code">456</field>
         <field name="graca_code">123</field>
         <field name="habilitation_code">789</field>
