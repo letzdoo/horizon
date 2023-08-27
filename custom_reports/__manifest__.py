@@ -6,7 +6,7 @@
 
     'author': "Deuse",
     'website': "https://github.com/ito-invest-lu/horizon",
-    'version': '16.0.0.1',
+    'version': '16.0.1.0.1',
 
     'depends': ['school_management', "base", "partner_contact_gender", "partner_contact_birthdate", "partner_firstname", "custom_partner_fields"],
 

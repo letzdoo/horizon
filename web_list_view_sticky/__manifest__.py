@@ -1,6 +1,6 @@
 {
     'name': 'Web List View Fixed Table Header',
-    'version': '16.0.0.1',
+    'version': '16.0.1.0.1',
     'category': 'Widget',
     'sequence': 15,
     'summary': 'Web List View Fixed Table Header',
