@@ -19,7 +19,7 @@
 ##############################################################################
 {
     "name": "School management",
-    "version": "0.1",
+    "version": "16.0.1.0.1",
     "license": "AGPL-3",
     "author": "ito-invest (Jerome Sonnet)",
     "website": "https://github.com/ito-invest-lu/horizon",
