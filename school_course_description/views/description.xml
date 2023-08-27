@@ -28,7 +28,7 @@
             <field name="model">school.course_documentation</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Course Documentation">
+                <tree>
                     <field name="course_id" string="Course"/>
                     <field name="author_id"/>
                     <field name="state" />

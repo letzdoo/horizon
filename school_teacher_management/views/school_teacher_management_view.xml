@@ -32,7 +32,7 @@
           <field name="model">school.teacher.designation</field>
           <field eval="8" name="priority" />
           <field name="arch" type="xml">
-            <tree string="Teacher Designation">
+            <tree>
               <field name="year_id" />
               <field name="dgt_number" />
               <field name="author_id" />

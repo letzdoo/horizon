@@ -80,7 +80,7 @@
       <field name="model">calendar.event</field>
       <field eval="8" name="priority" />
       <field name="arch" type="xml">
-        <tree string="Bookings">
+        <tree>
           <field name="name" />
           <field name="room_id" />
           <field name="start" />

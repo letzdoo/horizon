@@ -31,7 +31,7 @@
                 <group col="2">
                     <field name="year_id" delete='false'/>
                     <field name="program_to_duplicate_ids">
-                      <tree string="Program to duplicate">
+                      <tree>
                         <field name="name" />
                         <field name="total_hours" />
                         <field name="total_credits" />

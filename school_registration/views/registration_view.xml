@@ -63,7 +63,7 @@
       <field name="name">school.registration.tree</field>
       <field name="model">school.registration</field>
       <field name="arch" type="xml">
-        <tree string="Registrations">
+        <tree>
           <field name="year_id" />
           <field name="student_id" />
           <field name="program_id"/>

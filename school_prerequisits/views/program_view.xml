@@ -93,14 +93,14 @@
                 <xpath expr="//notebook/page[1]" position="before">
                     <page name="prerequisit_list" string="Prerequisits">
                         <field name="pre_requisit_ids">
-                            <tree string="Prerequisits">
+                            <tree>
                                 <field name="preriquisit_id" string="Name"/>
                             </tree>
                         </field>
                     </page>
                     <page name="corequisit_list" string="Corequisits">
                         <field name="co_requisit_ids">
-                            <tree string="Corequisits">
+                            <tree>
                                 <field name="coriquisit_id" string="Name"/>
                             </tree>
                         </field>

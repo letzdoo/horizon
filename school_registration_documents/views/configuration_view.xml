@@ -29,7 +29,7 @@
             <field name="model">school.official_document_type</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Official Document Type">
+                <tree>
                     <field name="name" />
                     <field name="default_add" />
                     <field name="has_expiry_date"/>

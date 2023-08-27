@@ -121,7 +121,7 @@
             <field name="model">school.covid_followup</field>
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
-                <tree string="Covid Followup">
+                <tree>
                     <field name="student_id"/>
                     <field name="reporting_date"/>
                     <field name="reporting_type"/>
