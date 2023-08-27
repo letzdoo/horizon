@@ -64,7 +64,6 @@
     <record id="cycle_1" model="school.cycle">
         <field name="name">Master</field>
         <field name="code">M</field>
-        <field name="code">Master</field>
         <field name="required_credits">11</field>
         <field name="type">short</field>
         <field name="grade">Master</field>

@@ -1241,20 +1241,6 @@
         </field>
     </record>
 
-    <record id="action_individual_bloc_tree_view1" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1" />
-        <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_individual_course_group_tree" />
-        <field name="act_window_id" ref="action_individual_course_group_form" />
-    </record>
-
-    <record id="action_individual_bloc_form_view2" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2" />
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="individual_course_group_form" />
-        <field name="act_window_id" ref="action_individual_course_group_form" />
-    </record>
-
     <menuitem
         id="menu_individual_course_group_form"
         parent="menu_individual_bloc"
@@ -1282,20 +1268,6 @@
                 Please add individual program from Student view.
             </p>
         </field>
-    </record>
-
-    <record id="action_individual_bloc_tree_view1" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1" />
-        <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_individual_course_tree" />
-        <field name="act_window_id" ref="action_individual_course_form" />
-    </record>
-
-    <record id="action_individual_bloc_form_view2" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2" />
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="view_individual_course_form" />
-        <field name="act_window_id" ref="action_individual_course_form" />
     </record>
 
     <menuitem

@@ -21,11 +21,9 @@ import collections
 import logging
 
 from odoo import _, api, fields, models, tools
-from odoo.exceptions import AccessError
+from odoo.exceptions import AccessError, ValidationError
 
 _logger = logging.getLogger(__name__)
-
-from odoo.exceptions import ValidationError
 
 
 class IndividualProgram(models.Model):
@@ -179,7 +177,7 @@ class IndividualProgram(models.Model):
             [("program_id", "=", self.id)]
         ).unlink()
         for cg in self.source_program_id.course_group_ids:
-            course_group_summary = self.env["school.individual_course_summary"].create(
+            self.env["school.individual_course_summary"].create(
                 {
                     "program_id": self.id,
                     "course_group_id": cg.id,
