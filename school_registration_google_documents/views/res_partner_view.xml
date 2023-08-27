@@ -61,7 +61,7 @@
                         <field name="official_document_missing_count" widget="statinfo" string="Missing Documents" style="color:white;background-color:red;"/>
                     </button>
                 </xpath>
-                <xpath expr="//notebook[last()]" position="inside">
+                <xpath expr="//notebook" position="inside">
                     <page name="official_document_list" string="Official Documents" attrs="{'invisible': [('student','=',False)]}" >
                         <button string="Add documents" type="action" name="%(action_document_add_wizard)d" class="oe_highlight" context="{'default_student_id': active_id}" groups="school_management.group_employee"/>
                         <field name="official_document_ids">
