@@ -345,32 +345,24 @@ class IndividualCourseSummary(models.Model):
 
     def action_valuate_course_group(self):
         for rec in self:
-            valuated_cg = (
-                self.env["school.individual_course_group"]
-                .search(
-                    [
-                        ["valuated_program_id", "=", rec.program_id.id],
-                        ["source_course_group_id", "=", rec.course_group_id.id],
-                    ]
-                )
-                .write({"state": "0_valuated"})
-            )
+            self.env["school.individual_course_group"].search(
+                [
+                    ["valuated_program_id", "=", rec.program_id.id],
+                    ["source_course_group_id", "=", rec.course_group_id.id],
+                ]
+            ).write({"state": "0_valuated"})
         return {
             "type": "ir.actions.act_view_reload",
         }
 
     def action_confirm_valuate_course_group(self):
         for rec in self:
-            valuated_cg = (
-                self.env["school.individual_course_group"]
-                .search(
-                    [
-                        ["valuated_program_id", "=", rec.program_id.id],
-                        ["source_course_group_id", "=", rec.course_group_id.id],
-                    ]
-                )
-                .write({"state": "1_confirmed"})
-            )
+            self.env["school.individual_course_group"].search(
+                [
+                    ["valuated_program_id", "=", rec.program_id.id],
+                    ["source_course_group_id", "=", rec.course_group_id.id],
+                ]
+            ).write({"state": "1_confirmed"})
         return {
             "type": "ir.actions.act_view_reload",
         }
@@ -696,7 +688,7 @@ class IndividualCourseGroup(models.Model):
                     }
                 )
 
-    ## First Session ##
+    # First Session
 
     first_session_computed_exception = fields.Selection(
         ([("NP", "NP"), ("AB", "AB"), ("TP", "TP")]),
@@ -746,7 +738,7 @@ class IndividualCourseGroup(models.Model):
 
     first_session_note = fields.Text(string="First Session Notes")
 
-    ## Second Session ##
+    # Second Session
 
     second_session_computed_exception = fields.Selection(
         ([("NP", "NP"), ("AB", "AB"), ("TP", "TP")]),
@@ -796,7 +788,7 @@ class IndividualCourseGroup(models.Model):
 
     second_session_note = fields.Text(string="Second Session Notes")
 
-    ## Final ##
+    # Final
 
     final_result_exception = fields.Selection(
         ([("NP", "NP"), ("AB", "AB"), ("TP", "TP")]),
@@ -886,7 +878,7 @@ class IndividualCourseGroup(models.Model):
             _logger.debug(
                 'Trigger "compute_average_results" on Course Group %s' % rec.uid
             )
-            ## Compute Weighted Average
+            # Compute Weighted Average
             running_first_session_result = 0
             running_second_session_result = 0
             rec.first_session_computed_result_bool = False
@@ -965,18 +957,18 @@ class IndividualCourseGroup(models.Model):
             _logger.debug(
                 'Trigger "compute_first_session_results" on Course Group %s' % rec.uid
             )
-            ## Compute Session Results
+            # Compute Session Results
             if rec.first_session_deliberated_result_bool:
                 try:
                     f = rec._parse_result(rec.first_session_deliberated_result)
-                except ValueError:
+                except ValueError as error:
                     rec.write("first_session_deliberated_result", None)
                     raise UserError(
                         _(
                             'Cannot decode %s, please encode a Float eg "12.00".'
                             % rec.first_session_deliberated_result
                         )
-                    )
+                    ) from error
                 if f and f < rec.first_session_computed_result:
                     # TODO : take care of this - removed due to Cours artistiques B - Art dramatique - 2 - 2015-2016 - VALERIO Maddy
                     raise ValidationError(
@@ -1026,14 +1018,14 @@ class IndividualCourseGroup(models.Model):
             if rec.second_session_deliberated_result_bool:
                 try:
                     f = rec._parse_result(rec.second_session_deliberated_result)
-                except ValueError:
+                except ValueError as error:
                     rec.write("second_session_deliberated_result", None)
                     raise UserError(
                         _(
                             'Cannot decode %s, please encode a Float eg "12.00".'
                             % rec.second_session_deliberated_result
                         )
-                    )
+                    ) from error
                 if f < rec.second_session_computed_result:
                     raise ValidationError(
                         "Deliberated result must be above computed result, i.e. %s > %s in %s."
@@ -1081,7 +1073,7 @@ class IndividualCourseGroup(models.Model):
             _logger.debug(
                 'Trigger "compute_final_results" on Course Group %s' % rec.uid
             )
-            ## Compute Final Results
+            # Compute Final Results
             if rec.second_session_result_bool:
                 if rec.second_session_exception:
                     rec.final_result_exception = rec.second_session_exception
@@ -1152,7 +1144,7 @@ class IndividualCourse(models.Model):
         string="Is Annual", related="source_course_id.is_annual", readonly=True
     )
 
-    ## First Session ##
+    # First Session
 
     first_session_exception = fields.Selection(
         ([("NP", "NP"), ("AB", "AB"), ("TP", "TP")]),
@@ -1176,7 +1168,7 @@ class IndividualCourse(models.Model):
         string="First Session Result Display", compute="compute_session_result_disp"
     )
 
-    ## Second Session ##
+    # Second Session
 
     second_session_exception = fields.Selection(
         ([("NP", "NP"), ("AB", "AB"), ("TP", "TP")]),
@@ -1296,13 +1288,13 @@ class IndividualCourse(models.Model):
                             )
                         else:
                             pass
-                except ValueError:
+                except ValueError as error:
                     raise UserError(
                         _(
                             'Cannot decode %s in June Result, please encode a Float eg "12.00" or "NP" or "AB" or "TP".'
                             % rec.partial_result
                         )
-                    )
+                    ) from error
 
             if rec.final_result:
                 try:
@@ -1336,7 +1328,7 @@ class IndividualCourse(models.Model):
                                 rec.is_danger = True
                             else:
                                 rec.is_danger = False
-                except ValueError:
+                except ValueError as error:
                     rec.first_session_result = 0
                     rec.first_session_exception = None
                     rec.first_session_result_bool = False
@@ -1345,7 +1337,7 @@ class IndividualCourse(models.Model):
                             'Cannot decode %s in June Result, please encode a Float eg "12.00" or "NP" or "AB" or "TP".'
                             % rec.jun_result
                         )
-                    )
+                    ) from error
 
             if rec.second_result:
                 try:
@@ -1379,7 +1371,7 @@ class IndividualCourse(models.Model):
                                 rec.is_danger = True
                             else:
                                 rec.is_danger = False
-                except ValueError:
+                except ValueError as error:
                     rec.second_session_result = 0
                     rec.second_session_exception = None
                     rec.second_session_result_bool = False
@@ -1388,4 +1380,4 @@ class IndividualCourse(models.Model):
                             'Cannot decode %s in September Result, please encode a Float eg "12.00" or "NP" or "AB" or "TP".'
                             % rec.sept_result
                         )
-                    )
+                    ) from error

@@ -48,9 +48,7 @@ class Partner(models.Model):
     def _compute_inscription_count(self):
         for rec in self:
             rec.inscription_count = len(
-                rec.inscription_ids.filtered(
-                    lambda inscription: inscription.reference != False
-                )
+                rec.inscription_ids.filtered(lambda inscription: inscription.reference)
             )
 
     def action_update_bced_personne(self):

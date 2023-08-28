@@ -40,7 +40,7 @@ class AddBlocWizard(models.TransientModel):
         self.ensure_one()
         self.env["school.individual_course_summary"]
         for cg in self.source_bloc_id.course_group_ids:
-            course_group_summary = self.env["school.individual_course_summary"].create(
+            self.env["school.individual_course_summary"].create(
                 {
                     "program_id": self.individual_program_id.id,
                     "course_group_id": cg.id,

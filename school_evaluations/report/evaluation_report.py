@@ -98,62 +98,60 @@ class ReportEvaluationByTeacherWizard(models.TransientModel):
         ]  # TDE FIXME: should remove dfeault_type from context
 
         template = self.env.ref("school_evaluations.mail_template_evaluation_email")
-        for wizard_line in self:
-            if template:
+        if template:
+            # create a mail_mail based on values, without attachments
+            values = template.generate_email(teacher_id.id)
+            values["recipient_ids"] = [(6, 0, [teacher_id.id])]
+            values.pop("attachment_ids", [])
+            values.pop("attachments", [])
 
-                # create a mail_mail based on values, without attachments
-                values = template.generate_email(teacher_id.id)
-                values["recipient_ids"] = [(6, 0, [teacher_id.id])]
-                values.pop("attachment_ids", [])
-                values.pop("attachments", [])
+            # add a protection against void email_from
+            if "email_from" in values and not values.get("email_from"):
+                values.pop("email_from")
 
-                # add a protection against void email_from
-                if "email_from" in values and not values.get("email_from"):
-                    values.pop("email_from")
+            mail = Mail.create(values)
 
-                mail = Mail.create(values)
+            # manage attachments
 
-                # manage attachments
+            filename = "evaluations.pdf"
 
-                filename = "evaluations.pdf"
+            report = self.env.ref("school_evaluations.report_evaluation_by_teacher")
 
-                report = self.env.ref("school_evaluations.report_evaluation_by_teacher")
+            pdf_bin, _ = report.render_report(
+                [teacher_id.id],
+                "school_evaluations.report_evaluation_by_teacher_content",
+                data=data,
+            )
 
-                pdf_bin, _ = report.render_report(
-                    [teacher_id.id],
-                    "school_evaluations.report_evaluation_by_teacher_content",
-                    data=data,
-                )
+            attachment = Attachment.create(
+                {
+                    "name": filename,
+                    "datas": base64.b64encode(pdf_bin),
+                    "datas_fname": filename,
+                    "res_model": "res.partner",
+                    "res_id": teacher_id.id,
+                    "type": "binary",  # override default_type from context, possibly meant for another model!
+                }
+            )
 
-                attachment = self.env["ir.attachment"].create(
-                    {
-                        "name": filename,
-                        "datas": base64.b64encode(pdf_bin),
-                        "datas_fname": filename,
-                        "res_model": "res.partner",
-                        "res_id": teacher_id.id,
-                        "type": "binary",  # override default_type from context, possibly meant for another model!
-                    }
-                )
+            # for attachment in attachments:
+            #     attachment_data = {
+            #         'name': attachment[0],
+            #         'datas_fname': attachment[0],
+            #         'datas': attachment[1],
+            #         'type': 'binary',
+            #         'res_model': 'mail.message',
+            #         'res_id': mail.mail_message_id.id,
+            #     }
+            #     attachment_ids.append(Attachment.create(attachment_data).id)
+            # if attachment_ids:
+            #     values['attachment_ids'] = [(6, 0, attachment_ids)]
 
-                # for attachment in attachments:
-                #     attachment_data = {
-                #         'name': attachment[0],
-                #         'datas_fname': attachment[0],
-                #         'datas': attachment[1],
-                #         'type': 'binary',
-                #         'res_model': 'mail.message',
-                #         'res_id': mail.mail_message_id.id,
-                #     }
-                #     attachment_ids.append(Attachment.create(attachment_data).id)
-                # if attachment_ids:
-                #     values['attachment_ids'] = [(6, 0, attachment_ids)]
+            mail.write({"attachment_ids": [(6, 0, [attachment.id])]})
 
-                mail.write({"attachment_ids": [(6, 0, [attachment.id])]})
+            mail.send()
 
-                mail.send()
-
-                return mail.id  # TDE CLEANME: return mail + api.returns ?
+            return mail.id  # TDE CLEANME: return mail + api.returns ?
 
 
 class ReportEvaluationByTeacher(models.AbstractModel):

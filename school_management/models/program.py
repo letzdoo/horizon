@@ -75,7 +75,7 @@ class Program(models.Model):
     ]
 
     @api.depends("bloc_ids.total_hours", "bloc_ids.total_credits")
-    def _get_courses_total(self):
+    def _compute_courses_total(self):
         for rec in self:
             total_hours = 0.0
             total_credits = 0.0
@@ -143,10 +143,10 @@ class Program(models.Model):
     habilitation_code = fields.Char(required=True, string="Habilitation Code", size=10)
 
     total_credits = fields.Integer(
-        compute="_get_courses_total", string="Total Credits", store=True
+        compute="_compute_courses_total", string="Total Credits", store=True
     )
     total_hours = fields.Integer(
-        compute="_get_courses_total", string="Total Hours", store=True
+        compute="_compute_courses_total", string="Total Hours", store=True
     )
 
     notes = fields.Text(string="Notes")
@@ -214,7 +214,7 @@ class Bloc(models.Model):
         "course_group_ids.total_credits",
         "course_group_ids.total_weight",
     )
-    def _get_courses_total(self):
+    def _compute_courses_total(self):
         for rec in self:
             total_hours = 0.0
             total_credits = 0.0
@@ -265,13 +265,13 @@ class Bloc(models.Model):
     bloc_group = fields.Char(string="Bloc Group", size=10)
 
     total_credits = fields.Integer(
-        compute="_get_courses_total", string="Total Credits", store=True
+        compute="_compute_courses_total", string="Total Credits", store=True
     )
     total_hours = fields.Integer(
-        compute="_get_courses_total", string="Total Hours", store=True
+        compute="_compute_courses_total", string="Total Hours", store=True
     )
     total_weight = fields.Float(
-        compute="_get_courses_total", string="Total Weight", store=True
+        compute="_compute_courses_total", string="Total Weight", store=True
     )
 
     notes = fields.Text(string="Notes")
@@ -423,19 +423,19 @@ class CourseGroup(models.Model):
             course_g.ue_id = "UE-%s" % course_g.id
 
     total_credits = fields.Integer(
-        compute="_get_courses_total", string="Total Credits", store=True
+        compute="_compute_courses_total", string="Total Credits", store=True
     )
     total_hours = fields.Integer(
-        compute="_get_courses_total", string="Total Hours", store=True
+        compute="_compute_courses_total", string="Total Hours", store=True
     )
     total_weight = fields.Float(
-        compute="_get_courses_total", string="Total Weight", store=True
+        compute="_compute_courses_total", string="Total Weight", store=True
     )
 
     weight = fields.Integer(string="Weight")
 
     @api.depends("course_ids.hours", "course_ids.credits", "course_ids.weight")
-    def _get_courses_total(self):
+    def _compute_courses_total(self):
         for rec in self:
             total_hours = 0.0
             total_credits = 0.0

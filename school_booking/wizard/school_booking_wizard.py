@@ -50,7 +50,7 @@ class BookingWizard(models.TransientModel):
             busy_rooms_ids = (
                 self.env["calendar.event"]
                 .sudo()
-                .with_context({"virtual_id": True})
+                .with_context(virtual_id=True)
                 .search(domain)
             )
             busy_rooms_ids = (

@@ -173,7 +173,7 @@ class BCEDInscription(models.Model):
                         "Error while publishing inscription with code %s : %s"
                         % (inscription.partner_id.reg_number, e)
                     )
-                )
+                ) from e
         else:
             raise UserError(_("You must provide an inscription to publish"))
 
@@ -252,7 +252,7 @@ class BCEDInscription(models.Model):
                         "Error while closing inscription with code %s : %s"
                         % (inscription.partner_id.reg_number, e)
                     )
-                )
+                ) from e
         else:
             raise UserError(_("You must provide an inscription to close"))
 
@@ -334,7 +334,7 @@ class BCEDInscription(models.Model):
                         "Error while extending inscription with code %s : %s"
                         % (inscription.partner_id.reg_number, e)
                     )
-                )
+                ) from e
         else:
             raise UserError(_("You must provide an inscription to extend"))
 
@@ -492,7 +492,7 @@ class PersonService(models.Model):
                 )
                 raise UserError(
                     _("Error while searching person %s : %s" % (partner_id.lastname, e))
-                )
+                ) from e
         else:
             raise ValidationError(_("No partner provided"))
 
@@ -548,7 +548,7 @@ class PersonService(models.Model):
                 self.action_log_access("GetPerson for %s" % reference, True)
                 raise UserError(
                     _("Error while getting person %s : %s" % (reference, e))
-                )
+                ) from e
         else:
             raise ValidationError(_("No record provided"))
 
@@ -671,6 +671,6 @@ class PersonService(models.Model):
                         "Error while publishing person %s : %s"
                         % (partner_id.lastname, e)
                     )
-                )
+                ) from e
         else:
             raise ValidationError(_("No partner provided"))

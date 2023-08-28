@@ -1,10 +1,10 @@
 import logging
 
+from odoo import api, models
+
 from odoo.addons.http_routing.models.ir_http import slug
 
 _logger = logging.getLogger(__name__)
-
-from odoo import api, models
 
 
 class Program(models.Model):

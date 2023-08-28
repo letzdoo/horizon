@@ -214,7 +214,9 @@ class GoogleDriveService(models.Model):
                 .execute()
             )
         except googleapiclient.errors.Error as error:
-            raise UserError(_("Error creating the file in Google Drive : %s" % error))
+            raise UserError(
+                _("Error creating the file in Google Drive : %s" % error)
+            ) from error
 
         return file1
 
@@ -224,17 +226,15 @@ class GoogleDriveService(models.Model):
         )
         _logger.info("Rename %s to %s" % (google_drive_file.googe_drive_id, to_name))
         try:
-            updated_file = (
-                drive.files()
-                .update(
-                    fileId=google_drive_file.googe_drive_id,
-                    body={"name": to_name},
-                    supportsAllDrives=True,
-                )
-                .execute()
-            )
+            drive.files().update(
+                fileId=google_drive_file.googe_drive_id,
+                body={"name": to_name},
+                supportsAllDrives=True,
+            ).execute()
         except googleapiclient.errors.Error as error:
-            raise UserError(_("Error creating the file in Google Drive : %s" % error))
+            raise UserError(
+                _("Error creating the file in Google Drive : %s" % error)
+            ) from error
 
     def delete_file(self, google_drive_file):
         drive = googleapiclient.discovery.build(
@@ -242,13 +242,13 @@ class GoogleDriveService(models.Model):
         )
         _logger.info("Delete %s" % (google_drive_file.googe_drive_id))
         try:
-            updated_file = (
-                drive.files()
-                .delete(fileId=google_drive_file.googe_drive_id, supportsAllDrives=True)
-                .execute()
-            )
+            drive.files().delete(
+                fileId=google_drive_file.googe_drive_id, supportsAllDrives=True
+            ).execute()
         except googleapiclient.errors.Error as error:
-            raise UserError(_("Error creating the file in Google Drive : %s" % error))
+            raise UserError(
+                _("Error creating the file in Google Drive : %s" % error)
+            ) from error
 
     def get_files_from_folder_id(self, folderId):
 
@@ -292,7 +292,9 @@ class GoogleDriveService(models.Model):
                             }
                         )
         except googleapiclient.errors.Error as error:
-            raise UserError(_("Error creating the file in Google Drive : %s" % error))
+            raise UserError(
+                _("Error creating the file in Google Drive : %s" % error)
+            ) from error
         return all_file_list
 
     def _get_redirect_uri(self):

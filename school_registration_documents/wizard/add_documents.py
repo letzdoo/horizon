@@ -53,6 +53,6 @@ class AddDocuments(models.TransientModel):
     def on_confirm_documents(self):
         self.ensure_one()
         for doc_type in self.document_type_ids:
-            new_doc = self.env["school.official_document"].create(
+            self.env["school.official_document"].create(
                 {"student_id": self.student_id.id, "type_id": doc_type.id}
             )

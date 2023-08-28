@@ -42,7 +42,7 @@ class IrActionsReport(models.Model):
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
 
-        pdf_content, type = super(IrActionsReport, self)._render_qweb_pdf(
+        pdf_content, content_type = super(IrActionsReport, self)._render_qweb_pdf(
             report_ref=report_ref, res_ids=res_ids, data=data
         )
 
@@ -77,4 +77,4 @@ class IrActionsReport(models.Model):
                 partner_id.google_drive_files += google_drive_file
 
         content.seek(0)
-        return content.read(), type
+        return content.read(), content_type

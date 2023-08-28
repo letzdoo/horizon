@@ -491,13 +491,13 @@ class IndividualBloc(models.Model):
     )
 
     total_credits = fields.Integer(
-        compute="_get_courses_total", string="Credits", store=True
+        compute="_compute_courses_total", string="Credits", store=True
     )
     total_hours = fields.Integer(
-        compute="_get_courses_total", string="Hours", store=True
+        compute="_compute_courses_total", string="Hours", store=True
     )
     total_weight = fields.Float(
-        compute="_get_courses_total", string="Weight", store=True
+        compute="_compute_courses_total", string="Weight", store=True
     )
 
     @api.depends(
@@ -506,9 +506,11 @@ class IndividualBloc(models.Model):
         "course_group_ids.total_weight",
         "course_group_ids.is_ghost_cg",
     )
-    def _get_courses_total(self):
+    def _compute_courses_total(self):
         for rec in self:
-            _logger.debug('Trigger "_get_courses_total" on Course Group %s' % rec.name)
+            _logger.debug(
+                'Trigger "_compute_courses_total" on Course Group %s' % rec.name
+            )
             rec.total_hours = sum(
                 course_group.total_hours
                 for course_group in rec.course_group_ids
@@ -820,13 +822,13 @@ class IndividualCourseGroup(models.Model):
     is_ghost_cg = fields.Boolean(string="Is Ghost Course Group", default=False)
 
     total_credits = fields.Integer(
-        compute="_get_courses_total", string="Total Credits", store=True
+        compute="_compute_courses_total", string="Total Credits", store=True
     )
     total_hours = fields.Integer(
-        compute="_get_courses_total", string="Total Hours", store=True
+        compute="_compute_courses_total", string="Total Hours", store=True
     )
     total_weight = fields.Float(
-        compute="_get_courses_total", string="Total Weight", store=True
+        compute="_compute_courses_total", string="Total Weight", store=True
     )
 
     @api.onchange("source_course_group_id")
@@ -837,9 +839,11 @@ class IndividualCourseGroup(models.Model):
         self.update({"course_ids": courses})
 
     @api.depends("course_ids.hours", "course_ids.credits", "course_ids.weight")
-    def _get_courses_total(self):
+    def _compute_courses_total(self):
         for rec in self:
-            _logger.debug('Trigger "_get_courses_total" on Course Group %s' % rec.name)
+            _logger.debug(
+                'Trigger "_compute_courses_total" on Course Group %s' % rec.name
+            )
             rec.total_hours = sum(course.hours for course in rec.course_ids)
             rec.total_credits = sum(course.credits for course in rec.course_ids)
             rec.total_weight = sum(course.weight for course in rec.course_ids)
