@@ -21,7 +21,7 @@
     "name": "Website CRLG Portal",
     "version": "16.0.1.0.1",
     "license": "AGPL-3",
-    "author": "ito-invest (Jerome Sonnet)",
+    "author": "Neodiensis,ito-invest (Jerome Sonnet)",
     "website": "https://github.com/ito-invest-lu/horizon",
     "category": "School Management",
     "depends": ["website_school_portal"],

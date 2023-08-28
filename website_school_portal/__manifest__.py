@@ -21,7 +21,7 @@
     "name": "Website School Portal",
     "version": "16.0.1.0.1",
     "license": "AGPL-3",
-    "author": "ito-invest (Jerome Sonnet) & Neodiensis",
+    "author": "Neodiensis,ito-invest (Jerome Sonnet)",
     "website": "https://github.com/ito-invest-lu/horizon",
     "category": "School Management",
     "depends": ["web", "website", "website_school_management"],
