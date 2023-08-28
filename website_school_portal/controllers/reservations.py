@@ -1,10 +1,9 @@
 import logging
-import werkzeug.utils
-
 from datetime import datetime, timedelta
 
-from odoo import fields
-from odoo import http
+import werkzeug.utils
+
+from odoo import fields, http
 from odoo.http import request
 
 _logger = logging.getLogger(__name__)

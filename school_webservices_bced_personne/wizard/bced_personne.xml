@@ -93,7 +93,7 @@
                         <div class="mb-2">
                             <span>
                                 By clicking on the button below, we will register to the BCED for the use of this file.
-                                The student will be linked to the BCED record and its information updated accordingly. An update 
+                                The student will be linked to the BCED record and its information updated accordingly. An update
                                 of the information, is perfromed on a weekly basis.
                             </span>
                         </div>
@@ -105,7 +105,7 @@
                             class="oe_highlight"
                         />
                         <div class="alert alert-warning mt-2" role="alert">
-                            Be aware that you should be authorized to make use of this information and that all usage of 
+                            Be aware that you should be authorized to make use of this information and that all usage of
                             BCED data and services is under strict regulation and is logged for use control.
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                         </group>
                         <div class="mb-2">
                             <span>
-                                By clicking on the button below, a new record will be created in BCED and the numero bis will 
+                                By clicking on the button below, a new record will be created in BCED and the numero bis will
                                 be used for the student.
                             </span>
                         </div>
@@ -131,7 +131,7 @@
                             class="oe_highlight"
                         />
                         <div class="alert alert-warning mt-2" role="alert">
-                            Be aware that you should be authorized to make use of this information and that all usage of 
+                            Be aware that you should be authorized to make use of this information and that all usage of
                             BCED data and services is under strict regulation and is logged for use control.
                         </div>
                     </div>
@@ -152,7 +152,7 @@
         <field name="context">{ 'default_student_id' : active_id }</field>
         <field name="target">new</field>
     </record>
-    
+
     <!-- Add button to the partner view to open the wizard -->
     <record id="view_partner_form_inherit_bced_personne" model="ir.ui.view">
         <field name="name">view.partner.form.inherit.bced_personne</field>
@@ -180,5 +180,5 @@
             </xpath>
         </field>
     </record>
-    
+
 </odoo>

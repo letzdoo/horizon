@@ -21,7 +21,7 @@
 ##############################################################################
 -->
 <odoo>
-    
+
         <!-- wizard action on res.partner -->
 
         <record
@@ -34,14 +34,14 @@
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>
-            
+
         <menuitem
         id="menu_report_evaluation_summary_wizard"
         parent="school_evaluations.menu_main_evaluation"
         action="school_evaluation_summary_wizard_action"
         sequence="900"
     />
-            
+
         <!-- wizard view -->
         <record id="evaluation_summary_wizard_view" model="ir.ui.view">
             <field name="name">Evaluation Summary Wizard</field>
@@ -65,7 +65,7 @@
                 </form>
             </field>
         </record>
-        
+
         <!-- report -->
 
         <record id="action_report_evaluation_summary" model="ir.actions.report">
@@ -79,7 +79,7 @@
             name="report_file"
         >school_evaluations.evaluation_summary_content</field>
         </record>
-            
+
         <template id="evaluation_summary_content">
             <t t-call="web.html_container">
                 <t t-set="data_report_margin_top" t-value="20" />
@@ -131,12 +131,12 @@
                                                 <td>
                                                     <t
                                                                 t-esc="bloc.total_acquiered_credits"
-                                                            />    
+                                                            />
                                                 </td>
                                                 <td>
                                                     <t
                                                                 t-esc="bloc.total_credits-bloc.total_acquiered_credits"
-                                                            /> 
+                                                            />
                                                 </td>
                                                 <td>
                                                     <span
@@ -197,6 +197,6 @@
                 </t>
             </t>
         </template>
-            
-    
+
+
 </odoo>

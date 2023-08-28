@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -18,25 +17,25 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+import base64
+import io
 import logging
 import logging.config
-import base64
 import os
-import io
-from datetime import datetime, timedelta
 import uuid
+from datetime import datetime, timedelta
+
 from lxml import etree
+from zeep import CachingClient
+from zeep.plugins import HistoryPlugin
+from zeep.transports import Transport
+from zeep.wsse.compose import Compose
+from zeep.wsse.signature import MemorySignature
+from zeep.wsse.username import UsernameToken
+from zeep.wsse.utils import WSU
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
-
-from zeep.transports import Transport
-from zeep import CachingClient
-from zeep.wsse.signature import MemorySignature
-from zeep.plugins import HistoryPlugin
-from zeep.wsse.username import UsernameToken
-from zeep.wsse.compose import Compose
-from zeep.wsse.utils import WSU
 
 _logger = logging.getLogger(__name__)
 

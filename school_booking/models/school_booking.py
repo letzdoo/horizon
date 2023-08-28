@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -18,10 +17,9 @@
 #
 ##############################################################################
 import logging
-
-import pytz
 from datetime import datetime, timedelta
 
+import pytz
 from filelock import FileLock
 
 from odoo import _, api, fields, models

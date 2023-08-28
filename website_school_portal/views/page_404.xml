@@ -76,7 +76,7 @@
                                         type="hidden"
                                         class="o_search_order_by"
                                         value="name asc"
-                                    /> 
+                                    />
                                 </form>
                             </div>
                         </section>

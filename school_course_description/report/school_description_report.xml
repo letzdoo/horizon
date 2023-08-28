@@ -22,9 +22,9 @@
 -->
 <odoo>
   <!--
-    
+
     Description Course
-    
+
     -->
 
   <report
@@ -46,10 +46,10 @@
               <t t-call="web.external_layout">
                 <div class="page" style="padding-left: 50px;padding-right: 50px;">
                   <div class="jumbotron mt64">
-                    <h1>No description found</h1>      
+                    <h1>No description found</h1>
                     <p
                             >Please contact the secretary or your teacher for more information about this activity.</p>
-                  </div>          
+                  </div>
                 </div>
               </t>
             </t>
@@ -208,9 +208,9 @@
     </template>
 
   <!--
-    
+
     Description Coure Group
-    
+
     -->
 
   <report
@@ -233,10 +233,10 @@
                 <div class="page" style="padding-left: 50px;padding-right: 50px;">
                 <div class="container">
                   <div class="jumbotron mt64">
-                    <h1>No description found</h1>      
+                    <h1>No description found</h1>
                     <p
                                 >Please contact the secretary or your teacher for more information about this activity.</p>
-                  </div>          
+                  </div>
                 </div>
             </div>
             </t>
@@ -311,7 +311,7 @@
                                  </table>
                             </div>
                         </div>
-                        
+
                         <div class="panel panel-default">
                             <div class="panel-heading">Course Informations</div>
                             <div class="panel-body">

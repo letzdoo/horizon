@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    
+
         <template
         id="assets_backend"
         name="web_list_view_sticky assets for backend"
@@ -17,5 +17,5 @@
             />
             </xpath>
         </template>
-    
+
 </odoo>

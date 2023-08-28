@@ -31,7 +31,7 @@
         </xpath>
     </template>
 
-    
+
 
     <template
         id="hz_account"
@@ -137,7 +137,7 @@
                     href="/my/formio/form/create/new_contact"
                 >Remplir ma fiche</a>
             </p>
-            
+
         </t>
         <t t-if="horizon_website_designer == True or horizon_state == 'info-form'">
             <div
@@ -213,6 +213,6 @@
         <a class="btn btn-danger mb-2" href="/web">Accès back-office</a>
     </template>
 
-   
+
 
 </odoo>

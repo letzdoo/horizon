@@ -21,7 +21,7 @@
 ##############################################################################
 -->
 <odoo>
-    
+
         <!-- Official Document List View -->
         <record id="view_official_document_list" model="ir.ui.view">
             <field name="name">school.official_document.tree</field>
@@ -37,7 +37,7 @@
                 </tree>
             </field>
         </record>
-        
+
         <!-- Official Document Form View -->
         <record id="view_official_document_form" model="ir.ui.view">
             <field name="name">school.official_document.form</field>
@@ -67,15 +67,15 @@
                 </form>
             </field>
         </record>
-        
+
         <record id="action_official_document_list" model="ir.actions.act_window">
             <field name="name">Official Documents</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.official_document</field>
-            
+
             <field name="view_mode">tree</field>
         </record>
-        
+
         <record
         id="action_official_document_tree_view1"
         model="ir.actions.act_window.view"
@@ -85,7 +85,7 @@
             <field name="view_id" ref="view_official_document_list" />
             <field name="act_window_id" ref="action_official_document_list" />
         </record>
-        
+
         <record
         id="action_official_document_form_view1"
         model="ir.actions.act_window.view"
@@ -95,13 +95,13 @@
             <field name="view_id" ref="view_official_document_form" />
             <field name="act_window_id" ref="action_official_document_list" />
         </record>
-        
+
         <menuitem
         id="menu_official_document_form"
         parent="school_management.menu_individual_bloc"
         action="action_official_document_list"
         sequence="999"
     />
-        
-    
+
+
 </odoo>

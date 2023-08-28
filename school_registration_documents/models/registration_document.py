@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,10 +18,9 @@
 #
 ##############################################################################
 import logging
-
 from datetime import date
 
-from odoo import api, fields, models, _
+from odoo import _, api, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -51,9 +49,9 @@ class Partner(models.Model):
             ["student_id"],
             ["student_id"],
         )
-        result = dict(
-            (data["student_id"][0], data["student_id_count"]) for data in docs_data
-        )
+        result = {
+            data["student_id"][0]: data["student_id_count"] for data in docs_data
+        }
         for partner in self:
             partner.official_document_count = len(partner.official_document_ids)
             partner.official_document_missing_count = result.get(partner.id, 0)

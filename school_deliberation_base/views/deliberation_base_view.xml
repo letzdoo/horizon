@@ -23,11 +23,11 @@
 <odoo>
   <data>
     <!--
-      
+
           Deliberation
-          
+
           -->
-  
+
     <!-- Deliberation Kanban View -->
     <record model="ir.ui.view" id="deliberation_kanban_view">
       <field name="name">school.deliberation.kanban</field>
@@ -70,7 +70,7 @@
         </kanban>
       </field>
     </record>
-  
+
     <!-- Deliberation Form View -->
     <record model="ir.ui.view" id="deliberation_form">
       <field name="name">school.deliberation.view</field>
@@ -156,7 +156,7 @@
         </form>
       </field>
     </record>
-    
+
     <!-- Deliberation Program View -->
     <record model="ir.ui.view" id="deliberation_program_view">
         <field name="name">Deliberation Program</field>
@@ -202,7 +202,7 @@
           </deliberation>
         </field>
     </record>
-    
+
     <!-- Deliberation Bloc View -->
     <record model="ir.ui.view" id="deliberation_bloc_view">
         <field name="name">Deliberation Bloc</field>
@@ -254,7 +254,7 @@
           </deliberation>
         </field>
     </record>
-  
+
     <record id="view_deliberation_filter" model="ir.ui.view">
       <field name="name">deliberation.select</field>
       <field name="model">school.deliberation</field>
@@ -290,7 +290,7 @@
         </search>
       </field>
     </record>
-  
+
     <record id="action_deliberation_form" model="ir.actions.act_window">
       <field name="name">Deliberations</field>
       <field name="type">ir.actions.act_window</field>
@@ -307,7 +307,7 @@
         </p>
       </field>
     </record>
-  
+
     <record id="action_deliberation_form_view1" model="ir.actions.act_window.view">
       <field name="sequence" eval="0" />
       <field name="view_mode">kanban</field>
@@ -326,9 +326,9 @@
       <field name="view_id" ref="deliberation_custom" />
       <field name="act_window_id" ref="action_deliberation_form" />
     </record>-->
-  
+
     <!-- Blocs deliberation -->
-    
+
     <record id="view_deliberation_bloc_filter" model="ir.ui.view">
       <field name="name">deliberation.select</field>
       <field name="model">school.individual_bloc</field>
@@ -346,7 +346,7 @@
         </search>
       </field>
     </record>
-    
+
     <record id="view_deliberation_program_filter" model="ir.ui.view">
       <field name="name">deliberation.select.program</field>
       <field name="model">school.individual_program</field>
@@ -359,7 +359,7 @@
         </search>
       </field>
     </record>
-    
+
     <!-- Deliberation Programs Kanban View -->
     <record model="ir.ui.view" id="deliberation_program_kanban_view">
       <field name="name">school.deliberation.program.kanban</field>
@@ -429,7 +429,7 @@
         </kanban>
       </field>
     </record>
-    
+
     <!-- Deliberation Programs Form View -->
     <record model="ir.ui.view" id="program_deliberation_form">
       <field name="name">school.program_deliberation.view</field>
@@ -473,7 +473,7 @@
                                                 class="oe_inline"
                                             /></span>
                   </button>
-                </div>  
+                </div>
               </div>
             </div>
             <group col="2">
@@ -494,7 +494,7 @@
         </form>
       </field>
     </record>
-    
+
     <!-- Deliberation Blocs Kanban View -->
     <record model="ir.ui.view" id="deliberation_bloc_kanban_view">
       <field name="name">school.deliberation.bloc.kanban</field>
@@ -565,7 +565,7 @@
         </kanban>
       </field>
     </record>
-    
+
     <!-- Deliberation Bloc Form View -->
     <record model="ir.ui.view" id="bloc_deliberation_form">
       <field name="name">school.bloc_deliberation.view</field>
@@ -600,7 +600,7 @@
                   <button class="btn btn_credits" type="button" name="evaluation">
                     <h1><field name="evaluation" /></h1>
                   </button>
-                </div>  
+                </div>
               </div>
               <div class="row">
                 <div class="alert mb-0" role="alert" style="font-size: larger;"><field
@@ -686,7 +686,7 @@
                   <button class="btn btn_credits" type="button" name="result_details">
                     <h1><field name="final_result_disp" /></h1>
                   </button>
-                </div>  
+                </div>
               </div>
             </div>
             <group col="2">
@@ -711,7 +711,7 @@
         </form>
       </field>
     </record>
-    
+
     <record
             id="action_course_group_deliberation_form_view"
             model="ir.actions.act_window"
@@ -723,17 +723,17 @@
     </record>
 
     <!-- Top Menu item -->
-  
+
     <menuitem
             id="menu_deliberation_tree"
             parent="school_evaluations.menu_main_evaluation"
             action="action_deliberation_form"
             sequence="60"
         />
-    
-    
+
+
     <!-- Specific filters -->
-    
+
     <record id="view_individual_bloc_filter_delib" model="ir.ui.view">
         <field name="name">individual_bloc.select.delib</field>
         <field name="model">school.individual_bloc</field>
@@ -774,6 +774,6 @@
             </xpath>
         </field>
     </record>
-    
+
   </data>
 </odoo>

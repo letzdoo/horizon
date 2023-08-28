@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Custom Partner Fields",
     "summary": """Custom Partner Fields""",

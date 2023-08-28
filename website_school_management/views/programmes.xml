@@ -34,7 +34,7 @@
                             </div>
                             <hr class="my-0" />
                         </div>
-                    </div> 
+                    </div>
                     <div class="col-12">
                         <t t-set="current_cycle" t-value="False" />
                         <t t-set="d" t-value="False" />
@@ -72,9 +72,9 @@
                                 t-call="website_school_management.close_list"
                             />
                         </t>
-                    </div> 
-                </div>    
-            </div>    
+                    </div>
+                </div>
+            </div>
         </t>
     </template>
 
@@ -105,7 +105,7 @@
                                 <span
                                     class="sr-only"
                                 >Imprimer le programme de cours</span>
-                            </a> 
+                            </a>
                         </div>
                         <div class="mt-4">
                             <t
@@ -116,9 +116,9 @@
                         <t
                             t-call="website_school_management.programme_details_contenu"
                         />
-                    </div> 
-                </div>    
-            </div>    
+                    </div>
+                </div>
+            </div>
         </t>
     </template>
 
@@ -198,7 +198,7 @@
                             <span class="fs-2"><t t-esc="bloc.name" /></span>
                             <div class="mt-2 d-flex gap-2">
                                 <span>
-                                    Heures&amp;nbsp;: 
+                                    Heures&amp;nbsp;:
                                     <span
                                     class="fw-bold accented-color"
                                     t-esc="bloc.total_hours"
@@ -206,7 +206,7 @@
                                 </span>
                                 <span>|</span>
                                 <span>
-                                    ECTS&amp;nbsp;: 
+                                    ECTS&amp;nbsp;:
                                     <span
                                     class="fw-bold accented-color"
                                     t-esc="bloc.total_credits"
@@ -419,12 +419,12 @@
                                         </div>
                                     </t>
                                 </div>
-                                </div>    
+                                </div>
                             </t>
                         </div>
                     </t>
                 </div>
-            </div>    
+            </div>
         </div>
     </template>
 
@@ -446,7 +446,7 @@
                     </div>
                 </div>
             </div>
-        </t>      
+        </t>
     </template>
 
     <template id="cours_fiche_details">
@@ -582,10 +582,10 @@
                             aria-controls="collapse_horaire"
                         >
                             <span class="h4">
-                                Horaire 
-                                <span class="accented-color">|</span> 
+                                Horaire
+                                <span class="accented-color">|</span>
                                 <span t-field="course_doc.schedule" />
-                            </span> 
+                            </span>
                         </button>
                     </h2>
                     <div
@@ -605,7 +605,7 @@
             <t t-else="">
                 <div class="border mb-4">
                     <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Horaire  
+                        Horaire
                     </h2>
                     <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
                         Information non disponible.
@@ -624,8 +624,8 @@
                             aria-controls="collapse_contenu"
                         >
                             <span class="h4">
-                                Contenu 
-                            </span> 
+                                Contenu
+                            </span>
                         </button>
                     </h2>
                     <div
@@ -645,7 +645,7 @@
             <t t-else="">
                 <div class="border mb-4">
                     <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Contenu 
+                        Contenu
                     </h2>
                     <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
                         Information non disponible.
@@ -664,8 +664,8 @@
                             aria-controls="collapse_methode"
                         >
                             <span class="h4">
-                                Méthode 
-                            </span> 
+                                Méthode
+                            </span>
                         </button>
                     </h2>
                     <div
@@ -685,7 +685,7 @@
             <t t-else="">
                 <div class="border mb-4">
                     <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Méthode 
+                        Méthode
                     </h2>
                     <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
                         Information non disponible.
@@ -704,8 +704,8 @@
                             aria-controls="collapse_resultats"
                         >
                             <span class="h4">
-                                Résultats d'apprentissage 
-                            </span> 
+                                Résultats d'apprentissage
+                            </span>
                         </button>
                     </h2>
                     <div
@@ -725,7 +725,7 @@
             <t t-else="">
                 <div class="border mb-4">
                     <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Résultats d'apprentissage    
+                        Résultats d'apprentissage
                     </h2>
                     <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
                         Information non disponible.
@@ -744,8 +744,8 @@
                             aria-controls="collapse_references"
                         >
                             <span class="h4">
-                                Références 
-                            </span> 
+                                Références
+                            </span>
                         </button>
                     </h2>
                     <div
@@ -765,7 +765,7 @@
             <t t-else="">
                 <div class="border mb-4">
                     <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Références  
+                        Références
                     </h2>
                     <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
                         Information non disponible.
@@ -785,7 +785,7 @@
                         >
                             <span class="h4">
                                 Pré-requis/Co-requis
-                            </span> 
+                            </span>
                         </button>
                     </h2>
                     <div
@@ -805,7 +805,7 @@
             <t t-else="">
                 <div class="border mb-4">
                     <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Pré-requis/Co-requis    
+                        Pré-requis/Co-requis
                     </h2>
                     <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
                         Information non disponible.
@@ -824,8 +824,8 @@
                             aria-controls="collapse_evalutation"
                         >
                             <span class="h4">
-                                Méthode d'évaluation 
-                            </span> 
+                                Méthode d'évaluation
+                            </span>
                         </button>
                     </h2>
                     <div
@@ -845,7 +845,7 @@
             <t t-else="">
                 <div class="border mb-4">
                     <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Méthode d'évaluation    
+                        Méthode d'évaluation
                     </h2>
                     <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
                         Information non disponible.
@@ -854,7 +854,7 @@
             </t>
         </div>
     </template>
-    
+
     <!-- //////////////////////////////////////////////////////////////// -->
     <!-- //                         BREADCRUMB                         // -->
     <!-- //////////////////////////////////////////////////////////////// -->
@@ -885,7 +885,7 @@
     <!-- //////////////////////////////////////////////////////////////// -->
     <!-- //                             LIST                           // -->
     <!-- //////////////////////////////////////////////////////////////// -->
-    
+
     <template id="open_list">
         &lt;ul class="ps-3 ps-sm-5 list-group"&gt;
     </template>
@@ -893,5 +893,5 @@
     <template id="close_list">
         &lt;/ul&gt;
     </template>
-    
+
 </odoo>

@@ -27,7 +27,7 @@
         inherit_id="website_school_portal.hz_footer"
         name="CRLG Footer Links"
     >
-        <xpath expr="//li[hasclass('hz_contact_link')]" position="after"> 
+        <xpath expr="//li[hasclass('hz_contact_link')]" position="after">
             <t
                 t-if="(website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.student == True or website.env.user.partner_id.employee == True)"
             >

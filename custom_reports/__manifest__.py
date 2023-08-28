@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "Custom Reports",
     "summary": """This module adds custom reports that canbe printed""",

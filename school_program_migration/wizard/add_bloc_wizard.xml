@@ -21,7 +21,7 @@
 ##############################################################################
 -->
 <odoo>
-    
+
         <!-- Add Bloc Wizard View -->
         <record model="ir.ui.view" id="add_bloc_wizard_form">
           <field name="name">school.add_bloc_wizard.view</field>
@@ -58,7 +58,7 @@
             </form>
           </field>
         </record>
-        
+
         <record id="action_add_bloc_wizard" model="ir.actions.act_window">
             <field name="name">Add Bloc Wizard</field>
             <field name="res_model">school.add_bloc_wizard</field>
@@ -68,5 +68,5 @@
             <field name="view_id" ref="add_bloc_wizard_form" />
             <field name="target">new</field>
         </record>
-        
+
 </odoo>

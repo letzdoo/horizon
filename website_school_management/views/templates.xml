@@ -61,12 +61,12 @@
         >
             <head>
                 <meta charset="utf-8" />
-                
+
                 <meta name="viewport" content="initial-scale=1" />
                 <meta name="keywords" content="programme enseignement musique" />
-                
+
                 <title>Programmes</title>
-    
+
                 <t t-call-assets="web.assets_common" t-js="false" />
                 <t t-call-assets="web.assets_common" t-css="false" />
                 <link
@@ -106,7 +106,7 @@
                     <t t-set="c" t-value="False" />
                     <t t-foreach="program_list" t-as="program_item">
                         <t t-set="program" t-value="program_item['program']" />
-                        <t t-if="d != program.domain_name"> 
+                        <t t-if="d != program.domain_name">
                             <div class="clearfix" />
                             <h3><t t-esc="program.domain_name" /></h3>
                             <t t-set="d" t-value="program.domain_name" />
@@ -267,14 +267,14 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>UID</th> 
-                        <th>Unités d’enseignement</th> 
-                        <th class="text-center">Heures</th> 
+                        <th>UID</th>
+                        <th>Unités d’enseignement</th>
+                        <th class="text-center">Heures</th>
                         <th class="text-center">ECTS</th>
                         <th class="text-center">Pond</th>
                         <th>Pré-requis</th>
                         <th>Co-requis</th>
-                    </tr> 
+                    </tr>
                 </thead>
                 <tbody>
                     <t t-set="group" t-value="" />
@@ -345,7 +345,7 @@
             </table>
         </div>
     </template>
-    
+
     <template id="course_group_details" name="Course Group Details">
         <t t-call="website_school_management.website_school_layout">
             <div id="content" class="site-content">
@@ -362,7 +362,7 @@
             <!-- <t t-call="website_school_management.no_description"/> -->
         </t>
     </template>
-    
+
     <template id="course_group_details_content" name="Course Group Details Content">
         <div class="row">
             <h1>
@@ -373,7 +373,7 @@
             <article class="twentyseventeen-panel page type-page status-publish hentry">
             	<div class="panel-content">
                 	<header class="entry-header">
-                		<h1 class="entry-title">Information générale</h1>			
+                		<h1 class="entry-title">Information générale</h1>
                 	</header><!-- .entry-header -->
                 	<div class="entry-content">
                         <p><strong>Code d'unité</strong> – <span

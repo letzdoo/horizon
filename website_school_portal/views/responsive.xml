@@ -22,12 +22,12 @@
 <odoo>
 
 <template id="assets" name="website_school_portal assets">
-		
+
         <link
             rel="stylesheet"
             href="/website_school_portal/static/src/css/toastr.css"
         />
-        
+
         <script type="text/javascript" src="/web/static/lib/jquery/jquery.js" />
         <script type="text/javascript" src="/web/static/lib/jquery.ui/jquery-ui.js" />
         <script type="text/javascript" src="/web/static/lib/jquery/jquery.browser.js" />
@@ -37,7 +37,7 @@
             type="text/javascript"
             src="/website_school_portal/static/src/js/toastr.js"
         />
-		
+
     </template>
 
     <template id="hz_booking_new" name="Nouvelle réservation">
@@ -46,7 +46,7 @@
 				<xpath expr="//head" position="inside">
             		<t t-call="website_school_portal.assets" />
         		</xpath>
-    			
+
     			<script type="text/javascript">
     				var date_today = moment('<t t-esc="today" />');
     				var date_tomorrow = moment('<t t-esc="tomorrow" />');
@@ -57,7 +57,7 @@
                 src="/website_school_portal/static/src/js/booking-new.js"
                 defer=""
             />
-    			
+
     			<div id="content" class="container">
 					<div class="content-body">
 						<h1 class="mt-5 mb-2">Réserver une salle</h1>
@@ -206,13 +206,13 @@
 				<xpath expr="//head" position="inside">
             		<t t-call="website_school_portal.assets" />
         		</xpath>
-    			
+
     			<script
                 type="text/javascript"
                 src="/website_school_portal/static/src/js/booking-search.js"
                 defer=""
             />
-    			
+
     			<div id="content" class="container">
 					<div class="content-body">
 						<h1 class="mt-5 mb-2">Recherche de réservations</h1>
@@ -245,14 +245,14 @@
 								<input id="day" type="hidden" value="0" />
 							</div>
 							<div class="row mb-4">
-								<div class="col-12 col-sm-8 col-lg-6">								
+								<div class="col-12 col-sm-8 col-lg-6">
 									<input
                                     id="query"
                                     type="text"
                                     data-length="30"
                                     class="form-control no-appearance time-select input-lg input-font-lg"
                                     placeholder="Critère de recherche..."
-                                />						
+                                />
 								</div>
 							</div>
 							<div class="form-group pt-3">

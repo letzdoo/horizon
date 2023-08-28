@@ -22,12 +22,12 @@
 -->
 <odoo>
     <!--
-      
+
           Registration
-          
+
           -->
-  
-    <!-- Registration Kanban View 
+
+    <!-- Registration Kanban View
     <record model="ir.ui.view" id="registration_kanban_view">
       <field name="name">school.registration.kanban</field>
       <field name="model">school.registration</field>
@@ -57,7 +57,7 @@
         </kanban>
       </field>
     </record> -->
-    
+
     <!-- Registration Tree View -->
     <record model="ir.ui.view" id="registration_tree_view">
       <field name="name">school.registration.tree</field>
@@ -74,7 +74,7 @@
         </tree>
       </field>
     </record>
-  
+
     <!-- Registration Form View -->
     <record model="ir.ui.view" id="registration_form">
       <field name="name">school.registration.view</field>
@@ -204,7 +204,7 @@
         </form>
       </field>
     </record>
-    
+
     <record id="view_registration_filter" model="ir.ui.view">
       <field name="name">registration.select</field>
       <field name="model">school.registration</field>
@@ -226,7 +226,7 @@
         </search>
       </field>
     </record>
-  
+
     <record id="action_registration_form" model="ir.actions.act_window">
       <field name="name">Registrations</field>
       <field name="type">ir.actions.act_window</field>
@@ -243,7 +243,7 @@
         </p>
       </field>
     </record>
-  
+
     <record id="action_registration_form_view1" model="ir.actions.act_window.view">
       <field name="sequence" eval="0" />
       <field name="view_mode">tree</field>
@@ -256,9 +256,9 @@
       <field name="view_id" ref="registration_form" />
       <field name="act_window_id" ref="action_registration_form" />
     </record>
-    
+
     <!-- Top menu item -->
-    
+
     <menuitem
         name="Registration"
         id="menu_main_registration"
@@ -275,7 +275,7 @@
     />
 
     <!-- Other things -->
-    
+
     <!-- Add signature to Individual Bloc form view -->
     <record id="individual_bloc_eval_form" model="ir.ui.view">
         <field name="name">school.individual_bloc.reg.view</field>
@@ -291,7 +291,7 @@
             </xpath>
         </field>
     </record>
-    
+
     <!-- Add program for student form view -->
     <record id="view_program_form_school" model="ir.ui.view">
         <field name="name">view.program.form.school.reg</field>
@@ -318,13 +318,13 @@
             </xpath>
         </field>
     </record>
-    
+
     <record id="school_action_program_new" model="ir.actions.act_window">
         <field name="name">Program</field>
         <field name="res_model">school.individual_program</field>
         <field name="view_mode">form</field>
     </record>
-    
+
     <!-- Add program for student form view -->
     <record id="view_student_form_school_docs" model="ir.ui.view">
         <field name="name">view.res.partner.form.school.docs</field>

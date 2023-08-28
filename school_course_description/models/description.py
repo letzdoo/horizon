@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -115,10 +114,10 @@ class CourseDocumentation(models.Model):
     weight = fields.Float(
         related="course_id.weight",
         help="""Poids de l'évaluation de l'activité dans l'évaluation totale de l'unité. Cette pondération est définie par le tableau du règlement des études
-            
+
             Crédits de              Coefficient               Cote finale sur
             l'activité              multiplicateur
-            considérée             
+            considérée
                 1 à 3                   1                       20
                 4 à 6                   2                       40
                 7 à 10                  3                       60
@@ -129,14 +128,14 @@ class CourseDocumentation(models.Model):
                 20 à 23 (DTAP)          6                       120
                 24 à 29 (DTAP)          9                       180
                 30 et plus (DTAP)       12                      240
-            
+
             La pondération n'est évidemment pas nécessaire si l'UE ne comprend qu'une AA...
             Exemple:
             •	L'AA «banjo»vaut 23 crédits et possède donc une pondération 6 pour une cote finale d'évaluation sur 120;
             •	L'AA «écoute critique de la discographie consacrée au banjo» vaut 1 crédit et possède donc une pondération 1 pour une cote finale d'évaluation sur 20;
             •	L'UE «finalité principale» du « formation instrumentale / cordes / banjo» vaut au final 24 crédits avec une cote finale sur 140, somme des cotes des 2 AA. Cette cote finale est ensuite ramenée sur 20 pour l'encodage sur «Horizon»
-            
-            Note: Il est conservé la notion de pondération de l'UE au sein du programme du cycle à fin de calcul de la moyenne d'année ou du cycle. Cette moyenne ne conserve qu'un intérêt informatif pour les décisions de réussite de certaines unités d'enseignement par le jury de cycle ou pour l'attribution des mentions en fin de cycle. La pondération n'est pas demandée dans les descriptifs d'activités, elle est prévue par l'article 96 du Règlement des Études.	
+
+            Note: Il est conservé la notion de pondération de l'UE au sein du programme du cycle à fin de calcul de la moyenne d'année ou du cycle. Cette moyenne ne conserve qu'un intérêt informatif pour les décisions de réussite de certaines unités d'enseignement par le jury de cycle ou pour l'attribution des mentions en fin de cycle. La pondération n'est pas demandée dans les descriptifs d'activités, elle est prévue par l'article 96 du Règlement des Études.
             """,
     )
 

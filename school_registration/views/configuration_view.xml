@@ -21,8 +21,8 @@
 ##############################################################################
 -->
 <odoo>
-    
-        
+
+
         <menuitem
         name="Registration"
         parent="school_management.menu_school_admin"
@@ -30,7 +30,7 @@
         sequence="30"
         groups="school_management.group_employee"
     />
-        
+
         <record id="res_config_settings_view_form" model="ir.ui.view">
             <field
             name="name"
@@ -101,5 +101,5 @@
                 </xpath>
             </field>
         </record>
-    
+
 </odoo>

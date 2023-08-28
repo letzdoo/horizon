@@ -21,7 +21,7 @@
 ##############################################################################
 -->
 <odoo>
-    
+
         <!-- Add program for student form view -->
         <record id="view_student_kanban_school" model="ir.ui.view">
             <field name="name">view.res.partner.kanban.school.docs</field>
@@ -41,7 +41,7 @@
                 </xpath>
             </field>
         </record>
-        
+
         <!-- Add program for student form view -->
         <record id="view_student_form_school_docs" model="ir.ui.view">
             <field name="name">view.res.partner.form.school.docs</field>
@@ -110,6 +110,6 @@
                 </xpath>
             </field>
         </record>
-        
-    
+
+
 </odoo>

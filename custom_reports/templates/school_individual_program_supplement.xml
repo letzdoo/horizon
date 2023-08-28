@@ -17,8 +17,8 @@
                 margin:0px;
                 padding:0px;
               }
-          
-          
+
+
               h1,h2,h3,h4,h5,h6,h7,h8{
                 position: relative;
                 font-size:1.15em;
@@ -28,7 +28,7 @@
                 margin:0px;
                 padding:0px;
               }
-          
+
               .pdf__page{
                 background: white;
                 margin:0px auto;
@@ -46,91 +46,91 @@
               .page__wrapper{
                 padding:1.5cm;
               }
-          
+
               .diploma__place{
                 margin-bottom:20px;
               }
-          
+
               .diploma__intro, .diploma__place, .diploma__logo, .europass__logo{
                 text-align: center;
               }
-          
+
               .europass__logo{
                 margin-bottom: 50px;
               }
-          
+
               .europass__img{
                   display: inline-block;
                   width: 250px;
                   height: auto;
               }
-          
+
               .place__title{
                 margin-bottom:2px;
               }
-          
+
               .intro__title{
                 font-size:1.3em;
               }
-          
+
               .intro__section{
                 font-size:1.1em;
                 font-weight:500;
               }
-          
+
               .logo__logo{
                 width:45px;
                 height:auto;
                 display:inline-block;
               }
-          
+
               .diploma__logo{
                 margin:15px 0px;
               }
-          
+
               .diploma__name{
                 font-size:1.5em;
                 font-weight:500;
                 margin-bottom:5px;
               }
-          
+
               .diploma__name em{
                 font-style:normal;
                 font-weight:700;
               }
-          
+
               .diploma__infos{
                 margin-top:30px;
               }
-          
+
               .text--important{
                 font-size:1.2em;
                 font-weight:700;
                 font-style:normal;
               }
-          
+
               .diploma__rank{
                 margin-top:10px;
               }
-          
+
               .rank__name{
                 margin-bottom:20px;
               }
-          
+
               .diploma__footer{
                 margin-top:60px;
               }
-          
+
               .signatures__list{
                 margin-bottom:30px;
               }
-          
+
               .signature__item{
                 width:24.5%;
                 display:inline-block;
                 font-weight:700;
               }
-          
+
               .complement__text{
                 margin-top: 70px;
                 padding:10px;
@@ -139,24 +139,24 @@
                 margin-left: 7.5%;
                 text-align: justify;
               }
-          
+
               .complement__text p+p{
                 margin-top: 40px;
               }
-          
+
               .complement__more{
                 font-style:italic;
               }
-          
+
               .complement__footer{
                 margin-top:20px;
               }
-          
+
               .complement__footer em{
                 font-weight: 700;
                 font-style:normal;
               }
-          
+
               .footer__page{
                 color: #b1b1b1;
                 font-size: 0.95em;
@@ -166,68 +166,68 @@
                 left: 0px;
                 width: 100%;
               }
-          
+
               .title--section{
                 padding-bottom: 10px;
                 border-bottom: 1px solid black;
               }
-          
+
               .infos__list{
                 margin-top: 30px;
                 margin-bottom: 50px;
               }
-          
+
               .info__item{
                 font-weight: 700;
                 font-size: 1.1em;
               }
-          
+
                   .text--special{
                     font-style: italic;
                     font-weight: 400;
                   }
-          
+
                 .requirements__list{
                   list-style-type: "- ";
                   margin-top:10px;
                 }
-          
+
                 .info__value, .requirement__item{
                   font-weight: 400;
                 }
-          
-          
+
+
                 .info__item .text--special{
                   font-size: 0.95em;
                 }
-          
+
                 .info__item, .text--break{
                   display: block;
                 }
-          
+
                 .text--break + .text--break{
                   margin-top:15px;
                 }
-          
+
                 .info__item + .info__item{
                   margin-top: 10px;
                 }
-          
+
                 .info__number{
                   padding-right: 20px;
                 }
-          
+
                 .requirement__item + .requirement__item{
                   margin-top:10px;
                 }
-          
+
                 .learning__img{
                   display: block;
                   width: 100%;
                   height: auto;
                   margin-top:40px;
                 }
-          
+
                 .precisions__table{
                   font-size: 1em;
                   width: 100%;
@@ -236,24 +236,24 @@
                   margin-top: 20px;
                   margin-bottom: 20px;
                 }
-          
+
                 .precisions__table th, .table--total td{
                   background: #EFEFEF;
                   font-weight: 700;
                   padding:5px;
                   border-bottom: 1px solid lightgrey;
                 }
-          
+
                 .precisions__table td{
                   padding:8px 10px;
                   font-size: 0.95em;
                 }
-          
+
                 .table--total td{
                   border-bottom:none;
                   border-top: 1px solid lightgrey;
                 }
-          
+
             </style>
           </head>
 
@@ -302,10 +302,10 @@
             t-set="cycle_type_bis"
             t-value="'1er' if doc.source_program_id.cycle_id.name.find('1er cycle') != -1  else '2ème'"
         />
-       
+
             <div class="pdf__page">
               <div class="page__wrapper">
-          
+
                   <div class="europass__logo">
                     <img
                         src="/custom_reports/static/src/img/europass.png"
@@ -319,14 +319,14 @@
                             t-esc="cycle_type"
                         /></p>
                   </div>
-          
+
                   <div class="diploma__intro">
                     <h1 class="intro__title">Conservatoire royal de Liège</h1>
                     <p>École supérieure des Arts</p>
                     <p>Boulevard Piercot, 29 – 4000 Liège</p>
                     <p class="intro__section">Domaine de la Musique</p>
                   </div>
-          
+
                   <div class="diploma__logo">
                     <!-- <img src="img/logo.png" alt="Logo du Conservatoire Royal de Liège" class="logo__logo" /> -->
                     <img
@@ -334,9 +334,9 @@
                         alt="Logo du Conservatoire Royal de Liège"
                         class="logo__logo"
                     />
-                    
+
                   </div>
-          
+
                   <div class="complement__text">
                     <p
                     >Ce modèle de supplément au diplôme suit le modèle élaboré par la Commission européenne, le Conseil de l’Europe et l’UNESCO. Le supplément au diplôme vise à fournir des données indépendantes et suffisantes pour améliorer la « transparence » internationale et la reconnaissance académique et professionnelle équitable des qualifications (diplômes, acquis universitaires, certificats, brevets, etc.). Il est destiné à décrire la nature, le niveau, le contexte, le contenu et le statut des études accomplies avec succès par la personne désignée par la qualification originale à laquelle ce présent supplément est annexé. Il doit être dépourvu de tout jugement de valeur, déclaration d’équivalence ou suggestion de reconnaissance. Toutes les informations requises par les huits parties doivent être fournies. Lorsqu’une information fait défaut, une explication doit être donnée. </p>
@@ -347,7 +347,7 @@
                   <!-- <p class="footer__page">Page 1 sur 5</p> -->
               </div>
             </div>
-          
+
             <div class="pdf__page">
               <div class="page__wrapper">
                 <p class="complement__footer">
@@ -356,7 +356,7 @@
                         class="text--special"
                     >This Diploma Supplement is only valid if presented with the official diploma.</span>
                 </p>
-          
+
                 <h2
                     style="margin-top:20px;"
                     class="title--section"
@@ -365,7 +365,7 @@
                     >LA</t> TITULAIRE DU DIPLÔME / <span
                         class="text--special"
                     >Information identifying the holder of the qualification</span></h2>
-          
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
@@ -398,11 +398,11 @@
                                 t-esc="student_matricule"
                             /></span></li>
                 </ul>
-          
+
                 <h2 class="title--section">2. INFORMATIONS SUR LE DIPLÔME / <span
                         class="text--special"
                     >Information identifying the qualification</span></h2>
-          
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
@@ -442,13 +442,13 @@
                             class="info__value"
                         > : <br />Français</span></li>
                 </ul>
-          
+
                 <h2
                     class="title--section"
                 >3. INFORMATIONS SUR LE NIVEAU DE QUALIFICATION / <span
                         class="text--special"
                     >Information on the level of the qualification</span></h2>
-          
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
@@ -486,7 +486,7 @@
                                 t-if="not student_gender"
                             >e</t> conformément à l’article <t t-if="bac">107</t><t
                                 t-else=""
-                            >111</t> du décret du 07 novembre 2013: 
+                            >111</t> du décret du 07 novembre 2013:
                     <t t-foreach="doc.student_id.access_titles_ids" t-as="at">
                       <t
                                     t-if="(('CESS' in at.name or 'equivalence' in at.name) and bac)"
@@ -495,7 +495,7 @@
                                         t-esc="at.establishment"
                                     /> - <t t-esc="at.city" /> (<t
                                         t-esc="at.country"
-                                    />) - <t t-esc="at.date.strftime('%d/%m/%Y')" /> 
+                                    />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
                       </t>
                       <t
                                     t-if="(('Bachelier' in at.name or 'VAE' in at.name) and master)"
@@ -504,21 +504,21 @@
                                         t-esc="at.establishment"
                                     /> - <t t-esc="at.city" /> (<t
                                         t-esc="at.country"
-                                    />) - <t t-esc="at.date.strftime('%d/%m/%Y')" /> 
-                      </t>  
+                                    />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                      </t>
                     </t>
                     </span></li>
                 </ul>
 
                 <!-- <p class="footer__page">Page 2 sur 5</p> -->
-          
+
                 <h2
                     style="margin-top:20px; padding-top:20px;"
                     class="title--section"
                 >4. INFORMATIONS SUR LE CONTENU ET SUR LES RÉSULTATS OBTENUS / <span
                         class="text--special"
                     >Information on the contents and results gained</span></h2>
-          
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
@@ -587,7 +587,7 @@
                                 >De travailler en équipe et de développer les qualités relationnelles nécessaires aux travaux en groupe ;</li>
                         <li
                                     class="requirement__item"
-                                >De créer une relation pédagogique propice aux apprentissages en développant une identité d’enseignant·e-musicien·ne professionnel·le qui agit et fait agir de façon éthique, démocratique et responsable, en lien avec le projet pédagogique de l’établissement.</li>                    
+                                >De créer une relation pédagogique propice aux apprentissages en développant une identité d’enseignant·e-musicien·ne professionnel·le qui agit et fait agir de façon éthique, démocratique et responsable, en lien avec le projet pédagogique de l’établissement.</li>
                       </ul>
                     </t>
                     <t t-elif="master and not master_dict">
@@ -670,9 +670,9 @@
                                 >Démontrer une attitude positive envers la volonté de s’engager et de s’intéresser au développement personnel et professionnel continu tout au long de la vie.</li>
                       </ul>
                     </t>
-                    
+
                   </li>
-          
+
                   <li class="info__item"><span
                             class="info__number"
                         >4.3.</span>Précisions sur le programme / <span
@@ -709,14 +709,14 @@
                                             />
                             </tr>
                         </t>
-          
+
                         <tr class="table--total">
                           <td>&#160;</td>
                           <td>&#160;</td>
                           <td><t t-esc="credit_total" /></td>
                           <td>&#160;</td>
                         </tr>
-          
+
                       </tbody>
                     </table>
                     <t t-if="(bac and bac_dict) or master">
@@ -724,22 +724,22 @@
                         <t t-foreach="doc.student_id.memoir_titles_ids" t-as="memoir">
                           <br /><t t-esc="memoir.name" />
                         </t>
-                      </span>  
+                      </span>
                     </t>
-                    
+
                   </span></li>
                 </ul>
-          
-          
-          
+
+
+
                 <!-- <p class="footer__page">Page 3 sur 5</p> -->
               </div>
             </div>
-          
+
             <div class="pdf__page">
               <div class="page__wrapper">
-          
-          
+
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
@@ -764,7 +764,7 @@
                                     href="https://www.crlg.be"
                                 >https://www.crlg.be</a></span>
                   </span></li>
-          
+
                   <li class="info__item"><span
                             class="info__number"
                         >4.5.</span>Classification générale <t
@@ -790,13 +790,13 @@
                                     /></t></span>
                   </span></li>
                 </ul>
-          
+
                 <h2
                     class="title--section"
                 >5. INFORMATIONS SUR LA FONCTION DE QUALIFICATION / <span
                         class="text--special"
                     >Information on the function of the qualification</span></h2>
-          
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
@@ -820,7 +820,7 @@
                             >Les titulaires de master en 120 crédits au moins peuvent être admis aux études universitaires de 3e cycle.</span>
                   </span>
                   </li>
-          
+
                   <li class="info__item"><span
                             class="info__number"
                         >5.2.</span>Statut professionnel (si applicable) / <span
@@ -829,11 +829,11 @@
                             class="info__value"
                         > : {{Non Applicable}}}</span></li>
                 </ul>
-          
+
                 <h2 class="title--section">6. INFORMATIONS COMPLÉMENTAIRES / <span
                         class="text--special"
                     >Additional information</span></h2>
-          
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
@@ -862,24 +862,24 @@
                                             t-esc="internship.end_date.strftime('%d/%m/%Y')"
                                         />
                         </t>
-                      </span>  
+                      </span>
                     </t>
-                    
+
                   </span>
                   </li>
                 </ul>
-          
-          
-          
+
+
+
                 <!-- <p class="footer__page">Page 4 sur 5</p> -->
-          
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
                         >6.2.</span>Autres sources d’informations / <span
                             class="text--special"
                         >Further information sources</span><span class="info__value"> :
-          
+
                     <span class="text--break">Site web de l'établissement : <a
                                     target="_blank"
                                     href="http://www.crlg.be"
@@ -907,11 +907,11 @@
                                 >www.ares-ac.be</a>.</span>
                   </span></li>
                 </ul>
-          
+
                 <h2 class="title--section">7. CERTIFICATION DU SUPPLEMENT / <span
                         class="text--special"
                     >Certification on the supplement</span></h2>
-          
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
@@ -926,7 +926,7 @@
                             class="info__value"
                         > : Ingisi MPEYE</span></li>
                 </ul>
-          
+
                 <ul class="infos__list">
                   <li class="info__item"><span
                             class="info__number"
@@ -943,7 +943,7 @@
                             class="info__value"
                         > :</span></li>
                 </ul>
-          
+
                 <h2
                     class="title--section"
                 >8. INFORMATION SUR LE SYSTÈME NATIONAL D’ENSEIGNEMENT SUPERIEUR / <span
@@ -954,18 +954,18 @@
                     alt="Tableau enseignement"
                     class="learning__img"
                 />
-          
-          
-          
+
+
+
                 <!-- <p class="footer__page">Page 5 sur 5</p> -->
               </div>
             </div>
-          
-          
-         
-        
+
+
+
+
     </template>
-    
+
 
     <template id="report_school_individual_program_supplement_general_template">
       <t t-call="web.html_container">
@@ -976,12 +976,12 @@
               <!-- Didactic programs -->
               <t t-if="doc.is_bac">
                 <!-- Didactic Bachelor -->
-                <t t-set="bac" t-value="True" />  
+                <t t-set="bac" t-value="True" />
                 <t t-set="bac_dict" t-value="True" />
               </t>
               <t t-else="">
                 <!-- Didactic Master -->
-                <t t-set="master" t-value="True" />  
+                <t t-set="master" t-value="True" />
                 <t t-set="master_dict" t-value="True" />
               </t>
             </t>
@@ -989,11 +989,11 @@
               <!-- Non-Didactic programs -->
               <t t-if="doc.is_bac">
                 <!-- Non-Didactic Bachelor -->
-                <t t-set="bac" t-value="True" />  
+                <t t-set="bac" t-value="True" />
               </t>
               <t t-else="">
                 <!-- Non-Didactic Master -->
-                <t t-set="master" t-value="True" />  
+                <t t-set="master" t-value="True" />
               </t>
             </t>
 
@@ -1016,5 +1016,5 @@
         file="custom_reports.report_school_individual_program_supplement_general_template"
         paperformat="custom_reports.paperformat_supplement"
     />
-  
+
 </odoo>

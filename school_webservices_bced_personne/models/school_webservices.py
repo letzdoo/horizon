@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -20,8 +19,9 @@
 ##############################################################################
 import logging
 import logging.config
-from datetime import datetime
 import uuid
+from datetime import datetime
+
 import isodate
 
 from odoo import _, models

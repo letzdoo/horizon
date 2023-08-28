@@ -82,14 +82,14 @@
         <field name="res_model">school.webservice</field>
         <field name="view_mode">tree,form</field>
     </record>
-    
+
     <record id="action_webservice_tree_view1" model="ir.actions.act_window.view">
         <field name="sequence" eval="1" />
         <field name="view_mode">tree</field>
         <field name="view_id" ref="view_webservice_list" />
         <field name="act_window_id" ref="action_webservice_list" />
     </record>
-   
+
     <record id="action_webservice_form_view1" model="ir.actions.act_window.view">
         <field name="sequence" eval="5" />
         <field name="view_mode">form</field>

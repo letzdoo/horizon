@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 ##############################################################################
 #
 #    Copyright (c) 2022 ito-invest.lu
@@ -20,18 +18,17 @@
 #
 ##############################################################################
 
-import logging
 import json
-
-
-from odoo import _, fields, models, tools
-from odoo.exceptions import UserError
+import logging
 
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
 from googleapiclient.http import MediaIoBaseUpload
+
+from odoo import _, fields, models, tools
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 

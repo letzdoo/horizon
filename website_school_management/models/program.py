@@ -1,11 +1,11 @@
 import re
 
-from odoo import api, fields, models
-from odoo.addons.http_routing.models.ir_http import slugify_one
-
-from odoo.http import request
 from werkzeug.urls import url_join
-from odoo.addons.http_routing.models.ir_http import url_for
+
+from odoo import api, fields, models
+from odoo.http import request
+
+from odoo.addons.http_routing.models.ir_http import slugify_one, url_for
 
 
 class ProgramWeb(models.Model):

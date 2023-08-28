@@ -22,7 +22,7 @@
 -->
 <odoo>
     <function model="website" name="init_horizon" />
-    
+
     <function model="website.menu" name="init_school_portal_menu" />
 
     <!-- Ajout des options de visibilité d'un point de menu  -->

@@ -22,7 +22,7 @@
 -->
 <odoo>
     <!-- Default content - Horizon generic portal -->
-    <template id="_hz_custom_home_banner" name="Horizon Home Banner"> 
+    <template id="_hz_custom_home_banner" name="Horizon Home Banner">
         <div class="oe_structure">
             <section
                 class="s_banner parallax pt96 pb96 o_colored_level"
@@ -74,11 +74,11 @@
                         </section>
                     </div>
                 </div>
-            </section>            
+            </section>
         </div>
     </template>
 
-    <template id="_hz_custom_home_content" name="Horizon Home Content"> 
+    <template id="_hz_custom_home_content" name="Horizon Home Content">
         <div class="oe_structure">
             <section
                 class="s_text_image pt32 pb32 o_colored_level"
@@ -139,7 +139,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <section
                 class="s_text_block pt40 pb40 o_colored_level"
                 data-snippet="s_text_block"
@@ -403,7 +403,7 @@
         </div>
     </template>
 
-    <template id="_hz_custom_footer_description" name="Horizon Footer Description"> 
+    <template id="_hz_custom_footer_description" name="Horizon Footer Description">
         <div class="oe_structure">
             <h5>Une école, une philosophie</h5>
             <p
@@ -412,7 +412,7 @@
         </div>
     </template>
 
-    <template id="_hz_my_student_no_form" name="Horizon Student Not registered"> 
+    <template id="_hz_my_student_no_form" name="Horizon Student Not registered">
         <div class="oe_structure">
             <h5>Bienvenue !</h5>
             <p>Votre compte d'accès à notre plateforme est bien créé.</p>
@@ -432,7 +432,7 @@
         </div>
     </template>
 
-    <template id="_hz_my_student_info_form" name="Horizon Student registering"> 
+    <template id="_hz_my_student_info_form" name="Horizon Student registering">
         <div class="oe_structure">
             <p
             >Avant de pouvoir vous inscrire comme étudiant pour l'année académique à venir, vous devez <u
@@ -453,7 +453,7 @@
     <template
         id="_hz_my_student_info_form_complete"
         name="Horizon Student waiting registration"
-    > 
+    >
         <div class="oe_structure">
             <p style="text-align: center;">
                <span
@@ -465,7 +465,7 @@
         </div>
     </template>
 
-    <template id="_hz_my_student" name="Horizon Student registered"> 
+    <template id="_hz_my_student" name="Horizon Student registered">
         <div class="oe_structure">
             <h3>Ressources utiles:</h3>
             <ul>

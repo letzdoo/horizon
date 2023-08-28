@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,17 +18,17 @@
 #
 ##############################################################################
 
-import logging
 import json
+import logging
+
 import werkzeug
 
-from odoo.addons.http_routing.models.ir_http import unslug
-
 from odoo import http
-from odoo.addons.web.controllers.main import CSVExport
-
 from odoo.http import request
 from odoo.tools import ustr
+
+from odoo.addons.http_routing.models.ir_http import unslug
+from odoo.addons.web.controllers.main import CSVExport
 
 _logger = logging.getLogger(__name__)
 

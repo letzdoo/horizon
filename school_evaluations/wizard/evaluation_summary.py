@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -21,7 +20,6 @@
 import logging
 
 from odoo import fields, models
-
 
 _logger = logging.getLogger(__name__)
 

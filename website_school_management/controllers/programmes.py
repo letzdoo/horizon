@@ -1,10 +1,8 @@
-# -*- encoding: utf-8 -*-
-
 import logging
 
 from odoo import http
-from odoo.http import request
-from odoo.http import Response
+from odoo.http import Response, request
+
 from odoo.addons.http_routing.models.ir_http import slug, unslug
 
 _logger = logging.getLogger(__name__)

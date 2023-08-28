@@ -30,7 +30,7 @@
         <field name="number_increment">1</field>
         <field name="company_id" />
     </record>
-    
+
     <!--Email template -->
     <record id="email_template_valuation_teacher" model="mail.template">
         <field name="name">Valuation - Teacher Mail</field>

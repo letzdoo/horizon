@@ -74,7 +74,7 @@
 </xs:enumeration>
 <xs:enumeration value="RN/RR">
 <xs:annotation>
-<xs:documentation>A code defined by the 
+<xs:documentation>A code defined by the
 						Registre National (fr) / Rijksregister (nl)</xs:documentation>
 </xs:annotation>
 </xs:enumeration>

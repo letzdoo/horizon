@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -20,15 +19,15 @@
 ##############################################################################
 import logging
 import time
-import werkzeug.utils
 
 import dateutil
 import dateutil.parser
 import dateutil.relativedelta
+import werkzeug.utils
 
-from odoo import fields
-from odoo import http
+from odoo import fields, http
 from odoo.http import request
+
 from odoo.addons.auth_oauth.controllers.main import OAuthLogin as Home
 
 _logger = logging.getLogger(__name__)

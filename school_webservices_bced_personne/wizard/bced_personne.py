@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -18,14 +17,14 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+import json
 import logging
 import traceback
 
+from zeep import helpers
+
 from odoo import _, fields, models
 from odoo.tools import date_utils
-
-import json
-from zeep import helpers
 
 _logger = logging.getLogger(__name__)
 

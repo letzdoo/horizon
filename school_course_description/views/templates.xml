@@ -319,7 +319,7 @@
             </div>
         </t>
     </template>
-    
+
     <template id="school_course_edit" name="Course Documentation">
         <t t-call="website.layout">
             <t t-set="title">Course Description</t>

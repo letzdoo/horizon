@@ -21,7 +21,7 @@
 ##############################################################################
 -->
 <odoo>
-  
+
 
     <menuitem
         name="Assets"
@@ -29,7 +29,7 @@
         id="menu_assets"
         sequence="900"
     />
-    
+
     <!-- Building Tree View -->
     <record id="view_building_tree" model="ir.ui.view">
       <field name="name">school.building.tree</field>
@@ -42,7 +42,7 @@
         </tree>
       </field>
     </record>
-    
+
     <!-- Building Form View -->
     <record model="ir.ui.view" id="building_form">
       <field name="name">school.building.view</field>
@@ -195,7 +195,7 @@
       <field name="name">Buildings</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">school.building</field>
-      
+
       <field name="view_mode">tree,form</field>
       <field name="search_view_id" ref="view_building_filter" />
       <field name="help" type="html">
@@ -227,7 +227,7 @@
         action="action_building_tree"
         sequence="99"
     />
-    
+
     <!-- Asset Tree View -->
     <record id="view_asset_tree" model="ir.ui.view">
       <field name="name">school.asset.tree</field>
@@ -246,7 +246,7 @@
         </tree>
       </field>
     </record>
-    
+
     <!-- Asset Form View -->
     <record model="ir.ui.view" id="asset_form">
       <field name="name">school.asset.view</field>
@@ -330,7 +330,7 @@
       <field name="name">Assets</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">school.asset</field>
-      
+
       <field name="view_mode">tree,form</field>
       <field name="search_view_id" ref="view_asset_filter" />
       <field name="help" type="html">
@@ -362,7 +362,7 @@
         action="action_asset_tree"
         sequence="49"
     />
-    
+
     <!-- Asset_type Tree View -->
     <record id="view_asset_type_tree" model="ir.ui.view">
       <field name="name">school.asset_type.tree</field>
@@ -377,7 +377,7 @@
         </tree>
       </field>
     </record>
-    
+
     <!-- Asset Type Form View -->
     <record model="ir.ui.view" id="asset_type_form">
       <field name="name">school.asset_type.view</field>
@@ -415,7 +415,7 @@
       <field name="name">Asset Type</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">school.asset_type</field>
-      
+
       <field name="view_mode">tree,form</field>
       <field name="search_view_id" ref="view_asset_type_filter" />
       <field name="help" type="html">
@@ -447,7 +447,7 @@
         action="action_asset_type_tree"
         sequence="79"
     />
-    
+
     <record id="school_asset_category_form_view" model="ir.ui.view">
         <field name="name">school.asset.category.form</field>
         <field name="model">school.asset.category</field>
@@ -466,7 +466,7 @@
             </form>
         </field>
     </record>
-    
+
     <record id="school_asset_category_tree_view" model="ir.ui.view">
         <field name="name">school.asset.category.tree</field>
         <field name="model">school.asset.category</field>
@@ -478,12 +478,12 @@
             </tree>
         </field>
     </record>
-    
+
     <record id="school_asset_category_action" model="ir.actions.act_window">
         <field name="name">Asset Categories</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">school.asset.category</field>
-        
+
         <field name="view_mode">tree,form</field>
         <field name="view_id" eval="False" />
         <field name="help" type="html">
@@ -499,7 +499,7 @@
             </p>
         </field>
     </record>
-    
+
     <record
         id="action_asset_category_tree_tree_view1"
         model="ir.actions.act_window.view"
@@ -525,6 +525,6 @@
         parent="menu_assets"
         sequence="89"
     />
-    
-  
+
+
 </odoo>

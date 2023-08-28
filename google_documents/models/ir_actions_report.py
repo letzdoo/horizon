@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -20,9 +18,8 @@
 #
 ##############################################################################
 
-import logging
 import io
-
+import logging
 
 from odoo import fields, models
 from odoo.tools.safe_eval import safe_eval, time

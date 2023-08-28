@@ -26,8 +26,8 @@
             <field name="binding_model_id" ref="model_school_program" />
             <field name="binding_type">report</field>
             <field name="paperformat_id" ref="programme_page" />
-      </record>  
-      
+      </record>
+
      <!-- Tempate PDF report -->
       <template id="report_program">
             <t t-call="web.html_container">
@@ -305,14 +305,14 @@
                             style="display:block; font-weight: 400; margin-top: 1mm;"
                         >
                                           <span style="color: #6e6e6e;">
-                                                Heures&amp;nbsp;: 
+                                                Heures&amp;nbsp;:
                                           </span>
                                           <span
                                 t-attf-style="color: {{secondary}}; padding-right : 16px;"
                                 t-out="bloc.total_hours"
                             />
                                           <span style="color: #6e6e6e;">
-                                                ECTS&amp;nbsp;: 
+                                                ECTS&amp;nbsp;:
                                           </span>
                                           <span
                                 t-attf-style="color: {{secondary}}"

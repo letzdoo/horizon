@@ -23,11 +23,11 @@
 <odoo>
   <data>
     <!--
-      
+
           Program Approuval
-          
+
           -->
-  
+
     <!-- Program approuval Kanban View -->
     <record model="ir.ui.view" id="program_approuval_kanban_view">
       <field name="name">school.program_approuval.kanban</field>
@@ -69,7 +69,7 @@
         </kanban>
       </field>
     </record>
-  
+
     <!-- Program_approuval Form View -->
     <record model="ir.ui.view" id="program_approuval_form">
       <field name="name">school.program_approuval.view</field>
@@ -164,7 +164,7 @@
         </form>
       </field>
     </record>
-    
+
     <!-- Deliberation Program View
     <record model="ir.ui.view" id="deliberation_program_view">
         <field name="name">Deliberation Program</field>
@@ -210,7 +210,7 @@
           </deliberation>
         </field>
     </record> -->
-    
+
     <!-- Deliberation Bloc View
     <record model="ir.ui.view" id="deliberation_bloc_view">
         <field name="name">Deliberation Bloc</field>
@@ -262,7 +262,7 @@
           </deliberation>
         </field>
     </record> -->
-  
+
     <record id="view_program_approuval_filter" model="ir.ui.view">
       <field name="name">program_approuval.select</field>
       <field name="model">school.program_approuval</field>
@@ -298,7 +298,7 @@
         </search>
       </field>
     </record>
-  
+
     <record id="action_program_approuval_form" model="ir.actions.act_window">
       <field name="name">Program_approuvals</field>
       <field name="type">ir.actions.act_window</field>
@@ -315,7 +315,7 @@
         </p>
       </field>
     </record>
-  
+
     <record id="action_program_approuval_form_view1" model="ir.actions.act_window.view">
       <field name="sequence" eval="0" />
       <field name="view_mode">kanban</field>
@@ -334,9 +334,9 @@
       <field name="view_id" ref="program_approuval_custom" />
       <field name="act_window_id" ref="action_program_approuval_form" />
     </record>-->
-  
+
     <!-- Blocs deliberation -->
-    
+
     <record id="view_approuve_blocs_filter" model="ir.ui.view">
       <field name="name">approuve_blocs.select</field>
       <field name="model">school.individual_bloc</field>
@@ -354,7 +354,7 @@
         </search>
       </field>
     </record>
-    
+
     <record id="view_approuve_valuations_filter" model="ir.ui.view">
       <field name="name">approuve.select.valuations</field>
       <field name="model">school.valuation_followup</field>
@@ -368,7 +368,7 @@
         </search>
       </field>
     </record>
-    
+
     <!-- Approuval Programs Kanban View  -->
     <record model="ir.ui.view" id="approuve_valuations_kanban_view">
       <field name="name">school.approuve.valuations.kanban</field>
@@ -415,7 +415,7 @@
         </kanban>
       </field>
     </record>
-    
+
     <!-- Deliberation Programs Form View
     <record model="ir.ui.view" id="program_deliberation_form">
       <field name="name">school.program_deliberation.view</field>
@@ -447,7 +447,7 @@
                   <button class="btn btn_credits bg-info" type="button" name="ects">
                     ECTS<br/><span class="score_value"><field name="total_acquiered_credits" class="oe_inline"/></span>
                   </button>
-                </div>  
+                </div>
               </div>
             </div>
             <group col="2">
@@ -462,7 +462,7 @@
         </form>
       </field>
     </record>  -->
-    
+
     <!-- Approuve Blocs Kanban View -->
     <record model="ir.ui.view" id="approuve_blocs_kanban_view">
       <field name="name">school.approuve.bloc.kanban</field>
@@ -507,7 +507,7 @@
         </kanban>
       </field>
     </record>
-    
+
     <!-- Deliberation Bloc Form View
     <record model="ir.ui.view" id="bloc_deliberation_form">
       <field name="name">school.bloc_deliberation.view</field>
@@ -536,7 +536,7 @@
                   <button class="btn btn_credits" type="button" name="evaluation">
                     <h1><field name="evaluation"/></h1>
                   </button>
-                </div>  
+                </div>
               </div>
               <div class="row">
                 <div class="alert mb-0" role="alert" style="font-size: larger;"><field name="decision"/></div>
@@ -590,7 +590,7 @@
                   <button class="btn btn_credits" type="button" name="result_details">
                     <h1><field name="final_result_disp"/></h1>
                   </button>
-                </div>  
+                </div>
               </div>
             </div>
             <group col="2">
@@ -615,7 +615,7 @@
         </form>
       </field>
     </record>
-    
+
     <record id="action_course_group_deliberation_form_view" model="ir.actions.act_window">
       <field name="name">Course Group Deliberation</field>
       <field name="type">ir.actions.act_window</field>
@@ -624,13 +624,13 @@
     </record>   -->
 
     <!-- Top Menu item -->
-  
+
     <menuitem
             id="menu_program_approuval_tree"
             parent="school_management.menu_individual_bloc"
             action="action_program_approuval_form"
             sequence="80"
         />
-    
+
   </data>
 </odoo>

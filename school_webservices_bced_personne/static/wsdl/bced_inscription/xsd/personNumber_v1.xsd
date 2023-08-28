@@ -7,8 +7,8 @@
 <xs:documentation>A person number is a unique identifier for a person. In Belgium, the person number
 				is defined by the birth date in the format yymmdd plus a three-digit sequential number,
 				an a two-digit control number. Odd or even sequential numbers also indicate the gender
-				of the person. 
-				
+				of the person.
+
 				The length of the person number is 11 digits, which is enforced in the schema.</xs:documentation>
 </xs:annotation>
 <xs:restriction base="xs:string">

@@ -21,7 +21,7 @@
 ##############################################################################
 -->
 <odoo>
-  
+
         <!-- Course Documentation List View -->
         <record id="view_course_documentation_list" model="ir.ui.view">
             <field name="name">school.course_documentation.tree</field>
@@ -35,7 +35,7 @@
                 </tree>
             </field>
         </record>
-        
+
         <record model="ir.ui.view" id="course_documentation_form">
             <field name="name">school.course_documentation.view</field>
             <field name="model">school.course_documentation</field>
@@ -45,14 +45,14 @@
                     <script>
                       // TODO : Hack as summernote seem to focus at the end
                       $(function(){ //wait for document ready
-                      
+
                         setTimeout(function(){
                           top_el = $("input.ui-autocomplete-input")[0]
                           if(top_el){
                             top_el.focus();
                           }
                         }, 100) //execute your function after 1 second.
-                      
+
                       });
                     </script>
                     <header>
@@ -251,7 +251,7 @@
                 </form>
             </field>
         </record>
-        
+
         <record id="view_course_documentation_filter" model="ir.ui.view">
             <field name="name">course_documentation.select</field>
             <field name="model">school.course_documentation</field>
@@ -267,17 +267,17 @@
             </search>
             </field>
         </record>
-        
+
         <record id="action_course_documentation_list" model="ir.actions.act_window">
             <field name="name">Course Documentation</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.course_documentation</field>
             <field name="search_view_id" ref="view_course_documentation_filter" />
-            
+
             <field name="view_mode">tree,form</field>
             <field name="context">{"search_default_my_desc":1}</field>
         </record>
-        
+
         <record
         id="action_course_documentation_tree_view1"
         model="ir.actions.act_window.view"
@@ -287,7 +287,7 @@
             <field name="view_id" ref="view_course_documentation_list" />
             <field name="act_window_id" ref="action_course_documentation_list" />
         </record>
-        
+
         <!-- Top menu item -->
         <menuitem
         name="Course Description"
@@ -303,17 +303,17 @@
         action="action_course_documentation_list"
         sequence="10"
     />
-        
+
         <record id="action_new_course_documentation" model="ir.actions.act_window">
             <field name="name">New Course Documentation</field>
             <field name="res_model">school.course_documentation</field>
-            
+
             <field name="view_id" ref="course_documentation_form" />
             <field
             name="context"
         >{'default_course_id': context.get('active_id', False)}</field>
         </record>
-        
+
         <!-- Add evaluation to Individual Course form view -->
         <record id="course_doc_form" model="ir.ui.view">
             <field name="name">school.course.doc.view</field>
@@ -333,6 +333,6 @@
                 </xpath>
             </field>
         </record>
-        
-    
+
+
 </odoo>

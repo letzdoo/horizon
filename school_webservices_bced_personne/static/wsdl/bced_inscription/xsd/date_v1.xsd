@@ -6,9 +6,9 @@
 <xs:annotation>
 <xs:documentation>The general date type, which consists of a structure containg the century, the year, the month, and
 				the day of the month. This definitions is equal to what is in use in the Belgian National register.
-				In some cases, the day and the month indicator may be "00". This indicates the exact day or month 
+				In some cases, the day and the month indicator may be "00". This indicates the exact day or month
 				is unknown.
-				
+
 				If an indicator does not exist, it should be set to nill.</xs:documentation>
 </xs:annotation>
 <xs:sequence>

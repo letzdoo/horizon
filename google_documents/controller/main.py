@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -21,8 +19,8 @@
 ##############################################################################
 
 import logging
-import werkzeug.utils
 
+import werkzeug.utils
 
 from odoo import http
 from odoo.http import request

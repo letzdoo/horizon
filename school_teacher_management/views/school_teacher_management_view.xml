@@ -21,8 +21,8 @@
 ##############################################################################
 -->
 <odoo>
-    
-      
+
+
       <!-- Top menu item -->
       <menuitem
         name="Teacher Management"
@@ -30,7 +30,7 @@
         web_icon="school_teacher_management,static/description/icon.png"
         sequence="50"
     />
-      
+
       <!-- Teacher Designation Tree View -->
         <record id="view_teacher_designation_tree" model="ir.ui.view">
           <field name="name">school.teacher.designation.tree</field>
@@ -45,7 +45,7 @@
             </tree>
           </field>
         </record>
-    
+
         <!-- Teacher Designation Form View -->
         <record model="ir.ui.view" id="teacher_designation_form">
           <field name="name">school.teacher.designation.view</field>
@@ -136,7 +136,7 @@
             </form>
           </field>
         </record>
-    
+
         <record id="view_teacher_designation_filter" model="ir.ui.view">
           <field name="name">teacher.designation.select</field>
           <field name="model">school.teacher.designation</field>
@@ -146,12 +146,12 @@
             </search>
           </field>
         </record>
-      
+
       <record id="action_teacher_designation_form" model="ir.actions.act_window">
         <field name="name">Teacher Designations</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">school.teacher.designation</field>
-        
+
         <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
         <field name="search_view_id" ref="view_teacher_designation_filter" />
@@ -164,7 +164,7 @@
             </p>
           </field>
         </record>
-        
+
         <record
         id="action_teacher_designation_tree_view1"
         model="ir.actions.act_window.view"
@@ -183,13 +183,13 @@
           <field name="view_id" ref="teacher_designation_form" />
           <field name="act_window_id" ref="action_teacher_designation_form" />
         </record>
-        
+
         <menuitem
         id="menu_teacher_designation_form"
         parent="menu_teacher_management"
         action="action_teacher_designation_form"
         sequence="25"
     />
- 
-    
+
+
 </odoo>

@@ -1,13 +1,13 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dat="http://soa.spw.wallonie.be/data/common/date/v1" xmlns:iso="http://soa.spw.wallonie.be/data/common/isocodes/v1" xmlns:lab="http://soa.spw.wallonie.be/data/common/label/v1" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://soa.spw.wallonie.be/data/common/label/v1" version="1.00">
 <xs:annotation>
-<xs:documentation>Definitions of label types. Labels are comments, descriptions, etc., which provide some 
+<xs:documentation>Definitions of label types. Labels are comments, descriptions, etc., which provide some
 			human-readable information about something. They are generally language-dependent.</xs:documentation>
 </xs:annotation>
 <xs:import namespace="http://soa.spw.wallonie.be/data/common/isocodes/v1" schemaLocation="isocodes_v1.xsd"></xs:import>
 <xs:import namespace="http://soa.spw.wallonie.be/data/common/date/v1" schemaLocation="date_v1.xsd"></xs:import>
 <xs:complexType name="CommentType">
 <xs:annotation>
-<xs:documentation>A language-dependent comment can be created by setting the language attribute of the 
+<xs:documentation>A language-dependent comment can be created by setting the language attribute of the
 				CommentType.</xs:documentation>
 </xs:annotation>
 <xs:simpleContent>
@@ -18,11 +18,11 @@
 </xs:complexType>
 <xs:complexType name="DescriptionType">
 <xs:annotation>
-<xs:documentation>A language-dependent description can be created by setting the language attribute of the 
+<xs:documentation>A language-dependent description can be created by setting the language attribute of the
 				DescriptionType.
-				
+
 				A short description can be provided in the shortDescription attribute. Although there are no
-				restrictions set on the short description, it is really meant for short descriptions, not 
+				restrictions set on the short description, it is really meant for short descriptions, not
 				complete novels.</xs:documentation>
 </xs:annotation>
 <xs:simpleContent>
@@ -37,8 +37,8 @@
 <xs:documentation>A verification of an event, document, object, etc., is an action performed on a specific date.
 				It can have a comment attached to it for remarks regarding the verification. If multiple
 				comments exist, each should be expressed in a different language, although this is not
-				enforced by the schema. 
-				
+				enforced by the schema.
+
 				If no comment exists, the element comment should not be provided. If a comment exists, but it
 				is explicitly not provided to the consumer, it should be declared nill.</xs:documentation>
 </xs:annotation>

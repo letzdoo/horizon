@@ -21,7 +21,7 @@
 ##############################################################################
 -->
 <odoo>
-    
+
         <!-- Official Document Form View -->
         <record id="view_official_document_google_form" model="ir.ui.view">
             <field name="name">school.official_document.google.form</field>
@@ -43,7 +43,7 @@
                 </xpath>
             </field>
         </record>
-        
+
         <!-- Add program for student form view -->
         <record id="view_student_form_school_google_docs" model="ir.ui.view">
             <field name="name">view.res.partner.form.school.google.docs</field>
@@ -78,6 +78,6 @@
                 </xpath>
             </field>
         </record>
-        
-    
+
+
 </odoo>

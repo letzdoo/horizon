@@ -23,11 +23,11 @@
 <odoo>
 
     <!--
-    
+
     Success Certificate
-    
+
     -->
-    
+
     <record id="report_success_certificate" model="ir.actions.report">
         <field name="name">Success Certificate</field>
         <field name="model">school.individual_bloc</field>
@@ -165,9 +165,9 @@
     </template>
 
     <!--
-    
+
     Success Certificate on programs
-    
+
     -->
 
     <record id="report_success_certificate_prog" model="ir.actions.report">
@@ -266,7 +266,7 @@
                                         t-field="o.grade_year_id"
                                     /> le <span t-field="o.cycle_id.grade" /> en <span
                                         t-field="o.domain_id.long_name"
-                                    /> : <span t-field="o.speciality_id" /> 
+                                    /> : <span t-field="o.speciality_id" />
                                 <br /><t t-if="o.grade == 'without'"><span
                                             t-field="o.grade"
                                         /></t><t t-if="o.grade != 'without'">avec <span
@@ -304,11 +304,11 @@
     </template>
 
     <!--
-    
+
     Evaluations report for students
-    
+
     -->
-        
+
     <record id="report_evaluation_for_student" model="ir.actions.report">
         <field name="name">Evaluations for student</field>
         <field name="model">school.individual_bloc</field>
@@ -372,12 +372,12 @@
                         </div>
                         <div class="row">
                             <div class="col-8 col-offset-1">
-                                <h4>Fiche de résultats - <t t-esc="o.name" /></h4>    
+                                <h4>Fiche de résultats - <t t-esc="o.name" /></h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-8 col-offset-1">
-                                <h4><t t-esc="o.source_bloc_name" /></h4>    
+                                <h4><t t-esc="o.source_bloc_name" /></h4>
                             </div>
                         </div>
                         <div class="row">
@@ -477,7 +477,7 @@
                             <div class="col-10 col-offset-1" style="font-size:small">
                                 * Pas de seconde session possible pour cette activité.
                             </div>
-                        </div>    
+                        </div>
                         <div class="row">
                             <div class="col-10 col-offset-1">
                                 <h4>A acquis ou valorisé <t
@@ -489,7 +489,7 @@
                         </div>
                         <div class="row" style="margin-bottom:80px;">
                             <div class="col-10 col-offset-1">
-                                Remarques : 
+                                Remarques :
                             </div>
                         </div>
                         <div class="row" style="margin-bottom:120px;">
@@ -497,7 +497,7 @@
                                 Le Directeur,
                             </div>
                             <div class="col-4">
-                                L'étudiant, pour réception, 
+                                L'étudiant, pour réception,
                             </div>
                         </div>
                         <div class="row" style="margin-bottom:120px;">
@@ -515,9 +515,9 @@
     </template>
 
     <!--
-    
+
     Evaluations report for deliberation annexe
-    
+
     -->
 
     <record id="report_deliberation_program_annexe" model="ir.actions.report">
@@ -540,7 +540,7 @@
             <t t-call="web.external_layout">
               <t t-foreach="docs" t-as="o">
               <div class="page">
-                <div class="container"> 
+                <div class="container">
                   <h2>Rapport de délibération de cycle</h2>
                   <h2><t t-esc="o.student_id.name" /></h2>
                   <h4><t t-esc="o.uid" /> - <t t-esc="o.source_program_id.name" /></h4>
@@ -551,7 +551,7 @@
                                 />)</h5>
                   <h5>Grade obtenu : <t t-esc="o.grade" /></h5>
                 </div>
-                <div class="container"> 
+                <div class="container">
                   <table class="table table-sm">
                       <thead>
                           <tr>
@@ -627,7 +627,7 @@
             <t t-call="web.external_layout">
               <t t-foreach="docs" t-as="o">
               <div class="page">
-                <div class="container"> 
+                <div class="container">
                   <h2>Rapport de délibération du programme annuel de l'étudiant</h2>
                   <h2><t t-esc="o.student_id.name" /></h2>
                   <h4><t t-esc="o.uid" /> - <t t-esc="o.source_bloc_id.name" /></h4>
@@ -636,7 +636,7 @@
                                 /> / <t t-esc="o.total_credits" />)</h5>
                   <h5>Décision du jury : <t t-esc="o.decision" /></h5>
                 </div>
-                <div class="container"> 
+                <div class="container">
                   <table class="table table-sm">
                       <thead>
                           <tr>
@@ -788,7 +788,7 @@
                                         TYPE DE VALORISATION
                                     </th>
                                 </tr>
-                            </thead>    
+                            </thead>
                             <t
                                 t-foreach="program.valuated_course_group_ids"
                                 t-as="course_group"
@@ -1130,9 +1130,9 @@
 
 
     <!--
-    
+
     Evaluations by Teacher
-    
+
     -->
 
     <!-- report -->
@@ -1152,7 +1152,7 @@
                 <group attrs="{'invisible':[('send_as_email','=',True)]}" col="1">
                         <h3>Message</h3>
                         <field name="message" nolabel="1" />
-                </group>        
+                </group>
                 <footer>
                     <button
                         name="print_report"
@@ -1166,9 +1166,9 @@
             </form>
         </field>
     </record>
-    
-    <!-- email template 
-    
+
+    <!-- email template
+
     <record id="mail_template_evaluation_email" model="mail.template">
         <field name="name">Evaluation report</field>
         <field name="model_id" ref="res.partner"/>
@@ -1186,7 +1186,7 @@
         <field name="auto_delete" eval="True"/>
         <field name="user_signature" eval="False"/>
     </record> -->
-    
+
     <record id="report_evaluation_by_teacher" model="ir.actions.report">
         <field name="name">Evaluation by Teacher</field>
         <field name="model">school.individual_course</field>
@@ -1218,7 +1218,7 @@
         action="action_evaluation_report_by_teacher"
         parent="menu_main_evaluation"
         sequence="900"
-    /> 
+    />
 
     <!--  Add wizard -->
 
