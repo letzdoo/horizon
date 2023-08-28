@@ -34,7 +34,7 @@
     ],
     "assets": {
         "website.assets_wysiwyg": [
-            "/website_booking/static/src/snippets/s_bookings/options.js",
+            "/website_booking/static/src/snippets/s_bookings/options.esm.js",
         ],
     },
     "installable": True,
