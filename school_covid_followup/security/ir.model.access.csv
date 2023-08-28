@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-school_covid_followup_employee,school_covid_followup_employee,model_school_covid_followup,school_management.group_employee,1,1,1,1
