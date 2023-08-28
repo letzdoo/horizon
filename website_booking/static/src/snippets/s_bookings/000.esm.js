@@ -1,5 +1,7 @@
 /** @odoo-module **/
 
+/* global FullCalendar */
+
 import publicWidget from "web.public.widget";
 import {datetime_to_str} from "web.time";
 
@@ -14,19 +16,19 @@ const CalendarWidget = publicWidget.Widget.extend({
                 right: "next",
             },
             weekNumbers: true,
-            eventLimit: true, // allow "more" link when too many events
+            eventLimit: true, // Allow "more" link when too many events
             locale: "fr",
             height: 855,
             initialView: "resourceTimeGridDay",
             slotMinTime: "08:00:00",
             slotMaxTime: "22:00:00",
             titleFormat: {
-                // will produce something like "Tuesday, September 18, 2018"
+                // Will produce something like "Tuesday, September 18, 2018"
                 month: "long",
                 day: "numeric",
                 weekday: "long",
             },
-            /*header : {
+            /* Header : {
                  left:   'prev',
                  center: 'title,today',
                  right:  'next'
@@ -47,7 +49,7 @@ const CalendarWidget = publicWidget.Widget.extend({
     		navLinks: true, // can click day/week names to navigate views
     		eventLimit: true, // allow "more" link when too many events
     		refetchResourcesOnNavigate : false,*/
-            resourceRender: function (resourceObj, labelTds, bodyTds) {
+            resourceRender: function (resourceObj, labelTds) {
                 if (
                     resourceObj.booking_policy === "preserved" ||
                     resourceObj.booking_policy === "out"
@@ -64,7 +66,7 @@ const CalendarWidget = publicWidget.Widget.extend({
     start: function () {
         var def = this._super.apply(this, arguments);
 
-        //this.calendar = new FullCalendar.Calendar(this.$el, this.get_fc_init_options());
+        // This.calendar = new FullCalendar.Calendar(this.$el, this.get_fc_init_options());
 
         this.calendar = new FullCalendar.Calendar(this.el, this.get_fc_init_options());
 
@@ -89,7 +91,6 @@ var NavigationCard = publicWidget.Widget.extend({
             var self = this;
             self.parent.$(".navbar-card.active").removeClass("active");
             self.$(event.currentTarget).addClass("active");
-            var category_id = self.$(event.currentTarget).data("category-id");
             if (self.to_parent) {
                 self.trigger_up("up_category", {category: self.category});
             } else {
@@ -267,32 +268,30 @@ const Navigation = publicWidget.Widget.extend({
         }
     },
 
-    up_category: function (event) {
+    up_category: function () {
         var self = this;
         if (self.parent_category.isRoot) {
             this.display_category = this.create_root();
             this.selected_category = false;
             this.parent_category = false;
             self.renderCategories();
-        } else {
-            if (self.parent_category.parent_id) {
-                this._rpc({
-                    route: "/booking/category",
-                    params: {
-                        id: self.parent_category.parent_id[0],
-                    },
-                }).then((category) => {
-                    self.display_category = self.parent_category;
-                    self.parent_category = category;
-                    self.selected_category = false;
-                    self.renderCategories();
-                });
-            } else {
+        } else if (self.parent_category.parent_id) {
+            this._rpc({
+                route: "/booking/category",
+                params: {
+                    id: self.parent_category.parent_id[0],
+                },
+            }).then((category) => {
                 self.display_category = self.parent_category;
-                self.parent_category = this.create_root();
+                self.parent_category = category;
                 self.selected_category = false;
                 self.renderCategories();
-            }
+            });
+        } else {
+            self.display_category = self.parent_category;
+            self.parent_category = this.create_root();
+            self.selected_category = false;
+            self.renderCategories();
         }
         self.trigger_up("switch_category", {category: self.display_category});
     },
@@ -306,7 +305,7 @@ const Calendar = CalendarWidget.extend({
         return $.extend(this._super(), {
             events: self.fetch_events.bind(this),
             resources: self.fetch_resources.bind(this),
-            /*viewRender: function(view,element){
+            /* ViewRender: function(view,element){
     		     self.trigger_up('switch_date', {'date' : self.calendar.getDate()});
     		},
     		eventClick: function(calEvent, jsEvent, view) {
@@ -334,7 +333,7 @@ const Calendar = CalendarWidget.extend({
         });
     },
 
-    init: function (parent, value) {
+    init: function (parent) {
         this._super(parent);
         this.parent = parent;
     },
@@ -360,17 +359,19 @@ const Calendar = CalendarWidget.extend({
             params: {
                 category_id: self.category_id,
             },
-        }).then((assets) => {
-            assets.forEach(function (asset) {
-                self.ressources.push({
-                    id: asset.id,
-                    title: asset.name,
-                    booking_policy: asset.booking_policy,
+        })
+            .then((assets) => {
+                assets.forEach(function (asset) {
+                    self.ressources.push({
+                        id: asset.id,
+                        title: asset.name,
+                        booking_policy: asset.booking_policy,
+                    });
                 });
-            });
-            successCallback(self.ressources);
-            self.trigger_up("switch_ressources", {ressources: self.ressources});
-        });
+                successCallback(self.ressources);
+                self.trigger_up("switch_ressources", {ressources: self.ressources});
+            })
+            .catch(failureCallback);
     },
 
     fetch_events: function (fetchInfo, successCallback, failureCallback) {
@@ -393,41 +394,39 @@ const Calendar = CalendarWidget.extend({
                 start: datetime_to_str(start.toDate()),
                 end: datetime_to_str(end.toDate()),
             },
-        }).then((events) => {
-            self.events = [];
-            events.forEach(function (evt) {
-                var color = "#ff4355";
-                if (evt.categ_ids.includes(9)) {
-                    color = "#00bcd4";
-                } else {
-                    if (evt.categ_ids.includes(7)) {
+        })
+            .then((events) => {
+                self.events = [];
+                events.forEach(function (evt) {
+                    var color = "#ff4355";
+                    if (evt.categ_ids.includes(9)) {
+                        color = "#00bcd4";
+                    } else if (evt.categ_ids.includes(7)) {
                         color = "#2962ff";
+                    } else if (evt.categ_ids.includes(8)) {
+                        color = "#e65100";
                     } else {
-                        if (evt.categ_ids.includes(8)) {
-                            color = "#e65100";
-                        } else {
-                            /*if (session.uid == evt.user_id[0]) {
+                        /* If (session.uid == evt.user_id[0]) {
         	    	                color = '#ffc107';
         	    	            }*/
-                            color = "#ffc107";
-                        }
+                        color = "#ffc107";
                     }
-                }
-                self.events.push({
-                    start: moment.utc(evt.start).toDate(),
-                    end: moment.utc(evt.stop).toDate(),
-                    title: /*evt.partner_id[1] + " - " +*/ evt.name,
-                    allDay: evt.allday,
-                    id: evt.id,
-                    resourceId: evt.room_id[0],
-                    resourceName: evt.room_id[1],
-                    color: color,
-                    user_id: evt.user_id[0],
+                    self.events.push({
+                        start: moment.utc(evt.start).toDate(),
+                        end: moment.utc(evt.stop).toDate(),
+                        title: /* evt.partner_id[1] + " - " +*/ evt.name,
+                        allDay: evt.allday,
+                        id: evt.id,
+                        resourceId: evt.room_id[0],
+                        resourceName: evt.room_id[1],
+                        color: color,
+                        user_id: evt.user_id[0],
+                    });
                 });
-            });
-            //console.log([start, end, events])
-            successCallback(self.events);
-        });
+                // Console.log([start, end, events])
+                successCallback(self.events);
+            })
+            .catch(failureCallback);
     },
 
     switch_category: function (category) {
@@ -453,16 +452,15 @@ publicWidget.registry.snippetBookings = publicWidget.Widget.extend({
     disabledInEditableMode: false,
 
     events: {
-        "click #add-booking-button": function (event) {
+        /* "click #add-booking-button": function (event) {
             var self = this;
             event.preventDefault();
             var dialog = new NewBookingDialog(this);
             dialog.appendTo(self.main_modal.empty());
             self.main_modal.modal("open");
-        },
+        },*/
 
-        "click #goto-date-button": function (event) {
-            var self = this;
+        "click #goto-date-button": function () {
             this.cal.goto_date(moment(this.$("#datepicker").val()).toDate());
         },
     },
@@ -472,18 +470,18 @@ publicWidget.registry.snippetBookings = publicWidget.Widget.extend({
         switch_category: "switch_category",
         switch_ressources: "switch_ressources",
         switch_date: "switch_date",
-        newEvent: function (event) {
+        newEvent: function () {
             this.cal.refetch_events();
         },
-        deleteEvent: function (event) {
+        deleteEvent: function () {
             this.cal.refetch_events();
         },
-        updateEvent: function (event) {
+        updateEvent: function () {
             this.cal.refetch_events();
         },
     },
 
-    init: function (parent) {
+    init: function () {
         this._super.apply(this, arguments);
         /* TODO : why this.$('#main-modal') does not work ? */
         this._current_state = $.deparam(window.location.hash.substring(1));
@@ -501,7 +499,7 @@ publicWidget.registry.snippetBookings = publicWidget.Widget.extend({
         this.cal = new Calendar(this);
         this.cal.appendTo(this.$(".s_bookings_calendar"));
         this.cal.tb = this.tb;
-        //this.$('.collapsible').collapsible();
+        // This.$('.collapsible').collapsible();
         this.$("#datepicker").val(moment().format("YYYY-MM-DD"));
     },
 
@@ -524,12 +522,12 @@ publicWidget.registry.snippetBookings = publicWidget.Widget.extend({
         if (event.data.ressources.length == 0) {
             self.$("#add-booking-button").addClass("hide");
             self.$(".calendar_header").removeClass("active");
-            //self.$(".collapsible").collapsible({accordion: true});
-            //self.$(".collapsible").collapsible({accordion: false});
+            // Self.$(".collapsible").collapsible({accordion: true});
+            // self.$(".collapsible").collapsible({accordion: false});
         } else {
             self.$("#add-booking-button").removeClass("hide");
             self.$(".calendar_header").addClass("active");
-            //self.$(".collapsible").collapsible();
+            // Self.$(".collapsible").collapsible();
             self.cal.do_show();
         }
     },
@@ -543,7 +541,7 @@ publicWidget.registry.snippetBookings = publicWidget.Widget.extend({
     do_push_state: function (state) {
         state = $.extend(this._current_state, state);
         var url = "#" + $.param(state);
-        this._current_state = $.deparam($.param(state), false); // stringify all values
+        this._current_state = $.deparam($.param(state), false); // Stringify all values
         $.bbq.pushState(url);
         this.trigger("state_pushed", state);
     },

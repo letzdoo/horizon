@@ -1,7 +1,7 @@
 odoo.define("website_booking.browser", function (require) {
     "use strict";
 
-    /* global moment, Materialize, $, location, odoo, gapi, FullCalendar */
+    /* global moment, Materialize, $, location, odoo, FullCalendar */
 
     var core = require("web.core");
     var ajax = require("web.ajax");
@@ -60,7 +60,7 @@ odoo.define("website_booking.browser", function (require) {
     		navLinks: true, // can click day/week names to navigate views
     		eventLimit: true, // allow "more" link when too many events
     		refetchResourcesOnNavigate : false,*/
-                resourceRender: function (resourceObj, labelTds, bodyTds) {
+                resourceRender: function (resourceObj, labelTds) {
                     if (
                         resourceObj.booking_policy === "preserved" ||
                         resourceObj.booking_policy === "out"
@@ -97,7 +97,7 @@ odoo.define("website_booking.browser", function (require) {
     });
 
     var Schedule = CalendarWidget.extend({
-        init: function (parent, options) {
+        init: function (parent) {
             this._super.apply(this, arguments);
             this.date = parent.date;
             this.user = parent.user;
@@ -150,23 +150,25 @@ odoo.define("website_booking.browser", function (require) {
                         start: time.datetime_to_str(start.toDate()),
                         end: time.datetime_to_str(end.toDate()),
                     },
-                }).then((events) => {
-                    events.forEach(function (evt) {
-                        self.events.push({
-                            start: moment.utc(evt.start).toDate(),
-                            end: moment.utc(evt.stop).toDate(),
-                            title: /* evt.partner_id[1] + " - " +*/ evt.name,
-                            allDay: evt.allday,
-                            id: evt.id,
-                            resourceId: evt.room_id[0],
-                            resourceName: evt.room_id[1],
-                            color: "#FA8FB1",
-                            user_id: evt.user_id[0],
+                })
+                    .then((events) => {
+                        events.forEach(function (evt) {
+                            self.events.push({
+                                start: moment.utc(evt.start).toDate(),
+                                end: moment.utc(evt.stop).toDate(),
+                                title: /* evt.partner_id[1] + " - " +*/ evt.name,
+                                allDay: evt.allday,
+                                id: evt.id,
+                                resourceId: evt.room_id[0],
+                                resourceName: evt.room_id[1],
+                                color: "#FA8FB1",
+                                user_id: evt.user_id[0],
+                            });
                         });
-                    });
-                    // Console.log([start, end, events])
-                    successCallback(self.events);
-                });
+                        // Console.log([start, end, events])
+                        successCallback(self.events);
+                    })
+                    .catch(failureCallback);
             }
         },
 
@@ -189,11 +191,11 @@ odoo.define("website_booking.browser", function (require) {
         template: "website_booking.new_booking_dialog",
 
         events: {
-            "click .cancel-modal": function (event) {
+            "click .cancel-modal": function () {
                 var self = this;
                 self.parent.main_modal.modal("close");
             },
-            "click .request-booking": function (event) {
+            "click .request-booking": function () {
                 var self = this;
                 var fromTime = self.$("#from_hour").timepicker("getTime");
                 var toTime = self.$("#to_hour").timepicker("getTime");
@@ -268,7 +270,7 @@ odoo.define("website_booking.browser", function (require) {
                     }
                 });
             },
-            "click .delete-booking": function (event) {
+            "click .delete-booking": function () {
                 var self = this;
                 rpc.query({
                     model: "calendar.event",
@@ -279,7 +281,7 @@ odoo.define("website_booking.browser", function (require) {
                     self.parent.main_modal.modal("close");
                 });
             },
-            "change .select-asset-id": function (event) {
+            "change .select-asset-id": function () {
                 this.schedule.set_asset_id(
                     parseInt(this.$("select.select-asset-id").val())
                 );
@@ -418,8 +420,6 @@ odoo.define("website_booking.browser", function (require) {
 
         click_scheduler: function (event) {
             var requested_date = event.data.date;
-            session.user_context.tz;
-            var id = time;
             this.$("#from_hour").timepicker("setTime", requested_date.format("HH:mm"));
             this.$("#to_hour").timepicker(
                 "option",
@@ -508,7 +508,6 @@ odoo.define("website_booking.browser", function (require) {
                 var self = this;
                 self.parent.$(".navbar-card.active").removeClass("active");
                 self.$(event.currentTarget).addClass("active");
-                var category_id = self.$(event.currentTarget).data("category-id");
                 if (self.to_parent) {
                     self.trigger_up("up_category", {category: self.category});
                 } else {
@@ -690,7 +689,7 @@ odoo.define("website_booking.browser", function (require) {
             }
         },
 
-        up_category: function (event) {
+        up_category: function () {
             var self = this;
             if (self.parent_category.isRoot) {
                 this.display_category = this.create_root();
@@ -728,7 +727,7 @@ odoo.define("website_booking.browser", function (require) {
                 /* ViewRender: function(view,element){
     		     self.trigger_up('switch_date', {'date' : self.calendar.getDate()});
     		},*/
-                eventClick: function (calEvent, jsEvent, view) {
+                eventClick: function (calEvent) {
                     var now = moment();
                     var event = calEvent.event;
                     if (
@@ -763,7 +762,7 @@ odoo.define("website_booking.browser", function (require) {
             });
         },
 
-        init: function (parent, value) {
+        init: function (parent) {
             this._super(parent);
             this.parent = parent;
         },
@@ -789,17 +788,19 @@ odoo.define("website_booking.browser", function (require) {
                 params: {
                     category_id: self.category_id,
                 },
-            }).then((assets) => {
-                assets.forEach(function (asset) {
-                    self.ressources.push({
-                        id: asset.id,
-                        title: asset.name,
-                        booking_policy: asset.booking_policy,
+            })
+                .then((assets) => {
+                    assets.forEach(function (asset) {
+                        self.ressources.push({
+                            id: asset.id,
+                            title: asset.name,
+                            booking_policy: asset.booking_policy,
+                        });
                     });
-                });
-                successCallback(self.ressources);
-                self.trigger_up("switch_ressources", {ressources: self.ressources});
-            });
+                    successCallback(self.ressources);
+                    self.trigger_up("switch_ressources", {ressources: self.ressources});
+                })
+                .catch(failureCallback);
         },
 
         fetch_events: function (fetchInfo, successCallback, failureCallback) {
@@ -822,37 +823,39 @@ odoo.define("website_booking.browser", function (require) {
                     start: time.datetime_to_str(start.toDate()),
                     end: time.datetime_to_str(end.toDate()),
                 },
-            }).then((events) => {
-                self.events = [];
-                events.forEach(function (evt) {
-                    var color = "#ff4355";
-                    if (evt.categ_ids.includes(9)) {
-                        color = "#00bcd4";
-                    } else if (evt.categ_ids.includes(7)) {
-                        color = "#2962ff";
-                    } else if (evt.categ_ids.includes(8)) {
-                        color = "#e65100";
-                    } else {
-                        /* If (session.uid == evt.user_id[0]) {
+            })
+                .then((events) => {
+                    self.events = [];
+                    events.forEach(function (evt) {
+                        var color = "#ff4355";
+                        if (evt.categ_ids.includes(9)) {
+                            color = "#00bcd4";
+                        } else if (evt.categ_ids.includes(7)) {
+                            color = "#2962ff";
+                        } else if (evt.categ_ids.includes(8)) {
+                            color = "#e65100";
+                        } else {
+                            /* If (session.uid == evt.user_id[0]) {
         	    	                color = '#ffc107';
         	    	            }*/
-                        color = "#ffc107";
-                    }
-                    self.events.push({
-                        start: moment.utc(evt.start).toDate(),
-                        end: moment.utc(evt.stop).toDate(),
-                        title: /* evt.partner_id[1] + " - " +*/ evt.name,
-                        allDay: evt.allday,
-                        id: evt.id,
-                        resourceId: evt.room_id[0],
-                        resourceName: evt.room_id[1],
-                        color: color,
-                        user_id: evt.user_id[0],
+                            color = "#ffc107";
+                        }
+                        self.events.push({
+                            start: moment.utc(evt.start).toDate(),
+                            end: moment.utc(evt.stop).toDate(),
+                            title: /* evt.partner_id[1] + " - " +*/ evt.name,
+                            allDay: evt.allday,
+                            id: evt.id,
+                            resourceId: evt.room_id[0],
+                            resourceName: evt.room_id[1],
+                            color: color,
+                            user_id: evt.user_id[0],
+                        });
                     });
-                });
-                // Console.log([start, end, events])
-                successCallback(self.events);
-            });
+                    // Console.log([start, end, events])
+                    successCallback(self.events);
+                })
+                .catch(failureCallback);
         },
 
         switch_category: function (category) {
@@ -875,7 +878,7 @@ odoo.define("website_booking.browser", function (require) {
         template: "website_booking.toolbar",
 
         events: {
-            "click #login-button": function (event) {
+            "click #login-button": function () {
                 rpc.query({
                     route: "/booking/login_providers",
                     params: {
@@ -888,14 +891,14 @@ odoo.define("website_booking.browser", function (require) {
                     }
                 });
             },
-            "click #help-booking-button": function (event) {
+            "click #help-booking-button": function () {
                 window.open(
                     "http://www.crlg.be/2018/03/15/musique-horizon-booking",
                     "_blank",
                     ""
                 );
             },
-            "click #logout-booking-button": function (event) {
+            "click #logout-booking-button": function () {
                 var self = this;
                 self.is_logged = false;
                 self.uid = false;
@@ -978,8 +981,7 @@ odoo.define("website_booking.browser", function (require) {
                 self.main_modal.modal("open");
             },
 
-            "click #goto-date-button": function (event) {
-                var self = this;
+            "click #goto-date-button": function () {
                 this.cal.goto_date(moment(this.$("#datepicker").val()).toDate());
             },
         },
@@ -989,18 +991,18 @@ odoo.define("website_booking.browser", function (require) {
             switch_category: "switch_category",
             switch_ressources: "switch_ressources",
             switch_date: "switch_date",
-            newEvent: function (event) {
+            newEvent: function () {
                 this.cal.refetch_events();
             },
-            deleteEvent: function (event) {
+            deleteEvent: function () {
                 this.cal.refetch_events();
             },
-            updateEvent: function (event) {
+            updateEvent: function () {
                 this.cal.refetch_events();
             },
         },
 
-        init: function (parent) {
+        init: function () {
             this._super.apply(this, arguments);
             /* TODO : why this.$('#main-modal') does not work ? */
             this._current_state = $.deparam(window.location.hash.substring(1));
