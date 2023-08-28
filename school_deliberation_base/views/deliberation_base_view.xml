@@ -21,7 +21,6 @@
 ##############################################################################
 -->
 <odoo>
-  <data>
     <!--
 
           Deliberation
@@ -80,47 +79,47 @@
         <form string="Deliberation">
           <header>
             <button
-                            name="to_draft"
-                            type="object"
-                            states="active,archived"
-                            string="Set to Draft"
-                        />
+                        name="to_draft"
+                        type="object"
+                        states="active,archived"
+                        string="Set to Draft"
+                    />
             <button
-                            name="activate"
-                            type="object"
-                            states="draft"
-                            string="Activate Deliberation"
-                            class="oe_highlight"
-                        />
+                        name="activate"
+                        type="object"
+                        states="draft"
+                        string="Activate Deliberation"
+                        class="oe_highlight"
+                    />
             <button
-                            name="archive"
-                            type="object"
-                            states="draft,active"
-                            string="Archive Deliberation"
-                        />
+                        name="archive"
+                        type="object"
+                        states="draft,active"
+                        string="Archive Deliberation"
+                    />
             <button
-                            name="action_populate_participants"
-                            type="object"
-                            states="draft"
-                            string="Populate Participants"
-                        />
+                        name="action_populate_participants"
+                        type="object"
+                        states="draft"
+                        string="Populate Participants"
+                    />
             <button
-                            name="action_open_deliberation_bloc"
-                            type="object"
-                            states="active"
-                            string="Deliberate Blocs"
-                        />
+                        name="action_open_deliberation_bloc"
+                        type="object"
+                        states="active"
+                        string="Deliberate Blocs"
+                    />
             <button
-                            name="action_open_deliberation_program"
-                            type="object"
-                            states="active"
-                            string="Deliberate Programs"
-                        />
+                        name="action_open_deliberation_program"
+                        type="object"
+                        states="active"
+                        string="Deliberate Programs"
+                    />
             <field
-                            name="state"
-                            widget="statusbar"
-                            statusbar_visible="draft,active,archived"
-                        />
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,active,archived"
+                    />
           </header>
           <sheet>
             <div class="oe_title">
@@ -133,24 +132,24 @@
               <field name="session" attrs="{'readonly': [('state', '!=', 'draft')]}" />
               <field name="date" attrs="{'readonly': [('state', '!=', 'draft')]}" />
               <field
-                                name="secretary_id"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
+                            name="secretary_id"
+                            attrs="{'readonly': [('state', '!=', 'draft')]}"
+                        />
               <field name="individual_program_count" />
               <field name="individual_bloc_count" />
             </group>
             <group col="2">
               <field
-                                name="individual_bloc_ids"
-                                attrs="{'readonly': [('state', '!=', 'draft')]}"
-                            />
+                            name="individual_bloc_ids"
+                            attrs="{'readonly': [('state', '!=', 'draft')]}"
+                        />
               <field name="individual_program_ids" readonly="1" force_save="1" />
               <field name="participant_ids" widget="many2many_tags" />
               <field
-                                name="excused_participant_ids"
-                                widget="many2many_tags"
-                                domain="[('id', 'in', participant_ids)]"
-                            />
+                            name="excused_participant_ids"
+                            widget="many2many_tags"
+                            domain="[('id', 'in', participant_ids)]"
+                        />
             </group>
           </sheet>
         </form>
@@ -262,28 +261,28 @@
         <search string="Search Deliberation">
           <field name="name" filter_domain="[('name', 'ilike',self)]" />
           <filter
-                        string="Current Year"
-                        name="current"
-                        domain="[('year_sequence','=','current')]"
-                    />
+                    string="Current Year"
+                    name="current"
+                    domain="[('year_sequence','=','current')]"
+                />
           <filter
-                        string="Next Year"
-                        name="next"
-                        domain="[('year_sequence','=','next')]"
-                    />
+                    string="Next Year"
+                    name="next"
+                    domain="[('year_sequence','=','next')]"
+                />
           <filter
-                        string="Previous Year"
-                        name="previous"
-                        domain="[('year_sequence','=','previous')]"
-                    />
+                    string="Previous Year"
+                    name="previous"
+                    domain="[('year_sequence','=','previous')]"
+                />
           <separator />
           <filter string="Draft" name="draft" domain="[('state','=','draft')]" />
           <filter string="Active" name="active" domain="[('state','=','active')]" />
           <filter
-                        string="Archived"
-                        name="archived"
-                        domain="[('state','=','archived')]"
-                    />
+                    string="Archived"
+                    name="archived"
+                    domain="[('state','=','archived')]"
+                />
           <searchpanel>
             <field name="state" icon="fa-users" enable_counters="1" />
           </searchpanel>
@@ -338,10 +337,10 @@
           <searchpanel>
             <field name="state" icon="fa-users" enable_counters="1" />
             <field
-                            name="source_bloc_speciality_id"
-                            icon="fa-briefcase"
-                            enable_counters="1"
-                        />
+                        name="source_bloc_speciality_id"
+                        icon="fa-briefcase"
+                        enable_counters="1"
+                    />
           </searchpanel>
         </search>
       </field>
@@ -375,14 +374,14 @@
           <templates>
             <t t-name="kanban-box">
               <div
-                                t-attf-class="deliberation_bloc_{{record.state.raw_value}} oe_kanban_global_click o_kanban_record_has_image_fill o_deliberation_bloc_kanban o_kanban_record"
-                            >
+                            t-attf-class="deliberation_bloc_{{record.state.raw_value}} oe_kanban_global_click o_kanban_record_has_image_fill o_deliberation_bloc_kanban o_kanban_record"
+                        >
                 <div class="o_kanban_record_top">
                   <div class="o_kanban_image">
                     <div class="o_kanban_image_wrapper">
                       <img
-                                                t-attf-src="#{kanban_image('res.partner', 'image_128', record.student_id.raw_value)}"
-                                            />
+                                            t-attf-src="#{kanban_image('res.partner', 'image_128', record.student_id.raw_value)}"
+                                        />
                     </div>
                   </div>
                   <div class="o_kanban_record_headings">
@@ -397,26 +396,26 @@
                             <div class="row">
                               <div class="col">
                                 <span
-                                                            class="badge badge-primary"
-                                                            t-esc="record.state.value"
-                                                        />
+                                                        class="badge badge-primary"
+                                                        t-esc="record.state.value"
+                                                    />
                               </div>
                               <div
-                                                        class="col"
-                                                        t-if="record.total_acquiered_credits.raw_value &gt;= record.total_registered_credits.raw_value"
-                                                    >
+                                                    class="col"
+                                                    t-if="record.total_acquiered_credits.raw_value &gt;= record.total_registered_credits.raw_value"
+                                                >
                                 <span class="badge badge-success"><t
-                                                                t-esc="record.total_acquiered_credits.value"
-                                                            />/<t
-                                                                t-esc="record.total_registered_credits.value"
-                                                            /></span>
+                                                            t-esc="record.total_acquiered_credits.value"
+                                                        />/<t
+                                                            t-esc="record.total_registered_credits.value"
+                                                        /></span>
                               </div>
                               <div class="col" t-else="1">
                                 <span class="badge badge-warning"><t
-                                                                t-esc="record.total_acquiered_credits.value"
-                                                            />/<t
-                                                                t-esc="record.total_registered_credits.value"
-                                                            /></span>
+                                                            t-esc="record.total_acquiered_credits.value"
+                                                        />/<t
+                                                            t-esc="record.total_registered_credits.value"
+                                                        /></span>
                               </div>
                             </div>
                           </div>
@@ -442,12 +441,12 @@
               <div class="row">
                 <div class="h-100 d-inline-block" style="width: 150px;">
                   <field
-                                        name="image_1920"
-                                        readonly="1"
-                                        widget="image"
-                                        class="oe_left oe_inline"
-                                        options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
-                                    />
+                                    name="image_1920"
+                                    readonly="1"
+                                    widget="image"
+                                    class="oe_left oe_inline"
+                                    options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
+                                />
                 </div>
                 <div class="col-8">
                   <h2>
@@ -463,15 +462,15 @@
                 <div class="col-2">
                   <button class="btn btn_credits mb-2" type="button" name="evaluation">
                     Evaluation<br /><span class="score_value"><field
-                                                name="evaluation"
-                                                class="oe_inline"
-                                            /></span>
+                                            name="evaluation"
+                                            class="oe_inline"
+                                        /></span>
                   </button><br />
                   <button class="btn btn_credits bg-info" type="button" name="ects">
                     ECTS<br /><span class="score_value"><field
-                                                name="total_acquiered_credits"
-                                                class="oe_inline"
-                                            /></span>
+                                            name="total_acquiered_credits"
+                                            class="oe_inline"
+                                        /></span>
                   </button>
                 </div>
               </div>
@@ -482,13 +481,13 @@
               <field name="program_id" invisible="1" />
               <field name="grade" attrs="{'readonly': [('state', '!=', 'progress')]}" />
               <field
-                                name="grade_comments"
-                                attrs="{'readonly': [('state', '!=', 'progress')]}"
-                            />
+                            name="grade_comments"
+                            attrs="{'readonly': [('state', '!=', 'progress')]}"
+                        />
               <field
-                                name="grade_default_comments"
-                                attrs="{'invisible': [('state', '!=', 'progress')]}"
-                            />
+                            name="grade_default_comments"
+                            attrs="{'invisible': [('state', '!=', 'progress')]}"
+                        />
             </group>
           </sheet>
         </form>
@@ -511,14 +510,14 @@
           <templates>
             <t t-name="kanban-box">
               <div
-                                t-attf-class="deliberation_bloc_{{record.state.raw_value}} oe_kanban_global_click o_kanban_record_has_image_fill o_deliberation_bloc_kanban o_kanban_record"
-                            >
+                            t-attf-class="deliberation_bloc_{{record.state.raw_value}} oe_kanban_global_click o_kanban_record_has_image_fill o_deliberation_bloc_kanban o_kanban_record"
+                        >
                 <div class="o_kanban_record_top">
                   <div class="o_kanban_image">
                     <div class="o_kanban_image_wrapper">
                       <img
-                                                t-attf-src="#{kanban_image('res.partner', 'image_128', record.student_id.raw_value)}"
-                                            />
+                                            t-attf-src="#{kanban_image('res.partner', 'image_128', record.student_id.raw_value)}"
+                                        />
                     </div>
                   </div>
                   <div class="o_kanban_record_headings">
@@ -533,26 +532,26 @@
                             <div class="row">
                               <div class="col">
                                 <span
-                                                            class="badge badge-primary"
-                                                            t-esc="record.state.value"
-                                                        />
+                                                        class="badge badge-primary"
+                                                        t-esc="record.state.value"
+                                                    />
                               </div>
                               <div
-                                                        class="col"
-                                                        t-if="record.total_acquiered_credits.raw_value &gt;= record.total_credits.raw_value"
-                                                    >
+                                                    class="col"
+                                                    t-if="record.total_acquiered_credits.raw_value &gt;= record.total_credits.raw_value"
+                                                >
                                 <span class="badge badge-success"><t
-                                                                t-esc="record.total_acquiered_credits.value"
-                                                            />/<t
-                                                                t-esc="record.total_credits.value"
-                                                            /></span>
+                                                            t-esc="record.total_acquiered_credits.value"
+                                                        />/<t
+                                                            t-esc="record.total_credits.value"
+                                                        /></span>
                               </div>
                               <div class="col" t-else="1">
                                 <span class="badge badge-warning"><t
-                                                                t-esc="record.total_acquiered_credits.value"
-                                                            />/<t
-                                                                t-esc="record.total_credits.value"
-                                                            /></span>
+                                                            t-esc="record.total_acquiered_credits.value"
+                                                        />/<t
+                                                            t-esc="record.total_credits.value"
+                                                        /></span>
                               </div>
                             </div>
                           </div>
@@ -578,12 +577,12 @@
               <div class="row">
                 <div class="h-100 d-inline-block" style="width: 150px;">
                   <field
-                                        name="image_1920"
-                                        readonly="1"
-                                        widget="image"
-                                        class="oe_left oe_inline"
-                                        options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
-                                    />
+                                    name="image_1920"
+                                    readonly="1"
+                                    widget="image"
+                                    class="oe_left oe_inline"
+                                    options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
+                                />
                 </div>
                 <div class="col-8">
                   <h2>
@@ -604,38 +603,38 @@
               </div>
               <div class="row">
                 <div class="alert mb-0" role="alert" style="font-size: larger;"><field
-                                        name="decision"
-                                    /></div>
+                                    name="decision"
+                                /></div>
               </div>
               <div class="row">
                 <button
-                                    name="set_to_postponed"
-                                    type="object"
-                                    states="progress"
-                                    string="Postponed"
-                                    class="oe_highlight mr-4"
-                                />
+                                name="set_to_postponed"
+                                type="object"
+                                states="progress"
+                                string="Postponed"
+                                class="oe_highlight mr-4"
+                            />
                 <button
-                                    name="set_to_awarded_first_session"
-                                    type="object"
-                                    states="progress"
-                                    string="Awarded"
-                                    class="oe_highlight"
-                                />
+                                name="set_to_awarded_first_session"
+                                type="object"
+                                states="progress"
+                                string="Awarded"
+                                class="oe_highlight"
+                            />
                 <button
-                                    name="set_to_failed"
-                                    type="object"
-                                    states="postponed"
-                                    string="Failed"
-                                    class="oe_highlight mr-4"
-                                />
+                                name="set_to_failed"
+                                type="object"
+                                states="postponed"
+                                string="Failed"
+                                class="oe_highlight mr-4"
+                            />
                 <button
-                                    name="set_to_awarded_second_session"
-                                    type="object"
-                                    states="postponed"
-                                    string="Awarded"
-                                    class="oe_highlight"
-                                />
+                                name="set_to_awarded_second_session"
+                                type="object"
+                                states="postponed"
+                                string="Awarded"
+                                class="oe_highlight"
+                            />
               </div>
             </div>
             <group col="2">
@@ -664,12 +663,12 @@
               <div class="row">
                 <div class="h-100 d-inline-block" style="width: 150px;">
                   <field
-                                        name="image_1920"
-                                        readonly="1"
-                                        widget="image"
-                                        class="oe_left oe_inline"
-                                        options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
-                                    />
+                                    name="image_1920"
+                                    readonly="1"
+                                    widget="image"
+                                    class="oe_left oe_inline"
+                                    options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
+                                />
                 </div>
                 <div class="col-8">
                   <h2>
@@ -713,9 +712,9 @@
     </record>
 
     <record
-            id="action_course_group_deliberation_form_view"
-            model="ir.actions.act_window"
-        >
+        id="action_course_group_deliberation_form_view"
+        model="ir.actions.act_window"
+    >
       <field name="name">Course Group Deliberation</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">school.course_group_deliberation</field>
@@ -725,11 +724,11 @@
     <!-- Top Menu item -->
 
     <menuitem
-            id="menu_deliberation_tree"
-            parent="school_evaluations.menu_main_evaluation"
-            action="action_deliberation_form"
-            sequence="60"
-        />
+        id="menu_deliberation_tree"
+        parent="school_evaluations.menu_main_evaluation"
+        action="action_deliberation_form"
+        sequence="60"
+    />
 
 
     <!-- Specific filters -->
@@ -742,38 +741,36 @@
             <xpath expr="//group" position="before">
                 <separator />
                 <filter
-                        name="no_first_delib"
-                        string="Has First Delib"
-                        domain='[["deliberation_ids.session","=","first"]]'
-                    />
+                    name="no_first_delib"
+                    string="Has First Delib"
+                    domain='[["deliberation_ids.session","=","first"]]'
+                />
                 <filter
-                        name="no_second_delib"
-                        string="Has Second Delib"
-                        domain='[["deliberation_ids.session","=","second"]]'
-                    />
+                    name="no_second_delib"
+                    string="Has Second Delib"
+                    domain='[["deliberation_ids.session","=","second"]]'
+                />
                 <filter
-                        name="no_third_delib"
-                        string="Has Third Delib"
-                        domain='[["deliberation_ids.session","=","third"]]'
-                    />
+                    name="no_third_delib"
+                    string="Has Third Delib"
+                    domain='[["deliberation_ids.session","=","third"]]'
+                />
                 <filter
-                        name="no_first_delib"
-                        string="No First Delib"
-                        domain='["|",["deliberation_ids","=",False],["deliberation_ids.session","!=","first"]]'
-                    />
+                    name="no_first_delib"
+                    string="No First Delib"
+                    domain='["|",["deliberation_ids","=",False],["deliberation_ids.session","!=","first"]]'
+                />
                 <filter
-                        name="no_second_delib"
-                        string="No Second Delib"
-                        domain='["|",["deliberation_ids","=",False],["deliberation_ids.session","!=","second"]]'
-                    />
+                    name="no_second_delib"
+                    string="No Second Delib"
+                    domain='["|",["deliberation_ids","=",False],["deliberation_ids.session","!=","second"]]'
+                />
                 <filter
-                        name="no_third_delib"
-                        string="No Third Delib"
-                        domain='["|",["deliberation_ids","=",False],["deliberation_ids.session","!=","third"]]'
-                    />
+                    name="no_third_delib"
+                    string="No Third Delib"
+                    domain='["|",["deliberation_ids","=",False],["deliberation_ids.session","!=","third"]]'
+                />
             </xpath>
         </field>
     </record>
-
-  </data>
 </odoo>

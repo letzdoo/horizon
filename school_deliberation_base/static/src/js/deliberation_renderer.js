@@ -32,11 +32,11 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
                 $("<button>")
                     .addClass("deliberation_next_button btn btn-lg")
                     .text("Next")
-                    .click((ev) => this.trigger_up("deliberate_next_bloc")),
+                    .click(() => this.trigger_up("deliberate_next_bloc")),
                 $("<button>")
                     .addClass("deliberation_previous_button btn btn-lg")
                     .text("Previous")
-                    .click((ev) => this.trigger_up("deliberate_previous_bloc"))
+                    .click(() => this.trigger_up("deliberate_previous_bloc"))
             );
             return $.when();
         },
@@ -115,7 +115,7 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
                         $("<button>")
                             .addClass("deliberation_next_button btn btn-lg")
                             .text("Next")
-                            .click((ev) => this.trigger_up("deliberate_next_bloc"))
+                            .click(() => this.trigger_up("deliberate_next_bloc"))
                     );
                 }
                 $col2.append($div);
@@ -221,7 +221,6 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
         },
 
         _renderContent: function () {
-            $;
             var record = this.state.data;
             var $content = $("<div>", {class: "row bloc_content mt-4"});
             var $col1 = $("<div>", {class: "col-2"});
@@ -364,9 +363,13 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
             return $content;
         },
 
-        _renderSideContent: function () {},
+        _renderSideContent: function () {
+            // Do nothing
+        },
 
-        _renderFooter: function () {},
+        _renderFooter: function () {
+            // Do nothing
+        },
 
         // --------------------------------------------------------------------------
         // Handlers
@@ -378,27 +381,27 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
             });
         },
 
-        _onClose: function (event) {
+        _onClose: function () {
             this.trigger_up("close");
         },
 
-        _onReloadBloc: function (event) {
+        _onReloadBloc: function () {
             this.trigger_up("reload_bloc");
         },
 
-        _onFailBloc: function (event) {
+        _onFailBloc: function () {
             this.trigger_up("fail_bloc");
         },
 
-        _onPostponeBloc: function (event) {
+        _onPostponeBloc: function () {
             this.trigger_up("postpone_bloc");
         },
 
-        _onAwardBloc: function (event) {
+        _onAwardBloc: function () {
             this.trigger_up("award_bloc");
         },
 
-        _onAwardProgram: function (event) {
+        _onAwardProgram: function () {
             this.trigger_up("award_program");
         },
 
@@ -419,7 +422,7 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
             var isCurrentRecord =
                 this.modelName === model &&
                 (this.recordData.id === id || (!this.recordData.id && !id));
-            var url;
+            var url = null;
             if (
                 isCurrentRecord &&
                 this.record[field] &&

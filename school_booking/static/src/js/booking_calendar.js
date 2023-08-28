@@ -29,7 +29,6 @@ odoo.define("school_booking.booking_calendar", function (require) {
     var Model = require("web.DataModel");
     var data = require("web.data");
     var CalendarView = require("web.CalendarView");
-    var BaseCalendar = require("web.CalendarView");
     var widgets = require("web.widgets");
 
     function reload_favorite_list(result) {
@@ -164,7 +163,7 @@ odoo.define("school_booking.booking_calendar", function (require) {
                     .query(["asset_id"])
                     .filter([["id", "=", this.view.dataset.context.uid]])
                     .first()
-                    .done(function (result) {
+                    .done(function () {
                         var asset_id = self.ir_asset_m2o.get_value();
                         self.ds_message = new data.DataSetSearch(
                             self,
@@ -268,13 +267,13 @@ odoo.define("school_booking.booking_calendar", function (require) {
 
                             if (!self.useContacts) {
                                 // If we use all peoples displayed in the current month as filter in sidebars
-                                var filter_item;
+                                var filter_item = null;
 
                                 self.now_filter_ids = [];
 
                                 var color_field = self.fields[self.color_field];
                                 _.each(events, function (e) {
-                                    var key,
+                                    var key = null,
                                         val = null;
                                     if (color_field.type == "selection") {
                                         key = e[self.color_field];

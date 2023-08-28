@@ -8,8 +8,6 @@ odoo.define("deliberation.DeliberationView", function (require) {
     var DeliberationModel = require("deliberation.DeliberationModel");
     var DeliberationRenderer = require("deliberation.DeliberationRenderer");
 
-    var Pager = require("web.Pager");
-
     var DeliberationView = BasicView.extend({
         display_name: "Deliberation",
         icon: "fa-pagelines",

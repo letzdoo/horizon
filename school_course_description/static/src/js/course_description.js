@@ -24,7 +24,6 @@ odoo.define("school_course_description.editor", function (require) {
     var core = require("web.core");
     var Model = require("web.Model");
     var Dialog = require("web.Dialog");
-    var website = require("website.website");
 
     var _t = core._t;
 

@@ -21,7 +21,6 @@
 ##############################################################################
 -->
 <odoo>
-    <data>
         <function model="website" name="init_crlg" />
         <function model="res.company" name="init_crlg_social_medias" />
 
@@ -59,5 +58,4 @@
             <field name="view_id" ref="website_crlg_portal.valves_professeurs_crlg" />
             <field name="website_indexed">False</field>
         </record>
-    </data>
 </odoo>

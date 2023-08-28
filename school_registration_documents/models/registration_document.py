@@ -49,9 +49,7 @@ class Partner(models.Model):
             ["student_id"],
             ["student_id"],
         )
-        result = {
-            data["student_id"][0]: data["student_id_count"] for data in docs_data
-        }
+        result = {data["student_id"][0]: data["student_id_count"] for data in docs_data}
         for partner in self:
             partner.official_document_count = len(partner.official_document_ids)
             partner.official_document_missing_count = result.get(partner.id, 0)

@@ -21,7 +21,6 @@
 ##############################################################################
 -->
 <odoo>
-    <data>
         <record id="res_config_settings_view_form" model="ir.ui.view">
             <field name="name">res.config.settings.view.form.inherit.evaluation</field>
             <field name="model">res.config.settings</field>
@@ -30,42 +29,42 @@
             <field name="arch" type="xml">
                 <xpath expr="//div[hasclass('settings')]" position="inside">
                     <div
-                        class="app_settings_block"
-                        data-string="Evaluation"
-                        string="Evaluation"
-                        data-key="evaluation"
-                        groups="base.group_system"
-                    >
+                    class="app_settings_block"
+                    data-string="Evaluation"
+                    string="Evaluation"
+                    data-key="evaluation"
+                    groups="base.group_system"
+                >
                         <h2>Evaluations</h2>
                         <div
-                            class="row mt16 o_settings_container"
-                            name="evaluation_setting_container"
-                        >
+                        class="row mt16 o_settings_container"
+                        name="evaluation_setting_container"
+                    >
                             <div
-                                class="col-12 col-lg-6 o_setting_box"
-                                id="evaluation"
-                                title="Configure evaluation that can be encoded by teachers."
-                            >
+                            class="col-12 col-lg-6 o_setting_box"
+                            id="evaluation"
+                            title="Configure evaluation that can be encoded by teachers."
+                        >
                                 <div class="o_setting_left_pane" />
                                 <div class="o_setting_right_pane">
                                     <span
-                                        class="o_form_label"
-                                    >Open year for encoding</span>
+                                    class="o_form_label"
+                                >Open year for encoding</span>
                                     <div class="content-group">
                                         <div class="row mt16">
                                             <label
-                                                string="Open Year"
-                                                for="evaluation_open_year_id"
-                                                class="col-lg-3 o_light_label"
-                                            />
+                                            string="Open Year"
+                                            for="evaluation_open_year_id"
+                                            class="col-lg-3 o_light_label"
+                                        />
                                             <field name="evaluation_open_year_id" />
                                         </div>
                                         <div class="row">
                                             <label
-                                                string="Open Session"
-                                                for="evaluation_open_session"
-                                                class="col-lg-3 o_light_label"
-                                            />
+                                            string="Open Session"
+                                            for="evaluation_open_session"
+                                            class="col-lg-3 o_light_label"
+                                        />
                                             <field name="evaluation_open_session" />
                                         </div>
                                     </div>
@@ -74,24 +73,24 @@
                         </div>
                         <h2>Affichage dans Responsive</h2>
                         <div
-                            class="row mt16 o_settings_container"
-                            name="display_results_setting_container"
-                        >
+                        class="row mt16 o_settings_container"
+                        name="display_results_setting_container"
+                    >
                             <div
-                                class="col-12 col-lg-6 o_setting_box"
-                                id="display_results"
-                                title="Display results in student portal."
-                            >
+                            class="col-12 col-lg-6 o_setting_box"
+                            id="display_results"
+                            title="Display results in student portal."
+                        >
                                 <div class="o_setting_left_pane" />
                                 <div class="o_setting_right_pane">
                                     <span class="o_form_label">Display Results</span>
                                     <div class="content-group">
                                         <div class="row mt16">
                                             <label
-                                                string="Afficher"
-                                                for="display_results"
-                                                class="col-lg-3 o_light_label"
-                                            />
+                                            string="Afficher"
+                                            for="display_results"
+                                            class="col-lg-3 o_light_label"
+                                        />
                                             <field name="display_results" />
                                         </div>
                                     </div>
@@ -102,5 +101,4 @@
                 </xpath>
             </field>
         </record>
-    </data>
 </odoo>
