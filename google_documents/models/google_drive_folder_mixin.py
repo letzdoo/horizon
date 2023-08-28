@@ -172,8 +172,6 @@ class GoogleDriveService(models.Model):
             )
             flow.redirect_uri = self._get_redirect_uri()
 
-            import logging
-
             logger = logging.getLogger()
             logger.setLevel(logging.DEBUG)
 

@@ -172,7 +172,6 @@ class IndividualProgram(models.Model):
     @api.onchange("source_program_id")
     def _on_change_source_program_id(self):
         self.ensure_one()
-        self.env["school.individual_course_summary"]
         self.env["school.individual_course_summary"].search(
             [("program_id", "=", self.id)]
         ).unlink()
@@ -408,35 +407,35 @@ class IndividualBloc(models.Model):
 
     source_bloc_domain_id = fields.Many2one(
         "school.domain",
-        compute="compute_speciality",
+        compute="_compute_speciality",
         string="Domain",
         readonly=True,
         store=True,
     )
     source_bloc_speciality_id = fields.Many2one(
         "school.speciality",
-        compute="compute_speciality",
+        compute="_compute_speciality",
         string="Speciality",
         readonly=True,
         store=True,
     )
     source_bloc_section_id = fields.Many2one(
         "school.section",
-        compute="compute_speciality",
+        compute="_compute_speciality",
         string="Section",
         readonly=True,
         store=True,
     )
     source_bloc_track_id = fields.Many2one(
         "school.track",
-        compute="compute_speciality",
+        compute="_compute_speciality",
         string="Track",
         readonly=True,
         store=True,
     )
     source_bloc_cycle_id = fields.Many2one(
         "school.cycle",
-        compute="compute_speciality",
+        compute="_compute_speciality",
         string="Cycle",
         readonly=True,
         store=True,
@@ -462,7 +461,7 @@ class IndividualBloc(models.Model):
             cg.write({"course_ids": courses})
 
     @api.depends("source_bloc_id.speciality_id", "program_id.speciality_id")
-    def compute_speciality(self):
+    def _compute_speciality(self):
         for bloc in self:
             if bloc.source_bloc_id.speciality_id:
                 bloc.source_bloc_speciality_id = bloc.source_bloc_id.speciality_id
@@ -549,7 +548,7 @@ class IndividualBloc(models.Model):
                         recipients, partner=bloc.student_id, reason=_("Student")
                     )
         except AccessError:  # no read access rights -> just ignore suggested recipients because this imply modifying followers
-            pass
+            return recipients
         return recipients
 
     course_count = fields.Integer(compute="_compute_course_count", string="Course")
@@ -601,7 +600,7 @@ class IndividualBloc(models.Model):
             ]
             if len(duplicates) > 0:
                 raise ValidationError(
-                    "Cannot have duplicated UE in a program : %s." % duplicates
+                    _(f"Cannot have duplicated UE in a program : {duplicates}.")
                 )
 
     ##############################################################################
@@ -893,14 +892,14 @@ class IndividualCourse(models.Model):
     )
 
     teacher_id = fields.Many2one(
-        "res.partner", string="Teacher", compute="compute_teacher_id", store=True
+        "res.partner", string="Teacher", compute="_compute_teacher_id", store=True
     )
     teacher_choice_id = fields.Many2one(
         "res.partner", string="Teacher Choice", domain=[("teacher", "=", 1)]
     )
 
     @api.depends("teacher_choice_id", "source_course_id.teacher_ids")
-    def compute_teacher_id(self):
+    def _compute_teacher_id(self):
         for rec in self:
             if rec.teacher_choice_id:
                 rec.teacher_id = rec.teacher_choice_id

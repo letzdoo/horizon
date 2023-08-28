@@ -60,7 +60,7 @@ class CourseGroup(models.Model):
                 rec.total_credits = rec.total_credits_to_select
                 rec.total_weight = rec.total_weight_to_select
             else:
-                super(CourseGroup, rec)._compute_courses_total()
+                return super(CourseGroup, rec)._compute_courses_total()
 
 
 class IndividualBloc(models.Model):

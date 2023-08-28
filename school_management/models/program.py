@@ -103,10 +103,10 @@ class Program(models.Model):
     )
 
     title = fields.Char(required=True, string="Title")
-    name = fields.Char(string="Name", compute="compute_name", store=True)
+    name = fields.Char(string="Name", compute="_compute_name", store=True)
 
     @api.depends("title", "year_id")
-    def compute_name(self):
+    def _compute_name(self):
         for prog in self:
             prog.name = "%s - %s" % (prog.year_id.short_name, prog.title)
 
@@ -278,7 +278,7 @@ class Bloc(models.Model):
 
     program_id = fields.Many2one("school.program", string="Program", copy=True)
 
-    name = fields.Char(string="Name", compute="compute_name", store=True)
+    name = fields.Char(string="Name", compute="_compute_name", store=True)
 
     course_group_ids = fields.Many2many(
         "school.course_group",
@@ -291,7 +291,7 @@ class Bloc(models.Model):
     )
 
     @api.depends("sequence", "title")
-    def compute_name(self):
+    def _compute_name(self):
         for bloc in self:
             bloc.name = "%s - %d" % (bloc.title, bloc.sequence)
 
@@ -366,7 +366,7 @@ class CourseGroup(models.Model):
     )
 
     default_responsible_id = fields.Many2one(
-        "res.partner", compute="compute_default_responsible_id"
+        "res.partner", compute="_compute_default_responsible_id"
     )
 
     course_ids = fields.One2many(
@@ -388,8 +388,8 @@ class CourseGroup(models.Model):
                 rec.quadri = "Q1&Q2"
 
     @api.depends("course_ids.teacher_ids")
-    def compute_default_responsible_id(self):
-        _logger.info("compute_default_responsible_id")
+    def _compute_default_responsible_id(self):
+        _logger.info("_compute_default_responsible_id")
         for rec in self:
             all_teacher_ids = rec.course_ids.mapped("teacher_ids")
             if len(all_teacher_ids) == 1:
@@ -410,11 +410,11 @@ class CourseGroup(models.Model):
         copy=False,
     )
 
-    name = fields.Char(string="Name", compute="compute_ue_name", store=True)
-    ue_id = fields.Char(string="UE Id", compute="compute_ue_name", store=True)
+    name = fields.Char(string="Name", compute="_compute_ue_name", store=True)
+    ue_id = fields.Char(string="UE Id", compute="_compute_ue_name", store=True)
 
     @api.depends("title", "level")
-    def compute_ue_name(self):
+    def _compute_ue_name(self):
         for course_g in self:
             if course_g.level:
                 course_g.name = "%s - %s" % (course_g.title, course_g.level)
@@ -458,8 +458,9 @@ class CourseGroup(models.Model):
                 and not self.env.user._is_admin()
             ):
                 raise UserError(
-                    "Cannot change credits or hours of courses used in an active or archived program : %s in %s"
-                    % (course_id.name, bloc_id.name)
+                    _(
+                        f"Cannot change credits or hours of courses used in an active or archived program : {course_id.name} in {bloc_id.name}"
+                    )
                 )
 
     @api.model
@@ -536,7 +537,7 @@ class Course(models.Model):
 
     notes = fields.Text(string="Notes")
 
-    name = fields.Char(string="Name", compute="compute_name", store=True)
+    name = fields.Char(string="Name", compute="_compute_name", store=True)
 
     is_annual = fields.Boolean(string="Is Annual", default=False)
     has_second_session = fields.Boolean(string="Has a second session", default=True)
@@ -544,7 +545,7 @@ class Course(models.Model):
     bloc_ids = fields.Many2many("school.bloc", related="course_group_id.bloc_ids")
 
     @api.depends("title", "level")
-    def compute_name(self):
+    def _compute_name(self):
         for course in self:
             if course.level:
                 course.name = "%s - %s" % (course.title, course.level)

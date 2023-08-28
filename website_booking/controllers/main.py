@@ -146,7 +146,7 @@ class BookingController(http.Controller):
             ret = (
                 request.env["calendar.event"]
                 .sudo()
-                .with_context({"virtual_id": True})
+                .with_context(virtual_id=True)
                 .search_read(domain, event_fields)
             )
         else:
@@ -160,7 +160,7 @@ class BookingController(http.Controller):
             ret = (
                 request.env["calendar.event"]
                 .sudo()
-                .with_context({"virtual_id": True})
+                .with_context(virtual_id=True)
                 .search_read(domain, event_fields)
             )
         return ret
@@ -193,7 +193,7 @@ class BookingController(http.Controller):
         ret = (
             request.env["calendar.event"]
             .sudo()
-            .with_context({"virtual_id": True})
+            .with_context(virtual_id=True)
             .search_read(domain, event_fields, order="start asc")
         )
         return ret
@@ -228,7 +228,7 @@ class BookingController(http.Controller):
         ret = (
             request.env["calendar.event"]
             .sudo()
-            .with_context({"virtual_id": True})
+            .with_context(virtual_id=True)
             .search_read(domain, event_fields, order="start ASC")
         )
         return ret
@@ -262,7 +262,7 @@ class BookingController(http.Controller):
         busy_rooms_ids = (
             request.env["calendar.event"]
             .sudo()
-            .with_context({"virtual_id": True})
+            .with_context(virtual_id=True)
             .search(domain)
         )
         busy_rooms_ids = (

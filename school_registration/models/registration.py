@@ -21,6 +21,7 @@ import json
 import logging
 
 import requests
+from requests.exceptions import Timeout
 
 from odoo import fields, models, tools
 
@@ -198,12 +199,16 @@ class Registration(models.Model):
         day, month, year = date_str.split("/")
         return f"{year}-{month}-{day}"
 
-    def _extract_base64_data_from_url(self, url):
-        # Retrieve the image from the URL
-        response = requests.get(url)
-        if response and response.ok:
-            return tools.image_process(response.content)
-        else:
+    def _extract_base64_data_from_url(self, url, timeout=10):
+        try:
+            # Retrieve the image from the URL with a timeout
+            response = requests.get(url, timeout=timeout)
+            if response and response.ok:
+                return tools.image_process(response.content)
+            else:
+                return False
+        except Timeout:
+            _logger.debug("Request timed out.")
             return False
 
     def _extract_base64_data_from_data_url(self, data_url):
@@ -255,9 +260,9 @@ class Registration(models.Model):
                             attachment = self.env["ir.attachment"].browse(attachment_id)
                             if attachment and attachment.type == "binary":
                                 student_id.image_1920 = attachment.datas
-            except BaseException:
+            except BaseException as e:
                 # We do our best here
-                pass
+                _logger.info("Error while updating photo %s" % e)
             student_id.street = contact_data.get("adresseLigne", False)
             student_id.city = contact_data.get("ville", False)
             student_id.zip = contact_data.get("codePostal", False)
