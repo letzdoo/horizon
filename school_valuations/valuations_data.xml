@@ -28,19 +28,23 @@
         <field name="padding">6</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
-        <field name="company_id"></field>
+        <field name="company_id" />
     </record>
     
     <!--Email template -->
     <record id="email_template_valuation_teacher" model="mail.template">
         <field name="name">Valuation - Teacher Mail</field>
-        <field name="email_to">${(object.responsible_id.email and '%s &lt;%s&gt;' % (object.responsible_id.name, object.responsible_id.email) or '')|safe}</field>
+        <field
+            name="email_to"
+        >${(object.responsible_id.email and '%s &lt;%s&gt;' % (object.responsible_id.name, object.responsible_id.email) or '')|safe}</field>
         <field name="subject">Demande de valorisation d'une unité d'enseignement</field>
         <field name="partner_to">${object.responsible_id.id}</field>
-        <field name="model_id" ref="model_school_valuation_followup"/>
-        <field name="auto_delete" eval="False"/>
+        <field name="model_id" ref="model_school_valuation_followup" />
+        <field name="auto_delete" eval="False" />
         <field name="lang">${object.responsible_id.lang}</field>
-        <field name="body_html"><![CDATA[
+        <field
+            name="body_html"
+        ><![CDATA[
             <div style="font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; ">
                 <p>Bonjour ${object.responsible_id.name},</p>
                 <br/>

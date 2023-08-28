@@ -13,37 +13,64 @@
                     <div class="col-12">
                         <h1 class="mb-3">Programmes</h1>
                         <div class="mt-4">
-                            <t t-call="website_school_management.programmes_breadcrumb"/>
-                            <div class="breadcrumb_next_step mb-4" t-if="len(options) != 0">
-                                <span class="fw-bold d-flex align-items-center"><i class="fa fa-filter fs-4 me-1 accented-color" aria-hidden="true"></i>Sélectionner :</span>
+                            <t
+                                t-call="website_school_management.programmes_breadcrumb"
+                            />
+                            <div
+                                class="breadcrumb_next_step mb-4"
+                                t-if="len(options) != 0"
+                            >
+                                <span class="fw-bold d-flex align-items-center"><i
+                                        class="fa fa-filter fs-4 me-1 accented-color"
+                                        aria-hidden="true"
+                                    />Sélectionner :</span>
                                 <t t-foreach="options" t-as="option">
-                                    <a t-att-title="'Sélectionner ' + option['name']" class="btn btn-outline-primary btn-sm fw-bold" t-att-href="option ['uri']"><t t-esc="option['name']" /></a>
+                                    <a
+                                        t-att-title="'Sélectionner ' + option['name']"
+                                        class="btn btn-outline-primary btn-sm fw-bold"
+                                        t-att-href="option ['uri']"
+                                    ><t t-esc="option['name']" /></a>
                                 </t>
                             </div>
-                            <hr class="my-0"/>
+                            <hr class="my-0" />
                         </div>
                     </div> 
                     <div class="col-12">
-                        <t t-set="current_cycle" t-value="False"/>
-                        <t t-set="d" t-value="False"/>
-                        <t t-set="c" t-value="False"/>
+                        <t t-set="current_cycle" t-value="False" />
+                        <t t-set="d" t-value="False" />
+                        <t t-set="c" t-value="False" />
                         <t t-foreach="program_list" t-as="program">
-                            <t t-if="(current_cycle != False) and (current_cycle != program.cycle_id.id)" t-call="website_school_management.close_list" />
+                            <t
+                                t-if="(current_cycle != False) and (current_cycle != program.cycle_id.id)"
+                                t-call="website_school_management.close_list"
+                            />
                             <t t-if="d != program.domain_name">
                                 <h3 class="mt-4" t-esc="program.domain_name" />
-                                <t t-set="d" t-value="program.domain_name"/>
-                                <t t-set="c" t-value="False"/>
+                                <t t-set="d" t-value="program.domain_name" />
+                                <t t-set="c" t-value="False" />
                             </t>
                             <t t-if="c != program.cycle_id">
-                                <h4 class="ps-3 mt-4 mb-3" t-esc="program.cycle_id.name" />
-                                <t t-set="c" t-value="program.cycle_id"/>
+                                <h4
+                                    class="ps-3 mt-4 mb-3"
+                                    t-esc="program.cycle_id.name"
+                                />
+                                <t t-set="c" t-value="program.cycle_id" />
                             </t>
-                            <t t-if="(current_cycle == False) or (current_cycle != program.cycle_id.id)" t-call="website_school_management.open_list" />
+                            <t
+                                t-if="(current_cycle == False) or (current_cycle != program.cycle_id.id)"
+                                t-call="website_school_management.open_list"
+                            />
                             <li class="list-group-item">
-                                <a t-att-href="'/programme/%s' %slug(program)" t-esc="program.name" />
+                                <a
+                                    t-att-href="'/programme/%s' %slug(program)"
+                                    t-esc="program.name"
+                                />
                             </li>
-                            <t t-set="current_cycle" t-value="program.cycle_id.id"/>
-                            <t t-if="program_index == (len(program_list) - 1)" t-call="website_school_management.close_list" />
+                            <t t-set="current_cycle" t-value="program.cycle_id.id" />
+                            <t
+                                t-if="program_index == (len(program_list) - 1)"
+                                t-call="website_school_management.close_list"
+                            />
                         </t>
                     </div> 
                 </div>    
@@ -61,19 +88,34 @@
             <div class="container my-5">
                 <div class="row">
                     <div class="col-12">
-                        <div class="d-flex flex-column-reverse flex-sm-row align-items-center align-items-sm-start justify-content-sm-between gap-4">
+                        <div
+                            class="d-flex flex-column-reverse flex-sm-row align-items-center align-items-sm-start justify-content-sm-between gap-4"
+                        >
                             <h1 t-esc="program.name" />
-                            <a class="d-flex gap-3 align-items-center justify-content-center btn btn-primary h-fit-content w-fit-content" t-att-href="'/impression_programme/%s' %slug(program)" target="_blank" title="Imprimer le programme de cours" >
-                                <span class="d-sm-none fw-bold">Imprimer le programme</span>
-                                <i class="fa fa-print fs-3" aria-hidden="true"></i>
-                                <span class="sr-only">Imprimer le programme de cours</span>
+                            <a
+                                class="d-flex gap-3 align-items-center justify-content-center btn btn-primary h-fit-content w-fit-content"
+                                t-att-href="'/impression_programme/%s' %slug(program)"
+                                target="_blank"
+                                title="Imprimer le programme de cours"
+                            >
+                                <span
+                                    class="d-sm-none fw-bold"
+                                >Imprimer le programme</span>
+                                <i class="fa fa-print fs-3" aria-hidden="true" />
+                                <span
+                                    class="sr-only"
+                                >Imprimer le programme de cours</span>
                             </a> 
                         </div>
                         <div class="mt-4">
-                            <t t-call="website_school_management.programmes_breadcrumb"/>
-                            <hr class="mt-0 mb-4"/>
+                            <t
+                                t-call="website_school_management.programmes_breadcrumb"
+                            />
+                            <hr class="mt-0 mb-4" />
                         </div>
-                        <t t-call="website_school_management.programme_details_contenu"/>
+                        <t
+                            t-call="website_school_management.programme_details_contenu"
+                        />
                     </div> 
                 </div>    
             </div>    
@@ -83,36 +125,59 @@
     <template id="programme_details_contenu" name="Program Details Content">
         <dl class="d-flex flex-wrap pt-2 mb-4">
             <div class="flex-grow-1">
-                <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Domaine</dt>
-                <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3" t-esc="program.domain_name" />
+                <dt
+                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                >Domaine</dt>
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.domain_name"
+                />
             </div>
             <div class="flex-grow-1">
                 <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Cycle</dt>
-                <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3" t-esc="program.cycle_id.name" />
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.cycle_id.name"
+                />
             </div>
             <div class="flex-grow-1">
-                <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Section</dt>
-                <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3" t-esc="program.speciality_id.section_id.name" />
+                <dt
+                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                >Section</dt>
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.speciality_id.section_id.name"
+                />
             </div>
             <div class="flex-grow-1">
-                <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Orientation</dt>
-                <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3" t-esc="program.speciality_id.track_id.name" />
+                <dt
+                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                >Orientation</dt>
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.speciality_id.track_id.name"
+                />
             </div>
             <div class="flex-grow-1">
-                <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Spécialité</dt>
-                <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3" t-esc="program.speciality_id.name" />
+                <dt
+                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                >Spécialité</dt>
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.speciality_id.name"
+                />
             </div>
         </dl>
         <div t-if="program.description">
             <h2 class="mb-4">Vade-mecum</h2>
-            <p t-esc="program.description"/>
+            <p t-esc="program.description" />
         </div>
-            <hr class="my-4"/>
+            <hr class="my-4" />
         <div>
             <h2 class="mb-4">Programme des cours</h2>
             <div class="accordion -accordion-program_detail" id="program_detail">
                 <div t-foreach="program.bloc_ids" t-as="bloc">
-                    <t t-call="website_school_management.school_bloc_contenu"/>
+                    <t t-call="website_school_management.school_bloc_contenu" />
                 </div>
             </div>
         </div>
@@ -121,42 +186,77 @@
     <template id="school_bloc_contenu" name="Bloc">
         <div class="accordion-item border mb-4">
             <h3 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" t-attf-data-bs-target="#collapse{{bloc.id}}" aria-expanded="true" t-attf-aria-controls="collapse{{bloc.id}}">
+                <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    t-attf-data-bs-target="#collapse{{bloc.id}}"
+                    aria-expanded="true"
+                    t-attf-aria-controls="collapse{{bloc.id}}"
+                >
                         <div class="d-flex flex-column">
-                            <span class="fs-2"><t t-esc="bloc.name"/></span>
+                            <span class="fs-2"><t t-esc="bloc.name" /></span>
                             <div class="mt-2 d-flex gap-2">
                                 <span>
                                     Heures&amp;nbsp;: 
-                                    <span class="fw-bold accented-color" t-esc="bloc.total_hours"/>
+                                    <span
+                                    class="fw-bold accented-color"
+                                    t-esc="bloc.total_hours"
+                                />
                                 </span>
                                 <span>|</span>
                                 <span>
                                     ECTS&amp;nbsp;: 
-                                    <span class="fw-bold accented-color" t-esc="bloc.total_credits"/>
+                                    <span
+                                    class="fw-bold accented-color"
+                                    t-esc="bloc.total_credits"
+                                />
                                 </span>
                             </div>
                         </div>
                 </button>
             </h3>
-            <div t-attf-id="collapse{{bloc.id}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#program_detail">
+            <div
+                t-attf-id="collapse{{bloc.id}}"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingOne"
+                data-bs-parent="#program_detail"
+            >
                 <div class="accordion-body border-top pt-2 pt-lg-0 px-2 px-lg-4">
-                    <t t-set="course_group_group" t-value=""/>
+                    <t t-set="course_group_group" t-value="" />
                     <!-- Groupes de cours -->
-                    <t t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)" t-as="course_group">
+                    <t
+                        t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)"
+                        t-as="course_group"
+                    >
                         <!-- Groupe du groupe de cours -->
-                        <t t-if="course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group">
-                            <h4 class="mt-5" t-esc="course_group.cg_grouping.name"/>
+                        <t
+                            t-if="course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group"
+                        >
+                            <h4 class="mt-5" t-esc="course_group.cg_grouping.name" />
                         </t>
-                        <t t-set="course_group_group" t-value="course_group.cg_grouping.id"/>
-                        <h5 class="group-title w-fit-content border border-bottom-0 d-flex flex-column gap-2 mt-3 mt-lg-5 mb-0 py-2 px-4">
+                        <t
+                            t-set="course_group_group"
+                            t-value="course_group.cg_grouping.id"
+                        />
+                        <h5
+                            class="group-title w-fit-content border border-bottom-0 d-flex flex-column gap-2 mt-3 mt-lg-5 mb-0 py-2 px-4"
+                        >
                             <span class="d-flex flex-wrap gap-2">
-                            <span class="d-none d-lg-inline">Unité d’enseignement&amp;nbsp;: </span><t class="d-block p-0" t-esc="course_group.title" />
+                            <span
+                                    class="d-none d-lg-inline"
+                                >Unité d’enseignement&amp;nbsp;: </span><t
+                                    class="d-block p-0"
+                                    t-esc="course_group.title"
+                                />
                             </span>
                             <span class="d-flex flex-wrap gap-2 fs-6">
-                                <span class="d-none d-lg-inline">Responsable&amp;nbsp;:</span>
+                                <span
+                                    class="d-none d-lg-inline"
+                                >Responsable&amp;nbsp;:</span>
                                 <span class="d-inline d-lg-none">Resp.:</span>
                                 <span class="fw-normal fst-italic">
-                                    <t t-esc="course_group.responsible_id.name"/>
+                                    <t t-esc="course_group.responsible_id.name" />
                                 </span>
                             </span>
                         </h5>
@@ -186,34 +286,56 @@
                                     <div class="table-row">
                                         <div class="cell border" data-title="Code">
                                             <span class="cell-value">
-                                                <t t-esc="course_group.ue_id"/>
+                                                <t t-esc="course_group.ue_id" />
                                             </span>
                                         </div>
                                         <div class="cell border" data-title="Heures">
                                             <span class="cell-value">
-                                                <t t-esc="course_group.total_hours"/>
+                                                <t t-esc="course_group.total_hours" />
                                             </span>
                                         </div>
                                         <div class="cell border" data-title="ECTS">
                                             <span class="cell-value">
-                                                <t t-esc="course_group.total_credits"/>
+                                                <t t-esc="course_group.total_credits" />
                                             </span>
                                         </div>
-                                        <div class="cell border" data-title="Pré-requis">
+                                        <div
+                                            class="cell border"
+                                            data-title="Pré-requis"
+                                        >
                                             <span class="cell-value">
-                                                <t t-if="course_group.pre_requisit_ids"><span t-esc="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"/></t>
-                                                <t t-if="not(course_group.pre_requisit_ids)">/</t>
+                                                <t
+                                                    t-if="course_group.pre_requisit_ids"
+                                                ><span
+                                                        t-esc="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"
+                                                    /></t>
+                                                <t
+                                                    t-if="not(course_group.pre_requisit_ids)"
+                                                >/</t>
                                             </span>
                                         </div>
                                         <div class="cell border" data-title="Co-requis">
                                             <span class="cell-value">
-                                                <t t-if="course_group.co_requisit_ids"><span t-esc="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"/></t>
-                                                <t t-if="not(course_group.co_requisit_ids)">/</t>
+                                                <t
+                                                    t-if="course_group.co_requisit_ids"
+                                                ><span
+                                                        t-esc="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"
+                                                    /></t>
+                                                <t
+                                                    t-if="not(course_group.co_requisit_ids)"
+                                                >/</t>
                                             </span>
                                         </div>
-                                        <div class="cell border" data-title="Obligatoire">
+                                        <div
+                                            class="cell border"
+                                            data-title="Obligatoire"
+                                        >
                                             <span class="cell-value">
-                                                <t t-if="course_group.mandatory">Oui</t><t t-if="not(course_group.mandatory)">Non</t>
+                                                <t
+                                                    t-if="course_group.mandatory"
+                                                >Oui</t><t
+                                                    t-if="not(course_group.mandatory)"
+                                                >Non</t>
                                             </span>
                                         </div>
                                     </div>
@@ -240,32 +362,52 @@
                                             Quadri
                                         </div>
                                     </div>
-                                    <t t-foreach="course_group.course_ids" t-as="course">
+                                    <t
+                                            t-foreach="course_group.course_ids"
+                                            t-as="course"
+                                        >
                                         <div class="table-row -cours">
-                                            <div class="cell cell-name border" data-title="Nom">
+                                            <div
+                                                    class="cell cell-name border"
+                                                    data-title="Nom"
+                                                >
                                                 <span class="cell-value">
-                                                    <a class="link-primary p-0" t-esc="course.title" t-att-href="'/cours/%s' % slug(course)" target="_blank"/>
+                                                    <a
+                                                            class="link-primary p-0"
+                                                            t-esc="course.title"
+                                                            t-att-href="'/cours/%s' % slug(course)"
+                                                            target="_blank"
+                                                        />
                                                 </span>
                                             </div>
-                                            <div class="cell border" data-title="Heures">
+                                            <div
+                                                    class="cell border"
+                                                    data-title="Heures"
+                                                >
                                                 <span class="cell-value">
-                                                    <t t-esc="course.hours"/>
+                                                    <t t-esc="course.hours" />
                                                 </span>
                                             </div>
                                             <div class="cell border" data-title="ECTS">
                                                 <span class="cell-value">
-                                                    <t t-esc="course.credits"/>
+                                                    <t t-esc="course.credits" />
                                                 </span>
                                             </div>
-                                            <div class="cell border" data-title="Pondération">
+                                            <div
+                                                    class="cell border"
+                                                    data-title="Pondération"
+                                                >
                                                 <span class="cell-value">
-                                                    <t t-esc="course.weight"/>
+                                                    <t t-esc="course.weight" />
                                                 </span>
                                             </div>
-                                            <div class="cell border" data-title="Quadri">
+                                            <div
+                                                    class="cell border"
+                                                    data-title="Quadri"
+                                                >
                                                 <t t-if="course.quadri">
                                                     <span class="cell-value">
-                                                        <t t-esc="course.quadri"/>
+                                                        <t t-esc="course.quadri" />
                                                     </span>
                                                 </t>
                                                 <t t-else="">
@@ -297,7 +439,10 @@
                 <div class="row">
                     <div class="col-12">
                         <t t-set="course_doc" t-value="course.documentation_id" />
-                        <t t-call="website_school_management.cours_fiche_details" t-if="not(course_group_id) or course_doc.course_group_id.id == course_group_id" />
+                        <t
+                            t-call="website_school_management.cours_fiche_details"
+                            t-if="not(course_group_id) or course_doc.course_group_id.id == course_group_id"
+                        />
                     </div>
                 </div>
             </div>
@@ -306,74 +451,121 @@
 
     <template id="cours_fiche_details">
         <div>
-            <h1 t-out="course.name"/>
+            <h1 t-out="course.name" />
             <t t-if="course_doc.author_id">
-                <span class="d-block h5 text-muted">Par <span class="fst-italic" t-field="course_doc.author_id"/></span>
+                <span class="d-block h5 text-muted">Par <span
+                        class="fst-italic"
+                        t-field="course_doc.author_id"
+                    /></span>
             </t>
         </div>
         <dl class="d-flex flex-wrap pt-2 mt-3 mb-4">
             <t t-if="course.cycle_id">
                 <div class="flex-grow-1">
-                    <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Cycle</dt>
-                    <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3">
-                        <span t-field="course.cycle_id"/>
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Cycle</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <span t-field="course.cycle_id" />
                     </dd>
                 </div>
             </t>
             <t t-if="course.course_group_id.ue_id or course.course_group_id">
                 <div class="flex-grow-1">
-                    <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Groupe de cours</dt>
-                    <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3">
-                        <span t-field="course.course_group_id.ue_id"/> - <span t-field="course.course_group_id"/>
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Groupe de cours</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <span t-field="course.course_group_id.ue_id" /> - <span
+                            t-field="course.course_group_id"
+                        />
                     </dd>
                 </div>
             </t>
             <t t-if="course.level">
                 <div class="flex-grow-1">
-                    <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Niveau</dt>
-                    <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3" t-esc="course.level" />
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Niveau</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                        t-esc="course.level"
+                    />
                 </div>
             </t>
             <t t-if="course.credits">
                 <div class="flex-grow-1">
-                    <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Crédits</dt>
-                    <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3" t-esc="course.credits" />
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Crédits</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                        t-esc="course.credits"
+                    />
                 </div>
             </t>
             <t t-if="course.hours">
                 <div class="flex-grow-1">
-                    <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Heures</dt>
-                    <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3" t-esc="course.hours" />
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Heures</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                        t-esc="course.hours"
+                    />
                 </div>
             </t>
             <t t-if="course.weight">
                 <div class="flex-grow-1">
-                    <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Pondération</dt>
-                    <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3">
-                        <span t-field="course.weight"/>
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Pondération</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <span t-field="course.weight" />
                     </dd>
                 </div>
             </t>
             <t t-if="course_doc.mandatory != Null">
                 <div class="flex-grow-1">
-                    <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Obligatoire</dt>
-                    <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3">
-                        <t t-if="course_doc.mandatory">Oui</t><t t-if="not(course_doc.mandatory)">Non</t>
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Obligatoire</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <t t-if="course_doc.mandatory">Oui</t><t
+                            t-if="not(course_doc.mandatory)"
+                        >Non</t>
                     </dd>
                 </div>
             </t>
             <t t-if="course_doc.language">
                 <div class="flex-grow-1">
-                    <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Langue</dt>
-                    <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3">
-                        <span t-field="course_doc.language"/>
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Langue</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <span t-field="course_doc.language" />
                     </dd>
                 </div>
             </t>
             <t t-if="course_doc.staff_ids">
                 <div class="flex-grow-1">
-                    <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Professeurs</dt>
-                    <dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3" t-esc="', '.join(map( lambda x: x.name, course_doc.staff_ids))" />
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Professeurs</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                        t-esc="', '.join(map( lambda x: x.name, course_doc.staff_ids))"
+                    />
                 </div>
             </t>
         </dl>
@@ -381,18 +573,30 @@
             <t t-if="course_doc.schedule_text">
                 <div class="accordion-item border mb-4">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#collapse_horaire" aria-controls="collapse_horaire">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            aria-expanded="false"
+                            data-bs-target="#collapse_horaire"
+                            aria-controls="collapse_horaire"
+                        >
                             <span class="h4">
                                 Horaire 
                                 <span class="accented-color">|</span> 
-                                <span t-field="course_doc.schedule"/>
+                                <span t-field="course_doc.schedule" />
                             </span> 
                         </button>
                     </h2>
-                    <div class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#course_detail" id="collapse_horaire">
+                    <div
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#course_detail"
+                        id="collapse_horaire"
+                    >
                         <div class="accordion-body border-top px-2 px-lg-4">
                             <div class="group-content p-3 border">
-                                <span t-raw="course_doc.schedule_text"/>
+                                <span t-raw="course_doc.schedule_text" />
                             </div>
                         </div>
                     </div>
@@ -411,16 +615,28 @@
             <t t-if="course_doc.content">
                 <div class="accordion-item border mb-4">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#collapse_contenu" aria-controls="collapse_contenu">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            aria-expanded="false"
+                            data-bs-target="#collapse_contenu"
+                            aria-controls="collapse_contenu"
+                        >
                             <span class="h4">
                                 Contenu 
                             </span> 
                         </button>
                     </h2>
-                    <div class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#course_detail" id="collapse_contenu">
+                    <div
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#course_detail"
+                        id="collapse_contenu"
+                    >
                         <div class="accordion-body border-top px-2 px-lg-4">
                             <div class="group-content p-3 border">
-                                <span t-raw="course_doc.content"/>
+                                <span t-raw="course_doc.content" />
                             </div>
                         </div>
                     </div>
@@ -439,16 +655,28 @@
             <t t-if="course_doc.method">
                 <div class="accordion-item border mb-4">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#collapse_methode" aria-controls="collapse_methode">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            aria-expanded="false"
+                            data-bs-target="#collapse_methode"
+                            aria-controls="collapse_methode"
+                        >
                             <span class="h4">
                                 Méthode 
                             </span> 
                         </button>
                     </h2>
-                    <div class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#course_detail" id="collapse_methode">
+                    <div
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#course_detail"
+                        id="collapse_methode"
+                    >
                         <div class="accordion-body border-top px-2 px-lg-4">
                             <div class="group-content p-3 border">
-                                <span t-raw="course_doc.method"/>
+                                <span t-raw="course_doc.method" />
                             </div>
                         </div>
                     </div>
@@ -467,16 +695,28 @@
             <t t-if="course_doc.learning_outcomes">
                 <div class="accordion-item border mb-4">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#collapse_resultats" aria-controls="collapse_resultats">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            aria-expanded="false"
+                            data-bs-target="#collapse_resultats"
+                            aria-controls="collapse_resultats"
+                        >
                             <span class="h4">
                                 Résultats d'apprentissage 
                             </span> 
                         </button>
                     </h2>
-                    <div class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#course_detail" id="collapse_resultats">
+                    <div
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#course_detail"
+                        id="collapse_resultats"
+                    >
                         <div class="accordion-body border-top px-2 px-lg-4">
                             <div class="group-content p-3 border">
-                                <span t-raw="course_doc.learning_outcomes"/>
+                                <span t-raw="course_doc.learning_outcomes" />
                             </div>
                         </div>
                     </div>
@@ -495,16 +735,28 @@
             <t t-if="course_doc.references">
                 <div class="accordion-item border mb-4">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#collapse_references" aria-controls="collapse_references">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            aria-expanded="false"
+                            data-bs-target="#collapse_references"
+                            aria-controls="collapse_references"
+                        >
                             <span class="h4">
                                 Références 
                             </span> 
                         </button>
                     </h2>
-                    <div class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#course_detail" id="collapse_references">
+                    <div
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#course_detail"
+                        id="collapse_references"
+                    >
                         <div class="accordion-body border-top px-2 px-lg-4">
                             <div class="group-content p-3 border">
-                                <span t-raw="course_doc.references"/>
+                                <span t-raw="course_doc.references" />
                             </div>
                         </div>
                     </div>
@@ -523,16 +775,28 @@
             <t t-if="course_doc.pre_co_requiered">
                 <div class="accordion-item border mb-4">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#collapse_requis" aria-controls="collapse_requis">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            aria-expanded="false"
+                            data-bs-target="#collapse_requis"
+                            aria-controls="collapse_requis"
+                        >
                             <span class="h4">
                                 Pré-requis/Co-requis
                             </span> 
                         </button>
                     </h2>
-                    <div class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#course_detail" id="collapse_requis">
+                    <div
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#course_detail"
+                        id="collapse_requis"
+                    >
                         <div class="accordion-body border-top px-2 px-lg-4">
                             <div class="group-content p-3 border">
-                                <span t-raw="course_doc.pre_co_requiered"/>
+                                <span t-raw="course_doc.pre_co_requiered" />
                             </div>
                         </div>
                     </div>
@@ -551,16 +815,28 @@
             <t t-if="course_doc.evaluation_method">
                 <div class="accordion-item border mb-4">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-expanded="false" data-bs-target="#collapse_evalutation" aria-controls="collapse_evalutation">
+                        <button
+                            class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            aria-expanded="false"
+                            data-bs-target="#collapse_evalutation"
+                            aria-controls="collapse_evalutation"
+                        >
                             <span class="h4">
                                 Méthode d'évaluation 
                             </span> 
                         </button>
                     </h2>
-                    <div class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#course_detail" id="collapse_evalutation">
+                    <div
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#course_detail"
+                        id="collapse_evalutation"
+                    >
                         <div class="accordion-body border-top px-2 px-lg-4">
                             <div class="group-content p-3 border">
-                                <span t-raw="course_doc.evaluation_method"/>
+                                <span t-raw="course_doc.evaluation_method" />
                             </div>
                         </div>
                     </div>
@@ -589,10 +865,16 @@
                 <t t-set="count" t-value="1" />
                 <t t-foreach="breadcrumb" t-as="breadcrumb_item">
                     <t t-if="count == len(breadcrumb)">
-                        <span class="breadcrumb-elem -active" ><t t-esc="breadcrumb_item['name']" /></span>
+                        <span class="breadcrumb-elem -active"><t
+                                t-esc="breadcrumb_item['name']"
+                            /></span>
                     </t>
                     <t t-else="1">
-                        <a t-att-title="'Retourner à ' + breadcrumb_item['name']" class="breadcrumb-elem" t-att-href="breadcrumb_item['uri']"><t t-esc="breadcrumb_item['name']" /></a>
+                        <a
+                            t-att-title="'Retourner à ' + breadcrumb_item['name']"
+                            class="breadcrumb-elem"
+                            t-att-href="breadcrumb_item['uri']"
+                        ><t t-esc="breadcrumb_item['name']" /></a>
                         <t t-set="count" t-value="count + 1" />
                     </t>
                 </t>

@@ -29,8 +29,8 @@
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
                 <tree>
-                    <field name="course_id" string="Course"/>
-                    <field name="author_id"/>
+                    <field name="course_id" string="Course" />
+                    <field name="author_id" />
                     <field name="state" />
                 </tree>
             </field>
@@ -56,52 +56,105 @@
                       });
                     </script>
                     <header>
-        	              <button name="publish" type="object" states="draft" string="Publish" class="oe_highlight" /> <!-- email Ingisi mars 2019 cd groups="school_management.group_employee" -->
-                        <button name="unpublish" type="object" states="published,archived" string="Reset to Draft" /> <!-- groups="school_management.group_employee" -->
-                        <button name="archive" type="object" states="published" string="Archive" /> <!-- groups="school_management.group_employee" -->
-        	            <field name="state" widget="statusbar" statusbar_visible="draft,published,archived"/>
+        	              <button
+                        name="publish"
+                        type="object"
+                        states="draft"
+                        string="Publish"
+                        class="oe_highlight"
+                    /> <!-- email Ingisi mars 2019 cd groups="school_management.group_employee" -->
+                        <button
+                        name="unpublish"
+                        type="object"
+                        states="published,archived"
+                        string="Reset to Draft"
+                    /> <!-- groups="school_management.group_employee" -->
+                        <button
+                        name="archive"
+                        type="object"
+                        states="published"
+                        string="Archive"
+                    /> <!-- groups="school_management.group_employee" -->
+        	            <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,published,archived"
+                    />
                     </header>
                     <sheet>
                         <div class="oe_title">
                           <h1>
-                            Course Description - <field name="course_id" domain="[('uid','ilike','AA-1'),('teacher_ids','in',[partner_id])]" class="oe_inline" style="width: 800px !important;" options="{'no_create': True}" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            Course Description - <field
+                                name="course_id"
+                                domain="[('uid','ilike','AA-1'),('teacher_ids','in',[partner_id])]"
+                                class="oe_inline"
+                                style="width: 800px !important;"
+                                options="{'no_create': True}"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
                           </h1>
                           <h3 class="oe_fade">
-                            by <field name="author_id" class="oe_inline" readonly="1"/><field name="partner_id" invisible="1"/>
+                            by <field
+                                name="author_id"
+                                class="oe_inline"
+                                readonly="1"
+                            /><field name="partner_id" invisible="1" />
                           </h3>
                         </div>
                         <group>
-                          <field name="course_ids" class="oe_inline" domain="[('uid','ilike','AA-1'),('teacher_ids','in',[partner_id])]" >
+                          <field
+                            name="course_ids"
+                            class="oe_inline"
+                            domain="[('uid','ilike','AA-1'),('teacher_ids','in',[partner_id])]"
+                        >
                             <tree>
-                              <field name="uid"/>
-                              <field name="name"/>
-                              <field name="quadri"/>
-                              <field name="bloc_ids" widget="many2many_tags"/>
+                              <field name="uid" />
+                              <field name="name" />
+                              <field name="quadri" />
+                              <field name="bloc_ids" widget="many2many_tags" />
                             </tree>
                           </field>
                         </group>
                         <group col="4">
-                          <field name="cycle_id" readonly="1" colspan="4"/>
-                          <field name="course_group_id" readonly="1"/>
-                          <field name="level" readonly="1"/>
-                          <field name="credits" readonly="1"/>
-                          <field name="hours" readonly="1"/>
-                          <field name="weight" readonly="1"/>
-                          <field name="mandatory" attrs="{'readonly':[('state','!=','draft')]}"/>
-                          <newline/>
-                          <field name="language" attrs="{'readonly':[('state','!=','draft')]}"/>
-                          <newline/>
-                          <field name="staff_ids" colspan="4" widget="many2many_tags" attrs="{'readonly':[('state','!=','draft')]}"/>
+                          <field name="cycle_id" readonly="1" colspan="4" />
+                          <field name="course_group_id" readonly="1" />
+                          <field name="level" readonly="1" />
+                          <field name="credits" readonly="1" />
+                          <field name="hours" readonly="1" />
+                          <field name="weight" readonly="1" />
+                          <field
+                            name="mandatory"
+                            attrs="{'readonly':[('state','!=','draft')]}"
+                        />
+                          <newline />
+                          <field
+                            name="language"
+                            attrs="{'readonly':[('state','!=','draft')]}"
+                        />
+                          <newline />
+                          <field
+                            name="staff_ids"
+                            colspan="4"
+                            widget="many2many_tags"
+                            attrs="{'readonly':[('state','!=','draft')]}"
+                        />
                         </group>
                         <div class="panel panel-default">
                           <div class="panel-heading">
                             <h3 class="panel-title">Remarques</h3>
                           </div>
                           <div class="panel-body">
-                            <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
-                              <p>Vous pouvez écrire ici vos remarques et commentaires à propose de cette fiche.</p>
+                            <div
+                                style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;"
+                            >
+                              <p
+                                >Vous pouvez écrire ici vos remarques et commentaires à propose de cette fiche.</p>
                             </div>
-                            <field name="remarks" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field
+                                name="remarks"
+                                widget="html"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
                           </div>
                         </div>
                         <div class="panel panel-default">
@@ -110,9 +163,16 @@
                           </div>
                           <div class="panel-body">
                             <group col="4">
-                              <field name="schedule" attrs="{'readonly':[('state','!=','draft')]}"/>
+                              <field
+                                    name="schedule"
+                                    attrs="{'readonly':[('state','!=','draft')]}"
+                                />
                             </group>
-                            <field name="schedule_text" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field
+                                name="schedule_text"
+                                widget="html"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
                           </div>
                         </div>
                         <div class="panel panel-default">
@@ -120,7 +180,11 @@
                             <h3 class="panel-title">Content</h3>
                           </div>
                           <div class="panel-body">
-                            <field name="content" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field
+                                name="content"
+                                widget="html"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
                           </div>
                         </div>
                         <div class="panel panel-default">
@@ -128,7 +192,11 @@
                             <h3 class="panel-title">Method</h3>
                           </div>
                           <div class="panel-body">
-                            <field name="method" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field
+                                name="method"
+                                widget="html"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
                           </div>
                         </div>
                         <div class="panel panel-default">
@@ -136,7 +204,11 @@
                             <h3 class="panel-title">Learning outcomes</h3>
                           </div>
                           <div class="panel-body">
-                            <field name="learning_outcomes" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field
+                                name="learning_outcomes"
+                                widget="html"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
                           </div>
                         </div>
                         <div class="panel panel-default">
@@ -144,7 +216,11 @@
                             <h3 class="panel-title">References</h3>
                           </div>
                           <div class="panel-body">
-                            <field name="references" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field
+                                name="references"
+                                widget="html"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
                           </div>
                         </div>
                         <div class="panel panel-default">
@@ -152,7 +228,11 @@
                             <h3 class="panel-title">Pre-Co Requiered</h3>
                           </div>
                           <div class="panel-body">
-                            <field name="pre_co_requiered" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field
+                                name="pre_co_requiered"
+                                widget="html"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
                           </div>
                         </div>
                         <div class="panel panel-default">
@@ -160,7 +240,11 @@
                             <h3 class="panel-title">Evaluation method</h3>
                           </div>
                           <div class="panel-body">
-                            <field name="evaluation_method" widget="html" attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field
+                                name="evaluation_method"
+                                widget="html"
+                                attrs="{'readonly':[('state','!=','draft')]}"
+                            />
                           </div>
                         </div>
                     </sheet>
@@ -173,9 +257,13 @@
             <field name="model">school.course_documentation</field>
             <field name="arch" type="xml">
             <search string="Search Groups">
-                <field name="name" string="Nom de l'activité"/>
-                <field name="author_id"/>
-                <filter name="my_desc" string="Mes descriptifs" domain="[('author_id','=',uid)]"/>
+                <field name="name" string="Nom de l'activité" />
+                <field name="author_id" />
+                <filter
+                    name="my_desc"
+                    string="Mes descriptifs"
+                    domain="[('author_id','=',uid)]"
+                />
             </search>
             </field>
         </record>
@@ -190,7 +278,10 @@
             <field name="context">{"search_default_my_desc":1}</field>
         </record>
         
-        <record id="action_course_documentation_tree_view1" model="ir.actions.act_window.view">
+        <record
+        id="action_course_documentation_tree_view1"
+        model="ir.actions.act_window.view"
+    >
             <field name="sequence" eval="1" />
             <field name="view_mode">tree</field>
             <field name="view_id" ref="view_course_documentation_list" />
@@ -198,16 +289,29 @@
         </record>
         
         <!-- Top menu item -->
-        <menuitem name="Course Description" id="menu_course_description" web_icon="note,static/description/icon.png" sequence="8" groups="school_management.group_program_management,school_management.group_teacher"/>
+        <menuitem
+        name="Course Description"
+        id="menu_course_description"
+        web_icon="note,static/description/icon.png"
+        sequence="8"
+        groups="school_management.group_program_management,school_management.group_teacher"
+    />
 
-        <menuitem id="menu_course_documentation_list" parent="school_course_description.menu_course_description" action="action_course_documentation_list" sequence="10" />
+        <menuitem
+        id="menu_course_documentation_list"
+        parent="school_course_description.menu_course_description"
+        action="action_course_documentation_list"
+        sequence="10"
+    />
         
         <record id="action_new_course_documentation" model="ir.actions.act_window">
             <field name="name">New Course Documentation</field>
             <field name="res_model">school.course_documentation</field>
             
-            <field name="view_id" ref="course_documentation_form"/>
-            <field name="context">{'default_course_id': context.get('active_id', False)}</field>
+            <field name="view_id" ref="course_documentation_form" />
+            <field
+            name="context"
+        >{'default_course_id': context.get('active_id', False)}</field>
         </record>
         
         <!-- Add evaluation to Individual Course form view -->
@@ -219,8 +323,11 @@
             <field name="arch" type="xml">
                 <xpath expr="//sheet" position="before">
                     <header>
-                        <button type="action" 
-                            name="%(action_new_course_documentation)d" string="Add doc" >
+                        <button
+                        type="action"
+                        name="%(action_new_course_documentation)d"
+                        string="Add doc"
+                    >
                         </button>
                     </header>
                 </xpath>

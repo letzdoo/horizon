@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
 ##############################################################################
 #
@@ -22,20 +22,26 @@
 -->
 <templates id="template" xml:space="preserve">
     <t t-name="website_booking.browser_calendar">
-        <div id='fc_calendar'/>
+        <div id='fc_calendar' />
     </t>
     <t t-name="website_booking.browser_navigation">
         <table>
-            <tr class="categories"/>
+            <tr class="categories" />
         </table>
     </t>
     <t t-name="website_booking.browser_navigation_card">
         <td class="nav-wrapper">
             <t t-if="!widget.to_parent">
-            <a t-att-class="(widget.is_active ? 'cat_button btn btn-primary active' : 'cat_button btn btn-primary')" t-att-data-category-id="widget.category.id"><span t-esc="widget.category.name"/></a>
+            <a
+                    t-att-class="(widget.is_active ? 'cat_button btn btn-primary active' : 'cat_button btn btn-primary')"
+                    t-att-data-category-id="widget.category.id"
+                ><span t-esc="widget.category.name" /></a>
             </t>
             <t t-if="widget.to_parent">
-            <a class="cat_button btn btn-secondary" t-att-data-category-id="widget.category.id">Retour...</a>
+            <a
+                    class="cat_button btn btn-secondary"
+                    t-att-data-category-id="widget.category.id"
+                >Retour...</a>
             </t>
         </td>
     </t>

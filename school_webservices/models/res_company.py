@@ -20,18 +20,17 @@
 ##############################################################################
 import logging
 
-from odoo import api, fields, models, tools, _
-from odoo.exceptions import UserError, ValidationError
-from odoo.tools.safe_eval import safe_eval
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
+
 class ResCompany(models.Model):
-    _inherit = 'res.company'
+    _inherit = "res.company"
 
-    webservices_key = fields.Binary(string='Web Services Keys')
+    webservices_key = fields.Binary(string="Web Services Keys")
     # TODO : store encoded ?
-    webservices_key_passwd = fields.Char(string='Web Services Key Password')
-    webservices_certificate = fields.Binary(string='Web Services Certificate')
+    webservices_key_passwd = fields.Char(string="Web Services Key Password")
+    webservices_certificate = fields.Binary(string="Web Services Certificate")
 
-    fase_code = fields.Char('FASE code')
+    fase_code = fields.Char("FASE code")

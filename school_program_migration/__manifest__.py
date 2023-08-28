@@ -19,18 +19,18 @@
 #
 ##############################################################################
 {
-    'name': 'School Program Migration Tools',
-    'version': '16.0.1.0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': 'https://github.com/ito-invest-lu/horizon',
-    'category': 'School Management',
-    'depends': ['school_evaluations'],
-    'init_xml': [],
-    'data': [
-        'wizard/add_bloc_wizard.xml',
+    "name": "School Program Migration Tools",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_evaluations"],
+    "init_xml": [],
+    "data": [
+        "wizard/add_bloc_wizard.xml",
     ],
-    'demo_xml': [],
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

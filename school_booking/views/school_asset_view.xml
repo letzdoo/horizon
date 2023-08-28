@@ -23,7 +23,12 @@
 <odoo>
   
 
-    <menuitem name="Assets" parent="menu_main_booking" id="menu_assets" sequence="900" />
+    <menuitem
+        name="Assets"
+        parent="menu_main_booking"
+        id="menu_assets"
+        sequence="900"
+    />
     
     <!-- Building Tree View -->
     <record id="view_building_tree" model="ir.ui.view">
@@ -46,37 +51,126 @@
       <field name="arch" type="xml">
         <form string="Building">
           <sheet>
-            <field name="image_1920" widget="image" class="oe_left oe_inline" options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [90, 90]}"/>
+            <field
+                        name="image_1920"
+                        widget="image"
+                        class="oe_left oe_inline"
+                        options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [90, 90]}"
+                    />
             <div class="oe_title">
                 <h1>
-                    <field name="name" default_focus="1" placeholder="Name"/>
+                    <field name="name" default_focus="1" placeholder="Name" />
                 </h1>
                 <h3 class="oe_fade">
-                    <field name="location" placeholder="Location"/>
+                    <field name="location" placeholder="Location" />
                 </h3>
             </div>
             <group col="4">
-              <field name="monday"/>
-              <field name="monday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('monday','=',False)]}"/>
-              <field name="monday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('monday','=',False)]}"/>
-              <field name="tuesday"/>
-              <field name="tuesday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('tuesday','=',False)]}"/>
-              <field name="tuesday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('tuesday','=',False)]}"/>
-              <field name="wednesday"/>
-              <field name="wednesday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('wednesday','=',False)]}"/>
-              <field name="wednesday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('wednesday','=',False)]}"/>
-              <field name="thursday"/>
-              <field name="thursday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('thursday','=',False)]}"/>
-              <field name="thursday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('thursday','=',False)]}"/>
-              <field name="friday"/>
-              <field name="friday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('friday','=',False)]}"/>
-              <field name="friday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('friday','=',False)]}"/>
-              <field name="saturday"/>
-              <field name="saturday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('saturday','=',False)]}"/>
-              <field name="saturday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('saturday','=',False)]}"/>
-              <field name="sunday"/>
-              <field name="sunday_from" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('sunday','=',False)]}"/>
-              <field name="sunday_to" widget="timepicker" nolabel="1"  options="{'step': '30', 'disableTextInput': false}" attrs="{'invisible': [('sunday','=',False)]}"/>
+              <field name="monday" />
+              <field
+                            name="monday_from"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('monday','=',False)]}"
+                        />
+              <field
+                            name="monday_to"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('monday','=',False)]}"
+                        />
+              <field name="tuesday" />
+              <field
+                            name="tuesday_from"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('tuesday','=',False)]}"
+                        />
+              <field
+                            name="tuesday_to"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('tuesday','=',False)]}"
+                        />
+              <field name="wednesday" />
+              <field
+                            name="wednesday_from"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('wednesday','=',False)]}"
+                        />
+              <field
+                            name="wednesday_to"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('wednesday','=',False)]}"
+                        />
+              <field name="thursday" />
+              <field
+                            name="thursday_from"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('thursday','=',False)]}"
+                        />
+              <field
+                            name="thursday_to"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('thursday','=',False)]}"
+                        />
+              <field name="friday" />
+              <field
+                            name="friday_from"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('friday','=',False)]}"
+                        />
+              <field
+                            name="friday_to"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('friday','=',False)]}"
+                        />
+              <field name="saturday" />
+              <field
+                            name="saturday_from"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('saturday','=',False)]}"
+                        />
+              <field
+                            name="saturday_to"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('saturday','=',False)]}"
+                        />
+              <field name="sunday" />
+              <field
+                            name="sunday_from"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('sunday','=',False)]}"
+                        />
+              <field
+                            name="sunday_to"
+                            widget="timepicker"
+                            nolabel="1"
+                            options="{'step': '30', 'disableTextInput': false}"
+                            attrs="{'invisible': [('sunday','=',False)]}"
+                        />
             </group>
           </sheet>
         </form>
@@ -127,7 +221,12 @@
       <field name="act_window_id" ref="action_building_tree" />
     </record>
 
-    <menuitem id="menu_building_tree" parent="menu_assets" action="action_building_tree" sequence="99" />
+    <menuitem
+        id="menu_building_tree"
+        parent="menu_assets"
+        action="action_building_tree"
+        sequence="99"
+    />
     
     <!-- Asset Tree View -->
     <record id="view_asset_tree" model="ir.ui.view">
@@ -136,14 +235,14 @@
       <field eval="8" name="priority" />
       <field name="arch" type="xml">
         <tree editable="bottom">
-          <field name="sequence" widget="handle"/>
-          <field name="name"/>
-          <field name="category_id"/>
-          <field name="building_id"/>
-          <field name="asset_type_id"/>
-          <field name="booking_policy"/>
-          <field name="responsible_id"/>
-          <field name="room_id"/>
+          <field name="sequence" widget="handle" />
+          <field name="name" />
+          <field name="category_id" />
+          <field name="building_id" />
+          <field name="asset_type_id" />
+          <field name="booking_policy" />
+          <field name="responsible_id" />
+          <field name="room_id" />
         </tree>
       </field>
     </record>
@@ -157,33 +256,57 @@
         <form string="Asset">
           <sheet>
             <div class="oe_button_box" name="button_box">
-                <button name="toggle_active" type="object" groups="base.group_no_one" class="oe_stat_button" icon="fa-archive">
-                    <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                <button
+                            name="toggle_active"
+                            type="object"
+                            groups="base.group_no_one"
+                            class="oe_stat_button"
+                            icon="fa-archive"
+                        >
+                    <field
+                                name="active"
+                                widget="boolean_button"
+                                options="{&quot;terminology&quot;: &quot;archive&quot;}"
+                            />
                 </button>
             </div>
-            <field name="image_1920" widget="image" class="oe_left oe_inline" options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [90, 90]}"/>
+            <field
+                        name="image_1920"
+                        widget="image"
+                        class="oe_left oe_inline"
+                        options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [90, 90]}"
+                    />
             <div class="oe_title">
                 <h1>
-                    <field name="name" default_focus="1" placeholder="Name"/>
+                    <field name="name" default_focus="1" placeholder="Name" />
                 </h1>
             </div>
             <group col="2">
-              <field name="asset_type_id"/>
-              <field name="is_room" invisible="1"/>
-              <field name="booking_policy"/>
-              <field name="building_id" attrs="{'invisible': [('is_room','=',False)]}"/>
+              <field name="asset_type_id" />
+              <field name="is_room" invisible="1" />
+              <field name="booking_policy" />
+              <field
+                            name="building_id"
+                            attrs="{'invisible': [('is_room','=',False)]}"
+                        />
               <field name="category_id" />
-              <field name="tag_ids" widget="many2many_tags"/>
+              <field name="tag_ids" widget="many2many_tags" />
             </group>
             <group col="4">
-              <field name="sequence"/>
-              <field name="require_validation"/>
-              <field name="responsible_id" attrs="{'invisible': [('require_validation','=',False)]}"/>
-              <field name="linked_to_room"/>
-              <field name="room_id" attrs="{'invisible': [('linked_to_room','=',False)]}"/>
+              <field name="sequence" />
+              <field name="require_validation" />
+              <field
+                            name="responsible_id"
+                            attrs="{'invisible': [('require_validation','=',False)]}"
+                        />
+              <field name="linked_to_room" />
+              <field
+                            name="room_id"
+                            attrs="{'invisible': [('linked_to_room','=',False)]}"
+                        />
             </group>
             <h4>Description</h4>
-            <field name="description" widget="html"/>
+            <field name="description" widget="html" />
           </sheet>
           <div class="oe_chatter">
             <field name="message_follower_ids" widget="mail_followers" />
@@ -233,7 +356,12 @@
       <field name="act_window_id" ref="action_asset_tree" />
     </record>
 
-    <menuitem id="menu_asset_tree" parent="menu_assets" action="action_asset_tree" sequence="49" />
+    <menuitem
+        id="menu_asset_tree"
+        parent="menu_assets"
+        action="action_asset_tree"
+        sequence="49"
+    />
     
     <!-- Asset_type Tree View -->
     <record id="view_asset_type_tree" model="ir.ui.view">
@@ -242,10 +370,10 @@
       <field eval="8" name="priority" />
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="is_room"/>
-          <field name="has_responsible"/>
-          <field name="linked_to_room"/>
+          <field name="name" />
+          <field name="is_room" />
+          <field name="has_responsible" />
+          <field name="linked_to_room" />
         </tree>
       </field>
     </record>
@@ -260,13 +388,13 @@
           <sheet>
             <div class="oe_title">
                 <h1>
-                    <field name="name" default_focus="1" placeholder="Name"/>
+                    <field name="name" default_focus="1" placeholder="Name" />
                 </h1>
             </div>
             <group col="2">
-              <field name="is_room"/>
-              <field name="has_responsible"/>
-              <field name="linked_to_room"/>
+              <field name="is_room" />
+              <field name="has_responsible" />
+              <field name="linked_to_room" />
             </group>
           </sheet>
         </form>
@@ -313,7 +441,12 @@
       <field name="act_window_id" ref="action_asset_type_tree" />
     </record>
 
-    <menuitem id="menu_asset_type_tree" parent="menu_assets" action="action_asset_type_tree" sequence="79" />
+    <menuitem
+        id="menu_asset_type_tree"
+        parent="menu_assets"
+        action="action_asset_type_tree"
+        sequence="79"
+    />
     
     <record id="school_asset_category_form_view" model="ir.ui.view">
         <field name="name">school.asset.category.form</field>
@@ -321,12 +454,12 @@
         <field name="arch" type="xml">
             <form string="Asset Categories">
                 <sheet>
-                    <field name="image_128" widget='image' class="oe_left oe_inline"/>
+                    <field name="image_128" widget='image' class="oe_left oe_inline" />
                     <div class="oe_left">
                         <group>
-                            <field name="name"/>
-                            <field name="parent_id"/>
-                            <field name="sequence"/>
+                            <field name="name" />
+                            <field name="parent_id" />
+                            <field name="sequence" />
                         </group>
                     </div>
                 </sheet>
@@ -337,11 +470,11 @@
     <record id="school_asset_category_tree_view" model="ir.ui.view">
         <field name="name">school.asset.category.tree</field>
         <field name="model">school.asset.category</field>
-        <field name="field_parent" eval="False"/>
+        <field name="field_parent" eval="False" />
         <field name="arch" type="xml">
             <tree>
-                <field name="sequence" widget="handle"/>
-                <field name="display_name"/>
+                <field name="sequence" widget="handle" />
+                <field name="display_name" />
             </tree>
         </field>
     </record>
@@ -352,7 +485,7 @@
         <field name="res_model">school.asset.category</field>
         
         <field name="view_mode">tree,form</field>
-        <field name="view_id" eval="False"/>
+        <field name="view_id" eval="False" />
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Click to define a new category.
@@ -367,20 +500,31 @@
         </field>
     </record>
     
-    <record id="action_asset_category_tree_tree_view1" model="ir.actions.act_window.view">
+    <record
+        id="action_asset_category_tree_tree_view1"
+        model="ir.actions.act_window.view"
+    >
       <field name="sequence" eval="1" />
       <field name="view_mode">tree</field>
       <field name="view_id" ref="school_asset_category_tree_view" />
       <field name="act_window_id" ref="school_asset_category_action" />
     </record>
-    <record id="action_asset_category_tree_form_view2" model="ir.actions.act_window.view">
+    <record
+        id="action_asset_category_tree_form_view2"
+        model="ir.actions.act_window.view"
+    >
       <field name="sequence" eval="2" />
       <field name="view_mode">form</field>
       <field name="view_id" ref="school_asset_category_form_view" />
       <field name="act_window_id" ref="school_asset_category_action" />
     </record>
 
-    <menuitem id="menu_asset_category" action="school_asset_category_action" parent="menu_assets" sequence="89" />
+    <menuitem
+        id="menu_asset_category"
+        action="school_asset_category_action"
+        parent="menu_assets"
+        sequence="89"
+    />
     
   
 </odoo>

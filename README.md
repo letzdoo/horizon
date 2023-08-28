@@ -46,7 +46,6 @@ addon | version | maintainers | summary
 [web_scheduler](web_scheduler/) | 16.0.1.0.1 |  | Web Scheduler using FullCalendar extension
 [website_booking](website_booking/) | 16.0.1.0.1 |  | Website Booking Interface
 [website_crlg_portal](website_crlg_portal/) | 16.0.1.0.1 |  | Website CRLG Portal
-[website_horizon_responsive](website_horizon_responsive/) | 16.0.1.0.1 |  | Website Horizon Responsive
 [website_school_management](website_school_management/) | 16.0.1.0.1 |  | Website Program Access
 [website_school_portal](website_school_portal/) | 16.0.1.0.1 |  | Website School Portal
 

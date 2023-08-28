@@ -33,9 +33,14 @@
 
     
 
-    <template id="hz_account" inherit_id="portal.portal_my_home" name="Horizon Account Page" priority="32">
-        <xpath expr="//div[@id='oe_structure_portal_my_home_1']" position="replace"/>
-        <xpath expr="//div[@id='oe_structure_portal_my_home_2']" position="replace"/>
+    <template
+        id="hz_account"
+        inherit_id="portal.portal_my_home"
+        name="Horizon Account Page"
+        priority="32"
+    >
+        <xpath expr="//div[@id='oe_structure_portal_my_home_1']" position="replace" />
+        <xpath expr="//div[@id='oe_structure_portal_my_home_2']" position="replace" />
 
         <xpath expr="//div[hasclass('o_portal_my_home')]" position="replace">
             <style>
@@ -45,33 +50,67 @@
             <div class="o_portal_my_home">
                 <h1 t-out="user_id.partner_id.name" />
                 <ul class="d-flex list-unstyled">
-                    <li t-if="user_id.partner_id.student == True" ><span class="badge bg-primary rounded-pill me-1 o_not_editable">Étudiant</span></li>
-                    <li t-if="user_id.partner_id.teacher == True"><span class="badge bg-primary rounded-pill me-1 o_not_editable">Enseignant</span></li>
-                    <li t-if="user_id.partner_id.employee == True"><span class="badge bg-primary rounded-pill me-1 o_not_editable">Employé</span></li>
-                    <li t-if="user_id._is_admin()" ><span class="badge bg-primary rounded-pill me-1 o_not_editable">Administrateur du système</span></li>
+                    <li t-if="user_id.partner_id.student == True"><span
+                            class="badge bg-primary rounded-pill me-1 o_not_editable"
+                        >Étudiant</span></li>
+                    <li t-if="user_id.partner_id.teacher == True"><span
+                            class="badge bg-primary rounded-pill me-1 o_not_editable"
+                        >Enseignant</span></li>
+                    <li t-if="user_id.partner_id.employee == True"><span
+                            class="badge bg-primary rounded-pill me-1 o_not_editable"
+                        >Employé</span></li>
+                    <li t-if="user_id._is_admin()"><span
+                            class="badge bg-primary rounded-pill me-1 o_not_editable"
+                        >Administrateur du système</span></li>
                 </ul>
-                <t t-set="session_info" t-value="request.env['ir.http'].get_frontend_session_info()"/>
-                <t t-set="horizon_state" t-value="session_info['horizon_state']"/>
-                <t t-set="horizon_user_form_id" t-value="'-' if len(session_info['horizon_user_forms']) == 0 else str(session_info['horizon_user_forms'][0][0])"/>
-                <t t-call="website_school_portal.hz_account_student" t-if="user_id.partner_id.student == True" />
-                <t t-call="website_school_portal.hz_account_teacher" t-if="user_id.partner_id.teacher == True" />
-                <t t-call="website_school_portal.hz_account_employee" t-if="user_id.partner_id.employee == True" />
-                <t t-call="website_school_portal.hz_account_admin" t-if="user_id._is_admin()" />
+                <t
+                    t-set="session_info"
+                    t-value="request.env['ir.http'].get_frontend_session_info()"
+                />
+                <t t-set="horizon_state" t-value="session_info['horizon_state']" />
+                <t
+                    t-set="horizon_user_form_id"
+                    t-value="'-' if len(session_info['horizon_user_forms']) == 0 else str(session_info['horizon_user_forms'][0][0])"
+                />
+                <t
+                    t-call="website_school_portal.hz_account_student"
+                    t-if="user_id.partner_id.student == True"
+                />
+                <t
+                    t-call="website_school_portal.hz_account_teacher"
+                    t-if="user_id.partner_id.teacher == True"
+                />
+                <t
+                    t-call="website_school_portal.hz_account_employee"
+                    t-if="user_id.partner_id.employee == True"
+                />
+                <t
+                    t-call="website_school_portal.hz_account_admin"
+                    t-if="user_id._is_admin()"
+                />
                 <h3 class="o_not_editable">Documents</h3>
                 <div class="o_portal_docs list-group">
-                    <div class="o_portal_doc_spinner spinner-border text-o-color-2 align-self-center mt-5"/>
-                    <p class="o_portal_no_doc_message d-none">No Documents to display</p>
+                    <div
+                        class="o_portal_doc_spinner spinner-border text-o-color-2 align-self-center mt-5"
+                    />
+                    <p
+                        class="o_portal_no_doc_message d-none"
+                    >No Documents to display</p>
                 </div>
-                <div class="hz-editor-mode-only mt-5" groups="website.group_website_designer">
+                <div
+                    class="hz-editor-mode-only mt-5"
+                    groups="website.group_website_designer"
+                >
                     <t t-set="horizon_website_designer" t-value="True" />
                     <div class="alert alert-warning o_not_editable">
-                        <i class="fa fa-warning"/>
-                        <span>Vous ne voyez cette section que pour pouvoir l'éditer !</span>
+                        <i class="fa fa-warning" />
+                        <span
+                        >Vous ne voyez cette section que pour pouvoir l'éditer !</span>
                     </div>
                     <t t-call="website_school_portal.hz_account_student" />
-                    <hr/>
+                    <hr />
                     <t t-call="website_school_portal.hz_account_teacher" />
-                    <hr/>
+                    <hr />
                     <t t-call="website_school_portal.hz_account_employee" />
                 </div>
             </div>
@@ -81,43 +120,66 @@
     <template id="hz_account_student" name="Horizon Student Account Page" priority="32">
         <h2 class="mt-3 o_not_editable">Profil étudiant</h2>
         <t t-if="horizon_website_designer == True or horizon_state == 'no-form'">
-            <div class="hz-editor-mode-only my-2 o_not_editable" t-if="horizon_website_designer">
+            <div
+                class="hz-editor-mode-only my-2 o_not_editable"
+                t-if="horizon_website_designer"
+            >
                 <div class="alert alert-info">
-                    <i class="fa fa-info"/>
-                    <span>Section pour les utilisateurs entamant leur inscription.</span>
+                    <i class="fa fa-info" />
+                    <span
+                    >Section pour les utilisateurs entamant leur inscription.</span>
                 </div>
             </div>
             <t t-call="website_school_portal._hz_my_student_no_form" />
             <p class="text-center">
-                <a class="btn btn-primary rounded-circle o_we_force_no_transition o_not_editable" href="/my/formio/form/create/new_contact">Remplir ma fiche</a>
+                <a
+                    class="btn btn-primary rounded-circle o_we_force_no_transition o_not_editable"
+                    href="/my/formio/form/create/new_contact"
+                >Remplir ma fiche</a>
             </p>
             
         </t>
         <t t-if="horizon_website_designer == True or horizon_state == 'info-form'">
-            <div class="hz-editor-mode-only my-2 o_not_editable" t-if="horizon_website_designer">
+            <div
+                class="hz-editor-mode-only my-2 o_not_editable"
+                t-if="horizon_website_designer"
+            >
                 <div class="alert alert-info">
-                    <i class="fa fa-info"/>
-                    <span>Section pour les utilisateurs devant poursuivre leur inscription.</span>
+                    <i class="fa fa-info" />
+                    <span
+                    >Section pour les utilisateurs devant poursuivre leur inscription.</span>
                 </div>
             </div>
             <t t-call="website_school_portal._hz_my_student_info_form" />
             <p class="text-center">
-                <a t-att-href="'/my/formio/form/' + horizon_user_form_id" class="btn btn-primary rounded-circle o_we_force_no_transition o_not_editable">Aller vers mon formulaire</a>
+                <a
+                    t-att-href="'/my/formio/form/' + horizon_user_form_id"
+                    class="btn btn-primary rounded-circle o_we_force_no_transition o_not_editable"
+                >Aller vers mon formulaire</a>
             </p>
         </t>
-        <t t-if="horizon_website_designer == True or horizon_state == 'info-form-complete'">
-            <div class="hz-editor-mode-only my-2 o_not_editable" t-if="horizon_website_designer">
+        <t
+            t-if="horizon_website_designer == True or horizon_state == 'info-form-complete'"
+        >
+            <div
+                class="hz-editor-mode-only my-2 o_not_editable"
+                t-if="horizon_website_designer"
+            >
                 <div class="alert alert-info">
-                    <i class="fa fa-info"/>
-                    <span>Section pour les utilisateurs en attente de validation de leur inscription.</span>
+                    <i class="fa fa-info" />
+                    <span
+                    >Section pour les utilisateurs en attente de validation de leur inscription.</span>
                 </div>
             </div>
             <t t-call="website_school_portal._hz_my_student_info_form_complete" />
         </t>
         <t t-if="horizon_website_designer == True or horizon_state == 'student'">
-            <div class="hz-editor-mode-only my-2 o_not_editable" t-if="horizon_website_designer">
+            <div
+                class="hz-editor-mode-only my-2 o_not_editable"
+                t-if="horizon_website_designer"
+            >
                 <div class="alert alert-info">
-                    <i class="fa fa-info"/>
+                    <i class="fa fa-info" />
                     <span>Section pour les utilisateurs déjà inscrits.</span>
                 </div>
             </div>
@@ -128,14 +190,22 @@
     <template id="hz_account_teacher" name="Horizon Teacher Account Page" priority="32">
         <a class="btn btn-danger mb-2" href="/web">Accès back-office</a>
         <h2 class="mt-3 o_not_editable">Profil enseignant</h2>
-        <p class="o_not_editable">Pas encore d'informations spécifiques pour les profils enseignants...</p>
+        <p
+            class="o_not_editable"
+        >Pas encore d'informations spécifiques pour les profils enseignants...</p>
 
     </template>
 
-    <template id="hz_account_employee" name="Horizon Employee Account Page" priority="32">
+    <template
+        id="hz_account_employee"
+        name="Horizon Employee Account Page"
+        priority="32"
+    >
         <a class="btn btn-danger mb-2" href="/web">Accès back-office</a>
         <h2 class="mt-3 o_not_editable">Profil employé</h2>
-        <p class="o_not_editable">Pas encore d'informations spécifiques pour les profils employés...</p>
+        <p
+            class="o_not_editable"
+        >Pas encore d'informations spécifiques pour les profils employés...</p>
 
     </template>
 

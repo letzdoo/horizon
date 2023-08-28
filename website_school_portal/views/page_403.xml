@@ -27,8 +27,11 @@
                 <div class="text-center mt-5">
                     <h1>Non autorisé</h1>
                     <p>Désolé, vous n'êtes pas autorisé à accéder à cette page.</p>
-                    <a class="btn btn-primary btn_cta" href="/">Revenir vers l'accueil</a>
-                    <hr/>
+                    <a
+                        class="btn btn-primary btn_cta"
+                        href="/"
+                    >Revenir vers l'accueil</a>
+                    <hr />
                 </div>
             </div>
         </t>

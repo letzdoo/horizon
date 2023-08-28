@@ -21,59 +21,76 @@
 import logging
 import traceback
 
-from odoo import api, fields, models, tools, _
-from odoo.exceptions import UserError, ValidationError
-from odoo.tools.safe_eval import safe_eval
+from odoo import _, api, fields, models
 
 _logger = logging.getLogger(__name__)
 
-class ResUser(models.Model):
-    _inherit = 'res.users'
 
-    national_id = fields.Char(string='National ID')
+class ResUser(models.Model):
+    _inherit = "res.users"
+
+    national_id = fields.Char(string="National ID")
+
 
 class Partner(models.Model):
-    _inherit = 'res.partner'
+    _inherit = "res.partner"
 
-    inscription_ids = fields.One2many('school.bced.inscription', 'partner_id', string='BCED Inscriptions', ondelete='restrict')
-    inscription_count = fields.Integer(compute='_compute_inscription_count', string='BCED Inscription Count')
+    inscription_ids = fields.One2many(
+        "school.bced.inscription",
+        "partner_id",
+        string="BCED Inscriptions",
+        ondelete="restrict",
+    )
+    inscription_count = fields.Integer(
+        compute="_compute_inscription_count", string="BCED Inscription Count"
+    )
 
-    @api.depends('inscription_ids')
+    @api.depends("inscription_ids")
     def _compute_inscription_count(self):
-        for rec in self :
-            rec.inscription_count = len(rec.inscription_ids.filtered(lambda inscription: inscription.reference != False))
+        for rec in self:
+            rec.inscription_count = len(
+                rec.inscription_ids.filtered(
+                    lambda inscription: inscription.reference != False
+                )
+            )
 
     def action_update_bced_personne(self):
-        for rec in self :
-            if rec.inscription_ids :
+        for rec in self:
+            if rec.inscription_ids:
                 ex = None
-                for ins in rec.inscription_ids :
-                    try :
+                for ins in rec.inscription_ids:
+                    try:
                         # TODO : update contact information from BCED Web Service
                         ins.action_update_partner_information()
-                        if self.env.context.get('params', {}).get('view_type') == 'list':
-                            next_action = {'type': 'ir.actions.client', 'tag': 'reload'}
+                        if (
+                            self.env.context.get("params", {}).get("view_type")
+                            == "list"
+                        ):
+                            next_action = {"type": "ir.actions.client", "tag": "reload"}
                         else:
-                            next_action = {'type': 'ir.actions.act_window_close'}
+                            next_action = {"type": "ir.actions.act_window_close"}
                         return {
-                            'type': 'ir.actions.client',
-                            'tag': 'display_notification',
-                            'params': {
-                                'type': 'success',
-                                'message': _('Information updated from BCED'),
-                                'next': next_action,
-                            }
+                            "type": "ir.actions.client",
+                            "tag": "display_notification",
+                            "params": {
+                                "type": "success",
+                                "message": _("Information updated from BCED"),
+                                "next": next_action,
+                            },
                         }
-                    except Exception as e :
+                    except Exception as e:
                         ex = e
-                _logger.error('Error while updating contact information : %s', ex)
+                _logger.error("Error while updating contact information : %s", ex)
                 return {
-                    'type': 'ir.actions.client',
-                    'tag': 'display_notification',
-                    'params': {
-                        'message': _('Error while updating contact information : %s' % traceback.format_exc()),
-                        'next': {'type': 'ir.actions.act_window_close'},
-                        'sticky': False,
-                        'type': 'warning',
-                    }
+                    "type": "ir.actions.client",
+                    "tag": "display_notification",
+                    "params": {
+                        "message": _(
+                            "Error while updating contact information : %s"
+                            % traceback.format_exc()
+                        ),
+                        "next": {"type": "ir.actions.act_window_close"},
+                        "sticky": False,
+                        "type": "warning",
+                    },
                 }

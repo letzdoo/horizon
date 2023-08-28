@@ -19,29 +19,29 @@
 #
 ##############################################################################
 {
-    'name': 'Website Program Access',
-    'version': '16.0.1.0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': 'https://github.com/ito-invest-lu/horizon',
-    'category': 'School Management',
-    'depends': [
-        'web',
-        'website',
-        'school_booking',
+    "name": "Website Program Access",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": [
+        "web",
+        "website",
+        "school_booking",
     ],
-    'data': [
-        'data_init.xml',
-        'views/templates.xml',
-        'views/programmes.xml',
-        'views/backoffice.xml',
-        'report/programme_report.xml',
+    "data": [
+        "data_init.xml",
+        "views/templates.xml",
+        "views/programmes.xml",
+        "views/backoffice.xml",
+        "report/programme_report.xml",
     ],
-    'assets': {
-        'web.assets_frontend': [
-            'website_school_management/static/src/scss/base.scss',
+    "assets": {
+        "web.assets_frontend": [
+            "website_school_management/static/src/scss/base.scss",
         ]
     },
-    'installable': True,
-    'application': True,
+    "installable": True,
+    "application": True,
 }

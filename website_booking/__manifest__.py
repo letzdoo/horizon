@@ -19,25 +19,25 @@
 #
 ##############################################################################
 {
-    'name': 'Website Booking Interface',
-    'version': '16.0.1.0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': 'https://github.com/ito-invest-lu/horizon',
-    'category': 'School Management',
-    'depends': [
-        'website',
-        'school_booking',
+    "name": "Website Booking Interface",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": [
+        "website",
+        "school_booking",
     ],
-    'data': [
-        'views/website_booking.xml',
-        'views/snippets.xml',
+    "data": [
+        "views/website_booking.xml",
+        "views/snippets.xml",
     ],
-    'assets': {
-        'website.assets_wysiwyg': [
-            '/website_booking/static/src/snippets/s_bookings/options.js',
-        ],  
+    "assets": {
+        "website.assets_wysiwyg": [
+            "/website_booking/static/src/snippets/s_bookings/options.js",
+        ],
     },
-    'installable': True,
-    'application': True,
+    "installable": True,
+    "application": True,
 }

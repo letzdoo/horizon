@@ -2,7 +2,7 @@
     display: inline-flex;
     padding: 0;
     gap: 0.5em calc(1.5em - 2px);
-    
+
     .breadcrumb-elem {
         border-top-left-radius: $btn-border-radius;
         border-bottom-left-radius: $btn-border-radius;
@@ -37,8 +37,7 @@
             background: var(--o-cc1-btn-primary);
             margin-left: 1px;
         }
-        
-     
+
         &:hover:after,
         &:hover {
             background: var(--o-cc1-btn-primary);
@@ -48,7 +47,7 @@
         &:last-child {
             border-right: none;
         }
-    
+
         &.-active {
             border: none;
             text-decoration: none;
@@ -101,7 +100,7 @@
             margin-bottom: $spacer;
             &.-cours {
                 padding-top: 0;
-                padding-bottom: $spacer * .25;
+                padding-bottom: $spacer * 0.25;
                 padding-left: $spacer;
                 padding-right: $spacer;
                 border: 1px solid $border-color !important;
@@ -130,7 +129,6 @@
                     z-index: 1;
                     padding-left: $spacer;
                     background: var(--o-cc1-bg);
-
                 }
                 &:not(.cell-name) {
                     border: none !important;
@@ -144,7 +142,6 @@
                     padding-right: $spacer;
                     z-index: 1;
                     background: var(--o-cc1-bg);
-
                 }
                 &:after {
                     content: "";
@@ -168,15 +165,15 @@
                     margin-bottom: $spacer;
                     margin-left: -$spacer;
                     margin-right: -$spacer;
-                    padding-top: $spacer * .25;
-                    padding-bottom: $spacer * .25;
+                    padding-top: $spacer * 0.25;
+                    padding-bottom: $spacer * 0.25;
                     padding-left: $spacer;
                     padding-right: $spacer;
                     border-top: none !important;
                     border-left: none !important;
                     border-right: none !important;
                     justify-content: flex-start;
-                    .cell-value{
+                    .cell-value {
                         padding-left: 0;
                     }
                     &:before {
@@ -215,13 +212,12 @@
     }
 }
 
-
 .accordion {
     .group-title {
         position: relative;
         bottom: -1px;
-        padding-top : $spacer !important;
-        padding-bottom : $spacer !important;
+        padding-top: $spacer !important;
+        padding-bottom: $spacer !important;
     }
     .group-title,
     .group-content {
@@ -291,7 +287,6 @@
             }
         }
     }
-
 
     .breadcrumb {
         .breadcrumb-elem {
@@ -505,5 +500,3 @@
         }
     }
 }
-
-

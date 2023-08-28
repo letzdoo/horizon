@@ -19,21 +19,21 @@
 #
 ##############################################################################
 {
-    'name': 'School program approuval',
-    'version': '16.0.1.0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': 'https://github.com/ito-invest-lu/horizon',
-    'category': 'School Management',
-    'depends': ['school_valuations'],
-    'init_xml': [],
-    'data': [
-        'views/assets.xml',
-        'views/school_program_approuval_view.xml',
-        'security/ir.model.access.csv',
+    "name": "School program approuval",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_valuations"],
+    "init_xml": [],
+    "data": [
+        "views/assets.xml",
+        "views/school_program_approuval_view.xml",
+        "security/ir.model.access.csv",
     ],
-    'demo_xml': [],
-    'qweb': ['static/src/xml/*.xml'],
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "qweb": ["static/src/xml/*.xml"],
+    "installable": True,
+    "application": True,
 }

@@ -30,7 +30,7 @@
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//group/field[@name='total_weight']" position="after">
-                    <field name="version_year_id"/>
+                    <field name="version_year_id" />
                 </xpath>
             </field>
         </record>

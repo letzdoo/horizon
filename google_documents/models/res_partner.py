@@ -22,15 +22,14 @@
 
 import logging
 
-from datetime import date, timedelta
 
-from odoo import api, fields, models, _
-from odoo.exceptions import UserError
+from odoo import models
 
 _logger = logging.getLogger(__name__)
 
 
 class Partner(models.Model):
-    '''Partner'''
-    _name = 'res.partner'
-    _inherit = ['res.partner', 'google_drive_folder.mixin']
+    """Partner"""
+
+    _name = "res.partner"
+    _inherit = ["res.partner", "google_drive_folder.mixin"]

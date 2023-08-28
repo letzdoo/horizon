@@ -12,16 +12,16 @@
  */
 /* global define */
 (function (define) {
-    define(['jquery'], function ($) {
+    define(["jquery"], function ($) {
         return (function () {
             var $container;
             var listener;
             var toastId = 0;
             var toastType = {
-                error: 'error',
-                info: 'info',
-                success: 'success',
-                warning: 'warning'
+                error: "error",
+                info: "info",
+                success: "success",
+                warning: "warning",
             };
 
             var toastr = {
@@ -33,15 +33,15 @@
                 options: {},
                 subscribe: subscribe,
                 success: success,
-                version: '2.1.4',
-                warning: warning
+                version: "2.1.4",
+                warning: warning,
             };
 
             var previousToast;
 
             return toastr;
 
-            ////////////////
+            // //////////////
 
             function error(message, title, optionsOverride) {
                 return notify({
@@ -49,13 +49,15 @@
                     iconClass: getOptions().iconClasses.error,
                     message: message,
                     optionsOverride: optionsOverride,
-                    title: title
+                    title: title,
                 });
             }
 
             function getContainer(options, create) {
-                if (!options) { options = getOptions(); }
-                $container = $('#' + options.containerId);
+                if (!options) {
+                    options = getOptions();
+                }
+                $container = $("#" + options.containerId);
                 if ($container.length) {
                     return $container;
                 }
@@ -71,7 +73,7 @@
                     iconClass: getOptions().iconClasses.info,
                     message: message,
                     optionsOverride: optionsOverride,
-                    title: title
+                    title: title,
                 });
             }
 
@@ -85,7 +87,7 @@
                     iconClass: getOptions().iconClasses.success,
                     message: message,
                     optionsOverride: optionsOverride,
-                    title: title
+                    title: title,
                 });
             }
 
@@ -95,13 +97,15 @@
                     iconClass: getOptions().iconClasses.warning,
                     message: message,
                     optionsOverride: optionsOverride,
-                    title: title
+                    title: title,
                 });
             }
 
             function clear($toastElement, clearOptions) {
                 var options = getOptions();
-                if (!$container) { getContainer(options); }
+                if (!$container) {
+                    getContainer(options);
+                }
                 if (!clearToast($toastElement, options, clearOptions)) {
                     clearContainer(options);
                 }
@@ -109,8 +113,10 @@
 
             function remove($toastElement) {
                 var options = getOptions();
-                if (!$container) { getContainer(options); }
-                if ($toastElement && $(':focus', $toastElement).length === 0) {
+                if (!$container) {
+                    getContainer(options);
+                }
+                if ($toastElement && $(":focus", $toastElement).length === 0) {
                     removeToast($toastElement);
                     return;
                 }
@@ -119,22 +125,28 @@
                 }
             }
 
-            // internal functions
+            // Internal functions
 
-            function clearContainer (options) {
+            function clearContainer(options) {
                 var toastsToClear = $container.children();
                 for (var i = toastsToClear.length - 1; i >= 0; i--) {
                     clearToast($(toastsToClear[i]), options);
                 }
             }
 
-            function clearToast ($toastElement, options, clearOptions) {
-                var force = clearOptions && clearOptions.force ? clearOptions.force : false;
-                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
+            function clearToast($toastElement, options, clearOptions) {
+                var force =
+                    clearOptions && clearOptions.force ? clearOptions.force : false;
+                if (
+                    $toastElement &&
+                    (force || $(":focus", $toastElement).length === 0)
+                ) {
                     $toastElement[options.hideMethod]({
                         duration: options.hideDuration,
                         easing: options.hideEasing,
-                        complete: function () { removeToast($toastElement); }
+                        complete: function () {
+                            removeToast($toastElement);
+                        },
                     });
                     return true;
                 }
@@ -142,8 +154,8 @@
             }
 
             function createContainer(options) {
-                $container = $('<div/>')
-                    .attr('id', options.containerId)
+                $container = $("<div/>")
+                    .attr("id", options.containerId)
                     .addClass(options.positionClass);
 
                 $container.appendTo($(options.target));
@@ -153,17 +165,17 @@
             function getDefaults() {
                 return {
                     tapToDismiss: true,
-                    toastClass: 'toast',
-                    containerId: 'toast-container',
+                    toastClass: "toast",
+                    containerId: "toast-container",
                     debug: false,
 
-                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
+                    showMethod: "fadeIn", // FadeIn, slideDown, and show are built into jQuery
                     showDuration: 300,
-                    showEasing: 'swing', //swing and linear are built into jQuery
+                    showEasing: "swing", // Swing and linear are built into jQuery
                     onShown: undefined,
-                    hideMethod: 'fadeOut',
+                    hideMethod: "fadeOut",
                     hideDuration: 1000,
-                    hideEasing: 'swing',
+                    hideEasing: "swing",
                     onHidden: undefined,
                     closeMethod: false,
                     closeDuration: false,
@@ -172,30 +184,32 @@
 
                     extendedTimeOut: 1000,
                     iconClasses: {
-                        error: 'toast-error',
-                        info: 'toast-info',
-                        success: 'toast-success',
-                        warning: 'toast-warning'
+                        error: "toast-error",
+                        info: "toast-info",
+                        success: "toast-success",
+                        warning: "toast-warning",
                     },
-                    iconClass: 'toast-info',
-                    positionClass: 'toast-top-right',
+                    iconClass: "toast-info",
+                    positionClass: "toast-top-right",
                     timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
-                    titleClass: 'toast-title',
-                    messageClass: 'toast-message',
+                    titleClass: "toast-title",
+                    messageClass: "toast-message",
                     escapeHtml: false,
-                    target: 'body',
+                    target: "body",
                     closeHtml: '<button type="button">&times;</button>',
-                    closeClass: 'toast-close-button',
+                    closeClass: "toast-close-button",
                     newestOnTop: true,
                     preventDuplicates: false,
                     progressBar: false,
-                    progressClass: 'toast-progress',
-                    rtl: false
+                    progressClass: "toast-progress",
+                    rtl: false,
                 };
             }
 
             function publish(args) {
-                if (!listener) { return; }
+                if (!listener) {
+                    return;
+                }
                 listener(args);
             }
 
@@ -203,34 +217,36 @@
                 var options = getOptions();
                 var iconClass = map.iconClass || options.iconClass;
 
-                if (typeof (map.optionsOverride) !== 'undefined') {
+                if (typeof map.optionsOverride !== "undefined") {
                     options = $.extend(options, map.optionsOverride);
                     iconClass = map.optionsOverride.iconClass || iconClass;
                 }
 
-                if (shouldExit(options, map)) { return; }
+                if (shouldExit(options, map)) {
+                    return;
+                }
 
                 toastId++;
 
                 $container = getContainer(options, true);
 
                 var intervalId = null;
-                var $toastElement = $('<div/>');
-                var $titleElement = $('<div/>');
-                var $messageElement = $('<div/>');
-                var $progressElement = $('<div/>');
+                var $toastElement = $("<div/>");
+                var $titleElement = $("<div/>");
+                var $messageElement = $("<div/>");
+                var $progressElement = $("<div/>");
                 var $closeElement = $(options.closeHtml);
                 var progressBar = {
                     intervalId: null,
                     hideEta: null,
-                    maxHideTime: null
+                    maxHideTime: null,
                 };
                 var response = {
                     toastId: toastId,
-                    state: 'visible',
+                    state: "visible",
                     startTime: new Date(),
                     options: options,
-                    map: map
+                    map: map,
                 };
 
                 personalizeToast();
@@ -249,15 +265,15 @@
 
                 function escapeHtml(source) {
                     if (source == null) {
-                        source = '';
+                        source = "";
                     }
 
                     return source
-                        .replace(/&/g, '&amp;')
-                        .replace(/"/g, '&quot;')
-                        .replace(/'/g, '&#39;')
-                        .replace(/</g, '&lt;')
-                        .replace(/>/g, '&gt;');
+                        .replace(/&/g, "&amp;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#39;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
                 }
 
                 function personalizeToast() {
@@ -272,16 +288,16 @@
                 }
 
                 function setAria() {
-                    var ariaValue = '';
+                    var ariaValue = "";
                     switch (map.iconClass) {
-                        case 'toast-success':
-                        case 'toast-info':
-                            ariaValue =  'polite';
+                        case "toast-success":
+                        case "toast-info":
+                            ariaValue = "polite";
                             break;
                         default:
-                            ariaValue = 'assertive';
+                            ariaValue = "assertive";
                     }
-                    $toastElement.attr('aria-live', ariaValue);
+                    $toastElement.attr("aria-live", ariaValue);
                 }
 
                 function handleEvents() {
@@ -297,7 +313,10 @@
                         $closeElement.click(function (event) {
                             if (event.stopPropagation) {
                                 event.stopPropagation();
-                            } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
+                            } else if (
+                                event.cancelBubble !== undefined &&
+                                event.cancelBubble !== true
+                            ) {
                                 event.cancelBubble = true;
                             }
 
@@ -320,14 +339,17 @@
                 function displayToast() {
                     $toastElement.hide();
 
-                    $toastElement[options.showMethod](
-                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
-                    );
+                    $toastElement[options.showMethod]({
+                        duration: options.showDuration,
+                        easing: options.showEasing,
+                        complete: options.onShown,
+                    });
 
                     if (options.timeOut > 0) {
                         intervalId = setTimeout(hideToast, options.timeOut);
                         progressBar.maxHideTime = parseFloat(options.timeOut);
-                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                        progressBar.hideEta =
+                            new Date().getTime() + progressBar.maxHideTime;
                         if (options.progressBar) {
                             progressBar.intervalId = setInterval(updateProgress, 10);
                         }
@@ -372,7 +394,9 @@
 
                 function setCloseButton() {
                     if (options.closeButton) {
-                        $closeElement.addClass(options.closeClass).attr('role', 'button');
+                        $closeElement
+                            .addClass(options.closeClass)
+                            .attr("role", "button");
                         $toastElement.prepend($closeElement);
                     }
                 }
@@ -386,7 +410,7 @@
 
                 function setRTL() {
                     if (options.rtl) {
-                        $toastElement.addClass('rtl');
+                        $toastElement.addClass("rtl");
                     }
                 }
 
@@ -394,19 +418,26 @@
                     if (options.preventDuplicates) {
                         if (map.message === previousToast) {
                             return true;
-                        } else {
-                            previousToast = map.message;
                         }
+                        previousToast = map.message;
                     }
                     return false;
                 }
 
                 function hideToast(override) {
-                    var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
-                    var duration = override && options.closeDuration !== false ?
-                        options.closeDuration : options.hideDuration;
-                    var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
-                    if ($(':focus', $toastElement).length && !override) {
+                    var method =
+                        override && options.closeMethod !== false
+                            ? options.closeMethod
+                            : options.hideMethod;
+                    var duration =
+                        override && options.closeDuration !== false
+                            ? options.closeDuration
+                            : options.hideDuration;
+                    var easing =
+                        override && options.closeEasing !== false
+                            ? options.closeEasing
+                            : options.hideEasing;
+                    if ($(":focus", $toastElement).length && !override) {
                         return;
                     }
                     clearTimeout(progressBar.intervalId);
@@ -416,13 +447,13 @@
                         complete: function () {
                             removeToast($toastElement);
                             clearTimeout(intervalId);
-                            if (options.onHidden && response.state !== 'hidden') {
+                            if (options.onHidden && response.state !== "hidden") {
                                 options.onHidden();
                             }
-                            response.state = 'hidden';
+                            response.state = "hidden";
                             response.endTime = new Date();
                             publish(response);
-                        }
+                        },
                     });
                 }
 
@@ -430,21 +461,26 @@
                     if (options.timeOut > 0 || options.extendedTimeOut > 0) {
                         intervalId = setTimeout(hideToast, options.extendedTimeOut);
                         progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
-                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                        progressBar.hideEta =
+                            new Date().getTime() + progressBar.maxHideTime;
                     }
                 }
 
                 function stickAround() {
                     clearTimeout(intervalId);
                     progressBar.hideEta = 0;
-                    $toastElement.stop(true, true)[options.showMethod](
-                        {duration: options.showDuration, easing: options.showEasing}
-                    );
+                    $toastElement.stop(true, true)[options.showMethod]({
+                        duration: options.showDuration,
+                        easing: options.showEasing,
+                    });
                 }
 
                 function updateProgress() {
-                    var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
-                    $progressElement.width(percentage + '%');
+                    var percentage =
+                        ((progressBar.hideEta - new Date().getTime()) /
+                            progressBar.maxHideTime) *
+                        100;
+                    $progressElement.width(percentage + "%");
                 }
             }
 
@@ -453,8 +489,10 @@
             }
 
             function removeToast($toastElement) {
-                if (!$container) { $container = getContainer(); }
-                if ($toastElement.is(':visible')) {
+                if (!$container) {
+                    $container = getContainer();
+                }
+                if ($toastElement.is(":visible")) {
                     return;
                 }
                 $toastElement.remove();
@@ -464,13 +502,17 @@
                     previousToast = undefined;
                 }
             }
-
         })();
     });
-}(typeof define === 'function' && define.amd ? define : function (deps, factory) {
-    if (typeof module !== 'undefined' && module.exports) { //Node
-        module.exports = factory(require('jquery'));
-    } else {
-        window.toastr = factory(window.jQuery);
-    }
-}));
+})(
+    typeof define === "function" && define.amd
+        ? define
+        : function (deps, factory) {
+              if (typeof module !== "undefined" && module.exports) {
+                  // Node
+                  module.exports = factory(require("jquery"));
+              } else {
+                  window.toastr = factory(window.jQuery);
+              }
+          }
+);

@@ -19,31 +19,29 @@
 #
 ##############################################################################
 {
-    'name': 'Website CRLG Portal',
-    'version': '16.0.1.0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': 'https://github.com/ito-invest-lu/horizon',
-    'category': 'School Management',
-    'depends': [
-        'website_school_portal'
+    "name": "Website CRLG Portal",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["website_school_portal"],
+    "data": [
+        "init_crlg.xml",
+        "views/footer.xml",
+        "views/custom.xml",
     ],
-    'data': [
-        'init_crlg.xml',
-        'views/footer.xml',
-        'views/custom.xml',
-    ],
-    'assets': {
-        'web._assets_primary_variables': [
-            'website_crlg_portal/static/src/scss/variables.scss',
+    "assets": {
+        "web._assets_primary_variables": [
+            "website_crlg_portal/static/src/scss/variables.scss",
         ],
-        'web.assets_frontend': [
-            'website_crlg_portal/static/src/scss/main.scss',
-        ]
+        "web.assets_frontend": [
+            "website_crlg_portal/static/src/scss/main.scss",
+        ],
     },
-    'installable': True,
-    'application': True,
-    'images': [
-        'static/description/icon.png',
+    "installable": True,
+    "application": True,
+    "images": [
+        "static/description/icon.png",
     ],
 }

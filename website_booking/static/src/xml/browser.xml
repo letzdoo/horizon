@@ -1,13 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <templates id="template" xml:space="preserve">
     
     <t t-name="website_booking.details_dialog">
         <div class="modal-content">
-            <h4><t t-esc="widget.event.start.format('HH:mm')"/> - <t t-esc="widget.event.end.format('HH:mm')"/> - <t t-esc="widget.event.resourceName"/></h4>
-            <p><t t-esc="widget.event.title"/></p>
+            <h4><t t-esc="widget.event.start.format('HH:mm')" /> - <t
+                    t-esc="widget.event.end.format('HH:mm')"
+                /> - <t t-esc="widget.event.resourceName" /></h4>
+            <p><t t-esc="widget.event.title" /></p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fermer</a>
+            <a
+                href="#!"
+                class="modal-action modal-close waves-effect waves-green btn-flat"
+            >Fermer</a>
         </div>
     </t>
     
@@ -19,52 +24,101 @@
                         <div class="col s6">
                             <div class="row">
                               <div class="input-field col s6">
-                                <input id="from_hour" type="text" data-length="10" class="invalid"/>
+                                <input
+                                        id="from_hour"
+                                        type="text"
+                                        data-length="10"
+                                        class="invalid"
+                                    />
                                 <label for="input_text">From Hour</label>
                               </div>
                               <div class="input-field col s6">
-                                <input id="to_hour" type="text" data-length="10" class="invalid" />
-                                <label for="input_text" data-error="Minimum 1h et maximum 3h">To Hour</label>
+                                <input
+                                        id="to_hour"
+                                        type="text"
+                                        data-length="10"
+                                        class="invalid"
+                                    />
+                                <label
+                                        for="input_text"
+                                        data-error="Minimum 1h et maximum 3h"
+                                    >To Hour</label>
                               </div>
                             </div>
                             <div class="input-field col s12" style="margin-top:40px;">
-                                <select class="select-asset-id browser-default" disabled="">
-                                    <option value="" disabled="" selected="">Choose your room</option>
+                                <select
+                                    class="select-asset-id browser-default"
+                                    disabled=""
+                                >
+                                    <option
+                                        value=""
+                                        disabled=""
+                                        selected=""
+                                    >Choose your room</option>
                                 </select>
                             </div>
                             <div class="row">
                               <div class="input-field col s12">
-                                  <t t-if='!(widget.user.in_group_15 or widget.user.in_group_15)'>
-                                  <textarea id="description" class="materialize-textarea valid" data-length="360" disabled=""></textarea>
+                                  <t
+                                        t-if='!(widget.user.in_group_15 or widget.user.in_group_15)'
+                                    >
+                                  <textarea
+                                            id="description"
+                                            class="materialize-textarea valid"
+                                            data-length="360"
+                                            disabled=""
+                                        />
                                   </t>
-                                  <t t-if='(widget.user.in_group_15 or widget.user.in_group_15)'>
-                                  <textarea id="description" class="materialize-textarea valid" data-length="360"></textarea>
+                                  <t
+                                        t-if='(widget.user.in_group_15 or widget.user.in_group_15)'
+                                    >
+                                  <textarea
+                                            id="description"
+                                            class="materialize-textarea valid"
+                                            data-length="360"
+                                        />
                                   </t>
                                   <label for="description">Event description</label>
                               </div>
                             </div>
                         </div>
                         <div class="col s6">
-                            <div class='schedule'/>
+                            <div class='schedule' />
                         </div>
                     </div>
                 </form>
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="request-booking modal-action modal-close waves-effect waves-green btn-flat" data-bs-dismiss="modal">Request Booking</a>
-            <a href="#!" class="delete-booking modal-action modal-close waves-effect waves-green btn-flat" style="display: none" data-bs-dismiss="modal">Delete Booking</a>
-            <a href="#!" class="cancel-modal modal-action modal-close waves-effect waves-green btn-flat" data-bs-dismiss="modal">Cancel</a>
+            <a
+                href="#!"
+                class="request-booking modal-action modal-close waves-effect waves-green btn-flat"
+                data-bs-dismiss="modal"
+            >Request Booking</a>
+            <a
+                href="#!"
+                class="delete-booking modal-action modal-close waves-effect waves-green btn-flat"
+                style="display: none"
+                data-bs-dismiss="modal"
+            >Delete Booking</a>
+            <a
+                href="#!"
+                class="cancel-modal modal-action modal-close waves-effect waves-green btn-flat"
+                data-bs-dismiss="modal"
+            >Cancel</a>
         </div>
     </t>
     
     <t t-name="website_booking.toolbar">
-        <div class="toolbar_content"/>
+        <div class="toolbar_content" />
     </t>
     
     <t t-name="website_booking.toolbar_nolog">
         <div class="fixed-action-btn click-to-toggle">
-            <a class="btn-floating btn-large waves-effect waves-light teal" id="login-button">
+            <a
+                class="btn-floating btn-large waves-effect waves-light teal"
+                id="login-button"
+            >
                 <i class="material-icons">lock_open</i>
             </a>
         </div>
@@ -72,76 +126,101 @@
     
     <t t-name="website_booking.toolbar_log">
         <div class="fixed-action-btn click-to-toggle active">
-            <a class="btn-floating btn-large waves-effect waves-light  teal" id="toolbar-button">
-                <img t-if="widget.avatar_src"
-                        t-att-src="widget.avatar_src"
-                        data-oe-model="res.partner"
-                        class="circle" style="max-height: 56px;width: 56px;"/>
+            <a
+                class="btn-floating btn-large waves-effect waves-light  teal"
+                id="toolbar-button"
+            >
+                <img
+                    t-if="widget.avatar_src"
+                    t-att-src="widget.avatar_src"
+                    data-oe-model="res.partner"
+                    class="circle"
+                    style="max-height: 56px;width: 56px;"
+                />
             </a>
             <ul>
                 <!--<li><a class="btn-floating yellow darken-1" href="/booking_mobile"><i class="material-icons">phone_iphone</i></a></li>-->
-                <li><a class="btn-floating red darken-1" id="add-booking-button"><i class="material-icons">add</i></a></li>
-                <li><a class="btn-floating green" id="help-booking-button"><i class="material-icons">live_help</i></a></li>
-                <li><a class="btn-floating blue" id="logout-booking-button"><i class="material-icons">lock_outline</i></a></li>
+                <li><a class="btn-floating red darken-1" id="add-booking-button"><i
+                            class="material-icons"
+                        >add</i></a></li>
+                <li><a class="btn-floating green" id="help-booking-button"><i
+                            class="material-icons"
+                        >live_help</i></a></li>
+                <li><a class="btn-floating blue" id="logout-booking-button"><i
+                            class="material-icons"
+                        >lock_outline</i></a></li>
             </ul>
         </div>
     </t>
     
     <t t-name="website_booking.browser">
         <header class="no-padding">
-            <nav class="cyan darken-2" >
+            <nav class="cyan darken-2">
                 <div>
-                    <img style="margin: 0 10px 0 10px; vertical-align:middle;" src="/website_booking/static/src/img/logo.png"/>
+                    <img
+                        style="margin: 0 10px 0 10px; vertical-align:middle;"
+                        src="/website_booking/static/src/img/logo.png"
+                    />
                     <span class="nav-title">Horizon | Booking</span>
                 </div>
             </nav>
-            <div class="booking_toolbar"/>
+            <div class="booking_toolbar" />
         </header>
         <main>
-            <div class="navbar" style="padding:5px;"/>    
-            <div class="calendar_body" >
+            <div class="navbar" style="padding:5px;" />    
+            <div class="calendar_body">
                 <div class="row">
                     <div class="col s12 l12">
-                        <div class='calendar'/>
+                        <div class='calendar' />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-1">
-                        <input class="form-control" id="datepicker" type="date"/>
+                        <input class="form-control" id="datepicker" type="date" />
                     </div>
                     <div class="col-1">
-                        <a href="#!" id="goto-date-button" class="waves-effect waves-green btn">-> Date</a>
+                        <a
+                            href="#!"
+                            id="goto-date-button"
+                            class="waves-effect waves-green btn"
+                        >-> Date</a>
                     </div>
                 </div>
             </div>
         </main>
         <div id="main-modal" class="modal">
-            <div id="main-modal-content" class="modal-content"/>
-            <div class="modal-footer"/>
+            <div id="main-modal-content" class="modal-content" />
+            <div class="modal-footer" />
         </div>
         <div id="modal-details" class="modal">
-            <div id="modal-details-content" class="modal-content"/>
-            <div class="modal-footer"/>
+            <div id="modal-details-content" class="modal-content" />
+            <div class="modal-footer" />
         </div>
     </t>
     
     <t t-name="website_booking.browser_calendar">
-        <div id='fc_calendar'/>
+        <div id='fc_calendar' />
     </t>
     
     <t t-name="website_booking.browser_navigation">
         <table>
-            <tr class="categories"/>
+            <tr class="categories" />
         </table>
     </t>
     
     <t t-name="website_booking.browser_navigation_card">
         <td class="nav-wrapper">
             <t t-if="!widget.to_parent">
-            <a t-att-class="(widget.is_active ? 'cat_button waves-effect waves-light btn active' : 'cat_button waves-effect waves-light btn')" t-att-data-category-id="widget.category.id"><span t-esc="widget.category.name"/></a>
+            <a
+                    t-att-class="(widget.is_active ? 'cat_button waves-effect waves-light btn active' : 'cat_button waves-effect waves-light btn')"
+                    t-att-data-category-id="widget.category.id"
+                ><span t-esc="widget.category.name" /></a>
             </t>
             <t t-if="widget.to_parent">
-            <a class="cat_button waves-effect waves-light btn cyan darken-5" t-att-data-category-id="widget.category.id">Retour...</a>
+            <a
+                    class="cat_button waves-effect waves-light btn cyan darken-5"
+                    t-att-data-category-id="widget.category.id"
+                >Retour...</a>
             </t>
         </td>
     </t>

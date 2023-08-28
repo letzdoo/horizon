@@ -29,67 +29,80 @@
     <record id="hz_website_menus_visibility_form_view" model="ir.ui.view">
         <field name="name">website_school_portal.menu.visibility.view.form</field>
         <field name="model">website.menu</field>
-        <field name="inherit_id" ref="website.website_menus_form_view"/>
+        <field name="inherit_id" ref="website.website_menus_form_view" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='sequence']"
-                position="after">
-                <field name="public"/>
-                <field name="student"/>
-                <field name="teacher"/>
-                <field name="employee"/>
+            <xpath expr="//field[@name='sequence']" position="after">
+                <field name="public" />
+                <field name="student" />
+                <field name="teacher" />
+                <field name="employee" />
             </xpath>
         </field>
     </record>
 
     <!-- Ajout point de menu en fonction de leur visibilité  -->
-    <template id="hz_custom_menu_creation" inherit_id="website.navbar_nav" name="Custom menu creation" priority="10" >
+    <template
+        id="hz_custom_menu_creation"
+        inherit_id="website.navbar_nav"
+        name="Custom menu creation"
+        priority="10"
+    >
         <xpath expr="." position="replace">
-            <ul id="top_menu" t-attf-class="nav navbar-nav o_menu_loading #{_nav_class}">
-                <t t-set="_nav_class" t-valuef="flex-grow-1"/>
+            <ul
+                id="top_menu"
+                t-attf-class="nav navbar-nav o_menu_loading #{_nav_class}"
+            >
+                <t t-set="_nav_class" t-valuef="flex-grow-1" />
                 <!-- Menu -->
                 <t t-foreach="website.menu_id.child_id" t-as="submenu">
                     <t t-if="submenu.public">
                         <t t-call="website.submenu">
-                            <t t-set="item_class" t-valuef="nav-item"/>
-                            <t t-set="link_class" t-valuef="nav-link"/>
+                            <t t-set="item_class" t-valuef="nav-item" />
+                            <t t-set="link_class" t-valuef="nav-link" />
                         </t>
                     </t>
                     <t t-elif="website.env.is_admin()">
                         <t t-call="website.submenu">
-                            <t t-set="item_class" t-valuef="nav-item"/>
-                            <t t-set="link_class" t-valuef="nav-link"/>
+                            <t t-set="item_class" t-valuef="nav-item" />
+                            <t t-set="link_class" t-valuef="nav-link" />
                         </t>
                     </t>
-                    <t t-elif="submenu.teacher and website.env.user.partner_id.teacher == True">
+                    <t
+                        t-elif="submenu.teacher and website.env.user.partner_id.teacher == True"
+                    >
                         <t t-call="website.submenu">
-                            <t t-set="item_class" t-valuef="nav-item"/>
-                            <t t-set="link_class" t-valuef="nav-link"/>
+                            <t t-set="item_class" t-valuef="nav-item" />
+                            <t t-set="link_class" t-valuef="nav-link" />
                         </t>
                     </t>
-                    <t t-elif="submenu.student and website.env.user.partner_id.student == True">
+                    <t
+                        t-elif="submenu.student and website.env.user.partner_id.student == True"
+                    >
                         <t t-call="website.submenu">
-                            <t t-set="item_class" t-valuef="nav-item"/>
-                            <t t-set="link_class" t-valuef="nav-link"/>
+                            <t t-set="item_class" t-valuef="nav-item" />
+                            <t t-set="link_class" t-valuef="nav-link" />
                         </t>
                     </t>
-                    <t t-elif="submenu.employee and website.env.user.partner_id.employee == True">
+                    <t
+                        t-elif="submenu.employee and website.env.user.partner_id.employee == True"
+                    >
                         <t t-call="website.submenu">
-                            <t t-set="item_class" t-valuef="nav-item"/>
-                            <t t-set="link_class" t-valuef="nav-link"/>
+                            <t t-set="item_class" t-valuef="nav-item" />
+                            <t t-set="link_class" t-valuef="nav-link" />
                         </t>
                     </t>
                 </t>
                 <!-- Sign In -->
                 <t t-call="portal.placeholder_user_sign_in">
-                    <t t-set="_item_class" t-valuef="nav-item ms-lg-auto"/>
-                    <t t-set="_link_class" t-valuef="nav-link"/>
+                    <t t-set="_item_class" t-valuef="nav-item ms-lg-auto" />
+                    <t t-set="_link_class" t-valuef="nav-link" />
                 </t>
                 <!-- User Dropdown -->
                 <t t-call="portal.user_dropdown">
-                    <t t-set="_user_name" t-value="True"/>
-                    <t t-set="_user_name_class" t-valuef="fw-bold"/>
-                    <t t-set="_item_class" t-valuef="nav-item dropdown ms-lg-auto"/>
-                    <t t-set="_link_class" t-valuef="nav-link"/>
+                    <t t-set="_user_name" t-value="True" />
+                    <t t-set="_user_name_class" t-valuef="fw-bold" />
+                    <t t-set="_item_class" t-valuef="nav-item dropdown ms-lg-auto" />
+                    <t t-set="_link_class" t-valuef="nav-link" />
                 </t>
             </ul>
         </xpath>

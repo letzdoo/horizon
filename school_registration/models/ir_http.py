@@ -19,34 +19,47 @@
 #
 ##############################################################################
 
-from odoo import api, fields, models, _
+from odoo import api, models
 from odoo.http import request
 
 
 class Http(models.AbstractModel):
-    _inherit = 'ir.http'
+    _inherit = "ir.http"
 
     @api.model
     def get_frontend_session_info(self):
         session_info = super(Http, self).get_frontend_session_info()
 
-        all_forms_ids = self.env['formio.form'].sudo().search([['user_id','=',request.env.user.id]])
+        all_forms_ids = (
+            self.env["formio.form"]
+            .sudo()
+            .search([["user_id", "=", request.env.user.id]])
+        )
 
-        if request.env.user.partner_id.student :
-            val = 'student'
-        elif request.env.user.partner_id.teacher :
-            val = 'teacher'
-        elif request.env.user.partner_id.employee :
-            val = 'employee'
-        elif all_forms_ids.filtered(lambda f : f.name == 'new_contact' and f.state in ['DRAFT','PENDING']):
-            val = 'info-form'
-        elif all_forms_ids.filtered(lambda f : f.name == 'new_contact' and f.state == 'COMPLETE'):
-            val = 'info-form-complete'
-        else :
-            val = 'no-form'
+        if request.env.user.partner_id.student:
+            val = "student"
+        elif request.env.user.partner_id.teacher:
+            val = "teacher"
+        elif request.env.user.partner_id.employee:
+            val = "employee"
+        elif all_forms_ids.filtered(
+            lambda f: f.name == "new_contact" and f.state in ["DRAFT", "PENDING"]
+        ):
+            val = "info-form"
+        elif all_forms_ids.filtered(
+            lambda f: f.name == "new_contact" and f.state == "COMPLETE"
+        ):
+            val = "info-form-complete"
+        else:
+            val = "no-form"
 
-        session_info.update({
-            'horizon_state': val,
-            'horizon_user_forms': [[f.id, f.name, f.state, f.uuid] for f in all_forms_ids.filtered(lambda f : f.name == 'new_contact')],
-        })
+        session_info.update(
+            {
+                "horizon_state": val,
+                "horizon_user_forms": [
+                    [f.id, f.name, f.state, f.uuid]
+                    for f in all_forms_ids.filtered(lambda f: f.name == "new_contact")
+                ],
+            }
+        )
         return session_info

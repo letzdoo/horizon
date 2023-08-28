@@ -18,6 +18,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-#from . import res_config_settings
+# from . import res_config_settings
 from . import res_company
 from . import school_webservices

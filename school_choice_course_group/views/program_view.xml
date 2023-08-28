@@ -30,11 +30,20 @@
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//group/field[@name='total_weight']" position="after">
-                    <field name="type"/>
-                    <field name="is_choice_course_group"/>
-                    <field name="total_credits_to_select" attrs="{'invisible': [('is_choice_course_group','=',False)]}"/>
-                    <field name="total_hours_to_select" attrs="{'invisible': [('is_choice_course_group','=',False)]}"/>
-                    <field name="total_weight_to_select" attrs="{'invisible': [('is_choice_course_group','=',False)]}"/>
+                    <field name="type" />
+                    <field name="is_choice_course_group" />
+                    <field
+                    name="total_credits_to_select"
+                    attrs="{'invisible': [('is_choice_course_group','=',False)]}"
+                />
+                    <field
+                    name="total_hours_to_select"
+                    attrs="{'invisible': [('is_choice_course_group','=',False)]}"
+                />
+                    <field
+                    name="total_weight_to_select"
+                    attrs="{'invisible': [('is_choice_course_group','=',False)]}"
+                />
                 </xpath>
             </field>
         </record>

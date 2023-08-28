@@ -20,19 +20,20 @@
 ##############################################################################
 import logging
 
-from odoo import api, fields, models, tools, _
-from odoo.exceptions import UserError
+from odoo import api, models
 
 _logger = logging.getLogger(__name__)
 
+
 class IndividualBloc(models.Model):
-    '''Individual Bloc'''
-    _inherit = 'school.individual_bloc'
-    
-    @api.onchange('course_group_ids')
+    """Individual Bloc"""
+
+    _inherit = "school.individual_bloc"
+
+    @api.onchange("course_group_ids")
     def on_change_course_group_ids(self):
         pass
-    
+
         # self.ensure_one()
         # res = {}
         # current_scg_ids = self.course_group_ids.mapped('source_course_group_id')

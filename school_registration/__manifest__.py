@@ -19,28 +19,28 @@
 #
 ##############################################################################
 {
-    'name': 'School registration',
-    'version': '16.0.1.0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': 'https://github.com/ito-invest-lu/horizon',
-    'category': 'School Management',
-    'depends': ['base_automation','formio','formio_data_api'],
-    'init_xml': [],
-    'data': [
-        'registration_data.xml',
-        'security/ir.model.access.csv',
-        'views/configuration_view.xml',
-        'views/registration_view.xml',
-        'wizard/year_opening.xml',
+    "name": "School registration",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["base_automation", "formio", "formio_data_api"],
+    "init_xml": [],
+    "data": [
+        "registration_data.xml",
+        "security/ir.model.access.csv",
+        "views/configuration_view.xml",
+        "views/registration_view.xml",
+        "wizard/year_opening.xml",
     ],
-    'assets': {
-        'web.web_assets_common': [
-            'school_registration/static/src/css/school_registration.css',
+    "assets": {
+        "web.web_assets_common": [
+            "school_registration/static/src/css/school_registration.css",
         ],
     },
-    'demo_xml': [],
-    'qweb': ['static/src/xml/*.xml'],
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "qweb": ["static/src/xml/*.xml"],
+    "installable": True,
+    "application": True,
 }

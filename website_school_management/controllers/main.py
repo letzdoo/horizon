@@ -23,24 +23,22 @@ import logging
 import json
 import werkzeug
 
-from odoo.addons.http_routing.models.ir_http import slug, unslug
+from odoo.addons.http_routing.models.ir_http import unslug
 
 from odoo import http
 from odoo.addons.web.controllers.main import CSVExport
 
-from odoo.http import request, serialize_exception
-from odoo import tools
-from odoo.tools.translate import _
+from odoo.http import request
 from odoo.tools import ustr
 
 _logger = logging.getLogger(__name__)
 
+
 class csv_school_management(CSVExport):
-  
-    @http.route('/web/export/course', type='http', auth="user")
-    #@serialize_exception
+    @http.route("/web/export/course", type="http", auth="user")
+    # @serialize_exception
     def export_course(self):
-      data =  """{
+        data = """{
           "model": "school.course",
           "fields": [
             {
@@ -116,12 +114,12 @@ class csv_school_management(CSVExport):
           },
           "import_compat": true
         }"""
-      return self.base(data, '1551704801155')
-  
-    @http.route('/web/export/course_group', type='http', auth="user")
-    #@serialize_exception
+        return self.base(data, "1551704801155")
+
+    @http.route("/web/export/course_group", type="http", auth="user")
+    # @serialize_exception
     def export_course_group(self):
-      data = """{
+        data = """{
                   "model": "school.course_group",
                   "fields": [
                     {
@@ -209,11 +207,10 @@ class csv_school_management(CSVExport):
                   },
                   "import_compat": true
                 }"""
-      return self.base(data, '1551704801155')
+        return self.base(data, "1551704801155")
 
-
-    @http.route('/web/export/bloc', type='http', auth="user")
-    #@serialize_exception
+    @http.route("/web/export/bloc", type="http", auth="user")
+    # @serialize_exception
     def export_blocs(self):
         data = """{
                   "model": "school.bloc",
@@ -286,12 +283,10 @@ class csv_school_management(CSVExport):
                   },
                   "import_compat": true
                 }"""
-        return self.base(data, '1551704801155')
-        
-        
-        
-    @http.route('/web/export/program', type='http', auth="user")
-    #@serialize_exception
+        return self.base(data, "1551704801155")
+
+    @http.route("/web/export/program", type="http", auth="user")
+    # @serialize_exception
     def export_programs(self):
         data = """{
             "model": "school.program",
@@ -388,38 +383,62 @@ class csv_school_management(CSVExport):
             },
             "import_compat": true
           }"""
-        return self.base(data, '1551704801155')
-          
+        return self.base(data, "1551704801155")
+
 
 class website_portal_school_management(http.Controller):
-
-    @http.route(['/program_json/<program_id>'], type='http', auth='public')
+    @http.route(["/program_json/<program_id>"], type="http", auth="public")
     def program_details_json(self, program_id, redirect=None, **post):
         _, program_id = unslug(program_id)
-        program = request.env['school.program'].sudo().search_read([('id','=',program_id)])
-        if program :
+        program = (
+            request.env["school.program"].sudo().search_read([("id", "=", program_id)])
+        )
+        if program:
             program = program[0]
-            program.pop('course_group_ids')
-            blocs = request.env['school.bloc'].sudo().search_read([('id','in',program['bloc_ids'])])
-            for bloc in blocs :
-                bloc['cycle_id'] = request.env['school.cycle'].sudo().search_read([('id','=',bloc['cycle_id'][0])])
-                bloc['speciality_id'] = request.env['school.speciality'].sudo().search_read([('id','=',bloc['speciality_id'][0])])
-                course_groups = request.env['school.course_group'].sudo().search_read([('id','in',bloc['course_group_ids'])])
-                for cg in course_groups :
-                    cg.pop('bloc_ids')
-                    courses = request.env['school.course'].sudo().search_read([('id','in',cg['course_ids'])])
-                    for c in courses :
-                        c.pop('bloc_ids')
-                    cg['course_ids'] = courses
-                bloc['course_group_ids'] = course_groups
-            program['bloc_ids'] = blocs
+            program.pop("course_group_ids")
+            blocs = (
+                request.env["school.bloc"]
+                .sudo()
+                .search_read([("id", "in", program["bloc_ids"])])
+            )
+            for bloc in blocs:
+                bloc["cycle_id"] = (
+                    request.env["school.cycle"]
+                    .sudo()
+                    .search_read([("id", "=", bloc["cycle_id"][0])])
+                )
+                bloc["speciality_id"] = (
+                    request.env["school.speciality"]
+                    .sudo()
+                    .search_read([("id", "=", bloc["speciality_id"][0])])
+                )
+                course_groups = (
+                    request.env["school.course_group"]
+                    .sudo()
+                    .search_read([("id", "in", bloc["course_group_ids"])])
+                )
+                for cg in course_groups:
+                    cg.pop("bloc_ids")
+                    courses = (
+                        request.env["school.course"]
+                        .sudo()
+                        .search_read([("id", "in", cg["course_ids"])])
+                    )
+                    for c in courses:
+                        c.pop("bloc_ids")
+                    cg["course_ids"] = courses
+                bloc["course_group_ids"] = course_groups
+            program["bloc_ids"] = blocs
             body = json.dumps(program, default=ustr)
-            response = request.make_response(body, [
-                # this method must specify a content-type application/json instead of using the default text/html set because
-                # the type of the route is set to HTTP, but the rpc is made with a get and expects JSON
-                ('Content-Type', 'application/json'),
-                ('Cache-Control', 'public, max-age=' + str(http.STATIC_CACHE_LONG)),
-            ])
+            response = request.make_response(
+                body,
+                [
+                    # this method must specify a content-type application/json instead of using the default text/html set because
+                    # the type of the route is set to HTTP, but the rpc is made with a get and expects JSON
+                    ("Content-Type", "application/json"),
+                    ("Cache-Control", "public, max-age=" + str(http.STATIC_CACHE_LONG)),
+                ],
+            )
             return response
-        else :
-            raise werkzeug.exceptions.HTTPException(description='Unkown program.')
+        else:
+            raise werkzeug.exceptions.HTTPException(description="Unkown program.")

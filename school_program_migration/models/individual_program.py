@@ -20,19 +20,22 @@
 ##############################################################################
 import logging
 
-from odoo import api, fields, models, tools, _
-from odoo.exceptions import UserError, AccessError
+from odoo import models
 
 _logger = logging.getLogger(__name__)
 
+
 class IndividualProgram(models.Model):
-    '''Individual Program'''
-    _inherit=['school.individual_program']
-    
+    """Individual Program"""
+
+    _inherit = ["school.individual_program"]
+
     def action_clean_summaries(self):
         self.ensure_one()
-        summaries = self.env['school.individual_course_summary'].search([('program_id','=',self.id)])
+        summaries = self.env["school.individual_course_summary"].search(
+            [("program_id", "=", self.id)]
+        )
         for summary in summaries:
-            if len(summary.ind_course_group_ids) == 0 :
-                _logger.info('PROGRM MIGRATION - Unlink UE %s' % summary.uid)
+            if len(summary.ind_course_group_ids) == 0:
+                _logger.info("PROGRM MIGRATION - Unlink UE %s" % summary.uid)
                 summary.unlink()

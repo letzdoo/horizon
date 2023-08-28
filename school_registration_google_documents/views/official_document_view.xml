@@ -26,7 +26,10 @@
         <record id="view_official_document_google_form" model="ir.ui.view">
             <field name="name">school.official_document.google.form</field>
             <field name="model">school.official_document</field>
-            <field name="inherit_id" ref="school_registration_documents.view_official_document_form" />
+            <field
+            name="inherit_id"
+            ref="school_registration_documents.view_official_document_form"
+        />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='attachment_ids']" position="after">
@@ -34,7 +37,7 @@
                         <tree>
                             <field name="name" />
                             <field name="mimeType" />
-                            <field name="url" widget="url" text="Open"/>
+                            <field name="url" widget="url" text="Open" />
                         </tree>
                     </field>
                 </xpath>
@@ -45,18 +48,33 @@
         <record id="view_student_form_school_google_docs" model="ir.ui.view">
             <field name="name">view.res.partner.form.school.google.docs</field>
             <field name="model">res.partner</field>
-            <field name="inherit_id" ref="google_documents.view_res_partner_form_google_docs" />
+            <field
+            name="inherit_id"
+            ref="google_documents.view_res_partner_form_google_docs"
+        />
             <field name="priority">150</field>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='google_drive_files']/tree" position="attributes">
+                <xpath
+                expr="//field[@name='google_drive_files']/tree"
+                position="attributes"
+            >
                     <attribute name="editable">top</attribute>
-                    <attribute name="decoration-danger">official_document_id and not is_available</attribute>
-                    <attribute name="decoration-success">official_document_id and is_available</attribute>
-                    <attribute name="default_order">official_document_id desc</attribute>
+                    <attribute
+                    name="decoration-danger"
+                >official_document_id and not is_available</attribute>
+                    <attribute
+                    name="decoration-success"
+                >official_document_id and is_available</attribute>
+                    <attribute
+                    name="default_order"
+                >official_document_id desc</attribute>
                 </xpath>
-                <xpath expr="//field[@name='google_drive_files']//field[@name='mimeType']" position="before">
+                <xpath
+                expr="//field[@name='google_drive_files']//field[@name='mimeType']"
+                position="before"
+            >
                     <field name="official_document_id" />
-                    <field name="is_available" invisible="1"/>
+                    <field name="is_available" invisible="1" />
                 </xpath>
             </field>
         </record>

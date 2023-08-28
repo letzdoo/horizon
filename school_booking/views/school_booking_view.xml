@@ -20,15 +20,14 @@
 #
 ##############################################################################
 -->
-
 <odoo>
     <record id="school_year_form_inherited" model="ir.ui.view">
             <field name="name">school.year.form.inherited</field>
             <field name="model">school.year</field>
-            <field name="inherit_id" ref="school_management.view_year_form"/>
+            <field name="inherit_id" ref="school_management.view_year_form" />
             <field name="arch" type="xml">
                 <field name="short_name" position="after">
-                    <field name="calendar_id"/>
+                    <field name="calendar_id" />
                 </field>
             </field>
     </record>
@@ -43,13 +42,22 @@
         <form string="Calendar">
           <sheet>
             <div class="oe_button_box" name="button_box">
-                <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
-                    <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                <button
+                            name="toggle_active"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-archive"
+                        >
+                    <field
+                                name="active"
+                                widget="boolean_button"
+                                options="{&quot;terminology&quot;: &quot;archive&quot;}"
+                            />
                 </button>
             </div>
             <div class="oe_title">
                 <h1>
-                    <field name="name" default_focus="1" placeholder="Name"/>
+                    <field name="name" default_focus="1" placeholder="Name" />
                 </h1>
             </div>
             <group cols="2">
@@ -72,7 +80,13 @@
     </record>
 
     <!-- Top menu item -->
-    <menuitem name="Booking" id="menu_main_booking" web_icon="calendar,static/description/icon.png" sequence="20" groups="school_booking.group_booking_manager"/>
+    <menuitem
+        name="Booking"
+        id="menu_main_booking"
+        web_icon="calendar,static/description/icon.png"
+        sequence="20"
+        groups="school_booking.group_booking_manager"
+    />
 
     <!-- Booking Tree View -->
     <record id="view_booking_tree" model="ir.ui.view">
@@ -99,8 +113,8 @@
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="before">
               <group>
-                <field name="room_id"/>
-                <field name="asset_ids" widget="many2many_tags"/>
+                <field name="room_id" />
+                <field name="asset_ids" widget="many2many_tags" />
               </group>
             </xpath>
         </field>
@@ -126,13 +140,37 @@
         <search string="Search Booking">
           <field name="name" filter_domain="[('name','ilike',self)]" />
           <field name="room_id" />
-          <filter string="Recurring" name="recurring" domain="[('recurrency','=',True)]" />
-          <filter string="Student Booking" name="student" domain="[('categ_ids','=',%(school_booking.school_student_event_type)d)]" />
-          <filter string="Teacher Booking" name="teacher" domain="[('categ_ids','=',%(school_booking.school_teacher_event_type)d)]" />
-          <filter string="Management Booking" name="management" domain="[('categ_ids','=',%(school_booking.school_management_event_type)d)]" />
-          <separator/>
-          <filter string="Today" name="today" domain="[('start','&gt;', context_today().strftime('%%Y-%%m-%%d 00:00:00') ),('start','&lt;', (context_today() + datetime.timedelta(days=1)).strftime('%%Y-%%m-%%d 00:00:00') )]" />
-          <filter string="Tomorrow" name="tomorrow" domain="[('start','&gt;', (context_today() + datetime.timedelta(days=1)).strftime('%%Y-%%m-%%d 00:00:00') ),('start','&lt;', (context_today() + datetime.timedelta(days=2)).strftime('%%Y-%%m-%%d 00:00:00') )]" />
+          <filter
+                    string="Recurring"
+                    name="recurring"
+                    domain="[('recurrency','=',True)]"
+                />
+          <filter
+                    string="Student Booking"
+                    name="student"
+                    domain="[('categ_ids','=',%(school_booking.school_student_event_type)d)]"
+                />
+          <filter
+                    string="Teacher Booking"
+                    name="teacher"
+                    domain="[('categ_ids','=',%(school_booking.school_teacher_event_type)d)]"
+                />
+          <filter
+                    string="Management Booking"
+                    name="management"
+                    domain="[('categ_ids','=',%(school_booking.school_management_event_type)d)]"
+                />
+          <separator />
+          <filter
+                    string="Today"
+                    name="today"
+                    domain="[('start','&gt;', context_today().strftime('%%Y-%%m-%%d 00:00:00') ),('start','&lt;', (context_today() + datetime.timedelta(days=1)).strftime('%%Y-%%m-%%d 00:00:00') )]"
+                />
+          <filter
+                    string="Tomorrow"
+                    name="tomorrow"
+                    domain="[('start','&gt;', (context_today() + datetime.timedelta(days=1)).strftime('%%Y-%%m-%%d 00:00:00') ),('start','&lt;', (context_today() + datetime.timedelta(days=2)).strftime('%%Y-%%m-%%d 00:00:00') )]"
+                />
         </search>
       </field>
     </record>
@@ -162,7 +200,10 @@
       
       <field name="view_mode">tree,form</field>
       <field name="search_view_id" ref="view_booking_filter" />
-      <field name="context" eval="{'search_default_student':1, 'search_default_today':1, 'default_categ_ids':[ref('school_booking.school_student_event_type')]}" />
+      <field
+            name="context"
+            eval="{'search_default_student':1, 'search_default_today':1, 'default_categ_ids':[ref('school_booking.school_student_event_type')]}"
+        />
       <field name="help" type="html">
         <p class="oe_view_nocontent_create">
           Click to add a recurring booking.
@@ -180,7 +221,10 @@
       
       <field name="view_mode">tree,form</field>
       <field name="search_view_id" ref="view_booking_filter" />
-      <field name="context" eval="{'search_default_teacher':1, 'search_default_today':1, 'default_categ_ids':[ref('school_booking.school_teacher_event_type')]}" />
+      <field
+            name="context"
+            eval="{'search_default_teacher':1, 'search_default_today':1, 'default_categ_ids':[ref('school_booking.school_teacher_event_type')]}"
+        />
       <field name="help" type="html">
         <p class="oe_view_nocontent_create">
           Click to add a recurring booking.
@@ -198,7 +242,10 @@
       
       <field name="view_mode">tree,form</field>
       <field name="search_view_id" ref="view_booking_filter" />
-      <field name="context" eval="{'search_default_management':1, 'search_default_today':1, 'default_categ_ids':[ref('school_booking.school_management_event_type')]}" />
+      <field
+            name="context"
+            eval="{'search_default_management':1, 'search_default_today':1, 'default_categ_ids':[ref('school_booking.school_management_event_type')]}"
+        />
       <field name="help" type="html">
         <p class="oe_view_nocontent_create">
           Click to add a recurring booking.
@@ -266,13 +313,19 @@
       <field name="act_window_id" ref="action_booking_man_tree" />
     </record>-->
     
-    <record id="action_booking_teach_tree_tree_view1" model="ir.actions.act_window.view">
+    <record
+        id="action_booking_teach_tree_tree_view1"
+        model="ir.actions.act_window.view"
+    >
       <field name="sequence" eval="1" />
       <field name="view_mode">tree</field>
       <field name="view_id" ref="view_booking_tree" />
       <field name="act_window_id" ref="action_booking_teach_tree" />
     </record>
-    <record id="action_booking_teach_tree_form_view2" model="ir.actions.act_window.view">
+    <record
+        id="action_booking_teach_tree_form_view2"
+        model="ir.actions.act_window.view"
+    >
       <field name="sequence" eval="2" />
       <field name="view_mode">form</field>
       <field name="view_id" ref="booking_form" />
@@ -287,13 +340,33 @@
 
     <menuitem id="menu_booking_tree" parent="menu_main_booking" sequence="10" />
 
-    <menuitem id="menu_booking_booking_tree" parent="menu_booking_tree" action="action_booking_tree" sequence="50" />
+    <menuitem
+        id="menu_booking_booking_tree"
+        parent="menu_booking_tree"
+        action="action_booking_tree"
+        sequence="50"
+    />
     
-    <menuitem id="menu_booking_rec_tree" parent="menu_booking_booking_tree" action="action_booking_stud_tree" sequence="10" />
+    <menuitem
+        id="menu_booking_rec_tree"
+        parent="menu_booking_booking_tree"
+        action="action_booking_stud_tree"
+        sequence="10"
+    />
 
-    <menuitem id="menu_booking_teach_tree" parent="menu_booking_booking_tree" action="action_booking_teach_tree" sequence="20" />
+    <menuitem
+        id="menu_booking_teach_tree"
+        parent="menu_booking_booking_tree"
+        action="action_booking_teach_tree"
+        sequence="20"
+    />
 
-    <menuitem id="menu_booking_man_tree" parent="menu_booking_booking_tree" action="action_booking_man_tree" sequence="30" />
+    <menuitem
+        id="menu_booking_man_tree"
+        parent="menu_booking_booking_tree"
+        action="action_booking_man_tree"
+        sequence="30"
+    />
 
     
   

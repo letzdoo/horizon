@@ -26,13 +26,19 @@
         <field name="model">school.add_documents_wizard</field>
         <field name="arch" type="xml">
             <form string="Document Add Wizard">
-                <field name="student_id" invisible="1"/>
+                <field name="student_id" invisible="1" />
                 <div>    
                     <h2>Please select the document type :</h2>
-                    <field name="document_type_ids"/>
+                    <field name="document_type_ids" />
                 </div>
                 <footer>
-                    <button name="on_confirm_documents" string="Add Documents" type="object" default_focus="1" class="oe_highlight" /> or
+                    <button
+                        name="on_confirm_documents"
+                        string="Add Documents"
+                        type="object"
+                        default_focus="1"
+                        class="oe_highlight"
+                    /> or
                     <button string="Cancel" class="btn-default" special="cancel" />
                 </footer>
             </form>

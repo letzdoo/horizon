@@ -23,40 +23,64 @@ import logging
 
 from odoo import http
 from odoo.http import request
-from odoo import tools
-from odoo.tools.translate import _
 
 _logger = logging.getLogger(__name__)
 
+
 class school_course_documentation(http.Controller):
-    
-    @http.route(['/course_doc/<model("school.course"):course>'], type='http', auth='public', website=True, sitemap=False)
+    @http.route(
+        ['/course_doc/<model("school.course"):course>'],
+        type="http",
+        auth="public",
+        website=True,
+        sitemap=False,
+    )
     def course_doc(self, course, redirect=None, **post):
         values = {
-            'course' : course,
-            'doc' : course.documentation_id,
+            "course": course,
+            "doc": course.documentation_id,
         }
         return request.website.render("school_course_description.school_course", values)
-        
-    @http.route(['/course_group_doc/<model("school.course_group"):cg>'], type='http', auth='public', website=True, sitemap=False)
+
+    @http.route(
+        ['/course_group_doc/<model("school.course_group"):cg>'],
+        type="http",
+        auth="public",
+        website=True,
+        sitemap=False,
+    )
     def course_group_doc(self, cg, redirect=None, **post):
         values = {
-            'course' : cg,
-            'doc' : cg.documentation_id,
+            "course": cg,
+            "doc": cg.documentation_id,
         }
         return request.website.render("school_course_description.school_course", values)
-        
-    @http.route(['/course_doc/edit/<model("school.course"):course>'], type='http', auth='user', website=True, sitemap=False)
+
+    @http.route(
+        ['/course_doc/edit/<model("school.course"):course>'],
+        type="http",
+        auth="user",
+        website=True,
+        sitemap=False,
+    )
     def course_doc_edit(self, course, redirect=None, **post):
-        draft_doc = course.env['school.course_documentation'].search([['course_id', '=', course.id],['state','=','draft']])
+        draft_doc = course.env["school.course_documentation"].search(
+            [["course_id", "=", course.id], ["state", "=", "draft"]]
+        )
         if not draft_doc:
-            active_doc = course.env['school.course_documentation'].search([['course_id', '=', course.id],['state','=','published']])
+            active_doc = course.env["school.course_documentation"].search(
+                [["course_id", "=", course.id], ["state", "=", "published"]]
+            )
             if active_doc:
                 draft_doc = active_doc.copy()
-            else:    
-                draft_doc = course.env['school.course_documentation'].create({'course_id' : course.id})
+            else:
+                draft_doc = course.env["school.course_documentation"].create(
+                    {"course_id": course.id}
+                )
         values = {
-            'course' : course,
-            'doc' : draft_doc,
+            "course": course,
+            "doc": draft_doc,
         }
-        return request.website.render("school_course_description.school_course_edit", values)
+        return request.website.render(
+            "school_course_description.school_course_edit", values
+        )

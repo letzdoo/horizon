@@ -23,23 +23,47 @@
 <odoo>
 
     <!-- Default content - CRLG -->
-    <template id="_crlg_custom_home_banner" inherit_id="website_school_portal._hz_custom_home_banner" name="CRLG Home Banner">
+    <template
+        id="_crlg_custom_home_banner"
+        inherit_id="website_school_portal._hz_custom_home_banner"
+        name="CRLG Home Banner"
+    >
         <xpath expr="//div[hasclass('oe_structure')]" position="replace"> 
             <div class="oe_structure">
-                <section class="s_banner parallax pt96 pb96 o_colored_level" data-scroll-background-ratio="-1.95" data-snippet="s_banner" data-name="Bannière" style="background-image: none;">
-                    <span class="s_parallax_bg oe_img_bg o_bg_img_center" style="background-image: url(&quot;/website_crlg_portal/static/img/banner.jpg&quot;); background-position: 50% 0px; top: -190.71px; bottom: -190.71px; transform: translateY(49px);"/>
-                    <div class="o_we_bg_filter bg-black-50"/>
+                <section
+                    class="s_banner parallax pt96 pb96 o_colored_level"
+                    data-scroll-background-ratio="-1.95"
+                    data-snippet="s_banner"
+                    data-name="Bannière"
+                    style="background-image: none;"
+                >
+                    <span
+                        class="s_parallax_bg oe_img_bg o_bg_img_center"
+                        style="background-image: url(&quot;/website_crlg_portal/static/img/banner.jpg&quot;); background-position: 50% 0px; top: -190.71px; bottom: -190.71px; transform: translateY(49px);"
+                    />
+                    <div class="o_we_bg_filter bg-black-50" />
                     <div class="s_allow_columns container">
                         <div class="row justify-content-center">
-                            <div class="o_colored_level text-o-color-4 col-lg-8 o_anim_fade_in o_animate o_visible">
+                            <div
+                                class="o_colored_level text-o-color-4 col-lg-8 o_anim_fade_in o_animate o_visible"
+                            >
                                 <h1 style="text-align: center;">
                                     <font style="font-size: 62px;">Espace CRLG</font>
-                                    <br/>
+                                    <br />
                                 </h1>
-                                <p class="lead" style="text-align: center;">Espace CRLG est le portail des services en ligne à l'attention de la communauté du Conservatoire royal de Liège (École supérieure des Arts de Wallonie Bruxelles Enseignement)</p>
+                                <p
+                                    class="lead"
+                                    style="text-align: center;"
+                                >Espace CRLG est le portail des services en ligne à l'attention de la communauté du Conservatoire royal de Liège (École supérieure des Arts de Wallonie Bruxelles Enseignement)</p>
                                 <hr />
                                 <div class="oe_structure">
-                                    <section class="hz_generic_insert_snippet o_colored_level o_dynamic_empty" data-template-name="hz_horizon_access" data-snippet="hz_generic_insert_snippet" data-name="Snippet générique" style="background-image: none;">
+                                    <section
+                                        class="hz_generic_insert_snippet o_colored_level o_dynamic_empty"
+                                        data-template-name="hz_horizon_access"
+                                        data-snippet="hz_generic_insert_snippet"
+                                        data-name="Snippet générique"
+                                        style="background-image: none;"
+                                    >
                                     </section>
                                 </div>
                             </div>
@@ -50,86 +74,243 @@
         </xpath>    
     </template>
 
-    <template id="_crlg_custom_home_content" inherit_id="website_school_portal._hz_custom_home_content" name="CRLG Home Content"> 
+    <template
+        id="_crlg_custom_home_content"
+        inherit_id="website_school_portal._hz_custom_home_content"
+        name="CRLG Home Content"
+    > 
         <xpath expr="//div[hasclass('oe_structure')]" position="replace"> 
             <div class="oe_structure">
 
-                <section class="s_text_image pt32 o_colored_level pb0" data-snippet="s_text_image" data-name="Texte - Image" style="background-image: none;" id="musique-section" data-anchor="true">
+                <section
+                    class="s_text_image pt32 o_colored_level pb0"
+                    data-snippet="s_text_image"
+                    data-name="Texte - Image"
+                    style="background-image: none;"
+                    id="musique-section"
+                    data-anchor="true"
+                >
                     <div class="container">
                         <div class="row row-reverse align-items-center">
-                            <div class="o_colored_level col-lg-6 o_animate o_anim_slide_in o_anim_from_left o_visible">
-                                <img src="/website_crlg_portal/static/img/musique.svg" alt="" class="img img-fluid mx-auto o_we_custom_image" data-shape="web_editor/float/flt_square_2" data-shape-colors=";#E47C7C;;;#DB0707" data-original-id="972" data-original-src="/website_crlg_portal/static/img/musique.jpg" data-mimetype="image/svg+xml" data-original-mimetype="image/jpeg" data-resize-width="690" data-file-name="musique.svg" loading="eager"/>
+                            <div
+                                class="o_colored_level col-lg-6 o_animate o_anim_slide_in o_anim_from_left o_visible"
+                            >
+                                <img
+                                    src="/website_crlg_portal/static/img/musique.svg"
+                                    alt=""
+                                    class="img img-fluid mx-auto o_we_custom_image"
+                                    data-shape="web_editor/float/flt_square_2"
+                                    data-shape-colors=";#E47C7C;;;#DB0707"
+                                    data-original-id="972"
+                                    data-original-src="/website_crlg_portal/static/img/musique.jpg"
+                                    data-mimetype="image/svg+xml"
+                                    data-original-mimetype="image/jpeg"
+                                    data-resize-width="690"
+                                    data-file-name="musique.svg"
+                                    loading="eager"
+                                />
                             </div>
-                            <div class="o_colored_level o_animate o_anim_slide_in o_visible shadow o_anim_from_left pt16 pb16 col-lg-5" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 37px -8px !important;">
+                            <div
+                                class="o_colored_level o_animate o_anim_slide_in o_visible shadow o_anim_from_left pt16 pb16 col-lg-5"
+                                style="box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 37px -8px !important;"
+                            >
                                 <h2>
                                     <font class="text-o-color-1">
                                         <strong>|</strong>
                                     </font>
                                     <font class="text-black">M</font>USIQUE</h2>
-                                <p>Le département musique du Conservatoire royal de Liège est organisé en deux cycles. Le premier cycle (180 crédits) conduit au grade académique de&amp;nbsp;<strong style="font-weight: 700">Bachelier de qualification</strong>&amp;nbsp;ou de&amp;nbsp;<strong style="font-weight: 700">Bachelier de transition&amp;nbsp;</strong>qui donne accès aux études de Master. Le deuxième cycle (120 crédits) conduit au grade académique de&amp;nbsp;<strong style="font-weight: 700">Master</strong>. Le Conservatoire royal de Liège dispense également des&amp;nbsp;<strong style="font-weight: 700">Agrégations</strong>&amp;nbsp;permettant aux titulaires d’un Master à finalité spécialisée d’obtenir le grade d’Agrégé de l’Enseignement Secondaire Supérieur.<br/>
+                                <p
+                                >Le département musique du Conservatoire royal de Liège est organisé en deux cycles. Le premier cycle (180 crédits) conduit au grade académique de&amp;nbsp;<strong
+                                        style="font-weight: 700"
+                                    >Bachelier de qualification</strong>&amp;nbsp;ou de&amp;nbsp;<strong
+                                        style="font-weight: 700"
+                                    >Bachelier de transition&amp;nbsp;</strong>qui donne accès aux études de Master. Le deuxième cycle (120 crédits) conduit au grade académique de&amp;nbsp;<strong
+                                        style="font-weight: 700"
+                                    >Master</strong>. Le Conservatoire royal de Liège dispense également des&amp;nbsp;<strong
+                                        style="font-weight: 700"
+                                    >Agrégations</strong>&amp;nbsp;permettant aux titulaires d’un Master à finalité spécialisée d’obtenir le grade d’Agrégé de l’Enseignement Secondaire Supérieur.<br
+                                    />
                                 </p>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section class="s_text_image pb32 o_colored_level pt0" data-snippet="s_text_image" data-name="Texte - Image" style="background-image: none;">
+                <section
+                    class="s_text_image pb32 o_colored_level pt0"
+                    data-snippet="s_text_image"
+                    data-name="Texte - Image"
+                    style="background-image: none;"
+                >
                     <div class="container">
                         <div class="row align-items-center">
-                            <div class="o_colored_level shadow col-lg-5 o_animate o_anim_slide_in o_visible o_anim_from_right pt16 pb16" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 37px -8px !important;">
+                            <div
+                                class="o_colored_level shadow col-lg-5 o_animate o_anim_slide_in o_visible o_anim_from_right pt16 pb16"
+                                style="box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 37px -8px !important;"
+                            >
                                 <h2 style="text-align: right;">
                                     <font class="text-black">T</font>HÉÂTRE
                                     <font class="text-o-color-1">
                                         <strong>|</strong>
                                     </font>
                                 </h2>
-                                <p>L’Ecole Supérieure d’Acteurs (Cinéma – Théâtre) est une composante du Conservatoire royal de Liège. La formation se compose d’un premier cycle de trois ans, conduisant au grade de <strong>Bachelier</strong> en Théâtre et arts de la parole, et d’une quatrième année qui confère celui de <strong>Master</strong> en Théâtre et arts de la parole (diplôme professionnalisant). Son responsable pédagogique est Nathanaël Harcq, directeur du Conservatoire.
+                                <p
+                                >L’Ecole Supérieure d’Acteurs (Cinéma – Théâtre) est une composante du Conservatoire royal de Liège. La formation se compose d’un premier cycle de trois ans, conduisant au grade de <strong
+                                    >Bachelier</strong> en Théâtre et arts de la parole, et d’une quatrième année qui confère celui de <strong
+                                    >Master</strong> en Théâtre et arts de la parole (diplôme professionnalisant). Son responsable pédagogique est Nathanaël Harcq, directeur du Conservatoire.
                                 </p>
                             </div>
-                            <div class="o_colored_level col-lg-6 o_anim_fade_in o_animate o_anim_from_right o_visible">
-                                <img src="/website_crlg_portal/static/img/theatre.svg" alt="" class="img img-fluid mx-auto o_we_custom_image" data-original-id="971" data-original-src="/website_crlg_portal/static/img/theatre.jpg" data-mimetype="image/svg+xml" data-resize-width="690" data-bs-original-title="" title="" aria-describedby="tooltip930600" data-shape="web_editor/float/flt_square_3" data-file-name="theatre.svg" data-shape-colors="#DB0707;;;;#E47C7C" data-original-mimetype="image/jpeg" loading="eager"/>
+                            <div
+                                class="o_colored_level col-lg-6 o_anim_fade_in o_animate o_anim_from_right o_visible"
+                            >
+                                <img
+                                    src="/website_crlg_portal/static/img/theatre.svg"
+                                    alt=""
+                                    class="img img-fluid mx-auto o_we_custom_image"
+                                    data-original-id="971"
+                                    data-original-src="/website_crlg_portal/static/img/theatre.jpg"
+                                    data-mimetype="image/svg+xml"
+                                    data-resize-width="690"
+                                    data-bs-original-title=""
+                                    title=""
+                                    aria-describedby="tooltip930600"
+                                    data-shape="web_editor/float/flt_square_3"
+                                    data-file-name="theatre.svg"
+                                    data-shape-colors="#DB0707;;;;#E47C7C"
+                                    data-original-mimetype="image/jpeg"
+                                    loading="eager"
+                                />
                             </div>
                         </div>
                     </div>
                 </section>
-                <section class="s_image_gallery o_colored_level pt48 pb48 s_image_gallery_indicators_arrows_boxed s_image_gallery_show_indicators s_image_gallery_indicators_rounded s_image_gallery_cover o_slideshow" data-vcss="001" data-columns="3" style="overflow: hidden; background-image: none; height: 701px;" data-snippet="s_image_gallery" data-name="Galerie d&amp;#x27;images">
+                <section
+                    class="s_image_gallery o_colored_level pt48 pb48 s_image_gallery_indicators_arrows_boxed s_image_gallery_show_indicators s_image_gallery_indicators_rounded s_image_gallery_cover o_slideshow"
+                    data-vcss="001"
+                    data-columns="3"
+                    style="overflow: hidden; background-image: none; height: 701px;"
+                    data-snippet="s_image_gallery"
+                    data-name="Galerie d&amp;#x27;images"
+                >
                     <div class="container-fluid">
-                        <div id="slideshow_1686926542308" class="carousel slide" data-bs-ride="carousel" data-bs-interval="0" style="margin: 0 12px;">
+                        <div
+                            id="slideshow_1686926542308"
+                            class="carousel slide"
+                            data-bs-ride="carousel"
+                            data-bs-interval="0"
+                            style="margin: 0 12px;"
+                        >
                             <div class="carousel-inner" style="padding: 0;">
                                 <div class="carousel-item active">
-                                    <img class="img img-fluid d-block shadow" src="/website_crlg_portal/static/img/misc1.jpg" alt="" data-name="Image" data-index="0" loading="lazy"/>
+                                    <img
+                                        class="img img-fluid d-block shadow"
+                                        src="/website_crlg_portal/static/img/misc1.jpg"
+                                        alt=""
+                                        data-name="Image"
+                                        data-index="0"
+                                        loading="lazy"
+                                    />
                                 </div>
                                 <div class="carousel-item undefined">
-                                    <img class="img img-fluid d-block shadow" src="/website_crlg_portal/static/img/misc2.jpg" alt="" data-name="Image" data-index="1" loading="lazy"/>
+                                    <img
+                                        class="img img-fluid d-block shadow"
+                                        src="/website_crlg_portal/static/img/misc2.jpg"
+                                        alt=""
+                                        data-name="Image"
+                                        data-index="1"
+                                        loading="lazy"
+                                    />
                                 </div>
                                 <div class="carousel-item undefined">
-                                    <img class="img img-fluid d-block shadow" src="/website_crlg_portal/static/img/misc3.jpg" alt="" data-name="Image" data-index="2" loading="lazy"/>
+                                    <img
+                                        class="img img-fluid d-block shadow"
+                                        src="/website_crlg_portal/static/img/misc3.jpg"
+                                        alt=""
+                                        data-name="Image"
+                                        data-index="2"
+                                        loading="lazy"
+                                    />
                                 </div>
                                 <div class="carousel-item undefined">
-                                    <img class="img img-fluid d-block shadow" src="/website_crlg_portal/static/img/misc4.jpg" alt="" data-name="Image" data-index="3" loading="lazy"/>
+                                    <img
+                                        class="img img-fluid d-block shadow"
+                                        src="/website_crlg_portal/static/img/misc4.jpg"
+                                        alt=""
+                                        data-name="Image"
+                                        data-index="3"
+                                        loading="lazy"
+                                    />
                                 </div>
                                 <div class="carousel-item undefined">
-                                    <img class="img img-fluid d-block shadow" src="/website_crlg_portal/static/img/misc5.jpg" alt="" data-name="Image" data-index="4" loading="lazy"/>
+                                    <img
+                                        class="img img-fluid d-block shadow"
+                                        src="/website_crlg_portal/static/img/misc5.jpg"
+                                        alt=""
+                                        data-name="Image"
+                                        data-index="4"
+                                        loading="lazy"
+                                    />
                                 </div>
                             </div>
                             <ul class="carousel-indicators">
-                                <li class="o_indicators_left text-center d-none" aria-label="Précedent" title="Précedent">
-                                    <i class="fa fa-chevron-left"/>
+                                <li
+                                    class="o_indicators_left text-center d-none"
+                                    aria-label="Précedent"
+                                    title="Précedent"
+                                >
+                                    <i class="fa fa-chevron-left" />
                                 </li>
-                                <li data-bs-target="#slideshow_1686926542308" data-bs-slide-to="0" class="active" style="background-image: url(/website_crlg_portal/static/img/misc1.jpg)"/>
-                                <li data-bs-target="#slideshow_1686926542308" data-bs-slide-to="1" style="background-image: url(/website_crlg_portal/static/img/misc2.jpg)"/>
-                                <li data-bs-target="#slideshow_1686926542308" data-bs-slide-to="2" style="background-image: url(/website_crlg_portal/static/img/misc3.jpg)"/>
-                                <li data-bs-target="#slideshow_1686926542308" data-bs-slide-to="3" style="background-image: url(/website_crlg_portal/static/img/misc4.jpg)"/>
-                                <li data-bs-target="#slideshow_1686926542308" data-bs-slide-to="4" style="background-image: url(/website_crlg_portal/static/img/misc5.jpg)"/>
-                                <li class="o_indicators_right text-center d-none" aria-label="Suivant" title="Suivant">
-                                    <i class="fa fa-chevron-right"/>
+                                <li
+                                    data-bs-target="#slideshow_1686926542308"
+                                    data-bs-slide-to="0"
+                                    class="active"
+                                    style="background-image: url(/website_crlg_portal/static/img/misc1.jpg)"
+                                />
+                                <li
+                                    data-bs-target="#slideshow_1686926542308"
+                                    data-bs-slide-to="1"
+                                    style="background-image: url(/website_crlg_portal/static/img/misc2.jpg)"
+                                />
+                                <li
+                                    data-bs-target="#slideshow_1686926542308"
+                                    data-bs-slide-to="2"
+                                    style="background-image: url(/website_crlg_portal/static/img/misc3.jpg)"
+                                />
+                                <li
+                                    data-bs-target="#slideshow_1686926542308"
+                                    data-bs-slide-to="3"
+                                    style="background-image: url(/website_crlg_portal/static/img/misc4.jpg)"
+                                />
+                                <li
+                                    data-bs-target="#slideshow_1686926542308"
+                                    data-bs-slide-to="4"
+                                    style="background-image: url(/website_crlg_portal/static/img/misc5.jpg)"
+                                />
+                                <li
+                                    class="o_indicators_right text-center d-none"
+                                    aria-label="Suivant"
+                                    title="Suivant"
+                                >
+                                    <i class="fa fa-chevron-right" />
                                 </li>
                             </ul>
-                            <a class="carousel-control-prev o_we_no_overlay" href="#slideshow_1686926542308" data-bs-slide="prev" aria-label="Précedent" title="Précedent">
-                                <span class="fa fa-chevron-left fa-2x text-white"/>
+                            <a
+                                class="carousel-control-prev o_we_no_overlay"
+                                href="#slideshow_1686926542308"
+                                data-bs-slide="prev"
+                                aria-label="Précedent"
+                                title="Précedent"
+                            >
+                                <span class="fa fa-chevron-left fa-2x text-white" />
                                 <span class="visually-hidden">Précedent</span>
                             </a>
-                            <a class="carousel-control-next o_we_no_overlay" href="#slideshow_1686926542308" data-bs-slide="next" aria-label="Suivant" title="Suivant">
-                                <span class="fa fa-chevron-right fa-2x text-white"/>
+                            <a
+                                class="carousel-control-next o_we_no_overlay"
+                                href="#slideshow_1686926542308"
+                                data-bs-slide="next"
+                                aria-label="Suivant"
+                                title="Suivant"
+                            >
+                                <span class="fa fa-chevron-right fa-2x text-white" />
                                 <span class="visually-hidden">Suivant</span>
                             </a>
                         </div>
@@ -140,10 +321,16 @@
         </xpath>
     </template>
 
-    <template id="_crlg_custom_footer_description" inherit_id="website_school_portal._hz_custom_footer_description" name="CRLG Footer Description"> 
+    <template
+        id="_crlg_custom_footer_description"
+        inherit_id="website_school_portal._hz_custom_footer_description"
+        name="CRLG Footer Description"
+    > 
         <xpath expr="//div[hasclass('oe_structure')]" position="replace"> 
             <div class="oe_structure">
-                <p>Le Conservatoire royal de Liège est une <strong>École Supérieure des Arts de la Fédération Wallonie-Bruxelles</strong> qui propose des formations artistiques de niveau supérieur (Bacheliers, Masters et Agrégations) dans le domaine de la <strong>musique</strong> et du <strong>théâtre</strong>.</p>
+                <p>Le Conservatoire royal de Liège est une <strong
+                    >École Supérieure des Arts de la Fédération Wallonie-Bruxelles</strong> qui propose des formations artistiques de niveau supérieur (Bacheliers, Masters et Agrégations) dans le domaine de la <strong
+                    >musique</strong> et du <strong>théâtre</strong>.</p>
             </div>
         </xpath>
     </template>

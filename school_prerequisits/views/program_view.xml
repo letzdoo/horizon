@@ -30,7 +30,7 @@
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
                 <tree editable="bottom">
-                    <field name="course_id" string="Course Group"/>
+                    <field name="course_id" string="Course Group" />
                     <field name="preriquisit_id" />
                 </tree>
             </field>
@@ -51,7 +51,12 @@
             <field name="act_window_id" ref="action_prerequisit_list" />
         </record>
         
-        <menuitem id="menu_prerequisit_list" parent="school_management.menu_main_program" action="action_prerequisit_list" sequence="150" />
+        <menuitem
+        id="menu_prerequisit_list"
+        parent="school_management.menu_main_program"
+        action="action_prerequisit_list"
+        sequence="150"
+    />
         
         <!-- Corequisits List View -->
         <record id="view_corequisit_list" model="ir.ui.view">
@@ -60,7 +65,7 @@
             <field eval="8" name="priority" />
             <field name="arch" type="xml">
                 <tree editable="bottom">
-                    <field name="course_id" string="Course Group"/>
+                    <field name="course_id" string="Course Group" />
                     <field name="coriquisit_id" />
                 </tree>
             </field>
@@ -81,7 +86,12 @@
             <field name="act_window_id" ref="action_corequisit_list" />
         </record>
         
-        <menuitem id="menu_corequisit_list" parent="school_management.menu_main_program" action="action_corequisit_list" sequence="160" />
+        <menuitem
+        id="menu_corequisit_list"
+        parent="school_management.menu_main_program"
+        action="action_corequisit_list"
+        sequence="160"
+    />
 
         <!-- Add evaluation to Individual Course form view -->
         <record id="course_prerequisit_form" model="ir.ui.view">
@@ -94,14 +104,14 @@
                     <page name="prerequisit_list" string="Prerequisits">
                         <field name="pre_requisit_ids">
                             <tree>
-                                <field name="preriquisit_id" string="Name"/>
+                                <field name="preriquisit_id" string="Name" />
                             </tree>
                         </field>
                     </page>
                     <page name="corequisit_list" string="Corequisits">
                         <field name="co_requisit_ids">
                             <tree>
-                                <field name="coriquisit_id" string="Name"/>
+                                <field name="coriquisit_id" string="Name" />
                             </tree>
                         </field>
                     </page>

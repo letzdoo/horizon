@@ -20,6 +20,7 @@
 ##############################################################################
 */
 
-.fc-timeline th, .fc-timeline td {
+.fc-timeline th,
+.fc-timeline td {
     text-align: left;
 }

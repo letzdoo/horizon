@@ -19,13 +19,18 @@
 ##############################################################################
 import logging
 
-from odoo import api, fields, models, _
-from odoo.exceptions import UserError, ValidationError
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
 
-class CourseGroup(models.Model):
-    '''Course Group'''
-    _inherit = 'school.course_group'
 
-    version_year_id = fields.Many2one('school.year', string='Version Year', default=lambda self: self.env.user.current_year_id)
+class CourseGroup(models.Model):
+    """Course Group"""
+
+    _inherit = "school.course_group"
+
+    version_year_id = fields.Many2one(
+        "school.year",
+        string="Version Year",
+        default=lambda self: self.env.user.current_year_id,
+    )

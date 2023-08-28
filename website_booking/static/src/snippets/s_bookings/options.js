@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import options from 'web_editor.snippets.options';
+import options from "web_editor.snippets.options";
 
 const snippetBookingsOptions = options.Class.extend({
     /**
@@ -8,7 +8,7 @@ const snippetBookingsOptions = options.Class.extend({
      */
     init() {
         this._super.apply(this, arguments);
-        this.modelNameFilter = 'event.event';
+        this.modelNameFilter = "event.event";
         this.tagIDs = [];
     },
     /**
@@ -17,17 +17,21 @@ const snippetBookingsOptions = options.Class.extend({
     onBuilt() {
         this._super.apply(this, arguments);
         // TODO Remove in master.
-        this.$target[0].dataset['snippet'] = 's_bookings';
+        this.$target[0].dataset["snippet"] = "s_bookings";
     },
 
     async willStart() {
         const _super = this._super.bind(this);
-        this.tagIDs = JSON.parse(this.$target[0].dataset.filterByTagIds || '[]');
+        this.tagIDs = JSON.parse(this.$target[0].dataset.filterByTagIds || "[]");
         const tags = await this._rpc({
-            model: 'event.tag',
-            method: 'search_read',
-            domain: ['&', ['category_id.website_published', '=', true], ['color', 'not in', ['0', false]]],
-            fields: ['id', 'display_name'],
+            model: "event.tag",
+            method: "search_read",
+            domain: [
+                "&",
+                ["category_id.website_published", "=", true],
+                ["color", "not in", ["0", false]],
+            ],
+            fields: ["id", "display_name"],
         });
         this.allTagsByID = {};
         for (const tag of tags) {
@@ -38,7 +42,7 @@ const snippetBookingsOptions = options.Class.extend({
     },
 
     setTags(previewMode, widgetValue, params) {
-        this.tagIDs = JSON.parse(widgetValue).map(tag => tag.id);
+        this.tagIDs = JSON.parse(widgetValue).map((tag) => tag.id);
         this.selectDataAttribute(previewMode, JSON.stringify(this.tagIDs), params);
     },
 
@@ -46,12 +50,11 @@ const snippetBookingsOptions = options.Class.extend({
      * @override
      */
     async _computeWidgetState(methodName, params) {
-        if (methodName === 'setTags') {
-            return JSON.stringify(this.tagIDs.map(id => this.allTagsByID[id]));
+        if (methodName === "setTags") {
+            return JSON.stringify(this.tagIDs.map((id) => this.allTagsByID[id]));
         }
         return this._super(...arguments);
     },
-
 });
 
 options.registry.bookings_snippet = snippetBookingsOptions;

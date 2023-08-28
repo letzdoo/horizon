@@ -20,38 +20,43 @@
 ##############################################################################
 import logging
 
-from odoo import api, fields, models, _
-from odoo.exceptions import MissingError
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
+
 
 class AddBlocWizard(models.TransientModel):
     _name = "school.add_bloc_wizard"
     _description = "Add Bloc Wizard"
-    
-    individual_program_id = fields.Many2one('school.individual_program', string="Target Program")
-    
-    year_id = fields.Many2one('school.year', string='Year')
-    
-    source_bloc_id = fields.Many2one('school.bloc', string="Source Bloc")
-    
+
+    individual_program_id = fields.Many2one(
+        "school.individual_program", string="Target Program"
+    )
+
+    year_id = fields.Many2one("school.year", string="Year")
+
+    source_bloc_id = fields.Many2one("school.bloc", string="Source Bloc")
+
     def on_confirm(self):
         self.ensure_one()
-        summaries = self.env['school.individual_course_summary']
+        self.env["school.individual_course_summary"]
         for cg in self.source_bloc_id.course_group_ids:
-            course_group_summary = self.env['school.individual_course_summary'].create({
-                'program_id' : self.individual_program_id.id,
-                'course_group_id' : cg.id,
-            })
-        return {'warning': {
-            'title' : 'Add Bloc Wizard completed',
-            'message' : 'Program have been updated with all UE from %s.' % (self.source_bloc_id.title),
+            course_group_summary = self.env["school.individual_course_summary"].create(
+                {
+                    "program_id": self.individual_program_id.id,
+                    "course_group_id": cg.id,
+                }
+            )
+        return {
+            "warning": {
+                "title": "Add Bloc Wizard completed",
+                "message": "Program have been updated with all UE from %s."
+                % (self.source_bloc_id.title),
             }
         }
-        
-    
+
     def on_cancel(self):
         self.ensure_one()
         self.target_first_course_group_id.unlink()
         self.target_second_course_group_id.unlink()
-        return {'type': 'ir.actions.act_window_close'}
+        return {"type": "ir.actions.act_window_close"}

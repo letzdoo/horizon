@@ -30,10 +30,10 @@
                 <xpath expr="//page[@name='general_info']" position="after">
                     <page string="ARES Web Services" name="webservices">
                         <group>
-                            <field name="webservices_key"/>
-                            <field name="webservices_key_passwd"/>
-                            <field name="webservices_certificate"/>
-                            <field name="fase_code"/>
+                            <field name="webservices_key" />
+                            <field name="webservices_key_passwd" />
+                            <field name="webservices_certificate" />
+                            <field name="fase_code" />
                         </group>
                     </page>
                 </xpath>

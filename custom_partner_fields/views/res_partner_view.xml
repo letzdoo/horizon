@@ -3,10 +3,10 @@
     <record id="view_partners_custom_fields" model="ir.ui.view">
         <field name="name">view.res.partner.form.school</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
             <xpath expr="//h1//field[@name='name']/.." position="after">
-                <field name="second_first_name" string="Autre(s) prénom(s)"/>
+                <field name="second_first_name" string="Autre(s) prénom(s)" />
             </xpath>
         </field>
     </record>
@@ -14,20 +14,20 @@
     <record id="view_student_form_school_pages" model="ir.ui.view">
         <field name="name">view.res.partner.form.school.pages</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="school_management.view_partners_form_school"/>
+        <field name="inherit_id" ref="school_management.view_partners_form_school" />
         <field name="arch" type="xml">
             <xpath expr="//notebook[last()]" position="inside">
                 <page name="access_titles_page" string="Titre d'accès">
                     <group>
-                        <field name="admission_exam_date"/>
+                        <field name="admission_exam_date" />
                         <field name="access_titles_ids" mode="tree">
                             <tree>
-                                <field name="name"/>
-                                <field name="title"/>
-                                <field name="establishment"/>
-                                <field name="city"/>
-                                <field name="country"/>
-                                <field name="date"/>
+                                <field name="name" />
+                                <field name="title" />
+                                <field name="establishment" />
+                                <field name="city" />
+                                <field name="country" />
+                                <field name="date" />
                             </tree>
                         </field>
                     </group>
@@ -37,26 +37,26 @@
                     <group>
                         <field name="memoir_titles_ids">
                             <tree>
-                                <field name="name"/>
+                                <field name="name" />
                             </tree>
                         </field>
                         <field name="internships_ids" mode="tree">
                             <tree>
-                                <field name="establishment"/>
-                                <field name="city"/>
-                                <field name="country"/>
-                                <field name="start_date"/>
-                                <field name="end_date"/>
+                                <field name="establishment" />
+                                <field name="city" />
+                                <field name="country" />
+                                <field name="start_date" />
+                                <field name="end_date" />
                             </tree>
                         </field>
                         <field name="erasmus_ids" mode="tree">
                             <tree>
-                                <field name="establishment"/>
-                                <field name="city"/>
-                                <field name="country"/>
-                                <field name="start_date"/>
-                                <field name="end_date"/>
-                                <field name="language"/>
+                                <field name="establishment" />
+                                <field name="city" />
+                                <field name="country" />
+                                <field name="start_date" />
+                                <field name="end_date" />
+                                <field name="language" />
                             </tree>
                         </field>
                     </group>

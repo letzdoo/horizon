@@ -23,8 +23,12 @@
 <template>
     <t t-extend="CalendarView.buttons">
         <t t-jquery=".o_calendar_button_month" t-operation="replace">
-            <button type="button" class="o_calendar_button_timeline btn btn-sm btn-default" t-if="widget.scheduler_group">Timeline</button>
+            <button
+                type="button"
+                class="o_calendar_button_timeline btn btn-sm btn-default"
+                t-if="widget.scheduler_group"
+            >Timeline</button>
         </t>
-        <t t-jquery=".o_calendar_button_week" t-operation="replace"/>
+        <t t-jquery=".o_calendar_button_week" t-operation="replace" />
     </t>
 </template>

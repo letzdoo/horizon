@@ -19,20 +19,20 @@
 #
 ##############################################################################
 {
-    'name': 'Web Scheduler FullCalendar',
-    'version': '16.0.1.0.1',
-    'category': 'Widget',
-    'sequence': 15,
-    'summary': 'Web Scheduler using FullCalendar extension',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': 'https://github.com/ito-invest-lu/horizon',
-    'depends': ['web'],
-    'data': [
-        'views/web_scheduler.xml',
+    "name": "Web Scheduler FullCalendar",
+    "version": "16.0.1.0.1",
+    "category": "Widget",
+    "sequence": 15,
+    "summary": "Web Scheduler using FullCalendar extension",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "depends": ["web"],
+    "data": [
+        "views/web_scheduler.xml",
     ],
-    'qweb': ['static/src/xml/*.xml'],
-    'installable': True,
-    'auto_install': False,
-    'application': False,
+    "qweb": ["static/src/xml/*.xml"],
+    "installable": True,
+    "auto_install": False,
+    "application": False,
 }
