@@ -33,10 +33,6 @@
         'security/ir.model.access.csv',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manage pre and co requisits for courses a school.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

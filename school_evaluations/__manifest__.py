@@ -38,11 +38,7 @@
         'web.assets_backend': ['school_evaluations/static/src/css/school_evaluations.css']
     },
     'demo_xml': [],
-    'description': '''
-        This modules add evaluation management for a school.
-    ''',
     'qweb': ['static/src/xml/*.xml'],
-    'active': False,
     'installable': True,
     'application': True,
 }

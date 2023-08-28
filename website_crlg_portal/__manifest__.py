@@ -41,10 +41,6 @@
             'website_crlg_portal/static/src/scss/main.scss',
         ]
     },
-    'description': '''
-        This module initializes appearance and contents for CRLG Horizon Portal.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
     'images': [

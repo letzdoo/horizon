@@ -32,9 +32,6 @@
         'security/ir.model.access.csv',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules add deliberation management for a school.
-    ''',
     'assets': {
         'web.assets_backend': [
             'school_deliberation_base/static/src/scss/*.scss',
@@ -42,7 +39,6 @@
         ],
     },
     'qweb': ['static/src/xml/*.xml'],
-    'active': False,
     'installable': True,
     'application': True,
 }

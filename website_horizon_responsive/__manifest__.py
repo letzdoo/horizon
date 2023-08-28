@@ -33,10 +33,6 @@
         'views/templates.xml',
     ],
     'qweb': ['static/src/xml/*.xml'],
-    'description': '''
-        This module adds a responsive website to Horizon.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

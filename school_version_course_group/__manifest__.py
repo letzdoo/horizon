@@ -31,10 +31,6 @@
         'views/program_view.xml',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules add version (ie year_id) to course groups.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

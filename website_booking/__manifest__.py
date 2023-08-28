@@ -38,10 +38,6 @@
             '/website_booking/static/src/snippets/s_bookings/options.js',
         ],  
     },
-    'description': '''
-        This module adds an interface for Booking management on the web site.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

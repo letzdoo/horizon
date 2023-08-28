@@ -24,11 +24,6 @@
     'category': 'Widget',
     'sequence': 15,
     'summary': 'Web Scheduler using FullCalendar extension',
-    'description': """
-Web Scheduler FullCalendar
-==========================
-Extend calendar view to support scheduler.
-""",
     'license': 'AGPL-3',
     'author': 'ito-invest (Jerome Sonnet)',
     'website': 'https://github.com/ito-invest-lu/horizon',

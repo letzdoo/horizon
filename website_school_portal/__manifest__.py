@@ -47,10 +47,6 @@
             'website_school_portal/static/src/scss/main.scss',
         ]
     },
-    'description': '''
-        This module defines default page rendering for School Portal based on Horizon School Management.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
     'images': [

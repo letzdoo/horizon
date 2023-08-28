@@ -40,11 +40,7 @@
         ],
     },
     'demo_xml': [],
-    'description': '''
-        This modules add registration tools for a school.
-    ''',
     'qweb': ['static/src/xml/*.xml'],
-    'active': False,
     'installable': True,
     'application': True,
 }

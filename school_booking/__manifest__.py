@@ -35,11 +35,7 @@
         'security/ir.model.access.csv',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules add room reservation, assets management,...
-    ''',
     'qweb': ['static/src/xml/*.xml'],
-    'active': False,
     'installable': True,
     'application': True,
 }

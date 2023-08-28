@@ -33,10 +33,6 @@
         'security/ir.model.access.csv',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manage valuations of course groups.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

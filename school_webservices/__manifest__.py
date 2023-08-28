@@ -35,10 +35,6 @@
         'security/ir.model.access.csv',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manage access to e-Paysage webservices.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

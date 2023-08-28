@@ -31,10 +31,6 @@
         'views/program_view.xml',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules add choice course group for a school.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

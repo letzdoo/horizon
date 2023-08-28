@@ -52,10 +52,6 @@
             "school_management/static/src/css/reports.css",
         ],
     },
-    "description": """
-        This module adds management tools for a school.
-    """,
-    "active": False,
     "installable": True,
     "application": True,
 }

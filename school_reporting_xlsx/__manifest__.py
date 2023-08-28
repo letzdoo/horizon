@@ -31,10 +31,6 @@
         'report/school_report_xlsx.xml',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manages registration documents for a school.
-    ''',
-    'active': False,
-    'installable': True,
+    'installable': False,
     'application': True,
 }

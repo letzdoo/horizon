@@ -31,10 +31,6 @@
         'wizard/add_bloc_wizard.xml',
     ],
     'demo_xml': [],
-    'description': '''
-        Tools to help with program migration.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

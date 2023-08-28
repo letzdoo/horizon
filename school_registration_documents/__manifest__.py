@@ -35,10 +35,6 @@
         'security/ir.model.access.csv',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manages registration documents for a school.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

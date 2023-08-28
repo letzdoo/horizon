@@ -32,10 +32,6 @@
         'security/ir.model.access.csv',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manages the COVID followup for a school.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

@@ -5,17 +5,10 @@
     'version': '16.0.1.0.1',
     'category': 'Extra Tools',
     'complexity': "easy",
-    'description': """
-Google Analytics.
-=================
-
-Collects web application usage with Google Analytics.
-    """,
     'website': 'https://github.com/ito-invest-lu/horizon',
     'depends': ['web'],
     'data': [
         'views/web_analytics.xml',
     ],
-    'installable': True,
-    'active': False,
+    'installable': False,
 }

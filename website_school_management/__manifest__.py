@@ -42,10 +42,6 @@
             'website_school_management/static/src/scss/base.scss',
         ]
     },
-    'description': '''
-        This module adds web portal access for a school.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

@@ -30,10 +30,6 @@
     'update_xml': [
     ],
     'demo_xml': [],
-    'description': '''
-        This modules add fields to partners for a school.
-    ''',
-    'active': False,
     'installable': True,
     'application': False,
 }

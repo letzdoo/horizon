@@ -39,10 +39,6 @@
         'static/src/img/*.png',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manages teacher designation to specific activities.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

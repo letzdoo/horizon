@@ -31,10 +31,6 @@
         'views/official_document_view.xml',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manages registration google documents for a school.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

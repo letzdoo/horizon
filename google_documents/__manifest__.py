@@ -35,8 +35,6 @@
         'views/ir_actions_report_view.xml',
     ],
     'demo_xml': [],
-    'description': '''This modules manages displays google documents for a contact.''',
-    'active': False,
     'installable': True,
     'application': True,
 }

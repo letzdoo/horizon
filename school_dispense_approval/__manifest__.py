@@ -32,10 +32,6 @@
         'report/report_program.xml',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules adds an approuval step to dispenses.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

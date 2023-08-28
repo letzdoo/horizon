@@ -32,11 +32,7 @@
         'views/school_booking_view.xml',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules add specific COVID rules
-    ''',
     'qweb': ['static/src/xml/*.xml'],
-    'active': False,
     'installable': True,
     'application': True,
 }

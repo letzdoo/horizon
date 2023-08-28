@@ -33,10 +33,6 @@
         'report/school_description_report.xml',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manages the course documentation for a school.
-    ''',
-    'active': False,
     'installable': True,
     'application': True,
 }

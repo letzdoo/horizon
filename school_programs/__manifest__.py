@@ -30,10 +30,6 @@
     'update_xml': [
     ],
     'demo_xml': [],
-    'description': '''
-        This modules add management tools for a school programs.
-    ''',
-    'active': False,
     'installable': True,
     'application': False,
 }
