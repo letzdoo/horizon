@@ -20,7 +20,6 @@
 #
 ##############################################################################
 -->
-<?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
     <t t-name="website_booking.browser_calendar">
         <div id='fc_calendar'/>
