@@ -470,9 +470,9 @@
             <h3>Ressources utiles:</h3>
             <ul>
                 <li><a href="/mes-donnees/mon-programme">Mon programme annuel</a></li>
-                <li><a
+                <!-- <li><a
                         href="/appointment"
-                    >Mon conseiller pédagogique (rendez-vous)</a></li>
+                    >Mon conseiller pédagogique (rendez-vous)</a></li> -->
                 <li><a
                         href="/reservations/mes-reservations"
                     >Mes réservations de locaux</a></li>
