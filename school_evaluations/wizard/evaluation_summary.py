@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -20,87 +19,102 @@
 ##############################################################################
 import logging
 
-from odoo import api, fields, models, _
-from odoo.exceptions import UserError
-from odoo.tools.safe_eval import safe_eval
-
-from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
-from dateutil.relativedelta import relativedelta
-from datetime import datetime,date
-import odoo.addons.base.models.decimal_precision as dp
+from odoo import fields, models
 
 _logger = logging.getLogger(__name__)
+
 
 class EvaluationSummaryWizard(models.TransientModel):
     _name = "school.evaluation.summary.wizard"
     _description = "School Evaluation Summary Wizard"
 
-    year_id = fields.Many2one('school.year', string='Year', default=lambda self: self.env.user.current_year_id, ondelete='cascade')
-    
-    domain_id = fields.Many2one('school.domain', string='Domain', ondelete='cascade')
-    
-    session = fields.Selection([
-            ('first','First Session'),
-            ('second','Second Session'),
-            ], string="Session")
-    
-    
+    year_id = fields.Many2one(
+        "school.year",
+        string="Year",
+        default=lambda self: self.env.user.current_year_id,
+        ondelete="cascade",
+    )
+
+    domain_id = fields.Many2one("school.domain", string="Domain", ondelete="cascade")
+
+    session = fields.Selection(
+        [
+            ("first", "First Session"),
+            ("second", "Second Session"),
+        ],
+        string="Session",
+    )
+
     def generate_summary(self):
         self.ensure_one()
         data = {}
-        data['year_id'] = self.year_id.id
-        data['domain_id'] = self.domain_id.id
-        data['session'] = self.session
-        return self.env['report'].get_action(self, 'school_evaluations.evaluation_summary_content', data=data)
-        
-class ReportEvaluationSummary(models.AbstractModel):
-    _name = 'report.school_evaluations.evaluation_summary_content'
+        data["year_id"] = self.year_id.id
+        data["domain_id"] = self.domain_id.id
+        data["session"] = self.session
+        return self.env["report"].get_action(
+            self, "school_evaluations.evaluation_summary_content", data=data
+        )
 
-    
+
+class ReportEvaluationSummary(models.AbstractModel):
+    _name = "report.school_evaluations.evaluation_summary_content"
+
     def render_html(self, data):
-        _logger.info('render_html')
-        year_id = data['year_id']
-        session = data['session']
-        domain_id = data['domain_id']
-        if session == 'first':
-            states = ['postponed','awarded_first_session']
+        _logger.info("render_html")
+        year_id = data["year_id"]
+        session = data["session"]
+        domain_id = data["domain_id"]
+        if session == "first":
+            states = ["postponed", "awarded_first_session"]
         else:
-            states = ['awarded_second_session','failed']
-        
+            states = ["awarded_second_session", "failed"]
+
         if domain_id:
-            records = self.env['school.individual_bloc'].search([('year_id','=',year_id),('source_bloc_domain_id','=',domain_id),('state','in',states)],order="source_bloc_level, name")
+            records = self.env["school.individual_bloc"].search(
+                [
+                    ("year_id", "=", year_id),
+                    ("source_bloc_domain_id", "=", domain_id),
+                    ("state", "in", states),
+                ],
+                order="source_bloc_level, name",
+            )
         else:
-            records = self.env['school.individual_bloc'].search([('year_id','=',year_id),('state','in',states)],order="source_bloc_level, name")
-        
+            records = self.env["school.individual_bloc"].search(
+                [("year_id", "=", year_id), ("state", "in", states)],
+                order="source_bloc_level, name",
+            )
+
         docs = [
             {
-                "name" : 'Bac 1',
-                'blocs' : [],
+                "name": "Bac 1",
+                "blocs": [],
             },
             {
-                "name" : 'Bac 2',
-                'blocs' : [],
+                "name": "Bac 2",
+                "blocs": [],
             },
             {
-                "name" : 'Bac 3',
-                'blocs' : [],
+                "name": "Bac 3",
+                "blocs": [],
             },
             {
-                "name" : 'Master 1',
-                'blocs' : [],
+                "name": "Master 1",
+                "blocs": [],
             },
             {
-                "name" : 'Master 2',
-                'blocs' : [],
+                "name": "Master 2",
+                "blocs": [],
             },
         ]
-        
+
         for record in records:
-            docs[int(record.source_bloc_level)-1]['blocs'].append(record)
-            
+            docs[int(record.source_bloc_level) - 1]["blocs"].append(record)
+
         docargs = {
-            'doc_model': 'school.individual_bloc',
-            'docs': docs,
-            'year' : self.env['school.year'].browse(year_id).name,
+            "doc_model": "school.individual_bloc",
+            "docs": docs,
+            "year": self.env["school.year"].browse(year_id).name,
         }
-        return self.env['report'].render('school_evaluations.evaluation_summary_content', docargs)
+        return self.env["report"].render(
+            "school_evaluations.evaluation_summary_content", docargs
+        )

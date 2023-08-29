@@ -20,10 +20,10 @@
 ##############################################################################
 {
     'name': 'School reporting xlsx',
-    'version': '0.1',
+    'version': '16.0.1.0.1',
     'license': 'AGPL-3',
     'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
+    'website': 'https://github.com/ito-invest-lu/horizon',
     'category': 'School Management',
     'depends': ['school_management','report_xlsx'],
     'init_xml': [],
@@ -31,10 +31,6 @@
         'report/school_report_xlsx.xml',
     ],
     'demo_xml': [],
-    'description': '''
-        This modules manages registration documents for a school.
-    ''',
-    'active': False,
-    'installable': True,
+    'installable': False,
     'application': True,
 }

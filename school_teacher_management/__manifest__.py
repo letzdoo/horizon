@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,30 +18,26 @@
 #
 ##############################################################################
 {
-    'name': 'School Teacher Management',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_management'],
-    'init_xml': [],
-    'data': [
-        'school_data.xml',
-        'views/school_teacher_management_view.xml',
+    "name": "School Teacher Management",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_management"],
+    "init_xml": [],
+    "data": [
+        "school_data.xml",
+        "views/school_teacher_management_view.xml",
         #'report/report_student_group.xml',
         #'wizard/linked_group_wizard.xml',
         #'wizard/merge_group_wizard.xml',
-        'security/ir.model.access.csv',
+        "security/ir.model.access.csv",
     ],
-    'images': [
-        'static/src/img/*.png',
+    "images": [
+        "static/src/img/*.png",
     ],
-    'demo_xml': [],
-    'description': '''
-        This modules manages teacher designation to specific activities.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

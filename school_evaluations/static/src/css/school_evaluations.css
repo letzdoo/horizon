@@ -1,44 +1,44 @@
 .horizon_cgs_6_success {
-    border-left : 10px solid #28a745 !important;
+    border-left: 10px solid #28a745 !important;
 }
 
 .horizon_cgs_5_progress {
-    border-left : 10px solid #ffc107 !important;
+    border-left: 10px solid #ffc107 !important;
 }
 
 .horizon_cgs_7_failed {
-    border-left : 10px solid red !important;
+    border-left: 10px solid red !important;
 }
 
 .horizon_cgs_1_confirmed {
-    border-left : 10px solid #00BFFF !important;
+    border-left: 10px solid #00bfff !important;
 }
 
 .horizon_cgs_1_1_checked {
-    border-left : 10px solid #0095FF !important;
+    border-left: 10px solid #0095ff !important;
 }
 
 .horizon_cgs_0_valuated {
-    border-left : 10px solid blue !important;
+    border-left: 10px solid blue !important;
 }
 
 .horizon_cgs_2_candidate {
-    border-left : 10px solid #ADD8E6 !important;
+    border-left: 10px solid #add8e6 !important;
 }
 
 .horizon_cgs_9_draft {
-    border-left : 10px solid grey !important;
+    border-left: 10px solid grey !important;
 }
 
 .horizon_cgs_10_irregular {
-    border-left : 10px solid black !important;
+    border-left: 10px solid black !important;
 }
 
 .horizon_eval_cell {
-    border-left : 1px solid lightgrey !important;
-    border-right : 1px solid lightgrey !important;
+    border-left: 1px solid lightgrey !important;
+    border-right: 1px solid lightgrey !important;
     width: 70px;
-    text-align:center;
+    text-align: center;
 }
 
 .o_readonly_modifier.horizon_eval_cell {
@@ -71,16 +71,16 @@
 
 .horizon_btn_eval_1_confirmed {
     color: #ffffff !important;
-    background-color: #00BFFF !important;
-    border-color: #00BFFF !important;
+    background-color: #00bfff !important;
+    border-color: #00bfff !important;
     padding: 10px !important;
     width: 110px !important;
 }
 
 .horizon_btn_eval_1_1_checked {
     color: #ffffff !important;
-    background-color: #0095FF !important;
-    border-color: #00BFFF !important;
+    background-color: #0095ff !important;
+    border-color: #00bfff !important;
     padding: 10px !important;
     width: 110px !important;
 }
@@ -95,8 +95,8 @@
 
 .horizon_btn_eval_2_candidate {
     color: #ffffff !important;
-    background-color: #ADD8E6 !important;
-    border-color: #ADD8E6 !important;
+    background-color: #add8e6 !important;
+    border-color: #add8e6 !important;
     padding: 10px !important;
     width: 110px !important;
 }

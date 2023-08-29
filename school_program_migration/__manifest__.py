@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,22 +18,18 @@
 #
 ##############################################################################
 {
-    'name': 'School Program Migration Tools',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_evaluations'],
-    'init_xml': [],
-    'data': [
-        'wizard/add_bloc_wizard.xml',
+    "name": "School Program Migration Tools",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_evaluations"],
+    "init_xml": [],
+    "data": [
+        "wizard/add_bloc_wizard.xml",
     ],
-    'demo_xml': [],
-    'description': '''
-        Tools to help with program migration.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

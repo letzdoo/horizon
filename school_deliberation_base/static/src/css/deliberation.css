@@ -23,57 +23,57 @@
 }
 
 .deliberation_next_button {
-	position:fixed;
-  	bottom:20px;
-  	right:20px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
 }
 
 .deliberation_previous_button {
-    position:fixed;
-  	bottom:20px;
-  	left:20px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
 }
 
 .deliberation_bloc_awarded_first_session {
-    border-left : 10px solid #28a745 !important;
+    border-left: 10px solid #28a745 !important;
 }
 
 .deliberation_bloc_awarded_second_session {
-    border-left : 10px solid #28a745 !important;
+    border-left: 10px solid #28a745 !important;
 }
 
 .deliberation_bloc_progress {
-    border-left : 10px solid #ffc107 !important;
+    border-left: 10px solid #ffc107 !important;
 }
 
 .deliberation_bloc_failed {
-    border-left : 10px solid red !important;
+    border-left: 10px solid red !important;
 }
 
 .deliberation_bloc_postponed {
-    border-left : 10px solid #FF6833 !important;
+    border-left: 10px solid #ff6833 !important;
 }
 
 .deliberation_bloc_draft {
-    border-left : 10px solid grey !important;
+    border-left: 10px solid grey !important;
 }
 
 .deliberation_bloc_abandoned {
-    border-left : 10px solid black !important;
+    border-left: 10px solid black !important;
 }
 
 .deliberation_program_awarded {
-    border-left : 10px solid #28a745 !important;
+    border-left: 10px solid #28a745 !important;
 }
 
 .deliberation_program_progress {
-    border-left : 10px solid #ffc107 !important;
+    border-left: 10px solid #ffc107 !important;
 }
 
 .deliberation_program_draft {
-    border-left : 10px solid grey !important;
+    border-left: 10px solid grey !important;
 }
 
 .deliberation_program_abandoned {
-    border-left : 10px solid black !important;
+    border-left: 10px solid black !important;
 }

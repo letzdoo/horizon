@@ -21,18 +21,23 @@
 ##############################################################################
 -->
 <odoo>
-    
-      
+
+
       <!-- Top menu item -->
-      <menuitem name="Teacher Management" id="menu_teacher_management" web_icon="school_teacher_management,static/description/icon.png" sequence="50" />
-      
+      <menuitem
+        name="Teacher Management"
+        id="menu_teacher_management"
+        web_icon="school_teacher_management,static/description/icon.png"
+        sequence="50"
+    />
+
       <!-- Teacher Designation Tree View -->
         <record id="view_teacher_designation_tree" model="ir.ui.view">
           <field name="name">school.teacher.designation.tree</field>
           <field name="model">school.teacher.designation</field>
           <field eval="8" name="priority" />
           <field name="arch" type="xml">
-            <tree string="Teacher Designation">
+            <tree>
               <field name="year_id" />
               <field name="dgt_number" />
               <field name="author_id" />
@@ -40,7 +45,7 @@
             </tree>
           </field>
         </record>
-    
+
         <!-- Teacher Designation Form View -->
         <record model="ir.ui.view" id="teacher_designation_form">
           <field name="name">school.teacher.designation.view</field>
@@ -49,74 +54,104 @@
           <field name="arch" type="xml">
             <form string="Teacher Designation">
               <header>
-                <button name="confirm" type="object" states="draft" string="Activate" class="oe_highlight"/>
-                <button name="cancel" type="object" states="active" string="Cancel"/>
-                <button name="reset_to_draft" type="object" states="active,cancel" string="Reset to draft"/>
-                <field name="state" widget="statusbar" statusbar_visible="draft,active,cancel"/>
+                <button
+                        name="confirm"
+                        type="object"
+                        states="draft"
+                        string="Activate"
+                        class="oe_highlight"
+                    />
+                <button name="cancel" type="object" states="active" string="Cancel" />
+                <button
+                        name="reset_to_draft"
+                        type="object"
+                        states="active,cancel"
+                        string="Reset to draft"
+                    />
+                <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,active,cancel"
+                    />
               </header>
               <sheet>
                 <group col="4">
-                  <field name="dgt_number"/>
-                  <field name="year_id" options="{'no_create': True, 'no_open': True}"/>
-                  <field name="author_id" options="{'no_create': True, 'no_open': True}"/>
-                  <field name="type"/>
-                  <field name="dgt_state"/>
-                  <field name="dgt_refereced_number" attrs="{'readonly': [('dgt_state', '==', False)]}"/>
+                  <field name="dgt_number" />
+                  <field
+                            name="year_id"
+                            options="{'no_create': True, 'no_open': True}"
+                        />
+                  <field
+                            name="author_id"
+                            options="{'no_create': True, 'no_open': True}"
+                        />
+                  <field name="type" />
+                  <field name="dgt_state" />
+                  <field
+                            name="dgt_refereced_number"
+                            attrs="{'readonly': [('dgt_state', '==', False)]}"
+                        />
                 </group>
-                <separator></separator>
+                <separator />
                 <group col="2">
-                  <field name="fonction"/>
-                  <field name="cours"/>
-                  <field name="experience"/>
+                  <field name="fonction" />
+                  <field name="cours" />
+                  <field name="experience" />
                 </group>
                 <group col="8">
-                  <field name="volume" colspan="4"/>
+                  <field name="volume" colspan="4" />
                   <field name="period_from" /><field name="period_to" />
                 </group>
                 <group col="4">
-                  <field name="replace_teacher_id" attrs="{'readonly': [('type', '==', 'V')]}"/>
-                  <field name="replace_reason" attrs="{'readonly': [('type', '==', 'V')]}"/>
+                  <field
+                            name="replace_teacher_id"
+                            attrs="{'readonly': [('type', '==', 'V')]}"
+                        />
+                  <field
+                            name="replace_reason"
+                            attrs="{'readonly': [('type', '==', 'V')]}"
+                        />
                 </group>
                 <notebook>
                   <page string="Proposition sur avis favorable">
                     <group col="6">
-                      <field name="cgp_number" colspan="3"/>
-                      <field name="cgp_date" colspan="3"/>
-                      <field name="teacher_id" colspan="6"/>
-                      <field name="titre_capacite" colspan="3"/>
-                      <field name="date_capacite" colspan="3"/>
-                      <field name="appel_mb"/>
-                      <field name="candidature_mb"/>
-                      <field name="emploi_numero"/>
-                      <field name="derogation" colspan="3"/>
-                      <field name="derogation_reason" colspan="3"/>
+                      <field name="cgp_number" colspan="3" />
+                      <field name="cgp_date" colspan="3" />
+                      <field name="teacher_id" colspan="6" />
+                      <field name="titre_capacite" colspan="3" />
+                      <field name="date_capacite" colspan="3" />
+                      <field name="appel_mb" />
+                      <field name="candidature_mb" />
+                      <field name="emploi_numero" />
+                      <field name="derogation" colspan="3" />
+                      <field name="derogation_reason" colspan="3" />
                     </group>
                   </page>
                 </notebook>
               </sheet>
               <div class="oe_chatter">
-                <field name="message_follower_ids" widget="mail_followers"/>
-                <field name="message_ids" widget="mail_thread"/>
+                <field name="message_follower_ids" widget="mail_followers" />
+                <field name="message_ids" widget="mail_thread" />
               </div>
             </form>
           </field>
         </record>
-    
+
         <record id="view_teacher_designation_filter" model="ir.ui.view">
           <field name="name">teacher.designation.select</field>
           <field name="model">school.teacher.designation</field>
           <field name="arch" type="xml">
             <search string="Search Teacher Designation">
-              <field name="teacher_id"/>
+              <field name="teacher_id" />
             </search>
           </field>
         </record>
-      
+
       <record id="action_teacher_designation_form" model="ir.actions.act_window">
         <field name="name">Teacher Designations</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">school.teacher.designation</field>
-        
+
         <field name="view_mode">tree,form</field>
         <field name="context">{}</field>
         <field name="search_view_id" ref="view_teacher_designation_filter" />
@@ -129,21 +164,32 @@
             </p>
           </field>
         </record>
-        
-        <record id="action_teacher_designation_tree_view1" model="ir.actions.act_window.view">
+
+        <record
+        id="action_teacher_designation_tree_view1"
+        model="ir.actions.act_window.view"
+    >
           <field name="sequence" eval="1" />
           <field name="view_mode">tree</field>
           <field name="view_id" ref="view_teacher_designation_tree" />
           <field name="act_window_id" ref="action_teacher_designation_form" />
         </record>
-        <record id="action_teacher_designation_form_view2" model="ir.actions.act_window.view">
+        <record
+        id="action_teacher_designation_form_view2"
+        model="ir.actions.act_window.view"
+    >
           <field name="sequence" eval="2" />
           <field name="view_mode">form</field>
           <field name="view_id" ref="teacher_designation_form" />
           <field name="act_window_id" ref="action_teacher_designation_form" />
         </record>
-        
-        <menuitem id="menu_teacher_designation_form" parent="menu_teacher_management" action="action_teacher_designation_form" sequence="25" />
- 
-    
+
+        <menuitem
+        id="menu_teacher_designation_form"
+        parent="menu_teacher_management"
+        action="action_teacher_designation_form"
+        sequence="25"
+    />
+
+
 </odoo>

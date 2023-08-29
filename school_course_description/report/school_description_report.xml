@@ -22,25 +22,34 @@
 -->
 <odoo>
   <!--
-    
+
     Description Course
-    
+
     -->
 
-  <report id="report_diploma_for_student" model="school.course_documentation" string="Course Documentation" report_type="qweb-pdf" name="school_course_description.report_course_documentation_content" file="school_course_description.report_course_documentation_content"
-    attachment_use="True" attachment="object.name+'-DESC-'+time.strftime('%d-%m-%Y')+'.pdf'" />
+  <report
+        id="report_diploma_for_student"
+        model="school.course_documentation"
+        string="Course Documentation"
+        report_type="qweb-pdf"
+        name="school_course_description.report_course_documentation_content"
+        file="school_course_description.report_course_documentation_content"
+        attachment_use="True"
+        attachment="object.name+'-DESC-'+time.strftime('%d-%m-%Y')+'.pdf'"
+    />
 
   <template id="report_course_documentation_no_content">
         <t t-call="web.html_container">
             <t t-set="data_report_margin_top" t-value="45" />
             <t t-foreach="docs" t-as="o">
-            <t t-set="desc" t-value="o"/>
+            <t t-set="desc" t-value="o" />
               <t t-call="web.external_layout">
                 <div class="page" style="padding-left: 50px;padding-right: 50px;">
                   <div class="jumbotron mt64">
-                    <h1>No description found</h1>      
-                    <p>Please contact the secretary or your teacher for more information about this activity.</p>
-                  </div>          
+                    <h1>No description found</h1>
+                    <p
+                            >Please contact the secretary or your teacher for more information about this activity.</p>
+                  </div>
                 </div>
               </t>
             </t>
@@ -51,12 +60,14 @@
         <t t-call="web.html_container">
             <t t-set="data_report_margin_top" t-value="45" />
             <t t-foreach="docs" t-as="o">
-            <t t-set="desc" t-value="o"/>
+            <t t-set="desc" t-value="o" />
               <t t-call="web.external_layout">
                 <div class="page" style="padding-left: 50px;padding-right: 50px;">
                   <t t-call="school_course_description.report_course_doc_section" />
                   <div class="row" style="margin-top:40px;margin-bottom:40px;">
-                        Imprimé le <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"/>
+                        Imprimé le <span
+                                t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
+                            />
                   </div>
                 </div>
               </t>
@@ -71,10 +82,10 @@
                 <t t-if="desc.state == 'draft'">Draft </t>Course Description
             </h1>
             <h1>
-                <span t-field="desc.name"/>
+                <span t-field="desc.name" />
             </h1>
             <h3 class="oe_fade">
-                by <span t-field="desc.author_id"/>
+                by <span t-field="desc.author_id" />
             </h3>
         </div>
         <div class="panel panel-default">
@@ -82,45 +93,56 @@
             <div class="panel-body">
                 <table class="table table-striped">
                     <colgroup>
-                        <col style="width:250px"/>
-                        <col style="width:100%"/>
+                        <col style="width:250px" />
+                        <col style="width:100%" />
                     </colgroup>
                     <tbody>
                       <tr>
                         <td>Cycle</td>
-                        <td><span t-field="desc.cycle_id"/></td>
+                        <td><span t-field="desc.cycle_id" /></td>
                       </tr>
                       <tr>
                         <td>Course Group</td>
-                        <td><span t-field="desc.course_group_id.ue_id"/> - <span t-field="desc.course_group_id"/></td>
+                        <td><span t-field="desc.course_group_id.ue_id" /> - <span
+                                        t-field="desc.course_group_id"
+                                    /></td>
                       </tr>
                       <tr>
                         <td>Level</td>
-                        <td><span t-field="desc.level"/></td>
+                        <td><span t-field="desc.level" /></td>
                       </tr>
                       <tr>
                         <td>Credits</td>
-                        <td><span t-field="desc.credits"/></td>
+                        <td><span t-field="desc.credits" /></td>
                       </tr>
                       <tr>
                         <td>Hours</td>
-                        <td><span t-field="desc.hours"/></td>
+                        <td><span t-field="desc.hours" /></td>
                       </tr>
                       <tr>
                         <td>Weight</td>
-                        <td><span t-field="desc.weight"/></td>
+                        <td><span t-field="desc.weight" /></td>
                       </tr>
                       <tr>
                         <td>Mandatory</td>
-                        <td><t t-if="desc.mandatory"><input type="checkbox" value="" checked=""/></t><t t-if="not(desc.mandatory)"><input type="checkbox" value=""/></t></td>
+                        <td><t t-if="desc.mandatory"><input
+                                            type="checkbox"
+                                            value=""
+                                            checked=""
+                                        /></t><t t-if="not(desc.mandatory)"><input
+                                            type="checkbox"
+                                            value=""
+                                        /></t></td>
                       </tr>
                       <tr>
                         <td>Language</td>
-                        <td><span t-field="desc.language"/></td>
+                        <td><span t-field="desc.language" /></td>
                       </tr>
                       <tr>
                         <td>Teachers</td>
-                        <td><span t-esc="', '.join(map( lambda x: x.name, desc.staff_ids))"/></td>
+                        <td><span
+                                        t-esc="', '.join(map( lambda x: x.name, desc.staff_ids))"
+                                    /></td>
                       </tr>
                     </tbody>
                  </table>
@@ -128,10 +150,10 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Schedule - <span t-field="desc.schedule"/></h3>
+            <h3 class="panel-title">Schedule - <span t-field="desc.schedule" /></h3>
           </div>
           <div class="panel-body">
-            <span style="padding:5px;" t-raw="desc.schedule_text"/>
+            <span style="padding:5px;" t-raw="desc.schedule_text" />
           </div>
         </div>
         <div class="panel panel-default">
@@ -139,7 +161,7 @@
             <h3 class="panel-title">Content</h3>
           </div>
           <div class="panel-body">
-            <span style="padding:5px;" t-raw="desc.content"/>
+            <span style="padding:5px;" t-raw="desc.content" />
           </div>
         </div>
         <div class="panel panel-default">
@@ -147,7 +169,7 @@
             <h3 class="panel-title">Method</h3>
           </div>
           <div class="panel-body">
-            <span style="padding:5px;" t-raw="desc.method"/>
+            <span style="padding:5px;" t-raw="desc.method" />
           </div>
         </div>
         <div class="panel panel-default">
@@ -155,7 +177,7 @@
             <h3 class="panel-title">Learning outcomes</h3>
           </div>
           <div class="panel-body">
-            <span style="padding:5px;" t-raw="desc.learning_outcomes"/>
+            <span style="padding:5px;" t-raw="desc.learning_outcomes" />
           </div>
         </div>
         <div class="panel panel-default">
@@ -163,7 +185,7 @@
             <h3 class="panel-title">References</h3>
           </div>
           <div class="panel-body">
-            <span style="padding:5px;" t-raw="desc.references"/>
+            <span style="padding:5px;" t-raw="desc.references" />
           </div>
         </div>
         <div class="panel panel-default">
@@ -171,7 +193,7 @@
             <h3 class="panel-title">Pre-Co requiered</h3>
           </div>
           <div class="panel-body">
-            <span style="padding:5px;" t-raw="desc.pre_co_requiered"/>
+            <span style="padding:5px;" t-raw="desc.pre_co_requiered" />
           </div>
         </div>
         <div class="panel panel-default">
@@ -179,33 +201,42 @@
             <h3 class="panel-title">Evaluation method</h3>
           </div>
           <div class="panel-body">
-            <span style="padding:5px;" t-raw="desc.evaluation_method"/>
+            <span style="padding:5px;" t-raw="desc.evaluation_method" />
           </div>
         </div>
       </section>
     </template>
 
   <!--
-    
+
     Description Coure Group
-    
+
     -->
 
-  <report id="report_course_group_description" model="school.course_group" string="Course Group Documentation" report_type="qweb-pdf" name="school_course_description.report_course_group_documentation_content" file="school_course_description.report_course_group_documentation_content"
-    attachment_use="True" attachment="object.name+'-DESC-'+time.strftime('%d-%m-%Y')+'.pdf'" />
+  <report
+        id="report_course_group_description"
+        model="school.course_group"
+        string="Course Group Documentation"
+        report_type="qweb-pdf"
+        name="school_course_description.report_course_group_documentation_content"
+        file="school_course_description.report_course_group_documentation_content"
+        attachment_use="True"
+        attachment="object.name+'-DESC-'+time.strftime('%d-%m-%Y')+'.pdf'"
+    />
 
   <template id="report_course_group_documentation_no_content">
         <t t-call="web.html_container">
             <t t-set="data_report_margin_top" t-value="45" />
             <t t-foreach="docs" t-as="o">
-            <t t-set="desc" t-value="o"/>
+            <t t-set="desc" t-value="o" />
               <t t-call="web.external_layout">
                 <div class="page" style="padding-left: 50px;padding-right: 50px;">
                 <div class="container">
                   <div class="jumbotron mt64">
-                    <h1>No description found</h1>      
-                    <p>Please contact the secretary or your teacher for more information about this activity.</p>
-                  </div>          
+                    <h1>No description found</h1>
+                    <p
+                                >Please contact the secretary or your teacher for more information about this activity.</p>
+                  </div>
                 </div>
             </div>
             </t>
@@ -215,10 +246,10 @@
 
   <template id="report_course_group_documentation_content">
         <t t-call="web.html_container">
-            <t t-set="data_report_margin_top" t-value="45"/>
-            <t t-set="data_report_header_spacing" t-value="25"/>
+            <t t-set="data_report_margin_top" t-value="45" />
+            <t t-set="data_report_header_spacing" t-value="25" />
             <t t-foreach="docs" t-as="o">
-            <t t-set="desc" t-value="o"/>
+            <t t-set="desc" t-value="o" />
                 <div class="page">
                     <div class="container">
                       <section>
@@ -227,7 +258,7 @@
                                 Course Group Description
                             </h1>
                             <h1>
-                                <span t-field="o.title"/>
+                                <span t-field="o.title" />
                             </h1>
                         </div>
                         <div class="panel panel-default">
@@ -235,52 +266,61 @@
                             <div class="panel-body">
                                 <table class="table table-striped">
                                     <colgroup>
-                                        <col style="width:250px"/>
-                                        <col style="width:100%"/>
+                                        <col style="width:250px" />
+                                        <col style="width:100%" />
                                     </colgroup>
                                     <tbody>
                                       <tr>
                                         <td>Code</td>
-                                        <td><span t-field="o.uid"/></td>
+                                        <td><span t-field="o.uid" /></td>
                                       </tr>
                                       <tr>
                                         <td>Cycle</td>
-                                        <td><span t-field="o.cycle_id.grade"/></td>
+                                        <td><span t-field="o.cycle_id.grade" /></td>
                                       </tr>
                                       <tr>
                                         <td>Teacher</td>
-                                        <td><span t-field="o.responsible_id"/></td>
+                                        <td><span t-field="o.responsible_id" /></td>
                                       </tr>
                                       <tr>
                                         <td>Period</td>
-                                        <td><span t-field="o.period"/></td>
+                                        <td><span t-field="o.period" /></td>
                                       </tr>
                                       <tr>
                                         <td>Credits</td>
-                                        <td><span t-field="o.total_credits"/></td>
+                                        <td><span t-field="o.total_credits" /></td>
                                       </tr>
                                       <tr>
                                         <td>Hours</td>
-                                        <td><span t-field="o.total_hours"/></td>
+                                        <td><span t-field="o.total_hours" /></td>
                                       </tr>
                                       <tr>
                                         <td>Mandatory</td>
-                                        <td><t t-if="o.mandatory"><input type="checkbox" value="" checked=""/></t><t t-if="not(o.mandatory)"><input type="checkbox" value=""/></t></td>
+                                        <td><t t-if="o.mandatory"><input
+                                                            type="checkbox"
+                                                            value=""
+                                                            checked=""
+                                                        /></t><t
+                                                        t-if="not(o.mandatory)"
+                                                    ><input
+                                                            type="checkbox"
+                                                            value=""
+                                                        /></t></td>
                                       </tr>
                                     </tbody>
                                  </table>
                             </div>
                         </div>
-                        
+
                         <div class="panel panel-default">
                             <div class="panel-heading">Course Informations</div>
                             <div class="panel-body">
                                 <table class="table table-striped">
                                     <colgroup>
-                                        <col style="width:600px"/>
-                                        <col style="width:100px"/>
-                                        <col style="width:100px"/>
-                                        <col style="width:100px"/>
+                                        <col style="width:600px" />
+                                        <col style="width:100px" />
+                                        <col style="width:100px" />
+                                        <col style="width:100px" />
                                     </colgroup>
                                     <tr>
                                       <td>Title</td>
@@ -290,32 +330,55 @@
                                     </tr>
                                     <tr t-foreach="o.course_ids" t-as="course">
                                       <td>
-                                        <a t-esc="course.title" t-att-href="'/course/%s' % course.id" target="new" style="cursor: pointer;"/>
-                                        <br/><t t-foreach="course.teacher_ids" t-as="teacher"><i style="color:grey;" t-esc="teacher.name"/><t t-if="teacher_index &lt; (teacher_size - 1)">,</t></t>
+                                        <a
+                                                    t-esc="course.title"
+                                                    t-att-href="'/course/%s' % course.id"
+                                                    target="new"
+                                                    style="cursor: pointer;"
+                                                />
+                                        <br /><t
+                                                    t-foreach="course.teacher_ids"
+                                                    t-as="teacher"
+                                                ><i
+                                                        style="color:grey;"
+                                                        t-esc="teacher.name"
+                                                    /><t
+                                                        t-if="teacher_index &lt; (teacher_size - 1)"
+                                                    >,</t></t>
                                       </td>
-                                      <td class="text-center"><t t-esc="course.hours"/></td>
-                                      <td class="text-center"><t t-esc="course.credits"/></td>
-                                      <td class="text-center"><t t-esc="course.weight"/></td>
+                                      <td class="text-center"><t
+                                                    t-esc="course.hours"
+                                                /></td>
+                                      <td class="text-center"><t
+                                                    t-esc="course.credits"
+                                                /></td>
+                                      <td class="text-center"><t
+                                                    t-esc="course.weight"
+                                                /></td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                       </section>
                       <t t-foreach="o.course_ids" t-as="course">
-                        <t t-set="desc" t-value="course.documentation_id"/>
+                        <t t-set="desc" t-value="course.documentation_id" />
                         <t t-if="desc">
                           <p style="page-break-after:always;">   </p>
-                          <t t-call="school_course_description.report_course_doc_section"/>
+                          <t
+                                    t-call="school_course_description.report_course_doc_section"
+                                />
                         </t>
                         <t t-else="">
                           <p style="page-break-after:always;">   </p>
                           <section>
                             <div class="row mt64 mb64">
                                 <h1>
-                                    <t t-if="desc.state == 'draft'">Draft </t>Course Description
+                                    <t
+                                                t-if="desc.state == 'draft'"
+                                            >Draft </t>Course Description
                                 </h1>
                                 <h1>
-                                    <span t-field="course.name"/>
+                                    <span t-field="course.name" />
                                 </h1>
                                 <h2>
                                     Pas de descriptif disponible.
@@ -325,7 +388,9 @@
                         </t>
                       </t>
                       <div class="row" style="margin-top:40px;margin-bottom:40px;">
-                            Imprimé le <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"/>
+                            Imprimé le <span
+                                t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
+                            />
                       </div>
                     </div>
                 </div>

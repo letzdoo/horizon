@@ -29,17 +29,32 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_submit" string="Publish" type="object" class="oe_highlight"/>
-                    <button name="action_revoke" string="Revoke" type="object" class="oe_highlight"/>
-                    <button name="action_extend" string="Extend" type="object" class="oe_highlight"/>
+                    <button
+                        name="action_submit"
+                        string="Publish"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="action_revoke"
+                        string="Revoke"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="action_extend"
+                        string="Extend"
+                        type="object"
+                        class="oe_highlight"
+                    />
                 </header>
                 <sheet>
                     <group>
-                        <field name="partner_id"/>
-                        <field name="reference"/>
-                        <field name="legal_context"/>
-                        <field name="start_date"/>
-                        <field name="end_date"/>
+                        <field name="partner_id" />
+                        <field name="reference" />
+                        <field name="legal_context" />
+                        <field name="start_date" />
+                        <field name="end_date" />
                     </group>
                 </sheet>
             </form>
@@ -53,11 +68,11 @@
         <field name="priority">10</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="partner_id"/>
-                <field name="reference"/>
-                <field name="legal_context"/>
-                <field name="start_date"/>
-                <field name="end_date"/>
+                <field name="partner_id" />
+                <field name="reference" />
+                <field name="legal_context" />
+                <field name="start_date" />
+                <field name="end_date" />
             </tree>
         </field>
     </record>
@@ -69,7 +84,7 @@
         <field name="priority">10</field>
         <field name="arch" type="xml">
             <search>
-                <field name="partner_id"/>
+                <field name="partner_id" />
             </search>
         </field>
     </record>
@@ -83,22 +98,29 @@
 
     <!-- a view action for the school.bced.inscription tree view -->
     <record id="action_bced_inscription_tree" model="ir.actions.act_window.view">
-        <field name="sequence" eval="10"/>
+        <field name="sequence" eval="10" />
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_bced_inscription_tree"/>
-        <field name="act_window_id" ref="action_bced_inscription"/>
+        <field name="view_id" ref="view_bced_inscription_tree" />
+        <field name="act_window_id" ref="action_bced_inscription" />
     </record>
 
     <!-- a view action for the school.bced.inscription form view -->
     <record id="action_bced_inscription_form" model="ir.actions.act_window.view">
-        <field name="sequence" eval="20"/>
+        <field name="sequence" eval="20" />
         <field name="view_mode">form</field>
-        <field name="view_id" ref="view_bced_inscription_form"/>
-        <field name="act_window_id" ref="action_bced_inscription"/>
+        <field name="view_id" ref="view_bced_inscription_form" />
+        <field name="act_window_id" ref="action_bced_inscription" />
     </record>
 
     <!-- a menu item for the school.bced.inscription model -->
 
-    <menuitem id="menu_bced_inscription" name="BCED Inscriptions" parent="school_webservices.menu_webservice" sequence="60" groups="school_webservices_bced_personne.bced_allowed_group" action="action_bced_inscription" />
+    <menuitem
+        id="menu_bced_inscription"
+        name="BCED Inscriptions"
+        parent="school_webservices.menu_webservice"
+        sequence="60"
+        groups="school_webservices_bced_personne.bced_allowed_group"
+        action="action_bced_inscription"
+    />
 
 </odoo>

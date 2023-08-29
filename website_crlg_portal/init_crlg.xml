@@ -21,7 +21,6 @@
 ##############################################################################
 -->
 <odoo>
-    <data>
         <function model="website" name="init_crlg" />
         <function model="res.company" name="init_crlg_social_medias" />
 
@@ -31,14 +30,14 @@
         <!-- Template page  -->
 		<template id="valves_etudiants_crlg" name="Valves étudiants">
             <t t-call="website.layout">
-                <div id="wrap" class="oe_structure oe_empty"/>
+                <div id="wrap" class="oe_structure oe_empty" />
             </t>
         </template>
 
         <!-- Template page  -->
 		<template id="valves_professeurs_crlg" name="Valves professeurs">
             <t t-call="website.layout">
-                <div id="wrap" class="oe_structure oe_empty"/>
+                <div id="wrap" class="oe_structure oe_empty" />
             </t>
         </template>
 
@@ -47,7 +46,7 @@
             <field name="name">Valves étudiants</field>
             <field name="website_published">True</field>
             <field name="url">/etudiants-info</field>
-            <field name="view_id" ref="website_crlg_portal.valves_etudiants_crlg"/>
+            <field name="view_id" ref="website_crlg_portal.valves_etudiants_crlg" />
             <field name="website_indexed">False</field>
         </record>
 
@@ -56,8 +55,7 @@
             <field name="name">Valves professeurs</field>
             <field name="website_published">True</field>
             <field name="url">/professeurs-info</field>
-            <field name="view_id" ref="website_crlg_portal.valves_professeurs_crlg"/>
+            <field name="view_id" ref="website_crlg_portal.valves_professeurs_crlg" />
             <field name="website_indexed">False</field>
         </record>
-    </data>
 </odoo>

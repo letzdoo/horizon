@@ -36,7 +36,11 @@
                 <p>Pas de description disponible pour cette activité.</p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button
+                            type="button"
+                            class="btn btn-default"
+                            data-dismiss="modal"
+                        >Close</button>
               </div>
             </div>
           </div>
@@ -45,29 +49,37 @@
 
     <template id="program" name="Programs">
         &lt;!DOCTYPE html&gt;
-        <html t-att-lang="lang and lang.replace('_', '-')"
-              t-att-data-website-id="website.id if website else None"
-              t-att-data-editable="'1' if editable else None"
-              t-att-data-translatable="'1' if translatable else None"
-              t-att-data-edit_translations="'1' if edit_translations else None"
-              t-att-data-view-xmlid="xmlid if editable or translatable else None"
-              t-att-data-main-object="repr(main_object) if editable or translatable else None"
-              t-att-data-oe-company-name="res_company.name if res_company else None">
+        <html
+            t-att-lang="lang and lang.replace('_', '-')"
+            t-att-data-website-id="website.id if website else None"
+            t-att-data-editable="'1' if editable else None"
+            t-att-data-translatable="'1' if translatable else None"
+            t-att-data-edit_translations="'1' if edit_translations else None"
+            t-att-data-view-xmlid="xmlid if editable or translatable else None"
+            t-att-data-main-object="repr(main_object) if editable or translatable else None"
+            t-att-data-oe-company-name="res_company.name if res_company else None"
+        >
             <head>
                 <meta charset="utf-8" />
-                
-                <meta name="viewport" content="initial-scale=1"/>
-                <meta name="keywords" content="programme enseignement musique"/>
-                
+
+                <meta name="viewport" content="initial-scale=1" />
+                <meta name="keywords" content="programme enseignement musique" />
+
                 <title>Programmes</title>
-    
-                <t t-call-assets="web.assets_common" t-js="false"/>
-                <t t-call-assets="web.assets_common" t-css="false"/>
-                <link rel='stylesheet' href='/web/static/lib/bootstrap/css/bootstrap.css'/>
-                <link rel='stylesheet' href='/web/static/lib/fontawesome/css/font-awesome.css'/>
+
+                <t t-call-assets="web.assets_common" t-js="false" />
+                <t t-call-assets="web.assets_common" t-css="false" />
+                <link
+                    rel='stylesheet'
+                    href='/web/static/lib/bootstrap/css/bootstrap.css'
+                />
+                <link
+                    rel='stylesheet'
+                    href='/web/static/lib/fontawesome/css/font-awesome.css'
+                />
                 <script type="text/javascript">
                     odoo.define('web.csrf', function (require) {
-                        var token = "<t t-esc="request.csrf_token(None)"/>";
+                        var token = "<t t-esc="request.csrf_token(None)" />";
                         require('web.core').csrf_token = token;
                         require('qweb').default_dict.csrf_token = token;
                     });
@@ -75,7 +87,7 @@
             </head>
             <body>
                 <div class="container">
-                    <t t-call="website_school_management.program_content"/>
+                    <t t-call="website_school_management.program_content" />
                 </div>
             </body>
         </html>
@@ -90,28 +102,34 @@
                 </div>
                 <div class="oe_structure" />
                 <div class="row">
-                    <t t-set="d" t-value="False"/>
-                    <t t-set="c" t-value="False"/>
+                    <t t-set="d" t-value="False" />
+                    <t t-set="c" t-value="False" />
                     <t t-foreach="program_list" t-as="program_item">
-                        <t t-set="program" t-value="program_item['program']"/>
-                        <t t-if="d != program.domain_name"> 
-                            <div class="clearfix"></div>
+                        <t t-set="program" t-value="program_item['program']" />
+                        <t t-if="d != program.domain_name">
+                            <div class="clearfix" />
                             <h3><t t-esc="program.domain_name" /></h3>
-                            <t t-set="d" t-value="program.domain_name"/>
-                            <t t-set="c" t-value="False"/>
+                            <t t-set="d" t-value="program.domain_name" />
+                            <t t-set="c" t-value="False" />
                         </t>
                         <t t-if="c != program.cycle_id">
-                            <div class="clearfix"></div>
+                            <div class="clearfix" />
                             <h4><t t-esc="program.cycle_id.name" /></h4>
-                            <t t-set="c" t-value="program.cycle_id"/>
+                            <t t-set="c" t-value="program.cycle_id" />
                         </t>
                         <div class="col-md-4">
                             <div class="thumbnail oe_school_program">
                                 <div class="caption" t-if="not is_clean">
-                                    <a itemprop="url" t-att-href="'/program/%s' % program_item['slug_id']"><t t-esc="program.name" /></a>
+                                    <a
+                                        itemprop="url"
+                                        t-att-href="'/program/%s' % program_item['slug_id']"
+                                    ><t t-esc="program.name" /></a>
                                 </div>
                                 <div class="caption" t-if="is_clean">
-                                    <a itemprop="url" t-att-href="'/program_clean/%s' % program_item['slug_id']"><t t-esc="program.name" /></a>
+                                    <a
+                                        itemprop="url"
+                                        t-att-href="'/program_clean/%s' % program_item['slug_id']"
+                                    ><t t-esc="program.name" /></a>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +145,9 @@
                 <div class="wrap">
                 	<div id="primary" class="content-area">
                 		<main id="main" class="site-main" role="main">
-                        <t t-call="website_school_management.program_details_content_global"/>
+                        <t
+                                t-call="website_school_management.program_details_content_global"
+                            />
                         </main>
                     </div>
                 </div>
@@ -138,21 +158,29 @@
 
     <template id="program_details_content_global" name="Program Details Content Global">
         <t t-set="title">Détails du programme</t>
-        <div class="oe_structure"/>
+        <div class="oe_structure" />
         <article class="container oe_school_program_details">
             <section class="row text-center">
                 <div class="col-md-10"><h2>Détails du programme</h2></div>
                 <div class="col-md-2">
                     <span class="row">
-                        <a class="btn btn-default" t-att-href="'/print_program/%s' % slug_id" target="new">
-                          <i class="fa fa-print fa-2x" title="Settings" aria-hidden="true"></i>
+                        <a
+                            class="btn btn-default"
+                            t-att-href="'/print_program/%s' % slug_id"
+                            target="new"
+                        >
+                          <i
+                                class="fa fa-print fa-2x"
+                                title="Settings"
+                                aria-hidden="true"
+                            />
                           <span class="sr-only">Print</span>
                         </a>
                     </span>
                 </div>
             </section>
-            <hr/>
-            <t t-call="website_school_management.program_details_content"/>
+            <hr />
+            <t t-call="website_school_management.program_details_content" />
         </article>
     </template>
 
@@ -162,7 +190,7 @@
             <div class="col-md-6"><h4><t t-esc="program.name" /></h4></div>
             <!--<div class="col-md-2"><h4><t t-esc="program.year_id.name" /></h4></div>-->
         </section>
-        <hr/>
+        <hr />
         <section>
             <div class="row">
                 <div class="col-md-2"><font color="grey">DOMAINE</font></div>
@@ -174,22 +202,28 @@
             </div>
             <div class="row">
                 <div class="col-md-2"><font color="grey">SECTION</font></div>
-                <div class="col-md-10"><t t-esc="program.speciality_id.section_id.name" /></div>
+                <div class="col-md-10"><t
+                        t-esc="program.speciality_id.section_id.name"
+                    /></div>
             </div>
             <div class="row">
                 <div class="col-md-2"><font color="grey">ORIENTATION</font></div>
-                <div class="col-md-10"><t t-esc="program.speciality_id.track_id.name" /></div>
+                <div class="col-md-10"><t
+                        t-esc="program.speciality_id.track_id.name"
+                    /></div>
             </div>
             <div class="row">
                 <div class="col-md-2"><font color="grey">SPÉCIALITÉ</font></div>
                 <div class="col-md-10"><t t-esc="program.speciality_id.name" /></div>
             </div>
         </section>
-        <hr/>
+        <hr />
         <section class="row" t-if="program.description">
             <div class="col-md-12"><h4>VADE MECUM</h4></div>
-            <div class="col-md-12" style='white-space: pre-wrap;'><t t-esc="program.description"/></div>
-            <hr/>
+            <div class="col-md-12" style='white-space: pre-wrap;'><t
+                    t-esc="program.description"
+                /></div>
+            <hr />
         </section>
         <!--<section class="row" t-if="program.competency_ids">
             <div class="col-md-12"><h4>RÉFÉRENTIELS DE COMPÉTENCES ATTENDUES</h4></div>
@@ -211,86 +245,116 @@
             </div>
         </section>
         <section class="row" t-foreach="program.bloc_ids" t-as="bloc">
-            <t t-call="website_school_management.school_bloc"/>
+            <t t-call="website_school_management.school_bloc" />
         </section>
-        <hr/>
+        <hr />
     </template>
 
     <template id="school_bloc" name="Bloc">
         <div class="col-md-12">
             <table class="table table-condensed oe_school_program_table">
-                <caption style="font-size: 100%;">Grille du bloc - <t t-esc="bloc.name"/></caption>
+                <caption style="font-size: 100%;">Grille du bloc - <t
+                        t-esc="bloc.name"
+                    /></caption>
                 <colgroup>
-                    <col style="width:75px"/>
-                    <col style="width:400px"/>
-                    <col style="width:60px"/>
-                    <col style="width:60px"/>
-                    <col style="width:60px"/>
-                    <col style="width:150px"/>
-                    <col style="width:150px"/>
+                    <col style="width:75px" />
+                    <col style="width:400px" />
+                    <col style="width:60px" />
+                    <col style="width:60px" />
+                    <col style="width:60px" />
+                    <col style="width:150px" />
+                    <col style="width:150px" />
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>UID</th> 
-                        <th>Unités d’enseignement</th> 
-                        <th class="text-center">Heures</th> 
+                        <th>UID</th>
+                        <th>Unités d’enseignement</th>
+                        <th class="text-center">Heures</th>
                         <th class="text-center">ECTS</th>
                         <th class="text-center">Pond</th>
                         <th>Pré-requis</th>
                         <th>Co-requis</th>
-                    </tr> 
+                    </tr>
                 </thead>
                 <tbody>
-                    <t t-set="group" t-value=""/>
-                    <t t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)" t-as="course_group">
+                    <t t-set="group" t-value="" />
+                    <t
+                        t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)"
+                        t-as="course_group"
+                    >
                     <t t-if="course_group.cg_grouping.id != group">
                         <tr>
-                            <td colspan="7"><t t-esc="course_group.cg_grouping.name"/></td>
+                            <td colspan="7"><t
+                                        t-esc="course_group.cg_grouping.name"
+                                    /></td>
                         </tr>
                     </t>
-                    <t t-set="group" t-value="course_group.cg_grouping.id"/>
+                    <t t-set="group" t-value="course_group.cg_grouping.id" />
                     <tr class="oe_school_course_group" style="font-weight: 600;">
-                        <td style="font-size: x-small;"><t t-esc="course_group.ue_id"/></td>
-                        <td><a t-esc="course_group.title" t-att-href="'/course_group/%s' % course_group.id" target="_self" style="cursor: pointer;"/><br/><i style="color:grey;"><t t-esc="course_group.responsible_id.name"/></i></td>
-                        <td class="text-center"><t t-esc="course_group.total_hours"/></td>
-                        <td class="text-center"><t t-esc="course_group.total_credits"/></td>
-                        <td></td>
-                        <td style="font-size: x-small;"><t t-if="course_group.pre_requisit_ids"><span t-esc="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"/></t></td>
-                        <td style="font-size: x-small;"><t t-if="course_group.co_requisit_ids"><span t-esc="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"/></t></td>
+                        <td style="font-size: x-small;"><t
+                                    t-esc="course_group.ue_id"
+                                /></td>
+                        <td><a
+                                    t-esc="course_group.title"
+                                    t-att-href="'/course_group/%s' % course_group.id"
+                                    target="_self"
+                                    style="cursor: pointer;"
+                                /><br /><i style="color:grey;"><t
+                                        t-esc="course_group.responsible_id.name"
+                                    /></i></td>
+                        <td class="text-center"><t
+                                    t-esc="course_group.total_hours"
+                                /></td>
+                        <td class="text-center"><t
+                                    t-esc="course_group.total_credits"
+                                /></td>
+                        <td />
+                        <td style="font-size: x-small;"><t
+                                    t-if="course_group.pre_requisit_ids"
+                                ><span
+                                        t-esc="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"
+                                    /></t></td>
+                        <td style="font-size: x-small;"><t
+                                    t-if="course_group.co_requisit_ids"
+                                ><span
+                                        t-esc="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"
+                                    /></t></td>
                     </tr>
                     <tr t-foreach="course_group.course_ids" t-as="course">
-                        <td></td>
-                        <td><t t-esc="course.title"/></td>
-                        <td class="text-center"><t t-esc="course.hours"/></td>
-                        <td class="text-center"><t t-esc="course.credits"/></td>
-                        <td class="text-center"><t t-esc="course.weight"/></td>
+                        <td />
+                        <td><t t-esc="course.title" /></td>
+                        <td class="text-center"><t t-esc="course.hours" /></td>
+                        <td class="text-center"><t t-esc="course.credits" /></td>
+                        <td class="text-center"><t t-esc="course.weight" /></td>
                         <!--<td></td>-->
-                        <td></td>
-                        <td></td>
+                        <td />
+                        <td />
                     </tr>
                     </t>
                     <tr style="font-weight: 800;">
-                        <td></td>
+                        <td />
                         <td class="text-right">Total :</td>
-                        <td class="text-center"><t t-esc="bloc.total_hours"/></td>
-                        <td class="text-center"><t t-esc="bloc.total_credits"/></td>
-                        <td></td>
+                        <td class="text-center"><t t-esc="bloc.total_hours" /></td>
+                        <td class="text-center"><t t-esc="bloc.total_credits" /></td>
+                        <td />
                         <!--<td></td>-->
-                        <td></td>
-                        <td></td>
+                        <td />
+                        <td />
                     </tr>
                 </tbody>
             </table>
         </div>
     </template>
-    
+
     <template id="course_group_details" name="Course Group Details">
         <t t-call="website_school_management.website_school_layout">
             <div id="content" class="site-content">
                 <div class="wrap">
                 	<div id="primary" class="content-area">
                 		<main id="main" class="site-main" role="main">
-                        <t t-call="website_school_management.course_group_details_content"/>
+                        <t
+                                t-call="website_school_management.course_group_details_content"
+                            />
                         </main>
                     </div>
                 </div>
@@ -298,27 +362,42 @@
             <!-- <t t-call="website_school_management.no_description"/> -->
         </t>
     </template>
-    
+
     <template id="course_group_details_content" name="Course Group Details Content">
         <div class="row">
             <h1>
-                <span t-field="course_group.title"/>
+                <span t-field="course_group.title" />
             </h1>
         </div>
         <main id="main" class="site-main" role="main">
             <article class="twentyseventeen-panel page type-page status-publish hentry">
             	<div class="panel-content">
                 	<header class="entry-header">
-                		<h1 class="entry-title">Information générale</h1>			
+                		<h1 class="entry-title">Information générale</h1>
                 	</header><!-- .entry-header -->
                 	<div class="entry-content">
-                        <p><strong>Code d'unité</strong> – <span t-field="course_group.ue_id"/></p>
-                        <p><strong>Cycle</strong> – <!--<span t-field="course_group.grade"/>--></p>
-                        <p><strong>Enseignant</strong> – <span t-field="course_group.responsible_id"/></p>
-                        <p><strong>Période</strong> – <span t-field="course_group.period"/></p>
-                        <p><strong>ECTS</strong> – <span t-field="course_group.total_credits"/></p>
-                        <p><strong>Heures</strong> – <span t-field="course_group.total_hours"/></p>
-                        <p><strong>Obligatoire</strong> – <t t-if="course_group.mandatory"><input type="checkbox" value="" checked=""/></t><t t-if="not(course_group.mandatory)"><input type="checkbox" value=""/></t></p>
+                        <p><strong>Code d'unité</strong> – <span
+                                t-field="course_group.ue_id"
+                            /></p>
+                        <p><strong
+                            >Cycle</strong> – <!--<span t-field="course_group.grade"/>--></p>
+                        <p><strong>Enseignant</strong> – <span
+                                t-field="course_group.responsible_id"
+                            /></p>
+                        <p><strong>Période</strong> – <span
+                                t-field="course_group.period"
+                            /></p>
+                        <p><strong>ECTS</strong> – <span
+                                t-field="course_group.total_credits"
+                            /></p>
+                        <p><strong>Heures</strong> – <span
+                                t-field="course_group.total_hours"
+                            /></p>
+                        <p><strong>Obligatoire</strong> – <t
+                                t-if="course_group.mandatory"
+                            ><input type="checkbox" value="" checked="" /></t><t
+                                t-if="not(course_group.mandatory)"
+                            ><input type="checkbox" value="" /></t></p>
                     </div>
                 </div>
             </article>
@@ -331,10 +410,10 @@
                     <div class="entry-content">
                         <table class="table table-striped">
                             <colgroup>
-                                <col style="width:600px"/>
-                                <col style="width:100px"/>
-                                <col style="width:100px"/>
-                                <col style="width:100px"/>
+                                <col style="width:600px" />
+                                <col style="width:100px" />
+                                <col style="width:100px" />
+                                <col style="width:100px" />
                             </colgroup>
                             <tr>
                                 <td>Titre</td>
@@ -344,20 +423,29 @@
                             </tr>
                             <tr t-foreach="course_group.course_ids" t-as="course">
                                 <td>
-                                    <a t-esc="course.title" t-att-href="'#course_documentation_id_%d' % course.id" style="cursor: pointer;"/>
-                                    <br/>
-                                    <t t-foreach="course.teacher_ids" t-as="teacher"><i style="color:grey;" t-esc="teacher.name"/>
-                                        <t t-if="teacher_index &lt; (teacher_size - 1)">,</t>
+                                    <a
+                                        t-esc="course.title"
+                                        t-att-href="'#course_documentation_id_%d' % course.id"
+                                        style="cursor: pointer;"
+                                    />
+                                    <br />
+                                    <t t-foreach="course.teacher_ids" t-as="teacher"><i
+                                            style="color:grey;"
+                                            t-esc="teacher.name"
+                                        />
+                                        <t
+                                            t-if="teacher_index &lt; (teacher_size - 1)"
+                                        >,</t>
                                     </t>
                                 </td>
                                 <td class="text-center">
-                                    <t t-esc="course.hours"/>
+                                    <t t-esc="course.hours" />
                                 </td>
                                 <td class="text-center">
-                                    <t t-esc="course.credits"/>
+                                    <t t-esc="course.credits" />
                                 </td>
                                 <td class="text-center">
-                                    <t t-esc="course.weight"/>
+                                    <t t-esc="course.weight" />
                                 </td>
                             </tr>
                         </table>
@@ -365,47 +453,72 @@
                 </div>
             </article>
             <t t-foreach="course_group.course_ids" t-as="course">
-            <t t-set="desc" t-value="course.documentation_id"/>
+            <t t-set="desc" t-value="course.documentation_id" />
             <t t-if="desc">
-            <article t-att-id="'course_documentation_id_%d' % course.id" class="twentyseventeen-panel page type-page status-publish hentry">
+            <article
+                        t-att-id="'course_documentation_id_%d' % course.id"
+                        class="twentyseventeen-panel page type-page status-publish hentry"
+                    >
                 <div class="panel-content">
                     <header class="entry-header">
-                        <h1 class="entry-title"><span t-field="course.title"/> </h1>
-                        <i>by <t t-foreach="course.teacher_ids" t-as="teacher"><i style="color:grey;" t-esc="teacher.name"/><t t-if="teacher_index &lt; (teacher_size - 1)">,</t></t></i>
+                        <h1 class="entry-title"><span t-field="course.title" /> </h1>
+                        <i>by <t t-foreach="course.teacher_ids" t-as="teacher"><i
+                                            style="color:grey;"
+                                            t-esc="teacher.name"
+                                        /><t
+                                            t-if="teacher_index &lt; (teacher_size - 1)"
+                                        >,</t></t></i>
                     </header>
                     <!-- .entry-header -->
                     <div class="entry-content">
                         <h5>Identification</h5>
                         <p>
                             <ul class="list-group">
-                                <li class="list-group-item">Nombre de crédits associés : <span t-field="course.credits"/> Crédits ECTS</li>
-                                <li class="list-group-item">Pondération au sein de l’UE : <span t-field="course.weight"/></li>
-                                <li class="list-group-item">Caractère obligatoire : OUI</li>
-                                <li class="list-group-item">Période de l’activité d’apprentissage : 1er Quadrimestre et 2e Quadrimestre</li>
-                                <li class="list-group-item">Volume horaire : <span t-field="course.hours"/> h</li>
+                                <li
+                                            class="list-group-item"
+                                        >Nombre de crédits associés : <span
+                                                t-field="course.credits"
+                                            /> Crédits ECTS</li>
+                                <li
+                                            class="list-group-item"
+                                        >Pondération au sein de l’UE : <span
+                                                t-field="course.weight"
+                                            /></li>
+                                <li
+                                            class="list-group-item"
+                                        >Caractère obligatoire : OUI</li>
+                                <li
+                                            class="list-group-item"
+                                        >Période de l’activité d’apprentissage : 1er Quadrimestre et 2e Quadrimestre</li>
+                                <li class="list-group-item">Volume horaire : <span
+                                                t-field="course.hours"
+                                            /> h</li>
                             </ul>
                         </p>
                         <h5>Contenu</h5>
-                        <p><span t-raw="desc.content"/></p>
+                        <p><span t-raw="desc.content" /></p>
                         <h5>Méthode</h5>
-                        <p><span t-raw="desc.method"/></p>
+                        <p><span t-raw="desc.method" /></p>
                         <h5>Acquis d'apprentissage spécifiques</h5>
-                        <p><span t-raw="desc.learning_outcomes"/></p>
+                        <p><span t-raw="desc.learning_outcomes" /></p>
                         <h5>Éléments de référence</h5>
-                        <p><span t-raw="desc.references"/></p>
+                        <p><span t-raw="desc.references" /></p>
                         <h5>Pre-Co Requis</h5>
-                        <p><span t-raw="desc.pre_co_requiered"/></p>
+                        <p><span t-raw="desc.pre_co_requiered" /></p>
                         <h5>Modes d'évaluation</h5>
-                        <p><span t-raw="desc.evaluation_method"/></p>
+                        <p><span t-raw="desc.evaluation_method" /></p>
                     </div>
                 </div>
             </article>
             </t>
             <t t-if="not desc">
-            <article t-att-id="'course_documentation_id_%d' % course.id" class="twentyseventeen-panel page type-page status-publish hentry">
+            <article
+                        t-att-id="'course_documentation_id_%d' % course.id"
+                        class="twentyseventeen-panel page type-page status-publish hentry"
+                    >
                 <div class="panel-content">
                     <header class="entry-header">
-                        <h1 class="entry-title"><span t-field="course.title"/> </h1>
+                        <h1 class="entry-title"><span t-field="course.title" /> </h1>
                     </header>
                     <!-- .entry-header -->
                     <div class="entry-content">

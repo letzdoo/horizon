@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,23 +18,19 @@
 #
 ##############################################################################
 {
-    'name': 'School dispense approval',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_evaluations'],
-    'init_xml': [],
-    'data': [
-        'views/individual_program_view.xml',
-        'report/report_program.xml',
+    "name": "School dispense approval",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_evaluations"],
+    "init_xml": [],
+    "data": [
+        "views/individual_program_view.xml",
+        "report/report_program.xml",
     ],
-    'demo_xml': [],
-    'description': '''
-        This modules adds an approuval step to dispenses.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

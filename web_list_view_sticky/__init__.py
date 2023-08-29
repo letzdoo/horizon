@@ -1,1 +1,1 @@
-__author__ = 'Integral1'
+__author__ = "Integral1"

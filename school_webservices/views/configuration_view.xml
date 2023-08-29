@@ -32,13 +32,18 @@
                     <group>
                         <field name="name" />
                         <field name="wsdl_url" />
-                        <field name="wsa_action"/>
-                        <field name="wsa_to"/>
+                        <field name="wsa_action" />
+                        <field name="wsa_to" />
                     </group>
                     <notebook>
                         <page string="History">
                             <h3>History</h3>
-                            <button type="object" icon="fa-folder-open" name="action_update_history" string="Refresh" />
+                            <button
+                                type="object"
+                                icon="fa-folder-open"
+                                name="action_update_history"
+                                string="Refresh"
+                            />
                             <group>
                                 <field name="last_response" widget="ace" />
                                 <field name="last_send" widget="ace" />
@@ -59,9 +64,14 @@
             <tree>
                 <field name="name" />
                 <field name="wsdl_url" />
-                <field name="wsa_action"/>
-                <field name="wsa_to"/>
-                <button type="object" icon="fa-folder-open" name="action_test_service" string="" />
+                <field name="wsa_action" />
+                <field name="wsa_to" />
+                <button
+                    type="object"
+                    icon="fa-folder-open"
+                    name="action_test_service"
+                    string=""
+                />
             </tree>
         </field>
     </record>
@@ -72,14 +82,14 @@
         <field name="res_model">school.webservice</field>
         <field name="view_mode">tree,form</field>
     </record>
-    
+
     <record id="action_webservice_tree_view1" model="ir.actions.act_window.view">
         <field name="sequence" eval="1" />
         <field name="view_mode">tree</field>
         <field name="view_id" ref="view_webservice_list" />
         <field name="act_window_id" ref="action_webservice_list" />
     </record>
-   
+
     <record id="action_webservice_form_view1" model="ir.actions.act_window.view">
         <field name="sequence" eval="5" />
         <field name="view_mode">form</field>
@@ -96,7 +106,7 @@
             <tree>
                 <field name="webservice_id" />
                 <field name="date" />
-                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="user_id" widget="many2one_avatar_user" />
                 <field name="access_info" />
                 <field name="is_error" />
             </tree>
@@ -112,8 +122,23 @@
     </record>
 
     <!-- Webservice Access Log Menu -->
-    <menuitem id="menu_webservice" name="Web Services" sequence="20" web_icon="school_webservices,static/description/icon.png" />
-    <menuitem id="menu_webservice_list" parent="menu_webservice" action="action_webservice_list" sequence="40" />
-    <menuitem id="menu_webservice_access_log" parent="menu_webservice" action="action_webservice_access_log" sequence="41" />
+    <menuitem
+        id="menu_webservice"
+        name="Web Services"
+        sequence="20"
+        web_icon="school_webservices,static/description/icon.png"
+    />
+    <menuitem
+        id="menu_webservice_list"
+        parent="menu_webservice"
+        action="action_webservice_list"
+        sequence="40"
+    />
+    <menuitem
+        id="menu_webservice_access_log"
+        parent="menu_webservice"
+        action="action_webservice_access_log"
+        sequence="41"
+    />
 
 </odoo>

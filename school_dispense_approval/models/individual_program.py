@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,16 +18,13 @@
 ##############################################################################
 import logging
 
-from odoo import api, fields, models, _
-from odoo.exceptions import UserError, ValidationError
-
 _logger = logging.getLogger(__name__)
 
 # class IndividualBloc(models.Model):
 #     '''Individual Bloc'''
 #     _inherit = 'school.individual_bloc'
-    
-    
+
+
 #     def set_to_progress(self, context):
 #         for bloc in self:
 #             for icg in bloc.course_group_ids:
@@ -43,18 +39,18 @@ _logger = logging.getLogger(__name__)
 
 #     is_dispense_approved = fields.Boolean(string="Is Dispense Approved", default=False, tracking=True)
 #     dispense_approval_comment = fields.Text(string="Dispense Approval Comment")
-    
+
 #     dispense_char = fields.Char(string="Is Dispensed Text", compute="_compute_char", store=True)
 #     is_dispense_approved_char = fields.Char(string="Is Dispense Approved Text", compute="_compute_char", store=True)
-    
+
 #     @api.depends('dispense','is_dispense_approved')
-    
+
 #     def _compute_char(self):
 #         for ic in self:
 #             ic.dispense_char = _('Dispensed') if ic.dispense else _('Not Dispensed')
 #             ic.is_dispense_approved_char = _('Approuved') if ic.is_dispense_approved else _('Not Approuved')
-        
-    
+
+
 #     @api.model
 #     def _needaction_domain_get(self):
 #         if self.env.user.partner_id.teacher:

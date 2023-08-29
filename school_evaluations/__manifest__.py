@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,30 +18,28 @@
 #
 ##############################################################################
 {
-    'name': 'School evaluations',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_management'],
-    'init_xml': [],
-    'data': [
-        'data/school_evaluations.xml',
-        'views/evaluation_view.xml',
-        'views/configuration_view.xml',
-        'report/report_evaluation.xml',
-        'wizard/evaluation_summary.xml',
+    "name": "School evaluations",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_management"],
+    "init_xml": [],
+    "data": [
+        "data/school_evaluations.xml",
+        "views/evaluation_view.xml",
+        "views/configuration_view.xml",
+        "report/report_evaluation.xml",
+        "wizard/evaluation_summary.xml",
     ],
-    'assets': {
-        'web.assets_backend': ['school_evaluations/static/src/css/school_evaluations.css']
+    "assets": {
+        "web.assets_backend": [
+            "school_evaluations/static/src/css/school_evaluations.css"
+        ]
     },
-    'demo_xml': [],
-    'description': '''
-        This modules add evaluation management for a school.
-    ''',
-    'qweb': ['static/src/xml/*.xml'],
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "qweb": ["static/src/xml/*.xml"],
+    "installable": True,
+    "application": True,
 }

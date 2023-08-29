@@ -21,7 +21,7 @@
 ##############################################################################
 -->
 <odoo>
-    
+
         <!-- Add Bloc Wizard View -->
         <record model="ir.ui.view" id="add_bloc_wizard_form">
           <field name="name">school.add_bloc_wizard.view</field>
@@ -31,28 +31,42 @@
             <form string="Add Bloc Wizard">
                 <sheet>
                     <group>
-                        <field name="individual_program_id" readonly="1"/>
-                        <field name="source_bloc_id" domain="[('year_id','=',year_id)]"/>
-                        <field name="year_id"/>
+                        <field name="individual_program_id" readonly="1" />
+                        <field
+                            name="source_bloc_id"
+                            domain="[('year_id','=',year_id)]"
+                        />
+                        <field name="year_id" />
                     </group>
                     <footer>
-                        <button name="on_confirm" string="Confirm" type="object" default_focus="1" class="oe_highlight"/>
+                        <button
+                            name="on_confirm"
+                            string="Confirm"
+                            type="object"
+                            default_focus="1"
+                            class="oe_highlight"
+                        />
                         or
-                        <button name="on_cancel" string="Cancel" type="object" class="oe_link"/>
+                        <button
+                            name="on_cancel"
+                            string="Cancel"
+                            type="object"
+                            class="oe_link"
+                        />
                     </footer>
                 </sheet>
             </form>
           </field>
         </record>
-        
+
         <record id="action_add_bloc_wizard" model="ir.actions.act_window">
             <field name="name">Add Bloc Wizard</field>
             <field name="res_model">school.add_bloc_wizard</field>
             <field name="type">ir.actions.act_window</field>
             <field name="context">{'default_individual_program_id': [active_id]}</field>
             <field name="view_mode">form</field>
-            <field name="view_id" ref="add_bloc_wizard_form"/>
+            <field name="view_id" ref="add_bloc_wizard_form" />
             <field name="target">new</field>
         </record>
-        
+
 </odoo>

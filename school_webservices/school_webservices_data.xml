@@ -23,7 +23,9 @@
 <odoo noupdate="1">
     <record id="fase" model="school.webservice">
         <field name="name">fase</field>
-        <field name="wsdl_url">school_webservices/static/wsdl/fase/fase_organisation.wsdl</field>
+        <field
+            name="wsdl_url"
+        >school_webservices/static/wsdl/fase/fase_organisation.wsdl</field>
         <field name="wsa_action">fase:organisationV2?mode=sync</field>
         <field name="wsa_to">http://www.etnic.be/services/fase</field>
     </record>

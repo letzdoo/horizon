@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,24 +18,20 @@
 #
 ##############################################################################
 {
-    'name': 'School course description',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_management'],
-    'init_xml': [],
-    'data': [
+    "name": "School course description",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_management"],
+    "init_xml": [],
+    "data": [
         #'views/templates.xml',
-        'views/description.xml',
-        'report/school_description_report.xml',
+        "views/description.xml",
+        "report/school_description_report.xml",
     ],
-    'demo_xml': [],
-    'description': '''
-        This modules manages the course documentation for a school.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,21 +18,24 @@
 #
 ##############################################################################
 
-from odoo import api, fields, models, _
+from odoo import fields, models
 
 
 class ResConfigSettings(models.TransientModel):
-    _inherit = 'res.config.settings'
+    _inherit = "res.config.settings"
 
     registration_open_year_id = fields.Many2one(
-        comodel_name='school.year',
-        string='Current Year for Registrations',
+        comodel_name="school.year",
+        string="Current Year for Registrations",
         readonly=False,
-        help='Only registration in selected year is allowed.', config_parameter='school.registration_open_year_id')
-        
+        help="Only registration in selected year is allowed.",
+        config_parameter="school.registration_open_year_id",
+    )
+
     registration_employee_id = fields.Many2one(
-        comodel_name='res.partner',
-        string='Employee Managing Registrations',
+        comodel_name="res.partner",
+        string="Employee Managing Registrations",
         readonly=False,
-        help='The employee that manage/dispatch registrations.', config_parameter='school.registration_employee_id')
-        
+        help="The employee that manage/dispatch registrations.",
+        config_parameter="school.registration_employee_id",
+    )

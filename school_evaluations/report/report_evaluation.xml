@@ -23,26 +23,34 @@
 <odoo>
 
     <!--
-    
+
     Success Certificate
-    
+
     -->
-    
+
     <record id="report_success_certificate" model="ir.actions.report">
         <field name="name">Success Certificate</field>
         <field name="model">school.individual_bloc</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">school_evaluations.report_success_certificate_content</field>
-        <field name="report_file">school_evaluations.report_success_certificate_content</field>
-        <field name="print_report_name">object.name+'-CERT-'+time.strftime('%d-%m-%Y')+'.pdf'</field>
-        <field name="binding_model_id" ref="model_school_individual_bloc"/>
+        <field
+            name="report_name"
+        >school_evaluations.report_success_certificate_content</field>
+        <field
+            name="report_file"
+        >school_evaluations.report_success_certificate_content</field>
+        <field
+            name="print_report_name"
+        >object.name+'-CERT-'+time.strftime('%d-%m-%Y')+'.pdf'</field>
+        <field name="binding_model_id" ref="model_school_individual_bloc" />
         <field name="binding_type">report</field>
     </record>
 
     <!--Email template -->
     <record id="email_template_success_certificate" model="mail.template">
         <field name="name">Sucess Certificate - Send by Email</field>
-        <field name="email_to">${(object.student_id.email and '%s &lt;%s&gt;' % (object.student_id.name, object.student_id.email) or '')|safe}</field>
+        <field
+            name="email_to"
+        >${(object.student_id.email and '%s &lt;%s&gt;' % (object.student_id.name, object.student_id.email) or '')|safe}</field>
         <field name="subject">Sucess Certificate</field>
         <field name="partner_to">${object.student_id.id}</field>
         <field name="model_id" ref="model_school_individual_bloc" />
@@ -66,8 +74,8 @@
 
     <template id="report_success_certificate_content">
         <t t-call="web.html_container">
-            <t t-set="data_report_margin_top" t-value="40"/>
-            <t t-set="data_report_header_spacing" t-value="35"/>
+            <t t-set="data_report_margin_top" t-value="40" />
+            <t t-set="data_report_header_spacing" t-value="35" />
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
                 <div class="page">
@@ -75,31 +83,63 @@
                         <div class="row" style="margin-bottom:30px;">
                             <div class="col-12 text-center">
                                 <h3>ATTESTATION DE RÉUSSITE</h3>
-                                <h3>Conservatoire royal de Liège<br/>Boulevard Piercot, 29, 4000 LIÈGE</h3>
-                                <h4>Domaine : <span t-field="o.source_bloc_domain_id.long_name"/></h4>
+                                <h3>Conservatoire royal de Liège<br
+                                        />Boulevard Piercot, 29, 4000 LIÈGE</h3>
+                                <h4>Domaine : <span
+                                            t-field="o.source_bloc_domain_id.long_name"
+                                        /></h4>
                             </div>
                         </div>
                         <t t-if="o.state in ['draft', 'postponed', 'failed']">
-                        <div class="alert alert-danger" role="alert">Programme non réussi, actuellement au stade de : <span t-field="o.state"/></div>
+                        <div
+                                    class="alert alert-danger"
+                                    role="alert"
+                                >Programme non réussi, actuellement au stade de : <span
+                                        t-field="o.state"
+                                    /></div>
                         </t>
-                        <div class="row"  style="margin-top:60px;">
+                        <div class="row" style="margin-top:60px;">
                             <div class="col-12">
                                 Je, sousigné, NATHANAËL HARCQ, Directeur du Conservatoire Royal de Liège, certifie que
                             </div>
                         </div>
-                        <div class="row"  style="margin-top:60px;">
+                        <div class="row" style="margin-top:60px;">
                             <div class="col-12 text-center">
-                                <t t-if="o.student_id.gender == 'male'">Monsieur</t><t t-if="o.student_id.gender == 'female'">Madame</t> <span t-field="o.student_id"/> <span t-field="o.student_id.initials"/><br/>
-                                <br/>
-                                Né<t t-if="o.student_id.gender == 'female'">e</t> à <span t-field="o.student_id.birthplace"/> le <span t-field="o.student_id.birthdate_date"/><br/>
-                                <br/>
-                                A réussi en l’année académique <span t-field="o.year_id"/><br/>
-                                son programme en <span t-field="o.source_bloc_domain_id"/> option <span t-field="o.source_bloc_speciality_id"/> pour un total de <span t-field="o.total_acquiered_credits"/> ECTS.
+                                <t t-if="o.student_id.gender == 'male'">Monsieur</t><t
+                                        t-if="o.student_id.gender == 'female'"
+                                    >Madame</t> <span t-field="o.student_id" /> <span
+                                        t-field="o.student_id.initials"
+                                    /><br />
+                                <br />
+                                Né<t
+                                        t-if="o.student_id.gender == 'female'"
+                                    >e</t> à <span
+                                        t-field="o.student_id.birthplace"
+                                    /> le <span
+                                        t-field="o.student_id.birthdate_date"
+                                    /><br />
+                                <br />
+                                A réussi en l’année académique <span
+                                        t-field="o.year_id"
+                                    /><br />
+                                son programme en <span
+                                        t-field="o.source_bloc_domain_id"
+                                    /> option <span
+                                        t-field="o.source_bloc_speciality_id"
+                                    /> pour un total de <span
+                                        t-field="o.total_acquiered_credits"
+                                    /> ECTS.
                             </div>
                         </div>
-                        <div class="row"  style="margin-top:60px;" t-if="o.total_acquiered_credits &lt; o.total_credits">
+                        <div
+                                class="row"
+                                style="margin-top:60px;"
+                                t-if="o.total_acquiered_credits &lt; o.total_credits"
+                            >
                             <div class="col-12 text-center">
-                                Un complément de <span t-esc="o.total_credits-o.total_acquiered_credits"/> reste(nt) à obtenir pour compléter le programme.
+                                Un complément de <span
+                                        t-esc="o.total_credits-o.total_acquiered_credits"
+                                    /> reste(nt) à obtenir pour compléter le programme.
                             </div>
                         </div>
                         <div class="row" style="margin-top:50px;">
@@ -125,19 +165,25 @@
     </template>
 
     <!--
-    
+
     Success Certificate on programs
-    
+
     -->
 
     <record id="report_success_certificate_prog" model="ir.actions.report">
         <field name="name">Success Certificate</field>
         <field name="model">school.individual_program</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">school_evaluations.report_success_certificate_prog_content</field>
-        <field name="report_file">school_evaluations.report_success_certificate_prog_content</field>
-        <field name="print_report_name">object.name+'-CERT-'+time.strftime('%d-%m-%Y')+'.pdf'</field>
-        <field name="binding_model_id" ref="model_school_individual_program"/>
+        <field
+            name="report_name"
+        >school_evaluations.report_success_certificate_prog_content</field>
+        <field
+            name="report_file"
+        >school_evaluations.report_success_certificate_prog_content</field>
+        <field
+            name="print_report_name"
+        >object.name+'-CERT-'+time.strftime('%d-%m-%Y')+'.pdf'</field>
+        <field name="binding_model_id" ref="model_school_individual_program" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
     </record>
@@ -145,7 +191,9 @@
     <!--Email template -->
     <record id="email_template_success_certificate_prog" model="mail.template">
         <field name="name">Sucess Certificate - Send by Email</field>
-        <field name="email_to">${(object.student_id.email and '%s &lt;%s&gt;' % (object.student_id.name, object.student_id.email) or '')|safe}</field>
+        <field
+            name="email_to"
+        >${(object.student_id.email and '%s &lt;%s&gt;' % (object.student_id.name, object.student_id.email) or '')|safe}</field>
         <field name="subject">Sucess Certificate</field>
         <field name="partner_to">${object.student_id.id}</field>
         <field name="model_id" ref="model_school_individual_program" />
@@ -169,8 +217,8 @@
 
     <template id="report_success_certificate_prog_content">
         <t t-call="web.html_container">
-            <t t-set="data_report_margin_top" t-value="40"/>
-            <t t-set="data_report_header_spacing" t-value="35"/>
+            <t t-set="data_report_margin_top" t-value="40" />
+            <t t-set="data_report_header_spacing" t-value="35" />
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
                 <div class="page">
@@ -178,27 +226,59 @@
                         <div class="row" style="margin-bottom:30px;">
                             <div class="col-12 text-center">
                                 <h3>ATTESTATION DE RÉUSSITE DE CYCLE</h3>
-                                <h3>Conservatoire royal de Liège<br/>Boulevard Piercot, 29, 4000 LIÈGE</h3>
-                                <h4>Domaine : <span t-field="o.domain_id.long_name"/></h4>
+                                <h3>Conservatoire royal de Liège<br
+                                        />Boulevard Piercot, 29, 4000 LIÈGE</h3>
+                                <h4>Domaine : <span
+                                            t-field="o.domain_id.long_name"
+                                        /></h4>
                             </div>
                         </div>
                         <t t-if="o.state in ['draft', 'progress', 'abandonned']">
-                        <div class="alert alert-danger" role="alert">Cycle non réussi, actuellement au stade de : <span t-field="o.state"/></div>
+                        <div
+                                    class="alert alert-danger"
+                                    role="alert"
+                                >Cycle non réussi, actuellement au stade de : <span
+                                        t-field="o.state"
+                                    /></div>
                         </t>
-                        <div class="row"  style="margin-top:60px;">
+                        <div class="row" style="margin-top:60px;">
                             <div class="col-12">
                                 Je, sousigné, NATHANAËL HARCQ, Directeur du Conservatoire Royal de Liège, certifie que
                             </div>
                         </div>
-                        <div class="row"  style="margin-top:60px;">
+                        <div class="row" style="margin-top:60px;">
                             <div class="col-12 text-center">
-                                <t t-if="o.student_id.gender == 'male'">Monsieur</t><t t-if="o.student_id.gender == 'female'">Madame</t> <span t-field="o.student_id"/> <span t-field="o.student_id.initials"/><br/>
-                                <br/>
-                                Né<t t-if="o.student_id.gender == 'female'">e</t> à <span t-field="o.student_id.birthplace"/> le <span t-field="o.student_id.birthdate_date"/><br/>
-                                <br/>
-                                A réussi en l’année académique <span t-field="o.grade_year_id"/> le <span t-field="o.cycle_id.grade"/> en <span t-field="o.domain_id.long_name"/> : <span t-field="o.speciality_id"/> 
-                                <br/><t t-if="o.grade == 'without'"><span t-field="o.grade"/></t><t t-if="o.grade != 'without'">avec <span t-field="o.grade"/></t><t t-if="o.grade_comments"> au motif de <span t-field="o.grade_comments"/></t>
-                                pour un total de <span t-field="o.total_acquiered_credits"/> ECTS.
+                                <t t-if="o.student_id.gender == 'male'">Monsieur</t><t
+                                        t-if="o.student_id.gender == 'female'"
+                                    >Madame</t> <span t-field="o.student_id" /> <span
+                                        t-field="o.student_id.initials"
+                                    /><br />
+                                <br />
+                                Né<t
+                                        t-if="o.student_id.gender == 'female'"
+                                    >e</t> à <span
+                                        t-field="o.student_id.birthplace"
+                                    /> le <span
+                                        t-field="o.student_id.birthdate_date"
+                                    /><br />
+                                <br />
+                                A réussi en l’année académique <span
+                                        t-field="o.grade_year_id"
+                                    /> le <span t-field="o.cycle_id.grade" /> en <span
+                                        t-field="o.domain_id.long_name"
+                                    /> : <span t-field="o.speciality_id" />
+                                <br /><t t-if="o.grade == 'without'"><span
+                                            t-field="o.grade"
+                                        /></t><t t-if="o.grade != 'without'">avec <span
+                                            t-field="o.grade"
+                                        /></t><t
+                                        t-if="o.grade_comments"
+                                    > au motif de <span
+                                            t-field="o.grade_comments"
+                                        /></t>
+                                pour un total de <span
+                                        t-field="o.total_acquiered_credits"
+                                    /> ECTS.
                             </div>
                         </div>
                         <div class="row" style="margin-top:50px;">
@@ -224,19 +304,25 @@
     </template>
 
     <!--
-    
+
     Evaluations report for students
-    
+
     -->
-        
+
     <record id="report_evaluation_for_student" model="ir.actions.report">
         <field name="name">Evaluations for student</field>
         <field name="model">school.individual_bloc</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">school_evaluations.report_evaluation_for_student_content</field>
-        <field name="report_file">school_evaluations.report_evaluation_for_student_content</field>
-        <field name="print_report_name">object.name+'-RES-'+time.strftime('%d-%m-%Y')+'.pdf'</field>
-        <field name="binding_model_id" ref="model_school_individual_bloc"/>
+        <field
+            name="report_name"
+        >school_evaluations.report_evaluation_for_student_content</field>
+        <field
+            name="report_file"
+        >school_evaluations.report_evaluation_for_student_content</field>
+        <field
+            name="print_report_name"
+        >object.name+'-RES-'+time.strftime('%d-%m-%Y')+'.pdf'</field>
+        <field name="binding_model_id" ref="model_school_individual_bloc" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
     </record>
@@ -244,7 +330,9 @@
     <!--Email template -->
     <record id="email_template_evaluation_for_student" model="mail.template">
         <field name="name">Evaluation Report - Send by Email</field>
-        <field name="email_to">${(object.student_id.email and '%s &lt;%s&gt;' % (object.student_id.name, object.student_id.email) or '')|safe}</field>
+        <field
+            name="email_to"
+        >${(object.student_id.email and '%s &lt;%s&gt;' % (object.student_id.name, object.student_id.email) or '')|safe}</field>
         <field name="subject">Evaluation Report</field>
         <field name="partner_to">${object.student_id.id}</field>
         <field name="model_id" ref="model_school_individual_bloc" />
@@ -268,36 +356,41 @@
 
     <template id="report_evaluation_for_student_content">
         <t t-call="web.html_container">
-            <t t-set="data_report_margin_top" t-value="40"/>
-            <t t-set="data_report_header_spacing" t-value="35"/>
+            <t t-set="data_report_margin_top" t-value="40" />
+            <t t-set="data_report_header_spacing" t-value="35" />
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
                 <div class="page">
                     <div class="container">
                         <div class="row">
                             <div class="col-6 col-offset-6">
-                                <address t-field="o.student_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                                <address
+                                        t-field="o.student_id"
+                                        t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"
+                                    />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-8 col-offset-1">
-                                <h4>Fiche de résultats - <t t-esc="o.name"/></h4>    
+                                <h4>Fiche de résultats - <t t-esc="o.name" /></h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-8 col-offset-1">
-                                <h4><t t-esc="o.source_bloc_name"/></h4>    
+                                <h4><t t-esc="o.source_bloc_name" /></h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-10 col-offset-1">
                                 <!-- Table -->
-                                <table class="table table-condensed table-bordered result_table">
+                                <table
+                                        class="table table-condensed table-bordered result_table"
+                                    >
                                     <colgroup>
-                                        <col style="width:500px"/>
-                                        <col style="width:75px"/>
-                                        <col style="width:75px"/>
-                                        <col style="width:75px"/>
+                                        <col style="width:500px" />
+                                        <col style="width:75px" />
+                                        <col style="width:75px" />
+                                        <col style="width:75px" />
                                     </colgroup>
                                     <thead>
                                         <tr>
@@ -308,36 +401,71 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <t t-foreach="o.course_group_ids" t-as="course_group">
+                                        <t
+                                                t-foreach="o.course_group_ids"
+                                                t-as="course_group"
+                                            >
                                             <tr class="course_group">
                                                 <td>
-                                                    <t t-esc="course_group.title"/>
+                                                    <t t-esc="course_group.title" />
                                                 </td>
                                                 <td style=" text-align: right;">
-                                                    <t t-esc="course_group.final_result_disp"/>
+                                                    <t
+                                                            t-esc="course_group.final_result_disp"
+                                                        />
                                                 </td>
                                                 <td style=" text-align: right;">
-                                                    <t t-esc="course_group.total_credits"/>
+                                                    <t
+                                                            t-esc="course_group.total_credits"
+                                                        />
                                                 </td>
                                                 <td>
-                                                    <span class="label label-success" t-if="course_group.acquiered == 'A'">Acquis</span>
-                                                    <span class="label label-warning" t-if="course_group.acquiered == 'NA'">Non Acquis</span>
+                                                    <span
+                                                            class="label label-success"
+                                                            t-if="course_group.acquiered == 'A'"
+                                                        >Acquis</span>
+                                                    <span
+                                                            class="label label-warning"
+                                                            t-if="course_group.acquiered == 'NA'"
+                                                        >Non Acquis</span>
                                                 </td>
                                             </tr>
-                                            <t t-foreach="course_group.course_ids" t-as="course">
-                                                <tr style="font-style: italic;font-size:80%;">
+                                            <t
+                                                    t-foreach="course_group.course_ids"
+                                                    t-as="course"
+                                                >
+                                                <tr
+                                                        style="font-style: italic;font-size:80%;"
+                                                    >
                                                     <td>
-                                                        <t t-esc="course.title"/> - <t t-esc="course.level"/> <i t-if="course.teacher_id" class="oe_fade"> - <t t-esc="course.teacher_id.name"/><span t-if="not course.source_course_id.has_second_session">*</span></i></td>
+                                                        <t t-esc="course.title" /> - <t
+                                                                t-esc="course.level"
+                                                            /> <i
+                                                                t-if="course.teacher_id"
+                                                                class="oe_fade"
+                                                            > - <t
+                                                                    t-esc="course.teacher_id.name"
+                                                                /><span
+                                                                    t-if="not course.source_course_id.has_second_session"
+                                                                >*</span></i></td>
                                                     <td style=" text-align: right;">
-                                                        <t t-if="course.second_session_result_bool">
-                                                            <t t-esc="course.second_session_result_disp"/>
+                                                        <t
+                                                                t-if="course.second_session_result_bool"
+                                                            >
+                                                            <t
+                                                                    t-esc="course.second_session_result_disp"
+                                                                />
                                                         </t>
-                                                        <t t-if="course.second_session_result_bool == False">
-                                                            <t t-esc="course.first_session_result_disp"/>
+                                                        <t
+                                                                t-if="course.second_session_result_bool == False"
+                                                            >
+                                                            <t
+                                                                    t-esc="course.first_session_result_disp"
+                                                                />
                                                         </t>
                                                     </td>
-                                                    <td/>
-                                                    <td/>
+                                                    <td />
+                                                    <td />
                                                 </tr>
                                             </t>
                                         </t>
@@ -349,15 +477,19 @@
                             <div class="col-10 col-offset-1" style="font-size:small">
                                 * Pas de seconde session possible pour cette activité.
                             </div>
-                        </div>    
+                        </div>
                         <div class="row">
                             <div class="col-10 col-offset-1">
-                                <h4>A acquis ou valorisé <t t-esc="o.total_acquiered_credits"/> crédits ECTS. <t t-if="o.total_credits == o.total_acquiered_credits">A réussi l'ensemble de son PAE.</t></h4>
+                                <h4>A acquis ou valorisé <t
+                                            t-esc="o.total_acquiered_credits"
+                                        /> crédits ECTS. <t
+                                            t-if="o.total_credits == o.total_acquiered_credits"
+                                        >A réussi l'ensemble de son PAE.</t></h4>
                             </div>
                         </div>
                         <div class="row" style="margin-bottom:80px;">
                             <div class="col-10 col-offset-1">
-                                Remarques : 
+                                Remarques :
                             </div>
                         </div>
                         <div class="row" style="margin-bottom:120px;">
@@ -365,12 +497,14 @@
                                 Le Directeur,
                             </div>
                             <div class="col-4">
-                                L'étudiant, pour réception, 
+                                L'étudiant, pour réception,
                             </div>
                         </div>
                         <div class="row" style="margin-bottom:120px;">
                             <div class="col-9 col-offset-1">
-                                Imprimé le <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"/>
+                                Imprimé le <span
+                                        t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
+                                    />
                             </div>
                         </div>
                     </div>
@@ -381,18 +515,22 @@
     </template>
 
     <!--
-    
+
     Evaluations report for deliberation annexe
-    
+
     -->
 
     <record id="report_deliberation_program_annexe" model="ir.actions.report">
         <field name="name">Deliberation Report Program</field>
         <field name="model">school.individual_program</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">school_evaluations.report_deliberation_annexe_program</field>
-        <field name="report_file">school_evaluations.report_deliberation_annexe_program</field>
-        <field name="binding_model_id" ref="model_school_individual_program"/>
+        <field
+            name="report_name"
+        >school_evaluations.report_deliberation_annexe_program</field>
+        <field
+            name="report_file"
+        >school_evaluations.report_deliberation_annexe_program</field>
+        <field name="binding_model_id" ref="model_school_individual_program" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
     </record>
@@ -402,14 +540,18 @@
             <t t-call="web.external_layout">
               <t t-foreach="docs" t-as="o">
               <div class="page">
-                <div class="container"> 
+                <div class="container">
                   <h2>Rapport de délibération de cycle</h2>
-                  <h2><t t-esc="o.student_id.name"/></h2>
-                  <h4><t t-esc="o.uid"/> - <t t-esc="o.source_program_id.name"/></h4>
-                  <h5>Crédits du cycle obtenus (<t t-esc="o.total_acquiered_credits"/> / <t t-esc="o.source_program_id.total_credits"/>)</h5>
-                  <h5>Grade obtenu : <t t-esc="o.grade"/></h5>
+                  <h2><t t-esc="o.student_id.name" /></h2>
+                  <h4><t t-esc="o.uid" /> - <t t-esc="o.source_program_id.name" /></h4>
+                  <h5>Crédits du cycle obtenus (<t
+                                    t-esc="o.total_acquiered_credits"
+                                /> / <t
+                                    t-esc="o.source_program_id.total_credits"
+                                />)</h5>
+                  <h5>Grade obtenu : <t t-esc="o.grade" /></h5>
                 </div>
-                <div class="container"> 
+                <div class="container">
                   <table class="table table-sm">
                       <thead>
                           <tr>
@@ -422,25 +564,28 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <t t-foreach="o.acquired_ind_course_group_ids" t-as="course_group">
+                          <t
+                                        t-foreach="o.acquired_ind_course_group_ids"
+                                        t-as="course_group"
+                                    >
                             <tr class="course_group">
                               <td>
-                                  <t t-esc="course_group.uid"/>
+                                  <t t-esc="course_group.uid" />
                               </td>
                               <td>
-                                  <t t-esc="course_group.title"/>
+                                  <t t-esc="course_group.title" />
                               </td>
                               <td>
-                                  <t t-esc="course_group.total_hours"/>
+                                  <t t-esc="course_group.total_hours" />
                               </td>
                               <td>
-                                  <t t-esc="course_group.total_credits"/>
+                                  <t t-esc="course_group.total_credits" />
                               </td>
                               <td>
-                                  <t t-esc="course_group.final_result_disp"/>
+                                  <t t-esc="course_group.final_result_disp" />
                               </td>
                               <td>
-                                  <t t-esc="course_group.bloc_id.year_id.name"/>
+                                  <t t-esc="course_group.bloc_id.year_id.name" />
                               </td>
                             </tr>
                           </t>
@@ -450,7 +595,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            Imprimé le <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"/>
+                            Imprimé le <span
+                                        t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
+                                    />
                         </div>
                     </div>
                 </div>
@@ -464,9 +611,13 @@
         <field name="name">Deliberation Report Annexes</field>
         <field name="model">school.individual_bloc</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">school_evaluations.report_deliberation_annexe_content</field>
-        <field name="report_file">school_evaluations.report_deliberation_annexe_content</field>
-        <field name="binding_model_id" ref="model_school_individual_bloc"/>
+        <field
+            name="report_name"
+        >school_evaluations.report_deliberation_annexe_content</field>
+        <field
+            name="report_file"
+        >school_evaluations.report_deliberation_annexe_content</field>
+        <field name="binding_model_id" ref="model_school_individual_bloc" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
     </record>
@@ -476,14 +627,16 @@
             <t t-call="web.external_layout">
               <t t-foreach="docs" t-as="o">
               <div class="page">
-                <div class="container"> 
+                <div class="container">
                   <h2>Rapport de délibération du programme annuel de l'étudiant</h2>
-                  <h2><t t-esc="o.student_id.name"/></h2>
-                  <h4><t t-esc="o.uid"/> - <t t-esc="o.source_bloc_id.name"/></h4>
-                  <h5>Crédits du PAE obtenus (<t t-esc="o.total_acquiered_credits"/> / <t t-esc="o.total_credits"/>)</h5>
-                  <h5>Décision du jury : <t t-esc="o.decision"/></h5>
+                  <h2><t t-esc="o.student_id.name" /></h2>
+                  <h4><t t-esc="o.uid" /> - <t t-esc="o.source_bloc_id.name" /></h4>
+                  <h5>Crédits du PAE obtenus (<t
+                                    t-esc="o.total_acquiered_credits"
+                                /> / <t t-esc="o.total_credits" />)</h5>
+                  <h5>Décision du jury : <t t-esc="o.decision" /></h5>
                 </div>
-                <div class="container"> 
+                <div class="container">
                   <table class="table table-sm">
                       <thead>
                           <tr>
@@ -499,40 +652,43 @@
                           <t t-foreach="o.course_group_ids" t-as="course_group">
                             <tr class="course_group">
                               <td>
-                                  <t t-esc="course_group.uid"/>
+                                  <t t-esc="course_group.uid" />
                               </td>
                               <td>
-                                  <t t-esc="course_group.title"/>
+                                  <t t-esc="course_group.title" />
                               </td>
                               <td class="text-center">
-                                  <t t-esc="course_group.total_hours"/>
+                                  <t t-esc="course_group.total_hours" />
                               </td>
                               <td class="text-center">
-                                  <t t-esc="course_group.total_credits"/>
+                                  <t t-esc="course_group.total_credits" />
                               </td>
                               <td class="text-center">
-                                  <t t-esc="course_group.final_result_disp"/>
+                                  <t t-esc="course_group.final_result_disp" />
                               </td>
                               <td class="text-center">
-                                  <t t-esc="course_group.acquiered"/>
+                                  <t t-esc="course_group.acquiered" />
                               </td>
                             </tr>
                             <t t-foreach="course_group.course_ids" t-as="course">
-                            <tr class="course" style="font-style: italic;font-weight: lighter;font-size: 80%;">
+                            <tr
+                                                class="course"
+                                                style="font-style: italic;font-weight: lighter;font-size: 80%;"
+                                            >
                               <td>
-                                  <t t-esc="course.uid"/>
+                                  <t t-esc="course.uid" />
                               </td>
                               <td>
-                                  <t t-esc="course.title"/>
+                                  <t t-esc="course.title" />
                               </td>
                               <td class="text-center">
-                                  <t t-esc="course.hours"/>
+                                  <t t-esc="course.hours" />
                               </td>
                               <td class="text-center">
-                                  <t t-esc="course.credits"/>
+                                  <t t-esc="course.credits" />
                               </td>
                               <td class="text-center">
-                                  <t t-esc="course.final_result_disp"/>
+                                  <t t-esc="course.final_result_disp" />
                               </td>
                               <td>
                               </td>
@@ -545,7 +701,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            Imprimé le <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"/>
+                            Imprimé le <span
+                                        t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
+                                    />
                         </div>
                     </div>
                 </div>
@@ -562,36 +720,55 @@
         <field name="name">Individual Bloc Definition Report</field>
         <field name="model">school.individual_program</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">school_evaluations.report_individual_bloc_definition_content</field>
-        <field name="report_file">school_evaluations.report_individual_bloc_definition_content</field>
-        <field name="binding_model_id" ref="model_school_individual_program"/>
+        <field
+            name="report_name"
+        >school_evaluations.report_individual_bloc_definition_content</field>
+        <field
+            name="report_file"
+        >school_evaluations.report_individual_bloc_definition_content</field>
+        <field name="binding_model_id" ref="model_school_individual_program" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
     </record>
 
     <template id="report_individual_bloc_definition_content">
-        <t t-set="company" t-value="docs.env.company"/>
+        <t t-set="company" t-value="docs.env.company" />
         <t t-call="web.report_layout">
             <t t-foreach="docs" t-as="program">
                 <div class="header">
-                    <img alt="" src="/school_management/static/src/img/HeaderCRLG.png" title=""/>
+                    <img
+                        alt=""
+                        src="/school_management/static/src/img/HeaderCRLG.png"
+                        title=""
+                    />
                 </div>
-                <div class="article" t-att-data-oe-model="program and program._name" t-att-data-oe-id="program and program.id" t-att-data-oe-lang="program and program.env.context.get('lang')" style="margin: 0cm 1.5cm;">
+                <div
+                    class="article"
+                    t-att-data-oe-model="program and program._name"
+                    t-att-data-oe-id="program and program.id"
+                    t-att-data-oe-lang="program and program.env.context.get('lang')"
+                    style="margin: 0cm 1.5cm;"
+                >
                     <h1>FICHE DE CYCLE INDIVIDUEL DE L'ÉTUDIANT·E</h1>
-                    <h2>Étudiant·e : <t t-esc="program.student_id.name"/></h2>
-                    <h4>Cycle : <t t-esc="program.source_program_id.name"/></h4>
-                    <h5>Identifiant de cycle individuel : <t t-esc="program.uid"/></h5>
+                    <h2>Étudiant·e : <t t-esc="program.student_id.name" /></h2>
+                    <h4>Cycle : <t t-esc="program.source_program_id.name" /></h4>
+                    <h5>Identifiant de cycle individuel : <t t-esc="program.uid" /></h5>
                     <section t-if="program.total_valuated_credits &gt; 0">
-                        <div class="pure-g horizon-section-title" style="color:rgb(50, 100, 200);">
-                          VALORISATION(S) ACCORDÉE(S) : <t t-esc="program.total_valuated_credits"/> ECTS
+                        <div
+                            class="pure-g horizon-section-title"
+                            style="color:rgb(50, 100, 200);"
+                        >
+                          VALORISATION(S) ACCORDÉE(S) : <t
+                                t-esc="program.total_valuated_credits"
+                            /> ECTS
                         </div>
                         <table class="pure-table pure-table-horizontal horizon-table">
                             <colgroup>
-                                <col style="width:120px"/>
-                                <col style="width:630px"/>
-                                <col style="width:150px"/>
-                                <col style="width:150px"/>
-                                <col style="width:150px"/>
+                                <col style="width:120px" />
+                                <col style="width:630px" />
+                                <col style="width:150px" />
+                                <col style="width:150px" />
+                                <col style="width:150px" />
                             </colgroup>
                             <thead>
                                 <tr>
@@ -611,41 +788,62 @@
                                         TYPE DE VALORISATION
                                     </th>
                                 </tr>
-                            </thead>    
-                            <t t-foreach="program.valuated_course_group_ids" t-as="course_group">
+                            </thead>
+                            <t
+                                t-foreach="program.valuated_course_group_ids"
+                                t-as="course_group"
+                            >
                             <tr class="major_row">
                                 <td>
-                                    <t t-esc="course_group.source_course_group_id.uid"/>
+                                    <t
+                                            t-esc="course_group.source_course_group_id.uid"
+                                        />
                                 </td>
                                 <td>
-                                    <t t-esc="course_group.title"/>
+                                    <t t-esc="course_group.title" />
                                 </td>
                                 <td class="center">
-                                    <t t-esc="course_group.source_course_group_id.total_hours"/>
+                                    <t
+                                            t-esc="course_group.source_course_group_id.total_hours"
+                                        />
                                 </td>
                                 <td class="center">
-                                    <t t-esc="course_group.source_course_group_id.total_credits"/>
+                                    <t
+                                            t-esc="course_group.source_course_group_id.total_credits"
+                                        />
                                 </td>
                                 <td class="center">
-                                    <t t-esc="course_group.valuation_followup.valuation_type if course_group.valuation_followup else ''"/>
+                                    <t
+                                            t-esc="course_group.valuation_followup.valuation_type if course_group.valuation_followup else ''"
+                                        />
                                 </td>
                             </tr>
                             </t>
                         </table>
                     </section>
                     <section>
-                        <div class="pure-g horizon-section-title" style="color:rgb(100, 165, 60);">
-                          CRÉDITS OBTENUS : <t t-esc="program.total_acquiered_credits - program.total_valuated_credits"/> / <t t-esc="program.source_program_id.total_credits - program.total_valuated_credits"/> Crédits
+                        <div
+                            class="pure-g horizon-section-title"
+                            style="color:rgb(100, 165, 60);"
+                        >
+                          CRÉDITS OBTENUS : <t
+                                t-esc="program.total_acquiered_credits - program.total_valuated_credits"
+                            /> / <t
+                                t-esc="program.source_program_id.total_credits - program.total_valuated_credits"
+                            /> Crédits
                         </div>
-                        <table class="pure-table pure-table-horizontal horizon-table" t-if="(program.total_acquiered_credits - program.total_valuated_credits) &gt; 0">
+                        <table
+                            class="pure-table pure-table-horizontal horizon-table"
+                            t-if="(program.total_acquiered_credits - program.total_valuated_credits) &gt; 0"
+                        >
                             <colgroup>
-                                <col style="width:120px"/>
-                                <col style="width:630px"/>
-                                <col style="width:100px"/>
-                                <col style="width:100px"/>
-                                <col style="width:100px"/>
+                                <col style="width:120px" />
+                                <col style="width:630px" />
+                                <col style="width:100px" />
+                                <col style="width:100px" />
+                                <col style="width:100px" />
                                 <!--<col style="width:80px"/>-->
-                                <col style="width:150px"/>
+                                <col style="width:150px" />
                                 <!--<col style="width:180px"/>
                                 <col style="width:180px"/>-->
                             </colgroup>
@@ -663,34 +861,45 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="program.ind_course_group_ids.filtered(lambda ic: ic.acquiered == 'A')" t-as="course_group">
+                                <t
+                                    t-foreach="program.ind_course_group_ids.filtered(lambda ic: ic.acquiered == 'A')"
+                                    t-as="course_group"
+                                >
                                     <tr class="major_row">
                                         <td>
-                                            <t t-esc="course_group.source_course_group_id.uid"/>
+                                            <t
+                                                t-esc="course_group.source_course_group_id.uid"
+                                            />
                                         </td>
                                         <td>
-                                            <t t-esc="course_group.title"/>
+                                            <t t-esc="course_group.title" />
                                         </td>
                                         <td class="center">
-                                            <t t-esc="course_group.total_hours"/>
+                                            <t t-esc="course_group.total_hours" />
                                         </td>
                                         <td class="center">
-                                            <t t-esc="course_group.total_credits"/>
+                                            <t t-esc="course_group.total_credits" />
                                         </td>
                                         <td class="center">
-                                            <t t-esc="course_group.final_result_disp"/>
+                                            <t t-esc="course_group.final_result_disp" />
                                         </td>
                                         <!--<td class="center">
                                             <t t-esc="course_group.total_credits"/>
                                         </td>-->
                                         <td>
                                             <t t-if="course_group.bloc_id">
-                                            PAE <t t-esc="course_group.bloc_id.year_id.name"/>
+                                            PAE <t
+                                                    t-esc="course_group.bloc_id.year_id.name"
+                                                />
                                             </t>
-                                            <t t-if="not course_group.bloc_id and course_group.state == 'candidate'">
+                                            <t
+                                                t-if="not course_group.bloc_id and course_group.state == 'candidate'"
+                                            >
                                             Attente
                                             </t>
-                                            <t t-if="not course_group.bloc_id and course_group.state == 'confirmed'">
+                                            <t
+                                                t-if="not course_group.bloc_id and course_group.state == 'confirmed'"
+                                            >
                                             Valorisation
                                             </t>
                                         </td>
@@ -701,30 +910,41 @@
                                             <span/>
                                         </td>-->
                                     </tr>
-                                    <t t-foreach="course_group.course_ids" t-as="course">
+                                    <t
+                                        t-foreach="course_group.course_ids"
+                                        t-as="course"
+                                    >
                                     <tr class="minor_row">
                                         <td>
-                                            <span/>
+                                            <span />
                                         </td>
                                         <td>
-                                            <i><t t-esc="course.title"/></i>
+                                            <i><t t-esc="course.title" /></i>
                                         </td>
                                         <td class="center">
-                                            <i><t t-esc="course.hours"/></i>
+                                            <i><t t-esc="course.hours" /></i>
                                         </td>
                                         <td class="center">
-                                            <i><t t-esc="course.credits"/></i>
+                                            <i><t t-esc="course.credits" /></i>
                                         </td>
                                         <td class="center">
-                                            <i><t t-if="course.second_session_result_bool">
-                                                <t t-esc="course.second_session_result_disp"/>
+                                            <i><t
+                                                        t-if="course.second_session_result_bool"
+                                                    >
+                                                <t
+                                                            t-esc="course.second_session_result_disp"
+                                                        />
                                             </t>
-                                            <t t-if="not course.second_session_result_bool">
-                                                <t t-esc="course.first_session_result_disp"/>
+                                            <t
+                                                        t-if="not course.second_session_result_bool"
+                                                    >
+                                                <t
+                                                            t-esc="course.first_session_result_disp"
+                                                        />
                                             </t></i>
                                         </td>
                                         <td>
-                                            <span/>
+                                            <span />
                                         </td>
                                     </tr>
                                     </t>
@@ -733,19 +953,26 @@
                         </table>
                     </section>
                     <section t-if="len(program.bloc_ids) &gt; 0">
-                      <div class="pure-g horizon-section-title" style="color:rgb(255, 180, 15);">
-                          PAE EN COURS : <t t-esc="program.bloc_ids[-1].uid"/> de <t t-esc="program.bloc_ids[-1].total_credits"/> Crédits<br/>
-                          (année académique <t t-esc="program.bloc_ids[-1].year_id.name"/>)
+                      <div
+                            class="pure-g horizon-section-title"
+                            style="color:rgb(255, 180, 15);"
+                        >
+                          PAE EN COURS : <t t-esc="program.bloc_ids[-1].uid" /> de <t
+                                t-esc="program.bloc_ids[-1].total_credits"
+                            /> Crédits<br />
+                          (année académique <t
+                                t-esc="program.bloc_ids[-1].year_id.name"
+                            />)
                       </div>
                       <table class="pure-table pure-table-horizontal horizon-table">
                           <colgroup>
-                              <col style="width:120px"/>
-                              <col style="width:480px"/>
-                              <col style="width:100px"/>
-                              <col style="width:100px"/>
-                              <col style="width:100px"/>
-                              <col style="width:100px"/>
-                              <col style="width:200px"/>
+                              <col style="width:120px" />
+                              <col style="width:480px" />
+                              <col style="width:100px" />
+                              <col style="width:100px" />
+                              <col style="width:100px" />
+                              <col style="width:100px" />
+                              <col style="width:200px" />
                           </colgroup>
                           <thead>
                               <tr>
@@ -759,23 +986,30 @@
                               </tr>
                           </thead>
                           <tbody>
-                              <t t-foreach="program.bloc_ids[-1].course_group_ids" t-as="course_group">
+                              <t
+                                    t-foreach="program.bloc_ids[-1].course_group_ids"
+                                    t-as="course_group"
+                                >
                                   <tr class="major_row">
                                       <td>
-                                          <t t-esc="course_group.source_course_group_id.uid"/>
+                                          <t
+                                                t-esc="course_group.source_course_group_id.uid"
+                                            />
                                       </td>
                                       <td>
-                                          <t t-esc="course_group.title"/>
+                                          <t t-esc="course_group.title" />
                                       </td>
                                       <td class="center">
-                                          <t t-esc="course_group.total_hours"/>
+                                          <t t-esc="course_group.total_hours" />
                                       </td>
                                       <td class="center">
-                                          <t t-esc="course_group.total_credits"/>
+                                          <t t-esc="course_group.total_credits" />
                                       </td>
                                       <td class="center">
                                           <t t-if="course_group.final_result_bool">
-                                              <t t-esc="course_group.final_result_disp"/>
+                                              <t
+                                                    t-esc="course_group.final_result_disp"
+                                                />
                                           </t>
                                       </td>
                                       <td class="center">
@@ -787,36 +1021,44 @@
                                           </t>
                                       </td>
                                       <td>
-                                          <span/>
+                                          <span />
                                       </td>
                                   </tr>
                                   <t t-foreach="course_group.course_ids" t-as="course">
                                   <tr class="minor_row">
                                       <td>
-                                          <span/>
+                                          <span />
                                       </td>
                                       <td>
-                                          <i><t t-esc="course.title"/></i>
+                                          <i><t t-esc="course.title" /></i>
                                       </td>
                                       <td class="center">
-                                          <i><t t-esc="course.hours"/></i>
+                                          <i><t t-esc="course.hours" /></i>
                                       </td>
                                       <td class="center">
-                                          <i><t t-esc="course.credits"/></i>
+                                          <i><t t-esc="course.credits" /></i>
                                       </td>
                                       <td class="center">
-                                          <i><t t-if="course.second_session_result_bool">
-                                              <t t-esc="course.second_session_result_disp"/>
+                                          <i><t
+                                                        t-if="course.second_session_result_bool"
+                                                    >
+                                              <t
+                                                            t-esc="course.second_session_result_disp"
+                                                        />
                                           </t>
-                                          <t t-if="not course.second_session_result_bool">
-                                              <t t-esc="course.first_session_result_disp"/>
+                                          <t
+                                                        t-if="not course.second_session_result_bool"
+                                                    >
+                                              <t
+                                                            t-esc="course.first_session_result_disp"
+                                                        />
                                           </t></i>
                                       </td>
                                       <td>
-                                          <span/>
+                                          <span />
                                       </td>
                                       <td>
-                                          <span/>
+                                          <span />
                                       </td>
                                   </tr>
                                   </t>
@@ -826,15 +1068,17 @@
                     </section>
                     <section>
                       <div class="pure-g horizon-section-title" style="color:#444444;">
-                        CRÉDITS À ACQUÉRIR : <t t-esc="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits'))"/> Crédits
+                        CRÉDITS À ACQUÉRIR : <t
+                                t-esc="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits'))"
+                            /> Crédits
                       </div>
                       <table class="pure-table pure-table-horizontal horizon-table">
                           <colgroup>
-                              <col style="width:120px"/>
-                              <col style="width:500px"/>
-                              <col style="width:100px"/>
-                              <col style="width:100px"/>
-                              <col style="width:380px"/>
+                              <col style="width:120px" />
+                              <col style="width:500px" />
+                              <col style="width:100px" />
+                              <col style="width:100px" />
+                              <col style="width:380px" />
                           </colgroup>
                           <thead>
                               <tr>
@@ -846,22 +1090,25 @@
                               </tr>
                           </thead>
                           <tbody>
-                              <t t-foreach="program.remaining_not_planned_course_group_ids" t-as="course_group">
+                              <t
+                                    t-foreach="program.remaining_not_planned_course_group_ids"
+                                    t-as="course_group"
+                                >
                                   <tr class="major_row">
                                       <td>
-                                          <t t-esc="course_group.uid"/>
+                                          <t t-esc="course_group.uid" />
                                       </td>
                                       <td>
-                                          <t t-esc="course_group.title"/>
+                                          <t t-esc="course_group.title" />
                                       </td>
                                       <td class="center">
-                                          <t t-esc="course_group.total_hours"/>
+                                          <t t-esc="course_group.total_hours" />
                                       </td>
                                       <td class="center">
-                                          <t t-esc="course_group.total_credits"/>
+                                          <t t-esc="course_group.total_credits" />
                                       </td>
                                       <td>
-                                          <span/>
+                                          <span />
                                       </td>
                                   </tr>
                             </t>
@@ -869,7 +1116,10 @@
                       </table>
                     </section>
                     <section>
-                      <div class="pure-g" style="margin-left:60px;margin-right:60px;page-break-before:always;">
+                      <div
+                            class="pure-g"
+                            style="margin-left:60px;margin-right:60px;page-break-before:always;"
+                        >
                           <span />
                       </div>
                     </section>
@@ -880,9 +1130,9 @@
 
 
     <!--
-    
+
     Evaluations by Teacher
-    
+
     -->
 
     <!-- report -->
@@ -892,27 +1142,33 @@
         <field name="arch" type="xml">
             <form string="Evaluations by teatcher">
                 <group col="4">
-                    <field name="year_id" create="false" delete="false" colspan="4"/>
-                    <field name="teacher_ids" colspan="4"/>
-                    <field name="display_results"/>
-                    <field name="freeze_first_session"/>
-                    <field name="send_as_email"/>
+                    <field name="year_id" create="false" delete="false" colspan="4" />
+                    <field name="teacher_ids" colspan="4" />
+                    <field name="display_results" />
+                    <field name="freeze_first_session" />
+                    <field name="send_as_email" />
                 </group>
 
                 <group attrs="{'invisible':[('send_as_email','=',True)]}" col="1">
                         <h3>Message</h3>
                         <field name="message" nolabel="1" />
-                </group>        
+                </group>
                 <footer>
-                    <button name="print_report" string="Print" type="object" default_focus="1" class="oe_highlight" /> or
+                    <button
+                        name="print_report"
+                        string="Print"
+                        type="object"
+                        default_focus="1"
+                        class="oe_highlight"
+                    /> or
                     <button string="Cancel" class="oe_link" special="cancel" />
                 </footer>
             </form>
         </field>
     </record>
-    
-    <!-- email template 
-    
+
+    <!-- email template
+
     <record id="mail_template_evaluation_email" model="mail.template">
         <field name="name">Evaluation report</field>
         <field name="model_id" ref="res.partner"/>
@@ -930,14 +1186,18 @@
         <field name="auto_delete" eval="True"/>
         <field name="user_signature" eval="False"/>
     </record> -->
-    
+
     <record id="report_evaluation_by_teacher" model="ir.actions.report">
         <field name="name">Evaluation by Teacher</field>
         <field name="model">school.individual_course</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">school_evaluations.report_evaluation_by_teacher_content</field>
-        <field name="report_file">school_evaluations.report_evaluation_by_teacher_content</field>
-        <field name="binding_model_id" ref="model_school_individual_course"/>
+        <field
+            name="report_name"
+        >school_evaluations.report_evaluation_by_teacher_content</field>
+        <field
+            name="report_file"
+        >school_evaluations.report_evaluation_by_teacher_content</field>
+        <field name="binding_model_id" ref="model_school_individual_course" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
     </record>
@@ -952,7 +1212,13 @@
         <field name="context">{'default_teacher_id': '${object.id or \'\'}'}</field>
     </record>
 
-    <menuitem id="menu_evaluation_report_by_teacher" name="Evaluation by Teacher" action="action_evaluation_report_by_teacher" parent="menu_main_evaluation" sequence="900" /> 
+    <menuitem
+        id="menu_evaluation_report_by_teacher"
+        name="Evaluation by Teacher"
+        action="action_evaluation_report_by_teacher"
+        parent="menu_main_evaluation"
+        sequence="900"
+    />
 
     <!--  Add wizard -->
 
@@ -962,16 +1228,21 @@
             <t t-set="data_report_header_spacing" t-value="45" />
             <t t-foreach="data" t-as="item">
                 <t t-call="web.external_layout">
-                <t t-set="input_counter" t-value="1"/>
+                <t t-set="input_counter" t-value="1" />
                 <div class="page">
                         <t t-set="teacher" t-value="item['teacher_id']" />
                         <div class="container">
                             <t t-foreach="item['courses']" t-as="course_item">
                                 <t t-set="course" t-value="course_item['course']" />
-                                <div class="panel panel-default" style="page-break-before:always;">
+                                <div
+                                    class="panel panel-default"
+                                    style="page-break-before:always;"
+                                >
                                     <!-- Default panel contents -->
                                     <div class="panel-heading">
-                                        <h3><t t-esc="teacher.name" /> - <t t-esc="course.name"/></h3>
+                                        <h3><t t-esc="teacher.name" /> - <t
+                                                t-esc="course.name"
+                                            /></h3>
                                     </div>
                                     <div class="panel-body">
                                         <p>
@@ -985,8 +1256,14 @@
                                                 <col style="width:2px" />
                                                 <col style="width:10px" />
                                                 <col style="width:10px" />
-                                                <col style="width:5px" t-if="course.type in ['C']"/>
-                                                <col style="width:5px" t-if="course.type in ['C','T']"/>
+                                                <col
+                                                    style="width:5px"
+                                                    t-if="course.type in ['C']"
+                                                />
+                                                <col
+                                                    style="width:5px"
+                                                    t-if="course.type in ['C','T']"
+                                                />
                                                 <col style="width:5px" />
                                                 <col style="width:5px" />
                                                 <col style="width:50px" />
@@ -996,73 +1273,165 @@
                                                 <th>Last Name</th>
                                                 <th>First Name</th>
                                                 <th t-if="course.type in ['C']">Ann</th>
-                                                <th t-if="course.type in ['C','T']">Jan</th>
+                                                <th
+                                                    t-if="course.type in ['C','T']"
+                                                >Jan</th>
                                                 <th>Jun</th>
                                                 <th>Sept</th>
                                                 <th>Comments</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <t t-set="counter" t-value="1"/>
-                                            <t t-foreach="course_item['individual_courses']" t-as="course">
+                                            <t t-set="counter" t-value="1" />
+                                            <t
+                                                t-foreach="course_item['individual_courses']"
+                                                t-as="course"
+                                            >
                                                 <tr>
                                                     <td>
                                                         <t t-esc="counter" />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="course.student_id.lastname" />
+                                                        <t
+                                                            t-esc="course.student_id.lastname"
+                                                        />
                                                     </td>
                                                     <td>
-                                                        <t t-esc="course.student_id.firstname" />
+                                                        <t
+                                                            t-esc="course.student_id.firstname"
+                                                        />
                                                     </td>
-                                                    <td t-if="course.source_course_id.type in ['C']">
-                                                        <t t-if="display_results == True and freeze_first_session == False">
-                                                            <input type="text"  size="6" t-att-name="'input-%i' % input_counter" t-att-value="course.ann_result"/>
+                                                    <td
+                                                        t-if="course.source_course_id.type in ['C']"
+                                                    >
+                                                        <t
+                                                            t-if="display_results == True and freeze_first_session == False"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                size="6"
+                                                                t-att-name="'input-%i' % input_counter"
+                                                                t-att-value="course.ann_result"
+                                                            />
                                                         </t>
-                                                        <t t-if="display_results == True and freeze_first_session == True">
-                                                            <t t-esc="course.ann_result"/>
+                                                        <t
+                                                            t-if="display_results == True and freeze_first_session == True"
+                                                        >
+                                                            <t
+                                                                t-esc="course.ann_result"
+                                                            />
                                                         </t>
-                                                        <t t-if="display_results != True">
-                                                            <input type="text"  size="6" t-att-name="'input-%i' % input_counter"/>
+                                                        <t
+                                                            t-if="display_results != True"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                size="6"
+                                                                t-att-name="'input-%i' % input_counter"
+                                                            />
                                                         </t>
-                                                        <t t-set="input_counter" t-value="input_counter + 1"/>
+                                                        <t
+                                                            t-set="input_counter"
+                                                            t-value="input_counter + 1"
+                                                        />
                                                     </td>
-                                                    <td t-if="course.source_course_id.type in ['C','T']">
-                                                        <t t-if="display_results == True and freeze_first_session == False">
-                                                            <input type="text"  size="6" t-att-name="'input-%i' % input_counter" t-att-value="course.jan_result"/>
+                                                    <td
+                                                        t-if="course.source_course_id.type in ['C','T']"
+                                                    >
+                                                        <t
+                                                            t-if="display_results == True and freeze_first_session == False"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                size="6"
+                                                                t-att-name="'input-%i' % input_counter"
+                                                                t-att-value="course.jan_result"
+                                                            />
                                                         </t>
-                                                        <t t-if="display_results == True and freeze_first_session == True">
-                                                            <t t-esc="course.jan_result"/>
+                                                        <t
+                                                            t-if="display_results == True and freeze_first_session == True"
+                                                        >
+                                                            <t
+                                                                t-esc="course.jan_result"
+                                                            />
                                                         </t>
-                                                        <t t-if="display_results != True">
-                                                            <input type="text"  size="6" t-att-name="'input-%i' % input_counter"/>
+                                                        <t
+                                                            t-if="display_results != True"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                size="6"
+                                                                t-att-name="'input-%i' % input_counter"
+                                                            />
                                                         </t>
-                                                        <t t-set="input_counter" t-value="input_counter + 1"/>
+                                                        <t
+                                                            t-set="input_counter"
+                                                            t-value="input_counter + 1"
+                                                        />
                                                     </td>
                                                     <td>
-                                                        <t t-if="display_results == True and freeze_first_session == False">
-                                                            <input type="text"  size="6" t-att-name="'input-%i' % input_counter" t-att-value="course.jun_result"/>
+                                                        <t
+                                                            t-if="display_results == True and freeze_first_session == False"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                size="6"
+                                                                t-att-name="'input-%i' % input_counter"
+                                                                t-att-value="course.jun_result"
+                                                            />
                                                         </t>
-                                                        <t t-if="display_results == True and freeze_first_session == True">
-                                                            <t t-esc="course.jun_result"/>
+                                                        <t
+                                                            t-if="display_results == True and freeze_first_session == True"
+                                                        >
+                                                            <t
+                                                                t-esc="course.jun_result"
+                                                            />
                                                         </t>
-                                                        <t t-if="display_results != True">
-                                                            <input type="text"  size="6" t-att-name="'input-%i' % input_counter"/>
+                                                        <t
+                                                            t-if="display_results != True"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                size="6"
+                                                                t-att-name="'input-%i' % input_counter"
+                                                            />
                                                         </t>
-                                                        <t t-set="input_counter" t-value="input_counter + 1"/>
+                                                        <t
+                                                            t-set="input_counter"
+                                                            t-value="input_counter + 1"
+                                                        />
                                                     </td>
                                                     <td>
-                                                        <t t-if="display_results == True">
-                                                            <input type="text"  size="6" t-att-name="'input-%i' % input_counter" t-att-value="course.sept_result"/>
+                                                        <t
+                                                            t-if="display_results == True"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                size="6"
+                                                                t-att-name="'input-%i' % input_counter"
+                                                                t-att-value="course.sept_result"
+                                                            />
                                                         </t>
-                                                        <t t-if="display_results != True">
-                                                            <input type="text"  size="6" t-att-name="'input-%i' % input_counter"/>
+                                                        <t
+                                                            t-if="display_results != True"
+                                                        >
+                                                            <input
+                                                                type="text"
+                                                                size="6"
+                                                                t-att-name="'input-%i' % input_counter"
+                                                            />
                                                         </t>
-                                                        <t t-set="input_counter" t-value="input_counter + 1"/>
+                                                        <t
+                                                            t-set="input_counter"
+                                                            t-value="input_counter + 1"
+                                                        />
                                                     </td>
-                                                    <td></td>
+                                                    <td />
                                                 </tr>
-                                                <t t-set="counter" t-value="counter + 1"/>
+                                                <t
+                                                    t-set="counter"
+                                                    t-value="counter + 1"
+                                                />
                                             </t>
                                         </tbody>
                                     </table>

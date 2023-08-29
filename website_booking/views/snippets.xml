@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2023 ito-invest.lu
+#                       Jerome Sonnet <jerome.sonnet@ito-invest.lu>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<odoo>
+    <template id="snippets" inherit_id="website.snippets">
+        <xpath
+            expr="//div[@id='snippet_effect']/div[@class='o_panel_body']"
+            position="inside"
+        >
+            <t
+                t-snippet="website_booking.s_bookings"
+                string="Bookings"
+                t-thumbnail="/website_booking/static/src/img/snippets_thumbs/s_bookings_snippet.svg"
+            />
+        </xpath>
+    </template>
+
+    <template id="s_bookings" name="Bookings">
+        <section class="s_bookings">
+            <div class="s_bookings_navbar" style="padding:5px;" />
+            <div class="calendar_body container-fluid pr32 pl32">
+                <div class="row">
+                    <div class="col s12 l12">
+                        <div class='s_bookings_calendar' />
+                    </div>
+                </div>
+                <div class="row mt16">
+                    <div class="col-2">
+                        <input
+                            class="form-control"
+                            id="datepicker"
+                            type="date"
+                            style="width:150px"
+                        />
+                    </div>
+                    <div class="col-2">
+                        <a
+                            href="#!"
+                            id="goto-date-button"
+                            class="btn btn-primary"
+                        >-> Date</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_bookings_options" inherit_id="website.snippet_options">
+        <!-- Add snippet options here -->
+    </template>
+
+    <!--ASSETS-->
+
+    <record id="s_bookings_000_lib_bs_css" model="ir.asset">
+        <field name="name">Bookings 000 Lib Bootstrap root CSS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">website_booking/static/lib/bootstrap/root.css</field>
+    </record>
+
+    <record id="s_bookings_000_lib_bs_icon_css" model="ir.asset">
+        <field name="name">Bookings 000 Lib Bootstrap Icons CSS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field
+            name="path"
+        >website_booking/static/lib/bootstrap/bootstrap-icons.css</field>
+    </record>
+
+    <record id="s_bookings_000_lib_fc_css" model="ir.asset">
+        <field name="name">Bookings 000 Lib Fullcalendar CSS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">website_booking/static/lib/fullcalendar/main.css</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="s_bookings_000_scss" model="ir.asset">
+        <field name="name">Bookings 000 SCSS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field
+            name="path"
+        >website_booking/static/src/snippets/s_bookings/000.scss</field>
+        <field name="sequence">15</field>
+    </record>
+
+    <record id="s_bookings_000_js" model="ir.asset">
+        <field name="name">Bookings 000 JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">website_booking/static/src/snippets/s_bookings/000.js</field>
+    </record>
+
+    <record id="s_bookings_000_xml" model="ir.asset">
+        <field name="name">Bookings 000 XML</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field
+            name="path"
+        >website_booking/static/src/snippets/s_bookings/000.xml</field>
+    </record>
+
+    <record id="s_bookings_000_lib_moment" model="ir.asset">
+        <field name="name">Bookings 000 Lib Moment</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field
+            name="path"
+        >website_booking/static/lib/moment/moment-timezone-with-data.js</field>
+    </record>
+
+    <record id="s_bookings_000_lib_fc_main" model="ir.asset">
+        <field name="name">Bookings 000 Lib Fullcalendar Main</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">website_booking/static/lib/fullcalendar/main.js</field>
+    </record>
+
+    <record id="s_bookings_000_lib_fc_main_global" model="ir.asset">
+        <field name="name">Bookings 000 Lib Fullcalendar Main</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field
+            name="path"
+        >website_booking/static/lib/fullcalendar/main.global.js</field>
+    </record>
+
+</odoo>

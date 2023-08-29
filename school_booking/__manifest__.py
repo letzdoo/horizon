@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,27 +18,23 @@
 #
 ##############################################################################
 {
-    'name': 'School Booking',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_management','calendar','web'],
-    'init_xml': [],
-    'data': [
-        'data/school_booking.xml',
-        'views/school_booking_view.xml',
-        'views/school_asset_view.xml',
-        'wizard/school_booking_wizard.xml',
-        'security/ir.model.access.csv',
+    "name": "School Booking",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_management", "calendar", "web"],
+    "init_xml": [],
+    "data": [
+        "data/school_booking.xml",
+        "views/school_booking_view.xml",
+        "views/school_asset_view.xml",
+        "wizard/school_booking_wizard.xml",
+        "security/ir.model.access.csv",
     ],
-    'demo_xml': [],
-    'description': '''
-        This modules add room reservation, assets management,...
-    ''',
-    'qweb': ['static/src/xml/*.xml'],
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "qweb": ["static/src/xml/*.xml"],
+    "installable": True,
+    "application": True,
 }

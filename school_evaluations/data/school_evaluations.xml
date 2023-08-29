@@ -21,7 +21,6 @@
 ##############################################################################
 -->
 <odoo noupdate="1">
-    <data>
         <record id="group_evaluations" model="res.groups">
             <field name="name">Gestion des évaluations</field>
         </record>
@@ -29,13 +28,20 @@
             <field name="name">Evaluation</field>
             <field name="digits">2</field>
         </record>
-        <record model="ir.config_parameter" id="evaluation_open_year_id" forcecreate="False">
+        <record
+        model="ir.config_parameter"
+        id="evaluation_open_year_id"
+        forcecreate="False"
+    >
             <field name="key">school.evaluation_open_year_id</field>
             <field name="value">1</field>
         </record>
-        <record model="ir.config_parameter" id="evaluation_open_session" forcecreate="False">
+        <record
+        model="ir.config_parameter"
+        id="evaluation_open_session"
+        forcecreate="False"
+    >
             <field name="key">school.evaluation_open_session</field>
             <field name="value">none</field>
         </record>
-    </data>
 </odoo>

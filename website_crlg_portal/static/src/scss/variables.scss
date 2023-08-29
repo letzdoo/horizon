@@ -1,17 +1,18 @@
-$o-color-palettes: map-merge($o-color-palettes,
+$o-color-palettes: map-merge(
+    $o-color-palettes,
     (
-        'crlg': (
-            'o-color-1': #db0707,
-            'o-color-2': #b46060,/* e6a7a7 */
-            'o-color-3': #e9bbbb,
-            'o-color-4': #FFFFFF,
-            'o-color-5': #272d2d,
+        "crlg": (
+            "o-color-1": #db0707,
+            "o-color-2": #b46060,
+            /* e6a7a7 */ "o-color-3": #e9bbbb,
+            "o-color-4": #ffffff,
+            "o-color-5": #272d2d,
 
-            'menu': 1,
-            'footer': 5,
-            'copyright-custom': 'black-15',
-        )
+            "menu": 1,
+            "footer": 5,
+            "copyright-custom": "black-15",
+        ),
     )
 );
 
-$o-color-palette-name: 'crlg';
+$o-color-palette-name: "crlg";

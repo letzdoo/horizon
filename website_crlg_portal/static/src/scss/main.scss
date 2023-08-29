@@ -1,4 +1,4 @@
-footer #o_footer_scrolltop_wrapper{
+footer #o_footer_scrolltop_wrapper {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
@@ -9,10 +9,10 @@ footer #o_footer_scrolltop_wrapper{
     width: 2rem;
     z-index: 1000;
     opacity: 0.7;
-    &:hover{
+    &:hover {
         opacity: 1;
     }
-    .btn.rounded-circle{
+    .btn.rounded-circle {
         border-radius: 50% !important;
         padding: 0.75rem;
         @include media-breakpoint-up(md) {

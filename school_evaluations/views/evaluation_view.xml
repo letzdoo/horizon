@@ -26,54 +26,66 @@
         <record id="school_individual_course_form_inherited" model="ir.ui.view">
             <field name="name">school.individual_course.form.inherited</field>
             <field name="model">school.individual_course</field>
-            <field name="inherit_id" ref="school_management.view_school_individual_course_form"/>
+            <field
+            name="inherit_id"
+            ref="school_management.view_school_individual_course_form"
+        />
             <field name="arch" type="xml">
                 <xpath expr="//notebook" position="inside">
                     <page string="Results" name="results">
                     <group>
                       <group>
-                        <field name="partial_result"/>
-                        <field name="second_result"/>
-                        <field name="final_result"/>
+                        <field name="partial_result" />
+                        <field name="second_result" />
+                        <field name="final_result" />
                       </group>
                     </group>
                 </page>
                 <page string="Archive" name="archive">
                     <group>
                       <group>
-                        <field name="jun_result"/>
-                        <field name="sept_result"/>
+                        <field name="jun_result" />
+                        <field name="sept_result" />
                       </group>
                     </group>
                     <group>
                       <group string="First Session">
-                        <field name="first_session_result"/>
-                        <field name="first_session_note"/>
+                        <field name="first_session_result" />
+                        <field name="first_session_note" />
                       </group>
                       <group string="Second Session">
-                        <field name="second_session_result"/>
-                        <field name="second_session_note"/>
+                        <field name="second_session_result" />
+                        <field name="second_session_note" />
                       </group>
                     </group>
                 </page>
                 </xpath>
             </field>
         </record>
-    
-    
+
+
         <!-- Top menu item -->
 
-        <menuitem name="Evaluations" id="menu_main_evaluation" web_icon="survey,static/description/icon.png" sequence="15" groups="school_evaluations.group_evaluations,school_management.group_teacher"/>
+        <menuitem
+        name="Evaluations"
+        id="menu_main_evaluation"
+        web_icon="survey,static/description/icon.png"
+        sequence="15"
+        groups="school_evaluations.group_evaluations,school_management.group_teacher"
+    />
 
         <!-- Partner -->
         <record id="view_partners_form_school_eval" model="ir.ui.view">
             <field name="name">view.res.partner.form.school.eval</field>
             <field name="model">res.partner</field>
-            <field name="inherit_id" ref="school_management.view_partners_form_school" />
+            <field
+            name="inherit_id"
+            ref="school_management.view_partners_form_school"
+        />
             <field eval="18" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='total_credits']" position="after">
-                    <field name="state"/>
+                    <field name="state" />
                 </xpath>
             </field>
         </record>
@@ -81,22 +93,45 @@
         <record id="view_individual_program_eval_filter" model="ir.ui.view">
             <field name="name">school.individual_program.eval.filter</field>
             <field name="model">school.individual_program</field>
-            <field name="inherit_id" ref="school_management.view_individual_program_filter" />
+            <field
+            name="inherit_id"
+            ref="school_management.view_individual_program_filter"
+        />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='student_id']" position="after">
-                    <separator/>
-                    <field name="grade_year_id"/>
-                    <filter name="program_completed" string="Completed" domain="[('program_completed', '=', True)]"/>
-                    <separator/>
-                    <filter name="draft" string="Draft" domain="[('state', 'in', ['draft'])]" />
-                    <filter name="progress" string="Progress" domain="[('state', 'in', ['progress'])]" />
-                    <filter name="awarded" string="Awarded" domain="[('state', 'in', ['awarded'])]" />
-                    <filter name="abandoned" string="Abandonned" domain="[('state', 'in', ['abandoned'])]" />
+                    <separator />
+                    <field name="grade_year_id" />
+                    <filter
+                    name="program_completed"
+                    string="Completed"
+                    domain="[('program_completed', '=', True)]"
+                />
+                    <separator />
+                    <filter
+                    name="draft"
+                    string="Draft"
+                    domain="[('state', 'in', ['draft'])]"
+                />
+                    <filter
+                    name="progress"
+                    string="Progress"
+                    domain="[('state', 'in', ['progress'])]"
+                />
+                    <filter
+                    name="awarded"
+                    string="Awarded"
+                    domain="[('state', 'in', ['awarded'])]"
+                />
+                    <filter
+                    name="abandoned"
+                    string="Abandonned"
+                    domain="[('state', 'in', ['abandoned'])]"
+                />
                 </xpath>
             </field>
         </record>
-    
+
         <!-- Add evaluation to Individual Program form view -->
         <record id="individual_program_eval_form" model="ir.ui.view">
             <field name="name">school.individual_program.eval.view</field>
@@ -106,11 +141,39 @@
             <field name="arch" type="xml">
                 <xpath expr="//sheet" position="before">
                     <header>
-                        <button name="set_to_progress" type="object" states="draft" string="Progress" class="oe_highlight" />
-                        <button name="set_to_awarded" type="object" states="progress" string="Awarded" class="oe_highlight" />
-                        <button name="set_to_abandonned" type="object" states="progress" string="Abandoned" class="oe_highlight" />
-                        <button name="set_to_draft" type="object" states="progress,awarded,abandonned" string="Reset to Draft" />
-                        <button name="set_to_irregular" type="object" states="draft,progress,awarded,abandonned" string="Irregular" />
+                        <button
+                        name="set_to_progress"
+                        type="object"
+                        states="draft"
+                        string="Progress"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_awarded"
+                        type="object"
+                        states="progress"
+                        string="Awarded"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_abandonned"
+                        type="object"
+                        states="progress"
+                        string="Abandoned"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_draft"
+                        type="object"
+                        states="progress,awarded,abandonned"
+                        string="Reset to Draft"
+                    />
+                        <button
+                        name="set_to_irregular"
+                        type="object"
+                        states="draft,progress,awarded,abandonned"
+                        string="Irregular"
+                    />
                         <field name="state" widget="statusbar" statusbar_visible=" " />
                     </header>
                 </xpath>
@@ -123,36 +186,48 @@
                             </button>
                     </div>
                 </xpath>-->
-                <xpath expr="//group[@name='required_credits_section']" position="inside">
+                <xpath
+                expr="//group[@name='required_credits_section']"
+                position="inside"
+            >
                     <field name="total_registered_credits" />
                     <field name="total_acquiered_credits" />
                 </xpath>
-                <xpath expr="//group[@name='required_credits_section']" position="after">
+                <xpath
+                expr="//group[@name='required_credits_section']"
+                position="after"
+            >
                     <group>
                         <field name="evaluation" />
-                        <field name="grade"/>
-                        <field name="grade_year_id"/>
+                        <field name="grade" />
+                        <field name="grade_year_id" />
                     </group>
                     <group style="width:100%;">
-                        <field name="grade_comments"/>
+                        <field name="grade_comments" />
                     </group>
                 </xpath>
 <!--                    <newline/>-->
 <!--                    <field name="grade_comments"/>-->
 <!--                </xpath>-->
-                <xpath expr="//field[@name='bloc_ids']/kanban/field[@name='total_credits']" position="after">
-                    <field name="evaluation"/>
-                    <field name="state"/>
-                    <field name="decision"/>
+                <xpath
+                expr="//field[@name='bloc_ids']/kanban/field[@name='total_credits']"
+                position="after"
+            >
+                    <field name="evaluation" />
+                    <field name="state" />
+                    <field name="decision" />
                 </xpath>
-                <xpath expr="//field[@name='bloc_ids']//div[contains(@class, 'oe_module_vignette')]" position="replace">
+                <xpath
+                expr="//field[@name='bloc_ids']//div[contains(@class, 'oe_module_vignette')]"
+                position="replace"
+            >
                     <div class="oe_module_vignette container">
                       <div class="row mb-2">
                         <div class="col-6">
                           <h5><field name="uid" /></h5>
                         </div>
                         <div class="col-6 text-right">
-                          <field name="year_id"/>
+                          <field name="year_id" />
                         </div>
                       </div>
                       <div class="row">
@@ -160,37 +235,47 @@
                             Acquis : <field name="total_acquiered_credits" /> ECTS
                         </div>
                         <div class="col-6">
-                            Total : <field name="total_credits"/> ECTS
+                            Total : <field name="total_credits" /> ECTS
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-6">
-                          Heures : <field name="total_hours"/>
+                          Heures : <field name="total_hours" />
                         </div>
                         <div class="col-6">
-                            Moyenne : <field name="evaluation"/>
+                            Moyenne : <field name="evaluation" />
                         </div>
                       </div>
                       <div class="row mb-2" style="min-height: 45px;">
                          <div class="col-12">
-                           Decision : <field name="decision"/>
+                           Decision : <field name="decision" />
                          </div>
                       </div>
                       <div class="row">
                         <div class="col-8">
                         </div>
                         <div class="col-4">
-                            <button type="object" name="action_open_form" class="oe_highlight btn btn-primary">Open</button>
+                            <button
+                                type="object"
+                                name="action_open_form"
+                                class="oe_highlight btn btn-primary"
+                            >Open</button>
                         </div>
                       </div>
                     </div>
                 </xpath>
-                <xpath expr="//field[@name='course_group_summaries']/kanban/field[@name='total_credits']" position="after">
-                    <field name="state"/>
-                    <field name="trials"/>
-                    <field name="final_result_disp"/>
+                <xpath
+                expr="//field[@name='course_group_summaries']/kanban/field[@name='total_credits']"
+                position="after"
+            >
+                    <field name="state" />
+                    <field name="trials" />
+                    <field name="final_result_disp" />
                 </xpath>
-                <xpath expr="//field[@name='course_group_summaries']/kanban" position="attributes">
+                <xpath
+                expr="//field[@name='course_group_summaries']/kanban"
+                position="attributes"
+            >
                   <attribute name="default_order">state,uid</attribute>
                 </xpath>
 <!--                <xpath expr="//div[contains(@t-attf-class, 'horizon_cgs')]" position="attributes">-->
@@ -204,53 +289,77 @@
 <!--                </xpath>-->
             </field>
         </record>
-        
+
         <!-- Add evaluation to Individual Course tree view -->
         <record id="individual_program_eval_tree" model="ir.ui.view">
             <field name="name">school.individual_program.eval.tree</field>
             <field name="model">school.individual_program</field>
-            <field name="inherit_id" ref="school_management.view_individual_program_tree" />
+            <field
+            name="inherit_id"
+            ref="school_management.view_individual_program_tree"
+        />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='required_credits']" position="after">
                     <field name="total_registered_credits" />
                     <field name="total_acquiered_credits" />
-                    <field name="grade"/>
-                    <field name="grade_year_id"/>
-                    <field name="state"/>
+                    <field name="grade" />
+                    <field name="grade_year_id" />
+                    <field name="state" />
                 </xpath>
             </field>
         </record>
-        
+
         <record id="view_individual_bloc_filter_eval" model="ir.ui.view">
             <field name="name">individual_bloc.select.eval</field>
             <field name="model">school.individual_bloc</field>
-            <field name="inherit_id" ref="school_management.view_individual_bloc_filter" />
+            <field
+            name="inherit_id"
+            ref="school_management.view_individual_bloc_filter"
+        />
             <field name="arch" type="xml">
                 <xpath expr="//group" position="before">
-                    <separator/>
-                    <filter name="draft" string="Draft" domain="[('state', 'in', ['draft'])]" />
-                    <filter name="awarded" string="Awarded" domain="[('state', 'in', ['awarded_first_session','awarded_second_session'])]" />
-                    <filter name="postponed" string="Postponed" domain="[('state', 'in', ['postponed'])]" />
+                    <separator />
+                    <filter
+                    name="draft"
+                    string="Draft"
+                    domain="[('state', 'in', ['draft'])]"
+                />
+                    <filter
+                    name="awarded"
+                    string="Awarded"
+                    domain="[('state', 'in', ['awarded_first_session','awarded_second_session'])]"
+                />
+                    <filter
+                    name="postponed"
+                    string="Postponed"
+                    domain="[('state', 'in', ['postponed'])]"
+                />
                 </xpath>
             </field>
         </record>
-        
+
         <!-- Add evaluation to Individual Course Group Summary form view -->
         <record id="individual_course_summary_eval_form" model="ir.ui.view">
             <field name="name">school.individual_course_summary.eval.view</field>
             <field name="model">school.individual_course_summary</field>
-            <field name="inherit_id" ref="school_management.individual_course_summary_form" />
+            <field
+            name="inherit_id"
+            ref="school_management.individual_course_summary_form"
+        />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='ind_course_group_ids']/tree/field[@name='total_credits']" position="after">
-                    <field name="acquiered" string="Acq"/>
-                    <field name="final_result_disp" string="Res"/>
-                    <field name="state"/>
+                <xpath
+                expr="//field[@name='ind_course_group_ids']/tree/field[@name='total_credits']"
+                position="after"
+            >
+                    <field name="acquiered" string="Acq" />
+                    <field name="final_result_disp" string="Res" />
+                    <field name="state" />
                 </xpath>
             </field>
         </record>
-        
+
         <!-- Add evaluation to Individual Bloc form view -->
         <record id="individual_bloc_eval_form" model="ir.ui.view">
             <field name="name">school.individual_bloc.eval.view</field>
@@ -260,36 +369,102 @@
             <field name="arch" type="xml">
                 <xpath expr="//sheet" position="before">
                     <header>
-                        <button name="report_send" string="Email Report" type="object" icon="fa-envelope"
-                                context="{'default_composition_mode':'comment', 'default_template_id': 1}" states="progress,postponed,awarded_first_session,awarded_second_session,failed"/>
-                        <button name="set_to_progress" type="object" states="draft" string="Progress" class="oe_highlight" />
-                        <button name="set_to_postponed" type="object" states="progress" string="Postpone" class="oe_highlight" />
-                        <button name="set_to_awarded_first_session" type="object" states="progress" string="Awarded" class="oe_highlight" />
-                        <button name="set_to_awarded_second_session" type="object" states="postponed" string="Awarded" class="oe_highlight" />
-                        <button name="set_to_failed" type="object" states="progress,postponed" string="Failed" class="oe_highlight" />
-                        <button name="set_to_draft" type="object" states="progress,postponed,awarded_first_session,awarded_second_session,failed,abandoned" string="Reset to Draft" />
-                        <button name="set_to_abandoned" type="object" states="draft,progress,postponed" string="Abandon" />
-                        <field name="state" widget="statusbar" states="draft,progress" statusbar_visible="draft,progress,postponed,awarded_first_session,failed,abandoned" />
-                        <field name="state" widget="statusbar" states="postponed" statusbar_visible="draft,postponed,awarded_second_session,failed,abandoned" />
-                        <field name="state" widget="statusbar" states="awarded_first_session,awarded_second_session,failed,abandoned" statusbar_visible="awarded_first_session,awarded_second_session,failed,abandoned" />
+                        <button
+                        name="report_send"
+                        string="Email Report"
+                        type="object"
+                        icon="fa-envelope"
+                        context="{'default_composition_mode':'comment', 'default_template_id': 1}"
+                        states="progress,postponed,awarded_first_session,awarded_second_session,failed"
+                    />
+                        <button
+                        name="set_to_progress"
+                        type="object"
+                        states="draft"
+                        string="Progress"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_postponed"
+                        type="object"
+                        states="progress"
+                        string="Postpone"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_awarded_first_session"
+                        type="object"
+                        states="progress"
+                        string="Awarded"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_awarded_second_session"
+                        type="object"
+                        states="postponed"
+                        string="Awarded"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_failed"
+                        type="object"
+                        states="progress,postponed"
+                        string="Failed"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_draft"
+                        type="object"
+                        states="progress,postponed,awarded_first_session,awarded_second_session,failed,abandoned"
+                        string="Reset to Draft"
+                    />
+                        <button
+                        name="set_to_abandoned"
+                        type="object"
+                        states="draft,progress,postponed"
+                        string="Abandon"
+                    />
+                        <field
+                        name="state"
+                        widget="statusbar"
+                        states="draft,progress"
+                        statusbar_visible="draft,progress,postponed,awarded_first_session,failed,abandoned"
+                    />
+                        <field
+                        name="state"
+                        widget="statusbar"
+                        states="postponed"
+                        statusbar_visible="draft,postponed,awarded_second_session,failed,abandoned"
+                    />
+                        <field
+                        name="state"
+                        widget="statusbar"
+                        states="awarded_first_session,awarded_second_session,failed,abandoned"
+                        statusbar_visible="awarded_first_session,awarded_second_session,failed,abandoned"
+                    />
                     </header>
                 </xpath>
                 <xpath expr="//group[@name='fields_second_group']" position="inside">
-                    <field name="total_acquiered_credits"/>
-                    <field name="evaluation"/>
-                    <field name="decision"/>
+                    <field name="total_acquiered_credits" />
+                    <field name="evaluation" />
+                    <field name="decision" />
                 </xpath>
-                <xpath expr="//field[@name='course_group_ids']/kanban/field[@name='total_credits']" position="after">
-                    <field name="state"/>
-                    <field name="first_session_result"/>
-                    <field name="first_session_result_bool"/>
-                    <field name="second_session_result"/>
-                    <field name="second_session_result_bool"/>
-                    <field name="final_result_disp"/>
-                    <field name="final_result_bool"/>
+                <xpath
+                expr="//field[@name='course_group_ids']/kanban/field[@name='total_credits']"
+                position="after"
+            >
+                    <field name="state" />
+                    <field name="first_session_result" />
+                    <field name="first_session_result_bool" />
+                    <field name="second_session_result" />
+                    <field name="second_session_result_bool" />
+                    <field name="final_result_disp" />
+                    <field name="final_result_bool" />
                 </xpath>
                 <xpath expr="//div[@class='horizon_cgs_evals']" position="attributes">
-                    <attribute name="t-attf-class">horizon_cgs horizon_cgs_{{record.state.raw_value}}</attribute>
+                    <attribute
+                    name="t-attf-class"
+                >horizon_cgs horizon_cgs_{{record.state.raw_value}}</attribute>
                 </xpath>
 <!--                <xpath expr="//a[@name='action_open_form']" position="before">-->
 <!--                    <button t-attf-class="btn horizon_btn_eval_{{record.state.raw_value}}" type="button" name="res_button" style="margin-right:15px;height:35px;margin-top:5px;padding:10px;">-->
@@ -305,12 +480,15 @@
         <record id="individual_bloc_eval_tree" model="ir.ui.view">
             <field name="name">school.individual_bloc.eval.tree</field>
             <field name="model">school.individual_bloc</field>
-            <field name="inherit_id" ref="school_management.view_individual_bloc_tree" />
+            <field
+            name="inherit_id"
+            ref="school_management.view_individual_bloc_tree"
+        />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='total_credits']" position="after">
                     <field name="total_acquiered_credits" />
-                    <field name="state"/>
+                    <field name="state" />
                 </xpath>
             </field>
         </record>
@@ -331,15 +509,26 @@
         <record id="individual_course_group_eval_tree" model="ir.ui.view">
             <field name="name">school.individual_course_group.eval.tree</field>
             <field name="model">school.individual_course_group</field>
-            <field name="inherit_id" ref="school_management.view_individual_course_group_tree" />
+            <field
+            name="inherit_id"
+            ref="school_management.view_individual_course_group_tree"
+        />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">
-                    <field name="first_session_result_disp" string="S1" class="text-right"/>
-                    <field name="second_session_result_disp" string="S2" class="text-right"/>
-                    <field name="final_result_disp" string="Res" class="text-right"/>
-                    <field name="acquiered" string="Acq" readonly="1"/>
-                    <field name="state"/>
+                    <field
+                    name="first_session_result_disp"
+                    string="S1"
+                    class="text-right"
+                />
+                    <field
+                    name="second_session_result_disp"
+                    string="S2"
+                    class="text-right"
+                />
+                    <field name="final_result_disp" string="Res" class="text-right" />
+                    <field name="acquiered" string="Acq" readonly="1" />
+                    <field name="state" />
                 </xpath>
             </field>
         </record>
@@ -348,43 +537,134 @@
         <record id="individual_course_group_eval_form" model="ir.ui.view">
             <field name="name">school.individual_course_group.eval.view</field>
             <field name="model">school.individual_course_group</field>
-            <field name="inherit_id" ref="school_management.individual_course_group_form" />
+            <field
+            name="inherit_id"
+            ref="school_management.individual_course_group_form"
+        />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//sheet" position="before">
                     <header>
-                        <button name="set_to_progress" type="object" states="9_draft" string="Progress" class="oe_highlight" />
-                        <button name="set_to_success" type="object" states="5_progress" string="Success" class="oe_highlight" />
-                        <button name="set_to_draft" type="object" states="5_progress,6_success,7_failed,2_candidate,1_1_checked,1_confirmed,0_valuated" string="Reset to Draft" />
-                        <button name="set_to_confirmed" type="object" states="2_candidate" string="Confirm valuation" class="oe_highlight" />
-                        <button name="set_to_valuated" type="object" states="1_confirmed" string="Valuate" class="oe_highlight" />
-                        <field name="state" widget="statusbar" statusbar_visible="9_draft,7_failed,6_success,5_progress,2_candidate,1_confirmed,1_1_checked,0_valuated" />
+                        <button
+                        name="set_to_progress"
+                        type="object"
+                        states="9_draft"
+                        string="Progress"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_success"
+                        type="object"
+                        states="5_progress"
+                        string="Success"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_draft"
+                        type="object"
+                        states="5_progress,6_success,7_failed,2_candidate,1_1_checked,1_confirmed,0_valuated"
+                        string="Reset to Draft"
+                    />
+                        <button
+                        name="set_to_confirmed"
+                        type="object"
+                        states="2_candidate"
+                        string="Confirm valuation"
+                        class="oe_highlight"
+                    />
+                        <button
+                        name="set_to_valuated"
+                        type="object"
+                        states="1_confirmed"
+                        string="Valuate"
+                        class="oe_highlight"
+                    />
+                        <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="9_draft,7_failed,6_success,5_progress,2_candidate,1_confirmed,1_1_checked,0_valuated"
+                    />
                     </header>
                 </xpath>
                 <xpath expr="//field[@name='source_course_id']" position="before">
                     <field name="final_result" string="S1" />
                     <field name="second_result" string="S2" />
                 </xpath>
-                <xpath expr="//field[@name='total_credits']//ancestor::group" position="after">
+                <xpath
+                expr="//field[@name='total_credits']//ancestor::group"
+                position="after"
+            >
                     <group>
                         <group string="First Session">
-                            <field name="first_session_computed_result_bool" invisible="1" />
-                            <field name="first_session_computed_result" widget="statinfo" string="Result" />
-                            <field name="first_session_computed_result_bool" string="Result Bool" groups="base.group_configuration"/>
-                            <field name="first_session_deliberated_result_bool" string="Deliberated" />
-                            <field name="first_session_deliberated_result" attrs="{'invisible':[('first_session_deliberated_result_bool','==',False)]}" string="Deliberated Result" />
-                            <field name="first_session_result" widget="statinfo" string="Session Result" />
-                            <field name="first_session_result_bool" string="Session Result Bool" groups="base.group_configuration"/>
+                            <field
+                            name="first_session_computed_result_bool"
+                            invisible="1"
+                        />
+                            <field
+                            name="first_session_computed_result"
+                            widget="statinfo"
+                            string="Result"
+                        />
+                            <field
+                            name="first_session_computed_result_bool"
+                            string="Result Bool"
+                            groups="base.group_configuration"
+                        />
+                            <field
+                            name="first_session_deliberated_result_bool"
+                            string="Deliberated"
+                        />
+                            <field
+                            name="first_session_deliberated_result"
+                            attrs="{'invisible':[('first_session_deliberated_result_bool','==',False)]}"
+                            string="Deliberated Result"
+                        />
+                            <field
+                            name="first_session_result"
+                            widget="statinfo"
+                            string="Session Result"
+                        />
+                            <field
+                            name="first_session_result_bool"
+                            string="Session Result Bool"
+                            groups="base.group_configuration"
+                        />
                             <field name="first_session_result_bool" invisible="1" />
                         </group>
                         <group string="Second Session">
-                            <field name="second_session_computed_result_bool" invisible="1" />
-                            <field name="second_session_computed_result" widget="statinfo" string="Result" />
-                            <field name="second_session_computed_result_bool" string="Result Bool" groups="base.group_configuration"/>
-                            <field name="second_session_deliberated_result_bool" string="Deliberated" />
-                            <field name="second_session_deliberated_result" attrs="{'invisible':[('second_session_deliberated_result_bool','==',False)]}" string="Deliberated Result" />
-                            <field name="second_session_result" widget="statinfo" string="Session Result" />
-                            <field name="second_session_result_bool" string="Session Result Bool" groups="base.group_configuration"/>
+                            <field
+                            name="second_session_computed_result_bool"
+                            invisible="1"
+                        />
+                            <field
+                            name="second_session_computed_result"
+                            widget="statinfo"
+                            string="Result"
+                        />
+                            <field
+                            name="second_session_computed_result_bool"
+                            string="Result Bool"
+                            groups="base.group_configuration"
+                        />
+                            <field
+                            name="second_session_deliberated_result_bool"
+                            string="Deliberated"
+                        />
+                            <field
+                            name="second_session_deliberated_result"
+                            attrs="{'invisible':[('second_session_deliberated_result_bool','==',False)]}"
+                            string="Deliberated Result"
+                        />
+                            <field
+                            name="second_session_result"
+                            widget="statinfo"
+                            string="Session Result"
+                        />
+                            <field
+                            name="second_session_result_bool"
+                            string="Session Result Bool"
+                            groups="base.group_configuration"
+                        />
                             <field name="second_session_result_bool" invisible="1" />
                         </group>
                     </group>
@@ -392,10 +672,17 @@
                     <field name="final_result" widget="statinfo" />
                     <field name="acquiered" />
                     <field name="final_result_bool" invisible="1" />
-                    <newline/>
+                    <newline />
                 </xpath>
-                <xpath expr="//field[@name='total_credits']/parent::group" position="after">
-                    <field name="final_note" colspan="4" placeholder="Justify the final evaluation here." />
+                <xpath
+                expr="//field[@name='total_credits']/parent::group"
+                position="after"
+            >
+                    <field
+                    name="final_note"
+                    colspan="4"
+                    placeholder="Justify the final evaluation here."
+                />
                 </xpath>
             </field>
         </record>
@@ -404,14 +691,20 @@
         <record id="individual_course_eval_form" model="ir.ui.view">
             <field name="name">school.individual_course.eval.view</field>
             <field name="model">school.individual_course</field>
-            <field name="inherit_id" ref="school_management.view_individual_course_form" />
+            <field
+            name="inherit_id"
+            ref="school_management.view_individual_course_form"
+        />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//sheet" position="inside">
                     <notebook>
                         <page string="Results">
                             <group col="2" string="Results">
-                                <field name="partial_result" attrs="{'readonly': [('is_annual','=',False)]}" />
+                                <field
+                                name="partial_result"
+                                attrs="{'readonly': [('is_annual','=',False)]}"
+                            />
                                 <field name="final_result" />
                                 <field name="second_result" />
                                 <field name="is_annual" invisible="1" />
@@ -425,22 +718,52 @@
                             </group>
                             <group col="4">
                                 <group col="2" colspan="2" string="First Session">
-                                    <field name="first_session_result_bool" invisible="1" />
+                                    <field
+                                    name="first_session_result_bool"
+                                    invisible="1"
+                                />
                                     <div class="col-md-5">
                                         <h1>
-                                            <field name="first_session_result" attrs="{'invisible':[('first_session_result_bool','==',False)]}"  nolabel="1" class="label label-primary" readonly="1" style="padding:.2em .6em .3em;"/>
+                                            <field
+                                            name="first_session_result"
+                                            attrs="{'invisible':[('first_session_result_bool','==',False)]}"
+                                            nolabel="1"
+                                            class="label label-primary"
+                                            readonly="1"
+                                            style="padding:.2em .6em .3em;"
+                                        />
                                         </h1>
                                     </div>
-                                    <field name="first_session_note" colspan="2" nolabel="1" placeholder="Justify the evaluation here." />
+                                    <field
+                                    name="first_session_note"
+                                    colspan="2"
+                                    nolabel="1"
+                                    placeholder="Justify the evaluation here."
+                                />
                                 </group>
                                 <group col="2" colspan="2" string="Second Session">
-                                    <field name="second_session_result_bool" invisible="1" />
+                                    <field
+                                    name="second_session_result_bool"
+                                    invisible="1"
+                                />
                                     <div class="col-md-5">
                                         <h1>
-                                            <field name="second_session_result" attrs="{'invisible':[('second_session_result_bool','==',False)]}"  nolabel="1" class="label label-primary" readonly="1" style="padding:.2em .6em .3em;"/>
+                                            <field
+                                            name="second_session_result"
+                                            attrs="{'invisible':[('second_session_result_bool','==',False)]}"
+                                            nolabel="1"
+                                            class="label label-primary"
+                                            readonly="1"
+                                            style="padding:.2em .6em .3em;"
+                                        />
                                         </h1>
                                     </div>
-                                    <field name="second_session_note" colspan="2" nolabel="1" placeholder="Justify the evaluation here." />
+                                    <field
+                                    name="second_session_note"
+                                    colspan="2"
+                                    nolabel="1"
+                                    placeholder="Justify the evaluation here."
+                                />
                                 </group>
                             </group>
                         </page>
@@ -453,18 +776,38 @@
         <record id="individual_course_eval_tree" model="ir.ui.view">
             <field name="name">school.individual_course.eval.tree</field>
             <field name="model">school.individual_course</field>
-            <field name="inherit_id" ref="school_management.view_individual_course_tree" />
+            <field
+            name="inherit_id"
+            ref="school_management.view_individual_course_tree"
+        />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr='//tree' position="attributes">
-                    <attribute name="decoration-muted">not first_session_result_bool</attribute>
+                    <attribute
+                    name="decoration-muted"
+                >not first_session_result_bool</attribute>
                     <attribute name="decoration-danger">is_danger</attribute>
                 </xpath>
                 <xpath expr="//field[@name='name']" position="after">
-                    <field name="partial_result" string="Par" class="horizon_eval_cell" attrs="{'readonly': ['|',('is_annual','=',False),('open_partial_result','=',False)]}" />
-                    <field name="final_result" string="Fin" class="horizon_eval_cell" attrs="{'readonly': [('open_final_result','=',False)]}"/> <!-- readonly="1" /> -->
+                    <field
+                    name="partial_result"
+                    string="Par"
+                    class="horizon_eval_cell"
+                    attrs="{'readonly': ['|',('is_annual','=',False),('open_partial_result','=',False)]}"
+                />
+                    <field
+                    name="final_result"
+                    string="Fin"
+                    class="horizon_eval_cell"
+                    attrs="{'readonly': [('open_final_result','=',False)]}"
+                /> <!-- readonly="1" /> -->
                     <field name="first_session_result" string="S1" invisible="1" />
-                    <field name="second_result" string="Sec" class="horizon_eval_cell" attrs="{'readonly': [('open_second_result','=',False)]}"/> <!-- readonly="1" /> -->
+                    <field
+                    name="second_result"
+                    string="Sec"
+                    class="horizon_eval_cell"
+                    attrs="{'readonly': [('open_second_result','=',False)]}"
+                /> <!-- readonly="1" /> -->
                     <field name="second_session_result" string="S2" invisible="1" />
                     <field name="first_session_result_bool" invisible="1" />
                     <field name="second_session_result_bool" invisible="1" />
@@ -476,7 +819,7 @@
                 </xpath>
             </field>
         </record>
-        
+
         <!-- Add evaluation to Individual Course tree view - ->
         <record id="individual_course_eval_tree_security" model="ir.ui.view">
             <field name="name">school.individual_course.eval.tree.sec</field>
@@ -505,7 +848,7 @@
                 </xpath>
             </field>
         </record>
-        
+
         <!- - Add evaluation to Individual Course form view - ->
         <record id="individual_course_eval_tree_security_teacher" model="ir.ui.view">
             <field name="name">school.individual_course.eval.tree.sec</field>
@@ -532,12 +875,23 @@
         <record id="view_individual_courses_filter_eval" model="ir.ui.view">
             <field name="name">individual_course.select.eval</field>
             <field name="model">school.individual_course</field>
-            <field name="inherit_id" ref="school_management.view_individual_courses_filter" />
+            <field
+            name="inherit_id"
+            ref="school_management.view_individual_courses_filter"
+        />
             <field name="arch" type="xml">
                 <xpath expr="//filter[@name='previous']" position="after">
-                    <separator/>
-                    <filter name="no_res_s1" string="No result for S1" domain="[('first_session_result_bool', '=', False)]" />
-                    <filter name="no_res_s2" string="No result for S2" domain="[('second_session_result_bool', '=', False)]" />
+                    <separator />
+                    <filter
+                    name="no_res_s1"
+                    string="No result for S1"
+                    domain="[('first_session_result_bool', '=', False)]"
+                />
+                    <filter
+                    name="no_res_s2"
+                    string="No result for S2"
+                    domain="[('second_session_result_bool', '=', False)]"
+                />
                 </xpath>
             </field>
         </record>
@@ -546,25 +900,13 @@
           <field name="name">Encodage Résultats AA</field>
           <field name="type">ir.actions.act_window</field>
           <field name="res_model">school.individual_course</field>
-          
+
           <field name="view_mode">tree,form</field>
           <field name="context">{"search_default_current":1}</field>
-          <field name="search_view_id" ref="school_management.view_individual_courses_filter" />
-          <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-              Please add individual program from Student view.
-            </p>
-          </field>
-        </record>
-    
-        <record id="action_individual_course_form_teacher" model="ir.actions.act_window">
-          <field name="name">Encodage Résultats AA</field>
-          <field name="type">ir.actions.act_window</field>
-          <field name="res_model">school.individual_course</field>
-          
-          <field name="view_mode">tree,form</field>
-          <field name="context">{"search_default_my_current_courses":1}</field>
-          <field name="search_view_id" ref="school_management.view_individual_courses_filter" />
+          <field
+            name="search_view_id"
+            ref="school_management.view_individual_courses_filter"
+        />
           <field name="help" type="html">
             <p class="oe_view_nocontent_create">
               Please add individual program from Student view.
@@ -572,8 +914,41 @@
           </field>
         </record>
 
-        <menuitem id="menu_individual_course_form" parent="menu_main_evaluation" action="action_individual_course_form" sequence="15" groups="school_evaluations.group_evaluations"/>
-        
-        <menuitem id="menu_individual_course_form_teacher" parent="menu_main_evaluation" action="action_individual_course_form_teacher" sequence="40" groups="school_management.group_teacher"/>
-        
+        <record
+        id="action_individual_course_form_teacher"
+        model="ir.actions.act_window"
+    >
+          <field name="name">Encodage Résultats AA</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">school.individual_course</field>
+
+          <field name="view_mode">tree,form</field>
+          <field name="context">{"search_default_my_current_courses":1}</field>
+          <field
+            name="search_view_id"
+            ref="school_management.view_individual_courses_filter"
+        />
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Please add individual program from Student view.
+            </p>
+          </field>
+        </record>
+
+        <menuitem
+        id="menu_individual_course_form"
+        parent="menu_main_evaluation"
+        action="action_individual_course_form"
+        sequence="15"
+        groups="school_evaluations.group_evaluations"
+    />
+
+        <menuitem
+        id="menu_individual_course_form_teacher"
+        parent="menu_main_evaluation"
+        action="action_individual_course_form_teacher"
+        sequence="40"
+        groups="school_management.group_teacher"
+    />
+
 </odoo>

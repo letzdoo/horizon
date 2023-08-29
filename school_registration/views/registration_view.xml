@@ -22,12 +22,12 @@
 -->
 <odoo>
     <!--
-      
+
           Registration
-          
+
           -->
-  
-    <!-- Registration Kanban View 
+
+    <!-- Registration Kanban View
     <record model="ir.ui.view" id="registration_kanban_view">
       <field name="name">school.registration.kanban</field>
       <field name="model">school.registration</field>
@@ -57,24 +57,24 @@
         </kanban>
       </field>
     </record> -->
-    
+
     <!-- Registration Tree View -->
     <record model="ir.ui.view" id="registration_tree_view">
       <field name="name">school.registration.tree</field>
       <field name="model">school.registration</field>
       <field name="arch" type="xml">
-        <tree string="Registrations">
+        <tree>
           <field name="year_id" />
           <field name="student_id" />
-          <field name="program_id"/>
-          <field name="speciality_id"/>
-          <field name="email"/>
-          <field name="kanban_state" widget="state_selection"/>
+          <field name="program_id" />
+          <field name="speciality_id" />
+          <field name="email" />
+          <field name="kanban_state" widget="state_selection" />
           <field name="state" />
         </tree>
       </field>
     </record>
-  
+
     <!-- Registration Form View -->
     <record model="ir.ui.view" id="registration_form">
       <field name="name">school.registration.view</field>
@@ -83,44 +83,92 @@
       <field name="arch" type="xml">
         <form string="registration">
           <header>
-            <button name="to_draft" type="object" states="active,archived" string="Set to Draft" />
-            <button name="activate" type="object" states="draft" string="Confirm Registration" class="oe_highlight" />
-            <button name="archive" type="object" states="draft,active" string="Archive Registration" />
-            <field name="state" widget="statusbar" statusbar_visible="draft,active,archived" />
+            <button
+                        name="to_draft"
+                        type="object"
+                        states="active,archived"
+                        string="Set to Draft"
+                    />
+            <button
+                        name="activate"
+                        type="object"
+                        states="draft"
+                        string="Confirm Registration"
+                        class="oe_highlight"
+                    />
+            <button
+                        name="archive"
+                        type="object"
+                        states="draft,active"
+                        string="Archive Registration"
+                    />
+            <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,active,archived"
+                    />
           </header>
           <sheet>
             <div class="oe_button_box" name="button_box">
-              <button name="action_open_student" class="oe_stat_button" type="object" icon="fa-user" string="Student"/>
+              <button
+                            name="action_open_student"
+                            class="oe_stat_button"
+                            type="object"
+                            icon="fa-user"
+                            string="Student"
+                        />
             </div>
             <div class="container h_registration_dialog">
               <div class="row">
                 <div class="h-100 d-inline-block" style="width: 150px;">
-                  <field name="image_1920" readonly="1" widget="image" class="oe_left oe_inline" options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"/>
+                  <field
+                                    name="image_1920"
+                                    readonly="1"
+                                    widget="image"
+                                    class="oe_left oe_inline"
+                                    options="{&quot;preview_image&quot;: &quot;image_128&quot;, &quot;size&quot;: [150, 150]}"
+                                />
                 </div>
                 <div class="col-8">
                   <h2>
-                   <field name="name"/><field name="kanban_state" class="oe_inline ml-2" widget="state_selection"/>
+                   <field name="name" /><field
+                                        name="kanban_state"
+                                        class="oe_inline ml-2"
+                                        widget="state_selection"
+                                    />
                   </h2>
                   <group>
-                    <field name="student_id"/>
+                    <field name="student_id" />
                     <field name="year_id" />
                     <!--<field name="contact_form_id"/>
                     <field name="registration_form_id"/>-->
-                    <field name="program_id"/>
-                    <field name="speciality_id"/>
+                    <field name="program_id" />
+                    <field name="speciality_id" />
                   </group>
                 </div>
                 <div class="row">
                   <div class="col-6">
                     <div class="row mt-4">
-                      <div class="col-2 text-center"><button name="action_fill_partner_data" type="object" class="btn btn-primary" icon="fa-refresh">Update</button></div>
-                      <div class="col-10"><h4>Mettre à jour la fiche de l'étudiant</h4></div>
+                      <div class="col-2 text-center"><button
+                                                name="action_fill_partner_data"
+                                                type="object"
+                                                class="btn btn-primary"
+                                                icon="fa-refresh"
+                                            >Update</button></div>
+                      <div class="col-10"><h4
+                                            >Mettre à jour la fiche de l'étudiant</h4></div>
                     </div>
                   </div>
                   <div class="col-6">
                     <div class="row mt-4">
-                      <div class="col-2 text-center"><button name="action_fill_program_data" type="object" class="btn btn-primary" icon="fa-refresh">Update</button></div>
-                      <div class="col-10"><h4>Mettre à jour les informations d'inscription</h4></div>
+                      <div class="col-2 text-center"><button
+                                                name="action_fill_program_data"
+                                                type="object"
+                                                class="btn btn-primary"
+                                                icon="fa-refresh"
+                                            >Update</button></div>
+                      <div class="col-10"><h4
+                                            >Mettre à jour les informations d'inscription</h4></div>
                     </div>
                   </div>
                 </div>
@@ -128,21 +176,21 @@
               <notebook>
                 <page string="Contact information" name="contact">
                   <div class="container h_registration_dialog">
-                    <field name="contact_form_iframe"/>
-                    <field name="contact_form_id"/>
+                    <field name="contact_form_iframe" />
+                    <field name="contact_form_id" />
                   </div>
                 </page>
                 <page string="Registrations" name="registrations">
                   <div class="container h_registration_dialog">
-                    <field name="registration_form_iframe"/>
-                    <field name="registration_form_id"/>
+                    <field name="registration_form_iframe" />
+                    <field name="registration_form_id" />
                   </div>
                 </page>
                 <page string="Attachements" name="attachemets">
                   <field name="forms_attachment_ids">
                     <tree>
-                      <field name="name"/>
-                      <field name="mimetype"/>
+                      <field name="name" />
+                      <field name="mimetype" />
                     </tree>
                   </field>
                 </page>
@@ -150,13 +198,13 @@
             </div>
           </sheet>
           <div class="oe_chatter">
-            <field name="message_follower_ids" widget="mail_followers"/>
-            <field name="message_ids" widget="mail_thread"/>
+            <field name="message_follower_ids" widget="mail_followers" />
+            <field name="message_ids" widget="mail_thread" />
           </div>
         </form>
       </field>
     </record>
-    
+
     <record id="view_registration_filter" model="ir.ui.view">
       <field name="name">registration.select</field>
       <field name="model">school.registration</field>
@@ -165,7 +213,11 @@
           <field name="name" filter_domain="[('name', 'ilike',self)]" />
           <filter string="Draft" name="draft" domain="[('state','=','draft')]" />
           <filter string="Active" name="active" domain="[('state','=','active')]" />
-          <filter string="Archived" name="archived" domain="[('state','=','archived')]" />
+          <filter
+                    string="Archived"
+                    name="archived"
+                    domain="[('state','=','archived')]"
+                />
           <searchpanel>
             <field name="state" icon="fa-step-forward" enable_counters="1" />
             <field name="kanban_state" icon="fa-users" enable_counters="1" />
@@ -174,7 +226,7 @@
         </search>
       </field>
     </record>
-  
+
     <record id="action_registration_form" model="ir.actions.act_window">
       <field name="name">Registrations</field>
       <field name="type">ir.actions.act_window</field>
@@ -191,7 +243,7 @@
         </p>
       </field>
     </record>
-  
+
     <record id="action_registration_form_view1" model="ir.actions.act_window.view">
       <field name="sequence" eval="0" />
       <field name="view_mode">tree</field>
@@ -204,15 +256,26 @@
       <field name="view_id" ref="registration_form" />
       <field name="act_window_id" ref="action_registration_form" />
     </record>
-    
-    <!-- Top menu item -->
-    
-    <menuitem name="Registration" id="menu_main_registration" web_icon="event,static/description/icon.png" sequence="5"  groups="school_management.group_program_management"/>
 
-    <menuitem id="menu_registration" parent="school_registration.menu_main_registration" action="action_registration_form" sequence="30" />
+    <!-- Top menu item -->
+
+    <menuitem
+        name="Registration"
+        id="menu_main_registration"
+        web_icon="event,static/description/icon.png"
+        sequence="5"
+        groups="school_management.group_program_management"
+    />
+
+    <menuitem
+        id="menu_registration"
+        parent="school_registration.menu_main_registration"
+        action="action_registration_form"
+        sequence="30"
+    />
 
     <!-- Other things -->
-    
+
     <!-- Add signature to Individual Bloc form view -->
     <record id="individual_bloc_eval_form" model="ir.ui.view">
         <field name="name">school.individual_bloc.reg.view</field>
@@ -228,7 +291,7 @@
             </xpath>
         </field>
     </record>
-    
+
     <!-- Add program for student form view -->
     <record id="view_program_form_school" model="ir.ui.view">
         <field name="name">view.program.form.school.reg</field>
@@ -237,8 +300,15 @@
         <field eval="25" name="priority" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state']" position="before">
-                    <button string="Register PAE" type="object" name="register_pae" class="oe_highlight" context="{'default_program_id': active_id, 'default_student_id': student_id}" 
-                                groups="school_management.group_employee" attrs="{'invisible': [('state','!=','progress')]}"/>
+                    <button
+                    string="Register PAE"
+                    type="object"
+                    name="register_pae"
+                    class="oe_highlight"
+                    context="{'default_program_id': active_id, 'default_student_id': student_id}"
+                    groups="school_management.group_employee"
+                    attrs="{'invisible': [('state','!=','progress')]}"
+                />
             </xpath>
             <xpath expr="//div[@id='paes']" position="after">
                 <group>
@@ -248,13 +318,13 @@
             </xpath>
         </field>
     </record>
-    
+
     <record id="school_action_program_new" model="ir.actions.act_window">
         <field name="name">Program</field>
         <field name="res_model">school.individual_program</field>
         <field name="view_mode">form</field>
     </record>
-    
+
     <!-- Add program for student form view -->
     <record id="view_student_form_school_docs" model="ir.ui.view">
         <field name="name">view.res.partner.form.school.docs</field>
@@ -264,15 +334,24 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="before">
                 <header>
-                    <button string="Assign Program" name="%(school_action_program_new)d" type="action" class="oe_highlight"
-                        context="{'default_student_id': active_id}" groups="school_management.group_employee"/>
+                    <button
+                        string="Assign Program"
+                        name="%(school_action_program_new)d"
+                        type="action"
+                        class="oe_highlight"
+                        context="{'default_student_id': active_id}"
+                        groups="school_management.group_employee"
+                    />
                 </header>
             </xpath>
         </field>
     </record>
 
     <!-- Registration request confirmation portal template -->
-    <template id="registration_request_confirmation_template" name="Registration Confirmed">
+    <template
+        id="registration_request_confirmation_template"
+        name="Registration Confirmed"
+    >
         <t t-call="portal.portal_layout">
           <div class="alert alert-info">
                 <p>

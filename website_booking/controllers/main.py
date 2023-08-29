@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -20,164 +19,255 @@
 ##############################################################################
 import logging
 import time
-import werkzeug.utils
-import json
 
 import dateutil
 import dateutil.parser
 import dateutil.relativedelta
+import werkzeug.utils
 
-from odoo import api, fields
-from odoo import http
+from odoo import fields, http
 from odoo.http import request
+
 from odoo.addons.auth_oauth.controllers.main import OAuthLogin as Home
 
 _logger = logging.getLogger(__name__)
 
+
 class BookingLoginController(Home):
-    
-    @http.route('/booking/login_providers', type='json', auth="none")
+    @http.route("/booking/login_providers", type="json", auth="none")
     def booking_login(self, redirect=None, *args, **kw):
         return self.list_providers()
 
+
 class BookingController(http.Controller):
-    
-    @http.route('/covid', type='http', auth='public', website=True)
-    def covid_tool(self, debug=False, **k):
-        return request.render('website_booking.covid')
-
-    @http.route('/booking', type='http', auth='public', website=True, sitemap=False)
-    def booking_browser(self, debug=False, **k):
-        session_info = request.env['ir.http'].session_info()
-        context = {
-            'session_info': session_info,
-        }
-        return request.render('website_booking.index',qcontext=context)
-    
-    @http.route('/booking_mobile', type='http', auth='public', website=True, sitemap=False)
-    def booking_mobile_browser(self, debug=False, **k):
-        now = datetime.now()
-        next_day = now + timedelta(days= 7-now.weekday() if now.weekday()>3 else 1)
-        next_next_day = next_day + timedelta(days= 7-next_day.weekday() if next_day.weekday()>3 else 1)
-        next_next_next_day = next_next_day + timedelta(days= 7-next_next_day.weekday() if next_next_day.weekday()>3 else 1)
-        values = {
-            'day_0' : next_next_day,
-            'day_1' : next_next_next_day,
-        }
-        return request.render('website_booking.index_mobile', values)
-        
-    @http.route('/booking/category', type='json', auth='public', website=True)
+    @http.route("/booking/category", type="json", auth="public", website=True)
     def booking_category(self, id=False, debug=False, **k):
-        return request.env['school.asset.category'].sudo().search_read([('id', '=', id)],['name','display_name','sequence','parent_id','is_leaf'])
+        return (
+            request.env["school.asset.category"]
+            .sudo()
+            .search_read(
+                [("id", "=", id)],
+                ["name", "display_name", "sequence", "parent_id", "is_leaf"],
+            )
+        )
 
-    @http.route('/booking/categories', type='json', auth='public', website=True)
+    @http.route("/booking/categories", type="json", auth="public", website=True)
     def booking_categories(self, root=False, parent_id=False, debug=False, **k):
-        if root :
-            _logger.info('Get Root Categories')
-            return request.env['school.asset.category'].sudo().search_read([('parent_id', '=', False)],['name','display_name','sequence','parent_id','is_leaf'])
-        else :
-            _logger.info('Get Leaf Categories')
-            return request.env['school.asset.category'].sudo().search_read([('parent_id', '=', parent_id)],['name','display_name','sequence','parent_id','is_leaf'])
+        if root:
+            _logger.info("Get Root Categories")
+            return (
+                request.env["school.asset.category"]
+                .sudo()
+                .search_read(
+                    [("parent_id", "=", False)],
+                    ["name", "display_name", "sequence", "parent_id", "is_leaf"],
+                )
+            )
+        else:
+            _logger.info("Get Leaf Categories")
+            return (
+                request.env["school.asset.category"]
+                .sudo()
+                .search_read(
+                    [("parent_id", "=", parent_id)],
+                    ["name", "display_name", "sequence", "parent_id", "is_leaf"],
+                )
+            )
 
-    @http.route('/booking/categories/image/<int:category_id>', type='http', auth='public', website=True)
+    @http.route(
+        "/booking/categories/image/<int:category_id>",
+        type="http",
+        auth="public",
+        website=True,
+    )
     def booking_category_image(self, category_id, debug=False, **k):
-        category = request.env['school.asset.category'].sudo().browse(category_id)
+        category = request.env["school.asset.category"].sudo().browse(category_id)
         if category.image:
             response = werkzeug.wrappers.Response()
-            response.mimetype = 'image/png'
-            response.headers['Cache-Control'] = 'public, max-age=604800'
-            response.headers['Access-Control-Allow-Origin'] = '*'
-            response.headers['Access-Control-Allow-Methods'] = 'GET, POST'
-            response.headers['Connection'] = 'close'
-            response.headers['Date'] = time.strftime("%a, %d-%b-%Y %T GMT", time.gmtime())
-            response.headers['Expires'] = time.strftime("%a, %d-%b-%Y %T GMT", time.gmtime(time.time()+604800*60))
-            response.data = category.image.decode('base64')
+            response.mimetype = "image/png"
+            response.headers["Cache-Control"] = "public, max-age=604800"
+            response.headers["Access-Control-Allow-Origin"] = "*"
+            response.headers["Access-Control-Allow-Methods"] = "GET, POST"
+            response.headers["Connection"] = "close"
+            response.headers["Date"] = time.strftime(
+                "%a, %d-%b-%Y %T GMT", time.gmtime()
+            )
+            response.headers["Expires"] = time.strftime(
+                "%a, %d-%b-%Y %T GMT", time.gmtime(time.time() + 604800 * 60)
+            )
+            response.data = category.image.decode("base64")
             return response
-        else :
-            return werkzeug.exceptions.NotFound('No image found for this category.')
-    
-    @http.route('/booking/assets', type='json', auth='public', website=True)
+        else:
+            return werkzeug.exceptions.NotFound("No image found for this category.")
+
+    @http.route("/booking/assets", type="json", auth="public", website=True)
     def booking_assets(self, category_id=False, debug=False, **k):
         if category_id:
-            return request.env['school.asset'].sudo().search_read([('category_id', '=', category_id)],['name','booking_policy'])
+            return (
+                request.env["school.asset"]
+                .sudo()
+                .search_read(
+                    [("category_id", "=", category_id)], ["name", "booking_policy"]
+                )
+            )
         else:
-            return [];
-        
-    @http.route('/booking/events', type='json', auth='public', website=True)
-    def booking_events(self, start, end, timezone=False, category_id=False, asset_id=False):
-        start = fields.Datetime.to_string(dateutil.parser.parse(start)+dateutil.relativedelta.relativedelta(seconds=+1))
-        end = fields.Datetime.to_string(dateutil.parser.parse(end)-dateutil.relativedelta.relativedelta(seconds=+1))
-        event_fields = ['name','start','stop','allday','room_id','user_id','recurrency','categ_ids']
-        if(category_id):
+            return []
+
+    @http.route("/booking/events", type="json", auth="public", website=True)
+    def booking_events(
+        self, start, end, timezone=False, category_id=False, asset_id=False
+    ):
+        start = fields.Datetime.to_string(
+            dateutil.parser.parse(start)
+            + dateutil.relativedelta.relativedelta(seconds=+1)
+        )
+        end = fields.Datetime.to_string(
+            dateutil.parser.parse(end)
+            - dateutil.relativedelta.relativedelta(seconds=+1)
+        )
+        event_fields = [
+            "name",
+            "start",
+            "stop",
+            "allday",
+            "room_id",
+            "user_id",
+            "recurrency",
+            "categ_ids",
+        ]
+        if category_id:
             domain = [
-                ('start', '<=', end),    
-                ('stop', '>=', start),
-                '|',('asset_ids.category_id', '=', category_id),('room_id.category_id', '=', category_id),
+                ("start", "<=", end),
+                ("stop", ">=", start),
+                "|",
+                ("asset_ids.category_id", "=", category_id),
+                ("room_id.category_id", "=", category_id),
             ]
-            ret = request.env['calendar.event'].sudo().with_context({'virtual_id': True}).search_read(domain,event_fields)
+            ret = (
+                request.env["calendar.event"]
+                .sudo()
+                .with_context({"virtual_id": True})
+                .search_read(domain, event_fields)
+            )
         else:
             domain = [
-                ('start', '<=', end),    
-                ('stop', '>=', start),
-                '|',('asset_ids', '=', asset_id),('room_id', '=', asset_id),
+                ("start", "<=", end),
+                ("stop", ">=", start),
+                "|",
+                ("asset_ids", "=", asset_id),
+                ("room_id", "=", asset_id),
             ]
-            ret = request.env['calendar.event'].sudo().with_context({'virtual_id': True}).search_read(domain,event_fields)
+            ret = (
+                request.env["calendar.event"]
+                .sudo()
+                .with_context({"virtual_id": True})
+                .search_read(domain, event_fields)
+            )
         return ret
-        
-    @http.route('/booking/my_events', type='json', auth='public', website=True)
+
+    @http.route("/booking/my_events", type="json", auth="public", website=True)
     def booking_my_events(self, start, end, timezone=False):
-        start = fields.Datetime.to_string(dateutil.parser.parse(start)+dateutil.relativedelta.relativedelta(seconds=+1))
-        end = fields.Datetime.to_string(dateutil.parser.parse(end)-dateutil.relativedelta.relativedelta(seconds=+1))
-        event_fields = ['name','start','stop','allday','room_id','user_id','recurrency','categ_ids']
-        domain = [
-            ('start', '<=', end),    
-            ('stop', '>=', start),
-            ('user_id','=',request.uid),
+        start = fields.Datetime.to_string(
+            dateutil.parser.parse(start)
+            + dateutil.relativedelta.relativedelta(seconds=+1)
+        )
+        end = fields.Datetime.to_string(
+            dateutil.parser.parse(end)
+            - dateutil.relativedelta.relativedelta(seconds=+1)
+        )
+        event_fields = [
+            "name",
+            "start",
+            "stop",
+            "allday",
+            "room_id",
+            "user_id",
+            "recurrency",
+            "categ_ids",
         ]
-        ret = request.env['calendar.event'].sudo().with_context({'virtual_id': True}).search_read(domain,event_fields,order='start asc')
+        domain = [
+            ("start", "<=", end),
+            ("stop", ">=", start),
+            ("user_id", "=", request.uid),
+        ]
+        ret = (
+            request.env["calendar.event"]
+            .sudo()
+            .with_context({"virtual_id": True})
+            .search_read(domain, event_fields, order="start asc")
+        )
         return ret
-        
-    @http.route('/booking/search', type='json', auth='public', website=True)
+
+    @http.route("/booking/search", type="json", auth="public", website=True)
     def booking_search(self, start, end, query, timezone=False):
-        start = fields.Datetime.to_string(dateutil.parser.parse(start)+dateutil.relativedelta.relativedelta(seconds=+1))
-        end = fields.Datetime.to_string(dateutil.parser.parse(end)-dateutil.relativedelta.relativedelta(seconds=+1))
-        event_fields = ['name','start','stop','allday','room_id','user_id','recurrency','categ_ids']
-        domain = [
-            ('start', '<=', end),    
-            ('stop', '>=', start),
-            '|',('name', 'ilike', "%s%s%s" % ("%", query, "%")),('room_id.name', 'ilike', "%s%s%s" % ("%", query, "%")),
+        start = fields.Datetime.to_string(
+            dateutil.parser.parse(start)
+            + dateutil.relativedelta.relativedelta(seconds=+1)
+        )
+        end = fields.Datetime.to_string(
+            dateutil.parser.parse(end)
+            - dateutil.relativedelta.relativedelta(seconds=+1)
+        )
+        event_fields = [
+            "name",
+            "start",
+            "stop",
+            "allday",
+            "room_id",
+            "user_id",
+            "recurrency",
+            "categ_ids",
         ]
-        ret = request.env['calendar.event'].sudo().with_context({'virtual_id': True}).search_read(domain,event_fields,order='start ASC')
+        domain = [
+            ("start", "<=", end),
+            ("stop", ">=", start),
+            "|",
+            ("name", "ilike", "%s%s%s" % ("%", query, "%")),
+            ("room_id.name", "ilike", "%s%s%s" % ("%", query, "%")),
+        ]
+        ret = (
+            request.env["calendar.event"]
+            .sudo()
+            .with_context({"virtual_id": True})
+            .search_read(domain, event_fields, order="start ASC")
+        )
         return ret
-        
-    @http.route('/booking/editor', type='http', auth='user', website=True)
-    def booking_editor(self, debug=False, **k):
-        return request.render('website_booking.editor')
-        
-    @http.route('/booking/rooms', type='json', auth='user', website=True)
+
+    @http.route("/booking/rooms", type="json", auth="user", website=True)
     def booking_rooms(self, start, end, self_id, debug=False, **k):
-        start = fields.Datetime.to_string(dateutil.parser.parse(start)+dateutil.relativedelta.relativedelta(seconds=+1))
-        end = fields.Datetime.to_string(dateutil.parser.parse(end)-dateutil.relativedelta.relativedelta(seconds=+1))
-        room_fields = ['name','room_id']
-        if self_id == '' :
+        start = fields.Datetime.to_string(
+            dateutil.parser.parse(start)
+            + dateutil.relativedelta.relativedelta(seconds=+1)
+        )
+        end = fields.Datetime.to_string(
+            dateutil.parser.parse(end)
+            - dateutil.relativedelta.relativedelta(seconds=+1)
+        )
+        if self_id == "":
             domain = [
-                ('start', '<=', end),    
-                ('stop', '>=', start),
-                ('room_id', '<>', False),
+                ("start", "<=", end),
+                ("stop", ">=", start),
+                ("room_id", "<>", False),
             ]
-        else :
+        else:
             domain = [
-                ('start', '<=', end),    
-                ('stop', '>=', start),
-                ('room_id', '<>', False),
-                ('id', '!=', self_id),
+                ("start", "<=", end),
+                ("stop", ">=", start),
+                ("room_id", "<>", False),
+                ("id", "!=", self_id),
             ]
-        _logger.info('Get all rooms')
-        all_rooms_ids = request.env['school.asset'].search( [['asset_type_id.is_room','=',True],['booking_policy','=','available']] )
-        _logger.info('Get all events')
-        busy_rooms_ids = request.env['calendar.event'].sudo().with_context({'virtual_id': True}).search(domain)
-        _logger.info('Filter events - results %s' % busy_rooms_ids)
-        busy_rooms_ids = busy_rooms_ids.filtered(lambda r : r.start <= dateutil.parser.parse(end)).filtered(lambda r : r.stop >= dateutil.parser.parse(start)).mapped('room_id')
-        _logger.info('Filter done')
-        return (all_rooms_ids - busy_rooms_ids).read(['name'])
-        
+        all_rooms_ids = request.env["school.asset"].search(
+            [["asset_type_id.is_room", "=", True], ["booking_policy", "=", "available"]]
+        )
+        busy_rooms_ids = (
+            request.env["calendar.event"]
+            .sudo()
+            .with_context({"virtual_id": True})
+            .search(domain)
+        )
+        busy_rooms_ids = (
+            busy_rooms_ids.filtered(lambda r: r.start <= dateutil.parser.parse(end))
+            .filtered(lambda r: r.stop >= dateutil.parser.parse(start))
+            .mapped("room_id")
+        )
+        return (all_rooms_ids - busy_rooms_ids).read(["name"])

@@ -66,11 +66,11 @@
       <field name="model">school.valuation_followup</field>
       <field eval="8" name="priority" />
       <field name="arch" type="xml">
-        <tree string="Valuations Followup" create="0">
-          <field name="uid"/>
-          <field name="student_id"/>
+        <tree create="0">
+          <field name="uid" />
+          <field name="student_id" />
           <field name="title" />
-          <field name="responsible_id"/>
+          <field name="responsible_id" />
           <field name="state" />
         </tree>
       </field>
@@ -84,45 +84,91 @@
       <field name="arch" type="xml">
         <form string="Valuation">
           <header>
-              <button name="action_revert_to_candidate" type="object" states="1_confirmed,1_1_checked,0_valuated" string="To candidate" />
-	            <button name="action_confirm_valuate_course_group" type="object" states="2_candidate" string="Confirm valuation" class="oe_highlight" />
-              <button name="action_check_course_group" type="object" states="1_confirmed" string="Check" class="oe_highlight" />
-              <button name="action_valuate_course_group" type="object" states="1_1_checked" string="Valuate" class="oe_highlight" />
-              <button name="action_to_failed_course_group" type="object" states="2_candidate,1_confirmed,1_1_checked" string="Reject" />
-              <field name="state" widget="statusbar" statusbar_visible="2_candidate,1_confirmed,1_1_checked,0_valuated,7_failed" />
+              <button
+                        name="action_revert_to_candidate"
+                        type="object"
+                        states="1_confirmed,1_1_checked,0_valuated"
+                        string="To candidate"
+                    />
+	            <button
+                        name="action_confirm_valuate_course_group"
+                        type="object"
+                        states="2_candidate"
+                        string="Confirm valuation"
+                        class="oe_highlight"
+                    />
+              <button
+                        name="action_check_course_group"
+                        type="object"
+                        states="1_confirmed"
+                        string="Check"
+                        class="oe_highlight"
+                    />
+              <button
+                        name="action_valuate_course_group"
+                        type="object"
+                        states="1_1_checked"
+                        string="Valuate"
+                        class="oe_highlight"
+                    />
+              <button
+                        name="action_to_failed_course_group"
+                        type="object"
+                        states="2_candidate,1_confirmed,1_1_checked"
+                        string="Reject"
+                    />
+              <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="2_candidate,1_confirmed,1_1_checked,0_valuated,7_failed"
+                    />
 	        </header>
           <sheet>
-            <field name="image_1920" readonly="1" widget="image" class="oe_left oe_inline" style="max-width:128px;max_height:128px;margin: 15px;" options="{&quot;preview_image&quot;: &quot;image_128&quot;}"/>
+            <field
+                        name="image_1920"
+                        readonly="1"
+                        widget="image"
+                        class="oe_left oe_inline"
+                        style="max-width:128px;max_height:128px;margin: 15px;"
+                        options="{&quot;preview_image&quot;: &quot;image_128&quot;}"
+                    />
             <div class="oe_title">
               <h1>
-               <field name="title"/>
+               <field name="title" />
               </h1>
               <h1>
-                <field name="student_id"/>
+                <field name="student_id" />
               </h1>
               <div class="oe_fade">
-                  <field name="uid" readonly="1"/>
+                  <field name="uid" readonly="1" />
               </div>
             </div>
             <group col="4">
-              <field name="individual_course_group_id" colspan="4"/>
-              <field name="program_id" colspan="4"/>
-              <field name="responsible_id" colspan="4"/>
-              <field name="valuation_type" colspan="4"/>
-              <field name="attachment_ids" widget="many2many_binary" colspan="4"/>
-              <field name="responsible_decision"/>
+              <field name="individual_course_group_id" colspan="4" />
+              <field name="program_id" colspan="4" />
+              <field name="responsible_id" colspan="4" />
+              <field name="valuation_type" colspan="4" />
+              <field name="attachment_ids" widget="many2many_binary" colspan="4" />
+              <field name="responsible_decision" />
             </group>
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">Remarques administratives</h3>
               </div>
               <div class="panel-body">
-                <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
-                  <p>Vous pouvez écrire ici vos remarques et commentaires à propose de cette valorisation.</p>
+                <div
+                                style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;"
+                            >
+                  <p
+                                >Vous pouvez écrire ici vos remarques et commentaires à propose de cette valorisation.</p>
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <field name="administration_comments" widget="html" attrs="{'readonly':[('state','!=','2_candidate')]}"/>
+                    <field
+                                        name="administration_comments"
+                                        widget="html"
+                                        attrs="{'readonly':[('state','!=','2_candidate')]}"
+                                    />
                   </div>
                 </div>
               </div>
@@ -132,12 +178,19 @@
                 <h3 class="panel-title">Remarques du responsable d'unité</h3>
               </div>
               <div class="panel-body">
-                <div style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;">
-                  <p>Vous pouvez écrire ici vos remarques et commentaires à propose de cette valorisation.</p>
+                <div
+                                style="font-size:x-small;background-color: #eeeeee;font-style: italic;padding:10px;"
+                            >
+                  <p
+                                >Vous pouvez écrire ici vos remarques et commentaires à propose de cette valorisation.</p>
                 </div>
                 <div class="card">
                   <div class="card-body">
-                    <field name="responsible_comments" widget="html" attrs="{'readonly':[('state','!=','1_confirmed')]}"/>
+                    <field
+                                        name="responsible_comments"
+                                        widget="html"
+                                        attrs="{'readonly':[('state','!=','1_confirmed')]}"
+                                    />
                   </div>
                 </div>
               </div>
@@ -156,11 +209,15 @@
       <field name="model">school.valuation_followup</field>
       <field name="arch" type="xml">
         <search string="Search Valuation">
-          <field name="uid" filter_domain="[( 'uid', 'ilike', self)]"/>
+          <field name="uid" filter_domain="[( 'uid', 'ilike', self)]" />
           <field name="name" filter_domain="[( 'name', 'ilike', self)]" />
           <field name="responsible_id" string="Responsible" />
           <field name="student_id" string="Student" />
-          <filter name="my_val" string="Mes valorisations" domain="[('responsible_uid','=',uid),('state','!=','0_valuated'),('state','!=','3_rejected')]"/>
+          <filter
+                    name="my_val"
+                    string="Mes valorisations"
+                    domain="[('responsible_uid','=',uid),('state','!=','0_valuated'),('state','!=','3_rejected')]"
+                />
         </search>
       </field>
     </record>
@@ -200,7 +257,12 @@
       <field name="view_id" ref="valuation_form" />
       <field name="act_window_id" ref="action_valuation_form" />
     </record>
-    
-    <menuitem id="menu_valuation_form" parent="school_management.menu_individual_bloc" action="action_valuation_form" sequence="100" />
-    
+
+    <menuitem
+        id="menu_valuation_form"
+        parent="school_management.menu_individual_bloc"
+        action="action_valuation_form"
+        sequence="100"
+    />
+
 </odoo>

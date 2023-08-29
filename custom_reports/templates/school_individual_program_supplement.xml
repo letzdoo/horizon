@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <template id="report_school_individual_program_supplement_content_page" name="Program Details Content supplement">
+    <template
+        id="report_school_individual_program_supplement_content_page"
+        name="Program Details Content supplement"
+    >
         <head>
-            <link rel="preconnect" href="https://fonts.googleapis.com"/>
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+            <link
+                href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap"
+                rel="stylesheet"
+            />
             <title>Supplémént Diplôme</title>
             <style>
               p{
                 margin:0px;
                 padding:0px;
               }
-          
-          
+
+
               h1,h2,h3,h4,h5,h6,h7,h8{
                 position: relative;
                 font-size:1.15em;
@@ -22,7 +28,7 @@
                 margin:0px;
                 padding:0px;
               }
-          
+
               .pdf__page{
                 background: white;
                 margin:0px auto;
@@ -40,91 +46,91 @@
               .page__wrapper{
                 padding:1.5cm;
               }
-          
+
               .diploma__place{
                 margin-bottom:20px;
               }
-          
+
               .diploma__intro, .diploma__place, .diploma__logo, .europass__logo{
                 text-align: center;
               }
-          
+
               .europass__logo{
                 margin-bottom: 50px;
               }
-          
+
               .europass__img{
                   display: inline-block;
                   width: 250px;
                   height: auto;
               }
-          
+
               .place__title{
                 margin-bottom:2px;
               }
-          
+
               .intro__title{
                 font-size:1.3em;
               }
-          
+
               .intro__section{
                 font-size:1.1em;
                 font-weight:500;
               }
-          
+
               .logo__logo{
                 width:45px;
                 height:auto;
                 display:inline-block;
               }
-          
+
               .diploma__logo{
                 margin:15px 0px;
               }
-          
+
               .diploma__name{
                 font-size:1.5em;
                 font-weight:500;
                 margin-bottom:5px;
               }
-          
+
               .diploma__name em{
                 font-style:normal;
                 font-weight:700;
               }
-          
+
               .diploma__infos{
                 margin-top:30px;
               }
-          
+
               .text--important{
                 font-size:1.2em;
                 font-weight:700;
                 font-style:normal;
               }
-          
+
               .diploma__rank{
                 margin-top:10px;
               }
-          
+
               .rank__name{
                 margin-bottom:20px;
               }
-          
+
               .diploma__footer{
                 margin-top:60px;
               }
-          
+
               .signatures__list{
                 margin-bottom:30px;
               }
-          
+
               .signature__item{
                 width:24.5%;
                 display:inline-block;
                 font-weight:700;
               }
-          
+
               .complement__text{
                 margin-top: 70px;
                 padding:10px;
@@ -133,24 +139,24 @@
                 margin-left: 7.5%;
                 text-align: justify;
               }
-          
+
               .complement__text p+p{
                 margin-top: 40px;
               }
-          
+
               .complement__more{
                 font-style:italic;
               }
-          
+
               .complement__footer{
                 margin-top:20px;
               }
-          
+
               .complement__footer em{
                 font-weight: 700;
                 font-style:normal;
               }
-          
+
               .footer__page{
                 color: #b1b1b1;
                 font-size: 0.95em;
@@ -160,68 +166,68 @@
                 left: 0px;
                 width: 100%;
               }
-          
+
               .title--section{
                 padding-bottom: 10px;
                 border-bottom: 1px solid black;
               }
-          
+
               .infos__list{
                 margin-top: 30px;
                 margin-bottom: 50px;
               }
-          
+
               .info__item{
                 font-weight: 700;
                 font-size: 1.1em;
               }
-          
+
                   .text--special{
                     font-style: italic;
                     font-weight: 400;
                   }
-          
+
                 .requirements__list{
                   list-style-type: "- ";
                   margin-top:10px;
                 }
-          
+
                 .info__value, .requirement__item{
                   font-weight: 400;
                 }
-          
-          
+
+
                 .info__item .text--special{
                   font-size: 0.95em;
                 }
-          
+
                 .info__item, .text--break{
                   display: block;
                 }
-          
+
                 .text--break + .text--break{
                   margin-top:15px;
                 }
-          
+
                 .info__item + .info__item{
                   margin-top: 10px;
                 }
-          
+
                 .info__number{
                   padding-right: 20px;
                 }
-          
+
                 .requirement__item + .requirement__item{
                   margin-top:10px;
                 }
-          
+
                 .learning__img{
                   display: block;
                   width: 100%;
                   height: auto;
                   margin-top:40px;
                 }
-          
+
                 .precisions__table{
                   font-size: 1em;
                   width: 100%;
@@ -230,187 +236,448 @@
                   margin-top: 20px;
                   margin-bottom: 20px;
                 }
-          
+
                 .precisions__table th, .table--total td{
                   background: #EFEFEF;
                   font-weight: 700;
                   padding:5px;
                   border-bottom: 1px solid lightgrey;
                 }
-          
+
                 .precisions__table td{
                   padding:8px 10px;
                   font-size: 0.95em;
                 }
-          
+
                 .table--total td{
                   border-bottom:none;
                   border-top: 1px solid lightgrey;
                 }
-          
+
             </style>
           </head>
 
           <!-- Setting useful variables -->
-          <t t-set="instrument_name" t-value="doc.source_program_id.speciality_id.name"/>
-          <t t-set="promotion_year" t-value="doc.grade_year_id.name"/>
-          <t t-set="program_title" t-value="doc.source_program_id.title"/>
-          <t t-set="cycle_type" t-value="'long' if doc.source_program_id.cycle_id.type=='long' else 'court'"/>
-          <t t-set="student_gender" t-value="True if doc.student_id.gender == 'male' else False"/>
-          <t t-set="student_birth_place_city" t-value="doc.student_id.birthplace"/>
-          <t t-set="student_birth_place_country" t-value="doc.student_id.birthcountry.name"/>
-          <t t-set="student_birth_date_formatted" t-value="doc.return_date_formatted(doc.student_id.birthdate_date)"/>
-          <t t-set="student_graduation_date_formatted" t-value="doc.return_date_formatted(doc.graduation_date)"/>
-          <t t-set="student_first_name" t-value="doc.student_id.firstname"/>
-          <t t-set="student_family_name" t-value="doc.student_id.lastname"/>
-          <t t-set="student_matricule" t-value="doc.student_id.mat_number"/>
-          <t t-if="doc.grade" t-set="student_success_grade" t-value="dict(doc.fields_get(allfields=['grade'])['grade']['selection'])[doc.grade]"/>
-          <t t-set="student_diploma_grade" t-value="doc.source_program_id.cycle_id.grade"/>
-          <t t-set="min_required_credits" t-value="doc.required_credits"/>
-          <t t-set="cycle_type_bis" t-value="'1er' if doc.source_program_id.cycle_id.name.find('1er cycle') != -1  else '2ème'"/>
-       
+          <t
+            t-set="instrument_name"
+            t-value="doc.source_program_id.speciality_id.name"
+        />
+          <t t-set="promotion_year" t-value="doc.grade_year_id.name" />
+          <t t-set="program_title" t-value="doc.source_program_id.title" />
+          <t
+            t-set="cycle_type"
+            t-value="'long' if doc.source_program_id.cycle_id.type=='long' else 'court'"
+        />
+          <t
+            t-set="student_gender"
+            t-value="True if doc.student_id.gender == 'male' else False"
+        />
+          <t t-set="student_birth_place_city" t-value="doc.student_id.birthplace" />
+          <t
+            t-set="student_birth_place_country"
+            t-value="doc.student_id.birthcountry.name"
+        />
+          <t
+            t-set="student_birth_date_formatted"
+            t-value="doc.return_date_formatted(doc.student_id.birthdate_date)"
+        />
+          <t
+            t-set="student_graduation_date_formatted"
+            t-value="doc.return_date_formatted(doc.graduation_date)"
+        />
+          <t t-set="student_first_name" t-value="doc.student_id.firstname" />
+          <t t-set="student_family_name" t-value="doc.student_id.lastname" />
+          <t t-set="student_matricule" t-value="doc.student_id.mat_number" />
+          <t
+            t-if="doc.grade"
+            t-set="student_success_grade"
+            t-value="dict(doc.fields_get(allfields=['grade'])['grade']['selection'])[doc.grade]"
+        />
+          <t
+            t-set="student_diploma_grade"
+            t-value="doc.source_program_id.cycle_id.grade"
+        />
+          <t t-set="min_required_credits" t-value="doc.required_credits" />
+          <t
+            t-set="cycle_type_bis"
+            t-value="'1er' if doc.source_program_id.cycle_id.name.find('1er cycle') != -1  else '2ème'"
+        />
+
             <div class="pdf__page">
               <div class="page__wrapper">
-          
+
                   <div class="europass__logo">
-                    <img src="/custom_reports/static/src/img/europass.png" class="europass__img" alt="Logo de Europass" />
+                    <img
+                        src="/custom_reports/static/src/img/europass.png"
+                        class="europass__img"
+                        alt="Logo de Europass"
+                    />
                   </div>
                   <div class="diploma__place">
                     <h2 class="place__title">COMMUNAUTÉ FRANÇAISE DE BELGIQUE</h2>
-                    <p>Enseignement supérieur de plein exercice de type <t t-esc="cycle_type"/></p>
+                    <p>Enseignement supérieur de plein exercice de type <t
+                            t-esc="cycle_type"
+                        /></p>
                   </div>
-          
+
                   <div class="diploma__intro">
                     <h1 class="intro__title">Conservatoire royal de Liège</h1>
                     <p>École supérieure des Arts</p>
                     <p>Boulevard Piercot, 29 – 4000 Liège</p>
                     <p class="intro__section">Domaine de la Musique</p>
                   </div>
-          
+
                   <div class="diploma__logo">
                     <!-- <img src="img/logo.png" alt="Logo du Conservatoire Royal de Liège" class="logo__logo" /> -->
-                    <img src="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png" alt="Logo du Conservatoire Royal de Liège" class="logo__logo" />
-                    
+                    <img
+                        src="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png"
+                        alt="Logo du Conservatoire Royal de Liège"
+                        class="logo__logo"
+                    />
+
                   </div>
-          
+
                   <div class="complement__text">
-                    <p>Ce modèle de supplément au diplôme suit le modèle élaboré par la Commission européenne, le Conseil de l’Europe et l’UNESCO. Le supplément au diplôme vise à fournir des données indépendantes et suffisantes pour améliorer la « transparence » internationale et la reconnaissance académique et professionnelle équitable des qualifications (diplômes, acquis universitaires, certificats, brevets, etc.). Il est destiné à décrire la nature, le niveau, le contexte, le contenu et le statut des études accomplies avec succès par la personne désignée par la qualification originale à laquelle ce présent supplément est annexé. Il doit être dépourvu de tout jugement de valeur, déclaration d’équivalence ou suggestion de reconnaissance. Toutes les informations requises par les huits parties doivent être fournies. Lorsqu’une information fait défaut, une explication doit être donnée. </p>
-                    <p class="complement__more">This Diploma Supplement model follows the model developed by the European Commission, Council of Europe and UNESCO. The purpose of the supplement is to provide sufficient independent data to improve the international “transparency” and fair academic and professional recognition of qualification (diplomas, degrees, certificates, etc.). It is designed to provide a desciption of the nature, level, context, content and status of the studies that were pursued and successfully completed by the individual named on the orignial qualification to which this supplement is appended. It should be free from any value judgements, equivalence statements or suggestions about recognition. Information in all eight sections should be provided. Where information is not provided, an explanation should give the reason why. </p>
+                    <p
+                    >Ce modèle de supplément au diplôme suit le modèle élaboré par la Commission européenne, le Conseil de l’Europe et l’UNESCO. Le supplément au diplôme vise à fournir des données indépendantes et suffisantes pour améliorer la « transparence » internationale et la reconnaissance académique et professionnelle équitable des qualifications (diplômes, acquis universitaires, certificats, brevets, etc.). Il est destiné à décrire la nature, le niveau, le contexte, le contenu et le statut des études accomplies avec succès par la personne désignée par la qualification originale à laquelle ce présent supplément est annexé. Il doit être dépourvu de tout jugement de valeur, déclaration d’équivalence ou suggestion de reconnaissance. Toutes les informations requises par les huits parties doivent être fournies. Lorsqu’une information fait défaut, une explication doit être donnée. </p>
+                    <p
+                        class="complement__more"
+                    >This Diploma Supplement model follows the model developed by the European Commission, Council of Europe and UNESCO. The purpose of the supplement is to provide sufficient independent data to improve the international “transparency” and fair academic and professional recognition of qualification (diplomas, degrees, certificates, etc.). It is designed to provide a desciption of the nature, level, context, content and status of the studies that were pursued and successfully completed by the individual named on the orignial qualification to which this supplement is appended. It should be free from any value judgements, equivalence statements or suggestions about recognition. Information in all eight sections should be provided. Where information is not provided, an explanation should give the reason why. </p>
                   </div>
                   <!-- <p class="footer__page">Page 1 sur 5</p> -->
               </div>
             </div>
-          
+
             <div class="pdf__page">
               <div class="page__wrapper">
                 <p class="complement__footer">
-                  <em>AVERTISSEMENT: ce présent supplément ne vaut qu’accompagné du diplôme officiel.</em> / <span class="text--special">This Diploma Supplement is only valid if presented with the official diploma.</span>
+                  <em
+                    >AVERTISSEMENT: ce présent supplément ne vaut qu’accompagné du diplôme officiel.</em> / <span
+                        class="text--special"
+                    >This Diploma Supplement is only valid if presented with the official diploma.</span>
                 </p>
-          
-                <h2 style="margin-top:20px;" class="title--section">1. INFORMATIONS SUR <t t-if="student_gender">LE</t><t t-else="">LA</t> TITULAIRE DU DIPLÔME / <span class="text--special">Information identifying the holder of the qualification</span></h2>
-          
+
+                <h2
+                    style="margin-top:20px;"
+                    class="title--section"
+                >1. INFORMATIONS SUR <t t-if="student_gender">LE</t><t
+                        t-else=""
+                    >LA</t> TITULAIRE DU DIPLÔME / <span
+                        class="text--special"
+                    >Information identifying the holder of the qualification</span></h2>
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">1.1.</span>	Nom(s) de famille / <span class="text--special">Family name(s)</span><span class="info__value"> : <t t-esc="student_family_name"/></span></li>
-                  <li class="info__item"><span class="info__number">1.2.</span>	Prénom(s) / <span class="text--special">Given name(s)</span><span class="info__value"> : <t t-esc="student_first_name"/></span></li>
-                  <li class="info__item"><span class="info__number">1.3.</span> Date (jour / mois / année) et lieu de naissance (pays) / <span class="text--special">Date (day / month / year) and place of birth (country)</span><span class="info__value"> : <t t-esc="student_birth_date_formatted"/> <t t-if="student_birth_place_country">(<t t-esc="student_birth_place_country"/>)</t></span></li>
-                  <li class="info__item"><span class="info__number">1.4.</span> Numéro de matricule  / <span class="text--special">Identification number </span><span class="info__value"> : <t t-esc="student_matricule"/></span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >1.1.</span>	Nom(s) de famille / <span
+                            class="text--special"
+                        >Family name(s)</span><span class="info__value"> : <t
+                                t-esc="student_family_name"
+                            /></span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >1.2.</span>	Prénom(s) / <span
+                            class="text--special"
+                        >Given name(s)</span><span class="info__value"> : <t
+                                t-esc="student_first_name"
+                            /></span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >1.3.</span> Date (jour / mois / année) et lieu de naissance (pays) / <span
+                            class="text--special"
+                        >Date (day / month / year) and place of birth (country)</span><span
+                            class="info__value"
+                        > : <t t-esc="student_birth_date_formatted" /> <t
+                                t-if="student_birth_place_country"
+                            >(<t t-esc="student_birth_place_country" />)</t></span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >1.4.</span> Numéro de matricule  / <span
+                            class="text--special"
+                        >Identification number </span><span class="info__value"> : <t
+                                t-esc="student_matricule"
+                            /></span></li>
                 </ul>
-          
-                <h2 class="title--section">2. INFORMATIONS SUR LE DIPLÔME / <span class="text--special">Information identifying the qualification</span></h2>
-          
+
+                <h2 class="title--section">2. INFORMATIONS SUR LE DIPLÔME / <span
+                        class="text--special"
+                    >Information identifying the qualification</span></h2>
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">2.1.</span>Intitulé du diplôme et du titre conféré / <span class="text--special">Name of qualification and title conferred</span><span class="info__value"> : <br/><t t-esc="program_title"/></span></li>
-                  <li class="info__item"><span class="info__number">2.2.</span>Domaine(s) d’études correspondant au diplôme  / <span class="text--special">Main field(s) of study for the qualification</span><span class="info__value"> : <br/>Domaine de la musique</span></li>
-                  <li class="info__item"><span class="info__number">2.3.</span>Nom et statut de l’établissement ayant délivré le diplôme (dans la langue originale) / <span class="text--special">Name and status of awarding institution(s) (in original language)</span><span class="info__value"> : <br/>Conservatoire royal de Liège, École supérieure des Arts organisée par la Communauté française de Belgique.<br/>Etablissement officiellement reconnu par la Communauté française conformément à l’article 12 du décret du 7 novembre 2013.</span></li>
-                  <li class="info__item"><span class="info__number">2.4.</span>(Si différent du 2.3.) Nom et statut de l’/des établissement(s) ayant dispensé les cours  / <span class="text--special">If different from 2.3.) Name and status of institution(s) administering studies</span><span class="info__value"> : <br/>Non applicable</span></li>
-                  <li class="info__item"><span class="info__number">2.5.</span>Langue(s) de formation et d’évaluation / <span class="text--special">Language(s) of instruction and examination</span><span class="info__value"> : <br/>Français</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >2.1.</span>Intitulé du diplôme et du titre conféré / <span
+                            class="text--special"
+                        >Name of qualification and title conferred</span><span
+                            class="info__value"
+                        > : <br /><t t-esc="program_title" /></span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >2.2.</span>Domaine(s) d’études correspondant au diplôme  / <span
+                            class="text--special"
+                        >Main field(s) of study for the qualification</span><span
+                            class="info__value"
+                        > : <br />Domaine de la musique</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >2.3.</span>Nom et statut de l’établissement ayant délivré le diplôme (dans la langue originale) / <span
+                            class="text--special"
+                        >Name and status of awarding institution(s) (in original language)</span><span
+                            class="info__value"
+                        > : <br
+                            />Conservatoire royal de Liège, École supérieure des Arts organisée par la Communauté française de Belgique.<br
+                            />Etablissement officiellement reconnu par la Communauté française conformément à l’article 12 du décret du 7 novembre 2013.</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >2.4.</span>(Si différent du 2.3.) Nom et statut de l’/des établissement(s) ayant dispensé les cours  / <span
+                            class="text--special"
+                        >If different from 2.3.) Name and status of institution(s) administering studies</span><span
+                            class="info__value"
+                        > : <br />Non applicable</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >2.5.</span>Langue(s) de formation et d’évaluation / <span
+                            class="text--special"
+                        >Language(s) of instruction and examination</span><span
+                            class="info__value"
+                        > : <br />Français</span></li>
                 </ul>
-          
-                <h2 class="title--section">3. INFORMATIONS SUR LE NIVEAU DE QUALIFICATION / <span class="text--special">Information on the level of the qualification</span></h2>
-          
+
+                <h2
+                    class="title--section"
+                >3. INFORMATIONS SUR LE NIVEAU DE QUALIFICATION / <span
+                        class="text--special"
+                    >Information on the level of the qualification</span></h2>
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">3.1.</span>Niveau de qualification / <span class="text--special">Level of qualification</span><span class="info__value">: <br/>Enseignement de type <t t-esc="cycle_type"/>, de <t t-esc="cycle_type_bis"/> cycle (voir rubrique 8), niveau <t t-esc="7 if bac else 8"></t> (Cadre des certifications de l’enseignement supérieur de la Communauté française).</span></li>
-                  <li class="info__item"><span class="info__number">3.2.</span>Durée officielle du programme / <span class="text--special">Official length of programme</span><span class="info__value"> : <br/>Le programme contient un minimum de <t t-if="bac">180</t><t t-if="master">120</t> crédits. L’étudiant<t t-if="not student_gender">e</t> a acquis <t t-esc="doc.source_program_id.total_credits"/> crédits.</span></li>
-                  <li class="info__item"><span class="info__number">3.3.</span>Condition(s) d’accès / <span class="text--special">Access requirement(s)</span><span class="info__value">: <br/>Réussite de l’épreuve d’admission, organisée en date du <t t-if="doc.student_id.admission_exam_date"><t t-esc="doc.student_id.admission_exam_date.strftime('%d-%m-%Y')"/></t>, prévue par l’article: 110 du décret du 07 novembre 2013 pour l’accès dans une École supérieure des Arts. Condition remplie par l’étudiant<t t-if="not student_gender">e</t> conformément à l’article <t t-if="bac">107</t><t t-else="">111</t> du décret du 07 novembre 2013: 
+                  <li class="info__item"><span
+                            class="info__number"
+                        >3.1.</span>Niveau de qualification / <span
+                            class="text--special"
+                        >Level of qualification</span><span class="info__value">: <br
+                            />Enseignement de type <t t-esc="cycle_type" />, de <t
+                                t-esc="cycle_type_bis"
+                            /> cycle (voir rubrique 8), niveau <t
+                                t-esc="7 if bac else 8"
+                            /> (Cadre des certifications de l’enseignement supérieur de la Communauté française).</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >3.2.</span>Durée officielle du programme / <span
+                            class="text--special"
+                        >Official length of programme</span><span
+                            class="info__value"
+                        > : <br />Le programme contient un minimum de <t
+                                t-if="bac"
+                            >180</t><t t-if="master">120</t> crédits. L’étudiant<t
+                                t-if="not student_gender"
+                            >e</t> a acquis <t
+                                t-esc="doc.source_program_id.total_credits"
+                            /> crédits.</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >3.3.</span>Condition(s) d’accès / <span
+                            class="text--special"
+                        >Access requirement(s)</span><span class="info__value">: <br
+                            />Réussite de l’épreuve d’admission, organisée en date du <t
+                                t-if="doc.student_id.admission_exam_date"
+                            ><t
+                                    t-esc="doc.student_id.admission_exam_date.strftime('%d-%m-%Y')"
+                                /></t>, prévue par l’article: 110 du décret du 07 novembre 2013 pour l’accès dans une École supérieure des Arts. Condition remplie par l’étudiant<t
+                                t-if="not student_gender"
+                            >e</t> conformément à l’article <t t-if="bac">107</t><t
+                                t-else=""
+                            >111</t> du décret du 07 novembre 2013:
                     <t t-foreach="doc.student_id.access_titles_ids" t-as="at">
-                      <t t-if="(('CESS' in at.name or 'equivalence' in at.name) and bac)">
-                        <br/><t t-esc="at.title"/> - <t t-esc="at.establishment"/> - <t t-esc="at.city"/> (<t t-esc="at.country"/>) - <t t-esc="at.date.strftime('%d/%m/%Y')"/> 
+                      <t
+                                    t-if="(('CESS' in at.name or 'equivalence' in at.name) and bac)"
+                                >
+                        <br /><t t-esc="at.title" /> - <t
+                                        t-esc="at.establishment"
+                                    /> - <t t-esc="at.city" /> (<t
+                                        t-esc="at.country"
+                                    />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
                       </t>
-                      <t t-if="(('Bachelier' in at.name or 'VAE' in at.name) and master)">
-                        <br/><t t-esc="at.title"/> - <t t-esc="at.establishment"/> - <t t-esc="at.city"/> (<t t-esc="at.country"/>) - <t t-esc="at.date.strftime('%d/%m/%Y')"/> 
-                      </t>  
+                      <t
+                                    t-if="(('Bachelier' in at.name or 'VAE' in at.name) and master)"
+                                >
+                        <br /><t t-esc="at.title" /> - <t
+                                        t-esc="at.establishment"
+                                    /> - <t t-esc="at.city" /> (<t
+                                        t-esc="at.country"
+                                    />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                      </t>
                     </t>
                     </span></li>
                 </ul>
 
                 <!-- <p class="footer__page">Page 2 sur 5</p> -->
-          
-                <h2 style="margin-top:20px; padding-top:20px;" class="title--section">4. INFORMATIONS SUR LE CONTENU ET SUR LES RÉSULTATS OBTENUS / <span class="text--special">Information on the contents and results gained</span></h2>
-          
+
+                <h2
+                    style="margin-top:20px; padding-top:20px;"
+                    class="title--section"
+                >4. INFORMATIONS SUR LE CONTENU ET SUR LES RÉSULTATS OBTENUS / <span
+                        class="text--special"
+                    >Information on the contents and results gained</span></h2>
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">4.1.</span>Organisation des études / <span class="text--special">Mode of study</span><span class="info__value"> : <br/>Formation à temps plein</span></li>
-                  <li class="info__item"><span class="info__number">4.2.</span>Exigences du programme / <span class="text--special">Programme requirements :<br/></span>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >4.1.</span>Organisation des études / <span
+                            class="text--special"
+                        >Mode of study</span><span class="info__value"> : <br
+                            />Formation à temps plein</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >4.2.</span>Exigences du programme / <span
+                            class="text--special"
+                        >Programme requirements :<br /></span>
                     <t t-if="bac and not bac_dict">
-                      <span class="info__value text--break">A la fin du cycle du Bachelier de transition, l’étudiant·e doit être capable :</span>
+                      <span
+                                class="info__value text--break"
+                            >A la fin du cycle du Bachelier de transition, l’étudiant·e doit être capable :</span>
                       <ul class="requirements__list">
-                        <li class="requirement__item">De produire (instrument, voix, écriture) en faisant preuve de sa maîtrise technique et musicale, de sa connaissance du répertoire, de créativité et d’autonomie ;</li>
-                        <li class="requirement__item">De comprendre et de manipuler les éléments constitutifs des systèmes musicaux qu’il est amené à utiliser : écouter, déchiffrer et retranscrire par un système de notation ;</li>
-                        <li class="requirement__item">D’analyser et de mettre en œuvre des outils permettant une analyse au service de l’interprétation des œuvres ;</li>
-                        <li class="requirement__item">D’établir des liens pertinents avec le contexte esthétique, historique et sociologique des œuvres et de développer un intérêt pour d’autres champs musicaux ;</li>
-                        <li class="requirement__item">De travailler en ensemble et de développer les qualités relationnelles nécessaires aux travaux en groupe ;</li>
-                        <li class="requirement__item">De s’orienter dans la littérature et la documentation musicales, d’apprécier les différents supports en mettant en œuvre des démarches analytiques et de faire des choix pertinents ;</li>
-                        <li class="requirement__item">D’acquérir une maîtrise suffisante de sa voix et de son corps en tant qu’outil du musicien.</li>
+                        <li
+                                    class="requirement__item"
+                                >De produire (instrument, voix, écriture) en faisant preuve de sa maîtrise technique et musicale, de sa connaissance du répertoire, de créativité et d’autonomie ;</li>
+                        <li
+                                    class="requirement__item"
+                                >De comprendre et de manipuler les éléments constitutifs des systèmes musicaux qu’il est amené à utiliser : écouter, déchiffrer et retranscrire par un système de notation ;</li>
+                        <li
+                                    class="requirement__item"
+                                >D’analyser et de mettre en œuvre des outils permettant une analyse au service de l’interprétation des œuvres ;</li>
+                        <li
+                                    class="requirement__item"
+                                >D’établir des liens pertinents avec le contexte esthétique, historique et sociologique des œuvres et de développer un intérêt pour d’autres champs musicaux ;</li>
+                        <li
+                                    class="requirement__item"
+                                >De travailler en ensemble et de développer les qualités relationnelles nécessaires aux travaux en groupe ;</li>
+                        <li
+                                    class="requirement__item"
+                                >De s’orienter dans la littérature et la documentation musicales, d’apprécier les différents supports en mettant en œuvre des démarches analytiques et de faire des choix pertinents ;</li>
+                        <li
+                                    class="requirement__item"
+                                >D’acquérir une maîtrise suffisante de sa voix et de son corps en tant qu’outil du musicien.</li>
                       </ul>
                     </t>
                     <t t-elif="bac and bac_dict">
-                      <span class="info__value text--break">A la fin du cycle du Bachelier de qualification en Formation musicale, l’étudiant·e doit être capable :</span>
+                      <span
+                                class="info__value text--break"
+                            >A la fin du cycle du Bachelier de qualification en Formation musicale, l’étudiant·e doit être capable :</span>
                       <ul class="requirements__list">
-                        <li class="requirement__item">D’acquérir une bonne maîtrise simultanée de sa voix, de son oreille, de son corps, du rythme, de la lecture musicale et d’un instrument accompagnateur en tant qu’outil de l’enseignant·e-musicien·ne ;</li>
-                        <li class="requirement__item">De comprendre et de manipuler les éléments constitutifs de systèmes musicaux qu’il·elle est amené·e à utiliser : écouter, analyser, déchiffrer et retranscrire par un système de notation ;</li>
-                        <li class="requirement__item">De connaitre et de maîtriser un répertoire varié, d’y établir des liens pertinents avec le contexte esthétique historique et sociologique, d’effectuer des recherches et de développer un intérêt pour d’autres champs musicaux ;</li>
-                        <li class="requirement__item">De s’orienter dans la littérature et la documentation psychopédagogique, didactique et pédagogique en faisant preuve d’esprit critique pour se constituer un répertoire d’outils méthodologiques pertinent ; </li>
-                        <li class="requirement__item">De concevoir, de mettre en œuvre et de créer des dispositifs d’enseignement visant à développer la pratique musicale, la créativité, la curiosité et l’ouverture culturelle ;</li>
-                        <li class="requirement__item">De justifier sa pratique pédagogique par une analyse réflexive associant les différents concepts théoriques avec l’expérience acquise lors de stages, mais aussi de démontrer sa capacité à la remettre en question :</li>
-                        <li class="requirement__item">De travailler en équipe et de développer les qualités relationnelles nécessaires aux travaux en groupe ;</li>
-                        <li class="requirement__item">De créer une relation pédagogique propice aux apprentissages en développant une identité d’enseignant·e-musicien·ne professionnel·le qui agit et fait agir de façon éthique, démocratique et responsable, en lien avec le projet pédagogique de l’établissement.</li>                    
+                        <li
+                                    class="requirement__item"
+                                >D’acquérir une bonne maîtrise simultanée de sa voix, de son oreille, de son corps, du rythme, de la lecture musicale et d’un instrument accompagnateur en tant qu’outil de l’enseignant·e-musicien·ne ;</li>
+                        <li
+                                    class="requirement__item"
+                                >De comprendre et de manipuler les éléments constitutifs de systèmes musicaux qu’il·elle est amené·e à utiliser : écouter, analyser, déchiffrer et retranscrire par un système de notation ;</li>
+                        <li
+                                    class="requirement__item"
+                                >De connaitre et de maîtriser un répertoire varié, d’y établir des liens pertinents avec le contexte esthétique historique et sociologique, d’effectuer des recherches et de développer un intérêt pour d’autres champs musicaux ;</li>
+                        <li
+                                    class="requirement__item"
+                                >De s’orienter dans la littérature et la documentation psychopédagogique, didactique et pédagogique en faisant preuve d’esprit critique pour se constituer un répertoire d’outils méthodologiques pertinent ; </li>
+                        <li
+                                    class="requirement__item"
+                                >De concevoir, de mettre en œuvre et de créer des dispositifs d’enseignement visant à développer la pratique musicale, la créativité, la curiosité et l’ouverture culturelle ;</li>
+                        <li
+                                    class="requirement__item"
+                                >De justifier sa pratique pédagogique par une analyse réflexive associant les différents concepts théoriques avec l’expérience acquise lors de stages, mais aussi de démontrer sa capacité à la remettre en question :</li>
+                        <li
+                                    class="requirement__item"
+                                >De travailler en équipe et de développer les qualités relationnelles nécessaires aux travaux en groupe ;</li>
+                        <li
+                                    class="requirement__item"
+                                >De créer une relation pédagogique propice aux apprentissages en développant une identité d’enseignant·e-musicien·ne professionnel·le qui agit et fait agir de façon éthique, démocratique et responsable, en lien avec le projet pédagogique de l’établissement.</li>
                       </ul>
                     </t>
                     <t t-elif="master and not master_dict">
                       <ul class="requirements__list">
-                        <li class="requirement__item">Réaliser, recréer, créer, manipuler et/ou produire de la musique à un niveau professionnel élevé, en exprimant ses propres concepts artistiques et en reflétant une personnalité musicale bien développée ;</li>
-                        <li class="requirement__item">Démontrer une connaissance approfondie et critique des pratiques, des langages, des formes, des matériaux, des technologies et des techniques de la musique, des contextes historiques et théoriques, qui se traduit en des compétences artistiques approfondies et créatives par rapport aux répertoires, aux styles, aux traditions d’interprétation de leur discipline ;</li>
-                        <li class="requirement__item">Démontrer des compétences fondées en pensée et conscience critique ;</li>
-                        <li class="requirement__item">Faire preuve d’aisance et de compétence dans l’utilisation d’une gamme de compétences sociales et de communications adaptées au contexte.</li>
-                        <li class="requirement__item">Démontrer une capacité à créer, réaliser et exprimer ses propres concepts artistiques, en veillant à ce que tous les éventuels points faibles dans les compétences liées aux domaines de l’exercice individuel de leur art, de la répétition, de la lecture, de l’audition, de la créativité aient été abordés ;</li>
-                        <li class="requirement__item">Jouer leur rôle, constructif, dans le travail d’ensemble et/ou d’autres activités de collaboration ou projets ;</li>
-                        <li class="requirement__item">Développer, présenter et réaliser des programmes cohérents et adaptés à un large éventail de contextes d’exécution différents ;</li>
-                        <li class="requirement__item">Reconnaître l’interrelation entre la théorie et la pratique, et appliquer ces connaissances pour étayer et renforcer leur propre développement artistique ; </li>
-                        <li class="requirement__item">Identifier et utiliser la littérature pertinente et/ou d’autres ressources appropriées pour nourrir leur pratique et leur développement au sein de leur discipline, genre et/ou domaine d’étude ;</li>
-                        <li class="requirement__item">Démontrer une maîtrise dans une gamme de modes de communication associé à leur pratique et à leur présentation à des publics spécialisés et non spécialisés ;</li>
-                        <li class="requirement__item">Démontrer une compréhension approfondie du rôle de musicien dans la société contemporaine, en recherchant, en s’engageant et en réfléchissant sur des environnements de travail et de contextes professionnels pertinents ;</li>
-                        <li class="requirement__item">Démontrer une attitude positive envers la volonté de s’engager et de s’intéresser au développement personnel et professionnel continu tout au long de la vie.</li>
+                        <li
+                                    class="requirement__item"
+                                >Réaliser, recréer, créer, manipuler et/ou produire de la musique à un niveau professionnel élevé, en exprimant ses propres concepts artistiques et en reflétant une personnalité musicale bien développée ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une connaissance approfondie et critique des pratiques, des langages, des formes, des matériaux, des technologies et des techniques de la musique, des contextes historiques et théoriques, qui se traduit en des compétences artistiques approfondies et créatives par rapport aux répertoires, aux styles, aux traditions d’interprétation de leur discipline ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer des compétences fondées en pensée et conscience critique ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Faire preuve d’aisance et de compétence dans l’utilisation d’une gamme de compétences sociales et de communications adaptées au contexte.</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une capacité à créer, réaliser et exprimer ses propres concepts artistiques, en veillant à ce que tous les éventuels points faibles dans les compétences liées aux domaines de l’exercice individuel de leur art, de la répétition, de la lecture, de l’audition, de la créativité aient été abordés ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Jouer leur rôle, constructif, dans le travail d’ensemble et/ou d’autres activités de collaboration ou projets ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Développer, présenter et réaliser des programmes cohérents et adaptés à un large éventail de contextes d’exécution différents ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Reconnaître l’interrelation entre la théorie et la pratique, et appliquer ces connaissances pour étayer et renforcer leur propre développement artistique ; </li>
+                        <li
+                                    class="requirement__item"
+                                >Identifier et utiliser la littérature pertinente et/ou d’autres ressources appropriées pour nourrir leur pratique et leur développement au sein de leur discipline, genre et/ou domaine d’étude ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une maîtrise dans une gamme de modes de communication associé à leur pratique et à leur présentation à des publics spécialisés et non spécialisés ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une compréhension approfondie du rôle de musicien dans la société contemporaine, en recherchant, en s’engageant et en réfléchissant sur des environnements de travail et de contextes professionnels pertinents ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une attitude positive envers la volonté de s’engager et de s’intéresser au développement personnel et professionnel continu tout au long de la vie.</li>
                         </ul>
                     </t>
                     <t t-else="master and master_dict">
                       <ul class="requirements__list">
-                        <li class="requirement__item">Réaliser, recréer, créer, manipuler et/ou produire de la musique à un niveau professionnel élevé, en exprimant ses propres concepts artistiques et en reflétant une personnalité musicale bien développée ;</li>
-                        <li class="requirement__item">Démontrer une connaissance approfondie et critique des pratiques, des langages, des formes, des matériaux, des technologies et des techniques de la musique, des contextes historiques et théoriques, qui se traduit en des compétences artistiques approfondies et créatives par rapport aux répertoires, aux styles, aux traditions d’interprétation de leur discipline ;</li>
-                        <li class="requirement__item">Démontrer des compétences fondées en pensée et conscience critique ;</li>
-                        <li class="requirement__item">Faire preuve d’aisance et de compétence dans l’utilisation d’une gamme de compétences sociales et de communications adaptées au contexte.</li>
-                        <li class="requirement__item">Démontrer une capacité à créer, réaliser et exprimer ses propres concepts artistiques, en veillant à ce que tous les éventuels points faibles dans les compétences liées aux domaines de l’exercice individuel de leur art, de la répétition, de la lecture, de l’audition, de la créativité aient été abordés ;</li>
-                        <li class="requirement__item">Jouer leur rôle, constructif, dans le travail d’ensemble et/ou d’autres activités de collaboration ou projets ;</li>
-                        <li class="requirement__item">Développer, présenter et réaliser des programmes cohérents et adaptés à un large éventail de contextes d’exécution différents ;</li>
-                        <li class="requirement__item">Reconnaître l’interrelation entre la théorie et la pratique, et appliquer ces connaissances pour étayer et renforcer leur propre développement artistique ; </li>
-                        <li class="requirement__item">Identifier et utiliser la littérature pertinente et/ou d’autres ressources appropriées pour nourrir leur pratique et leur développement au sein de leur discipline, genre et/ou domaine d’étude ;</li>
-                        <li class="requirement__item">Démontrer une maîtrise dans une gamme de modes de communication associé à leur pratique et à leur présentation à des publics spécialisés et non spécialisés ;</li>
-                        <li class="requirement__item">Démontrer une compréhension approfondie du rôle de musicien dans la société contemporaine, en recherchant, en s’engageant et en réfléchissant sur des environnements de travail et de contextes professionnels pertinents ;</li>
-                        <li class="requirement__item">Démontrer une attitude positive envers la volonté de s’engager et de s’intéresser au développement personnel et professionnel continu tout au long de la vie.</li>
+                        <li
+                                    class="requirement__item"
+                                >Réaliser, recréer, créer, manipuler et/ou produire de la musique à un niveau professionnel élevé, en exprimant ses propres concepts artistiques et en reflétant une personnalité musicale bien développée ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une connaissance approfondie et critique des pratiques, des langages, des formes, des matériaux, des technologies et des techniques de la musique, des contextes historiques et théoriques, qui se traduit en des compétences artistiques approfondies et créatives par rapport aux répertoires, aux styles, aux traditions d’interprétation de leur discipline ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer des compétences fondées en pensée et conscience critique ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Faire preuve d’aisance et de compétence dans l’utilisation d’une gamme de compétences sociales et de communications adaptées au contexte.</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une capacité à créer, réaliser et exprimer ses propres concepts artistiques, en veillant à ce que tous les éventuels points faibles dans les compétences liées aux domaines de l’exercice individuel de leur art, de la répétition, de la lecture, de l’audition, de la créativité aient été abordés ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Jouer leur rôle, constructif, dans le travail d’ensemble et/ou d’autres activités de collaboration ou projets ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Développer, présenter et réaliser des programmes cohérents et adaptés à un large éventail de contextes d’exécution différents ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Reconnaître l’interrelation entre la théorie et la pratique, et appliquer ces connaissances pour étayer et renforcer leur propre développement artistique ; </li>
+                        <li
+                                    class="requirement__item"
+                                >Identifier et utiliser la littérature pertinente et/ou d’autres ressources appropriées pour nourrir leur pratique et leur développement au sein de leur discipline, genre et/ou domaine d’étude ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une maîtrise dans une gamme de modes de communication associé à leur pratique et à leur présentation à des publics spécialisés et non spécialisés ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une compréhension approfondie du rôle de musicien dans la société contemporaine, en recherchant, en s’engageant et en réfléchissant sur des environnements de travail et de contextes professionnels pertinents ;</li>
+                        <li
+                                    class="requirement__item"
+                                >Démontrer une attitude positive envers la volonté de s’engager et de s’intéresser au développement personnel et professionnel continu tout au long de la vie.</li>
                       </ul>
                     </t>
-                    
+
                   </li>
-          
-                  <li class="info__item"><span class="info__number">4.3.</span>Précisions sur le programme / <span class="text--special">Programme details</span><span class="info__value"> :<br/>
+
+                  <li class="info__item"><span
+                            class="info__number"
+                        >4.3.</span>Précisions sur le programme / <span
+                            class="text--special"
+                        >Programme details</span><span class="info__value"> :<br />
                     <span class="table__title"> Unités d'enseignement du cycle</span>
                     <table class="precisions__table">
                       <thead>
@@ -422,138 +689,283 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <t t-set="credit_total" t-value="0"/>
-                        <t t-foreach="doc.acquired_ind_course_group_ids" t-as="acquired_ind_course_group">
+                        <t t-set="credit_total" t-value="0" />
+                        <t
+                                        t-foreach="doc.acquired_ind_course_group_ids"
+                                        t-as="acquired_ind_course_group"
+                                    >
                             <tr>
-                              <td><t t-esc="acquired_ind_course_group.uid"/></td>
-                              <td><t t-esc="acquired_ind_course_group.name"/></td>
-                              <td><t t-esc="acquired_ind_course_group.total_credits"/></td>
-                              <td><t t-esc="acquired_ind_course_group.final_result"/></td>
-                              <t t-set="credit_total" t-value="credit_total + acquired_ind_course_group.total_credits"/>
+                              <td><t t-esc="acquired_ind_course_group.uid" /></td>
+                              <td><t t-esc="acquired_ind_course_group.name" /></td>
+                              <td><t
+                                                    t-esc="acquired_ind_course_group.total_credits"
+                                                /></td>
+                              <td><t
+                                                    t-esc="acquired_ind_course_group.final_result"
+                                                /></td>
+                              <t
+                                                t-set="credit_total"
+                                                t-value="credit_total + acquired_ind_course_group.total_credits"
+                                            />
                             </tr>
                         </t>
-          
+
                         <tr class="table--total">
                           <td>&#160;</td>
                           <td>&#160;</td>
-                          <td><t t-esc="credit_total"/></td>
+                          <td><t t-esc="credit_total" /></td>
                           <td>&#160;</td>
                         </tr>
-          
+
                       </tbody>
                     </table>
                     <t t-if="(bac and bac_dict) or master">
                       <span class="text--break">Titre du mémoire et/ou TFE :
                         <t t-foreach="doc.student_id.memoir_titles_ids" t-as="memoir">
-                          <br/><t t-esc="memoir.name"/>
+                          <br /><t t-esc="memoir.name" />
                         </t>
-                      </span>  
+                      </span>
                     </t>
-                    
+
                   </span></li>
                 </ul>
-          
-          
-          
+
+
+
                 <!-- <p class="footer__page">Page 3 sur 5</p> -->
               </div>
             </div>
-          
+
             <div class="pdf__page">
               <div class="page__wrapper">
-          
-          
+
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">4.4.</span>Système de notations et informations concernant la répartition des notes  / <span class="text--special">Grading scheme and grade distribution guidance</span><span class="info__value"> :
-                    <span class="text--break">Conformément aux articles 139 et 140 du décret du 7 novembre 2013, l’évaluation finale d’une unité d’enseignement s’exprime sous la forme d’une note, comprise entre 0 et 20. Le seuil de réussite étant 10/20. </span>
-                    <span class="text--break">Si ce seuil n’est pas atteint, le jury peut souverainement proclamer la réussite d’une unité d’enseignement, de l’ensemble des unités suivies durant une année académique ou d’un cycle d’études.</span>
-                    <span class="text--break">Moyenne obtenue : <t t-esc="doc.evaluation"/>/20</span>
-                    <span class="text--break">Le règlement des examens se trouve dans le Règlement des études disponible sur le site du Conservatoire : <a target="_blank" href="https://www.crlg.be">https://www.crlg.be</a></span>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >4.4.</span>Système de notations et informations concernant la répartition des notes  / <span
+                            class="text--special"
+                        >Grading scheme and grade distribution guidance</span><span
+                            class="info__value"
+                        > :
+                    <span
+                                class="text--break"
+                            >Conformément aux articles 139 et 140 du décret du 7 novembre 2013, l’évaluation finale d’une unité d’enseignement s’exprime sous la forme d’une note, comprise entre 0 et 20. Le seuil de réussite étant 10/20. </span>
+                    <span
+                                class="text--break"
+                            >Si ce seuil n’est pas atteint, le jury peut souverainement proclamer la réussite d’une unité d’enseignement, de l’ensemble des unités suivies durant une année académique ou d’un cycle d’études.</span>
+                    <span class="text--break">Moyenne obtenue : <t
+                                    t-esc="doc.evaluation"
+                                />/20</span>
+                    <span
+                                class="text--break"
+                            >Le règlement des examens se trouve dans le Règlement des études disponible sur le site du Conservatoire : <a
+                                    target="_blank"
+                                    href="https://www.crlg.be"
+                                >https://www.crlg.be</a></span>
                   </span></li>
-          
-                  <li class="info__item"><span class="info__number">4.5.</span>Classification générale <t t-if="student_gender">du</t><t t-else="">de la</t> diplômé<t t-if="not student_gender">e</t> / <span class="text--special">Overall classification of the graduate</span><span class="info__value"> :
-                    <span class="text--break">Sur base de l’ensemble des notes obtenues par l’étudiant<t t-if="not student_gender">e</t> au cours du cycle, le jury lui octroie éventuellement une mention conformément au Règlement des études (Attribution et pondération des notes – Art.94 - <a href="https://www.crlg.be">https://www.crlg.be</a>)</span>
-                    <span class="text--break">Mention obtenue : <t t-esc="student_success_grade"/><t t-if="doc.grade_comments"> - <t t-esc="doc.grade_comments"/></t></span>
+
+                  <li class="info__item"><span
+                            class="info__number"
+                        >4.5.</span>Classification générale <t
+                            t-if="student_gender"
+                        >du</t><t t-else="">de la</t> diplômé<t
+                            t-if="not student_gender"
+                        >e</t> / <span
+                            class="text--special"
+                        >Overall classification of the graduate</span><span
+                            class="info__value"
+                        > :
+                    <span
+                                class="text--break"
+                            >Sur base de l’ensemble des notes obtenues par l’étudiant<t
+                                    t-if="not student_gender"
+                                >e</t> au cours du cycle, le jury lui octroie éventuellement une mention conformément au Règlement des études (Attribution et pondération des notes – Art.94 - <a
+                                    href="https://www.crlg.be"
+                                >https://www.crlg.be</a>)</span>
+                    <span class="text--break">Mention obtenue : <t
+                                    t-esc="student_success_grade"
+                                /><t t-if="doc.grade_comments"> - <t
+                                        t-esc="doc.grade_comments"
+                                    /></t></span>
                   </span></li>
                 </ul>
-          
-                <h2 class="title--section">5. INFORMATIONS SUR LA FONCTION DE QUALIFICATION / <span class="text--special">Information on the function of the qualification</span></h2>
-          
+
+                <h2
+                    class="title--section"
+                >5. INFORMATIONS SUR LA FONCTION DE QUALIFICATION / <span
+                        class="text--special"
+                    >Information on the function of the qualification</span></h2>
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">5.1.</span>Accès au niveau d’études supérieures / <span class="text--special">Acces to further study</span><span class="info__value"> :
-                    <span class="text--break">En règle générale, les titulaires d’un grade académique de bachelier de type court ont accès aux études conduisant à un grade académique de bachelier de spécialisation ;</span>
-                    <span class="text--break">Les titulaires d’un grade académique de bachelier de type long ont accès à des études conduisant à un grade académique de bachelier de spécialisation ;</span>
-                    <span class="text--break">Les titulaires d’un grade académique de bachelier de type long ont accès à des études conduisant au grade de master, médecin ou médecin vétérinaire ;</span>
-                    <span class="text--break">Les titulaires d’un grade académique de master ont accès aux études sanctionnées par le grade académique d’agrégé de l’enseignement secondaire supérieur qui habilite à enseigner dans un établissement d’enseignement secondaire, à des études universitaires sanctionnées par un grade académique de master de spécialisation ;</span>
-                    <span class="text--break">Les titulaires de master en 120 crédits au moins peuvent être admis aux études universitaires de 3e cycle.</span>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >5.1.</span>Accès au niveau d’études supérieures / <span
+                            class="text--special"
+                        >Acces to further study</span><span class="info__value"> :
+                    <span
+                                class="text--break"
+                            >En règle générale, les titulaires d’un grade académique de bachelier de type court ont accès aux études conduisant à un grade académique de bachelier de spécialisation ;</span>
+                    <span
+                                class="text--break"
+                            >Les titulaires d’un grade académique de bachelier de type long ont accès à des études conduisant à un grade académique de bachelier de spécialisation ;</span>
+                    <span
+                                class="text--break"
+                            >Les titulaires d’un grade académique de bachelier de type long ont accès à des études conduisant au grade de master, médecin ou médecin vétérinaire ;</span>
+                    <span
+                                class="text--break"
+                            >Les titulaires d’un grade académique de master ont accès aux études sanctionnées par le grade académique d’agrégé de l’enseignement secondaire supérieur qui habilite à enseigner dans un établissement d’enseignement secondaire, à des études universitaires sanctionnées par un grade académique de master de spécialisation ;</span>
+                    <span
+                                class="text--break"
+                            >Les titulaires de master en 120 crédits au moins peuvent être admis aux études universitaires de 3e cycle.</span>
                   </span>
                   </li>
-          
-                  <li class="info__item"><span class="info__number">5.2.</span>Statut professionnel (si applicable) / <span class="text--special">Professional statuts (if applicable)</span><span class="info__value"> : {{Non Applicable}}}</span></li>
+
+                  <li class="info__item"><span
+                            class="info__number"
+                        >5.2.</span>Statut professionnel (si applicable) / <span
+                            class="text--special"
+                        >Professional statuts (if applicable)</span><span
+                            class="info__value"
+                        > : {{Non Applicable}}}</span></li>
                 </ul>
-          
-                <h2 class="title--section">6. INFORMATIONS COMPLÉMENTAIRES / <span class="text--special">Additional information</span></h2>
-          
+
+                <h2 class="title--section">6. INFORMATIONS COMPLÉMENTAIRES / <span
+                        class="text--special"
+                    >Additional information</span></h2>
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">6.1.</span>Informations complémentaires / <span class="text--special">Additional information</span><span class="info__value"> :
+                  <li class="info__item"><span
+                            class="info__number"
+                        >6.1.</span>Informations complémentaires / <span
+                            class="text--special"
+                        >Additional information</span><span class="info__value"> :
                     <t t-if="master">
                       <span class="text--break">Mobilité ERASMUS :
                         <t t-foreach="doc.student_id.erasmus_ids" t-as="erasmus">
-                          <br/><t t-esc="erasmus.establishment"/> - <t t-esc="erasmus.city"/> (<t t-esc="erasmus.country"/>) - <t t-esc="erasmus.start_date.strftime('%d/%m/%Y')"/> - <t t-esc="erasmus.end_date.strftime('%d/%m/%Y')"/>
+                          <br /><t t-esc="erasmus.establishment" /> - <t
+                                            t-esc="erasmus.city"
+                                        /> (<t t-esc="erasmus.country" />) - <t
+                                            t-esc="erasmus.start_date.strftime('%d/%m/%Y')"
+                                        /> - <t
+                                            t-esc="erasmus.end_date.strftime('%d/%m/%Y')"
+                                        />
                         </t>
                         </span>
                       <span class="">Stage :
                         <t t-foreach="doc.student_id.internships_ids" t-as="internship">
-                          <br/><t t-esc="internship.establishment"/> - <t t-esc="internship.city"/> (<t t-esc="internship.country"/>) - <t t-esc="internship.start_date.strftime('%d/%m/%Y')"/> - <t t-esc="internship.end_date.strftime('%d/%m/%Y')"/>
+                          <br /><t t-esc="internship.establishment" /> - <t
+                                            t-esc="internship.city"
+                                        /> (<t t-esc="internship.country" />) - <t
+                                            t-esc="internship.start_date.strftime('%d/%m/%Y')"
+                                        /> - <t
+                                            t-esc="internship.end_date.strftime('%d/%m/%Y')"
+                                        />
                         </t>
-                      </span>  
+                      </span>
                     </t>
-                    
+
                   </span>
                   </li>
                 </ul>
-          
-          
-          
+
+
+
                 <!-- <p class="footer__page">Page 4 sur 5</p> -->
-          
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">6.2.</span>Autres sources d’informations / <span class="text--special">Further information sources</span><span class="info__value"> :
-          
-                    <span class="text--break">Site web de l'établissement : <a target="_blank" href="http://www.crlg.be">http://www.crlg.be</a></span>
-                    <span>Site web de la Communauté française de Belgique : <a href="http://www.fwb.be" target="_blank">www.fwb.be</a> et <a href="http://www.enseignement.be" target="_blank">www.enseignement.be</a></span>
-                    <span class="text--break">Site web du centre ENIC-NARIC de la Communauté française : <a href="http://www.enseignement.be/enic-naric" target="_blank">www.enseignement.be/enic-naric</a></span>
-                    <span>Site web des réseaux européens ENIC-NARIC : <a href="http://www.enic-naric.net" target="_blank">www.enic-naric.net</a></span>
-                    <span class="text--break">Site web de l’ARES : <a href="http://www.ares-ac.be" target="_blank">www.ares-ac.be</a>.</span>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >6.2.</span>Autres sources d’informations / <span
+                            class="text--special"
+                        >Further information sources</span><span class="info__value"> :
+
+                    <span class="text--break">Site web de l'établissement : <a
+                                    target="_blank"
+                                    href="http://www.crlg.be"
+                                >http://www.crlg.be</a></span>
+                    <span>Site web de la Communauté française de Belgique : <a
+                                    href="http://www.fwb.be"
+                                    target="_blank"
+                                >www.fwb.be</a> et <a
+                                    href="http://www.enseignement.be"
+                                    target="_blank"
+                                >www.enseignement.be</a></span>
+                    <span
+                                class="text--break"
+                            >Site web du centre ENIC-NARIC de la Communauté française : <a
+                                    href="http://www.enseignement.be/enic-naric"
+                                    target="_blank"
+                                >www.enseignement.be/enic-naric</a></span>
+                    <span>Site web des réseaux européens ENIC-NARIC : <a
+                                    href="http://www.enic-naric.net"
+                                    target="_blank"
+                                >www.enic-naric.net</a></span>
+                    <span class="text--break">Site web de l’ARES : <a
+                                    href="http://www.ares-ac.be"
+                                    target="_blank"
+                                >www.ares-ac.be</a>.</span>
                   </span></li>
                 </ul>
-          
-                <h2 class="title--section">7. CERTIFICATION DU SUPPLEMENT / <span class="text--special">Certification on the supplement</span></h2>
-          
+
+                <h2 class="title--section">7. CERTIFICATION DU SUPPLEMENT / <span
+                        class="text--special"
+                    >Certification on the supplement</span></h2>
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">7.1.</span>Date / <span class="text--special">Date</span><span class="info__value"> : <t t-esc="student_graduation_date_formatted"/></span></li>
-                  <li class="info__item"><span class="info__number">7.2.</span>Signature / <span class="text--special">signature</span><span class="info__value"> : Ingisi MPEYE</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >7.1.</span>Date / <span class="text--special">Date</span><span
+                            class="info__value"
+                        > : <t t-esc="student_graduation_date_formatted" /></span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >7.2.</span>Signature / <span
+                            class="text--special"
+                        >signature</span><span
+                            class="info__value"
+                        > : Ingisi MPEYE</span></li>
                 </ul>
-          
+
                 <ul class="infos__list">
-                  <li class="info__item"><span class="info__number">7.3.</span>Fonction / <span class="text--special">Capacity</span><span class="info__value"> : Secrétaire du jury</span></li>
-                  <li class="info__item"><span class="info__number">7.4.</span>Tampon officiel ou sceau / <span class="text--special">Official stamp or seal</span><span class="info__value"> :</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >7.3.</span>Fonction / <span
+                            class="text--special"
+                        >Capacity</span><span
+                            class="info__value"
+                        > : Secrétaire du jury</span></li>
+                  <li class="info__item"><span
+                            class="info__number"
+                        >7.4.</span>Tampon officiel ou sceau / <span
+                            class="text--special"
+                        >Official stamp or seal</span><span
+                            class="info__value"
+                        > :</span></li>
                 </ul>
-          
-                <h2 class="title--section">8. INFORMATION SUR LE SYSTÈME NATIONAL D’ENSEIGNEMENT SUPERIEUR / <span class="text--special">Information on the national higher education system</span></h2>
-                <img src="/custom_reports/static/src/img/tableau.png" alt="Tableau enseignement" class="learning__img" />
-          
-          
-          
+
+                <h2
+                    class="title--section"
+                >8. INFORMATION SUR LE SYSTÈME NATIONAL D’ENSEIGNEMENT SUPERIEUR / <span
+                        class="text--special"
+                    >Information on the national higher education system</span></h2>
+                <img
+                    src="/custom_reports/static/src/img/tableau.png"
+                    alt="Tableau enseignement"
+                    class="learning__img"
+                />
+
+
+
                 <!-- <p class="footer__page">Page 5 sur 5</p> -->
               </div>
             </div>
-          
-          
-         
-        
+
+
+
+
     </template>
-    
+
 
     <template id="report_school_individual_program_supplement_general_template">
       <t t-call="web.html_container">
@@ -564,42 +976,45 @@
               <!-- Didactic programs -->
               <t t-if="doc.is_bac">
                 <!-- Didactic Bachelor -->
-                <t t-set="bac" t-value="True"/>  
-                <t t-set="bac_dict" t-value="True"/>
+                <t t-set="bac" t-value="True" />
+                <t t-set="bac_dict" t-value="True" />
               </t>
               <t t-else="">
                 <!-- Didactic Master -->
-                <t t-set="master" t-value="True"/>  
-                <t t-set="master_dict" t-value="True"/>
+                <t t-set="master" t-value="True" />
+                <t t-set="master_dict" t-value="True" />
               </t>
             </t>
             <t t-else="">
               <!-- Non-Didactic programs -->
               <t t-if="doc.is_bac">
                 <!-- Non-Didactic Bachelor -->
-                <t t-set="bac" t-value="True"/>  
+                <t t-set="bac" t-value="True" />
               </t>
               <t t-else="">
                 <!-- Non-Didactic Master -->
-                <t t-set="master" t-value="True"/>  
+                <t t-set="master" t-value="True" />
               </t>
             </t>
 
             <div class="page">
-                <t t-call="custom_reports.report_school_individual_program_supplement_content_page"/>
+                <t
+                            t-call="custom_reports.report_school_individual_program_supplement_content_page"
+                        />
             </div>
           </t>
           </t>
       </t>
   </template>
 
-  <report 
-      id="report_school_individual_program_supplement_general"
-      model="school.individual_program"
-      string="Imprimer Supplément"
-      report_type="qweb-pdf"
-      name="custom_reports.report_school_individual_program_supplement_general_template"
-      file="custom_reports.report_school_individual_program_supplement_general_template"
-      paperformat="custom_reports.paperformat_supplement"/>
-  
+  <report
+        id="report_school_individual_program_supplement_general"
+        model="school.individual_program"
+        string="Imprimer Supplément"
+        report_type="qweb-pdf"
+        name="custom_reports.report_school_individual_program_supplement_general_template"
+        file="custom_reports.report_school_individual_program_supplement_general_template"
+        paperformat="custom_reports.paperformat_supplement"
+    />
+
 </odoo>

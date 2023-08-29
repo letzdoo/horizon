@@ -4,17 +4,20 @@ body {
 
 h1 {
     font-family: "Lato", "Fira Sans", sans-serif;
-    color : #666666;
+    color: #666666;
 }
 
-h2, h3,
-h4, h5, h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Lato", "Fira Sans", sans-serif;
-    color : #888888;
+    color: #888888;
 }
 
 .major_row {
-    color : darkblue;
+    color: darkblue;
     font-weight: 800;
 }
 
@@ -42,11 +45,12 @@ h4, h5, h6 {
 }
 
 .horizon-section-title {
-    font-size:130%;
-    font-weight:800;
-    border-bottom: solid 2px #cccccc; color:rgb(50, 100, 200); 
-    margin-bottom:10px;
-    margin-top:30px;
+    font-size: 130%;
+    font-weight: 800;
+    border-bottom: solid 2px #cccccc;
+    color: rgb(50, 100, 200);
+    margin-bottom: 10px;
+    margin-top: 30px;
 }
 
 .center {

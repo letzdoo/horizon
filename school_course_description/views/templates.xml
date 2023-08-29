@@ -22,19 +22,39 @@
 -->
 <odoo>
 
-    <template id="assets_report" inherit_id="report.assets_common" name="School Course Description">
+    <template
+        id="assets_report"
+        inherit_id="report.assets_common"
+        name="School Course Description"
+    >
         <xpath expr="." position="inside">
             <!--<script type="text/javascript" src="/school_course_description/static/src/js/website_sale.test.js"></script>-->
-            <script type="text/javascript" src="/school_course_description/static/src/js/course_description.js"></script>
-            <link rel='stylesheet' href='/school_course_description/static/src/css/course_description.css' />
+            <script
+                type="text/javascript"
+                src="/school_course_description/static/src/js/course_description.js"
+            />
+            <link
+                rel='stylesheet'
+                href='/school_course_description/static/src/css/course_description.css'
+            />
         </xpath>
     </template>
 
-    <template id="assets_frontend" inherit_id="website.assets_frontend" name="School Course Description">
+    <template
+        id="assets_frontend"
+        inherit_id="website.assets_frontend"
+        name="School Course Description"
+    >
         <xpath expr="." position="inside">
             <!--<script type="text/javascript" src="/school_course_description/static/src/js/website_sale.test.js"></script>-->
-            <script type="text/javascript" src="/school_course_description/static/src/js/course_description.js"></script>
-            <link rel='stylesheet' href='/school_course_description/static/src/css/course_description.css' />
+            <script
+                type="text/javascript"
+                src="/school_course_description/static/src/js/course_description.js"
+            />
+            <link
+                rel='stylesheet'
+                href='/school_course_description/static/src/css/course_description.css'
+            />
         </xpath>
     </template>
 
@@ -46,7 +66,7 @@
                   <div class="page-header">
                     <div class="row">
                       <div class="col-md-10">
-                        <h1>Course Group Description - <span t-field="cg.name"/></h1>
+                        <h1>Course Group Description - <span t-field="cg.name" /></h1>
                       </div>
                     </div>
                   </div>
@@ -55,37 +75,44 @@
                       <div class="panel-body">
                           <table class="table table-striped">
                               <colgroup>
-                                  <col style="width:250px"/>
-                                  <col style="width:100%"/>
+                                  <col style="width:250px" />
+                                  <col style="width:100%" />
                               </colgroup>
                               <tbody>
                                 <tr>
                                   <td>Code</td>
-                                  <td><span t-field="o.uid"/></td>
+                                  <td><span t-field="o.uid" /></td>
                                 </tr>
                                 <tr>
                                   <td>Cycle</td>
-                                  <td><span t-field="o.cycle_id.grade"/></td>
+                                  <td><span t-field="o.cycle_id.grade" /></td>
                                 </tr>
                                 <tr>
                                   <td>Teacher</td>
-                                  <td><span t-field="o.teacher_id"/></td>
+                                  <td><span t-field="o.teacher_id" /></td>
                                 </tr>
                                 <tr>
                                   <td>Period</td>
-                                  <td><span t-field="o.period"/></td>
+                                  <td><span t-field="o.period" /></td>
                                 </tr>
                                 <tr>
                                   <td>Credits</td>
-                                  <td><span t-field="o.total_credits"/></td>
+                                  <td><span t-field="o.total_credits" /></td>
                                 </tr>
                                 <tr>
                                   <td>Hours</td>
-                                  <td><span t-field="o.total_hours"/></td>
+                                  <td><span t-field="o.total_hours" /></td>
                                 </tr>
                                 <tr>
                                   <td>Mandatory</td>
-                                  <td><t t-if="o.mandatory"><input type="checkbox" value="" checked=""/></t><t t-if="not(o.mandatory)"><input type="checkbox" value=""/></t></td>
+                                  <td><t t-if="o.mandatory"><input
+                                                    type="checkbox"
+                                                    value=""
+                                                    checked=""
+                                                /></t><t t-if="not(o.mandatory)"><input
+                                                    type="checkbox"
+                                                    value=""
+                                                /></t></td>
                                 </tr>
                               </tbody>
                            </table>
@@ -96,10 +123,10 @@
                       <div class="panel-body">
                           <table class="table table-striped">
                               <colgroup>
-                                  <col style="width:600px"/>
-                                  <col style="width:100px"/>
-                                  <col style="width:100px"/>
-                                  <col style="width:100px"/>
+                                  <col style="width:600px" />
+                                  <col style="width:100px" />
+                                  <col style="width:100px" />
+                                  <col style="width:100px" />
                               </colgroup>
                               <tr>
                                 <td>Title</td>
@@ -109,16 +136,44 @@
                               </tr>
                               <tr t-foreach="o.course_ids" t-as="course">
                                 <td t-if="course.url_ref">
-                                    <a t-esc="course.title" data-toggle="modal" data-target="#noDescription" style="cursor: pointer;"/>
-                                    <br/><t t-foreach="course.teacher_ids" t-as="teacher"><i style="color:grey;" t-esc="teacher.name"/><t t-if="teacher_index &lt; (teacher_size - 1)">,</t></t>
+                                    <a
+                                            t-esc="course.title"
+                                            data-toggle="modal"
+                                            data-target="#noDescription"
+                                            style="cursor: pointer;"
+                                        />
+                                    <br /><t
+                                            t-foreach="course.teacher_ids"
+                                            t-as="teacher"
+                                        ><i
+                                                style="color:grey;"
+                                                t-esc="teacher.name"
+                                            /><t
+                                                t-if="teacher_index &lt; (teacher_size - 1)"
+                                            >,</t></t>
                                 </td>
                                 <td t-if="not course.url_ref">
-                                    <a t-esc="course.title" data-toggle="modal" data-target="#noDescription" style="cursor: pointer;"/>
-                                    <br/><t t-foreach="course.teacher_ids" t-as="teacher"><i style="color:grey;"  t-esc="teacher.name"/><t t-if="teacher_index &lt; (teacher_size - 1)">,</t></t>
+                                    <a
+                                            t-esc="course.title"
+                                            data-toggle="modal"
+                                            data-target="#noDescription"
+                                            style="cursor: pointer;"
+                                        />
+                                    <br /><t
+                                            t-foreach="course.teacher_ids"
+                                            t-as="teacher"
+                                        ><i
+                                                style="color:grey;"
+                                                t-esc="teacher.name"
+                                            /><t
+                                                t-if="teacher_index &lt; (teacher_size - 1)"
+                                            >,</t></t>
                                 </td>
-                                <td class="text-center"><t t-esc="course.hours"/></td>
-                                <td class="text-center"><t t-esc="course.credits"/></td>
-                                <td class="text-center"><t t-esc="course.weight"/></td>
+                                <td class="text-center"><t t-esc="course.hours" /></td>
+                                <td class="text-center"><t
+                                            t-esc="course.credits"
+                                        /></td>
+                                <td class="text-center"><t t-esc="course.weight" /></td>
                               </tr>
                           </table>
                       </div>
@@ -136,12 +191,19 @@
                     <div class="page-header">
                       <div class="row">
                         <div class="col-md-10">
-                          <h1>Course Description - <span t-field="course.name"/></h1>
+                          <h1>Course Description - <span t-field="course.name" /></h1>
                         </div>
                         <div class="col-md-2">
                           <span class="row">
-                              <a class="btn btn-default" t-att-href="'/course_doc/edit/%s' % slug(course)">
-                                <i class="fa fa-edit fa-2x" title="Edit" aria-hidden="true"></i>
+                              <a
+                                        class="btn btn-default"
+                                        t-att-href="'/course_doc/edit/%s' % slug(course)"
+                                    >
+                                <i
+                                            class="fa fa-edit fa-2x"
+                                            title="Edit"
+                                            aria-hidden="true"
+                                        />
                                 <span class="sr-only">Edit</span>
                               </a>
                           </span>
@@ -154,12 +216,22 @@
                       </div>
                       <!-- List group -->
                       <ul class="list-group">
-                        <li class="list-group-item">Enseignants responsables de son organisation et de son évaluation : Pierre-Henri XUEREB (Professeur)</li>
-                        <li class="list-group-item">Nombre de crédits associés : <span t-field="course.credits"/> Crédits ECTS</li>
-                        <li class="list-group-item">Pondération au sein de l’UE : <span t-field="course.weight"/></li>
+                        <li
+                                class="list-group-item"
+                            >Enseignants responsables de son organisation et de son évaluation : Pierre-Henri XUEREB (Professeur)</li>
+                        <li class="list-group-item">Nombre de crédits associés : <span
+                                    t-field="course.credits"
+                                /> Crédits ECTS</li>
+                        <li class="list-group-item">Pondération au sein de l’UE : <span
+                                    t-field="course.weight"
+                                /></li>
                         <li class="list-group-item">Caractère obligatoire : OUI</li>
-                        <li class="list-group-item">Période de l’activité d’apprentissage : 1er Quadrimestre et 2e Quadrimestre</li>
-                        <li class="list-group-item">Volume horaire : <span t-field="course.hours"/> h</li>
+                        <li
+                                class="list-group-item"
+                            >Période de l’activité d’apprentissage : 1er Quadrimestre et 2e Quadrimestre</li>
+                        <li class="list-group-item">Volume horaire : <span
+                                    t-field="course.hours"
+                                /> h</li>
                       </ul>
                     </div>
                     <div class="panel panel-default">
@@ -167,7 +239,7 @@
                         <h3 class="panel-title">Content</h3>
                       </div>
                       <div class="panel-body">
-                        <span t-field="doc.content"/>
+                        <span t-field="doc.content" />
                       </div>
                     </div>
                     <div class="panel panel-default">
@@ -175,7 +247,7 @@
                         <h3 class="panel-title">Method</h3>
                       </div>
                       <div class="panel-body">
-                        <span t-field="doc.method"/>
+                        <span t-field="doc.method" />
                       </div>
                     </div>
                     <div class="panel panel-default">
@@ -183,7 +255,7 @@
                         <h3 class="panel-title">Learning outcomes</h3>
                       </div>
                       <div class="panel-body">
-                        <span t-field="doc.learning_outcomes"/>
+                        <span t-field="doc.learning_outcomes" />
                       </div>
                     </div>
                     <div class="panel panel-default">
@@ -191,7 +263,7 @@
                         <h3 class="panel-title">Competencies</h3>
                       </div>
                       <div class="panel-body">
-                        <span t-field="doc.competencies"/>
+                        <span t-field="doc.competencies" />
                       </div>
                     </div>
                     <div class="panel panel-default">
@@ -199,7 +271,7 @@
                         <h3 class="panel-title">Evaluation method</h3>
                       </div>
                       <div class="panel-body">
-                        <span t-field="doc.evaluation_method"/>
+                        <span t-field="doc.evaluation_method" />
                       </div>
                     </div>
                     <div class="panel panel-default">
@@ -211,9 +283,9 @@
                         <tbody>
                           <t t-foreach="doc.staff_ids" t-as="staff">
                           <tr>
-                            <td><span t-field="staff.teacher_id"/></td>
-                            <td><span t-field="staff.role"/></td>
-                            <td><span t-field="staff.teacher_id.email"/></td>
+                            <td><span t-field="staff.teacher_id" /></td>
+                            <td><span t-field="staff.role" /></td>
+                            <td><span t-field="staff.teacher_id.email" /></td>
                           </tr>
                           </t>
                         </tbody>
@@ -224,7 +296,7 @@
                         <h3 class="panel-title">Language</h3>
                       </div>
                       <div class="panel-body">
-                        <span t-field="doc.language"/>
+                        <span t-field="doc.language" />
                       </div>
                     </div>
                     <div class="panel panel-default">
@@ -232,7 +304,7 @@
                         <h3 class="panel-title">Schedule</h3>
                       </div>
                       <div class="panel-body">
-                        <span t-field="doc.schedule"/>
+                        <span t-field="doc.schedule" />
                       </div>
                     </div>
                     <div class="panel panel-default">
@@ -240,21 +312,21 @@
                         <h3 class="panel-title">Rooms</h3>
                       </div>
                       <div class="panel-body">
-                        <span t-field="doc.rooms"/>
+                        <span t-field="doc.rooms" />
                       </div>
                     </div>
                 </div>
             </div>
         </t>
     </template>
-    
+
     <template id="school_course_edit" name="Course Documentation">
         <t t-call="website.layout">
             <t t-set="title">Course Description</t>
             <div class="oe_structure">
                 <div class="container course_doc_editor" t-att-data-doc-id="doc.id">
                     <div class="page-header">
-                      <h1>Draft Course Description - <span t-field="course.name"/></h1>
+                      <h1>Draft Course Description - <span t-field="course.name" /></h1>
                     </div>
                     <div class="alert alert-danger" role="alert">
                       Your modifications will be reviewed before publication to the web site.
@@ -265,12 +337,22 @@
                       </div>
                       <!-- List group -->
                       <ul class="list-group">
-                        <li class="list-group-item">Enseignants responsables de son organisation et de son évaluation : Pierre-Henri XUEREB (Professeur)</li>
-                        <li class="list-group-item">Nombre de crédits associés : <span t-field="course.credits"/> Crédits ECTS</li>
-                        <li class="list-group-item">Pondération au sein de l’UE : <span t-field="course.weight"/></li>
+                        <li
+                                class="list-group-item"
+                            >Enseignants responsables de son organisation et de son évaluation : Pierre-Henri XUEREB (Professeur)</li>
+                        <li class="list-group-item">Nombre de crédits associés : <span
+                                    t-field="course.credits"
+                                /> Crédits ECTS</li>
+                        <li class="list-group-item">Pondération au sein de l’UE : <span
+                                    t-field="course.weight"
+                                /></li>
                         <li class="list-group-item">Caractère obligatoire : OUI</li>
-                        <li class="list-group-item">Période de l’activité d’apprentissage : 1er Quadrimestre et 2e Quadrimestre</li>
-                        <li class="list-group-item">Volume horaire : <span t-field="course.hours"/> h</li>
+                        <li
+                                class="list-group-item"
+                            >Période de l’activité d’apprentissage : 1er Quadrimestre et 2e Quadrimestre</li>
+                        <li class="list-group-item">Volume horaire : <span
+                                    t-field="course.hours"
+                                /> h</li>
                       </ul>
                     </div>
                     <div class="panel panel-default">
@@ -279,7 +361,7 @@
                       </div>
                       <div class="panel-body">
                           <div id="content" class="text_editor">
-                            <t t-esc='doc.content'/>
+                            <t t-esc='doc.content' />
 				                  </div>
                       </div>
                     </div>
@@ -289,7 +371,7 @@
                       </div>
                       <div class="panel-body">
                         <div id="method" class="text_editor">
-                          <t t-esc='doc.method'/>
+                          <t t-esc='doc.method' />
 			                  </div>
                       </div>
                     </div>
@@ -299,7 +381,7 @@
                       </div>
                       <div class="panel-body">
                         <div id="learning_outcomes" class="text_editor">
-                          <t t-esc='doc.learning_outcomes'/>
+                          <t t-esc='doc.learning_outcomes' />
 			                  </div>
                       </div>
                     </div>
@@ -309,7 +391,7 @@
                       </div>
                       <div class="panel-body">
                         <div id="competencies" class="text_editor">
-                          <t t-esc='doc.competencies'/>
+                          <t t-esc='doc.competencies' />
 			                  </div>
                       </div>
                     </div>
@@ -319,7 +401,7 @@
                       </div>
                       <div class="panel-body">
                         <div id="evaluation_method" class="text_editor">
-                          <t t-esc='doc.evaluation_method'/>
+                          <t t-esc='doc.evaluation_method' />
 			                  </div>
                       </div>
                     </div>
@@ -332,9 +414,9 @@
                         <tbody>
                           <t t-foreach="doc.staff_ids" t-as="staff">
                           <tr>
-                            <td><span t-field="staff.teacher_id"/></td>
-                            <td><span t-field="staff.role"/></td>
-                            <td><span t-field="staff.teacher_id.email"/></td>
+                            <td><span t-field="staff.teacher_id" /></td>
+                            <td><span t-field="staff.role" /></td>
+                            <td><span t-field="staff.teacher_id.email" /></td>
                           </tr>
                           </t>
                         </tbody>
@@ -346,7 +428,7 @@
                       </div>
                       <div class="panel-body">
                         <div id="language" class="text_editor">
-                          <t t-esc='doc.language'/>
+                          <t t-esc='doc.language' />
 			                  </div>
                       </div>
                     </div>
@@ -356,7 +438,7 @@
                       </div>
                       <div class="panel-body">
                         <div id="schedule" class="text_editor">
-                          <t t-esc='doc.schedule'/>
+                          <t t-esc='doc.schedule' />
 			                  </div>
                       </div>
                     </div>
@@ -366,15 +448,21 @@
                       </div>
                       <div class="panel-body">
                         <div id="rooms" class="text_editor">
-                          <t t-esc='doc.rooms'/>
+                          <t t-esc='doc.rooms' />
 			                  </div>
                       </div>
                     </div>
                     <div class="btn-group mb16" role="group">
-                      <button type="button" class="btn btn-sm oe_button btn btn-primary school_editor_save">
+                      <button
+                            type="button"
+                            class="btn btn-sm oe_button btn btn-primary school_editor_save"
+                        >
                           <span>Save</span>
                       </button>
-                      <a class="btn btn-sm oe_button btn btn-default school_editor_close" t-att-href="'/course_doc/%s' % slug(course)">
+                      <a
+                            class="btn btn-sm oe_button btn btn-default school_editor_close"
+                            t-att-href="'/course_doc/%s' % slug(course)"
+                        >
                           <span>Close</span>
                       </a>
                     </div>

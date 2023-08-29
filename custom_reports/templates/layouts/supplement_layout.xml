@@ -4,7 +4,7 @@
         <div class="footer">
             <div style="color: #b1b1b1; text-align: center;">
                 <p style="">
-                    Page <span class="page"/>sur<span class="topage"/>
+                    Page <span class="page" />sur<span class="topage" />
                 </p>
             </div>
         </div>
@@ -13,15 +13,15 @@
     <template id="custom_supplement_layout">
         <!-- Multicompany -->
         <t t-if="not o and doc">
-            <t t-set="o" t-value="doc"/>
+            <t t-set="o" t-value="doc" />
         </t>
         <t t-if="o and 'company_id' in o">
-            <t t-set="company" t-value="o.company_id"></t>
+            <t t-set="company" t-value="o.company_id" />
         </t>
         <t t-if="not o or not 'company_id' in o">
-            <t t-set="company" t-value="res_company"></t>
+            <t t-set="company" t-value="res_company" />
         </t>
-        <t t-raw="0"/>
-        <t t-call="custom_reports.custom_layout_footer_supplement"/>
+        <t t-raw="0" />
+        <t t-call="custom_reports.custom_layout_footer_supplement" />
     </template>
 </odoo>

@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,22 +18,18 @@
 #
 ##############################################################################
 {
-    'name': 'School choice course group',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_management','school_evaluations'],
-    'init_xml': [],
-    'data': [
-        'views/program_view.xml',
+    "name": "School choice course group",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_management", "school_evaluations"],
+    "init_xml": [],
+    "data": [
+        "views/program_view.xml",
     ],
-    'demo_xml': [],
-    'description': '''
-        This modules add choice course group for a school.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

@@ -49,14 +49,14 @@
 <xs:complexType name="CivilStatePlaceType">
 <xs:annotation>
 <xs:documentation>A civil-state place is generally defined as a municipality and a country.
-				
+
 				For Belgian citizens, the municipality is generally known, and should be filled in accordingly.
 				The country should be set to Belgium in this case.
-				
+
 				For foreigners, the municipality is not always known, but at least the country should be filled in.
-				
+
 				If the municipality is not known, it is ommitted.
-				
+
 				If the country is not known, for whatever reason, it should be explicitly set to nill. This should be
 				an exceptional case.</xs:documentation>
 </xs:annotation>
@@ -64,10 +64,10 @@
 <xs:element minOccurs="0" name="municipality" type="cod:CodeType">
 <xs:annotation>
 <xs:documentation>The municipality is defined as a code type, which holds a simple code and a description.
-						
+
 						For Belgian municipalities, the simple code will be the INS/NIS code, and language-dependent
 						descriptions providing the name of the municipality may be added.
-						
+
 						For foreign municipalities, the simple code will generally not be defined, and it is set
 						to nill.</xs:documentation>
 </xs:annotation>

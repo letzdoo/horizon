@@ -28,7 +28,7 @@
             <field name="priority">110</field>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='current_year_id']" position="after">
-                    <field name="national_id"/>
+                    <field name="national_id" />
                 </xpath>
             </field>
         </record>

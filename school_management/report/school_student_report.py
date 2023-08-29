@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -20,27 +19,28 @@
 ##############################################################################
 import logging
 
-from odoo import api, fields, models, tools, _
-from odoo.exceptions import MissingError
+from odoo import fields, models, tools
 
 _logger = logging.getLogger(__name__)
+
 
 class StudentReport(models.Model):
     _name = "school.student.report"
     _auto = False
 
-    year_id = fields.Many2one('school.year', string="Year")
-    student_id = fields.Many2one('res.partner', string="Student")
-    program_id = fields.Many2one('school.program', string="Program")
-    bloc_id = fields.Many2one('school.bloc', string="Bloc")
-    gender = fields.Selection([('male', 'Male'),('female', 'Female')])
-    #has_paid_current_minerval = fields.Integer(string="Has paid current minerval")
+    year_id = fields.Many2one("school.year", string="Year")
+    student_id = fields.Many2one("res.partner", string="Student")
+    program_id = fields.Many2one("school.program", string="Program")
+    bloc_id = fields.Many2one("school.bloc", string="Bloc")
+    gender = fields.Selection([("male", "Male"), ("female", "Female")])
+    # has_paid_current_minerval = fields.Integer(string="Has paid current minerval")
 
     def init(self):
-        """ School Student main report """
+        """School Student main report"""
         cr = self._cr
-        tools.drop_view_if_exists(cr, 'school_student_report')
-        cr.execute(""" CREATE VIEW school_student_report AS (
+        tools.drop_view_if_exists(cr, "school_student_report")
+        cr.execute(
+            """ CREATE VIEW school_student_report AS (
             SELECT
                 school_individual_bloc.id as id,
                 school_year.id as year_id,
@@ -60,6 +60,7 @@ class StudentReport(models.Model):
                 school_individual_bloc.student_id = res_partner.id AND
                 school_individual_bloc.source_bloc_id = school_bloc.id AND
                 school_bloc.program_id = school_program.id
-        )""")
-        
+        )"""
+        )
+
         # --(SELECT COUNT(school_minerval.id) from school_minerval WHERE school_minerval.student_id = res_partner.id AND school_minerval.year_id = school_year.id) AS has_paid_current_minerval,

@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,24 +18,20 @@
 #
 ##############################################################################
 {
-    'name': 'School valuations',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_evaluations'],
-    'init_xml': [],
-    'data': [
-        'valuations_data.xml',
-        'views/valuations_view.xml',
-        'security/ir.model.access.csv',
+    "name": "School valuations",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_evaluations"],
+    "init_xml": [],
+    "data": [
+        "valuations_data.xml",
+        "views/valuations_view.xml",
+        "security/ir.model.access.csv",
     ],
-    'demo_xml': [],
-    'description': '''
-        This modules manage valuations of course groups.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

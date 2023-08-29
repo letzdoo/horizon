@@ -21,43 +21,76 @@
 ##############################################################################
 -->
 <odoo>
-    
-        
-        <menuitem name="Registration" parent="school_management.menu_school_admin" id="menu_admin_registration" sequence="30" groups="school_management.group_employee"/>
-        
+
+
+        <menuitem
+        name="Registration"
+        parent="school_management.menu_school_admin"
+        id="menu_admin_registration"
+        sequence="30"
+        groups="school_management.group_employee"
+    />
+
         <record id="res_config_settings_view_form" model="ir.ui.view">
-            <field name="name">res.config.settings.view.form.inherit.registration</field>
+            <field
+            name="name"
+        >res.config.settings.view.form.inherit.registration</field>
             <field name="model">res.config.settings</field>
-            <field name="priority" eval="60"/>
-            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="priority" eval="60" />
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
             <field name="arch" type="xml">
                 <xpath expr="//div[hasclass('settings')]" position="inside">
-                    <div class="app_settings_block" data-string="Registration" string="Registration" data-key="registration" groups="base.group_system">
+                    <div
+                    class="app_settings_block"
+                    data-string="Registration"
+                    string="Registration"
+                    data-key="registration"
+                    groups="base.group_system"
+                >
                         <h2>Registrations</h2>
-                        <div class="row mt16 o_settings_container" name="registration_setting_container">
-                            <div class="col-12 col-lg-6 o_setting_box"
-                                id="registration"
-                                title="Configure registration that can be accessed by students.">
-                                <div class="o_setting_left_pane"/>
+                        <div
+                        class="row mt16 o_settings_container"
+                        name="registration_setting_container"
+                    >
+                            <div
+                            class="col-12 col-lg-6 o_setting_box"
+                            id="registration"
+                            title="Configure registration that can be accessed by students."
+                        >
+                                <div class="o_setting_left_pane" />
                                 <div class="o_setting_right_pane">
-                                    <span class="o_form_label">Open year for registration</span>
+                                    <span
+                                    class="o_form_label"
+                                >Open year for registration</span>
                                     <div class="content-group">
                                         <div class="row mt16">
-                                            <label string="Open Year" for="registration_open_year_id" class="col-lg-3 o_light_label"/>
+                                            <label
+                                            string="Open Year"
+                                            for="registration_open_year_id"
+                                            class="col-lg-3 o_light_label"
+                                        />
                                             <field name="registration_open_year_id" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6 o_setting_box"
-                                id="registration_employee"
-                                title="Configure employee that manage/dispatch registrations.">
-                                <div class="o_setting_left_pane"/>
+                            <div
+                            class="col-12 col-lg-6 o_setting_box"
+                            id="registration_employee"
+                            title="Configure employee that manage/dispatch registrations."
+                        >
+                                <div class="o_setting_left_pane" />
                                 <div class="o_setting_right_pane">
-                                    <span class="o_form_label">Employee managing registrations</span>
+                                    <span
+                                    class="o_form_label"
+                                >Employee managing registrations</span>
                                     <div class="content-group">
                                         <div class="row mt16">
-                                            <label string="Employee" for="registration_employee_id" class="col-lg-3 o_light_label"/>
+                                            <label
+                                            string="Employee"
+                                            for="registration_employee_id"
+                                            class="col-lg-3 o_light_label"
+                                        />
                                             <field name="registration_employee_id" />
                                         </div>
                                     </div>
@@ -68,5 +101,5 @@
                 </xpath>
             </field>
         </record>
-    
+
 </odoo>

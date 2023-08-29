@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,26 +18,22 @@
 #
 ##############################################################################
 {
-    'name': 'School registration documents',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_management','school_registration'],
-    'init_xml': [],
-    'data': [
-        'views/configuration_view.xml',
-        'wizard/add_documents.xml',
-        'views/res_partner_view.xml',
-        'views/official_document_view.xml',
-        'security/ir.model.access.csv',
+    "name": "School registration documents",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_management", "school_registration"],
+    "init_xml": [],
+    "data": [
+        "views/configuration_view.xml",
+        "wizard/add_documents.xml",
+        "views/res_partner_view.xml",
+        "views/official_document_view.xml",
+        "security/ir.model.access.csv",
     ],
-    'demo_xml': [],
-    'description': '''
-        This modules manages registration documents for a school.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

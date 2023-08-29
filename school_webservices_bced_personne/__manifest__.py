@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,26 +18,22 @@
 #
 ##############################################################################
 {
-    'name': 'School webservices BCED Personne',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_webservices'],
-    'init_xml': [],
-    'data': [
-        'school_webservices_data.xml',
-        'views/res_users_view.xml',
-        'views/bced_inscription_view.xml',
-        'wizard/bced_personne.xml',
-        'security/ir.model.access.csv',
+    "name": "School webservices BCED Personne",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_webservices"],
+    "init_xml": [],
+    "data": [
+        "school_webservices_data.xml",
+        "views/res_users_view.xml",
+        "views/bced_inscription_view.xml",
+        "wizard/bced_personne.xml",
+        "security/ir.model.access.csv",
     ],
-    'demo_xml': [],
-    'description': '''
-        This modules manage access to e-Paysage webservices.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

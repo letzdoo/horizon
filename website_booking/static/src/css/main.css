@@ -1,157 +1,158 @@
-html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
-  overflow: auto;
+html,
+body {
+    font-family: "Roboto", "Helvetica", sans-serif;
+    overflow: auto;
 }
 
 nav {
-  height: 40px;
-  line-height: 40px;
+    height: 40px;
+    line-height: 40px;
 }
 
 nav .nav-title {
-  display: inline-block;
-  font-size: 16px;
-  padding: 0;
+    display: inline-block;
+    font-size: 16px;
+    padding: 0;
 }
 
 .navbar {
-  overflow-x:auto;
+    overflow-x: auto;
 }
 
 .navbar > table {
-  margin: 5px auto 0 auto;
-  width: auto;
+    margin: 5px auto 0 auto;
+    width: auto;
 }
 
 .navbar-card {
-  margin: 16px;
-  width: 200px;
-  height: 200px;
-  min-height: 200px;
+    margin: 16px;
+    width: 200px;
+    height: 200px;
+    min-height: 200px;
 }
 
 .cat_button {
-  background-color: #006064 !important;
+    background-color: #006064 !important;
 }
 
 .cat_button.active {
-  background-color: #00838f !important;
+    background-color: #00838f !important;
 }
 
 .navbar-card-title {
-  height: 55px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
+    height: 55px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .card .card-title {
-  padding-left: 10px;
-  font-size: 18px;
+    padding-left: 10px;
+    font-size: 18px;
 }
 
 .collapsible {
-  border: none;
-  box-shadow: none;
+    border: none;
+    box-shadow: none;
 }
 
 .collapsible-header {
-  border: none;
-  box-shadow: none;
+    border: none;
+    box-shadow: none;
 }
 
 .collapsible-body {
-  border: none;
-  box-shadow: none;
+    border: none;
+    box-shadow: none;
 }
 
 .fc-toolbar {
-  padding: 5px;
+    padding: 5px;
 }
 
 .fc-toolbar h2 {
-  margin: 0;
-  font-size: 1.5rem;
+    margin: 0;
+    font-size: 1.5rem;
 }
 
 .fc .fc-axis {
-  padding: 0px 5px 0px 5px;
+    padding: 0px 5px 0px 5px;
 }
 
 .calendar_body {
-  padding: 5px 100px 10px 40px;
+    padding: 5px 100px 10px 40px;
 }
 
 .fc button:focus {
-  outline: none;
-  background-color: transparent;
+    outline: none;
+    background-color: transparent;
 }
 
 label:after {
-  font-size: xx-small;
+    font-size: xx-small;
 }
 
 .mobile_container {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .mobile_content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  padding-bottom: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding-bottom: 50px;
 }
 
 .mobile_header {
-  flex-shrink: 1;
+    flex-shrink: 1;
 }
 
 .mobile_section {
-  flex-grow: 1;
-  overflow: auto;
-  min-height: 2em;
+    flex-grow: 1;
+    overflow: auto;
+    min-height: 2em;
 }
 
 .mobile_list {
-  border-top: 1px solid #eaeaea;
+    border-top: 1px solid #eaeaea;
 }
 
 .mobile_event {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  border-bottom: 1px solid #eaeaea;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .mobile_items {
-  display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .mobile_item {
-  flex: auto;
-  z-index: 0;
+    flex: auto;
+    z-index: 0;
 }
 
 footer.mobile_footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: white;
-  text-align: center;
-  height:60px;
-  padding-top: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    height: 60px;
+    padding-top: 10px;
 }
 
 .ui-datepicker {
-  margin: 5px;
-  padding: 5px;
-  background: rgb(226, 252, 255);
+    margin: 5px;
+    padding: 5px;
+    background: rgb(226, 252, 255);
 }

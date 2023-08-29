@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -21,22 +19,20 @@
 ##############################################################################
 
 {
-    'name': 'Google Documents Mixin',
-    'version': '16.0.0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest.lu (Jerome Sonnet)',
-    'website': '',
-    'category': 'Documents',
-    'depends': ['base', 'web', 'google_account'],
-    'init_xml': [],
-    'data': [
-        'security/ir.model.access.csv',
-        'views/res_partner_view.xml',
-        'views/ir_actions_report_view.xml',
+    "name": "Google Documents Mixin",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest.lu (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "Documents",
+    "depends": ["base", "web", "google_account"],
+    "init_xml": [],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/res_partner_view.xml",
+        "views/ir_actions_report_view.xml",
     ],
-    'demo_xml': [],
-    'description': '''This modules manages displays google documents for a contact.''',
-    'active': False,
-    'installable': True,
-    'application': True,
+    "demo_xml": [],
+    "installable": True,
+    "application": True,
 }

@@ -21,12 +21,25 @@
 ##############################################################################
 -->
 <odoo>
-  <template id="assets_backend" name="school_booking_assets" inherit_id="web.assets_backend">
+  <template
+        id="assets_backend"
+        name="school_booking_assets"
+        inherit_id="web.assets_backend"
+    >
     <xpath expr="." position="inside">
-        <link rel="stylesheet" href="/web_scheduler/static/lib/fullcalendar/scheduler.css" />
+        <link
+                rel="stylesheet"
+                href="/web_scheduler/static/lib/fullcalendar/scheduler.css"
+            />
         <link rel="stylesheet" href="/web_scheduler/static/src/css/web_scheduler.css" />
-        <script type="text/javascript" src="/web_scheduler/static/lib/fullcalendar/scheduler.js"></script>
-        <script type="text/javascript" src="/web_scheduler/static/src/js/web_scheduler.js"></script>
+        <script
+                type="text/javascript"
+                src="/web_scheduler/static/lib/fullcalendar/scheduler.js"
+            />
+        <script
+                type="text/javascript"
+                src="/web_scheduler/static/src/js/web_scheduler.js"
+            />
     </xpath>
   </template>
 </odoo>

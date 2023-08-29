@@ -26,16 +26,24 @@
     </record>
     <record id="bced_inscription" model="school.webservice">
         <field name="name">bced_inscription</field>
-        <field name="wsdl_url">school_webservices_bced_personne/static/wsdl/bced_inscription/BCEDInscriptionServiceV1.wsdl</field>
+        <field
+            name="wsdl_url"
+        >school_webservices_bced_personne/static/wsdl/bced_inscription/BCEDInscriptionServiceV1.wsdl</field>
         <field name="wsa_action">bced_inscription</field>
-        <field name="wsa_to">http://bced.wallonie.be/services/inscription/messages/v1</field>
-        <field name="group_id" ref="bced_allowed_group"/>
+        <field
+            name="wsa_to"
+        >http://bced.wallonie.be/services/inscription/messages/v1</field>
+        <field name="group_id" ref="bced_allowed_group" />
     </record>
     <record id="bced_personne" model="school.webservice">
         <field name="name">bced_personne</field>
-        <field name="wsdl_url">school_webservices_bced_personne/static/wsdl/bced_personne/BCEDPersonService_v3.wsdl</field>
+        <field
+            name="wsdl_url"
+        >school_webservices_bced_personne/static/wsdl/bced_personne/BCEDPersonService_v3.wsdl</field>
         <field name="wsa_action">bced_personne</field>
-        <field name="wsa_to">http://soa.spw.wallonie.be/services/person/messages/v3</field>
-        <field name="group_id" ref="bced_allowed_group"/>
+        <field
+            name="wsa_to"
+        >http://soa.spw.wallonie.be/services/person/messages/v3</field>
+        <field name="group_id" ref="bced_allowed_group" />
     </record>
 </odoo>

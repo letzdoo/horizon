@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,41 +18,33 @@
 #
 ##############################################################################
 {
-    'name': 'Website School Portal',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet) & Neodiensis',
-    'website': '',
-    'category': 'School Management',
-    'depends': [
-        'web',
-        'website',
-        'website_school_management'
+    "name": "Website School Portal",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "Neodiensis,ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["web", "website", "website_school_management"],
+    "data": [
+        "init_horizon.xml",
+        "views/main.xml",
+        "views/footer.xml",
+        "views/header.xml",
+        "views/custom.xml",
+        "views/snippets.xml",
+        "views/page_404.xml",
+        "views/page_403.xml",
+        "views/responsive.xml",
     ],
-    'data': [
-        'init_horizon.xml',
-        'views/main.xml',
-        'views/footer.xml',
-        'views/header.xml',
-        'views/custom.xml',
-        'views/snippets.xml',
-        'views/page_404.xml',
-        'views/page_403.xml',
-        'views/responsive.xml',
-    ],
-    'assets': {
-        'web.assets_frontend': [
-            'website_school_portal/static/src/js/snippet.js',
-            'website_school_portal/static/src/scss/main.scss',
+    "assets": {
+        "web.assets_frontend": [
+            "website_school_portal/static/src/js/snippet.js",
+            "website_school_portal/static/src/scss/main.scss",
         ]
     },
-    'description': '''
-        This module defines default page rendering for School Portal based on Horizon School Management.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
-    'images': [
-        'static/description/icon.png',
+    "installable": True,
+    "application": True,
+    "images": [
+        "static/description/icon.png",
     ],
 }

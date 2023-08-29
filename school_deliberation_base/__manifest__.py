@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -19,30 +18,26 @@
 #
 ##############################################################################
 {
-    'name': 'School deliberation base',
-    'version': '14.0.0.0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': ['school_evaluations'],
-    'init_xml': [],
-    'data': [
-        'views/deliberation_base_view.xml',
-        'security/ir.model.access.csv',
+    "name": "School deliberation base",
+    "version": "16.0.1.0.1",
+    "license": "AGPL-3",
+    "author": "ito-invest (Jerome Sonnet)",
+    "website": "https://github.com/ito-invest-lu/horizon",
+    "category": "School Management",
+    "depends": ["school_evaluations"],
+    "init_xml": [],
+    "data": [
+        "views/deliberation_base_view.xml",
+        "security/ir.model.access.csv",
     ],
-    'demo_xml': [],
-    'description': '''
-        This modules add deliberation management for a school.
-    ''',
-    'assets': {
-        'web.assets_backend': [
-            'school_deliberation_base/static/src/scss/*.scss',
-            'school_deliberation_base/static/src/js/*.js',
+    "demo_xml": [],
+    "assets": {
+        "web.assets_backend": [
+            "school_deliberation_base/static/src/scss/*.scss",
+            "school_deliberation_base/static/src/js/*.js",
         ],
     },
-    'qweb': ['static/src/xml/*.xml'],
-    'active': False,
-    'installable': True,
-    'application': True,
+    "qweb": ["static/src/xml/*.xml"],
+    "installable": True,
+    "application": True,
 }

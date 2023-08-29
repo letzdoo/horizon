@@ -1,11 +1,10 @@
 /* global odoo, _ */
-odoo.define('deliberation.DeliberationModel', function (require) {
+odoo.define("deliberation.DeliberationModel", function (require) {
     "use strict";
 
-    var BasicModel = require('web.BasicModel');
+    var BasicModel = require("web.BasicModel");
 
     var DeliberationModel = BasicModel.extend({
-
         /**
          * @override
          */
@@ -14,7 +13,7 @@ odoo.define('deliberation.DeliberationModel', function (require) {
             this.courseValues = {};
             this._super.apply(this, arguments);
         },
-    
+
         /**
          * @override
          */
@@ -43,7 +42,7 @@ odoo.define('deliberation.DeliberationModel', function (require) {
         __reload: function () {
             return this._loadProgram(this._super.apply(this, arguments));
         },
-    
+
         /**
          * @private
          * @param {Promise} super_def a promise that resolves with a dataPoint id
@@ -52,31 +51,45 @@ odoo.define('deliberation.DeliberationModel', function (require) {
         _loadProgram: function (super_def) {
             var self = this;
             return new Promise((resolve, reject) => {
-                super_def.then(function(results) {
+                super_def.then(function (results) {
                     var localID = results;
-                    if (self.loadParams.modelName == 'school.individual_bloc') {
+                    if (self.loadParams.modelName == "school.individual_bloc") {
                         self._rpc({
-                                model: "school.individual_program", 
-                                method: "read", 
-                                args: [[self.localData[self.localData[localID].data.program_id].data.id]],
-                            }).then(function(result){
-                                self.programValues[localID] = result[0];
-                                self._rpc({
-                                        model: "school.individual_course",
-                                        method: "search_read", 
-                                        domain: [['bloc_id', '=', self.localData[localID].data.id]],
-                                        fields: ['course_group_id','title','teacher_id','final_result','final_result_disp'],
-                                    }).then(function(result){
-                                        self.courseValues[localID] = result;
-                                        resolve(localID);
-                                    });
-                                });
+                            model: "school.individual_program",
+                            method: "read",
+                            args: [
+                                [
+                                    self.localData[
+                                        self.localData[localID].data.program_id
+                                    ].data.id,
+                                ],
+                            ],
+                        }).then(function (result) {
+                            self.programValues[localID] = result[0];
+                            self._rpc({
+                                model: "school.individual_course",
+                                method: "search_read",
+                                domain: [
+                                    ["bloc_id", "=", self.localData[localID].data.id],
+                                ],
+                                fields: [
+                                    "course_group_id",
+                                    "title",
+                                    "teacher_id",
+                                    "final_result",
+                                    "final_result_disp",
+                                ],
+                            }).then(function (result) {
+                                self.courseValues[localID] = result;
+                                resolve(localID);
+                            });
+                        });
                     } else {
                         resolve(localID);
-                    }});
+                    }
+                });
             });
         },
-          
     });
     return DeliberationModel;
 });
