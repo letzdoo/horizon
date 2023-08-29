@@ -21,8 +21,8 @@
 ##############################################################################
 -->
 <odoo>
-    <template id="hz_page_403" name="Non autorisé">
-        <t t-call="website.layout">
+    <template id="hz_page_403" name="Non autorisé" inherit_id="http_routing.403">
+        <xpath expr="//div[@class='container']" position="replace">
             <div class="container o_not_editable">
                 <div class="text-center mt-5">
                     <h1>Non autorisé</h1>
@@ -34,6 +34,6 @@
                     <hr />
                 </div>
             </div>
-        </t>
+        </xpath>
     </template>
 </odoo>

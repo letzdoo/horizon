@@ -55,5 +55,3 @@ class Menu(models.Model):
                     "employee": True,
                 }
             )
-
-            self.env.cr.commit()

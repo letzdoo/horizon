@@ -46,11 +46,11 @@ class ProgramWeb(models.Model):
     )  # store=True : necessary for order by
     specialization = fields.Char(required=False, string="Specialization", size=40)
     specialization_slug = fields.Char(
-        string="Specialization", compute="compute_specialization_slug", store=True
+        string="Specialization", compute="_compute_specialization_slug", store=True
     )  # store=True : necessary for search
 
     @api.depends("specialization")
-    def compute_specialization_slug(self):
+    def _compute_specialization_slug(self):
         for prog in self:
             if prog.specialization:
                 prog.specialization_slug = slugify_one(prog.specialization)
@@ -106,11 +106,11 @@ class CycleWeb(models.Model):
     _inherit = "school.cycle"
 
     grade_order = fields.Integer(
-        string="Grade Order", compute="compute_grade_order", store=True
+        string="Grade Order", compute="_compute_grade_order", store=True
     )
 
     @api.depends("short_name")
-    def compute_grade_order(self):
+    def _compute_grade_order(self):
         for cycle in self:
             if cycle.short_name == "B":
                 cycle.grade_order = 1
@@ -120,21 +120,21 @@ class CycleWeb(models.Model):
                 cycle.grade_order = 3
 
     slug_grade = fields.Char(
-        string="Grade Slug", compute="compute_slug_grade", store=True
+        string="Grade Slug", compute="_compute_slug_grade", store=True
     )
 
     @api.depends("grade")
-    def compute_slug_grade(self):
+    def _compute_slug_grade(self):
         for cycle in self:
             cycle.slug_grade = slugify_one(cycle.grade)
 
     subtype = fields.Char(required=False, string="Sub-type", size=40)
     slug_subtype = fields.Char(
-        string="Sub-type Slug", compute="compute_slug_subtype", store=True
+        string="Sub-type Slug", compute="_compute_slug_subtype", store=True
     )
 
     @api.depends("subtype")
-    def compute_slug_subtype(self):
+    def _compute_slug_subtype(self):
         for cycle in self:
             if cycle.subtype:
                 cycle.slug_subtype = slugify_one(cycle.subtype)
@@ -165,10 +165,10 @@ class CycleWeb(models.Model):
 class DomainWeb(models.Model):
     _inherit = "school.domain"
 
-    slug = fields.Char(string="Domain Slug", compute="compute_slug", store=True)
+    slug = fields.Char(string="Domain Slug", compute="_compute_slug", store=True)
 
     @api.depends("name")
-    def compute_slug(self):
+    def _compute_slug(self):
         for dom in self:
             dom.slug = slugify_one(dom.name)
 
@@ -176,10 +176,10 @@ class DomainWeb(models.Model):
 class TrackWeb(models.Model):
     _inherit = "school.track"
 
-    slug = fields.Char(string="Track Slug", compute="compute_slug", store=True)
+    slug = fields.Char(string="Track Slug", compute="_compute_slug", store=True)
 
     @api.depends("name")
-    def compute_slug(self):
+    def _compute_slug(self):
         for track in self:
             track.slug = slugify_one(track.name)
 
@@ -187,10 +187,10 @@ class TrackWeb(models.Model):
 class SpecialityWeb(models.Model):
     _inherit = "school.speciality"
 
-    slug = fields.Char(string="Speciality Slug", compute="compute_slug", store=True)
+    slug = fields.Char(string="Speciality Slug", compute="_compute_slug", store=True)
 
     @api.depends("name")
-    def compute_slug(self):
+    def _compute_slug(self):
         for spec in self:
             spec.slug = slugify_one(spec.name)
 

@@ -75,12 +75,9 @@ class Menu(models.Model):
                 }
             )
 
-            self.env.cr.commit()
-
         # Suppression des points de menu Accueil et Contactez-nous
         self.env["website.menu"].search([("url", "=", "/")]).unlink()
         self.env["website.menu"].search([("url", "=", "/contactus")]).unlink()
-        self.env.cr.commit()
 
     def contains(self, list, filter):
         for x in list:
