@@ -38,17 +38,19 @@ class YearOpening(models.TransientModel):
 
     @api.model
     def default_get(self, fields):
-        dict(self._context or {})
+        res = super().default_get(fields)
         current_year_id = self.env.user.current_year_id
 
         program_ids = self.env["school.program"].search(
             [["year_id", "=", current_year_id.id]]
         )
-        return {
-            "program_to_duplicate_ids": [
-                (4, program_id.id, False) for program_id in program_ids
-            ],
-        }
+        return res.update(
+            {
+                "program_to_duplicate_ids": [
+                    (4, program_id.id, False) for program_id in program_ids
+                ],
+            }
+        )
 
     def action_open_year(self):
         self.ensure_one()

@@ -73,10 +73,10 @@ class OfficialDocument(models.Model):
     _name = "school.official_document"
     _inherit = ["mail.activity.mixin"]
 
-    name = fields.Char("Name", compute="compute_name")
+    name = fields.Char("Name", compute="_compute_name")
 
     @api.depends("student_id.name", "type_id.name")
-    def compute_name(self):
+    def _compute_name(self):
         for doc in self:
             doc.name = "%s - %s" % (doc.student_id.name, doc.type_id.name)
 

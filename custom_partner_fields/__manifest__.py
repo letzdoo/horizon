@@ -1,7 +1,7 @@
 {
     "name": "Custom Partner Fields",
     "summary": """Custom Partner Fields""",
-    "author": "Deuse",
+    "author": "Deuse, ito-invest (Jerome Sonnet)",
     "website": "https://github.com/ito-invest-lu/horizon",
     "version": "16.0.1.0.1",
     "depends": ["base", "school_management"],

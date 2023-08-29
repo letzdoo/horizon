@@ -94,13 +94,15 @@ class Event(models.Model):
         "school.asset", "event_assets_ref", "event_id", "asset_id", string="Assets"
     )
 
-    main_categ_id = fields.Many2one("calendar.event.type", compute="_get_main_categ_id")
+    main_categ_id = fields.Many2one(
+        "calendar.event.type", compute="_compute_main_categ_id"
+    )
 
     @api.model
     def _get_public_fields(self):
         return super(Event, self)._get_public_fields() | {"room_id", "asset_ids"}
 
-    def _get_main_categ_id(self):
+    def _compute_main_categ_id(self):
         for rec in self:
             if rec.categ_ids:
                 rec.main_categ_id = rec.categ_ids[0]
@@ -147,22 +149,17 @@ class Event(models.Model):
                     conflicts_count = (
                         self.env["calendar.event"]
                         .sudo()
-                        .with_context({"virtual_id": True})
+                        .with_context(virtual_id=True)
                         .search_count(domain)
                     )
                     _logger.info(
                         "Check Concurrent for %s : %s" % (self.env.uid, domain)
                     )
                     if conflicts_count > 1:
-                        data = (
-                            self.env["calendar.event"]
-                            .sudo()
-                            .with_context({"virtual_id": True})
-                            .search_read(domain)
-                        )
                         raise ValidationError(
-                            _("Concurrent event detected for %s : %s in %s")
-                            % (self.env.uid, rec.start, rec.room_id.name)
+                            _(
+                                f"Concurrent event detected for {self.env.uid} : {rec.start} in {rec.room_id.name}"
+                            )
                         )
 
                     # Constraint not for employees and teatchers

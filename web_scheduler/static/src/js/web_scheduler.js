@@ -24,7 +24,6 @@ odoo.define("web_scheduler.SchedulerView", function (require) {
 
     var core = require("web.core");
     var _t = core._t;
-    var _lt = core._lt;
 
     var Model = require("web.DataModel");
     var CalendarView = require("web.CalendarView");
@@ -82,7 +81,7 @@ odoo.define("web_scheduler.SchedulerView", function (require) {
                     defaultView: this.mode == "day" ? "agendaDay" : "timelineDay",
 
                     viewRender: function (view) {
-                        var mode;
+                        var mode = null;
                         switch (view.name) {
                             case "month":
                                 mode = "month";

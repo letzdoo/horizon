@@ -151,15 +151,13 @@ class BCEDInscription(models.Model):
                     if res["description"]:
                         raise UserError(
                             _(
-                                "Error while publishing inscription with code  %s : %s "
-                                % (res["code"], res["description"])
+                                f"Error while publishing inscription with code  {res['code']} : {res['description']} "
                             )
                         )
                     else:
                         raise UserError(
                             _(
-                                "Error while publishing inscription with code %s : %s"
-                                % (res["code"], res)
+                                f"Error while publishing inscription with code {res['code']} : {res}"
                             )
                         )
                 self.action_log_access(
@@ -170,10 +168,9 @@ class BCEDInscription(models.Model):
                 self.action_log_access("Publish Inscription", True)
                 raise UserError(
                     _(
-                        "Error while publishing inscription with code %s : %s"
-                        % (inscription.partner_id.reg_number, e)
+                        "Error while publishing inscription with code {inscription.partner_id.reg_number}"
                     )
-                )
+                ) from e
         else:
             raise UserError(_("You must provide an inscription to publish"))
 
@@ -228,31 +225,29 @@ class BCEDInscription(models.Model):
                     if res["description"]:
                         raise UserError(
                             _(
-                                "Error while closing inscription with code  %s : %s "
-                                % (res["code"], res["description"])
+                                f"Error while closing inscription with code {res['code']} : {res['description']}"
                             )
                         )
                     else:
                         raise UserError(
                             _(
-                                "Error while closing inscription with code %s : %s"
-                                % (res["code"], res)
+                                f"Error while closing inscription with code {res['code']} : {res}"
                             )
                         )
                 self.action_log_access(
-                    "Closing Inscription for %s" % inscription.partner_id.reg_number
+                    _("Closing Inscription for %s" % inscription.partner_id.reg_number)
                 )
                 return res
             except Exception as e:
                 self.action_log_access(
-                    "Close Inscription for %s" % inscription.partner_id.reg_number, True
+                    _("Close Inscription for %s" % inscription.partner_id.reg_number),
+                    True,
                 )
                 raise UserError(
                     _(
-                        "Error while closing inscription with code %s : %s"
-                        % (inscription.partner_id.reg_number, e)
+                        f"Error while closing inscription with code {inscription.partner_id.reg_number}"
                     )
-                )
+                ) from e
         else:
             raise UserError(_("You must provide an inscription to close"))
 
@@ -309,32 +304,30 @@ class BCEDInscription(models.Model):
                     if res["description"]:
                         raise UserError(
                             _(
-                                "Error while extending inscription with code  %s : %s "
-                                % (res["code"], res["description"])
+                                f"Error while extending inscription with code {res['code']} : {res['description']}"
                             )
                         )
                     else:
                         raise UserError(
                             _(
-                                "Error while extending inscription with code %s : %s"
-                                % (res["code"], res)
+                                f"Error while extending inscription with code {res['code']} : {res}"
                             )
                         )
                 self.action_log_access(
-                    "Extend Inscription for %s" % inscription.partner_id.reg_number
+                    _("Extend Inscription for %s" % inscription.partner_id.reg_number)
                 )
                 return res
             except Exception as e:
                 self.action_log_access(
-                    "Extend Inscription for %s" % inscription.partner_id.reg_number,
+                    _("Extend Inscription for %s" % inscription.partner_id.reg_number),
                     True,
                 )
                 raise UserError(
                     _(
-                        "Error while extending inscription with code %s : %s"
-                        % (inscription.partner_id.reg_number, e)
+                        "Error while extending inscription with code %s"
+                        % inscription.partner_id.reg_number
                     )
-                )
+                ) from e
         else:
             raise UserError(_("You must provide an inscription to extend"))
 
@@ -353,7 +346,7 @@ class PersonService(models.Model):
             priv_ns = "http://soa.spw.wallonie.be/common/privacylog/v1"
 
             client.type_factory(person_ns)
-            id = client.type_factory(id_ns)
+            id_fact = client.type_factory(id_ns)
             client.type_factory(priv_ns)
 
             if not self.env.user.national_id:
@@ -373,7 +366,7 @@ class PersonService(models.Model):
             try:
                 res = client.service.getPerson(
                     customerInformations=[
-                        id.CustomerInformationType(
+                        id_fact.CustomerInformationType(
                             ticket=uuid.uuid4(),
                             timestampSent=datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
                             customerIdentification={
@@ -436,7 +429,7 @@ class PersonService(models.Model):
             priv_ns = "http://soa.spw.wallonie.be/common/privacylog/v1"
 
             client.type_factory(person_ns)
-            id = client.type_factory(id_ns)
+            id_fact = client.type_factory(id_ns)
             client.type_factory(priv_ns)
 
             if not partner_id.lastname:
@@ -452,7 +445,7 @@ class PersonService(models.Model):
             try:
                 res = client.service.searchPersonByName(
                     customerInformations=[
-                        id.CustomerInformationType(
+                        id_fact.CustomerInformationType(
                             ticket=uuid.uuid4(),
                             timestampSent=datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
                             customerIdentification={
@@ -491,8 +484,8 @@ class PersonService(models.Model):
                     "SearchPersonByName for %s" % partner_id.lastname, True
                 )
                 raise UserError(
-                    _("Error while searching person %s : %s" % (partner_id.lastname, e))
-                )
+                    _("Error while searching person %s " % partner_id.lastname)
+                ) from e
         else:
             raise ValidationError(_("No partner provided"))
 
@@ -505,13 +498,13 @@ class PersonService(models.Model):
             priv_ns = "http://soa.spw.wallonie.be/common/privacylog/v1"
 
             client.type_factory(person_ns)
-            id = client.type_factory(id_ns)
+            id_fac = client.type_factory(id_ns)
             client.type_factory(priv_ns)
             try:
 
                 res = client.service.getPerson(
                     customerInformations=[
-                        id.CustomerInformationType(
+                        id_fac.CustomerInformationType(
                             ticket=uuid.uuid4(),
                             timestampSent=datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
                             customerIdentification={
@@ -546,9 +539,7 @@ class PersonService(models.Model):
                 return res["person"]
             except Exception as e:
                 self.action_log_access("GetPerson for %s" % reference, True)
-                raise UserError(
-                    _("Error while getting person %s : %s" % (reference, e))
-                )
+                raise UserError(_("Error while getting person %s" % reference)) from e
         else:
             raise ValidationError(_("No record provided"))
 
@@ -561,7 +552,7 @@ class PersonService(models.Model):
             priv_ns = "http://soa.spw.wallonie.be/common/privacylog/v1"
 
             client.type_factory(person_ns)
-            id = client.type_factory(id_ns)
+            id_fact = client.type_factory(id_ns)
             client.type_factory(priv_ns)
 
             # We make the choice to ask at least for the firstname, lastname and birthdate to get a bis number
@@ -583,7 +574,7 @@ class PersonService(models.Model):
             try:
                 res = client.service.publishPerson(
                     customerInformations=[
-                        id.CustomerInformationType(
+                        id_fact.CustomerInformationType(
                             ticket=uuid.uuid4(),
                             timestampSent=datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ"),
                             customerIdentification={
@@ -664,13 +655,13 @@ class PersonService(models.Model):
                 return res["result"]["personNumber"]
             except Exception as e:
                 self.action_log_access(
-                    "PublishPerson for %s" % partner_id.lastname, True
+                    _("PublishPerson for %s" % partner_id.lastname), True
                 )
                 raise UserError(
                     _(
                         "Error while publishing person %s : %s"
                         % (partner_id.lastname, e)
                     )
-                )
+                ) from e
         else:
             raise ValidationError(_("No partner provided"))

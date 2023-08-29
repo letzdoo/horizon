@@ -10,6 +10,7 @@
  *
  * Project: https://github.com/CodeSeven/toastr
  */
+/* eslint-disable */
 /* global define */
 (function (define) {
     define(["jquery"], function ($) {

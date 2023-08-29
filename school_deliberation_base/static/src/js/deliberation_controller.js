@@ -1,9 +1,8 @@
-/* global odoo, _, _t */
+/* global odoo */
 odoo.define("deliberation.DeliberationController", function (require) {
     "use strict";
 
     var BasicController = require("web.BasicController");
-    var viewRegistry = require("web.view_registry");
 
     const KanbanController = require("web.KanbanController");
 
@@ -45,7 +44,7 @@ odoo.define("deliberation.DeliberationController", function (require) {
             award_program: "_onDeliberateProgram",
         },
 
-        init: function (parent, model, renderer, params) {
+        init: function (parent, model, renderer) {
             this.model = model;
             this.renderer = renderer;
             this._super.apply(this, arguments);
@@ -99,7 +98,7 @@ odoo.define("deliberation.DeliberationController", function (require) {
             });
         },
 
-        _onReloadBloc: function (event) {
+        _onReloadBloc: function () {
             this.reload();
         },
 

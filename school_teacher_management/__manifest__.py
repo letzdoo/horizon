@@ -29,9 +29,9 @@
     "data": [
         "school_data.xml",
         "views/school_teacher_management_view.xml",
-        #'report/report_student_group.xml',
-        #'wizard/linked_group_wizard.xml',
-        #'wizard/merge_group_wizard.xml',
+        # 'report/report_student_group.xml',
+        # 'wizard/linked_group_wizard.xml',
+        # 'wizard/merge_group_wizard.xml',
         "security/ir.model.access.csv",
     ],
     "images": [

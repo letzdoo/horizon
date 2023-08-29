@@ -1,4 +1,4 @@
-/* global odoo, _ */
+/* global odoo */
 odoo.define("deliberation.DeliberationModel", function (require) {
     "use strict";
 
@@ -51,43 +51,49 @@ odoo.define("deliberation.DeliberationModel", function (require) {
         _loadProgram: function (super_def) {
             var self = this;
             return new Promise((resolve, reject) => {
-                super_def.then(function (results) {
-                    var localID = results;
-                    if (self.loadParams.modelName == "school.individual_bloc") {
-                        self._rpc({
-                            model: "school.individual_program",
-                            method: "read",
-                            args: [
-                                [
-                                    self.localData[
-                                        self.localData[localID].data.program_id
-                                    ].data.id,
-                                ],
-                            ],
-                        }).then(function (result) {
-                            self.programValues[localID] = result[0];
+                super_def
+                    .then(function (results) {
+                        var localID = results;
+                        if (self.loadParams.modelName == "school.individual_bloc") {
                             self._rpc({
-                                model: "school.individual_course",
-                                method: "search_read",
-                                domain: [
-                                    ["bloc_id", "=", self.localData[localID].data.id],
-                                ],
-                                fields: [
-                                    "course_group_id",
-                                    "title",
-                                    "teacher_id",
-                                    "final_result",
-                                    "final_result_disp",
+                                model: "school.individual_program",
+                                method: "read",
+                                args: [
+                                    [
+                                        self.localData[
+                                            self.localData[localID].data.program_id
+                                        ].data.id,
+                                    ],
                                 ],
                             }).then(function (result) {
-                                self.courseValues[localID] = result;
-                                resolve(localID);
+                                self.programValues[localID] = result[0];
+                                self._rpc({
+                                    model: "school.individual_course",
+                                    method: "search_read",
+                                    domain: [
+                                        [
+                                            "bloc_id",
+                                            "=",
+                                            self.localData[localID].data.id,
+                                        ],
+                                    ],
+                                    fields: [
+                                        "course_group_id",
+                                        "title",
+                                        "teacher_id",
+                                        "final_result",
+                                        "final_result_disp",
+                                    ],
+                                }).then(function (result) {
+                                    self.courseValues[localID] = result;
+                                    resolve(localID);
+                                });
                             });
-                        });
-                    } else {
-                        resolve(localID);
-                    }
-                });
+                        } else {
+                            resolve(localID);
+                        }
+                    })
+                    .catch(reject);
             });
         },
     });

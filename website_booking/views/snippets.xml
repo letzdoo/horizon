@@ -103,7 +103,9 @@
     <record id="s_bookings_000_js" model="ir.asset">
         <field name="name">Bookings 000 JS</field>
         <field name="bundle">web.assets_frontend</field>
-        <field name="path">website_booking/static/src/snippets/s_bookings/000.js</field>
+        <field
+            name="path"
+        >website_booking/static/src/snippets/s_bookings/000.esm.js</field>
     </record>
 
     <record id="s_bookings_000_xml" model="ir.asset">

@@ -188,7 +188,7 @@ class Course(models.Model):
     documentation_id = fields.Many2one(
         "school.course_documentation",
         string="Documentation",
-        compute="compute_documentation_id",
+        compute="_compute_documentation_id",
         search="_search_documentation_id",
     )
 
@@ -213,7 +213,7 @@ class Course(models.Model):
         for rec in self:
             rec.all_documentation_count = len(rec.documentation_ids)
 
-    def compute_documentation_id(self):
+    def _compute_documentation_id(self):
         for rec in self:
             docs = rec.documentation_ids.filtered(lambda r: r.state == "published")
             if docs:

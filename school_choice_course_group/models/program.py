@@ -53,14 +53,14 @@ class CourseGroup(models.Model):
         "total_hours_to_select",
         "total_weight_to_select",
     )
-    def _get_courses_total(self):
+    def _compute_courses_total(self):
         for rec in self:
             if rec.is_choice_course_group:
                 rec.total_hours = rec.total_hours_to_select
                 rec.total_credits = rec.total_credits_to_select
                 rec.total_weight = rec.total_weight_to_select
             else:
-                super(CourseGroup, rec)._get_courses_total()
+                return super(CourseGroup, rec)._compute_courses_total()
 
 
 class IndividualBloc(models.Model):
@@ -83,7 +83,7 @@ class Bloc(models.Model):
         "course_group_ids.total_weight",
         "course_group_ids.type",
     )
-    def _get_courses_total(self):
+    def _compute_courses_total(self):
         for rec in self:
             total_hours = 0.0
             total_credits = 0.0

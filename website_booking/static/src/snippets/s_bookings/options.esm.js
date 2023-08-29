@@ -17,7 +17,7 @@ const snippetBookingsOptions = options.Class.extend({
     onBuilt() {
         this._super.apply(this, arguments);
         // TODO Remove in master.
-        this.$target[0].dataset["snippet"] = "s_bookings";
+        this.$target[0].dataset.snippet = "s_bookings";
     },
 
     async willStart() {
@@ -49,7 +49,7 @@ const snippetBookingsOptions = options.Class.extend({
     /**
      * @override
      */
-    async _computeWidgetState(methodName, params) {
+    async _computeWidgetState(methodName) {
         if (methodName === "setTags") {
             return JSON.stringify(this.tagIDs.map((id) => this.allTagsByID[id]));
         }

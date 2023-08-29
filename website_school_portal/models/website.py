@@ -1,10 +1,10 @@
 import base64
 import logging
 
-_logger = logging.getLogger(__name__)
-
 from odoo import api, models, tools
 from odoo.modules.module import get_resource_path
+
+_logger = logging.getLogger(__name__)
 
 
 class WebsiteHorizon(models.Model):

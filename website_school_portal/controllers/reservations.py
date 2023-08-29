@@ -8,6 +8,7 @@ from odoo.http import request
 
 _logger = logging.getLogger(__name__)
 
+
 # Gestion des différentes routes pour les programmes de cours
 class ReservationsController(http.Controller):
     @http.route("/reservations/creation", type="http", auth="user", website=True)

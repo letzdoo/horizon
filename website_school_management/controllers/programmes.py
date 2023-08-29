@@ -7,6 +7,7 @@ from odoo.addons.http_routing.models.ir_http import slug, unslug
 
 _logger = logging.getLogger(__name__)
 
+
 # Gestion des différentes routes pour les programmes de cours
 class programmes(http.Controller):
     # Génération du breadcrumb

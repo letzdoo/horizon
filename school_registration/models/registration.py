@@ -21,6 +21,7 @@ import json
 import logging
 
 import requests
+from requests.exceptions import Timeout
 
 from odoo import fields, models, tools
 
@@ -133,7 +134,7 @@ class Registration(models.Model):
                                                           width: 100%;
                                                           height: 1200px;" title="Contact Form"></iframe>"""
             else:
-                rec.contact_form_iframe = f"""<h4>No contact form</h4>"""
+                rec.contact_form_iframe = """<h4>No contact form</h4>"""
             if rec.registration_form_id:
                 rec.registration_form_iframe = f"""<iframe src='/formio/form/{rec.registration_form_uuid}'
                                                    style="display: block;       /* iframes are inline by default */
@@ -142,7 +143,7 @@ class Registration(models.Model):
                                                           width: 100%;
                                                           height: 1200px;" title="Contact Form"></iframe>"""
             else:
-                rec.registration_form_iframe = f"""<h4>No registration form</h4>"""
+                rec.registration_form_iframe = """<h4>No registration form</h4>"""
 
     program_id = fields.Many2one(
         "school.program", string="Program", domain="[['year_id','=',year_id]]"
@@ -198,12 +199,16 @@ class Registration(models.Model):
         day, month, year = date_str.split("/")
         return f"{year}-{month}-{day}"
 
-    def _extract_base64_data_from_url(self, url):
-        # Retrieve the image from the URL
-        response = requests.get(url)
-        if response and response.ok:
-            return tools.image_process(response.content)
-        else:
+    def _extract_base64_data_from_url(self, url, timeout=10):
+        try:
+            # Retrieve the image from the URL with a timeout
+            response = requests.get(url, timeout=timeout)
+            if response and response.ok:
+                return tools.image_process(response.content)
+            else:
+                return False
+        except Timeout:
+            _logger.debug("Request timed out.")
             return False
 
     def _extract_base64_data_from_data_url(self, data_url):
@@ -255,9 +260,9 @@ class Registration(models.Model):
                             attachment = self.env["ir.attachment"].browse(attachment_id)
                             if attachment and attachment.type == "binary":
                                 student_id.image_1920 = attachment.datas
-            except:
+            except BaseException as e:
                 # We do our best here
-                pass
+                _logger.info("Error while updating photo %s" % e)
             student_id.street = contact_data.get("adresseLigne", False)
             student_id.city = contact_data.get("ville", False)
             student_id.zip = contact_data.get("codePostal", False)
