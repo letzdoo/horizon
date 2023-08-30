@@ -343,14 +343,18 @@
                                 t-esc="bloc.source_bloc_domain_id.name"
                             />
                         </div>
-                        <div class="flex-grow-1" t-if="bloc.source_bloc_cycle_id">
+                        <div class="flex-grow-1">
                             <dt
                                 class="border text-center d-block w-100 py-2 px-3 o_cc5"
                             >Cycle</dt>
                             <dd
                                 class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
-                                t-esc="bloc.source_bloc_cycle_id.name"
-                            />
+                            >
+                                <t t-if="bloc.source_bloc_cycle_id">
+                                    <span t-esc="bloc.source_bloc_cycle_id.name" />
+                                </t>
+                                <t t-else="">/</t>
+                            </dd>
                         </div>
                         <div class="flex-grow-1">
                             <dt
