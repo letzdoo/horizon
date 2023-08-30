@@ -59,3 +59,4 @@ individual_bloc.tagemployee,model_individual_bloc.tagbase.group_employee,model_s
 individual_bloc.tagteacher,model_individual_bloc.tagbase.group_teacher,model_school_individual_bloc_tag,group_teacher,1,0,0,0
 individual_bloc.tagbase.group_public,model_individual_bloc.tagbase.group_public,model_school_individual_bloc_tag,base.group_public,1,0,0,0
 individual_bloc.tagbase.group_portal,model_individual_bloc.tagbase.group_portal,model_school_individual_bloc_tag,base.group_portal,1,0,0,0
+school_program_student,school_program_student,model_school_program,group_student,1,0,0,0
