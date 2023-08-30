@@ -174,7 +174,7 @@
                     <div id="individual_cgs" class="mb-4">
                         <h2 style="margin-top:25px;">Unités d'enseignement</h2>
                         <field name="course_group_summaries" widget="many2many">
-                            <kanban class="o_wvisitor_kanban" sample="1">
+                            <kanban class="horizon_program_cgs_kanban">
                                 <field name="uid" />
                                 <field name="name" />
                                 <field name="total_hours" />
@@ -182,77 +182,40 @@
                                 <field name="course_group_id" />
                                 <templates>
                                     <t t-name="kanban-box">
-                                        <div
-                                            class="oe_kanban_global_click o_wvisitor_kanban_card"
-                                        >
-                                            <div
-                                                class="o_kanban_detail_ungrouped row mx-0"
-                                            >
-                                                <div
-                                                    style="width:100%;height:45px;border:1px solid gray;background-color:#F8F8F8;"
-                                                >
-                                                    <div
-                                                        style="width:75%;height:45px;display:inline-block;float:left"
-                                                    >
-                                                        <a
-                                                            type="object"
-                                                            name="action_open_form"
-                                                            class="oe_highlight btn btn-primary"
-                                                            style="margin-top:5px;"
-                                                        >
-                                                            <field name="uid" />
-                                                        </a>
-                                                        <span
-                                                            class="h5"
-                                                            style="margin-left:15px;margin-top:10px;"
-                                                        >
-                                                            <field name="name" />
-                                                        </span>
-                                                    </div>
-                                                    <div
-                                                        style="width:25%;height:45px;display:inline-block;float:right"
-                                                    >
-                                                        <a
-                                                            type="object"
-                                                            name="action_open_source_form"
-                                                            style="font-weight:bold;"
-                                                        >
-                                                            <i
-                                                                class="fa fa-book mr-2"
-                                                                style="margin-top:17.5px;"
-                                                            />
-                                                            UE Source
-                                                        </a>
-                                                        <span
-                                                            style="margin-left:10px;display:inline-block;width:85px;height:95%;background-color:#FFB448;float:right;padding:2px;"
-                                                        >
-                                                            <h5
-                                                                style="text-align:center;color:white;margin-top:5px;"
-                                                            >
-                                                                ECTS
-                                                                <br />
-                                                                <field
-                                                                    name="total_credits"
-                                                                />
-                                                            </h5>
-                                                        </span>
-                                                        <span
-                                                            style="display:inline-block;width:85px;height:95%;background-color:#5AC0FF;float:right;padding:2px;"
-                                                        >
-                                                            <h5
-                                                                style="text-align:center;color:white;margin-top:5px;"
-                                                            >
-                                                                Heures
-                                                                <br />
-                                                                <field
-                                                                    name="total_hours"
-                                                                />
-                                                            </h5>
-                                                        </span>
-                                                    </div>
+                                        <div t-attf-class="oe_kanban_global_click oe_kanban_card d-flex flex-column horizon_cgs">
+                                            <div class="o_dropdown_kanban dropdown horizon_cgs_dropdown">
+                                                <a class="dropdown-toggle o-no-caret btn" role="button" data-bs-toggle="dropdown" data-bs-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                                    <span class="fa fa-ellipsis-v"/>
+                                                </a>
+                                                <div class="dropdown-menu" role="menu">
+                                                    <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="oe_kanban_content flex-grow-1">
+                                                <div class="o_kanban_record_title oe_kanban_details">
+                                                    <strong><field name="name"/></strong>
+                                                </div>
+                                                <div class="o_kanban_record_subtitle">
+                                                    <small><field name="uid"/></small>
+                                                </div>
+                                                <div class="horizon_cgs_content mt-auto d-flex">
+                                                    <button class="oe_highlight btn btn-primary m-1"><field name="total_hours"/> HRS</button> 
+                                                    <button class="oe_highlight btn btn-primary m-1"><field name="total_credits"/> ECTS</button>                                                    
+                                                </div>
+                                            </div>
+                                            <div class="oe_kanban_footer">
+                                                <div class="o_kanban_record_bottom mt-2">
+                                                    <!--<div class="oe_kanban_bottom_left">
+                                                        <field name="priority" widget="priority" groups="base.group_user"/>
+                                                        <field name="activity_ids" widget="kanban_activity"/>
+                                                    </div>
+                                                    <div class="oe_kanban_bottom_right">
+                                                        <field name="user_id" widget="many2one_avatar_user"/>
+                                                    </div>-->
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"/>
+                                        </div>  
                                     </t>
                                 </templates>
                             </kanban>

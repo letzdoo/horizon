@@ -47,6 +47,9 @@
         "web._assets_primary_variables": [
             "school_management/static/src/scss/primary_variables.scss"
         ],
+        "web.assets_backend": [
+            "school_management/static/src/scss/program_management.scss",
+        ],
         "web.report_assets_common": [
             "school_management/static/src/css/pure-nr.css",
             "school_management/static/src/css/reports.css",
