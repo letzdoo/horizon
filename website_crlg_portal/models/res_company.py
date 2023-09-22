@@ -18,7 +18,3 @@ class ResCompanyCRLG(models.Model):
             "https://www.youtube.com/channel/UCq7wqH7okutMExNgr_CMEVQ/videos"
         )
         company.social_instagram = "https://www.instagram.com/conservatoireroyalliege/"
-        company.social_twitter = "https://twitter.com/c_r_l_g"
-        company.social_linkedin = (
-            "https://www.linkedin.com/school/conservatoire-royal-de-li-ge/"
-        )

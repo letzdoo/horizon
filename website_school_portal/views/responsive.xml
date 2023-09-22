@@ -184,7 +184,7 @@
 									<button
                                     type="button"
                                     id="request-booking"
-                                    class="btn btn-danger"
+                                    class="btn btn-primary"
                                     disabled=""
                                 >Envoyer ma demande</button>
 								</div>
@@ -256,7 +256,7 @@
 								</div>
 							</div>
 							<div class="form-group pt-3">
-								<button type="button" id="search-booking" class="btn btn-danger">Rechercher</button>
+								<button type="button" id="search-booking" class="btn btn-primary">Rechercher</button>
 							</div>
 						</form>
 						<p
@@ -314,9 +314,8 @@
 						</ul>
 						<div class="row mb-4">
 							<div class="col-12">
-								<a class="btn btn-danger me-3" href="/reservations/creation">Réserver une salle</a>
-								<a class="btn btn-danger" href="/reservations/recherche">Rechercher</a>
-								<!-- <a class="btn btn-danger" href="/booking#category_id=16" target="_blank">Planning des réservations</a> -->
+								<a class="btn btn-primary me-3" href="/reservations/creation">Réserver une salle</a>
+								<a class="btn btn-primary" href="/reservations/recherche">Rechercher</a>
 							</div>
 						</div>
 					</div>

@@ -65,7 +65,7 @@
                                         t-if="website.env.is_admin() or website.env.user.partner_id.student == True"
                                     >
                                         <li><a
-                                                href="/mes-donnes/mon-programme"
+                                                href="/mes-donnees/mon-programme"
                                             >Mon programme annuel</a></li>
                                     </t>
                                     <t

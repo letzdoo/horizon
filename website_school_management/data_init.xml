@@ -25,7 +25,7 @@
     <function model="school.cycle" name="data_init" />
 
     <record id="menu_website_programs" model="website.menu">
-        <field name="name">Programmes de cours</field>
+        <field name="name">Offre pédagogique</field>
         <field name="url">/programmes</field>
         <field name="parent_id" ref="website.main_menu" />
         <field name="sequence" type="int">20</field>
