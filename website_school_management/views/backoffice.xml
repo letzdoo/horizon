@@ -24,7 +24,7 @@
             <xpath expr="//field[@name='certification_profile']" position="after">
                 <field name="slug_grade" />
                 <field name="slug_subtype" />
-                <field name="grade_order" />
+                <field name="sequence"/>
                 <field name="subtype" />
             </xpath>
         </field>

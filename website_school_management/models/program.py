@@ -35,8 +35,8 @@ class ProgramWeb(models.Model):
     cycle_grade = fields.Char(
         related="cycle_id.grade", string="Cycle Grade", store=False
     )
-    cycle_grade_order = fields.Integer(
-        related="cycle_id.grade_order", string="Cycle Grade Order", store=True
+    cycle_sequence = fields.Integer(
+        related="cycle_id.sequence", string="Cycle Grade Order", store=True
     )  # store=True : necessary for order by
     cycle_subtype_slug = fields.Char(
         related="cycle_id.slug_subtype", string="Cycle Sub-type Slug", store=False
@@ -105,19 +105,9 @@ class ProgramWeb(models.Model):
 class CycleWeb(models.Model):
     _inherit = "school.cycle"
 
-    grade_order = fields.Integer(
-        string="Grade Order", compute="_compute_grade_order", store=True
+    sequence = fields.Integer(
+        string="Sequence", required=True, store=True
     )
-
-    @api.depends("short_name")
-    def _compute_grade_order(self):
-        for cycle in self:
-            if cycle.short_name == "B":
-                cycle.grade_order = 1
-            elif cycle.short_name == "M":
-                cycle.grade_order = 2
-            elif cycle.short_name == "AG":
-                cycle.grade_order = 3
 
     slug_grade = fields.Char(
         string="Grade Slug", compute="_compute_slug_grade", store=True
@@ -160,6 +150,56 @@ class CycleWeb(models.Model):
             [("subtype", "=", None), ("name", "ilike", "%" + "spécialisé%")]
         ):
             cycle.subtype = "À finalité spécialisée"
+
+        # Bachelier
+        for cycle in self.search([("name", "ilike", "1er cycle - BACHELIER")]):
+            cycle.sequence = 10
+        for cycle in self.search([("name", "ilike", "%" + "Bachelier professionnalisant%")]):
+            cycle.sequence = 11
+        for cycle in self.search([("name", "ilike", "%" + 'BACHELIER DIT "DE QUALIFICATION"%')]):
+            cycle.sequence = 12
+        for cycle in self.search(["|", ("name", "ilike", "%" + "Bachelier de transition%"), ("name", "ilike", "%" + 'BACHELIER DIT "DE TRANSITION"%')]):
+            cycle.sequence = 13
+
+        # Master
+        for cycle in self.search(["|", ("name", "ilike", "2ème cycle - MASTER"), ("name", "ilike", "MASTER")]):
+            cycle.sequence = 20
+        for cycle in self.search([("name", "ilike", "%" + "Master générique%")]):
+            cycle.sequence = 21
+        for cycle in self.search([("name", "ilike", "%" + "Master (60)%")]):
+            cycle.sequence = 22
+        for cycle in self.search([("name", "ilike", "%" + "Master à finalité approfondie%")]):
+            cycle.sequence = 23
+        for cycle in self.search(["|", ("name", "ilike", "%" + "Master à finalité didactique%"), ("name", "ilike", "%" + 'MASTER DIT "DIDACTIQUE%"')]):
+            cycle.sequence = 24
+        for cycle in self.search([("name", "ilike", "%" + "Master à finalité spécialisée%")]):
+            cycle.sequence = 25
+        for cycle in self.search([("name", "ilike", "%" + "MASTER ART DRAMATIQUE%")]):
+            cycle.sequence = 26
+        for cycle in self.search([("name", "ilike", "%" + "MASTER BOLOGNE DIDACTIQUE%")]):
+            cycle.sequence = 27
+        for cycle in self.search([("name", "ilike", "%" + "MASTER BOLOGNE SPECIALISE%")]):
+            cycle.sequence = 28
+        for cycle in self.search([("name", "ilike", "%" + "MASTER SANS FINALITE%")]):
+            cycle.sequence = 29
+
+        # Agrégation
+        for cycle in self.search([("name", "ilike", "Agrégation")]):
+            cycle.sequence = 30
+        for cycle in self.search([("name", "ilike", "%" + "Agrégation de l'enseignement supérieur%")]):
+            cycle.sequence = 31
+
+        # Autre
+        for cycle in self.search([("name", "ilike", "%" + "Aide à la réussite%")]):
+            cycle.sequence = 40
+        for cycle in self.search([("name", "ilike", "%" + "ERASMUS%")]):
+            cycle.sequence = 41
+        for cycle in self.search([("name", "ilike", "Formation")]):
+            cycle.sequence = 42
+        for cycle in self.search([("name", "ilike", "Jeune Talent")]):
+            cycle.sequence = 43
+        for cycle in self.search([("name", "ilike", "ÉLÈVE LIBRE")]):
+            cycle.sequence = 44
 
 
 class DomainWeb(models.Model):
