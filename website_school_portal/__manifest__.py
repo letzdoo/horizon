@@ -34,7 +34,8 @@
         "views/snippets.xml",
         "views/page_404.xml",
         "views/page_403.xml",
-        "views/responsive.xml",
+        "views/mes_donnees.xml",
+        "views/reservations.xml",
     ],
     "assets": {
         "web.assets_frontend": [
