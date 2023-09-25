@@ -55,30 +55,12 @@
                 >
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-2 pt24 pb24 o_not_editable">
-                                <h5 class="mb-3">Liens utiles</h5>
-                                <ul class="list-unstyled hz_footer-links">
-                                    <li class="hz_contact_link"><a
-                                            href="/contactus"
-                                        >Nous contacter</a></li>
-                                    <t
-                                        t-if="website.env.is_admin() or website.env.user.partner_id.student == True"
-                                    >
-                                        <li><a
-                                                href="/mes-donnees/mon-programme"
-                                            >Mon programme annuel</a></li>
-                                    </t>
-                                    <t
-                                        t-if="website.env.is_admin() or website.env.user.partner_id.teacher == True or website.env.user.partner_id.student == True or website.env.user.partner_id.employee == True"
-                                    >
-                                        <li><a
-                                                href="/reservations/mes-reservations"
-                                            >Mes réservations</a></li>
-                                        <li><a
-                                                href="/reservations/creation"
-                                            >Réserver une salle</a></li>
-                                    </t>
-                                </ul>
+                            <div class="col-lg-2 pt24 pb24">
+                                <h5 class="mb-3 o_not_editable">Liens utiles</h5>
+                                <t t-call="website_school_portal._hz_custom_footer_links"/>
+                                <t t-call="website_school_portal._hz_custom_footer_links_student" t-if="user_id.partner_id.student or user_id._is_admin()" />
+                                <t t-call="website_school_portal._hz_custom_footer_links_teacher" t-if="user_id.partner_id.teacher or user_id._is_admin()" />
+                                <t t-call="website_school_portal._hz_custom_footer_links_employee" t-if="user_id.partner_id.employee or user_id._is_admin()" />
                             </div>
                             <div class="col-lg-5 pt24 pb24">
                                 <t

@@ -403,6 +403,52 @@
         </div>
     </template>
 
+    <template id="_hz_custom_footer_links" name="Horizon Footer Links">
+        <div class="oe_structure">
+            <ul class="list-unstyled">
+                <li><a href="/contacts">Nous contacter</a></li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="_hz_custom_footer_links_student" name="Horizon Footer Links Student">
+        <div class="oe_structure">
+            <p>Liens étudiants</p>
+            <ul class="list-unstyled">
+                <li><a href="/mes-donnes/mon-programme">Mon programme annuel</a></li>
+                <li><a href="/reservations/mes-reservations">Mes réservations</a></li>
+                <li><a href="/reservations/creation">Réserver une salle</a></li>
+                <li><a href="/etudiants-info">Valves étudiants</a></li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="_hz_custom_footer_links_teacher" name="Horizon Footer Links Teacher">
+        <div class="oe_structure">
+            <p>Liens enseignants</p>
+            <ul class="list-unstyled">
+                <li><a href="/reservations/mes-reservations">Mes réservations</a></li>
+                <li><a href="/reservations/creation">Réserver une salle</a></li>
+                <li><a href="/etudiants-info">Valves étudiants</a></li>
+                <li><a href="/enseignants-info">Valves enseignants</a></li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="_hz_custom_footer_links_employee" name="Horizon Footer Links Employee">
+        <div class="oe_structure">
+            <p>Liens employés</p>
+            <ul class="list-unstyled">
+                <li><a href="/reservations/mes-reservations">Mes réservations</a></li>
+                <li><a href="/reservations/creation">Réserver une salle</a></li>
+                <li><a href="/etudiants-info">Valves étudiants</a></li>
+                <li><a href="/enseignants-info">Valves enseignants</a></li>
+            </ul>
+        </div>
+    </template>
+
+
+
     <template id="_hz_custom_footer_description" name="Horizon Footer Description">
         <div class="oe_structure">
             <h5>Une école, une philosophie</h5>

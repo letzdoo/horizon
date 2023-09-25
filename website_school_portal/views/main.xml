@@ -25,7 +25,6 @@
         <xpath expr="//div[@id='wrap']" position="replace">
             <div id="wrap">
                 <t t-call="website_school_portal._hz_custom_home_banner" />
-                <hr />
                 <t t-call="website_school_portal._hz_custom_home_content" />
             </div>
         </xpath>

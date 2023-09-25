@@ -27,7 +27,6 @@
     "depends": ["website_school_portal"],
     "data": [
         "init_crlg.xml",
-        "views/footer.xml",
         "views/custom.xml",
     ],
     "assets": {
