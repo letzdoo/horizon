@@ -146,16 +146,24 @@
         });
 
         $("#today").on("click", function () {
-            $("#today").removeClass("btn-secondary").addClass("btn-primary");
-            $("#tomorrow").removeClass("btn-primary").addClass("btn-secondary");
+            $("#todayLabel").removeClass("fw-light").addClass("font-weight-bold");
+            $("#tomorrowLabel").removeClass("font-weight-bold").addClass("fw-light");
+
+            $("#today").removeClass("btn-outline-primary").addClass("btn-primary").addClass("active");
+            $("#tomorrow").removeClass("btn-primary").removeClass("active").addClass("btn-outline-primary");
+
             $("#day").prop("value", "0");
             updateRoomList();
             updateSendButton();
         });
 
         $("#tomorrow").on("click", function () {
-            $("#today").removeClass("btn-primary").addClass("btn-secondary");
-            $("#tomorrow").removeClass("btn-secondary").addClass("btn-primary");
+            $("#todayLabel").addClass("fw-light").removeClass("font-weight-bold");
+            $("#tomorrowLabel").addClass("font-weight-bold").removeClass("fw-light");
+
+            $("#today").removeClass("btn-primary").removeClass("active").addClass("btn-outline-primary");
+            $("#tomorrow").removeClass("btn-outline-primary").addClass("btn-primary").addClass("active");
+
             $("#day").prop("value", "1");
             updateRoomList();
             updateSendButton();

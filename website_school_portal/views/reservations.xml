@@ -97,18 +97,18 @@
 								<t t-elif="user_id.partner_id.student">
 									<div class="row">
 										<div class="col-12 col-sm-4 col-lg-3">
-											<label class="text-uppercase font-weight-bold">Aujourd'hui</label>
+											<label id="todayLabel" class="text-uppercase font-weight-bold">Aujourd'hui</label>
 											<button id="today"
-											        class="form-control input-sm input-font-lg text-center btn-primary"
+											        class="form-control input-sm input-font-lg text-center btn-primary active"
 											        type="button">
 												<t t-esc="today.strftime('%d / %m  ')"/>
 											</button>
 										</div>
 										<div class="col-12 col-sm-4 col-lg-3">
-											<label class="text-uppercase font-weight-bold">Demain</label>
+											<label id="tomorrowLabel" class="text-uppercase fw-light">Demain</label>
 											<button type="button"
 											        id="tomorrow"
-											        class="form-control input-font-lg text-center btn-secondary">
+											        class="form-control input-font-lg text-center btn-outline-primary">
 												<t t-esc="tomorrow.strftime('%d / %m  ')"/>
 											</button>
 										</div>
@@ -213,18 +213,18 @@
 					      class="pt-4 pt-lg-2 mt-4 mt-lg-5">
 						<div class="row mb-4">
 							<div class="col-12 col-sm-4 col-lg-3">
-								<label class="text-uppercase font-weight-bold">Aujourd'hui</label>
+								<label id="todayLabel" class="text-uppercase font-weight-bold">Aujourd'hui</label>
 								<button id="today"
-								        class="form-control input-sm input-font-lg text-center btn-primary"
+								        class="form-control input-sm input-font-lg text-center btn-primary active"
 								        type="button">
 									<t t-esc="datetime.datetime.today().strftime('%d / %m  ')"/>
 								</button>
 							</div>
 							<div class="col-12 col-sm-4 col-lg-3">
-								<label class="text-uppercase font-weight-bold">Demain</label>
+								<label id="tomorrowLabel" class="text-uppercase fw-light">Demain</label>
 								<button type="button"
 								        id="tomorrow"
-								        class="form-control input-sm input-font-lg text-center btn-secondary">
+								        class="form-control input-sm input-font-lg text-center btn-outline-primary">
 									<t t-esc="(datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d / %m  ')"/>
 								</button>
 							</div>
