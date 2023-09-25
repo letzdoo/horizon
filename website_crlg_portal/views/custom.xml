@@ -100,8 +100,7 @@
                                     alt=""
                                     class="img img-fluid mx-auto o_we_custom_image"
                                     data-shape="web_editor/float/flt_square_2"
-                                    data-shape-colors=";#E47C7C;;;#DB0707"
-                                    data-original-id="972"
+                                    data-shape-colors=";#3297C2;;;#BCE4FC"
                                     data-original-src="/website_crlg_portal/static/img/musique.jpg"
                                     data-mimetype="image/svg+xml"
                                     data-original-mimetype="image/jpeg"
@@ -175,7 +174,7 @@
                                     aria-describedby="tooltip930600"
                                     data-shape="web_editor/float/flt_square_3"
                                     data-file-name="theatre.svg"
-                                    data-shape-colors="#DB0707;;;;#E47C7C"
+                                    data-shape-colors="#BCE4FC;;;;#3297C2"
                                     data-original-mimetype="image/jpeg"
                                     loading="eager"
                                 />
