@@ -412,6 +412,20 @@
         </div>
     </template>
 
+    <template id="_hz_booking_new_desc" name="Horizon New Booking Description">
+        <div class="oe_structure">
+            <a href="https://sites.google.com/crlg.be/valves-etudiants/vie-%C3%A9tudiante/locaux-implantation-forgeur"
+					   class="text-info text-uppercase pt-1 pb-1">Voir le règlement</a>
+        </div>
+    </template>
+
+    <template id="_hz_booking_search_desc" name="Horizon Search Booking Description">
+        <div class="oe_structure">
+            <a href="/reservations/mes-reservations"
+					   class="text-primary pt-1 pb-1">← Retour vers mes réservations</a>
+        </div>
+    </template>
+
     <template id="_hz_my_student_no_form" name="Horizon Student Not registered">
         <div class="oe_structure">
             <h5>Bienvenue !</h5>

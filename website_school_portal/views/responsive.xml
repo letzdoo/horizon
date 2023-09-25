@@ -20,690 +20,568 @@
 ##############################################################################
 -->
 <odoo>
-
-<template id="assets" name="website_school_portal assets">
-
-        <link
-            rel="stylesheet"
-            href="/website_school_portal/static/src/css/toastr.css"
-        />
-
-        <script type="text/javascript" src="/web/static/lib/jquery/jquery.js" />
-        <script type="text/javascript" src="/web/static/lib/jquery.ui/jquery-ui.js" />
-        <script type="text/javascript" src="/web/static/lib/jquery/jquery.browser.js" />
-        <script type="text/javascript" src="/web/static/lib/moment/moment.js" />
-        <script type="text/javascript" src="/web/static/lib/moment/locale/fr.js" />
-        <script
-            type="text/javascript"
-            src="/website_school_portal/static/src/js/toastr.js"
-        />
-
-    </template>
-
-    <template id="hz_booking_new" name="Nouvelle réservation">
-    		<t t-call="website.layout">
-
-				<xpath expr="//head" position="inside">
-            		<t t-call="website_school_portal.assets" />
-        		</xpath>
-
-    			<script type="text/javascript">
-    				var date_today = moment('<t t-esc="today" />');
-    				var date_tomorrow = moment('<t t-esc="tomorrow" />');
+	<template id="assets"
+	          name="website_school_portal assets">
+		<link rel="stylesheet"
+		      href="/website_school_portal/static/src/css/toastr.css"/>
+		<script type="text/javascript"
+		        src="/web/static/lib/jquery/jquery.js"/>
+		<script type="text/javascript"
+		        src="/web/static/lib/jquery.ui/jquery-ui.js"/>
+		<script type="text/javascript"
+		        src="/web/static/lib/jquery/jquery.browser.js"/>
+		<script type="text/javascript"
+		        src="/web/static/lib/moment/moment.js"/>
+		<script type="text/javascript"
+		        src="/web/static/lib/moment/locale/fr.js"/>
+		<script type="text/javascript"
+		        src="/website_school_portal/static/src/js/toastr.js"/>
+	</template>
+	<template id="hz_booking_new"
+	          name="Nouvelle réservation">
+		<t t-call="website.layout">
+			<xpath expr="//head"
+			       position="inside">
+				<t t-call="website_school_portal.assets"/>
+			</xpath>
+			<script type="text/javascript">
+    				var date_today = moment('<t t-esc="today"/>');
+    				var date_tomorrow = moment('<t t-esc="tomorrow"/>');
     			</script>
-
-				<script
-                type="text/javascript"
-                src="/website_school_portal/static/src/js/booking-new.js"
-                defer=""
-            />
-
-    			<div id="content" class="container">
-					<div class="content-body">
-						<h1 class="mt-5 mb-2">Réserver une salle</h1>
-						<a
-                        href="https://sites.google.com/crlg.be/valves-etudiants/vie-%C3%A9tudiante/locaux-implantation-forgeur"
-                        class="text-info text-uppercase pt-1 pb-1"
-                    >Voir le règlement</a>
-						<form action="#" class="pt-4 pt-lg-2 mt-4 mt-lg-5 pb-4">
-							<t t-if="user.has_group('school_management.group_student')"><input
-                                id="event_type"
-                                type="hidden"
-                                value="6"
-                            /></t>
-							<t t-if="user.has_group('school_management.group_teacher')"><input
-                                id="event_type"
-                                type="hidden"
-                                value="7"
-                            /></t>
-							<t t-if="user.has_group('school_management.group_employee')"><input
-                                id="event_type"
-                                type="hidden"
-                                value="8"
-                            /></t>
-							<input id="description" type="hidden" t-att-value="user.name" />
-							<div class="row mb-2">
-								<div class="col-12">
-									<t t-if="user.has_group('school_management.group_student')">
-										<div class="row">
-											<div class="col-12 col-sm-4 col-lg-3">
-												<label class="text-uppercase font-weight-bold">Aujourd'hui</label>
-												<button
-                                                id="today"
-                                                class="form-control input-sm input-font-lg text-center bg-danger border border-danger border-0"
-                                                type="button"
-                                            ><t
-                                                    t-esc="today.strftime('%d / %m  ')"
-                                                /></button>
-											</div>
-											<div class="col-12 col-sm-4 col-lg-3">
-												<label class="text-uppercase font-weight-bold">Demain</label>
-												<button type="button" id="tomorrow" class="form-control input-font-lg text-center"><t
-                                                    t-esc="tomorrow.strftime('%d / %m  ')"
-                                                /></button>
-											</div>
-										</div>
-										<input id="day" name="day" type="hidden" value="0" />
-										<input id="selected_date" name="selected_date" type="hidden" value="0" />
-									</t>
-									<t t-if="not user.has_group('school_management.group_student')">
-										<div class="row">
-											<div class="col-12 col-sm-4 col-lg-3">
-												<label class="text-uppercase font-weight-bold">Date</label>
-												<input id="day" name="day" type="hidden" value="0" />
-												<input
-                                                class="w-100 form-control"
-                                                type="date"
-                                                name="selected_date"
-                                                id="selected_date"
-                                                data-date=""
-                                                data-date-format="ddd DD/MM"
-                                                t-att-value="today.strftime('%Y-%m-%d')"
-                                            />
-												<script>
-													$("#selected_date").on("change", function() {
-														this.setAttribute(
-															"data-date",
-															moment(this.value, "YYYY-MM-DD").locale('fr')
-															.format( this.getAttribute("data-date-format") )
-														);
-														this.setAttribute(
-																"value",
-																this.value);
-													}).trigger("change")
-												</script>
-											</div>
-										</div>
-									</t>
-								</div>
-							</div>
-							<div class="row mb-2">
-								<div class="col-12">
+			<script type="text/javascript"
+			        src="/website_school_portal/static/src/js/booking-new.js"
+			        defer=""/>
+			<div id="content"
+			     class="container">
+				<div class="content-body">
+					<h1 class="mt-5 mb-2">Réserver une salle</h1>
+					<t t-call="website_school_portal._hz_booking_new_desc" />
+					<form action="#"
+					      class="pt-4 pt-lg-2 mt-4 mt-lg-5 pb-4">
+                        <t t-if="user_id.partner_id.employee or user_id._is_admin()"><!-- Employé ou administrateur -->
+							<input id="event_type"
+							       type="hidden"
+							       value="8"/>
+						</t>  
+						<t t-elif="user_id.partner_id.teacher"><!-- Enseignant -->
+							<input id="event_type"
+							       type="hidden"
+							       value="7"/>
+						</t>
+                        <t t-elif="user_id.partner_id.student"><!-- Étudiant -->
+							<input id="event_type"
+							       type="hidden"
+							       value="6"/>
+						</t><!-- Pas de "else": l'utilisateur doit appartenir à une de ces catégories -->
+						<input id="description"
+						       type="hidden"
+						       t-att-value="user.name"/>
+						<div class="row mb-2">
+							<div class="col-12">
+                                <t t-if="user_id.partner_id.teacher or user_id.partner_id.employee or user_id._is_admin()">
 									<div class="row">
 										<div class="col-12 col-sm-4 col-lg-3">
-											<label class="text-uppercase font-weight-bold" for="beginningHour">Heure début</label>
-											<select class="w-100 form-select" id="from_hour" name="from_hour">
-												<option
-                                                t-att-value=""
-                                                t-att-hidden="True"
-                                                t-att-selected="True"
-                                                t-att-disabled="True"
-                                            >Heure de début...</option>
-												<t t-foreach="from_hours" t-as="from_hour">
-													<option t-att-value="from_hour"><t t-esc="from_hour" /></option>
-												</t>
-											</select>
+											<label class="text-uppercase font-weight-bold">Date</label>
+											<input id="day"
+											       name="day"
+											       type="hidden"
+											       value="0"/>
+											<input class="w-100 form-control"
+											       type="date"
+											       name="selected_date"
+											       id="selected_date"
+											       t-att-value="today.strftime('%Y-%m-%d')"/>
+										</div>
+									</div>
+								</t>
+								<t t-elif="user_id.partner_id.student">
+									<div class="row">
+										<div class="col-12 col-sm-4 col-lg-3">
+											<label class="text-uppercase font-weight-bold">Aujourd'hui</label>
+											<button id="today"
+											        class="form-control input-sm input-font-lg text-center btn-primary"
+											        type="button">
+												<t t-esc="today.strftime('%d / %m  ')"/>
+											</button>
 										</div>
 										<div class="col-12 col-sm-4 col-lg-3">
-											<label class="text-uppercase font-weight-bold" for="endTime">Heure fin</label>
-											<select class="w-100 form-select" id="to_hour" name="to_hour">
-												<option
-                                                t-att-value=""
-                                                t-att-hidden="True"
-                                                t-att-selected="True"
-                                                t-att-disabled="True"
-                                            >Heure de fin...</option>
-												<t t-foreach="to_hours" t-as="to_hour">
-													<option t-att-value="to_hour"><t t-esc="to_hour" /></option>
-												</t>
-											</select>
+											<label class="text-uppercase font-weight-bold">Demain</label>
+											<button type="button"
+											        id="tomorrow"
+											        class="form-control input-font-lg text-center btn-secondary">
+												<t t-esc="tomorrow.strftime('%d / %m  ')"/>
+											</button>
 										</div>
+									</div>
+									<input id="day"
+									       name="day"
+									       type="hidden"
+									       value="0"/>
+									<input id="selected_date"
+									       name="selected_date"
+									       type="hidden"
+									       value="0"/>
+								</t><!-- Pas de "else": l'utilisateur doit appartenir à une de ces catégories -->
+								
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col-12">
+								<div class="row">
+									<div class="col-12 col-sm-4 col-lg-3">
+										<label class="text-uppercase font-weight-bold"
+										       for="beginningHour">Heure début</label>
+										<select class="w-100 form-select"
+										        id="from_hour"
+										        name="from_hour">
+											<option t-att-value=""
+											        t-att-hidden="True"
+											        t-att-selected="True"
+											        t-att-disabled="True">Heure de début...</option>
+											<t t-foreach="from_hours"
+											   t-as="from_hour">
+												<option t-att-value="from_hour">
+													<t t-esc="from_hour"/>
+												</option>
+											</t>
+										</select>
+									</div>
+									<div class="col-12 col-sm-4 col-lg-3">
+										<label class="text-uppercase font-weight-bold"
+										       for="endTime">Heure fin</label>
+										<select class="w-100 form-select"
+										        id="to_hour"
+										        name="to_hour">
+											<option t-att-value=""
+											        t-att-hidden="True"
+											        t-att-selected="True"
+											        t-att-disabled="True">Heure de fin...</option>
+											<t t-foreach="to_hours"
+											   t-as="to_hour">
+												<option t-att-value="to_hour">
+													<t t-esc="to_hour"/>
+												</option>
+											</t>
+										</select>
 									</div>
 								</div>
 							</div>
-							<div class="row mb-2">
-								<div class="col-12 col-sm-4 col-lg-3">
-									<label class="text-uppercase font-weight-bold" for="endTime">local</label>
-									<select id="room" class="w-100 form-select" disabled="">
-										<option selected="">Selectionnez un local...</option>
-									</select>
-								</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col-12 col-sm-4 col-lg-3">
+								<label class="text-uppercase font-weight-bold"
+								       for="endTime">local</label>
+								<select id="room"
+								        class="w-100 form-select"
+								        disabled="">
+									<option selected="">Selectionnez un local...</option>
+								</select>
 							</div>
-							<div class="row mb-2 mt-4">
-								<div class="col-12 col-sm-4 col-lg-3">
-									<button
-                                    type="button"
-                                    id="request-booking"
-                                    class="btn btn-primary"
-                                    disabled=""
-                                >Envoyer ma demande</button>
-								</div>
+						</div>
+						<div class="row mb-2 mt-4">
+							<div class="col-12 col-sm-4 col-lg-3">
+								<button type="button"
+								        id="request-booking"
+								        class="btn btn-primary"
+								        disabled="">Envoyer ma demande</button>
 							</div>
-						</form>
-          	            <div
-                        id="horizon-error"
-                        class="btn btn-warning btn-block p-2 font-weight-bold mb-4"
-                        style="display: none;"
-                    />
-					</div>
+						</div>
+					</form>
+					<div id="horizon-error"
+					     class="btn btn-warning btn-block p-2 font-weight-bold mb-4"
+					     style="display: none;"/>
 				</div>
-    		</t>
-    	</template>
-
-        <template id="hz_booking_search" name="Recherche réservation">
-    		<t t-call="website.layout">
-
-				<xpath expr="//head" position="inside">
-            		<t t-call="website_school_portal.assets" />
-        		</xpath>
-
-    			<script
-                type="text/javascript"
-                src="/website_school_portal/static/src/js/booking-search.js"
-                defer=""
-            />
-
-    			<div id="content" class="container">
-					<div class="content-body">
-						<h1 class="mt-5 mb-2">Recherche de réservations</h1>
-						<a
-                        href="/reservations/mes-reservations"
-                        class="text-danger pt-1 pb-1"
-                    >← Retour vers mes réservations</a>
-						<form action="#" class="pt-4 pt-lg-2 mt-4 mt-lg-5">
-							<div class="row mb-4">
-								<div class="col-12 col-sm-4 col-lg-3">
-									<label class="text-uppercase font-weight-bold">Aujourd'hui</label>
-									<button
-                                    id="today"
-                                    class="form-control input-sm input-font-lg text-center bg-danger border border-danger border-0"
-                                    type="button"
-                                ><t
-                                        t-esc="datetime.datetime.today().strftime('%d / %m  ')"
-                                    /></button>
-								</div>
-								<div class="col-12 col-sm-4 col-lg-3">
-									<label class="text-uppercase font-weight-bold">Demain</label>
-									<button
-                                    type="button"
-                                    id="tomorrow"
-                                    class="form-control input-sm input-font-lg text-center"
-                                ><t
-                                        t-esc="(datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d / %m  ')"
-                                    /></button>
-								</div>
-								<input id="day" type="hidden" value="0" />
-							</div>
-							<div class="row mb-4">
-								<div class="col-12 col-sm-8 col-lg-6">
-									<input
-                                    id="query"
-                                    type="text"
-                                    data-length="30"
-                                    class="form-control no-appearance time-select input-lg input-font-lg"
-                                    placeholder="Critère de recherche..."
-                                />
-								</div>
-							</div>
-							<div class="form-group pt-3">
-								<button type="button" id="search-booking" class="btn btn-primary">Rechercher</button>
-							</div>
-						</form>
-						<p
-                        class="subheading-span d-block text-danger text-uppercase mb-4 pb-md-0 mb-xl-4 pb-xl-3 mt-4"
-                    >RÉSULTATS</p>
-						<ul id="booking-list" class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
-						</ul>
-					</div>
-				</div>
-    		</t>
-    	</template>
-
-        <template id="hz_bookings" name="Mes réservations">
-            <t t-call="website.layout">
-    			<div id="content" class="container">
-					<div class="content-body">
-						<h1 class="mt-5 mb-2">Mes réservations</h1>
-						<h5>Aujourd'hui</h5>
-						<i t-if='len(bookings) == 0'>Aucune réservation</i>
-						<ul class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
-							<li t-foreach="bookings" t-as="book">
-								<div class="d-flex justify-content-between">
-									<span class="pr-3"><span
-                                        t-field="book.start"
-                                        t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'
-                                    /><span class="mx-1">›</span>  <span
-                                        t-field="book.stop"
-                                        t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'
-                                    /></span>
-									<span><t t-esc="book.room_id.name" /></span>
-									<a t-att-href="'/reservations/suppression/%s' % book.id"><i
-                                        class="fa fa-trash d-inline-block"
-                                    /></a>
-								</div>
-							</li>
-						</ul>
-						<h5>Demain</h5>
-						<i t-if='len(bookings_next) == 0'>Aucune réservation</i>
-						<ul class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
-							<li t-foreach="bookings_next" t-as="book">
-								<div class="d-flex justify-content-between">
-									<span class="pr-3"><span
-                                        t-field="book.start"
-                                        t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'
-                                    /><span class="mx-1">›</span>  <span
-                                        t-field="book.stop"
-                                        t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'
-                                    /></span>
-									<span><t t-esc="book.room_id.name" /></span>
-									<a t-att-href="'/reservations/suppression/%s' % book.id"><i
-                                        class="fa fa-trash d-inline-block"
-                                    /></a>
-								</div>
-							</li>
-						</ul>
+			</div>
+		</t>
+	</template>
+	<template id="hz_booking_search"
+	          name="Recherche réservation">
+		<t t-call="website.layout">
+			<xpath expr="//head"
+			       position="inside">
+				<t t-call="website_school_portal.assets"/>
+			</xpath>
+			<script type="text/javascript"
+			        src="/website_school_portal/static/src/js/booking-search.js"
+			        defer=""/>
+			<div id="content"
+			     class="container">
+				<div class="content-body">
+					<h1 class="mt-5 mb-2">Recherche de réservations</h1>
+                    <t t-call="website_school_portal._hz_booking_search_desc"/>
+					<form action="#"
+					      class="pt-4 pt-lg-2 mt-4 mt-lg-5">
 						<div class="row mb-4">
-							<div class="col-12">
-								<a class="btn btn-primary me-3" href="/reservations/creation">Réserver une salle</a>
-								<a class="btn btn-primary" href="/reservations/recherche">Rechercher</a>
+							<div class="col-12 col-sm-4 col-lg-3">
+								<label class="text-uppercase font-weight-bold">Aujourd'hui</label>
+								<button id="today"
+								        class="form-control input-sm input-font-lg text-center btn-primary"
+								        type="button">
+									<t t-esc="datetime.datetime.today().strftime('%d / %m  ')"/>
+								</button>
 							</div>
+							<div class="col-12 col-sm-4 col-lg-3">
+								<label class="text-uppercase font-weight-bold">Demain</label>
+								<button type="button"
+								        id="tomorrow"
+								        class="form-control input-sm input-font-lg text-center btn-secondary">
+									<t t-esc="(datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d / %m  ')"/>
+								</button>
+							</div>
+							<input id="day"
+							       type="hidden"
+							       value="0"/>
+						</div>
+						<div class="row mb-4">
+							<div class="col-12 col-sm-8 col-lg-6">
+								<input id="query"
+								       type="text"
+								       data-length="30"
+								       class="form-control no-appearance time-select input-lg input-font-lg"
+								       placeholder="Critère de recherche..."/>
+							</div>
+						</div>
+						<div class="form-group pt-3">
+							<button type="button"
+							        id="search-booking"
+							        class="btn btn-primary">Rechercher</button>
+						</div>
+					</form>
+					<p class="subheading-span d-block text-primary text-uppercase mb-4 pb-md-0 mb-xl-4 pb-xl-3 mt-4">RÉSULTATS</p>
+					<ul id="booking-list"
+					    class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
+						</ul>
+				</div>
+			</div>
+		</t>
+	</template>
+	<template id="hz_bookings"
+	          name="Mes réservations">
+		<t t-call="website.layout">
+			<div id="content"
+			     class="container">
+				<div class="content-body">
+					<h1 class="mt-5 mb-2">Mes réservations</h1>
+					<h5>Aujourd'hui</h5>
+					<i t-if='len(bookings) == 0'>Aucune réservation</i>
+					<ul class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
+						<li t-foreach="bookings"
+						    t-as="book">
+							<div class="d-flex justify-content-between">
+								<span class="pr-3">
+									<span t-field="book.start"
+									      t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'/>
+									<span class="mx-1">›</span>
+									<span t-field="book.stop"
+									      t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'/>
+								</span>
+								<span>
+									<t t-esc="book.room_id.name"/>
+								</span>
+								<a t-att-href="'/reservations/suppression/%s' % book.id">
+									<i class="fa fa-trash d-inline-block"/>
+								</a>
+							</div>
+						</li>
+					</ul>
+					<h5>Demain</h5>
+					<i t-if='len(bookings_next) == 0'>Aucune réservation</i>
+					<ul class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
+						<li t-foreach="bookings_next"
+						    t-as="book">
+							<div class="d-flex justify-content-between">
+								<span class="pr-3">
+									<span t-field="book.start"
+									      t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'/>
+									<span class="mx-1">›</span>
+									<span t-field="book.stop"
+									      t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'/>
+								</span>
+								<span>
+									<t t-esc="book.room_id.name"/>
+								</span>
+								<a t-att-href="'/reservations/suppression/%s' % book.id">
+									<i class="fa fa-trash d-inline-block"/>
+								</a>
+							</div>
+						</li>
+					</ul>
+					<div class="row mb-4">
+						<div class="col-12">
+							<a class="btn btn-primary me-3"
+							   href="/reservations/creation">Réserver une salle</a>
+							<a class="btn btn-primary"
+							   href="/reservations/recherche">Rechercher</a>
 						</div>
 					</div>
 				</div>
-			</t>
-    	</template>
-
-    <template id="hz_blocs" name="Mon programme individuel">
-        <t t-call="website.layout">
-            <div class="container">
-                <h1 class="mt-5 mb-4">Mon programme individuel</h1>
-                <section
-                    class="accordion-section pt-md-1 d-evaluation"
-                    t-foreach="blocs"
-                    t-as="bloc"
-                >
-
-                    <div
-                        class="accordion -accordion-program_detail"
-                        id="program_detail"
-                    >
-                        <div class="accordion-item border mb-4">
-                            <h3 class="accordion-header">
-                                <button
-                                    class="accordion-button"
-                                    type="button"
-                                    data-bs-toggle="collapse"
-                                    t-attf-data-bs-target="#collapse{{bloc.id}}"
-                                    aria-expanded="true"
-                                    t-attf-aria-controls="collapse{{bloc.id}}"
-                                >
-                                        <div class="d-flex flex-column">
-                                            <span class="fs-2"><t
-                                                t-esc="bloc.source_bloc_name"
-                                            /></span>
-                                            <div class="mt-2 d-flex gap-2">
-                                                <span>
+			</div>
+		</t>
+	</template>
+	<template id="hz_blocs"
+	          name="Mon programme individuel">
+		<t t-call="website.layout">
+			<div class="container">
+				<h1 class="mt-5 mb-4">Mon programme individuel</h1>
+				<section class="accordion-section pt-md-1 d-evaluation"
+				         t-foreach="blocs"
+				         t-as="bloc">
+					<div class="accordion -accordion-program_detail"
+					     id="program_detail">
+						<div class="accordion-item border mb-4">
+							<h3 class="accordion-header">
+								<button class="accordion-button"
+								        type="button"
+								        data-bs-toggle="collapse"
+								        t-attf-data-bs-target="#collapse{{bloc.id}}"
+								        aria-expanded="true"
+								        t-attf-aria-controls="collapse{{bloc.id}}">
+									<div class="d-flex flex-column">
+										<span class="fs-2">
+											<t t-esc="bloc.source_bloc_name"/>
+										</span>
+										<div class="mt-2 d-flex gap-2">
+											<span>
                                                     Heures&amp;nbsp;:
-                                                    <span
-                                                    class="fw-bold accented-color"
-                                                    t-esc="bloc.total_hours"
-                                                />
-                                                </span>
-                                                <span>|</span>
-                                                <span>
+                                                    <span class="fw-bold accented-color"
+												      t-esc="bloc.total_hours"/>
+											</span>
+											<span>|</span>
+											<span>
                                                     ECTS&amp;nbsp;:
-                                                    <span
-                                                    class="fw-bold accented-color"
-                                                    t-esc="bloc.total_credits"
-                                                />
-                                                </span>
-                                            </div>
-                                        </div>
-                                </button>
-                            </h3>
-                            <div
-                                t-attf-id="collapse{{bloc.id}}"
-                                class="accordion-collapse collapse"
-                                aria-labelledby="headingOne"
-                                data-bs-parent="#program_detail"
-                            >
-                                <div
-                                    class="accordion-body border-top pt-2 pt-lg-0 px-2 px-lg-4"
-                                >
-                                    <div class="group-content mb-4 mt-3 mt-lg-5">
-                                        <dl class="d-flex flex-wrap mb-0">
-                                            <div class="flex-grow-1">
-                                                <dt
-                                                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
-                                                >Domaine</dt>
-                                                <dd
-                                                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
-                                                    t-esc="bloc.source_bloc_domain_id.name"
-                                                />
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <dt
-                                                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
-                                                >Cycle</dt>
-                                                <dd
-                                                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
-                                                >
-                                                    <t t-if="bloc.source_bloc_cycle_id">
-                                                        <span
-                                                            t-esc="bloc.source_bloc_cycle_id.name"
-                                                        />
-                                                    </t>
-                                                    <t t-else="">/</t>
-                                                </dd>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <dt
-                                                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
-                                                >Section</dt>
-                                                <dd
-                                                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
-                                                    t-esc="bloc.source_bloc_section_id.name"
-                                                />
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <dt
-                                                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
-                                                >Orientation</dt>
-                                                <dd
-                                                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
-                                                    t-esc="bloc.source_bloc_track_id.name"
-                                                />
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <dt
-                                                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
-                                                >Spécialité</dt>
-                                                <dd
-                                                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
-                                                    t-esc="bloc.source_bloc_speciality_id.name"
-                                                />
-                                            </div>
-                                        </dl>
-                                    </div>
-                                    <t
-                                        t-foreach="bloc.course_group_ids"
-                                        t-as="course_group"
-                                    >
-                                        <h5
-                                            class="group-title w-fit-content border border-bottom-0 d-flex flex-column gap-2 mt-3 mt-lg-5 mb-0 py-2 px-4"
-                                        >
-                                            <span class="d-flex flex-wrap gap-2">
-                                            <span
-                                                    class="d-none d-lg-inline"
-                                                >Unité d’enseignement&amp;nbsp;: </span><t
-                                                    class="d-block p-0"
-                                                    t-esc="course_group.title"
-                                                />
-                                            </span>
-                                            <span class="d-flex flex-wrap gap-2 fs-6">
-                                                <span
-                                                    class="d-none d-lg-inline"
-                                                >Responsable&amp;nbsp;:</span>
-                                                <span
-                                                    class="d-inline d-lg-none"
-                                                >Resp.:</span>
-                                                <span class="fw-normal fst-italic">
-                                                    <t
-                                                        t-esc="course_group.responsible_id.name"
-                                                    />
-                                                </span>
-                                            </span>
-                                        </h5>
-                                        <div class="group-content p-3 mb-4 border">
-                                            <div class="px-3">
-                                                <div
-                                                    class="table-responsive mt-3 mb-2 mb-lg-4"
-                                                >
-                                                    <div class="table-row header o_cc5">
-                                                        <div class="cell border">
+                                                    <span class="fw-bold accented-color"
+												      t-esc="bloc.total_credits"/>
+											</span>
+										</div>
+									</div>
+								</button>
+							</h3>
+							<div t-attf-id="collapse{{bloc.id}}"
+							     class="accordion-collapse collapse"
+							     aria-labelledby="headingOne"
+							     data-bs-parent="#program_detail">
+								<div class="accordion-body border-top pt-2 pt-lg-0 px-2 px-lg-4">
+									<div class="group-content mb-4 mt-3 mt-lg-5">
+										<dl class="d-flex flex-wrap mb-0">
+											<div class="flex-grow-1">
+												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Domaine</dt>
+												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
+												    t-esc="bloc.source_bloc_domain_id.name"/>
+											</div>
+											<div class="flex-grow-1">
+												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Cycle</dt>
+												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0">
+													<t t-if="bloc.source_bloc_cycle_id">
+														<span t-esc="bloc.source_bloc_cycle_id.name"/>
+													</t>
+													<t t-else="">/</t>
+												</dd>
+											</div>
+											<div class="flex-grow-1">
+												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Section</dt>
+												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
+												    t-esc="bloc.source_bloc_section_id.name"/>
+											</div>
+											<div class="flex-grow-1">
+												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Orientation</dt>
+												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
+												    t-esc="bloc.source_bloc_track_id.name"/>
+											</div>
+											<div class="flex-grow-1">
+												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Spécialité</dt>
+												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
+												    t-esc="bloc.source_bloc_speciality_id.name"/>
+											</div>
+										</dl>
+									</div>
+									<t t-foreach="bloc.course_group_ids"
+									   t-as="course_group">
+										<h5 class="group-title w-fit-content border border-bottom-0 d-flex flex-column gap-2 mt-3 mt-lg-5 mb-0 py-2 px-4">
+											<span class="d-flex flex-wrap gap-2">
+												<span class="d-none d-lg-inline">Unité d’enseignement&amp;nbsp;: </span>
+												<t class="d-block p-0"
+												   t-esc="course_group.title"/>
+											</span>
+											<span class="d-flex flex-wrap gap-2 fs-6">
+												<span class="d-none d-lg-inline">Responsable&amp;nbsp;:</span>
+												<span class="d-inline d-lg-none">Resp.:</span>
+												<span class="fw-normal fst-italic">
+													<t t-esc="course_group.responsible_id.name"/>
+												</span>
+											</span>
+										</h5>
+										<div class="group-content p-3 mb-4 border">
+											<div class="px-3">
+												<div class="table-responsive mt-3 mb-2 mb-lg-4">
+													<div class="table-row header o_cc5">
+														<div class="cell border">
                                                             Code UE
                                                         </div>
-                                                        <div class="cell border">
+														<div class="cell border">
                                                             Heures
                                                         </div>
-                                                        <div class="cell border">
+														<div class="cell border">
                                                             ECTS
                                                         </div>
-                                                        <div
-                                                            class="cell border"
-                                                            t-if="display_results == 'True'"
-                                                        >
+														<div class="cell border"
+														     t-if="display_results == 'True'">
                                                             Résultats
                                                         </div>
-                                                    </div>
-                                                    <div class="table-row">
-                                                        <div
-                                                            class="cell border"
-                                                            data-title="Code"
-                                                        >
-                                                            <span class="cell-value">
-                                                                <t
-                                                                    t-esc="course_group.uid + ' (' + course_group.source_course_group_id.ue_id + ')'"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                        <div
-                                                            class="cell border"
-                                                            data-title="Heures"
-                                                        >
-                                                            <span class="cell-value">
-                                                                <t
-                                                                    t-esc="course_group.total_hours"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                        <div
-                                                            class="cell border"
-                                                            data-title="ECTS"
-                                                        >
-                                                            <span class="cell-value">
-                                                                <t
-                                                                    t-esc="course_group.total_credits"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                        <div
-                                                            class="cell border"
-                                                            data-title="Résultats"
-                                                            t-if="display_results == 'True'"
-                                                        >
-                                                            <span class="cell-value">
-                                                                <t
-                                                                    t-if="display_results == 'True'"
-                                                                    t-esc="course_group.final_result_disp"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <t t-if="course_group.course_ids">
-                                                <div class="block-cours">
-                                                    <h6 class="fs-5 -cours">Cours</h6>
-                                                    <div
-                                                        class="table-responsive mb-lg-3"
-                                                    >
-                                                        <div
-                                                            class="table-row -cours header o_cc5"
-                                                        >
-                                                            <div class="cell border">
+													</div>
+													<div class="table-row">
+														<div class="cell border"
+														     data-title="Code">
+															<span class="cell-value">
+																<t t-esc="course_group.uid + ' (' + course_group.source_course_group_id.ue_id + ')'"/>
+															</span>
+														</div>
+														<div class="cell border"
+														     data-title="Heures">
+															<span class="cell-value">
+																<t t-esc="course_group.total_hours"/>
+															</span>
+														</div>
+														<div class="cell border"
+														     data-title="ECTS">
+															<span class="cell-value">
+																<t t-esc="course_group.total_credits"/>
+															</span>
+														</div>
+														<div class="cell border"
+														     data-title="Résultats"
+														     t-if="display_results == 'True'">
+															<span class="cell-value">
+																<t t-if="display_results == 'True'"
+																   t-esc="course_group.final_result_disp"/>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<t t-if="course_group.course_ids">
+												<div class="block-cours">
+													<h6 class="fs-5 -cours">Cours</h6>
+													<div class="table-responsive mb-lg-3">
+														<div class="table-row -cours header o_cc5">
+															<div class="cell border">
                                                                 Nom
                                                             </div>
-                                                            <div class="cell border">
+															<div class="cell border">
                                                                 Heures
                                                             </div>
-                                                            <div class="cell border">
+															<div class="cell border">
                                                                 ECTS
                                                             </div>
-                                                            <div class="cell border">
+															<div class="cell border">
                                                                 Pondération
                                                             </div>
-                                                            <div class="cell border">
+															<div class="cell border">
                                                                 Quadri
                                                             </div>
-                                                            <div
-                                                                class="cell border"
-                                                                t-if="display_results == 'True'"
-                                                            >
+															<div class="cell border"
+															     t-if="display_results == 'True'">
                                                                 Résultats
                                                             </div>
-                                                        </div>
-                                                        <t
-                                                            t-foreach="course_group.course_ids"
-                                                            t-as="course"
-                                                        >
-                                                            <div
-                                                                class="table-row -cours"
-                                                            >
-                                                                <div
-                                                                    class="cell cell-name border"
-                                                                    data-title="Nom"
-                                                                >
-                                                                    <span
-                                                                        class="cell-value"
-                                                                    >
-                                                                        <a
-                                                                            class="link-primary p-0"
-                                                                            t-esc="course.title"
-                                                                            t-att-href="'/cours/%s' % slug(course.source_course_id)"
-                                                                            target="_blank"
-                                                                        />
-                                                                    </span>
-                                                                </div>
-                                                                <div
-                                                                    class="cell border"
-                                                                    data-title="Heures"
-                                                                >
-                                                                    <span
-                                                                        class="cell-value"
-                                                                    >
-                                                                        <t
-                                                                            t-esc="course.hours"
-                                                                        />
-                                                                    </span>
-                                                                </div>
-                                                                <div
-                                                                    class="cell border"
-                                                                    data-title="ECTS"
-                                                                >
-                                                                    <span
-                                                                        class="cell-value"
-                                                                    >
-                                                                        <t
-                                                                            t-esc="course.credits"
-                                                                        />
-                                                                    </span>
-                                                                </div>
-                                                                <div
-                                                                    class="cell border"
-                                                                    data-title="Pondération"
-                                                                >
-                                                                    <span
-                                                                        class="cell-value"
-                                                                    >
-                                                                        <t
-                                                                            t-esc="course.weight"
-                                                                        />
-                                                                    </span>
-                                                                </div>
-                                                                <div
-                                                                    class="cell border"
-                                                                    data-title="Pondération"
-                                                                >
-                                                                    <span
-                                                                        class="cell-value"
-                                                                    >
-                                                                        <t
-                                                                            t-if="course.source_course_id.quadri"
-                                                                            t-esc="course.source_course_id.quadri"
-                                                                        />
-                                                                        <t
-                                                                            t-else=""
-                                                                            t-esc="course.source_course_id.quadri"
-                                                                        >/</t>
-                                                                    </span>
-                                                                </div>
-                                                                <div
-                                                                    class="cell border"
-                                                                    data-title="Résultats"
-                                                                    t-if="display_results == 'True'"
-                                                                >
-                                                                        <span
-                                                                        class="d-block"
-                                                                        t-if="not course.first_session_result and not course.second_session_result"
-                                                                    >-</span>
-                                                                        <span
-                                                                        class="d-block"
-                                                                        t-if="course.first_session_result and not course.second_session_result"
-                                                                    ><t
-                                                                            t-if="display_results == 'True'"
-                                                                            t-esc="course.first_session_result_disp"
-                                                                        /></span>
-                                                                        <span
-                                                                        class="d-block"
-                                                                        t-if="course.second_session_result"
-                                                                    ><t
-                                                                            t-if="display_results == 'True'"
-                                                                            t-esc="course.second_session_result_disp"
-                                                                        /></span>
-                                                                </div>
-                                                            </div>
-                                                        </t>
-                                                    </div>
-                                                </div>
-                                            </t>
-                                        </div>
-                                    </t>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </t>
-    </template>
-
-    <template id="hz_documents" name="Mes documents">
-            <t t-call="website.layout">
-                <div class="container">
-						<h1 class="mt-5 mb-2">Mes documents</h1>
-						<!-- accordion section -->
-						<section class="pt-md-1" t-foreach="official_document_ids" t-as="doc">
-							<a t-att-href="'/web/content/%i?download=true' % doc.online_attachment_id.id">
-								<span class="fa fa-download"><span style="padding:10px;"><t
-                                    t-esc="doc.name"
-                                /></span></span>
-							</a>
-						</section>
-						<span
-                    class="subheading-span d-block text-danger text-uppercase font-weight-bold mt-3 mt-md-4 mb-3 mb-md-4 pb-md-2 mb-xl-4 pb-xl-2"
-                >ATTESTATIONS</span>
-						<section class="pt-md-1" t-foreach="blocs" t-as="bloc">
-							<a
-                        t-att-href="'/report/pdf/school_management.report_attendance_for_student_content/%i' % bloc.id"
-                    >
-								<span class="fa fa-download"><span style="padding:10px;">Fréquentation - <t
-                                    t-esc="bloc.source_bloc_id.name"
-                                /></span></span>
-							</a>
-						</section>
-    			</div>
-    		</t>
-    	</template>
-
+														</div>
+														<t t-foreach="course_group.course_ids"
+														   t-as="course">
+															<div class="table-row -cours">
+																<div class="cell cell-name border"
+																     data-title="Nom">
+																	<span class="cell-value">
+																		<a class="link-primary p-0"
+																		   t-esc="course.title"
+																		   t-att-href="'/cours/%s' % slug(course.source_course_id)"
+																		   target="_blank"/>
+																	</span>
+																</div>
+																<div class="cell border"
+																     data-title="Heures">
+																	<span class="cell-value">
+																		<t t-esc="course.hours"/>
+																	</span>
+																</div>
+																<div class="cell border"
+																     data-title="ECTS">
+																	<span class="cell-value">
+																		<t t-esc="course.credits"/>
+																	</span>
+																</div>
+																<div class="cell border"
+																     data-title="Pondération">
+																	<span class="cell-value">
+																		<t t-esc="course.weight"/>
+																	</span>
+																</div>
+																<div class="cell border"
+																     data-title="Pondération">
+																	<span class="cell-value">
+																		<t t-if="course.source_course_id.quadri"
+																		   t-esc="course.source_course_id.quadri"/>
+																		<t t-else=""
+																		   t-esc="course.source_course_id.quadri">/</t>
+																	</span>
+																</div>
+																<div class="cell border"
+																     data-title="Résultats"
+																     t-if="display_results == 'True'">
+																	<span class="d-block"
+																	      t-if="not course.first_session_result and not course.second_session_result">-</span>
+																	<span class="d-block"
+																	      t-if="course.first_session_result and not course.second_session_result">
+																		<t t-if="display_results == 'True'"
+																		   t-esc="course.first_session_result_disp"/>
+																	</span>
+																	<span class="d-block"
+																	      t-if="course.second_session_result">
+																		<t t-if="display_results == 'True'"
+																		   t-esc="course.second_session_result_disp"/>
+																	</span>
+																</div>
+															</div>
+														</t>
+													</div>
+												</div>
+											</t>
+										</div>
+									</t>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</t>
+	</template>
+	<template id="hz_documents"
+	          name="Mes documents">
+		<t t-call="website.layout">
+			<div class="container">
+				<h1 class="mt-5 mb-2">Mes documents</h1>
+				<!-- accordion section -->
+				<section class="pt-md-1"
+				         t-foreach="official_document_ids"
+				         t-as="doc">
+					<a t-att-href="'/web/content/%i?download=true' % doc.online_attachment_id.id">
+						<span class="fa fa-download">
+							<span style="padding:10px;">
+								<t t-esc="doc.name"/>
+							</span>
+						</span>
+					</a>
+				</section>
+				<span class="subheading-span d-block text-primary text-uppercase font-weight-bold mt-3 mt-md-4 mb-3 mb-md-4 pb-md-2 mb-xl-4 pb-xl-2">ATTESTATIONS</span>
+				<section class="pt-md-1"
+				         t-foreach="blocs"
+				         t-as="bloc">
+					<a t-att-href="'/report/pdf/school_management.report_attendance_for_student_content/%i' % bloc.id">
+						<span class="fa fa-download">
+							<span style="padding:10px;">Fréquentation - <t t-esc="bloc.source_bloc_id.name"/>
+							</span>
+						</span>
+					</a>
+				</section>
+			</div>
+		</t>
+	</template>
 </odoo>

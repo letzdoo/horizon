@@ -37,8 +37,8 @@
         function updateRoomList() {
             var fromTime = $("#from_hour").val();
             var toTime = $("#to_hour").val();
-            $("#room").val(0);
             if (fromTime < toTime) {
+                $("#room").val(0);
                 var start = date_today
                     .clone()
                     .set("hour", fromTime.slice(0, 2))
@@ -118,7 +118,7 @@
                         }
                     },
                 });
-            }
+            } 
         }
 
         function updateSelectHours() {
@@ -137,17 +137,25 @@
             }
         }
 
+        $("#selected_date").on("change", function() {
+            this.setAttribute(
+                    "value",
+                    this.value);
+            updateRoomList();
+            updateSendButton();
+        });
+
         $("#today").on("click", function () {
-            $("#today").addClass("bg-danger border border-danger border-0");
-            $("#tomorrow").removeClass("bg-danger border border-danger border-0");
+            $("#today").removeClass("btn-secondary").addClass("btn-primary");
+            $("#tomorrow").removeClass("btn-primary").addClass("btn-secondary");
             $("#day").prop("value", "0");
             updateRoomList();
             updateSendButton();
         });
 
         $("#tomorrow").on("click", function () {
-            $("#today").removeClass("bg-danger border border-danger border-0");
-            $("#tomorrow").addClass("bg-danger border border-danger border-0");
+            $("#today").removeClass("btn-primary").addClass("btn-secondary");
+            $("#tomorrow").removeClass("btn-secondary").addClass("btn-primary");
             $("#day").prop("value", "1");
             updateRoomList();
             updateSendButton();

@@ -66,16 +66,16 @@
         search();
 
         $("#today").on("click", function () {
-            $("#today").addClass("bg-danger border border-danger border-0");
-            $("#tomorrow").removeClass("bg-danger border border-danger border-0");
+            $("#today").removeClass("btn-secondary").addClass("btn-primary");
+            $("#tomorrow").removeClass("btn-primary").addClass("btn-secondary");
             $("#day").prop("value", "0");
 
             search();
         });
 
         $("#tomorrow").on("click", function () {
-            $("#today").removeClass("bg-danger border border-danger border-0");
-            $("#tomorrow").addClass("bg-danger border border-danger border-0");
+            $("#today").removeClass("btn-primary").addClass("btn-secondary");
+            $("#tomorrow").removeClass("btn-secondary").addClass("btn-primary");
             $("#day").prop("value", "1");
 
             search();
