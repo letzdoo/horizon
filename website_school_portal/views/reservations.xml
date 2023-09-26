@@ -20,77 +20,62 @@
 ##############################################################################
 -->
 <odoo>
-	<template id="assets"
-	          name="website_school_portal assets">
-		<link rel="stylesheet"
-		      href="/website_school_portal/static/src/css/toastr.css"/>
-		<script type="text/javascript"
-		        src="/web/static/lib/jquery/jquery.js"/>
-		<script type="text/javascript"
-		        src="/web/static/lib/jquery.ui/jquery-ui.js"/>
-		<script type="text/javascript"
-		        src="/web/static/lib/jquery/jquery.browser.js"/>
-		<script type="text/javascript"
-		        src="/web/static/lib/moment/moment.js"/>
-		<script type="text/javascript"
-		        src="/web/static/lib/moment/locale/fr.js"/>
-		<script type="text/javascript"
-		        src="/website_school_portal/static/src/js/toastr.js"/>
+	<template id="assets" name="website_school_portal assets">
+		<link rel="stylesheet" href="/website_school_portal/static/src/css/toastr.css" />
+		<script type="text/javascript" src="/web/static/lib/jquery/jquery.js" />
+		<script type="text/javascript" src="/web/static/lib/jquery.ui/jquery-ui.js" />
+		<script type="text/javascript" src="/web/static/lib/jquery/jquery.browser.js" />
+		<script type="text/javascript" src="/web/static/lib/moment/moment.js" />
+		<script type="text/javascript" src="/web/static/lib/moment/locale/fr.js" />
+		<script type="text/javascript" src="/website_school_portal/static/src/js/toastr.js" />
 	</template>
-	<template id="hz_booking_new"
-	          name="Nouvelle réservation">
+	<template id="hz_booking_new" name="Nouvelle réservation">
 		<t t-call="website.layout">
-			<xpath expr="//head"
-			       position="inside">
-				<t t-call="website_school_portal.assets"/>
+			<xpath expr="//head" position="inside">
+				<t t-call="website_school_portal.assets" />
 			</xpath>
 			<script type="text/javascript">
-    				var date_today = moment('<t t-esc="today"/>');
-    				var date_tomorrow = moment('<t t-esc="tomorrow"/>');
+    				var date_today = moment('<t t-esc="today" />');
+    				var date_tomorrow = moment('<t t-esc="tomorrow" />');
     			</script>
-			<script type="text/javascript"
-			        src="/website_school_portal/static/src/js/booking-new.js"
-			        defer=""/>
-			<div id="content"
-			     class="container">
+			<script
+                type="text/javascript"
+                src="/website_school_portal/static/src/js/booking-new.js"
+                defer=""
+            />
+			<div id="content" class="container">
 				<div class="content-body">
 					<h1 class="mt-5 mb-2">Réserver une salle</h1>
 					<t t-call="website_school_portal._hz_booking_new_desc" />
-					<form action="#"
-					      class="pt-4 pt-lg-2 mt-4 mt-lg-5 pb-4">
-                        <t t-if="user_id.partner_id.employee or user_id._is_admin()"><!-- Employé ou administrateur -->
-							<input id="event_type"
-							       type="hidden"
-							       value="8"/>
-						</t>  
+					<form action="#" class="pt-4 pt-lg-2 mt-4 mt-lg-5 pb-4">
+                        <t
+                            t-if="user_id.partner_id.employee or user_id._is_admin()"
+                        ><!-- Employé ou administrateur -->
+							<input id="event_type" type="hidden" value="8" />
+						</t>
 						<t t-elif="user_id.partner_id.teacher"><!-- Enseignant -->
-							<input id="event_type"
-							       type="hidden"
-							       value="7"/>
+							<input id="event_type" type="hidden" value="7" />
 						</t>
                         <t t-elif="user_id.partner_id.student"><!-- Étudiant -->
-							<input id="event_type"
-							       type="hidden"
-							       value="6"/>
+							<input id="event_type" type="hidden" value="6" />
 						</t><!-- Pas de "else": l'utilisateur doit appartenir à une de ces catégories -->
-						<input id="description"
-						       type="hidden"
-						       t-att-value="user.name"/>
+						<input id="description" type="hidden" t-att-value="user.name" />
 						<div class="row mb-2">
 							<div class="col-12">
-                                <t t-if="user_id.partner_id.teacher or user_id.partner_id.employee or user_id._is_admin()">
+                                <t
+                                    t-if="user_id.partner_id.teacher or user_id.partner_id.employee or user_id._is_admin()"
+                                >
 									<div class="row">
 										<div class="col-12 col-sm-4 col-lg-3">
 											<label class="text-uppercase font-weight-bold">Date</label>
-											<input id="day"
-											       name="day"
-											       type="hidden"
-											       value="0"/>
-											<input class="w-100 form-control"
-											       type="date"
-											       name="selected_date"
-											       id="selected_date"
-											       t-att-value="today.strftime('%Y-%m-%d')"/>
+											<input id="day" name="day" type="hidden" value="0" />
+											<input
+                                                class="w-100 form-control"
+                                                type="date"
+                                                name="selected_date"
+                                                id="selected_date"
+                                                t-att-value="today.strftime('%Y-%m-%d')"
+                                            />
 										</div>
 									</div>
 								</t>
@@ -98,68 +83,62 @@
 									<div class="row">
 										<div class="col-12 col-sm-4 col-lg-3">
 											<label id="todayLabel" class="text-uppercase font-weight-bold">Aujourd'hui</label>
-											<button id="today"
-											        class="form-control input-sm input-font-lg text-center btn-primary active"
-											        type="button">
-												<t t-esc="today.strftime('%d / %m  ')"/>
+											<button
+                                                id="today"
+                                                class="form-control input-sm input-font-lg text-center btn-primary active"
+                                                type="button"
+                                            >
+												<t t-esc="today.strftime('%d / %m  ')" />
 											</button>
 										</div>
 										<div class="col-12 col-sm-4 col-lg-3">
 											<label id="tomorrowLabel" class="text-uppercase fw-light">Demain</label>
-											<button type="button"
-											        id="tomorrow"
-											        class="form-control input-font-lg text-center btn-outline-primary">
-												<t t-esc="tomorrow.strftime('%d / %m  ')"/>
+											<button
+                                                type="button"
+                                                id="tomorrow"
+                                                class="form-control input-font-lg text-center btn-outline-primary"
+                                            >
+												<t t-esc="tomorrow.strftime('%d / %m  ')" />
 											</button>
 										</div>
 									</div>
-									<input id="day"
-									       name="day"
-									       type="hidden"
-									       value="0"/>
-									<input id="selected_date"
-									       name="selected_date"
-									       type="hidden"
-									       value="0"/>
+									<input id="day" name="day" type="hidden" value="0" />
+									<input id="selected_date" name="selected_date" type="hidden" value="0" />
 								</t><!-- Pas de "else": l'utilisateur doit appartenir à une de ces catégories -->
-								
+
 							</div>
 						</div>
 						<div class="row mb-2">
 							<div class="col-12">
 								<div class="row">
 									<div class="col-12 col-sm-4 col-lg-3">
-										<label class="text-uppercase font-weight-bold"
-										       for="beginningHour">Heure début</label>
-										<select class="w-100 form-select"
-										        id="from_hour"
-										        name="from_hour">
-											<option t-att-value=""
-											        t-att-hidden="True"
-											        t-att-selected="True"
-											        t-att-disabled="True">Heure de début...</option>
-											<t t-foreach="from_hours"
-											   t-as="from_hour">
+										<label class="text-uppercase font-weight-bold" for="beginningHour">Heure début</label>
+										<select class="w-100 form-select" id="from_hour" name="from_hour">
+											<option
+                                                t-att-value=""
+                                                t-att-hidden="True"
+                                                t-att-selected="True"
+                                                t-att-disabled="True"
+                                            >Heure de début...</option>
+											<t t-foreach="from_hours" t-as="from_hour">
 												<option t-att-value="from_hour">
-													<t t-esc="from_hour"/>
+													<t t-esc="from_hour" />
 												</option>
 											</t>
 										</select>
 									</div>
 									<div class="col-12 col-sm-4 col-lg-3">
-										<label class="text-uppercase font-weight-bold"
-										       for="endTime">Heure fin</label>
-										<select class="w-100 form-select"
-										        id="to_hour"
-										        name="to_hour">
-											<option t-att-value=""
-											        t-att-hidden="True"
-											        t-att-selected="True"
-											        t-att-disabled="True">Heure de fin...</option>
-											<t t-foreach="to_hours"
-											   t-as="to_hour">
+										<label class="text-uppercase font-weight-bold" for="endTime">Heure fin</label>
+										<select class="w-100 form-select" id="to_hour" name="to_hour">
+											<option
+                                                t-att-value=""
+                                                t-att-hidden="True"
+                                                t-att-selected="True"
+                                                t-att-disabled="True"
+                                            >Heure de fin...</option>
+											<t t-foreach="to_hours" t-as="to_hour">
 												<option t-att-value="to_hour">
-													<t t-esc="to_hour"/>
+													<t t-esc="to_hour" />
 												</option>
 											</t>
 										</select>
@@ -169,117 +148,122 @@
 						</div>
 						<div class="row mb-2">
 							<div class="col-12 col-sm-4 col-lg-3">
-								<label class="text-uppercase font-weight-bold"
-								       for="endTime">local</label>
-								<select id="room"
-								        class="w-100 form-select"
-								        disabled="">
+								<label class="text-uppercase font-weight-bold" for="endTime">local</label>
+								<select id="room" class="w-100 form-select" disabled="">
 									<option selected="">Selectionnez un local...</option>
 								</select>
 							</div>
 						</div>
 						<div class="row mb-2 mt-4">
 							<div class="col-12 col-sm-4 col-lg-3">
-								<button type="button"
-								        id="request-booking"
-								        class="btn btn-primary"
-								        disabled="">Envoyer ma demande</button>
+								<button
+                                    type="button"
+                                    id="request-booking"
+                                    class="btn btn-primary"
+                                    disabled=""
+                                >Envoyer ma demande</button>
 							</div>
 						</div>
 					</form>
-					<div id="horizon-error"
-					     class="btn btn-warning btn-block p-2 font-weight-bold mb-4"
-					     style="display: none;"/>
+					<div
+                        id="horizon-error"
+                        class="btn btn-warning btn-block p-2 font-weight-bold mb-4"
+                        style="display: none;"
+                    />
 				</div>
 			</div>
 		</t>
 	</template>
-	<template id="hz_booking_search"
-	          name="Recherche réservation">
+	<template id="hz_booking_search" name="Recherche réservation">
 		<t t-call="website.layout">
-			<xpath expr="//head"
-			       position="inside">
-				<t t-call="website_school_portal.assets"/>
+			<xpath expr="//head" position="inside">
+				<t t-call="website_school_portal.assets" />
 			</xpath>
-			<script type="text/javascript"
-			        src="/website_school_portal/static/src/js/booking-search.js"
-			        defer=""/>
-			<div id="content"
-			     class="container">
+			<script
+                type="text/javascript"
+                src="/website_school_portal/static/src/js/booking-search.js"
+                defer=""
+            />
+			<div id="content" class="container">
 				<div class="content-body">
 					<h1 class="mt-5 mb-2">Recherche de réservations</h1>
-                    <t t-call="website_school_portal._hz_booking_search_desc"/>
-					<form action="#"
-					      class="pt-4 pt-lg-2 mt-4 mt-lg-5">
+                    <t t-call="website_school_portal._hz_booking_search_desc" />
+					<form action="#" class="pt-4 pt-lg-2 mt-4 mt-lg-5">
 						<div class="row mb-4">
 							<div class="col-12 col-sm-4 col-lg-3">
 								<label id="todayLabel" class="text-uppercase font-weight-bold">Aujourd'hui</label>
-								<button id="today"
-								        class="form-control input-sm input-font-lg text-center btn-primary active"
-								        type="button">
-									<t t-esc="datetime.datetime.today().strftime('%d / %m  ')"/>
+								<button
+                                    id="today"
+                                    class="form-control input-sm input-font-lg text-center btn-primary active"
+                                    type="button"
+                                >
+									<t t-esc="datetime.datetime.today().strftime('%d / %m  ')" />
 								</button>
 							</div>
 							<div class="col-12 col-sm-4 col-lg-3">
 								<label id="tomorrowLabel" class="text-uppercase fw-light">Demain</label>
-								<button type="button"
-								        id="tomorrow"
-								        class="form-control input-sm input-font-lg text-center btn-outline-primary">
-									<t t-esc="(datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d / %m  ')"/>
+								<button
+                                    type="button"
+                                    id="tomorrow"
+                                    class="form-control input-sm input-font-lg text-center btn-outline-primary"
+                                >
+									<t
+                                        t-esc="(datetime.datetime.today() + datetime.timedelta(days=1)).strftime('%d / %m  ')"
+                                    />
 								</button>
 							</div>
-							<input id="day"
-							       type="hidden"
-							       value="0"/>
+							<input id="day" type="hidden" value="0" />
 						</div>
 						<div class="row mb-4">
 							<div class="col-12 col-sm-8 col-lg-6">
-								<input id="query"
-								       type="text"
-								       data-length="30"
-								       class="form-control no-appearance time-select input-lg input-font-lg"
-								       placeholder="Critère de recherche..."/>
+								<input
+                                    id="query"
+                                    type="text"
+                                    data-length="30"
+                                    class="form-control no-appearance time-select input-lg input-font-lg"
+                                    placeholder="Critère de recherche..."
+                                />
 							</div>
 						</div>
 						<div class="form-group pt-3">
-							<button type="button"
-							        id="search-booking"
-							        class="btn btn-primary">Rechercher</button>
+							<button type="button" id="search-booking" class="btn btn-primary">Rechercher</button>
 						</div>
 					</form>
-					<p class="subheading-span d-block text-primary text-uppercase mb-4 pb-md-0 mb-xl-4 pb-xl-3 mt-4">RÉSULTATS</p>
-					<ul id="booking-list"
-					    class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
+					<p
+                        class="subheading-span d-block text-primary text-uppercase mb-4 pb-md-0 mb-xl-4 pb-xl-3 mt-4"
+                    >RÉSULTATS</p>
+					<ul id="booking-list" class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
 						</ul>
 				</div>
 			</div>
 		</t>
 	</template>
-	<template id="hz_bookings"
-	          name="Mes réservations">
+	<template id="hz_bookings" name="Mes réservations">
 		<t t-call="website.layout">
-			<div id="content"
-			     class="container">
+			<div id="content" class="container">
 				<div class="content-body">
 					<h1 class="mt-5 mb-2">Mes réservations</h1>
 					<h5>Aujourd'hui</h5>
 					<i t-if='len(bookings) == 0'>Aucune réservation</i>
 					<ul class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
-						<li t-foreach="bookings"
-						    t-as="book">
+						<li t-foreach="bookings" t-as="book">
 							<div class="d-flex justify-content-between">
 								<span class="pr-3">
-									<span t-field="book.start"
-									      t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'/>
+									<span
+                                        t-field="book.start"
+                                        t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'
+                                    />
 									<span class="mx-1">›</span>
-									<span t-field="book.stop"
-									      t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'/>
+									<span
+                                        t-field="book.stop"
+                                        t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'
+                                    />
 								</span>
 								<span>
-									<t t-esc="book.room_id.name"/>
+									<t t-esc="book.room_id.name" />
 								</span>
 								<a t-att-href="'/reservations/suppression/%s' % book.id">
-									<i class="fa fa-trash d-inline-block"/>
+									<i class="fa fa-trash d-inline-block" />
 								</a>
 							</div>
 						</li>
@@ -287,31 +271,32 @@
 					<h5>Demain</h5>
 					<i t-if='len(bookings_next) == 0'>Aucune réservation</i>
 					<ul class="booking-list list-unstyled mb-5 mb-lg-6 pb-2">
-						<li t-foreach="bookings_next"
-						    t-as="book">
+						<li t-foreach="bookings_next" t-as="book">
 							<div class="d-flex justify-content-between">
 								<span class="pr-3">
-									<span t-field="book.start"
-									      t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'/>
+									<span
+                                        t-field="book.start"
+                                        t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'
+                                    />
 									<span class="mx-1">›</span>
-									<span t-field="book.stop"
-									      t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'/>
+									<span
+                                        t-field="book.stop"
+                                        t-options='{"widget": "datetime", "time_only": True, "hide_seconds": True}'
+                                    />
 								</span>
 								<span>
-									<t t-esc="book.room_id.name"/>
+									<t t-esc="book.room_id.name" />
 								</span>
 								<a t-att-href="'/reservations/suppression/%s' % book.id">
-									<i class="fa fa-trash d-inline-block"/>
+									<i class="fa fa-trash d-inline-block" />
 								</a>
 							</div>
 						</li>
 					</ul>
 					<div class="row mb-4">
 						<div class="col-12">
-							<a class="btn btn-primary me-3"
-							   href="/reservations/creation">Réserver une salle</a>
-							<a class="btn btn-primary"
-							   href="/reservations/recherche">Rechercher</a>
+							<a class="btn btn-primary me-3" href="/reservations/creation">Réserver une salle</a>
+							<a class="btn btn-primary" href="/reservations/recherche">Rechercher</a>
 						</div>
 					</div>
 				</div>

@@ -20,95 +20,107 @@
 ##############################################################################
 -->
 <odoo>
-    <template id="hz_blocs"
-	          name="Mon programme individuel">
+    <template id="hz_blocs" name="Mon programme individuel">
 		<t t-call="website.layout">
 			<div class="container">
 				<h1 class="mt-5 mb-4">Mon programme individuel</h1>
-				<section class="accordion-section pt-md-1 d-evaluation"
-				         t-foreach="blocs"
-				         t-as="bloc">
-					<div class="accordion -accordion-program_detail"
-					     id="program_detail">
+				<section class="accordion-section pt-md-1 d-evaluation" t-foreach="blocs" t-as="bloc">
+					<div class="accordion -accordion-program_detail" id="program_detail">
 						<div class="accordion-item border mb-4">
 							<h3 class="accordion-header">
-								<button class="accordion-button"
-								        type="button"
-								        data-bs-toggle="collapse"
-								        t-attf-data-bs-target="#collapse{{bloc.id}}"
-								        aria-expanded="true"
-								        t-attf-aria-controls="collapse{{bloc.id}}">
+								<button
+                                    class="accordion-button"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    t-attf-data-bs-target="#collapse{{bloc.id}}"
+                                    aria-expanded="true"
+                                    t-attf-aria-controls="collapse{{bloc.id}}"
+                                >
 									<div class="d-flex flex-column">
 										<span class="fs-2">
-											<t t-esc="bloc.source_bloc_name"/>
+											<t t-esc="bloc.source_bloc_name" />
 										</span>
 										<div class="mt-2 d-flex gap-2">
 											<span>
                                                     Heures&amp;nbsp;:
-                                                    <span class="fw-bold accented-color"
-												      t-esc="bloc.total_hours"/>
+                                                    <span
+                                                    class="fw-bold accented-color"
+                                                    t-esc="bloc.total_hours"
+                                                />
 											</span>
 											<span>|</span>
 											<span>
                                                     ECTS&amp;nbsp;:
-                                                    <span class="fw-bold accented-color"
-												      t-esc="bloc.total_credits"/>
+                                                    <span
+                                                    class="fw-bold accented-color"
+                                                    t-esc="bloc.total_credits"
+                                                />
 											</span>
 										</div>
 									</div>
 								</button>
 							</h3>
-							<div t-attf-id="collapse{{bloc.id}}"
-							     class="accordion-collapse collapse"
-							     aria-labelledby="headingOne"
-							     data-bs-parent="#program_detail">
+							<div
+                                t-attf-id="collapse{{bloc.id}}"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="headingOne"
+                                data-bs-parent="#program_detail"
+                            >
 								<div class="accordion-body border-top pt-2 pt-lg-0 px-2 px-lg-4">
 									<div class="group-content mb-4 mt-3 mt-lg-5">
 										<dl class="d-flex flex-wrap mb-0">
 											<div class="flex-grow-1">
 												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Domaine</dt>
-												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
-												    t-esc="bloc.source_bloc_domain_id.name"/>
+												<dd
+                                                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
+                                                    t-esc="bloc.source_bloc_domain_id.name"
+                                                />
 											</div>
 											<div class="flex-grow-1">
 												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Cycle</dt>
 												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0">
 													<t t-if="bloc.source_bloc_cycle_id">
-														<span t-esc="bloc.source_bloc_cycle_id.name"/>
+														<span t-esc="bloc.source_bloc_cycle_id.name" />
 													</t>
 													<t t-else="">/</t>
 												</dd>
 											</div>
 											<div class="flex-grow-1">
 												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Section</dt>
-												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
-												    t-esc="bloc.source_bloc_section_id.name"/>
+												<dd
+                                                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
+                                                    t-esc="bloc.source_bloc_section_id.name"
+                                                />
 											</div>
 											<div class="flex-grow-1">
 												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Orientation</dt>
-												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
-												    t-esc="bloc.source_bloc_track_id.name"/>
+												<dd
+                                                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
+                                                    t-esc="bloc.source_bloc_track_id.name"
+                                                />
 											</div>
 											<div class="flex-grow-1">
 												<dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Spécialité</dt>
-												<dd class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
-												    t-esc="bloc.source_bloc_speciality_id.name"/>
+												<dd
+                                                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-0"
+                                                    t-esc="bloc.source_bloc_speciality_id.name"
+                                                />
 											</div>
 										</dl>
 									</div>
-									<t t-foreach="bloc.course_group_ids"
-									   t-as="course_group">
-										<h5 class="group-title w-fit-content border border-bottom-0 d-flex flex-column gap-2 mt-3 mt-lg-5 mb-0 py-2 px-4">
+									<t t-foreach="bloc.course_group_ids" t-as="course_group">
+										<h5
+                                            class="group-title w-fit-content border border-bottom-0 d-flex flex-column gap-2 mt-3 mt-lg-5 mb-0 py-2 px-4"
+                                        >
 											<span class="d-flex flex-wrap gap-2">
 												<span class="d-none d-lg-inline">Unité d’enseignement&amp;nbsp;: </span>
-												<t class="d-block p-0"
-												   t-esc="course_group.title"/>
+												<t class="d-block p-0" t-esc="course_group.title" />
 											</span>
 											<span class="d-flex flex-wrap gap-2 fs-6">
 												<span class="d-none d-lg-inline">Responsable&amp;nbsp;:</span>
 												<span class="d-inline d-lg-none">Resp.:</span>
 												<span class="fw-normal fst-italic">
-													<t t-esc="course_group.responsible_id.name"/>
+													<t t-esc="course_group.responsible_id.name" />
 												</span>
 											</span>
 										</h5>
@@ -125,36 +137,29 @@
 														<div class="cell border">
                                                             ECTS
                                                         </div>
-														<div class="cell border"
-														     t-if="display_results == 'True'">
+														<div class="cell border" t-if="display_results == 'True'">
                                                             Résultats
                                                         </div>
 													</div>
 													<div class="table-row">
-														<div class="cell border"
-														     data-title="Code">
+														<div class="cell border" data-title="Code">
 															<span class="cell-value">
-																<t t-esc="course_group.uid + ' (' + course_group.source_course_group_id.ue_id + ')'"/>
+																<t t-esc="course_group.uid + ' (' + course_group.source_course_group_id.ue_id + ')'" />
 															</span>
 														</div>
-														<div class="cell border"
-														     data-title="Heures">
+														<div class="cell border" data-title="Heures">
 															<span class="cell-value">
-																<t t-esc="course_group.total_hours"/>
+																<t t-esc="course_group.total_hours" />
 															</span>
 														</div>
-														<div class="cell border"
-														     data-title="ECTS">
+														<div class="cell border" data-title="ECTS">
 															<span class="cell-value">
-																<t t-esc="course_group.total_credits"/>
+																<t t-esc="course_group.total_credits" />
 															</span>
 														</div>
-														<div class="cell border"
-														     data-title="Résultats"
-														     t-if="display_results == 'True'">
+														<div class="cell border" data-title="Résultats" t-if="display_results == 'True'">
 															<span class="cell-value">
-																<t t-if="display_results == 'True'"
-																   t-esc="course_group.final_result_disp"/>
+																<t t-if="display_results == 'True'" t-esc="course_group.final_result_disp" />
 															</span>
 														</div>
 													</div>
@@ -180,64 +185,56 @@
 															<div class="cell border">
                                                                 Quadri
                                                             </div>
-															<div class="cell border"
-															     t-if="display_results == 'True'">
+															<div class="cell border" t-if="display_results == 'True'">
                                                                 Résultats
                                                             </div>
 														</div>
-														<t t-foreach="course_group.course_ids"
-														   t-as="course">
+														<t t-foreach="course_group.course_ids" t-as="course">
 															<div class="table-row -cours">
-																<div class="cell cell-name border"
-																     data-title="Nom">
+																<div class="cell cell-name border" data-title="Nom">
 																	<span class="cell-value">
-																		<a class="link-primary p-0"
-																		   t-esc="course.title"
-																		   t-att-href="'/cours/%s' % slug(course.source_course_id)"
-																		   target="_blank"/>
+																		<a
+                                                                            class="link-primary p-0"
+                                                                            t-esc="course.title"
+                                                                            t-att-href="'/cours/%s' % slug(course.source_course_id)"
+                                                                            target="_blank"
+                                                                        />
 																	</span>
 																</div>
-																<div class="cell border"
-																     data-title="Heures">
+																<div class="cell border" data-title="Heures">
 																	<span class="cell-value">
-																		<t t-esc="course.hours"/>
+																		<t t-esc="course.hours" />
 																	</span>
 																</div>
-																<div class="cell border"
-																     data-title="ECTS">
+																<div class="cell border" data-title="ECTS">
 																	<span class="cell-value">
-																		<t t-esc="course.credits"/>
+																		<t t-esc="course.credits" />
 																	</span>
 																</div>
-																<div class="cell border"
-																     data-title="Pondération">
+																<div class="cell border" data-title="Pondération">
 																	<span class="cell-value">
-																		<t t-esc="course.weight"/>
+																		<t t-esc="course.weight" />
 																	</span>
 																</div>
-																<div class="cell border"
-																     data-title="Pondération">
+																<div class="cell border" data-title="Pondération">
 																	<span class="cell-value">
-																		<t t-if="course.source_course_id.quadri"
-																		   t-esc="course.source_course_id.quadri"/>
-																		<t t-else=""
-																		   t-esc="course.source_course_id.quadri">/</t>
+																		<t t-if="course.source_course_id.quadri" t-esc="course.source_course_id.quadri" />
+																		<t t-else="" t-esc="course.source_course_id.quadri">/</t>
 																	</span>
 																</div>
-																<div class="cell border"
-																     data-title="Résultats"
-																     t-if="display_results == 'True'">
-																	<span class="d-block"
-																	      t-if="not course.first_session_result and not course.second_session_result">-</span>
-																	<span class="d-block"
-																	      t-if="course.first_session_result and not course.second_session_result">
-																		<t t-if="display_results == 'True'"
-																		   t-esc="course.first_session_result_disp"/>
+																<div class="cell border" data-title="Résultats" t-if="display_results == 'True'">
+																	<span
+                                                                        class="d-block"
+                                                                        t-if="not course.first_session_result and not course.second_session_result"
+                                                                    >-</span>
+																	<span
+                                                                        class="d-block"
+                                                                        t-if="course.first_session_result and not course.second_session_result"
+                                                                    >
+																		<t t-if="display_results == 'True'" t-esc="course.first_session_result_disp" />
 																	</span>
-																	<span class="d-block"
-																	      t-if="course.second_session_result">
-																		<t t-if="display_results == 'True'"
-																		   t-esc="course.second_session_result_disp"/>
+																	<span class="d-block" t-if="course.second_session_result">
+																		<t t-if="display_results == 'True'" t-esc="course.second_session_result_disp" />
 																	</span>
 																</div>
 															</div>
@@ -255,30 +252,29 @@
 			</div>
 		</t>
 	</template>
-	<template id="hz_documents"
-	          name="Mes documents">
+	<template id="hz_documents" name="Mes documents">
 		<t t-call="website.layout">
 			<div class="container">
 				<h1 class="mt-5 mb-2">Mes documents</h1>
 				<!-- accordion section -->
-				<section class="pt-md-1"
-				         t-foreach="official_document_ids"
-				         t-as="doc">
+				<section class="pt-md-1" t-foreach="official_document_ids" t-as="doc">
 					<a t-att-href="'/web/content/%i?download=true' % doc.online_attachment_id.id">
 						<span class="fa fa-download">
 							<span style="padding:10px;">
-								<t t-esc="doc.name"/>
+								<t t-esc="doc.name" />
 							</span>
 						</span>
 					</a>
 				</section>
-				<span class="subheading-span d-block text-primary text-uppercase font-weight-bold mt-3 mt-md-4 mb-3 mb-md-4 pb-md-2 mb-xl-4 pb-xl-2">ATTESTATIONS</span>
-				<section class="pt-md-1"
-				         t-foreach="blocs"
-				         t-as="bloc">
-					<a t-att-href="'/report/pdf/school_management.report_attendance_for_student_content/%i' % bloc.id">
+				<span
+                    class="subheading-span d-block text-primary text-uppercase font-weight-bold mt-3 mt-md-4 mb-3 mb-md-4 pb-md-2 mb-xl-4 pb-xl-2"
+                >ATTESTATIONS</span>
+				<section class="pt-md-1" t-foreach="blocs" t-as="bloc">
+					<a
+                        t-att-href="'/report/pdf/school_management.report_attendance_for_student_content/%i' % bloc.id"
+                    >
 						<span class="fa fa-download">
-							<span style="padding:10px;">Fréquentation - <t t-esc="bloc.source_bloc_id.name"/>
+							<span style="padding:10px;">Fréquentation - <t t-esc="bloc.source_bloc_id.name" />
 							</span>
 						</span>
 					</a>

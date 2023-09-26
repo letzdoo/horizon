@@ -67,10 +67,21 @@
                         <div class="row">
                             <div class="col-lg-2 pt24 pb24">
                                 <h5 class="mb-3 o_not_editable">Liens utiles</h5>
-                                <t t-call="website_school_portal._hz_custom_footer_links"/>
-                                <t t-call="website_school_portal._hz_custom_footer_links_student" t-if="user_id.partner_id.student or user_id._is_admin()" />
-                                <t t-call="website_school_portal._hz_custom_footer_links_teacher" t-if="user_id.partner_id.teacher or user_id._is_admin()" />
-                                <t t-call="website_school_portal._hz_custom_footer_links_employee" t-if="user_id.partner_id.employee or user_id._is_admin()" />
+                                <t
+                                    t-call="website_school_portal._hz_custom_footer_links"
+                                />
+                                <t
+                                    t-call="website_school_portal._hz_custom_footer_links_student"
+                                    t-if="user_id.partner_id.student or user_id._is_admin()"
+                                />
+                                <t
+                                    t-call="website_school_portal._hz_custom_footer_links_teacher"
+                                    t-if="user_id.partner_id.teacher or user_id._is_admin()"
+                                />
+                                <t
+                                    t-call="website_school_portal._hz_custom_footer_links_employee"
+                                    t-if="user_id.partner_id.employee or user_id._is_admin()"
+                                />
                             </div>
                             <div class="col-lg-5 pt24 pb24">
                                 <t

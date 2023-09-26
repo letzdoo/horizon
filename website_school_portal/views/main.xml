@@ -51,38 +51,31 @@
             </style>
             <div class="o_portal_my_home">
                 <h1 t-out="user_id.partner_id.name" />
-                <t
-                    t-set="profile_count"
-                    t-value="0"
-                />
+                <t t-set="profile_count" t-value="0" />
                 <ul class="d-flex list-unstyled">
                     <li t-if="user_id.partner_id.student == True">
-                        <t
-                            t-set="profile_count"
-                            t-value="profile_count + 1"
-                        />
-                        <span class="badge bg-primary rounded-pill me-1 o_not_editable">Étudiant</span>
+                        <t t-set="profile_count" t-value="profile_count + 1" />
+                        <span
+                            class="badge bg-primary rounded-pill me-1 o_not_editable"
+                        >Étudiant</span>
                     </li>
                     <li t-if="user_id.partner_id.teacher == True">
-                        <t
-                            t-set="profile_count"
-                            t-value="profile_count + 1"
-                        />
-                        <span class="badge bg-primary rounded-pill me-1 o_not_editable">Enseignant</span>
+                        <t t-set="profile_count" t-value="profile_count + 1" />
+                        <span
+                            class="badge bg-primary rounded-pill me-1 o_not_editable"
+                        >Enseignant</span>
                     </li>
                     <li t-if="user_id.partner_id.employee == True">
-                        <t
-                            t-set="profile_count"
-                            t-value="profile_count + 1"
-                        />
-                        <span class="badge bg-primary rounded-pill me-1 o_not_editable">Employé</span>
+                        <t t-set="profile_count" t-value="profile_count + 1" />
+                        <span
+                            class="badge bg-primary rounded-pill me-1 o_not_editable"
+                        >Employé</span>
                     </li>
                     <li t-if="user_id._is_admin()">
-                        <t
-                            t-set="profile_count"
-                            t-value="profile_count + 1"
-                        />
-                        <span class="badge bg-primary rounded-pill me-1 o_not_editable">Administrateur du système</span>
+                        <t t-set="profile_count" t-value="profile_count + 1" />
+                        <span
+                            class="badge bg-primary rounded-pill me-1 o_not_editable"
+                        >Administrateur du système</span>
                     </li>
                 </ul>
                 <t
@@ -140,7 +133,10 @@
     </template>
 
     <template id="hz_account_student" name="Horizon Student Account Page" priority="32">
-        <h2 t-if="profile_count > 1 or horizon_website_designer" class="mt-3 o_not_editable">Profil étudiant</h2>
+        <h2
+            t-if="profile_count > 1 or horizon_website_designer"
+            class="mt-3 o_not_editable"
+        >Profil étudiant</h2>
         <t t-if="horizon_website_designer == True or horizon_state == 'no-form'">
             <div
                 class="hz-editor-mode-only my-2 o_not_editable"
@@ -210,7 +206,10 @@
     </template>
 
     <template id="hz_account_teacher" name="Horizon Teacher Account Page" priority="32">
-        <h2 t-if="profile_count > 1 or horizon_website_designer" class="mt-3 o_not_editable">Profil enseignant</h2>
+        <h2
+            t-if="profile_count > 1 or horizon_website_designer"
+            class="mt-3 o_not_editable"
+        >Profil enseignant</h2>
         <a class="btn btn-primary mb-2" href="/web">Accès back-office</a>
         <p
             class="o_not_editable"
@@ -223,7 +222,10 @@
         name="Horizon Employee Account Page"
         priority="32"
     >
-        <h2 t-if="profile_count > 1 or horizon_website_designer" class="mt-3 o_not_editable">Profil employé</h2>
+        <h2
+            t-if="profile_count > 1 or horizon_website_designer"
+            class="mt-3 o_not_editable"
+        >Profil employé</h2>
         <a class="btn btn-primary mb-2" href="/web">Accès back-office</a>
         <p
             class="o_not_editable"
@@ -232,7 +234,10 @@
     </template>
 
     <template id="hz_account_admin" name="Horizon Admin Account Page" priority="32">
-        <h2 t-if="profile_count > 1 or horizon_website_designer" class="mt-3 o_not_editable">Profil administrateur du système</h2>
+        <h2
+            t-if="profile_count > 1 or horizon_website_designer"
+            class="mt-3 o_not_editable"
+        >Profil administrateur du système</h2>
         <a class="btn btn-primary mb-2" href="/web">Accès back-office</a>
     </template>
 

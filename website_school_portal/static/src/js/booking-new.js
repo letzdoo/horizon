@@ -118,7 +118,7 @@
                         }
                     },
                 });
-            } 
+            }
         }
 
         function updateSelectHours() {
@@ -137,10 +137,8 @@
             }
         }
 
-        $("#selected_date").on("change", function() {
-            this.setAttribute(
-                    "value",
-                    this.value);
+        $("#selected_date").on("change", function () {
+            this.setAttribute("value", this.value);
             updateRoomList();
             updateSendButton();
         });
@@ -149,8 +147,14 @@
             $("#todayLabel").removeClass("fw-light").addClass("font-weight-bold");
             $("#tomorrowLabel").removeClass("font-weight-bold").addClass("fw-light");
 
-            $("#today").removeClass("btn-outline-primary").addClass("btn-primary").addClass("active");
-            $("#tomorrow").removeClass("btn-primary").removeClass("active").addClass("btn-outline-primary");
+            $("#today")
+                .removeClass("btn-outline-primary")
+                .addClass("btn-primary")
+                .addClass("active");
+            $("#tomorrow")
+                .removeClass("btn-primary")
+                .removeClass("active")
+                .addClass("btn-outline-primary");
 
             $("#day").prop("value", "0");
             updateRoomList();
@@ -161,8 +165,14 @@
             $("#todayLabel").addClass("fw-light").removeClass("font-weight-bold");
             $("#tomorrowLabel").addClass("font-weight-bold").removeClass("fw-light");
 
-            $("#today").removeClass("btn-primary").removeClass("active").addClass("btn-outline-primary");
-            $("#tomorrow").removeClass("btn-outline-primary").addClass("btn-primary").addClass("active");
+            $("#today")
+                .removeClass("btn-primary")
+                .removeClass("active")
+                .addClass("btn-outline-primary");
+            $("#tomorrow")
+                .removeClass("btn-outline-primary")
+                .addClass("btn-primary")
+                .addClass("active");
 
             $("#day").prop("value", "1");
             updateRoomList();

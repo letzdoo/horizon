@@ -435,7 +435,10 @@
         </div>
     </template>
 
-    <template id="_hz_custom_footer_links_employee" name="Horizon Footer Links Employee">
+    <template
+        id="_hz_custom_footer_links_employee"
+        name="Horizon Footer Links Employee"
+    >
         <div class="oe_structure">
             <p>Liens employés</p>
             <ul class="list-unstyled">
@@ -460,15 +463,19 @@
 
     <template id="_hz_booking_new_desc" name="Horizon New Booking Description">
         <div class="oe_structure">
-            <a href="https://sites.google.com/crlg.be/valves-etudiants/vie-%C3%A9tudiante/locaux-implantation-forgeur"
-					   class="text-info text-uppercase pt-1 pb-1">Voir le règlement</a>
+            <a
+                href="https://sites.google.com/crlg.be/valves-etudiants/vie-%C3%A9tudiante/locaux-implantation-forgeur"
+                class="text-info text-uppercase pt-1 pb-1"
+            >Voir le règlement</a>
         </div>
     </template>
 
     <template id="_hz_booking_search_desc" name="Horizon Search Booking Description">
         <div class="oe_structure">
-            <a href="/reservations/mes-reservations"
-					   class="text-primary pt-1 pb-1">← Retour vers mes réservations</a>
+            <a
+                href="/reservations/mes-reservations"
+                class="text-primary pt-1 pb-1"
+            >← Retour vers mes réservations</a>
         </div>
     </template>
 

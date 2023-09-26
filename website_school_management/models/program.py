@@ -105,9 +105,7 @@ class ProgramWeb(models.Model):
 class CycleWeb(models.Model):
     _inherit = "school.cycle"
 
-    sequence = fields.Integer(
-        string="Sequence", required=True, store=True
-    )
+    sequence = fields.Integer(string="Sequence", required=True, store=True)
 
     slug_grade = fields.Char(
         string="Grade Slug", compute="_compute_slug_grade", store=True
@@ -154,31 +152,57 @@ class CycleWeb(models.Model):
         # Bachelier
         for cycle in self.search([("name", "ilike", "1er cycle - BACHELIER")]):
             cycle.sequence = 10
-        for cycle in self.search([("name", "ilike", "%" + "Bachelier professionnalisant%")]):
+        for cycle in self.search(
+            [("name", "ilike", "%" + "Bachelier professionnalisant%")]
+        ):
             cycle.sequence = 11
-        for cycle in self.search([("name", "ilike", "%" + 'BACHELIER DIT "DE QUALIFICATION"%')]):
+        for cycle in self.search(
+            [("name", "ilike", "%" + 'BACHELIER DIT "DE QUALIFICATION"%')]
+        ):
             cycle.sequence = 12
-        for cycle in self.search(["|", ("name", "ilike", "%" + "Bachelier de transition%"), ("name", "ilike", "%" + 'BACHELIER DIT "DE TRANSITION"%')]):
+        for cycle in self.search(
+            [
+                "|",
+                ("name", "ilike", "%" + "Bachelier de transition%"),
+                ("name", "ilike", "%" + 'BACHELIER DIT "DE TRANSITION"%'),
+            ]
+        ):
             cycle.sequence = 13
 
         # Master
-        for cycle in self.search(["|", ("name", "ilike", "2ème cycle - MASTER"), ("name", "ilike", "MASTER")]):
+        for cycle in self.search(
+            ["|", ("name", "ilike", "2ème cycle - MASTER"), ("name", "ilike", "MASTER")]
+        ):
             cycle.sequence = 20
         for cycle in self.search([("name", "ilike", "%" + "Master générique%")]):
             cycle.sequence = 21
         for cycle in self.search([("name", "ilike", "%" + "Master (60)%")]):
             cycle.sequence = 22
-        for cycle in self.search([("name", "ilike", "%" + "Master à finalité approfondie%")]):
+        for cycle in self.search(
+            [("name", "ilike", "%" + "Master à finalité approfondie%")]
+        ):
             cycle.sequence = 23
-        for cycle in self.search(["|", ("name", "ilike", "%" + "Master à finalité didactique%"), ("name", "ilike", "%" + 'MASTER DIT "DIDACTIQUE%"')]):
+        for cycle in self.search(
+            [
+                "|",
+                ("name", "ilike", "%" + "Master à finalité didactique%"),
+                ("name", "ilike", "%" + 'MASTER DIT "DIDACTIQUE%"'),
+            ]
+        ):
             cycle.sequence = 24
-        for cycle in self.search([("name", "ilike", "%" + "Master à finalité spécialisée%")]):
+        for cycle in self.search(
+            [("name", "ilike", "%" + "Master à finalité spécialisée%")]
+        ):
             cycle.sequence = 25
         for cycle in self.search([("name", "ilike", "%" + "MASTER ART DRAMATIQUE%")]):
             cycle.sequence = 26
-        for cycle in self.search([("name", "ilike", "%" + "MASTER BOLOGNE DIDACTIQUE%")]):
+        for cycle in self.search(
+            [("name", "ilike", "%" + "MASTER BOLOGNE DIDACTIQUE%")]
+        ):
             cycle.sequence = 27
-        for cycle in self.search([("name", "ilike", "%" + "MASTER BOLOGNE SPECIALISE%")]):
+        for cycle in self.search(
+            [("name", "ilike", "%" + "MASTER BOLOGNE SPECIALISE%")]
+        ):
             cycle.sequence = 28
         for cycle in self.search([("name", "ilike", "%" + "MASTER SANS FINALITE%")]):
             cycle.sequence = 29
@@ -186,7 +210,9 @@ class CycleWeb(models.Model):
         # Agrégation
         for cycle in self.search([("name", "ilike", "Agrégation")]):
             cycle.sequence = 30
-        for cycle in self.search([("name", "ilike", "%" + "Agrégation de l'enseignement supérieur%")]):
+        for cycle in self.search(
+            [("name", "ilike", "%" + "Agrégation de l'enseignement supérieur%")]
+        ):
             cycle.sequence = 31
 
         # Autre
