@@ -155,7 +155,7 @@
                                     t-out="program.speciality_id.track_id.name.lower()"
                                 />
                                           </tr>
-                                 
+
                                     </table>
                               </div>
                               <div>
