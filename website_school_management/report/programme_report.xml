@@ -98,7 +98,7 @@
                   <t t-foreach="docs" t-as="program">
                         <h2
                     t-attf-style="padding-top: 1mm; margin-bottom: 4mm; color: {{primary}}; font-weight: 400;"
-                    t-out="program.name"
+                    t-out="program.title"
                 />
                         <table
                     style="font-size: 0.8em; margin-bottom: 5mm; border: 1px solid #eaeaea;"
@@ -109,27 +109,17 @@
                         >ID Cycle</td>
                                     <td
                             style="text-transform: capitalize; padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm;"
-                            t-out="'?'"
+                            t-out="program.uid"
                         />
                                     <td
                             t-attf-style="padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm; color: {{primary}};"
                         >|</td>
                                     <td
                             t-attf-style="font-weight: 600; text-align: right; padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm; color: {{secondary}};"
-                        >Cycle d'études</td>
-                                    <td
-                            style="text-transform: capitalize; padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm;"
-                            t-out="'?'"
-                        />
-                                    <td
-                            t-attf-style="padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm; color: {{primary}};"
-                        >|</td>
-                                    <td
-                            t-attf-style="font-weight: 600; text-align: right; padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm; color: {{secondary}};"
-                        >Finalité</td>
+                        >Année académique</td>
                                     <td
                             style="padding-top: 1mm; padding-bottom: 1mm; padding-right: 2mm; text-transform: capitalize;"
-                            t-out="'?'"
+                            t-out="program.year_id.name"
                         />
                               </tr>
                         </table>
@@ -158,14 +148,21 @@
                                           </tr>
                                           <tr>
                                                 <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
+                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; padding-bottom: 1mm;  color: {{secondary}};"
                                 >Option</th>
                                                 <td
-                                    style="width: 100%; text-transform: capitalize;"
+                                    style="width: 100%; text-transform: capitalize; padding-bottom: 1mm;"
                                     t-out="program.speciality_id.track_id.name.lower()"
                                 />
                                           </tr>
-                                          <tr>
+                                 
+                                    </table>
+                              </div>
+                              <div>
+                                    <table
+                            t-attf-style="font-size: 0.8em; border: 1px solid #eaeaea; margin-right: 3mm;"
+                        >
+                                 <tr>
                                                 <th
                                     t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
                                 >Spécialité</th>
@@ -176,6 +173,15 @@
                                           </tr>
                                           <tr>
                                                 <th
+                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
+                                >Grade&amp;nbsp;générique</th>
+                                                <td
+                                    style=" width: 100%; text-transform: capitalize;"
+                                    t-out="program.cycle_id.grade"
+                                />
+                                          </tr>
+                                             <tr>
+                                                <th
                                     t-attf-style="text-align: right; padding-bottom: 1mm; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
                                 >Type</th>
                                                 <t
@@ -183,102 +189,9 @@
                                     t-value="'Long' if program.cycle_id.type=='long' else 'Court'"
                                 />
                                                 <td
-                                    style="width: 100%; text-transform: capitalize; padding-bottom: 1mm"
+                                    style="width: 100%; text-transform: capitalize; padding-bottom: 1mm;"
                                     t-out="cycle_type"
                                 /> <!-- TODO : À vérifier-->
-                                          </tr>
-                                    </table>
-                              </div>
-                              <div>
-                                    <table
-                            t-attf-style="font-size: 0.8em; border: 1px solid #eaeaea; margin-right: 3mm;"
-                        >
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-top: 1mm; padding-left: 2mm; padding-right: 3mm; color: {{secondary}}; width: 100%;"
-                                >Code Études ARES</th>
-                                                <td
-                                    style="padding-top: 1mm; padding-right: 2mm"
-                                    t-out="program.ares_code"
-                                /> <!-- TODO : À vérifier-->
-                                          </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}}; width: 100%;"
-                                >Code habilitation</th>
-                                                <td
-                                    style="padding-right: 2mm"
-                                    t-out="program.habilitation_code"
-                                /> <!-- TODO : À vérifier-->
-                                          </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}}; width: 100%;"
-                                >Code Grade génér. CITE</th>
-                                                <td
-                                    style="padding-right: 2mm"
-                                    t-out="'?'"
-                                />
-                                          </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}}; width: 100%;"
-                                >Cadre de certification</th>
-                                                <td
-                                    style="padding-right: 2mm"
-                                    t-out="'?'"
-                                />
-                                          </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; padding-bottom: 1mm; color: {{secondary}}; width: 100%;"
-                                >Grade générique</th>
-                                                <td
-                                    style="padding-right: 2mm; padding-bottom: 1mm;"
-                                    t-out="'?'"
-                                />
-                                          </tr>
-                                    </table>
-                              </div>
-                              <div>
-                                    <table
-                            t-attf-style="font-size: 0.8em; border: 1px solid #eaeaea;"
-                        >
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-top: 1mm; padding-left: 2mm; padding-right: 3mm; color: {{secondary}}; width: 100%;"
-                                >Code Saturn Option</th>
-                                                <td
-                                    style="padding-top: 1mm; padding-right: 2mm"
-                                    t-out="'?'"
-                                />
-                                          </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}}; width: 100%;"
-                                >Code Saturn Section</th>
-                                                <td
-                                    style="padding-right: 2mm"
-                                    t-out="'?'"
-                                />
-                                          </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}}; width: 100%;"
-                                >Code Saturn Specialité</th>
-                                                <td
-                                    style="padding-right: 2mm"
-                                    t-out="'?'"
-                                />
-                                          </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; padding-bottom: 1mm; color: {{secondary}}; width: 100%;"
-                                >Code Cycle Interne</th>
-                                                <td
-                                    style="padding-right: 2mm; padding-bottom: 1mm;"
-                                    t-out="'?'"
-                                />
                                           </tr>
                                     </table>
                               </div>
