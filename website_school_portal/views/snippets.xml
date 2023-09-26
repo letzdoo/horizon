@@ -77,49 +77,122 @@
     <template id="hz_default_page_snippet" name="Snippet page par défaut Horizon">
         <section class="container">
             <div class="oe_structure" t-ignore="true">
-                <section class="s_title pt40 pb40 o_colored_level" data-vcss="001" data-snippet="s_title" data-name="Titre" style="background-image: none;">
+                <section
+                    class="s_title pt40 pb40 o_colored_level"
+                    data-vcss="001"
+                    data-snippet="s_title"
+                    data-name="Titre"
+                    style="background-image: none;"
+                >
                     <div class="container s_allow_columns">
-                        <h1 style="text-align: center;"><font style="font-size: 62px;">Le titre de votre page</font></h1>
+                        <h1 style="text-align: center;"><font
+                                style="font-size: 62px;"
+                            >Le titre de votre page</font></h1>
                     </div>
                 </section>
-                <section class="s_text_block pt40 pb40 o_colored_level" data-snippet="s_text_block" data-name="Texte" style="background-image: none;">
+                <section
+                    class="s_text_block pt40 pb40 o_colored_level"
+                    data-snippet="s_text_block"
+                    data-name="Texte"
+                    style="background-image: none;"
+                >
                     <div class="container s_allow_columns">
-                        <p class="o_default_snippet_text">Les grandes histoires ont une <b class="o_default_snippet_text">personnalité</b>. Envisagez de raconter une belle histoire qui donne de la personnalité. Écrire une histoire avec de la personnalité pour des clients potentiels aidera à établir un lien relationnel. Cela se traduit par de petites spécificités comme le choix des mots ou des phrases. Écrivez de votre point de vue, pas de l'expérience de quelqu'un d'autre.</p>
-                        <p>Les grandes histoires sont pour <b class="o_default_snippet_text">tout le monde</b>, même lorsqu'elles ne sont écrites que <b class="o_default_snippet_text">pour une seule personne</b>. Si vous essayez d'écrire en pensant à un public large et général, votre histoire sonnera fausse et manquera d'émotion. Personne ne sera intéressé. Ecrire pour une personne en particulier signifie que si c'est authentique pour l'un, c'est authentique pour le reste.</p>
+                        <p
+                            class="o_default_snippet_text"
+                        >Les grandes histoires ont une <b
+                                class="o_default_snippet_text"
+                            >personnalité</b>. Envisagez de raconter une belle histoire qui donne de la personnalité. Écrire une histoire avec de la personnalité pour des clients potentiels aidera à établir un lien relationnel. Cela se traduit par de petites spécificités comme le choix des mots ou des phrases. Écrivez de votre point de vue, pas de l'expérience de quelqu'un d'autre.</p>
+                        <p>Les grandes histoires sont pour <b
+                                class="o_default_snippet_text"
+                            >tout le monde</b>, même lorsqu'elles ne sont écrites que <b
+                                class="o_default_snippet_text"
+                            >pour une seule personne</b>. Si vous essayez d'écrire en pensant à un public large et général, votre histoire sonnera fausse et manquera d'émotion. Personne ne sera intéressé. Ecrire pour une personne en particulier signifie que si c'est authentique pour l'un, c'est authentique pour le reste.</p>
                     </div>
                 </section>
-                <section class="container o_colored_level" data-snippet="hz_default_page_snippet" data-name="Snippet page par défaut Horizon" style="background-image: none;">
+                <section
+                    class="container o_colored_level"
+                    data-snippet="hz_default_page_snippet"
+                    data-name="Snippet page par défaut Horizon"
+                    style="background-image: none;"
+                >
                     <div class="oe_structure">
-                        
+
                     </div>
                 </section>
-                <section class="s_three_columns pt32 pb32 o_colored_level o_cc o_cc1" data-vcss="001" data-snippet="s_three_columns" data-name="Colonnes" style="">
+                <section
+                    class="s_three_columns pt32 pb32 o_colored_level o_cc o_cc1"
+                    data-vcss="001"
+                    data-snippet="s_three_columns"
+                    data-name="Colonnes"
+                    style=""
+                >
                     <div class="container">
                         <div class="row d-flex align-items-stretch">
                             <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
                                 <div class="card text-bg-white h-100">
-                                    <img class="card-img-top" src="/web/image/website.s_three_columns_default_image_1" alt="" loading="lazy" data-original-id="426947" data-original-src="/web/image/website.library_image_11" data-mimetype="image/jpeg"/>
+                                    <img
+                                        class="card-img-top"
+                                        src="/web/image/website.s_three_columns_default_image_1"
+                                        alt=""
+                                        loading="lazy"
+                                        data-original-id="426947"
+                                        data-original-src="/web/image/website.library_image_11"
+                                        data-mimetype="image/jpeg"
+                                    />
                                     <div class="card-body">
-                                        <h3 class="card-title o_default_snippet_text">Fonctionnalité 1</h3>
-                                        <p class="card-text">Adaptez ces trois colonnes à vos besoins. Pour dupliquer, supprimer ou déplacer des colonnes, sélectionnez la colonne et utilisez les icônes du haut pour effectuer votre action.</p>
+                                        <h3
+                                            class="card-title o_default_snippet_text"
+                                        >Fonctionnalité 1</h3>
+                                        <p
+                                            class="card-text"
+                                        >Adaptez ces trois colonnes à vos besoins. Pour dupliquer, supprimer ou déplacer des colonnes, sélectionnez la colonne et utilisez les icônes du haut pour effectuer votre action.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
                                 <div class="card text-bg-white h-100">
-                                    <img class="card-img-top" src="/web/image/website.s_three_columns_default_image_2" alt="" loading="lazy" data-original-id="426948" data-original-src="/web/image/website.library_image_13" data-mimetype="image/jpeg"/>
+                                    <img
+                                        class="card-img-top"
+                                        src="/web/image/website.s_three_columns_default_image_2"
+                                        alt=""
+                                        loading="lazy"
+                                        data-original-id="426948"
+                                        data-original-src="/web/image/website.library_image_13"
+                                        data-mimetype="image/jpeg"
+                                    />
                                     <div class="card-body">
-                                        <h3 class="card-title o_default_snippet_text">Fonctionnalité 2</h3>
-                                        <p class="card-text o_default_snippet_text">Pour ajouter une quatrième colonne, réduisez la taille de ces trois colonnes à l'aide de l'icône de droite de chaque bloc. Ensuite, dupliquez l'une des colonnes pour en créer une nouvelle en tant que copie.</p>
+                                        <h3
+                                            class="card-title o_default_snippet_text"
+                                        >Fonctionnalité 2</h3>
+                                        <p
+                                            class="card-text o_default_snippet_text"
+                                        >Pour ajouter une quatrième colonne, réduisez la taille de ces trois colonnes à l'aide de l'icône de droite de chaque bloc. Ensuite, dupliquez l'une des colonnes pour en créer une nouvelle en tant que copie.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
                                 <div class="card text-bg-white h-100">
-                                    <img class="card-img-top" src="/web/image/website.s_three_columns_default_image_3" alt="" loading="lazy" data-original-id="426949" data-original-src="/web/image/website.library_image_07" data-mimetype="image/jpeg" data-bs-original-title="" title="" aria-describedby="tooltip424332"/>
+                                    <img
+                                        class="card-img-top"
+                                        src="/web/image/website.s_three_columns_default_image_3"
+                                        alt=""
+                                        loading="lazy"
+                                        data-original-id="426949"
+                                        data-original-src="/web/image/website.library_image_07"
+                                        data-mimetype="image/jpeg"
+                                        data-bs-original-title=""
+                                        title=""
+                                        aria-describedby="tooltip424332"
+                                    />
                                     <div class="card-body">
-                                        <h3 class="card-title o_default_snippet_text">Fonctionnalité 3</h3>
-                                        <p class="card-text o_default_snippet_text">Supprimez l'image ci-dessus ou remplacez-la par une image qui illustre votre message. Cliquez sur l'image pour changer son style <em class="o_default_snippet_text">de coin arrondi</em>.</p>
+                                        <h3
+                                            class="card-title o_default_snippet_text"
+                                        >Fonctionnalité 3</h3>
+                                        <p
+                                            class="card-text o_default_snippet_text"
+                                        >Supprimez l'image ci-dessus ou remplacez-la par une image qui illustre votre message. Cliquez sur l'image pour changer son style <em
+                                                class="o_default_snippet_text"
+                                            >de coin arrondi</em>.</p>
                                     </div>
                                 </div>
                             </div>

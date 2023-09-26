@@ -21,7 +21,12 @@
 ##############################################################################
 -->
 <odoo>
-    <template id="hz_home" inherit_id="website.homepage" name="Horizon Home Page">
+    <template
+        id="hz_home"
+        inherit_id="website.homepage"
+        name="Horizon Home Page"
+        priority="100"
+    >
         <xpath expr="//div[@id='wrap']" position="replace">
             <div id="wrap">
                 <t t-call="website_school_portal._hz_custom_home_banner" />
@@ -34,7 +39,7 @@
         id="hz_account"
         inherit_id="portal.portal_my_home"
         name="Horizon Account Page"
-        priority="32"
+        priority="100"
     >
         <xpath expr="//div[@id='oe_structure_portal_my_home_1']" position="replace" />
         <xpath expr="//div[@id='oe_structure_portal_my_home_2']" position="replace" />

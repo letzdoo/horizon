@@ -76,11 +76,11 @@ class ReservationsController(http.Controller):
             "user": request.env.user,
             "bookings": request.env["calendar.event"]
             .sudo()
-            .with_context({"virtual_id": True, "tz": request.env.user.tz})
+            .with_context(virtual_id=True, tz=request.env.user.tz)
             .search(domain, order="start asc"),
             "bookings_next": request.env["calendar.event"]
             .sudo()
-            .with_context({"virtual_id": True, "tz": request.env.user.tz})
+            .with_context(virtual_id=True, tz=request.env.user.tz)
             .search(domain_next, order="start asc"),
         }
         return request.render("website_school_portal.hz_bookings", values)

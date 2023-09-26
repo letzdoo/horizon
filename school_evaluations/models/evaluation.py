@@ -1256,7 +1256,7 @@ class IndividualCourse(models.Model):
         closed_recs.open_second_result = False
 
     @api.depends("partial_result", "final_result", "second_result")
-    def _compute_results(self):
+    def _compute_results(self):  # noqa: C901
         for (
             rec
         ) in (

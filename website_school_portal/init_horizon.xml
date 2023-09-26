@@ -116,7 +116,7 @@
         id="hz_custom_menu_creation"
         inherit_id="website.navbar_nav"
         name="Custom menu creation"
-        priority="10"
+        priority="100"
     >
         <xpath expr="." position="replace">
             <ul

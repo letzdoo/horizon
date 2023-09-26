@@ -137,7 +137,7 @@
             <field name="name">school.individual_program.eval.view</field>
             <field name="model">school.individual_program</field>
             <field name="inherit_id" ref="school_management.individual_program_form" />
-            <field eval="25" name="priority" />
+            <field eval="100" name="priority" />
             <field name="arch" type="xml">
                 <xpath expr="//sheet" position="before">
                     <header>
@@ -187,20 +187,20 @@
                     </div>
                 </xpath>-->
                 <xpath expr="//field[@name='required_credits']" position="before">
-                    <field name="total_registered_credits"/>
-                    <field name="total_acquiered_credits"/>
+                    <field name="total_registered_credits" />
+                    <field name="total_acquiered_credits" />
                 </xpath>
                 <xpath
                 expr="//group[@name='required_credits_section']"
                 position="after"
             >
                     <group>
-                        <field name="evaluation"/>
-                        <field name="grade" states="awarded" readonly="1"/>
-                        <field name="grade_year_id" states="awarded" readonly="1"/>
+                        <field name="evaluation" />
+                        <field name="grade" states="awarded" readonly="1" />
+                        <field name="grade_year_id" states="awarded" readonly="1" />
                     </group>
-                    <group style="width:100%;" >
-                        <field name="grade_comments" states="awarded" readonly="1"/>
+                    <group style="width:100%;">
+                        <field name="grade_comments" states="awarded" readonly="1" />
                     </group>
                 </xpath>
 <!--                    <newline/>-->
@@ -212,7 +212,7 @@
             >
                     <field name="evaluation" />
                     <field name="state" />
-                    <field name="decision"/>
+                    <field name="decision" />
                 </xpath>
                 <xpath
                 expr="//field[@name='bloc_ids']//div[contains(@class, 'oe_module_vignette')]"
@@ -261,10 +261,19 @@
                       </div>
                     </div>
                 </xpath>
-                <xpath expr="//div[contains(@class,'horizon_cgs_content')]" position="inside">
-                    <field name="state" invisible="1"/>
-                    <button class="oe_highlight btn btn-primary m-1" t-if="record.trials &gt; 1"><field name="trials" /> attempts</button>
-                    <button class="oe_highlight btn btn-primary ms-auto m-1" attrs="{'invisible': [('state','not in',('6_success','7_failed'))]}"><field name="final_result_disp" /></button>
+                <xpath
+                expr="//div[contains(@class,'horizon_cgs_content')]"
+                position="inside"
+            >
+                    <field name="state" invisible="1" />
+                    <button
+                    class="oe_highlight btn btn-primary m-1"
+                    t-if="record.trials &gt; 1"
+                ><field name="trials" /> attempts</button>
+                    <button
+                    class="oe_highlight btn btn-primary ms-auto m-1"
+                    attrs="{'invisible': [('state','not in',('6_success','7_failed'))]}"
+                ><field name="final_result_disp" /></button>
                 </xpath>
                 <xpath
                 expr="//field[@name='course_group_summaries']/kanban"
@@ -272,11 +281,25 @@
             >
                   <attribute name="default_order">state,uid</attribute>
                 </xpath>
-               <xpath expr="//div[contains(@t-attf-class, 'horizon_cgs')]" position="attributes">-->
-                   <attribute name="t-attf-class">horizon_cgs horizon_cgs_{{record.state.raw_value}}</attribute>
+               <xpath
+                expr="//div[contains(@t-attf-class, 'horizon_cgs')]"
+                position="attributes"
+            >-->
+                   <attribute
+                    name="t-attf-class"
+                >horizon_cgs horizon_cgs_{{record.state.raw_value}}</attribute>
                </xpath>
-               <xpath expr="//div[contains(@class, 'horizon_cgs_dropdown')]" position="inside">
-                  <a role="menuitem" type="object" name="action_candidate_valuate_course_group" class="dropdown-item" states="9_draft,7_failed">Valuate</a>
+               <xpath
+                expr="//div[contains(@class, 'horizon_cgs_dropdown')]"
+                position="inside"
+            >
+                  <a
+                    role="menuitem"
+                    type="object"
+                    name="action_candidate_valuate_course_group"
+                    class="dropdown-item"
+                    states="9_draft,7_failed"
+                >Valuate</a>
               </xpath>
             </field>
         </record>

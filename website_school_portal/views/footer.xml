@@ -21,7 +21,12 @@
 ##############################################################################
 -->
 <odoo>
-    <template id="hz_copyright" inherit_id="website.layout" name="Horizon Copyright">
+    <template
+        id="hz_copyright"
+        inherit_id="website.layout"
+        name="Horizon Copyright"
+        priority="100"
+    >
         <xpath expr="//footer//div[hasclass('o_footer_copyright')]" position="replace">
             <div t-if="not no_copyright" class="o_footer_copyright">
                 <div class="container py-3">
@@ -45,7 +50,12 @@
         </xpath>
     </template>
 
-    <template id="hz_footer" inherit_id="website.layout" name="Horizon Footer">
+    <template
+        id="hz_footer"
+        inherit_id="website.layout"
+        name="Horizon Footer"
+        priority="100"
+    >
         <xpath expr="//div[@id='footer']" position="replace">
             <div id="footer" t-if="not no_footer">
                 <section

@@ -21,7 +21,12 @@
 ##############################################################################
 -->
 <odoo>
-    <template id="hz_page_404" inherit_id="website.page_404" name="Page introuvable">
+    <template
+        id="hz_page_404"
+        inherit_id="website.page_404"
+        name="Page introuvable"
+        priority="100"
+    >
         <xpath expr="." position="replace">
             <t t-call="website.layout">
                 <div class="container o_not_editable">

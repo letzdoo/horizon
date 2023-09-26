@@ -182,29 +182,61 @@
                                 <field name="course_group_id" />
                                 <templates>
                                     <t t-name="kanban-box">
-                                        <div t-attf-class="oe_kanban_global_click oe_kanban_card d-flex flex-column horizon_cgs">
-                                            <div class="o_dropdown_kanban dropdown horizon_cgs_dropdown">
-                                                <a class="dropdown-toggle o-no-caret btn" role="button" data-bs-toggle="dropdown" data-bs-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
-                                                    <span class="fa fa-ellipsis-v"/>
+                                        <div
+                                            t-attf-class="oe_kanban_global_click oe_kanban_card d-flex flex-column horizon_cgs"
+                                        >
+                                            <div
+                                                class="o_dropdown_kanban dropdown horizon_cgs_dropdown"
+                                            >
+                                                <a
+                                                    class="dropdown-toggle o-no-caret btn"
+                                                    role="button"
+                                                    data-bs-toggle="dropdown"
+                                                    data-bs-display="static"
+                                                    href="#"
+                                                    aria-label="Dropdown menu"
+                                                    title="Dropdown menu"
+                                                >
+                                                    <span class="fa fa-ellipsis-v" />
                                                 </a>
                                                 <div class="dropdown-menu" role="menu">
-                                                    <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                                    <t t-if="widget.deletable"><a
+                                                            role="menuitem"
+                                                            type="delete"
+                                                            class="dropdown-item"
+                                                        >Delete</a></t>
                                                 </div>
                                             </div>
                                             <div class="oe_kanban_content flex-grow-1">
-                                                <div class="o_kanban_record_title oe_kanban_details">
-                                                    <strong><field name="name"/></strong>
+                                                <div
+                                                    class="o_kanban_record_title oe_kanban_details"
+                                                >
+                                                    <strong><field
+                                                            name="name"
+                                                        /></strong>
                                                 </div>
                                                 <div class="o_kanban_record_subtitle">
-                                                    <small><field name="uid"/></small>
+                                                    <small><field name="uid" /></small>
                                                 </div>
-                                                <div class="horizon_cgs_content mt-auto d-flex">
-                                                    <button class="oe_highlight btn btn-primary m-1"><field name="total_hours"/> HRS</button> 
-                                                    <button class="oe_highlight btn btn-primary m-1"><field name="total_credits"/> ECTS</button>                                                    
+                                                <div
+                                                    class="horizon_cgs_content mt-auto d-flex"
+                                                >
+                                                    <button
+                                                        class="oe_highlight btn btn-primary m-1"
+                                                    ><field
+                                                            name="total_hours"
+                                                        /> HRS</button>
+                                                    <button
+                                                        class="oe_highlight btn btn-primary m-1"
+                                                    ><field
+                                                            name="total_credits"
+                                                        /> ECTS</button>
                                                 </div>
                                             </div>
                                             <div class="oe_kanban_footer">
-                                                <div class="o_kanban_record_bottom mt-2">
+                                                <div
+                                                    class="o_kanban_record_bottom mt-2"
+                                                >
                                                     <!--<div class="oe_kanban_bottom_left">
                                                         <field name="priority" widget="priority" groups="base.group_user"/>
                                                         <field name="activity_ids" widget="kanban_activity"/>
@@ -214,8 +246,8 @@
                                                     </div>-->
                                                 </div>
                                             </div>
-                                            <div class="clearfix"/>
-                                        </div>  
+                                            <div class="clearfix" />
+                                        </div>
                                     </t>
                                 </templates>
                             </kanban>

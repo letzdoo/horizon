@@ -19,12 +19,18 @@
 ##############################################################################
 {
     "name": "School registration",
-    "version": "16.0.1.0.1",
+    "version": "16.0.0.0.1",
     "license": "AGPL-3",
     "author": "ito-invest (Jerome Sonnet)",
     "website": "https://github.com/ito-invest-lu/horizon",
     "category": "School Management",
-    "depends": ["base_automation", "formio", "formio_data_api"],
+    "depends": [
+        "base_automation",
+        "school_dispense_approval",
+        "formio",
+        "formio_data_api",
+        "google_documents",
+    ],
     "init_xml": [],
     "data": [
         "registration_data.xml",

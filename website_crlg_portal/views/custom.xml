@@ -27,6 +27,7 @@
         id="_crlg_custom_home_banner"
         inherit_id="website_school_portal._hz_custom_home_banner"
         name="CRLG Home Banner"
+        priority="100"
     >
         <xpath expr="//div[hasclass('oe_structure')]" position="replace">
             <div class="oe_structure">
@@ -78,6 +79,7 @@
         id="_crlg_custom_home_content"
         inherit_id="website_school_portal._hz_custom_home_content"
         name="CRLG Home Content"
+        priority="100"
     >
         <xpath expr="//div[hasclass('oe_structure')]" position="replace">
             <div class="oe_structure">
@@ -324,6 +326,7 @@
         id="_crlg_custom_footer_description"
         inherit_id="website_school_portal._hz_custom_footer_description"
         name="CRLG Footer Description"
+        priority="100"
     >
         <xpath expr="//div[hasclass('oe_structure')]" position="replace">
             <div class="oe_structure">

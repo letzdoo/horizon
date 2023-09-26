@@ -97,7 +97,7 @@ class programmes(http.Controller):
         return breadcrumb
 
     # Génération des options
-    def _get_options(self, programs, segment):
+    def _get_options(self, programs, segment):  # noqa: C901
         actual = request.httprequest.path
         options = []
         if segment == 0:
@@ -165,7 +165,7 @@ class programmes(http.Controller):
         return options
 
     # Génération de la sitemap
-    def _sitemap_programs(env, rule, qs):
+    def _sitemap_programs(env, rule, qs):  # noqa: disable=B902
         searchParams = [
             ("state", "=", "published"),
             ("domain_name", "!=", None),

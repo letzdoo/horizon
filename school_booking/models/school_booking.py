@@ -110,7 +110,7 @@ class Event(models.Model):
                 rec.main_categ_id = False
 
     @api.constrains("room_id")
-    def _check_room_quota(self):
+    def _check_room_quota(self):  # noqa: C901
         for rec in self:
 
             _logger.info(

@@ -333,7 +333,7 @@ class BCEDInscription(models.Model):
 
 
 class PersonService(models.Model):
-    _inherit = "school.webservice"
+    _inherit = "school.webservice"  # pylint: disable=R8180
 
     def action_test_service(self):
         if self.name == "bced_personne":
@@ -658,10 +658,7 @@ class PersonService(models.Model):
                     _("PublishPerson for %s" % partner_id.lastname), True
                 )
                 raise UserError(
-                    _(
-                        "Error while publishing person %s : %s"
-                        % (partner_id.lastname, e)
-                    )
+                    _(f"Error while publishing person {partner_id.lastname}")
                 ) from e
         else:
             raise ValidationError(_("No partner provided"))
