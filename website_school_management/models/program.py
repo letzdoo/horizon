@@ -130,7 +130,7 @@ class CycleWeb(models.Model):
                 cycle.slug_subtype = None
 
     @api.model
-    def data_init(self):
+    def data_init(self):  # noqa: C901
 
         for cycle in self.search(
             [("subtype", "=", None), ("name", "ilike", "%" + "générique")]
