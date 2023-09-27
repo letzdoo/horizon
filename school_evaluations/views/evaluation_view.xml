@@ -475,18 +475,31 @@
                     <field name="final_result_disp" />
                     <field name="final_result_bool" />
                 </xpath>
-                <xpath expr="//div[@class='horizon_cgs_evals']" position="attributes">
+                <xpath
+                expr="//div[contains(@t-attf-class,'horizon_cgs_evals')]"
+                position="attributes"
+            >
                     <attribute
                     name="t-attf-class"
-                >horizon_cgs horizon_cgs_{{record.state.raw_value}}</attribute>
+                >oe_kanban_global_click oe_kanban_card d-flex flex-column horizon_cgs horizon_cgs_{{record.state.raw_value}}</attribute>
                 </xpath>
-<!--                <xpath expr="//a[@name='action_open_form']" position="before">-->
-<!--                    <button t-attf-class="btn horizon_btn_eval_{{record.state.raw_value}}" type="button" name="res_button" style="margin-right:15px;height:35px;margin-top:5px;padding:10px;">-->
-<!--                      <h5>-->
-<!--                          <field name="final_result_disp"/>-->
-<!--                      </h5>-->
-<!--                    </button>-->
-<!--                </xpath>-->
+                <xpath
+                expr="//div[contains(@class,'horizon_cgs_content')]"
+                position="inside"
+            >
+                    <div class="ms-auto">
+                        <button
+                        t-if="record.final_result_disp.raw_value &gt;= 10"
+                        class="oe_highlight btn btn-success m-1"
+                    ><field name="final_result_disp" />
+                        </button>
+                        <button
+                        t-if="record.final_result_disp.raw_value &lt; 10"
+                        class="oe_highlight btn btn-warning m-1"
+                    ><field name="final_result_disp" />
+                        </button>
+                    </div>
+                </xpath>
             </field>
         </record>
 
