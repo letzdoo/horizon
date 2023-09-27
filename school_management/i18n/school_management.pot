@@ -478,7 +478,7 @@ msgstr "Activités d'apprentissage"
 #: model:ir.actions.act_window,name:school_management.action_course_tree
 #: model:ir.ui.menu,name:school_management.menu_course_tree
 msgid "Course Tree"
-msgstr "Arborescence des activités d'apprentissage"
+msgstr "Activités d'apprentissage"
 
 #. module: school_management
 #. odoo-python

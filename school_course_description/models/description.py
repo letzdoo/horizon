@@ -248,3 +248,36 @@ class Course(models.Model):
                     return [("id", "in", [x.id for x in recs])]
                 else:
                     return [("id", "not in", [x.id for x in recs])]
+
+
+class IndividualCourse(models.Model):
+    _inherit = "school.individual_course"
+
+    has_documentation = fields.Boolean(compute="_compute_has_documentation")
+
+    @api.depends("source_course_id.documentation_id")
+    def _compute_has_documentation(self):
+        for rec in self:
+            rec.has_documentation = bool(rec.source_course_id.documentation_id)
+
+    def open_description(self):
+        """Utility method used to add an "Open Description" button in course views"""
+        self.ensure_one()
+        if self.source_course_id.documentation_id:
+            return {
+                "type": "ir.actions.act_window",
+                "res_model": "school.course_documentation",
+                "view_mode": "form",
+                "res_id": self.source_course_id.documentation_id.id,
+                "target": "current",
+                "flags": {"form": {"action_buttons": True}},
+            }
+        else:
+            return {
+                "type": "ir.actions.act_window",
+                "res_model": "school.course_documentation",
+                "view_mode": "form",
+                "target": "current",
+                "flags": {"form": {"action_buttons": True}},
+                "context": {"default_course_id": self.source_course_id.id},
+            }
