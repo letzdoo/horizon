@@ -384,17 +384,6 @@
                 />
                     <separator />
                     <filter
-                    string="Persons"
-                    name="type_person"
-                    domain="[('is_company','=',0)]"
-                />
-                    <filter
-                    string="Companies"
-                    name="type_company"
-                    domain="[('is_company','=',1)]"
-                />
-                    <separator />
-                    <filter
                     string="Employees"
                     name="employee"
                     domain="[('employee','=',1)]"
@@ -446,24 +435,6 @@
                     string="Tag"
                     filter_domain="[('category_id','ilike', self)]"
                 />
-                   <field name="user_id" />
-                   <field
-                    name="parent_id"
-                    domain="[('is_company','=',1)]"
-                    operator="child_of"
-                />
-                   <group expand="0" name="group_by" string="Group By">
-                       <filter
-                        string="Company"
-                        name="parent_id_group"
-                        context="{'group_by': 'parent_id'}"
-                    />
-                       <filter
-                        string="Country"
-                        name="country_id_group"
-                        context="{'group_by': 'country_id'}"
-                    />
-                   </group>
                 </search>
             </field>
         </record>
@@ -475,6 +446,9 @@
             <field name="inherit_id" ref="base.res_partner_kanban_view" />
             <field eval="25" name="priority" />
             <field name="arch" type="xml">
+                <xpath expr="//div[contains(@class,'o_kanban_tags_section')]" position="after">
+                    <strong><field name="student_current_block_name"/></strong>
+                </xpath>
                 <field name="mobile" position="after">
                     <!--<field name="has_paid_current_minerval" /> -->
                     <field name="student" />
@@ -501,7 +475,7 @@
                     <field name="function" invisible="1" />
                     <!--<field name="has_paid_current_minerval" />-->
                     <field name="email" />
-                    <field name="category_id" />
+                    <field name="category_id" widget="many2many_tags" />
                     <field name="user_id" invisible="1" />
                     <field name="is_company" invisible="1" />
                     <field name="country_id" invisible="1" />

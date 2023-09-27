@@ -428,7 +428,7 @@
                     name="previous"
                     domain="[('bloc_ids.year_sequence','=','previous')]"
                 />
-                <separator/>
+                <separator />
                 <filter
                     string="Is Described"
                     name="described"
@@ -677,8 +677,16 @@
                     domain="[('year_sequence','=','previous')]"
                 />
                 <separator />
-                <filter string="Musique" name="musique" domain='[["program_id.speciality_id.domain_id","ilike","MUSIQUE"]]'/>
-                <filter string="Théatre" name="theatre" domain='[["program_id.speciality_id.domain_id","ilike","THEATRE"]]'/>
+                <filter
+                    string="Musique"
+                    name="musique"
+                    domain='[["program_id.speciality_id.domain_id","ilike","MUSIQUE"]]'
+                />
+                <filter
+                    string="Théatre"
+                    name="theatre"
+                    domain='[["program_id.speciality_id.domain_id","ilike","THEATRE"]]'
+                />
                 <separator />
                 <group expand="1" string="Group By">
                     <filter
@@ -987,8 +995,16 @@
                     domain="[('year_sequence','=','previous')]"
                 />
                 <separator />
-                <filter string="Musique" name="musique" domain='[["speciality_id.domain_id","ilike","MUSIQUE"]]'/>
-                <filter string="Théatre" name="theatre" domain='[["speciality_id.domain_id","ilike","THEATRE"]]'/>
+                <filter
+                    string="Musique"
+                    name="musique"
+                    domain='[["speciality_id.domain_id","ilike","MUSIQUE"]]'
+                />
+                <filter
+                    string="Théatre"
+                    name="theatre"
+                    domain='[["speciality_id.domain_id","ilike","THEATRE"]]'
+                />
                 <separator />
                 <filter string="Draft" name="draft" domain="[('state','=','draft')]" />
                 <filter
