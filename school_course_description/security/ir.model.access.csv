@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+school.course_documentation_employee,school.course_documentation_employee,model_school_course_documentation,school_management.group_employee,1,1,1,1
+school.course_documentation_teacher,school.course_documentation_teacher,model_school_course_documentation,school_management.group_teacher,1,1,1,1
+school.course_documentation_wiz_employee,school.course_documentation_wiz_employee,model_school_add_description_wizard,school_management.group_employee,1,1,1,1
+school.course_documentation_wiz_teacher,school.course_documentation_wiz_teacher,model_school_add_description_wizard,school_management.group_teacher,1,1,1,1
