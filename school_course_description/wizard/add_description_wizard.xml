@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2023 ito-invest.lu
+#                       Jerome Sonnet <jerome.sonnet@ito-invest.lu>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<odoo>
+    <record id="add_description_wizard_view" model="ir.ui.view">
+        <field name="name">Add Description Wizard</field>
+        <field name="model">school.add_description_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Description Wizard">
+                <group>
+                    <field name="author_id" invisible="1"/>
+                    <field name="documentation_id" />
+                    <field name="filter_authors" />
+                </group>
+                <footer>
+                    <button
+                        name="action_create_new"
+                        string="Create New"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button
+                        name="action_use_existing"
+                        string="Use Existing"
+                        type="object"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('documentation_id', '=', False)]}"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_add_description_wizard_view" model="ir.actions.act_window">
+        <field name="name">Add Description Wizard</field>
+        <field name="res_model">school.add_description_wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="add_description_wizard_view" />
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

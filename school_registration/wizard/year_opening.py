@@ -65,6 +65,7 @@ class YearOpening(models.TransientModel):
             new_program = program.copy(
                 default={"year_id": self.year_id.id, "uid": new_uid}
             )
+            # TODO : Also duplicate the blocs UIDs
             ids.append(new_program.id)
         # return an action showing the created programs
         action = self.env.ref("school_management.action_program_form")

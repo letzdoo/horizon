@@ -275,9 +275,9 @@ class IndividualCourse(models.Model):
         else:
             return {
                 "type": "ir.actions.act_window",
-                "res_model": "school.course_documentation",
+                "res_model": "school.add_description_wizard",
                 "view_mode": "form",
-                "target": "current",
+                "target": "new",
                 "flags": {"form": {"action_buttons": True}},
                 "context": {"default_course_id": self.source_course_id.id},
             }
