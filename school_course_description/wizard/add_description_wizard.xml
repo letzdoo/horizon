@@ -27,7 +27,7 @@
         <field name="arch" type="xml">
             <form string="Add Description Wizard">
                 <group>
-                    <field name="author_id" invisible="1"/>
+                    <field name="author_id" invisible="1" />
                     <field name="documentation_id" />
                     <field name="filter_authors" />
                 </group>
@@ -37,6 +37,7 @@
                         string="Create New"
                         type="object"
                         class="oe_highlight"
+                        attrs="{'invisible': [('documentation_id', '!=', False)]}"
                     />
                     <button
                         name="action_use_existing"

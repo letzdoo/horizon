@@ -23,13 +23,12 @@ from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
+
 class AddDescriptionWizard(models.TransientModel):
     _name = "school.add_description_wizard"
     _description = "Add Description Wizard"
 
-    course_id = fields.Many2one(
-        "school.course", string="Course", required=True
-    )
+    course_id = fields.Many2one("school.course", string="Course", required=True)
 
     author_id = fields.Many2one(
         "res.users",
@@ -42,17 +41,19 @@ class AddDescriptionWizard(models.TransientModel):
         default=True,
     )
 
-    @api.onchange('filter_authors')
+    @api.onchange("filter_authors")
     def onchange_filter_authors(self):
         if self.filter_authors:
-            return {'domain': {'documentation_id': [('author_id','=',self.author_id.id)]}}
+            return {
+                "domain": {"documentation_id": [("author_id", "=", self.author_id.id)]}
+            }
         else:
-            return {'domain': {'documentation_id': []}}
+            return {"domain": {"documentation_id": []}}
 
     documentation_id = fields.Many2one(
         "school.course_documentation", string="Use Existing Documentation"
     )
-    
+
     def action_use_existing(self):
         if self.documentation_id:
             self.documentation_id.course_ids |= self.course_id
