@@ -349,13 +349,15 @@
                   <button
                     type="object"
                     icon="fa-list-alt"
+                    class="btn-success"
                     name="open_description"
-                    string="Description"
+                    string=" Description"
                     attrs="{'invisible': [('has_documentation', '=', False)]}"
                 />
                   <button
                     type="object"
                     icon="fa-times"
+                    class="btn-warning"
                     name="open_description"
                     string="No Description"
                     attrs="{'invisible': [('has_documentation', '!=', False)]}"
