@@ -253,7 +253,7 @@
                 }
           
                 .precisions__table{
-                  font-size: 1em;
+                  font-size: 0.8em;
                   width: 100%;
                   border-collapse: collapse;
                   text-align: left;
