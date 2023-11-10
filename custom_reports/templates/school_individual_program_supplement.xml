@@ -464,11 +464,14 @@
                         <t t-set="credit_total" t-value="0"/>
                         <t t-foreach="doc.acquired_ind_course_group_ids" t-as="acquired_ind_course_group">
                             <tr>
-                              <td><t t-esc="acquired_ind_course_group.uid"/></td>
+                              <td><t t-esc="acquired_ind_course_group.source_course_group_id.uid"/></td>
                               <td><t t-esc="acquired_ind_course_group.name"/></td>
-                              <td><t t-esc="acquired_ind_course_group.total_credits"/></td>
-                              <td><t t-esc="acquired_ind_course_group.final_result"/></td>
-                              <t t-set="credit_total" t-value="credit_total + acquired_ind_course_group.total_credits"/>
+                              <td><t t-esc="acquired_ind_course_group.source_course_group_id.total_credits"/></td>
+                              <td>
+                                <t t-if="acquired_ind_course_group.state == '0_valuated'">VAL</t>
+                                <t t-else="" t-esc="acquired_ind_course_group.final_result"/>
+                              </td>
+                              <t t-set="credit_total" t-value="credit_total + acquired_ind_course_group.source_course_group_id.total_credits"/>
                             </tr>
                         </t>
           
