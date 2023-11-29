@@ -346,10 +346,7 @@ class IndividualBloc(models.Model):
             if len(duplicates) > 0 :
                 all_cgs = rec.program_id.all_ind_course_group_ids.filtered(lambda ic: ic.state != '7_failed')
                 duplicate_cgs = all_cgs.filtered(lambda ic: ic.source_course_group_id.uid in duplicates)    
-                raise ValidationError("Cannot have duplicated UE in a program : %s.\n\n Please check following UEI : %s" % 
-                    (self.env['school.course_group'].browse(duplicates).mapped('uid'),
-                    duplicate_cgs.mapped('uid'))
-                )
+                raise ValidationError("Cannot have duplicated UE in a program : %s.\n\n Please check following UEI : %s" % (duplicates,duplicate_cgs.mapped('uid')))
 
     ##############################################################################
     #
