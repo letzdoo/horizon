@@ -182,6 +182,10 @@
           <filter string="Draft" name="draft" domain="[('state','=','draft')]" />
           <filter string="Active" name="active" domain="[('state','=','active')]" />
           <filter string="Archived" name="archived" domain="[('state','=','archived')]" />
+          <separator/>
+          <filter string="Current Year" name="current" domain="[('year_sequence','=','current')]"/>
+          <filter string="Next Year" name="next" domain="[('year_sequence','=','next')]"/>
+          <filter string="Previous Year" name="previous" domain="[('year_sequence','=','previous')]"/>
           <searchpanel>
             <field name="state" icon="fa-step-forward" enable_counters="1" />
             <field name="kanban_state" icon="fa-users" enable_counters="1" />
