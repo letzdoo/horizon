@@ -91,18 +91,7 @@ class AssetCategory(models.Model):
     def _compute_is_leaf(self):
         for rec in self:
             rec.is_leaf = len(rec.child_ids) == 0 
-        
-    @api.model
-    def create(self, vals):
-        tools.image_resize_images(vals)
-        return super(AssetCategory, self).create(vals)
-
-    
-    def write(self, vals):
-        tools.image_resize_images(vals)
-        return super(AssetCategory, self).write(vals)
-
-    
+            
     def name_get(self):
         def get_names(cat):
             res = []
