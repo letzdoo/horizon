@@ -138,6 +138,7 @@
         <tree string="Assets" editable="bottom">
           <field name="sequence" widget="handle"/>
           <field name="name"/>
+          <field name="short_name"/>
           <field name="category_id"/>
           <field name="building_id"/>
           <field name="asset_type_id"/>
