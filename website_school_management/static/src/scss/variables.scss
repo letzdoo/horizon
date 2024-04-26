@@ -1,0 +1,14 @@
+$o-color-palettes: append($o-color-palettes, 
+    (
+        "o-color-1": #e14f32,
+        "o-color-2": #ff9f76,
+        "o-color-3": #fdbb9f,
+        "o-color-4": #ffffff,
+        "o-color-5": #272d2d,
+        "menu": 1,
+        "footer": 5,
+        "copyright-custom": "black-15",
+    )
+);
+
+$o-color-palette-name: "crlg";

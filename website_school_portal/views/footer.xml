@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2023 ito-invest.lu
+#                       Jerome Sonnet <jerome.sonnet@ito-invest.lu>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<odoo>
+    <template
+        id="hz_copyright"
+        inherit_id="website.layout"
+        name="Horizon Copyright"
+        priority="100"
+    >
+        <xpath expr="//footer//div[hasclass('o_footer_copyright')]" position="replace">
+            <div t-if="not no_copyright" class="o_footer_copyright">
+                <div class="container py-3">
+                    <div class="row">
+                        <div
+                            class="col-12 col-md-6 text-center text-md-start text-muted hz_footer_brand_name"
+                        >
+                            <span><strong
+                                >Horizon</strong> - High School Management for Odoo</span>
+                        </div>
+                        <div
+                            class="col-12 col-md-6 text-center text-md-end text-muted hz_copyright"
+                        >
+                            <span class="me-2">Copyright &amp;copy; <span
+                                    t-esc="time.strftime('%Y')"
+                                /> Ito-Invest</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template
+        id="hz_footer"
+        inherit_id="website.layout"
+        name="Horizon Footer"
+        priority="100"
+    >
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" t-if="not no_footer">
+                <section
+                    class="s_text_block pt40 pb16"
+                    data-snippet="s_text_block"
+                    data-name="Text"
+                >
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2 pt24 pb24">
+                                <h5 class="mb-3 o_not_editable">Liens utiles</h5>
+                                <t
+                                    t-call="website_school_portal._hz_custom_footer_links"
+                                />
+                                <t
+                                    t-call="website_school_portal._hz_custom_footer_links_student"
+                                    t-if="user_id.partner_id.student or user_id._is_admin()"
+                                />
+                                <t
+                                    t-call="website_school_portal._hz_custom_footer_links_teacher"
+                                    t-if="user_id.partner_id.teacher or user_id._is_admin()"
+                                />
+                                <t
+                                    t-call="website_school_portal._hz_custom_footer_links_employee"
+                                    t-if="user_id.partner_id.employee or user_id._is_admin()"
+                                />
+                            </div>
+                            <div class="col-lg-5 pt24 pb24">
+                                <t
+                                    t-call="website_school_portal._hz_custom_footer_description"
+                                />
+                            </div>
+                            <div
+                                id="connect"
+                                class="col-lg-4 offset-lg-1 pt24 pb24 o_not_editable"
+                            >
+                                <h5 class="mb-3"><t t-esc="res_company.name" /></h5>
+                                <ul class="list-unstyled">
+                                    <li><i
+                                            class="fa fa-map-signs fa-fw me-2 mt-2 align-top"
+                                        /><div class="d-inline-block">
+                                        <t t-esc="res_company.street" /><br />
+                                        <t t-esc="res_company.zip" />&amp;nbsp;<t
+                                                t-esc="res_company.city"
+                                            /><br />
+                                        <t t-esc="res_company.country_id.name" />
+                                    </div></li>
+                                    <li><i class="fa fa-envelope fa-fw me-2" /><span><a
+                                                t-att-href="'mailto:'+res_company.email"
+                                            ><t
+                                                    t-esc="res_company.email"
+                                                /></a></span></li>
+                                    <li><i class="fa fa-phone fa-fw me-2" /><span
+                                            class="o_force_ltr"
+                                        ><a t-att-href="'tel:'+res_company.phone"><t
+                                                    t-esc="res_company.phone"
+                                                /></a></span></li>
+                                </ul>
+                                <hr />
+                                <section
+                                    class="s_title o_colored_level o_we_force_no_transition"
+                                    data-name="Recherche"
+                                >
+                                    <div class="s_allow_columns container">
+                                        <form
+                                            method="get"
+                                            data-snippet="s_searchbar_input"
+                                            class="o_searchbar_form s_searchbar_input"
+                                            action="/website/search"
+                                            data-name="Rechercher"
+                                        >
+                                            <div role="search" class="input-group ">
+                                                <input
+                                                    type="search"
+                                                    name="search"
+                                                    class="search-query form-control oe_search_box None"
+                                                    placeholder="Recherche…"
+                                                    data-search-type="all"
+                                                    data-limit="0"
+                                                    data-display-image="false"
+                                                    data-display-description="false"
+                                                    data-display-extra-link="false"
+                                                    data-display-detail="false"
+                                                    data-order-by="name asc"
+                                                    autocomplete="off"
+                                                />
+                                                <button
+                                                    type="submit"
+                                                    aria-label="Rechercher"
+                                                    title="Rechercher"
+                                                    class="btn oe_search_button btn-primary"
+                                                >
+                                                    <i class="oi oi-search" />
+                                                </button>
+                                            </div>
+                                            <input
+                                                name="order"
+                                                type="hidden"
+                                                class="o_search_order_by"
+                                                value="name asc"
+                                            />
+                                        </form>
+                                    </div>
+                                </section>
+                                <div
+                                    class="s_social_media text-start o_not_editable mt-3"
+                                    data-snippet="s_social_media"
+                                    data-name="Social Media"
+                                    contenteditable="false"
+                                >
+                                    <h5
+                                        class="s_social_media_title d-none"
+                                        contenteditable="true"
+                                    >Follow us</h5>
+                                    <t t-call="website_school_portal.hz_socials" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="hz_socials" name="Horizon Social Networks">
+        <a
+            t-if="res_company.social_facebook != False"
+            t-att-href="res_company.social_facebook"
+            class="s_social_media_facebook"
+            target="_blank"
+        >
+            <i class="fa fa-facebook rounded-circle shadow-sm" />
+        </a>
+        <a
+            t-if="res_company.social_twitter != False"
+            t-att-href="res_company.social_twitter"
+            class="s_social_media_twitter"
+            target="_blank"
+        >
+            <i class="fa fa-twitter rounded-circle shadow-sm" />
+        </a>
+        <a
+            t-if="res_company.social_youtube != False"
+            t-att-href="res_company.social_youtube"
+            class="s_social_media_youtube"
+            target="_blank"
+        >
+            <i class="fa fa-youtube rounded-circle shadow-sm" />
+        </a>
+        <a
+            t-if="res_company.social_instagram != False"
+            t-att-href="res_company.social_instagram"
+            class="s_social_media_instagram"
+            target="_blank"
+        >
+            <i class="fa fa-instagram rounded-circle shadow-sm" />
+        </a>
+        <a
+            t-if="res_company.social_linkedin != False"
+            t-att-href="res_company.social_linkedin"
+            class="s_social_media_linkedin"
+            target="_blank"
+        >
+            <i class="fa fa-linkedin rounded-circle shadow-sm" />
+        </a>
+    </template>
+
+    <template id="hz_share" inherit_id="website.layout" name="Horizon Share">
+        <xpath expr="//main" position="after">
+            <div
+                id="hz_share_footer"
+                data-snippet="s_share"
+                class="w-100 s_share text-center o_no_link_popover mt-2 mb-4"
+                data-name="Partager"
+            >
+                <h5 class="me-2 d-none d-md-inline me-2">Partager:</h5>
+                <span class="d-inline-block d-md-none fs-1 me-3 my-1"><i
+                        class="fa fa-share-alt-square "
+                    /></span>
+
+                <a
+                    href="https://www.facebook.com/sharer/sharer.php?u={url}"
+                    target="_blank"
+                    class="s_share_facebook "
+                >
+                    <i class="fa fa-facebook rounded shadow-sm" />
+                </a>
+                <a
+                    href="https://twitter.com/intent/tweet?text={title}&amp;url={url}"
+                    target="_blank"
+                    class="s_share_twitter "
+                >
+                    <i class="fa fa-twitter rounded shadow-sm" />
+                </a>
+                <a
+                    href="https://www.linkedin.com/sharing/share-offsite/?url={url}"
+                    target="_blank"
+                    class="s_share_linkedin "
+                >
+                    <i class="fa fa-linkedin rounded shadow-sm" />
+                </a>
+                <a
+                    href="https://wa.me/?text={title}"
+                    target="_blank"
+                    class="s_share_whatsapp "
+                >
+                    <i class="fa fa-whatsapp rounded shadow-sm" />
+                </a>
+                <a href="mailto:?body={url}&amp;subject={title}" class="s_share_email ">
+                    <i class="fa fa-envelope rounded shadow-sm" />
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

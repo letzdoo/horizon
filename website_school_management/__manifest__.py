@@ -27,10 +27,18 @@
     'category': 'School Management',
     'depends': [
         'web',
+        "school_management",
     ],
-    'data': [
-        'views/templates.xml',
+    "data": [
+        "data_init.xml",
+        "views/templates.xml",
+        "views/programmes.xml",
+        "views/backoffice.xml",
+        "views/page_403.xml",
+        "views/assets.xml",
+        "report/programme_report.xml",
     ],
+
     'description': '''
         This module adds web portal access for a school.
     ''',

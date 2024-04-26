@@ -1,0 +1,15 @@
+<odoo>
+    <template id="assets_frontend" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/scss" href="/website_school_management/static/src/scss/base.scss" />
+            <link rel="stylesheet" type="text/scss" href="/website_school_management/static/src/scss/main.scss" />
+            <link rel="stylesheet" type="text/scss" href="/website_school_management/static/src/scss/variables.scss" />
+        </xpath>
+    </template>
+
+    <!-- <template id="_assets_primary_variables" inherit_id="web._assets_primary_variables">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" type="text/scss" href="/school_management/static/src/scss/primary_variables.scss"/>
+        </xpath>
+    </template> -->
+</odoo>
