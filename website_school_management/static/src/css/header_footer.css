@@ -40,6 +40,84 @@ section {
 	position: relative;
 }
 
+.site-branding {
+	padding: 1em 0;
+	position: relative;
+	-webkit-transition: margin-bottom 0.2s;
+	transition: margin-bottom 0.2s;
+	z-index: 3;
+}
+
+.site-branding a {
+	text-decoration: none;
+	-webkit-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+}
+
+.site-branding a:hover,
+.site-branding a:focus {
+	opacity: 0.7;
+}
+
+.site-title {
+	clear: none;
+	font-size: 24px;
+	font-size: 1.5rem;
+	font-weight: 800;
+	line-height: 1.25;
+	letter-spacing: 0.08em;
+	margin: 0;
+	padding: 0;
+	text-transform: uppercase;
+}
+
+.site-title,
+.site-title a {
+	color: #222;
+	opacity: 1; /* Prevent opacity from changing during selective refreshes in the customize preview */
+}
+
+.custom-logo-link {
+	display: inline-block;
+	padding-right: 1em;
+	vertical-align: middle;
+	width: auto;
+}
+
+.custom-logo-link img {
+	display: inline-block;
+	max-height: 80px;
+	width: auto;
+}
+
+body.home.title-tagline-hidden.has-header-image .custom-logo-link img,
+body.home.title-tagline-hidden.has-header-video .custom-logo-link img {
+	max-height: 200px;
+	max-width: 100%;
+}
+
+.custom-logo-link a:hover,
+.custom-logo-link a:focus {
+	opacity: 0.9;
+}
+
+body:not(.title-tagline-hidden) .site-branding-text {
+	display: inline-block;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.site-branding-text {
+    font-family: "Libre Franklin", "Helvetica Neue", helvetica, arial, sans-serif;
+}
+
+.site-description {
+	color: #666;
+	font-size: 13px;
+	font-size: 0.8125rem;
+	margin-bottom: 0;
+}
+
 .custom-header {
 	position: relative;
 }
@@ -176,6 +254,22 @@ body:not(.title-tagline-hidden) .site-branding-text {
 	vertical-align: bottom;
 }
 
+.custom-logo-link {
+    padding-right: 2em;
+}
+
+.wrap {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body.has-header-image .site-title,
+body.has-header-video .site-title,
+body.has-header-image .site-title a,
+body.has-header-video .site-title a {
+	color: #fff;
+}
+
 @media screen and (min-width: 20em) {
 
 	body.customize-partial-edit-shortcuts-shown .site-header .site-title {
@@ -197,6 +291,7 @@ body:not(.title-tagline-hidden) .site-branding-text {
 }
 
 @media screen and (min-width: 48em) {
+
 	.site-header .site-navigation-fixed .menu-scroll-down {
 		display: none;
 	}
@@ -265,6 +360,23 @@ body:not(.title-tagline-hidden) .site-branding-text {
 		width: 58%;
 	}
 
+    .wrap {
+		max-width: 1000px;
+		padding-left: 3em;
+		padding-right: 3em;
+	}
+
+    .site-title {
+		font-size: 36px;
+		font-size: 2.25rem;
+	}
+
+    .site-description {
+		font-size: 16px;
+		font-size: 1rem;
+	}
+
+
 }
 
 @media print {
@@ -287,5 +399,20 @@ body:not(.title-tagline-hidden) .site-branding-text {
 
 	.site-footer {
 		padding: 0;
+	}
+
+    .wrap {
+		padding-left: 5% !important;
+		padding-right: 5% !important;
+		max-width: none;
+	}
+
+    .site-title {
+		font-size: 25pt;
+	}
+
+    .site-description {
+		font-size: 12pt;
+		opacity: 1;
 	}
 }

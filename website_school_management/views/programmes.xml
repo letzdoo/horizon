@@ -16,6 +16,7 @@
                 <!-- <link rel='stylesheet' id='dashicons-css' href='https://www.crlg.be/wp-includes/css/dashicons.min.css?ver=e98fcd3fb55f9194b42e381b6f8177d0' media='all' ></link> -->
                 <!-- <link rel='stylesheet' id='twentyseventeen-fonts-css' href='https://fonts.googleapis.com/css?family=Libre+Franklin%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C800%2C800i&#038;subset=latin%2Clatin-ext&#038;display=fallback' media='all' ></link> -->
                 <!-- <link rel='stylesheet' id='twentyseventeen-style-css' href='https://www.crlg.be/wp-content/themes/twentyseventeen/style.css?ver=20201208' media='all' ></link> -->
+                <link rel='stylesheet' id='twentyseventeen-fonts-css' href='https://fonts.googleapis.com/css?family=Libre+Franklin%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C800%2C800i&#038;subset=latin%2Clatin-ext&#038;display=fallback' media='all' />
                 <link rel="stylesheet" href="/website_school_management/static/src/css/style.min.css"/>
                 <link rel="stylesheet" href="/website_school_management/static/src/css/header_footer.css"/>
 
