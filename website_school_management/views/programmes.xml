@@ -2,7 +2,7 @@
 <odoo>
 
     <!-- //////////////////////////////////////////////////////////////// -->
-    <!-- //                     LISTE PROGRAMMES                       // -->
+    <!-- //                     LAYOUTS COMMUNS                        // -->
     <!-- //////////////////////////////////////////////////////////////// -->
     
     <template id="hz_v14_layout" name="Horizon programs layout">
@@ -11,16 +11,12 @@
                 <meta charset="utf-8"/>
                 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-                <title>Programmes de cours</title>
-                <!-- <link rel='stylesheet' id='menu-image-css' href='https://www.crlg.be/wp-content/plugins/menu-image/includes/css/menu-image.css?ver=3.0.8' media='all' ></link> -->
-                <!-- <link rel='stylesheet' id='dashicons-css' href='https://www.crlg.be/wp-includes/css/dashicons.min.css?ver=e98fcd3fb55f9194b42e381b6f8177d0' media='all' ></link> -->
-                <!-- <link rel='stylesheet' id='twentyseventeen-fonts-css' href='https://fonts.googleapis.com/css?family=Libre+Franklin%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C800%2C800i&#038;subset=latin%2Clatin-ext&#038;display=fallback' media='all' ></link> -->
-                <!-- <link rel='stylesheet' id='twentyseventeen-style-css' href='https://www.crlg.be/wp-content/themes/twentyseventeen/style.css?ver=20201208' media='all' ></link> -->
+                <title><t t-esc="additional_title" /></title>
                 <link rel='stylesheet' id='twentyseventeen-fonts-css' href='https://fonts.googleapis.com/css?family=Libre+Franklin%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C800%2C800i&#038;subset=latin%2Clatin-ext&#038;display=fallback' media='all' />
+                <link rel="stylesheet" href="/website_school_management/static/src/css/bootstrap.css"/>
                 <link rel="stylesheet" href="/website_school_management/static/src/css/style.min.css"/>
                 <link rel="stylesheet" href="/website_school_management/static/src/css/header_footer.css"/>
-
-                <script type="text/javascript" src="/website_school_management/static/src/js/assets_frontend_minimal.js"/>
+                
                 <script type="text/javascript" src="/website_school_management/static/src/js/cours_demande_description.js"/>
             </head>
             <t t-raw="0"/>
@@ -140,6 +136,10 @@
             <i class="fa fa-linkedin rounded-circle shadow-sm" />
         </a>
     </template>
+
+    <!-- //////////////////////////////////////////////////////////////// -->
+    <!-- //                     LISTE PROGRAMMES                       // -->
+    <!-- //////////////////////////////////////////////////////////////// -->
 
     <template id="programmes_liste">
         <t t-set="additional_title">Programmes</t>
