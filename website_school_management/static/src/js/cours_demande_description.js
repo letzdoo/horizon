@@ -16,48 +16,45 @@ function displayErrorMessage() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector('#request_description_form');
     const btn = document.querySelector("#btn_request_course_details");
     if (btn) {
         btn.addEventListener("click", (event) => {
-            event.preventDefault();
-
-            var data = {'data': [
-                {
-                    "email": document.getElementById("request_email").value,
-                    "first_name": document.getElementById("request_first_name").value,
-                    "last_name": document.getElementById("request_last_name").value,
-                    "course_id": document.getElementById("request_course_id").value,
-                } ] 
-            }
-            json_data = JSON.stringify(data);
-
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", "/cours/cours_demande_description");
-            // xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-            xhr.setRequestHeader("Content-Type", "application/json");
-            // xhr.setRequestHeader('X-CSRF-Token', document.getElementById("request_csrf_token").value);
-            xhr.onload = function () {
-                if (xhr.status != 200) {
-                    console.log("not 200")
-                    displayErrorMessage();
-                } else {
-                    let response = JSON.parse(xhr.response);
-                    if (response.result === "success") {
-                        console.log("response success")
-                        console.log(response)
-                        displaySuccessMessage();
-                    } else {
-                        console.log("response failure")
-                        console.log(response)
-                        displayErrorMessage();
+            if (form.reportValidity()) {
+                event.preventDefault();
+    
+                var data = {'params': 
+                    {
+                        "email": document.getElementById("request_email").value,
+                        "first_name": document.getElementById("request_first_name").value,
+                        "last_name": document.getElementById("request_last_name").value,
+                        "course_id": document.getElementById("request_course_id").value,
                     }
                 }
-            };
-            xhr.onerror = function () {
-                console.log("error")
-                displayErrorMessage();
-            };
-            xhr.send(json_data);
+                json_data = JSON.stringify(data);
+    
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", "/cours/cours_demande_description");
+                xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                xhr.setRequestHeader("Content-Type", "application/json");
+                // xhr.setRequestHeader('X-CSRF-Token', document.getElementById("request_csrf_token").value);
+                xhr.onload = function () {
+                    if (xhr.status != 200) {
+                        displayErrorMessage();
+                    } else {
+                        let response = JSON.parse(xhr.response);
+                        if (response.result.result === "success") {
+                            displaySuccessMessage();
+                        } else {
+                            displayErrorMessage();
+                        }
+                    }
+                };
+                xhr.onerror = function () {
+                    displayErrorMessage();
+                };
+                xhr.send(json_data);
+            }
         });
     }
 

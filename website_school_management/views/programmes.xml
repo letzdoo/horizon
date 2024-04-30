@@ -740,7 +740,7 @@
                 <div id="form_request_course_details">
                     <p
                     >La description de ce cours n'est pas disponible. Vous pouvez contacter le responsable pour lui demander de l'encoder.</p>
-                    <form>
+                    <form id="request_description_form">
                     <div class="row">
                         <div class="col-12 col-lg-4 mt-2">
                             <label for="request_first_name">Prénom :</label>

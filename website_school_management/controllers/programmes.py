@@ -343,13 +343,13 @@ class programmes(http.Controller):
 
     @http.route("/cours/cours_demande_description", type="json", auth="public")
     def request_details_cours(self, **post):
-        course_id = post.get("course_id")
+        course_id = http.request.params.get("course_id")
         course = request.env["school.course"].sudo().search([("id", "=", course_id)])
         if course:
             emailResponsible = course.course_group_id.responsible_id.email
-            email = post.get("email")
-            first_name = post.get("first_name")
-            last_name = post.get("last_name")
+            email = http.request.params.get("email")
+            first_name = http.request.params.get("first_name")
+            last_name = http.request.params.get("last_name")
             if email and first_name and last_name:
                 vals = {
                     "emailObject": "Demande de description de cours",
