@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.querySelector("#btn_request_course_details");
     if (btn) {
         btn.addEventListener("click", (event) => {
-            if (form.reportValidity()) {
+            if (form && form.reportValidity()) {
                 event.preventDefault();
     
                 var data = {'params': 

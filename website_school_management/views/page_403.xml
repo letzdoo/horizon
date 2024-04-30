@@ -25,11 +25,10 @@
         id="hz_page_403"
         name="Non autorisé"
         inherit_id="http_routing.403"
-        priority="100"
     >
-        <xpath expr="//div[@class='container']" position="replace">
-            <div class="container o_not_editable">
-                <div class="text-center mt-5">
+        <xpath expr="." position="replace">
+            <t t-call="website_school_management.hz_v14_layout">
+                <div class="container my-5">
                     <h1>Non autorisé</h1>
                     <p>Désolé, vous n'êtes pas autorisé à accéder à cette page.</p>
                     <a
@@ -38,7 +37,7 @@
                     >Vers la liste des programmes</a>
                     <hr />
                 </div>
-            </div>
+            </t>
         </xpath>
     </template>
 </odoo>

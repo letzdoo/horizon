@@ -35,6 +35,7 @@
         "views/programmes.xml",
         "views/backoffice.xml",
         "views/page_403.xml",
+        "views/page_404.xml",
         "views/assets.xml",
         "report/programme_report.xml",
     ],

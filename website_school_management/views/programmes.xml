@@ -12,14 +12,32 @@
                 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
                 <title><t t-esc="additional_title" /></title>
+                <link type="image/x-icon" rel="shortcut icon" href="/website_school_management/static/img/favicon.ico"/>
+
                 <link rel='stylesheet' id='twentyseventeen-fonts-css' href='https://fonts.googleapis.com/css?family=Libre+Franklin%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C800%2C800i&#038;subset=latin%2Clatin-ext&#038;display=fallback' media='all' />
                 <link rel="stylesheet" href="/website_school_management/static/src/css/bootstrap.css"/>
                 <link rel="stylesheet" href="/website_school_management/static/src/css/style.min.css"/>
                 <link rel="stylesheet" href="/website_school_management/static/src/css/header_footer.css"/>
                 
                 <script type="text/javascript" src="/website_school_management/static/src/js/cours_demande_description.js"/>
+
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/dom/data.js"/>
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/dom/event-handler.js"/>
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/dom/manipulator.js"/>
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/dom/selector-engine.js"/>
+
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/base-component.js"/>
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/collapse.js"/>
             </head>
-            <t t-raw="0"/>
+            <body>
+                <div id="wrapwrap">
+                    <t t-call="website_school_management.hz_v14_header" />
+                    <main>
+                        <t t-raw="0"/>
+                    </main>
+                    <t t-call="website_school_management.hz_v14_footer" />
+                </div>
+            </body>
         </html>
     </template>
 
@@ -143,87 +161,80 @@
 
     <template id="programmes_liste">
         <t t-set="additional_title">Programmes</t>
-        <t t-call="website_school_management.hz_v14_layout"></t>
-        <body>
-            <div id="wrapwrap">
-                <t t-call="website_school_management.hz_v14_header" />
-                <main>
-                    <div class="container my-5">
-                        <div class="row">
-                            <div class="col-12">
-                                <h1 class="mb-3">Programmes</h1>
-                                <div class="mt-4">
-                                    <t
-                                        t-call="website_school_management.programmes_breadcrumb"
-                                    />
-                                    <div
-                                        class="breadcrumb_next_step mb-4"
-                                        t-if="len(options) != 0"
-                                    >
-                                        <span class="fw-bold d-flex align-items-center"><i
-                                                class="fa fa-filter fs-4 me-1 accented-color"
-                                                aria-hidden="true"
-                                            />Sélectionner :</span>
-                                        <t t-foreach="options" t-as="option">
-                                            <a
-                                                t-att-title="'Sélectionner ' + option['name']"
-                                                class="btn btn-outline-primary btn-sm fw-bold"
-                                                t-att-href="option ['uri']"
-                                            ><t t-esc="option['name']" /></a>
-                                        </t>
-                                    </div>
-                                    <hr class="my-0" />
-                                    <p
-                                    >Il existe également des programmes sur-mesure qui ne sont pas repris dans la liste ci-dessous. Vous pouvez les retrouvez <a
-                                            href="/programmes-"
-                                        >ici</a>.</p>
-
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <t t-set="current_cycle" t-value="False" />
-                                <t t-set="d" t-value="False" />
-                                <t t-set="c" t-value="False" />
-                                <t t-foreach="program_list" t-as="program">
-                                    <t
-                                        t-if="(current_cycle != False) and (current_cycle != program.cycle_id.id)"
-                                        t-call="website_school_management.close_list"
-                                    />
-                                    <t t-if="d != program.domain_name">
-                                        <h3 class="mt-4" t-esc="program.domain_name" />
-                                        <t t-set="d" t-value="program.domain_name" />
-                                        <t t-set="c" t-value="False" />
-                                    </t>
-                                    <t t-if="c != program.cycle_id">
-                                        <h4
-                                            class="ps-3 mt-4 mb-3"
-                                            t-esc="program.cycle_id.name"
-                                        />
-                                        <t t-set="c" t-value="program.cycle_id" />
-                                    </t>
-                                    <t
-                                        t-if="(current_cycle == False) or (current_cycle != program.cycle_id.id)"
-                                        t-call="website_school_management.open_list"
-                                    />
-                                    <li class="list-group-item">
-                                        <a
-                                            t-att-href="'/programme/%s' %slug(program)"
-                                            t-esc="program.name"
-                                        />
-                                    </li>
-                                    <t t-set="current_cycle" t-value="program.cycle_id.id" />
-                                    <t
-                                        t-if="program_index == (len(program_list) - 1)"
-                                        t-call="website_school_management.close_list"
-                                    />
+        <t t-call="website_school_management.hz_v14_layout">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="mb-3">Programmes</h1>
+                        <div class="mt-4">
+                            <t
+                                t-call="website_school_management.programmes_breadcrumb"
+                            />
+                            <div
+                                class="breadcrumb_next_step mb-4"
+                                t-if="len(options) != 0"
+                            >
+                                <span class="fw-bold d-flex align-items-center"><i
+                                        class="fa fa-filter fs-4 me-1 accented-color"
+                                        aria-hidden="true"
+                                    />Sélectionner :</span>
+                                <t t-foreach="options" t-as="option">
+                                    <a
+                                        t-att-title="'Sélectionner ' + option['name']"
+                                        class="btn btn-outline-primary btn-sm fw-bold"
+                                        t-att-href="option ['uri']"
+                                    ><t t-esc="option['name']" /></a>
                                 </t>
                             </div>
+                            <hr class="my-0" />
+                            <p
+                            >Il existe également des programmes sur-mesure qui ne sont pas repris dans la liste ci-dessous. Vous pouvez les retrouvez <a
+                                    href="/programmes-"
+                                >ici</a>.</p>
+
                         </div>
                     </div>
-                </main>
-                <t t-call="website_school_management.hz_v14_footer" />
-            </div>
-        </body>
+                    <div class="col-12">
+                        <t t-set="current_cycle" t-value="False" />
+                        <t t-set="d" t-value="False" />
+                        <t t-set="c" t-value="False" />
+                        <t t-foreach="program_list" t-as="program">
+                            <t
+                                t-if="(current_cycle != False) and (current_cycle != program.cycle_id.id)"
+                                t-call="website_school_management.close_list"
+                            />
+                            <t t-if="d != program.domain_name">
+                                <h3 class="mt-4" t-esc="program.domain_name" />
+                                <t t-set="d" t-value="program.domain_name" />
+                                <t t-set="c" t-value="False" />
+                            </t>
+                            <t t-if="c != program.cycle_id">
+                                <h4
+                                    class="ps-3 mt-4 mb-3"
+                                    t-esc="program.cycle_id.name"
+                                />
+                                <t t-set="c" t-value="program.cycle_id" />
+                            </t>
+                            <t
+                                t-if="(current_cycle == False) or (current_cycle != program.cycle_id.id)"
+                                t-call="website_school_management.open_list"
+                            />
+                            <li class="list-group-item">
+                                <a
+                                    t-att-href="'/programme/%s' %slug(program)"
+                                    t-esc="program.name"
+                                />
+                            </li>
+                            <t t-set="current_cycle" t-value="program.cycle_id.id" />
+                            <t
+                                t-if="program_index == (len(program_list) - 1)"
+                                t-call="website_school_management.close_list"
+                            />
+                        </t>
+                    </div>
+                </div>
+            </div>   
+        </t>
     </template>
 
     <!-- //////////////////////////////////////////////////////////////// -->
@@ -232,50 +243,42 @@
 
     <template id="programme_fiche">
         <t t-set="additional_title" t-value="program.title" />
-        <t t-call="website_school_management.hz_v14_layout"></t>
-        <body>
-            <div id="wrapwrap">
-                <t t-call="website_school_management.hz_v14_header" />
-                <main>
-                    <div class="container my-5">
-                        <div class="row">
-                            <div class="col-12">
-                                <div
-                                    class="d-flex flex-column-reverse flex-sm-row align-items-center align-items-sm-start justify-content-sm-between gap-4"
-                                >
-                                    <h1 t-esc="program.name" />
-                                    <a
-                                        class="d-flex gap-3 align-items-center justify-content-center btn btn-primary h-fit-content w-fit-content"
-                                        t-att-href="'/impression_programme/%s' %slug(program)"
-                                        target="_blank"
-                                        title="Imprimer le programme de cours"
-                                    >
-                                        <span
-                                            class="d-sm-none fw-bold"
-                                        >Imprimer le programme</span>
-                                        <i class="fa fa-print fs-3" aria-hidden="true" />
-                                        <span
-                                            class="sr-only"
-                                        >Imprimer le programme de cours</span>
-                                    </a>
-                                </div>
-                                <div class="mt-4">
-                                    <t
-                                        t-call="website_school_management.programmes_breadcrumb"
-                                    />
-                                    <hr class="mt-0 mb-4" />
-                                </div>
-                                <t
-                                    t-call="website_school_management.programme_details_contenu"
-                                />
-                            </div>
+        <t t-call="website_school_management.hz_v14_layout">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="d-flex flex-column-reverse flex-sm-row align-items-center align-items-sm-start justify-content-sm-between gap-4"
+                        >
+                            <h1 t-esc="program.name" />
+                            <a
+                                class="d-flex gap-3 align-items-center justify-content-center btn btn-primary h-fit-content w-fit-content"
+                                t-att-href="'/impression_programme/%s' %slug(program)"
+                                target="_blank"
+                                title="Imprimer le programme de cours"
+                            >
+                                <span
+                                    class="d-sm-none fw-bold"
+                                >Imprimer le programme</span>
+                                <i class="fa fa-print fs-3" aria-hidden="true" />
+                                <span
+                                    class="sr-only"
+                                >Imprimer le programme de cours</span>
+                            </a>
                         </div>
+                        <div class="mt-4">
+                            <t
+                                t-call="website_school_management.programmes_breadcrumb"
+                            />
+                            <hr class="mt-0 mb-4" />
+                        </div>
+                        <t
+                            t-call="website_school_management.programme_details_contenu"
+                        />
                     </div>
-                </main>
-                <t t-call="website_school_management.hz_v14_footer" />
+                </div>
             </div>
-        </body>
-        
+        </t>
     </template>
 
     <template id="programme_details_contenu" name="Program Details Content">
@@ -590,27 +593,19 @@
 
     <template id="cours_fiche">
         <t t-set="additional_title" t-value="course.name" />
-        <t t-call="website_school_management.hz_v14_layout"></t>
-        <body>
-            <div id="wrapwrap">
-                <t t-call="website_school_management.hz_v14_header" />
-                <main>
-                    <div class="container my-5">
-                        <div class="row">
-                            <div class="col-12">
-                                <t t-set="course_doc" t-value="course.documentation_id" />
-                                <t
-                                    t-call="website_school_management.cours_fiche_details"
-                                    t-if="not(course_group_id) or course_doc.course_group_id.id == course_group_id"
-                                />
-                            </div>
-                        </div>
+        <t t-call="website_school_management.hz_v14_layout">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-12">
+                        <t t-set="course_doc" t-value="course.documentation_id" />
+                        <t
+                            t-call="website_school_management.cours_fiche_details"
+                            t-if="not(course_group_id) or course_doc.course_group_id.id == course_group_id"
+                        />
                     </div>
-                </main>
-                <t t-call="website_school_management.hz_v14_footer" />
+                </div>
             </div>
-        </body>
-        
+        </t>
     </template>
 
     <template id="cours_fiche_details">
