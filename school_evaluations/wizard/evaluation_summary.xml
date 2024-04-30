@@ -77,7 +77,7 @@
                                 </div>
                             </div>
                             <t t-foreach="docs" t-as="doc">
-                            <t t-if="len(doc['blocs']) > 0">
+                            <t t-if="len(doc['blocs']) &gt; 0">
                             <div class="row">
                                 <div class="col-10 col-offset-1">
                                     <h4><t t-esc="doc['name']"/></h4>
