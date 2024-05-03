@@ -28,6 +28,7 @@
     'depends': [
         'web',
         "school_management",
+        'social_media',
     ],
     "data": [
         "data_init.xml",
