@@ -191,9 +191,9 @@ class programmes(http.Controller):
     ):
         # Préparation des paramètres de recherche
         searchParams = [
-            # ("state", "=", "published"),
-            # ("domain_name", "!=", None),
-            # ("track_name", "!=", None),
+            ("state", "=", "published"),
+            ("domain_name", "!=", None),
+            ("track_name", "!=", None),
         ]
         segment = 0
         if year:
