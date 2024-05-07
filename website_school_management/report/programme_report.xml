@@ -35,7 +35,7 @@
                         <meta charset="utf-8" />
                   </xpath>
                   <xpath expr="//title" position="replace">
-                        <title><t t-out="docs[0].title or 'Odoo Report'" /></title>
+                        <title><t t-esc="docs[0].title or 'Odoo Report'" /></title>
                   </xpath>
                   <t t-set="font" t-value="'env.company.font' or 'Lato'" />
                   <t t-set="primary" t-value="env.company.primary_color or 'black'" />
@@ -45,7 +45,7 @@
             />
                   <style>
                         * {
-                              font-family: <t t-out="font" />; // Ne marche pas ?
+                              font-family: <t t-esc="font" />; // Ne marche pas ?
                         }
                         .row {
                             display: -webkit-box; /* wkhtmltopdf uses this one */
@@ -90,7 +90,7 @@
                               <div class="col-9 text-end">
                                     <h3
                             style="padding-top: 4mm; color: #6e6e6e;"
-                            t-out="env.company.name"
+                            t-esc="env.company.name"
                         />
                               </div>
                         </div>
@@ -98,7 +98,7 @@
                   <t t-foreach="docs" t-as="program">
                         <h2
                     t-attf-style="padding-top: 1mm; margin-bottom: 4mm; color: {{primary}}; font-weight: 400;"
-                    t-out="program.title"
+                    t-esc="program.title"
                 />
                         <table
                     style="font-size: 0.8em; margin-bottom: 5mm; border: 1px solid #eaeaea;"
@@ -109,7 +109,7 @@
                         >ID Cycle</td>
                                     <td
                             style="text-transform: capitalize; padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm;"
-                            t-out="program.uid"
+                            t-esc="program.uid"
                         />
                                     <td
                             t-attf-style="padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm; color: {{primary}};"
@@ -119,7 +119,7 @@
                         >Année académique</td>
                                     <td
                             style="padding-top: 1mm; padding-bottom: 1mm; padding-right: 2mm; text-transform: capitalize;"
-                            t-out="program.year_id.name"
+                            t-esc="program.year_id.name"
                         />
                               </tr>
                         </table>
@@ -134,8 +134,7 @@
                                 >Domaine</th>
                                                 <td
                                     style="width: 100%; text-transform: capitalize; padding-top: 1mm;"
-                                    t-out="program.domain_name.lower()"
-                                />
+                                ><t t-if="program.domain_name"><t t-esc="program.domain_name.lower()"/></t></td>
                                           </tr>
                                           <tr>
                                                 <th
@@ -143,8 +142,7 @@
                                 >Section</th>
                                                 <td
                                     style="width: 100%; text-transform: capitalize;"
-                                    t-out="program.speciality_id.section_id.name.lower()"
-                                />
+                                ><t t-if="program.speciality_id.section_id.name"><t t-esc="program.speciality_id.section_id.name.lower()"/></t></td>
                                           </tr>
                                           <tr>
                                                 <th
@@ -152,8 +150,7 @@
                                 >Option</th>
                                                 <td
                                     style="width: 100%; text-transform: capitalize; padding-bottom: 1mm;"
-                                    t-out="program.speciality_id.track_id.name.lower()"
-                                />
+                                ><t t-if="program.speciality_id.track_id.name"><t t-esc="program.speciality_id.track_id.name.lower()"/></t></td>
                                           </tr>
 
                                     </table>
@@ -168,8 +165,7 @@
                                 >Spécialité</th>
                                                 <td
                                     style="width: 100%; text-transform: capitalize;"
-                                    t-out="program.speciality_id.name.lower()"
-                                />
+                                ><t t-if="program.speciality_id.name"><t t-esc="program.speciality_id.name.lower()"/></t></td>
                                           </tr>
                                           <tr>
                                                 <th
@@ -177,7 +173,7 @@
                                 >Grade&amp;nbsp;générique</th>
                                                 <td
                                     style=" width: 100%; text-transform: capitalize;"
-                                    t-out="program.cycle_id.grade"
+                                    t-esc="program.cycle_id.grade"
                                 />
                                           </tr>
                                              <tr>
@@ -190,7 +186,7 @@
                                 />
                                                 <td
                                     style="width: 100%; text-transform: capitalize; padding-bottom: 1mm;"
-                                    t-out="cycle_type"
+                                    t-esc="cycle_type"
                                 /> <!-- TODO : À vérifier-->
                                           </tr>
                                     </table>
@@ -199,7 +195,7 @@
                         <div t-if="program.description" style="margin-top: 6mm;">
                               <p
                         style="font-size: 0.8em; margin-top: 2mm;"
-                        t-out="program.description"
+                        t-esc="program.description"
                     />
                         </div>
                         <h3
@@ -212,7 +208,7 @@
                                     <span
                             style="font-size: 1.6em; font-style: italic; font-weight: 400; color: #6e6e6e;"
                         >
-                                          <t t-out="bloc.name" />
+                                          <t t-esc="bloc.name" />
                                     </span>
                                     <span
                             style="display:block; font-weight: 400; margin-top: 1mm;"
@@ -222,14 +218,14 @@
                                           </span>
                                           <span
                                 t-attf-style="color: {{secondary}}; padding-right : 16px;"
-                                t-out="bloc.total_hours"
+                                t-esc="bloc.total_hours"
                             />
                                           <span style="color: #6e6e6e;">
                                                 ECTS&amp;nbsp;:
                                           </span>
                                           <span
                                 t-attf-style="color: {{secondary}}"
-                                t-out="bloc.total_credits"
+                                t-esc="bloc.total_credits"
                             />
                                     </span>
                               </h4>
@@ -293,7 +289,7 @@
                                                     t-if="course_group.cg_grouping.id"
                                                 >
                                                                               <t
-                                                        t-out="course_group.cg_grouping.name"
+                                                        t-esc="course_group.cg_grouping.name"
                                                     />
                                                                         </t>
                                                                   </th>
@@ -317,23 +313,23 @@
                                         >
                                                                   <td
                                                 t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; font-weight: 600; color: {{primary}}; font-size: 0.9em; white-space: nowrap;"
-                                                t-out="course_group.ue_id"
+                                                t-esc="course_group.ue_id"
                                             />
                                                                   <td
                                                 t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; color: {{primary}};"
-                                                t-out="course_group.title"
+                                                t-esc="course_group.title"
                                             />
                                                                   <td
                                                 t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; font-style: italic; color: {{primary}}; font-size: 0.8em;"
-                                                t-out="course_group.responsible_id.name"
+                                                t-esc="course_group.responsible_id.name"
                                             />
                                                                   <td
                                                 t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; color: {{primary}};"
-                                                t-out="course_group.total_hours"
+                                                t-esc="course_group.total_hours"
                                             />
                                                                   <td
                                                 t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; color: {{primary}};"
-                                                t-out="course_group.total_credits"
+                                                t-esc="course_group.total_credits"
                                             />
                                                                   <td />
                                                                   <td
@@ -343,7 +339,7 @@
                                                     t-if="course_group.pre_requisit_ids"
                                                 >
                                                                               <span
-                                                        t-out="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"
+                                                        t-esc="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"
                                                     />
                                                                         </t>
                                                                         <t
@@ -359,7 +355,7 @@
                                                     t-if="course_group.co_requisit_ids"
                                                 >
                                                                               <span
-                                                        t-out="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"
+                                                        t-esc="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"
                                                     />
                                                                         </t>
                                                                         <t
@@ -380,7 +376,7 @@
                                                 />
                                                                         <td
                                                     style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                    t-out="course.title"
+                                                    t-esc="course.title"
                                                     t-att-href="'/cours/%s' % slug(course)"
                                                     target="new"
                                                 />
@@ -389,15 +385,15 @@
                                                 />
                                                                         <td
                                                     style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                    t-out="course.hours"
+                                                    t-esc="course.hours"
                                                 />
                                                                         <td
                                                     style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                    t-out="course.credits"
+                                                    t-esc="course.credits"
                                                 />
                                                                         <td
                                                     style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                    t-out="course.weight"
+                                                    t-esc="course.weight"
                                                 />
                                                                         <td
                                                     style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
@@ -412,7 +408,7 @@
                                                         t-if="course.quadri"
                                                     >
                                                                                     <t
-                                                            t-out="course.quadri"
+                                                            t-esc="course.quadri"
                                                         />
                                                                               </t>
                                                                               <t
@@ -440,19 +436,19 @@
                         <div class="row">
                               <div class="col-11">
                                     <p>
-                                          <t t-out="env.company.website" />
+                                          <t t-esc="env.company.website" />
                                           <span
                                 t-attf-style="color: {{primary}}; padding-left: 1mm; padding-right: 1mm;"
                             >|</span>
-                                          <t t-out="env.company.email" />
+                                          <t t-esc="env.company.email" />
                                           <span
                                 t-attf-style="color: {{primary}}; padding-left: 1mm; padding-right: 1mm;"
                             >|</span>
-                                          <t t-out="env.company.street" />
-                                          <t t-out="env.company.street2" />
+                                          <t t-esc="env.company.street" />
+                                          <t t-esc="env.company.street2" />
                                           -
-                                          <t t-out="env.company.zip" />
-                                          <t t-out="env.company.city" />
+                                          <t t-esc="env.company.zip" />
+                                          <t t-esc="env.company.city" />
                                     </p>
                               </div>
                               <div class="col-1 text-end">
