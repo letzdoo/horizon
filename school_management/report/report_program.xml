@@ -338,17 +338,13 @@
 
     <div class="header" style="padding-top: 10mm !important;">
         <div class="row" t-attf-style="padding-bottom: 5mm !important; border-bottom: 1px solid {{secondary}};">
-            <div class="col-3">
+            <div class="col-8" style="display: -webkit-box;">
                 <img style="max-height: 15mm !important;" t-if="env.company.logo" t-att-src="image_data_uri(env.company.logo)"/>
+                <h3 style="font-size: 24px; padding-top: 3mm !important; padding-left: 6mm; color: #6e6e6e;" t-esc="env.company.name"/>
             </div>
-            <div class="col-3">
+            <div class="col-4" style="display: -webkit-box;-webkit-box-pack: end;">
                 <img style="max-height: 15mm !important;" src="/school_management/static/src/img/WBE_logo_horizontal.png"/>
-            </div>
-            <div class="col-1">
-            </div>
-            <div class="col-5 text-end">
-                <h3 style="font-size: 20px; padding-top: 4mm !important; color: #6e6e6e;" t-esc="env.company.name"/>
-            </div>
+           </div>
         </div>
     </div>
 
