@@ -1,4 +1,5 @@
-# -*- encoding: utf-8 -*-
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
 ##############################################################################
 #
 #    Copyright (c) 2023 ito-invest.lu
@@ -18,32 +19,25 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Website Program Access',
-    'version': '0.1',
-    'license': 'AGPL-3',
-    'author': 'ito-invest (Jerome Sonnet)',
-    'website': '',
-    'category': 'School Management',
-    'depends': [
-        'web',
-        "school_management",
-        'social_media',
-    ],
-    "data": [
-        "data_init.xml",
-        "views/templates.xml",
-        "views/programmes.xml",
-        "views/backoffice.xml",
-        "views/page_403.xml",
-        "views/page_404.xml",
-        "report/programme_report.xml",
-    ],
-
-    'description': '''
-        This module adds web portal access for a school.
-    ''',
-    'active': False,
-    'installable': True,
-    'application': True,
-}
+-->
+<odoo>
+    <template
+        id="hz_page_403"
+        name="Non autorisé"
+        inherit_id="http_routing.403"
+    >
+        <xpath expr="." position="replace">
+            <t t-call="website_school_management.hz_v14_layout">
+                <div class="container my-5">
+                    <h1>Non autorisé</h1>
+                    <p>Désolé, vous n'êtes pas autorisé à accéder à cette page.</p>
+                    <a
+                        class="btn btn-primary btn_cta"
+                        href="/programmes"
+                    >Vers la liste des programmes</a>
+                    <hr />
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

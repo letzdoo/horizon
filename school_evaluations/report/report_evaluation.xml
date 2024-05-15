@@ -70,8 +70,8 @@
             <t t-set="data_report_header_spacing" t-value="35"/>
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
-                <div class="page">
-                    <div class="container" style="margin-left:60px;margin-right:60px;">
+                  <div class="page">
+                    <div class="container" style="padding-right:70px;padding-left:70px;">
                         <div class="row" style="margin-bottom:30px;">
                             <div class="col-12 text-center">
                                 <h3>ATTESTATION DE RÉUSSITE</h3>
@@ -79,43 +79,45 @@
                                 <h4>Domaine : <span t-field="o.source_bloc_domain_id.long_name"/></h4>
                             </div>
                         </div>
-                        <t t-if="o.state in ['draft', 'postponed', 'failed']">
-                        <div class="alert alert-danger" role="alert">Programme non réussi, actuellement au stade de : <span t-field="o.state"/></div>
-                        </t>
-                        <div class="row"  style="margin-top:60px;">
-                            <div class="col-12">
-                                Je, sousigné, NATHANAËL HARCQ, Directeur du Conservatoire Royal de Liège, certifie que
-                            </div>
-                        </div>
-                        <div class="row"  style="margin-top:60px;">
-                            <div class="col-12 text-center">
-                                <t t-if="o.student_id.gender == 'male'">Monsieur</t><t t-if="o.student_id.gender == 'female'">Madame</t> <span t-field="o.student_id"/> <span t-field="o.student_id.initials"/><br/>
-                                <br/>
-                                Né<t t-if="o.student_id.gender == 'female'">e</t> à <span t-field="o.student_id.birthplace"/> le <span t-field="o.student_id.birthdate_date"/><br/>
-                                <br/>
-                                A réussi en l’année académique <span t-field="o.year_id"/><br/>
-                                son programme en <span t-field="o.source_bloc_domain_id"/> option <span t-field="o.source_bloc_speciality_id"/> pour un total de <span t-field="o.total_acquiered_credits"/> ECTS.
-                            </div>
-                        </div>
-                        <div class="row"  style="margin-top:60px;" t-if="o.total_acquiered_credits &lt; o.total_credits">
-                            <div class="col-12 text-center">
-                                Un complément de <span t-esc="o.total_credits-o.total_acquiered_credits"/> reste(nt) à obtenir pour compléter le programme.
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:50px;">
-                            <div class="col-10">
-                                La présente attestation est délivrée pour renseignements administratifs.
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:60px;">
-                            <div class="col-6">
-                                Le Directeur
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:80px;">
-                            <div class="col-6">
-                                NATHANAËL HARCQ
-                            </div>
+                        <div style="font-size:20px;">
+                          <t t-if="o.state in ['draft', 'postponed', 'failed']">
+                          <div class="alert alert-danger" role="alert">Programme non réussi, actuellement au stade de : <span t-field="o.state"/></div>
+                          </t>
+                          <div class="row" style="margin-top:200px;">
+                              <div class="col-12 text-center">
+                                  Je soussigné, NATHANAËL HARCQ, Directeur du Conservatoire Royal de Liège, certifie que
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:60px;">
+                              <div class="col-12 text-center">
+                                  <t t-if="o.student_id.gender == 'male'">Monsieur</t><t t-if="o.student_id.gender == 'female'">Madame</t> <span t-field="o.student_id"/> <span t-field="o.student_id.initials"/><br/>
+                                  <br/>
+                                  Né<t t-if="o.student_id.gender == 'female'">e</t> à <span t-field="o.student_id.birthplace"/> le <span t-field="o.student_id.birthdate_date"/><br/>
+                                  <br/>
+                                  A réussi en l’année académique <span t-field="o.year_id"/><br/>
+                                  son programme en <span t-field="o.source_bloc_domain_id"/> option <span t-field="o.source_bloc_speciality_id"/> pour un total de <span t-field="o.total_acquiered_credits"/> ECTS.
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:60px;" t-if="o.total_acquiered_credits &lt; o.total_credits">
+                              <div class="col-12 text-center">
+                                  Un complément de <span t-esc="o.total_credits-o.total_acquiered_credits"/> reste(nt) à obtenir pour compléter le programme.
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:50px;">
+                              <div class="col-10">
+                                  La présente attestation est délivrée pour renseignements administratifs.
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:60px;">
+                              <div class="col-6">
+                                  Le Directeur
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:80px;">
+                              <div class="col-6">
+                                  NATHANAËL HARCQ
+                              </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -169,52 +171,83 @@
 
     <template id="report_success_certificate_prog_content">
         <t t-call="web.html_container">
-            <t t-set="data_report_margin_top" t-value="40"/>
-            <t t-set="data_report_header_spacing" t-value="35"/>
+            <t t-set="data_report_margin_top" t-value="40" />
+            <t t-set="data_report_header_spacing" t-value="35" />
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
                 <div class="page">
-                    <div class="container" style="margin-left:60px;margin-right:60px;">
+                    <div class="container" style="padding-right:70px;padding-left:70px;">
                         <div class="row" style="margin-bottom:30px;">
                             <div class="col-12 text-center">
                                 <h3>ATTESTATION DE RÉUSSITE DE CYCLE</h3>
-                                <h3>Conservatoire royal de Liège<br/>Boulevard Piercot, 29, 4000 LIÈGE</h3>
-                                <h4>Domaine : <span t-field="o.domain_id.long_name"/></h4>
+                                <h3>Conservatoire royal de Liège<br
+                                        />Boulevard Piercot, 29, 4000 LIÈGE</h3>
+                                <h4>Domaine : <span
+                                            t-field="o.domain_id.long_name"
+                                        /></h4>
                             </div>
                         </div>
-                        <t t-if="o.state in ['draft', 'progress', 'abandonned']">
-                        <div class="alert alert-danger" role="alert">Cycle non réussi, actuellement au stade de : <span t-field="o.state"/></div>
-                        </t>
-                        <div class="row"  style="margin-top:60px;">
-                            <div class="col-12">
-                                Je, sousigné, NATHANAËL HARCQ, Directeur du Conservatoire Royal de Liège, certifie que
-                            </div>
-                        </div>
-                        <div class="row"  style="margin-top:60px;">
-                            <div class="col-12 text-center">
-                                <t t-if="o.student_id.gender == 'male'">Monsieur</t><t t-if="o.student_id.gender == 'female'">Madame</t> <span t-field="o.student_id"/> <span t-field="o.student_id.initials"/><br/>
-                                <br/>
-                                Né<t t-if="o.student_id.gender == 'female'">e</t> à <span t-field="o.student_id.birthplace"/> le <span t-field="o.student_id.birthdate_date"/><br/>
-                                <br/>
-                                A réussi en l’année académique <span t-field="o.grade_year_id"/> le <span t-field="o.cycle_id.grade"/> en <span t-field="o.domain_id.long_name"/> : <span t-field="o.speciality_id"/> 
-                                <br/><t t-if="o.grade == 'without'"><span t-field="o.grade"/></t><t t-if="o.grade != 'without'">avec <span t-field="o.grade"/></t><t t-if="o.grade_comments"> au motif de <span t-field="o.grade_comments"/></t>
-                                pour un total de <span t-field="o.total_acquiered_credits"/> ECTS.
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:50px;">
-                            <div class="col-10">
-                                La présente attestation est délivrée pour renseignements administratifs.
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:60px;">
-                            <div class="col-6">
-                                Le Directeur
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:80px;">
-                            <div class="col-6">
-                                NATHANAËL HARCQ
-                            </div>
+                        <div style="font-size:20px;">
+                          <t t-if="o.state in ['draft', 'progress', 'abandonned']">
+                          <div
+                                        class="alert alert-danger"
+                                        role="alert"
+                                    >Cycle non réussi, actuellement au stade de : <span
+                                            t-field="o.state"
+                                        /></div>
+                          </t>
+                          <div class="row" style="margin-top:200px;">
+                              <div class="col-12 text-center">
+                                  Je soussigné, NATHANAËL HARCQ, Directeur du Conservatoire Royal de Liège, certifie que
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:60px;">
+                              <div class="col-12 text-center">
+                                  <t t-if="o.student_id.gender == 'male'">Monsieur</t><t
+                                            t-if="o.student_id.gender == 'female'"
+                                        >Madame</t> <span
+                                            t-field="o.student_id"
+                                        /> <span t-field="o.student_id.initials" /><br
+                                        />
+                                  <br />
+                                  Né<t
+                                            t-if="o.student_id.gender == 'female'"
+                                        >e</t> à <span
+                                            t-field="o.student_id.birthplace"
+                                        /> le <span
+                                            t-field="o.student_id.birthdate_date"
+                                        /><br />
+                                  <br />
+                                  A réussi en l’année académique <span
+                                            t-field="o.grade_year_id"
+                                        /> le <span
+                                            t-esc="o.source_program_id.title.lower()"
+                                        />
+                                  <br /><t t-if="o.grade == 'without'"><span
+                                                t-field="o.grade"
+                                            /></t><t
+                                            t-if="o.grade != 'without'"
+                                        >avec <span t-field="o.grade" /></t>
+                                  pour un total de <span
+                                            t-field="o.total_acquiered_credits"
+                                        /> ECTS.
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:50px;">
+                              <div class="col-10">
+                                  La présente attestation est délivrée pour renseignements administratifs.
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:60px;">
+                              <div class="col-6">
+                                  Le Directeur
+                              </div>
+                          </div>
+                          <div class="row" style="margin-top:80px;">
+                              <div class="col-6">
+                                  NATHANAËL HARCQ
+                              </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -407,7 +440,12 @@
                   <h2><t t-esc="o.student_id.name"/></h2>
                   <h4><t t-esc="o.uid"/> - <t t-esc="o.source_program_id.name"/></h4>
                   <h5>Crédits du cycle obtenus (<t t-esc="o.total_acquiered_credits"/> / <t t-esc="o.source_program_id.total_credits"/>)</h5>
-                  <h5>Grade obtenu : <t t-esc="o.grade"/></h5>
+                  <t
+                    t-if="o.grade"
+                    t-set="student_success_grade"
+                    t-value="dict(o.fields_get(allfields=['grade'])['grade']['selection'])[o.grade]"
+                  />
+                  <h5>Grade obtenu : <t t-esc="student_success_grade"/></h5>
                 </div>
                 <div class="container"> 
                   <table class="table table-sm">

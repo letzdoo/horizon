@@ -1,0 +1,1128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- //////////////////////////////////////////////////////////////// -->
+    <!-- //                     LAYOUTS COMMUNS                        // -->
+    <!-- //////////////////////////////////////////////////////////////// -->
+    
+    <template id="hz_v14_layout" name="Horizon programs layout">
+        <html>
+            <head>
+                <meta charset="utf-8"/>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+                <title><t t-esc="additional_title" /></title>
+                <link type="image/x-icon" rel="shortcut icon" href="/website_school_management/static/img/favicon.ico"/>
+
+                <link rel='stylesheet' id='twentyseventeen-fonts-css' href='https://fonts.googleapis.com/css?family=Libre+Franklin%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C800%2C800i&#038;subset=latin%2Clatin-ext&#038;display=fallback' media='all' />
+                <link rel="stylesheet" href="/website_school_management/static/src/css/bootstrap.css"/>
+                <link rel="stylesheet" href="/website_school_management/static/src/css/style.min.css"/>
+                <link rel="stylesheet" href="/website_school_management/static/src/css/header_footer.css"/>
+                
+                <script type="text/javascript" src="/website_school_management/static/src/js/cours_demande_description.js"/>
+
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/dom/data.js"/>
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/dom/event-handler.js"/>
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/dom/manipulator.js"/>
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/dom/selector-engine.js"/>
+
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/base-component.js"/>
+                <script type="text/javascript" src="/website_school_management/static/src/js/bootstrap/collapse.js"/>
+            </head>
+            <body>
+                <div id="wrapwrap">
+                    <t t-call="website_school_management.hz_v14_header" />
+                    <main>
+                        <t t-raw="0"/>
+                    </main>
+                    <t t-call="website_school_management.hz_v14_footer" />
+                </div>
+            </body>
+        </html>
+    </template>
+
+    <template id="hz_v14_header" name="V14 Header">
+        <header id="masthead" class="site-header">
+            <div class="custom-header" style="background-image: url('https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1.jpg');background-size: cover;background-position-y: center;">
+                <div class="site-branding">
+                    <div class="wrap">
+                        <a href="https://www.crlg.be/" class="custom-logo-link" rel="home"><img width="250" height="250" src="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png" class="custom-logo" alt="Conservatoire royal de Liège" decoding="async" srcset="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png 250w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND-150x150.png 150w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND-100x100.png 100w" sizes="100vw"/></a>
+                        <div class="site-branding-text">
+                            <p class="site-title"><a href="https://www.crlg.be/" rel="home" style="color: #fff;">Conservatoire royal de Liège</a></p>
+                            <p class="site-description" style="color: #fff;">École supérieure des arts de la Fédération Wallonie-Bruxelles</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            <a href="https://www.crlg.be/">Retourner vers le site</a>
+        </div>
+    </template> 
+
+    <template id="hz_v14_footer" name="V14 Footer">
+        <footer id="colophon" class="site-footer">
+			<div class="wrap">
+                <div class="row">
+                    <div id="connect" class="col-lg-5 pt24 pb24 o_not_editable" >
+                        <h5 class="mb-3"><t t-esc="res_company.name" /></h5>
+                        <ul class="list-unstyled">
+                            <li>
+                                <i class="fa fa-map-signs fa-fw me-2 mt-2 align-top" />
+                                <div class="d-inline-block">
+                                    <t t-esc="res_company.street" /><br />
+                                    <t t-esc="res_company.zip" />&amp;nbsp;<t t-esc="res_company.city" /><br />
+                                    <t t-esc="res_company.country_id.name" />
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope fa-fw me-2" />
+                                <span>
+                                    <a t-att-href="'mailto:'+res_company.email">
+                                    <t t-esc="res_company.email" /></a>
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone fa-fw me-2" />
+                                <span class="o_force_ltr" >
+                                    <a t-att-href="'tel:'+res_company.phone">
+                                        <t t-esc="res_company.phone" />
+                                    </a></span>
+                            </li>
+                        </ul>
+                        <hr />
+                        <div
+                            class="s_social_media text-start o_not_editable mt-3"
+                            data-snippet="s_social_media"
+                            data-name="Social Media"
+                            contenteditable="false"
+                        >
+                            <h5
+                                class="s_social_media_title d-none"
+                                contenteditable="true"
+                            >Follow us</h5>
+                            <t t-call="website_school_management.hz_socials" />
+                        </div>
+                    </div>	
+                </div>
+            </div>
+        </footer>
+    </template>
+
+    <template id="hz_socials" name="Horizon Social Networks">
+        <a
+            t-if="res_company.social_facebook != False"
+            t-att-href="res_company.social_facebook"
+            class="s_social_media_facebook"
+            target="_blank"
+        >
+            <i class="fa fa-facebook rounded-circle shadow-sm" />
+        </a>
+        <a
+            t-if="res_company.social_twitter != False"
+            t-att-href="res_company.social_twitter"
+            class="s_social_media_twitter"
+            target="_blank"
+        >
+            <i class="fa fa-twitter rounded-circle shadow-sm" />
+        </a>
+        <a
+            t-if="res_company.social_youtube != False"
+            t-att-href="res_company.social_youtube"
+            class="s_social_media_youtube"
+            target="_blank"
+        >
+            <i class="fa fa-youtube rounded-circle shadow-sm" />
+        </a>
+        <a
+            t-if="res_company.social_instagram != False"
+            t-att-href="res_company.social_instagram"
+            class="s_social_media_instagram"
+            target="_blank"
+        >
+            <i class="fa fa-instagram rounded-circle shadow-sm" />
+        </a>
+        <a
+            t-if="res_company.social_linkedin != False"
+            t-att-href="res_company.social_linkedin"
+            class="s_social_media_linkedin"
+            target="_blank"
+        >
+            <i class="fa fa-linkedin rounded-circle shadow-sm" />
+        </a>
+    </template>
+
+    <!-- //////////////////////////////////////////////////////////////// -->
+    <!-- //                     LISTE PROGRAMMES                       // -->
+    <!-- //////////////////////////////////////////////////////////////// -->
+
+    <template id="programmes_liste">
+        <t t-set="additional_title">Programmes</t>
+        <t t-call="website_school_management.hz_v14_layout">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="mb-3">Programmes</h1>
+                        <div class="mt-4">
+                            <t
+                                t-call="website_school_management.programmes_breadcrumb"
+                            />
+                            <div
+                                class="breadcrumb_next_step mb-4"
+                                t-if="len(options) != 0"
+                            >
+                                <span class="fw-bold d-flex align-items-center"><i
+                                        class="fa fa-filter fs-4 me-1 accented-color"
+                                        aria-hidden="true"
+                                    />Sélectionner :</span>
+                                <t t-foreach="options" t-as="option">
+                                    <a
+                                        t-att-title="'Sélectionner ' + option['name']"
+                                        class="btn btn-outline-primary btn-sm fw-bold"
+                                        t-att-href="option ['uri']"
+                                    ><t t-esc="option['name']" /></a>
+                                </t>
+                            </div>
+                            <hr class="my-0" />
+                            <p
+                            >Il existe également des programmes sur-mesure qui ne sont pas repris dans la liste ci-dessous. Vous pouvez les retrouvez <a
+                                    href="/programmes-"
+                                >ici</a>.</p>
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <t t-set="current_cycle" t-value="False" />
+                        <t t-set="d" t-value="False" />
+                        <t t-set="c" t-value="False" />
+                        <t t-foreach="program_list" t-as="program">
+                            <t
+                                t-if="(current_cycle != False) and (current_cycle != program.cycle_id.id)"
+                                t-call="website_school_management.close_list"
+                            />
+                            <t t-if="d != program.domain_name">
+                                <h3 class="mt-4" t-esc="program.domain_name" />
+                                <t t-set="d" t-value="program.domain_name" />
+                                <t t-set="c" t-value="False" />
+                            </t>
+                            <t t-if="c != program.cycle_id">
+                                <h4
+                                    class="ps-3 mt-4 mb-3"
+                                    t-esc="program.cycle_id.name"
+                                />
+                                <t t-set="c" t-value="program.cycle_id" />
+                            </t>
+                            <t
+                                t-if="(current_cycle == False) or (current_cycle != program.cycle_id.id)"
+                                t-call="website_school_management.open_list"
+                            />
+                            <li class="list-group-item">
+                                <a
+                                    t-att-href="'/programme/%s' %slug(program)"
+                                    t-esc="program.name"
+                                />
+                            </li>
+                            <t t-set="current_cycle" t-value="program.cycle_id.id" />
+                            <t
+                                t-if="program_index == (len(program_list) - 1)"
+                                t-call="website_school_management.close_list"
+                            />
+                        </t>
+                    </div>
+                </div>
+            </div>   
+        </t>
+    </template>
+
+    <!-- //////////////////////////////////////////////////////////////// -->
+    <!-- //                     FICHE PROGRAMME                        // -->
+    <!-- //////////////////////////////////////////////////////////////// -->
+
+    <template id="programme_fiche">
+        <t t-set="additional_title" t-value="program.title" />
+        <t t-call="website_school_management.hz_v14_layout">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="d-flex flex-column-reverse flex-sm-row align-items-center align-items-sm-start justify-content-sm-between gap-4"
+                        >
+                            <h1 t-esc="program.name" />
+                            <a
+                                class="d-flex gap-3 align-items-center justify-content-center btn btn-primary h-fit-content w-fit-content"
+                                t-att-href="'/impression_programme/%s' %slug(program)"
+                                target="_blank"
+                                title="Imprimer le programme de cours"
+                            >
+                                <span
+                                    class="d-sm-none fw-bold"
+                                >Imprimer le programme</span>
+                                <i class="fa fa-print fs-3" aria-hidden="true" />
+                                <span
+                                    class="sr-only"
+                                >Imprimer le programme de cours</span>
+                            </a>
+                        </div>
+                        <div class="mt-4">
+                            <t
+                                t-call="website_school_management.programmes_breadcrumb"
+                            />
+                            <hr class="mt-0 mb-4" />
+                        </div>
+                        <t
+                            t-call="website_school_management.programme_details_contenu"
+                        />
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="programme_details_contenu" name="Program Details Content">
+        <dl class="d-flex flex-wrap pt-2 mb-4">
+            <div class="flex-grow-1">
+                <dt
+                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                >Domaine</dt>
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.domain_name"
+                />
+            </div>
+            <div class="flex-grow-1">
+                <dt class="border text-center d-block w-100 py-2 px-3 o_cc5">Cycle</dt>
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.cycle_id.name"
+                />
+            </div>
+            <div class="flex-grow-1">
+                <dt
+                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                >Section</dt>
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.speciality_id.section_id.name"
+                />
+            </div>
+            <div class="flex-grow-1">
+                <dt
+                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                >Orientation</dt>
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.speciality_id.track_id.name"
+                />
+            </div>
+            <div class="flex-grow-1">
+                <dt
+                    class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                >Spécialité</dt>
+                <dd
+                    class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    t-esc="program.speciality_id.name"
+                />
+            </div>
+        </dl>
+        <div t-if="program.description">
+            <h2 class="mb-4">Vade-mecum</h2>
+            <p t-esc="program.description" />
+        </div>
+            <hr class="my-4" />
+        <div>
+            <h2 class="mb-4">Programme des cours</h2>
+            <div class="accordion -accordion-program_detail" id="program_detail">
+                <div t-foreach="program.bloc_ids" t-as="bloc">
+                    <t t-call="website_school_management.school_bloc_contenu" />
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="school_bloc_contenu" name="Bloc">
+        <div class="accordion-item border mb-4">
+            <h3 class="accordion-header">
+                <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    t-attf-data-bs-target="#collapse{{bloc.id}}"
+                    aria-expanded="true"
+                    t-attf-aria-controls="collapse{{bloc.id}}"
+                >
+                        <div class="d-flex flex-column">
+                            <span class="fs-2"><t t-esc="bloc.name" /></span>
+                            <div class="mt-2 d-flex gap-2">
+                                <span>
+                                    Heures&amp;nbsp;:
+                                    <span
+                                    class="fw-bold accented-color"
+                                    t-esc="bloc.total_hours"
+                                />
+                                </span>
+                                <span>|</span>
+                                <span>
+                                    ECTS&amp;nbsp;:
+                                    <span
+                                    class="fw-bold accented-color"
+                                    t-esc="bloc.total_credits"
+                                />
+                                </span>
+                            </div>
+                        </div>
+                </button>
+            </h3>
+            <div
+                t-attf-id="collapse{{bloc.id}}"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingOne"
+                data-bs-parent="#program_detail"
+            >
+                <div class="accordion-body border-top pt-2 pt-lg-0 px-2 px-lg-4">
+                    <t t-set="course_group_group" t-value="" />
+                    <!-- Groupes de cours -->
+                    <t
+                        t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)"
+                        t-as="course_group"
+                    >
+                        <!-- Groupe du groupe de cours -->
+                        <t
+                            t-if="course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group"
+                        >
+                            <h4 class="mt-5" t-esc="course_group.cg_grouping.name" />
+                        </t>
+                        <t
+                            t-set="course_group_group"
+                            t-value="course_group.cg_grouping.id"
+                        />
+                        <h5
+                            class="group-title w-fit-content border border-bottom-0 d-flex flex-column gap-2 mt-3 mt-lg-5 mb-0 py-2 px-4"
+                        >
+                            <span class="d-flex flex-wrap gap-2">
+                            <span
+                                    class="d-none d-lg-inline"
+                                >Unité d’enseignement&amp;nbsp;: </span><t
+                                    class="d-block p-0"
+                                    t-esc="course_group.title"
+                                />
+                            </span>
+                            <span class="d-flex flex-wrap gap-2 fs-6">
+                                <span
+                                    class="d-none d-lg-inline"
+                                >Responsable&amp;nbsp;:</span>
+                                <span class="d-inline d-lg-none">Resp.:</span>
+                                <span class="fw-normal fst-italic">
+                                    <t t-esc="course_group.responsible_id.name" />
+                                </span>
+                            </span>
+                        </h5>
+                        <div class="group-content p-3 mb-4 border">
+                            <div class="px-3">
+                                <div class="table-responsive mt-3 mb-2 mb-lg-4">
+                                    <div class="table-row header o_cc5">
+                                        <div class="cell border">
+                                            Code
+                                        </div>
+                                        <div class="cell border">
+                                            Heures
+                                        </div>
+                                        <div class="cell border">
+                                            ECTS
+                                        </div>
+                                        <div class="cell border">
+                                            Pré-requis
+                                        </div>
+                                        <div class="cell border">
+                                            Co-requis
+                                        </div>
+                                        <div class="cell border">
+                                            Obligatoire
+                                        </div>
+                                    </div>
+                                    <div class="table-row">
+                                        <div class="cell border" data-title="Code">
+                                            <span class="cell-value">
+                                                <t t-esc="course_group.ue_id" />
+                                            </span>
+                                        </div>
+                                        <div class="cell border" data-title="Heures">
+                                            <span class="cell-value">
+                                                <t t-esc="course_group.total_hours" />
+                                            </span>
+                                        </div>
+                                        <div class="cell border" data-title="ECTS">
+                                            <span class="cell-value">
+                                                <t t-esc="course_group.total_credits" />
+                                            </span>
+                                        </div>
+                                        <div
+                                            class="cell border"
+                                            data-title="Pré-requis"
+                                        >
+                                            <span class="cell-value">
+                                                <t
+                                                    t-if="course_group.pre_requisit_ids"
+                                                ><span
+                                                        t-esc="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"
+                                                    /></t>
+                                                <t
+                                                    t-if="not(course_group.pre_requisit_ids)"
+                                                >/</t>
+                                            </span>
+                                        </div>
+                                        <div class="cell border" data-title="Co-requis">
+                                            <span class="cell-value">
+                                                <t
+                                                    t-if="course_group.co_requisit_ids"
+                                                ><span
+                                                        t-esc="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"
+                                                    /></t>
+                                                <t
+                                                    t-if="not(course_group.co_requisit_ids)"
+                                                >/</t>
+                                            </span>
+                                        </div>
+                                        <div
+                                            class="cell border"
+                                            data-title="Obligatoire"
+                                        >
+                                            <span class="cell-value">
+                                                <t
+                                                    t-if="course_group.mandatory"
+                                                >Oui</t><t
+                                                    t-if="not(course_group.mandatory)"
+                                                >Non</t>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <t t-if="course_group.course_ids">
+                                <div class="block-cours">
+                                <h6 class="fs-5 -cours">Cours</h6>
+                                <div class="table-responsive mb-lg-3">
+                                    <div class="table-row -cours header o_cc5">
+                                        <div class="cell border">
+                                            Nom
+                                        </div>
+                                        <div class="cell border">
+                                            Heures
+                                        </div>
+                                        <div class="cell border">
+                                            ECTS
+                                        </div>
+                                        <div class="cell border">
+                                            Pondération
+                                        </div>
+                                        <div class="cell border">
+                                            Quadri
+                                        </div>
+                                    </div>
+                                    <t
+                                            t-foreach="course_group.course_ids"
+                                            t-as="course"
+                                        >
+                                        <div class="table-row -cours">
+                                            <div
+                                                    class="cell cell-name border"
+                                                    data-title="Nom"
+                                                >
+                                                <span class="cell-value">
+                                                    <a
+                                                            class="link-primary p-0"
+                                                            t-esc="course.title"
+                                                            t-att-href="'/cours/%s' % slug(course)"
+                                                            target="_blank"
+                                                        />
+                                                </span>
+                                            </div>
+                                            <div
+                                                    class="cell border"
+                                                    data-title="Heures"
+                                                >
+                                                <span class="cell-value">
+                                                    <t t-esc="course.hours" />
+                                                </span>
+                                            </div>
+                                            <div class="cell border" data-title="ECTS">
+                                                <span class="cell-value">
+                                                    <t t-esc="course.credits" />
+                                                </span>
+                                            </div>
+                                            <div
+                                                    class="cell border"
+                                                    data-title="Pondération"
+                                                >
+                                                <span class="cell-value">
+                                                    <t t-esc="course.weight" />
+                                                </span>
+                                            </div>
+                                            <div
+                                                    class="cell border"
+                                                    data-title="Quadri"
+                                                >
+                                                <t t-if="course.quadri">
+                                                    <span class="cell-value">
+                                                        <t t-esc="course.quadri" />
+                                                    </span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span class="cell-value">
+                                                    /
+                                                    </span>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- //////////////////////////////////////////////////////////////// -->
+    <!-- //                        FICHE COURS                         // -->
+    <!-- //////////////////////////////////////////////////////////////// -->
+
+    <template id="cours_fiche">
+        <t t-set="additional_title" t-value="course.name" />
+        <t t-call="website_school_management.hz_v14_layout">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-12">
+                        <t t-set="course_doc" t-value="course.documentation_id" />
+                        <t
+                            t-call="website_school_management.cours_fiche_details"
+                            t-if="not(course_group_id) or course_doc.course_group_id.id == course_group_id"
+                        />
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="cours_fiche_details">
+        <div>
+            <h1 t-out="course.name" />
+            <t t-if="course_doc.author_id">
+                <span class="d-block h5 text-muted">Par <span
+                        class="fst-italic"
+                        t-field="course_doc.author_id"
+                    /></span>
+            </t>
+        </div>
+        <dl class="d-flex flex-wrap pt-2 mt-3 mb-4">
+            <t t-if="course.cycle_id">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Cycle</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <span t-field="course.cycle_id" />
+                    </dd>
+                </div>
+            </t>
+            <t t-if="course.course_group_id.ue_id or course.course_group_id">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Groupe de cours</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <span t-field="course.course_group_id.ue_id" /> - <span
+                            t-field="course.course_group_id"
+                        />
+                    </dd>
+                </div>
+            </t>
+            <t t-if="course.level">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Niveau</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                        t-esc="course.level"
+                    />
+                </div>
+            </t>
+            <t t-if="course.credits">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Crédits</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                        t-esc="course.credits"
+                    />
+                </div>
+            </t>
+            <t t-if="course.hours">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Heures</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                        t-esc="course.hours"
+                    />
+                </div>
+            </t>
+            <t t-if="course.weight">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Pondération</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <span t-field="course.weight" />
+                    </dd>
+                </div>
+            </t>
+            <t t-if="course_doc.mandatory != Null">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Obligatoire</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <t t-if="course_doc.mandatory">Oui</t><t
+                            t-if="not(course_doc.mandatory)"
+                        >Non</t>
+                    </dd>
+                </div>
+            </t>
+            <t t-if="course_doc.language">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Langue</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <span t-field="course_doc.language" />
+                    </dd>
+                </div>
+            </t>
+            <t t-if="course_doc.staff_ids">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Professeurs</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                        t-esc="', '.join(map( lambda x: x.name, course_doc.staff_ids))"
+                    />
+                </div>
+            </t>
+        </dl>
+        <div class="accordion" id="course_detail">
+            <t
+                t-if="not (course_doc.schedule_text and course_doc.content and course_doc.method and course_doc.learning_outcomes and course_doc.references and course_doc.pre_co_requiered and course_doc.evaluation_method )"
+            >
+                <div id="form_request_course_details">
+                    <p
+                    >La description de ce cours n'est pas disponible. Vous pouvez contacter le responsable pour lui demander de l'encoder.</p>
+                    <form id="request_description_form">
+                    <div class="row">
+                        <div class="col-12 col-lg-4 mt-2">
+                            <label for="request_first_name">Prénom :</label>
+                            <input
+                                    id="request_first_name"
+                                    type="text"
+                                    class="form-control"
+                                    name="first_name"
+                                    required="true"
+                                />
+                        </div>
+                        <div class="col-12 col-lg-4 mt-2">
+                            <label for="request_last_name">Nom :</label>
+                            <input
+                                    id="request_last_name"
+                                    type="text"
+                                    class="form-control"
+                                    name="last_name"
+                                    required="true"
+                                />
+                        </div>
+                        <div class="col-12 col-lg-4 mt-2">
+                            <label for="request_email">Email :</label>
+                            <input
+                                    id="request_email"
+                                    type="email"
+                                    class="form-control"
+                                    name="email"
+                                    required="true"
+                                />
+                        </div>
+                        <div class="col-12">
+                            <input
+                                    id="request_course_id"
+                                    type="hidden"
+                                    t-att-value="course.id"
+                                />
+                            <button
+                                    id="btn_request_course_details"
+                                    type="submit"
+                                    class="btn btn-primary mt-3"
+                                >Demander</button>
+                            <p class="mt-3 error_request_course_details" />
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </t>
+            <t t-else="">
+                <t t-if="course_doc.schedule_text">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_horaire"
+                                aria-controls="collapse_horaire"
+                            >
+                                <span class="h4">
+                                    Horaire
+                                    <span class="accented-color">|</span>
+                                    <span t-field="course_doc.schedule" />
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_horaire"
+                        >
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.schedule_text" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Horaire
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.content">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_contenu"
+                                aria-controls="collapse_contenu"
+                            >
+                                <span class="h4">
+                                    Contenu
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_contenu"
+                        >
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.content" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Contenu
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.method">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_methode"
+                                aria-controls="collapse_methode"
+                            >
+                                <span class="h4">
+                                    Méthode
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_methode"
+                        >
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.method" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Méthode
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.learning_outcomes">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_resultats"
+                                aria-controls="collapse_resultats"
+                            >
+                                <span class="h4">
+                                    Résultats d'apprentissage
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_resultats"
+                        >
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.learning_outcomes" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Résultats d'apprentissage
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.references">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_references"
+                                aria-controls="collapse_references"
+                            >
+                                <span class="h4">
+                                    Références
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_references"
+                        >
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.references" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Références
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.pre_co_requiered">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_requis"
+                                aria-controls="collapse_requis"
+                            >
+                                <span class="h4">
+                                    Pré-requis/Co-requis
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_requis"
+                        >
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.pre_co_requiered" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Pré-requis/Co-requis
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.evaluation_method">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_evalutation"
+                                aria-controls="collapse_evalutation"
+                            >
+                                <span class="h4">
+                                    Méthode d'évaluation
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_evalutation"
+                        >
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.evaluation_method" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Méthode d'évaluation
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </div>
+    </template>
+
+    <!-- //////////////////////////////////////////////////////////////// -->
+    <!-- //                         BREADCRUMB                         // -->
+    <!-- //////////////////////////////////////////////////////////////// -->
+
+    <template id="programmes_breadcrumb">
+        <t t-if="len(breadcrumb) != 1">
+            <div class="breadcrumb mb-4">
+                <t t-set="count" t-value="1" />
+                <t t-foreach="breadcrumb" t-as="breadcrumb_item">
+                    <t t-if="count == len(breadcrumb)">
+                        <span class="breadcrumb-elem -active"><t
+                                t-esc="breadcrumb_item['name']"
+                            /></span>
+                    </t>
+                    <t t-else="1">
+                        <a
+                            t-att-title="'Retourner à ' + breadcrumb_item['name']"
+                            class="breadcrumb-elem"
+                            t-att-href="breadcrumb_item['uri']"
+                        ><t t-esc="breadcrumb_item['name']" /></a>
+                        <t t-set="count" t-value="count + 1" />
+                    </t>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <!-- //////////////////////////////////////////////////////////////// -->
+    <!-- //                             LIST                           // -->
+    <!-- //////////////////////////////////////////////////////////////// -->
+
+    <template id="open_list">
+        &lt;ul class="ps-3 ps-sm-5 list-group"&gt;
+    </template>
+
+    <template id="close_list">
+        &lt;/ul&gt;
+    </template>
+
+    <!-- //////////////////////////////////////////////////////////////// -->
+    <!-- //                            EMAIL                           // -->
+    <!-- //////////////////////////////////////////////////////////////// -->
+
+    <template id="cours_details_request">
+        <p>Bonjour,</p>
+        <p><t
+                t-esc="first_name + ' ' + last_name"
+            /> vous a envoyé une demande afin d'obtenir les informations concernant le cours <b
+            ><t t-esc="course.name" /></b>.</p>
+        <p>Vous pouvez recontacter cette personne via <a
+                t-att-href="'mailto:%s' %email"
+            >son adresse email</a>.</p>
+        <p>La fiche du cours est disponible à <a t-att-href="url">cette adresse</a>.</p>
+        <hr />
+        <p>Cet email a été envoyé automatiquement.</p>
+    </template>
+
+</odoo>

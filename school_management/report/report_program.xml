@@ -23,7 +23,357 @@
 <odoo>
 
     <!-- report -->
-    <report id="report_program" model="school.program" string="Program" report_type="qweb-pdf" name="school_management.report_program_details_content" file="school_management.report_program_details_content" />
+    <!-- <report id="report_program" model="school.program" string="Program" report_type="qweb-pdf" name="school_management.report_program_details_content" file="school_management.report_program_details_content" /> -->
+
+    <!-- Style PDF report -->
+<template id="common_style_documents">
+    <t t-set="primary" t-value="env.company.primary_color or 'black'" />
+    <t t-set="secondary" t-value="env.company.secondary_color or 'black'" />
+
+    <style>
+        .colored-primary {
+            color: <t t-esc="primary" /> !important;
+        }
+        .colored-secondary {
+            color: <t t-esc="secondary" /> !important;
+        }
+        .colored-grey {
+            color: #6e6e6e;
+        }
+        .case td, .case th {
+            padding: 1mm;
+        }
+        .p-0 {
+            padding: 0 !important;
+        }
+        .p-1 {
+            padding: 1mm !important;
+        }
+        .p-2 {
+            padding: 2mm !important;
+        }
+        .p-3 {
+            padding: 3mm !important;
+        }
+        .p-4 {
+            padding: 4mm !important;
+        }
+        .p-5 {
+            padding: 5mm !important;
+        }
+        .m-0 {
+            margin 0 !important;
+        }
+        .m-1 {
+            margin 1mm !important;
+        }
+        .m-2 {
+            margin 2mm !important;
+        }
+        .m-3 {
+            margin 3mm !important;
+        }
+        .m-4 {
+            margin 4mm !important;
+        }
+        .m-5 {
+            margin 5mm !important;
+        }
+        .pt-0 {
+            padding-top: 0 !important;
+        }
+        .pt-1 {
+            padding-top: 1mm !important;
+        }
+        .pt-2 {
+            padding-top: 2mm !important;
+        }
+        .pt-3 {
+            padding-top: 3mm !important;
+        }
+        .pt-4 {
+            padding-top: 4mm !important;
+        }
+        .pt-5 {
+            padding-top: 5mm !important;
+        }
+        .mt-0 {
+            margin-top: 0 !important;
+        }
+        .mt-1 {
+            margin-top: 1mm !important;
+        }
+        .mt-2 {
+            margin-top: 2mm !important;
+        }
+        .mt-3 {
+            margin-top: 3mm !important;
+        }
+        .mt-4 {
+            margin-top: 4mm !important;
+        }
+        .mt-5 {
+            margin-top: 5mm !important;
+        }
+        .pb-0 {
+            padding-bottom: 0 !important;
+        }
+        .pb-1 {
+            padding-bottom: 1mm !important;
+        }
+        .pb-2 {
+            padding-bottom: 2mm !important;
+        }
+        .pb-3 {
+            padding-bottom: 3mm !important;
+        }
+        .pb-4 {
+            padding-bottom: 4mm !important;
+        }
+        .pb-5 {
+            padding-bottom: 5mm !important;
+        }
+        .mb-0 {
+            margin-bottom: 0 !important;
+        }
+        .mb-1 {
+            margin-bottom: 1mm !important;
+        }
+        .mb-2 {
+            margin-bottom: 2mm !important;
+        }
+        .mb-3 {
+            margin-bottom: 3mm !important;
+        }
+        .mb-4 {
+            margin-bottom: 4mm !important;
+        }
+        .mb-5 {
+            margin-bottom: 5mm !important;
+        }
+        .pl-0 {
+            padding-left: 0 !important;
+        }
+        .pl-1 {
+            padding-left: 1mm !important;
+        }
+        .pl-2 {
+            padding-left: 2mm !important;
+        }
+        .pl-3 {
+            padding-left: 3mm !important;
+        }
+        .pl-4 {
+            padding-left: 4mm !important;
+        }
+        .pl-5 {
+            padding-left: 5mm !important;
+        }
+        .ml-0 {
+            margin-left 0 !important;
+        }
+        .ml-1 {
+            margin-left 1mm !important;
+        }
+        .ml-2 {
+            margin-left 2mm !important;
+        }
+        .ml-3 {
+            margin-left 3mm !important;
+        }
+        .ml-4 {
+            margin-left 4mm !important;
+        }
+        .ml-5 {
+            margin-left 5mm !important;
+        }
+        .pr-0 {
+            padding-right: 0 !important;
+        }
+        .pr-1 {
+            padding-right: 1mm !important;
+        }
+        .pr-2 {
+            padding-right: 2mm !important;
+        }
+        .pr-3 {
+            padding-right: 3mm !important;
+        }
+        .pr-4 {
+            padding-right: 4mm !important;
+        }
+        .pr-5 {
+            padding-right: 5mm !important;
+        }
+        .mr-0 {
+            margin-right: 0 !important;
+        }
+        .mr-1 {
+            margin-right: 1mm !important;
+        }
+        .mr-2 {
+            margin-right: 2mm !important;
+        }
+        .mr-3 {
+            margin-right: 3mm !important;
+        }
+        .mr-4 {
+            margin-right: 4mm !important;
+        }
+        .mr-5 {
+            margin-right: 5mm !important;
+        }
+
+        .text-regular {
+            font-weight: 400;
+        }
+        .text-bold {
+            font-weight: 600;
+        }
+        .text-italic {
+            font-style: italic;
+        }
+        .text-align-left {
+            text-align: left;
+        }
+        .text-align-center {
+            text-align: center;
+        }
+        .text-align-right {
+            text-align: right;
+        }
+        thead,
+        tbody,
+        tr,
+        th,
+        td {
+            border: 0;
+        }
+   
+        th,
+        td {
+            vertical-align: top;
+        }
+        .case {
+            border: 1px solid #eaeaea;
+        }
+        .border-top-grey {
+            border-top: 1px solid #eaeaea !important;
+        }
+        .border-bottom-grey {
+            border-bottom: 1px solid #eaeaea !important;
+        }
+        .border-left-grey {
+            border-left: 1px solid #eaeaea !important;
+        }
+        .border-right-grey {
+            border-right: 1px solid #eaeaea !important;
+        }
+        .text-capitalized {
+            text-transform: capitalize;
+        }
+        .font-size-0_7 {
+            font-size: 0.7em !important;
+        }
+        .font-size-0_8 {
+            font-size: 0.8em !important;
+        }
+        .font-size-0_9 {
+            font-size: 0.9em !important;
+        }
+        .font-size-1_2 {
+            font-size: 1.2em !important;
+        }
+        .font-size-1_3 {
+            font-size: 1.3em !important;
+        }
+        .font-size-1_4 {
+            font-size: 1.4em !important;
+        }
+        .w-100 {
+            width: 100%;
+        }
+        .d-block {
+            display: block;
+        }
+        .row {
+            display: -webkit-box; /* wkhtmltopdf uses this one */
+            display: flex;
+            -webkit-box-pack: center; /* wkhtmltopdf uses this one */
+            justify-content: center;
+        }
+
+        .row > div {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+        .row > div:last-child {
+            margin-right: 0;
+        }
+        table {
+            border-collapse: collapse; 
+        }
+  
+        .table-row-title th,
+        .table-row-title td {
+            vertical-align: middle;
+        }
+        .white-space-nowrap {
+            white-space: nowrap;
+        }
+    </style>
+</template>
+
+
+<!-- Header & footer PDF report -->
+<template id="header_footer_document">
+    <t t-set="primary" t-value="env.company.primary_color or 'black'" />
+    <t t-set="secondary" t-value="env.company.secondary_color or 'black'" />
+ 
+     <xpath expr="//title" position="replace">
+          <title><t t-esc="docs[0].title or 'Odoo Report'"/></title>
+    </xpath>
+
+    <div class="header" style="padding-top: 10mm !important;">
+        <div class="row" t-attf-style="padding-bottom: 5mm !important; border-bottom: 1px solid {{secondary}};">
+            <div class="col-8" style="display: -webkit-box;">
+                <img style="max-height: 15mm !important;" t-if="env.company.logo" t-att-src="image_data_uri(env.company.logo)"/>
+                <h3 style="font-size: 24px; padding-top: 3mm !important; padding-left: 6mm; color: #6e6e6e;" t-esc="env.company.name"/>
+            </div>
+            <div class="col-4" style="display: -webkit-box;-webkit-box-pack: end;">
+                <img style="max-height: 15mm !important;" src="/school_management/static/src/img/WBE_logo_horizontal.png"/>
+           </div>
+        </div>
+    </div>
+
+    <div class="article o_report_layout_standard">
+        <t t-call="school_management.common_style_documents" />
+        <t t-raw="0" />
+    </div>
+
+    <div class="footer" t-attf-style="border-top: 1px solid {{secondary}}; padding-top: 4mm !important; font-size: 0.7em; color: #6e6e6e;">
+        <div class="row">
+            <div class="col-10">
+                <p>
+                    <t t-esc="env.company.website"/>
+                    <span t-attf-style="color: {{primary}}; padding-left: 1mm !important; padding-right: 1mm !important;">|   </span>
+                    <t t-esc="env.company.email"/>
+                    <span t-attf-style="color: {{primary}}; padding-left: 1mm !important; padding-right: 1mm !important;">|   </span>
+                    <t t-esc="env.company.street"/>
+                    <t t-esc="env.company.street2"/>
+                    -
+                    <t t-esc="env.company.zip"/>
+                    <t t-esc="env.company.city"/>
+                </p>
+            </div>
+            <div class="col-2" style="display: flex; display: -webkit-box; -webkit-box-pack : end; text-align: right;">
+                  Page&amp;nbsp;:&amp;nbsp;<span class="page"/>&amp;nbsp;/&amp;nbsp;<span class="topage"/>
+            </div>
+        </div>
+    </div>
+</template>
 
     <template id="website_program_details_content" name="Program Details Content">
         
@@ -274,7 +624,7 @@
                 </div>
                 <div class="article" t-att-data-oe-model="bloc and bloc._name" t-att-data-oe-id="bloc and bloc.id" t-att-data-oe-lang="bloc and bloc.env.context.get('lang')" style="margin: 0cm 1.5cm;">
                     <h2><t t-esc="bloc.name"/></h2>
-                    <h4>Basé sur <t t-esc="bloc.source_bloc_id.name"/></h4>
+                    <h4><t t-esc="bloc.source_bloc_id.name"/></h4>
                     <h5><t t-esc="bloc.uid"/></h5>
                     <table class="pure-table pure-table-horizontal horizon-table">
                       <colgroup>
@@ -370,28 +720,30 @@
                         <td colspan="2" rowspan="1">
                           <p>Avis de la commission des études</p>
                           <p>
-                              Programme annuel approuvé par la commission des études (séance(s) : 
-                              <t t-foreach="bloc.approuval_ids" t-as="app">
+                              Programme annuel approuvé par la commission des études (séance(s) : ....................................
+                              <!-- <t t-foreach="bloc.approuval_ids" t-as="app">
                                   <t t-esc="app.date.strftime('%d-%m-%Y')"/>
                                   <t t-if="not app_first and not app_last">
                                       , 
                                   </t>
-                              </t>)
+                              </t> --> )
                           </p>
                         </td>
                       </tr>
                       <tr>
                         <td>
                           <p>
-                              Signature de la présidente de la commission des études
+                              Signature de la/du président(e) de la commission des études
                           </p>
-                          <img style="height:70px;width:210px;" t-att-src="image_data_uri(company.director_signature)"/>
+                          <div style="height:70px;width:210px;"/>
+                          <!--<img style="height:70px;width:210px;" t-att-src="image_data_uri(company.director_signature)"/>-->
                         </td>
                         <td>
                           <p>
-                             Signature du secrétaire de la commission des études
+                             Signature de la/du secrétaire de la commission des études
                           </p>
-                          <img style="height:70px;width:210px;" t-att-src="image_data_uri(company.secretary_signature)"/>
+                          <div style="height:70px;width:210px;"/>
+                          <!--<img style="height:70px;width:210px;" t-att-src="image_data_uri(company.secretary_signature)"/>-->
                         </td>
                       </tr>
                     </table>
@@ -406,58 +758,93 @@
 
     <template id="report_attendance_for_student_content">
         <t t-call="web.html_container">
-            <t t-set="data_report_margin_top" t-value="30" />
+            <t t-set="data_report_margin_top" t-value="40" />
+            <t t-set="data_report_header_spacing" t-value="35" />
             <t t-foreach="docs" t-as="o">
                 <t t-call="web.external_layout">
                     <div class="page" style="padding-left: 50px;padding-right: 50px;">
                         <section class="text-center">
                             <h2>ATTENDANCE REPORT</h2>
-                            <h2>ACADEMIC YEAR <span style="color:#495057;" t-field="o.year_id"/></h2>
+                            <h2>ACADEMIC YEAR <span
+                                    style="color:#495057;"
+                                    t-field="o.year_id"
+                                /></h2>
                         </section>
-                        <hr/>
-                        <section class="col-10 col-offset-1" style="margin-top:80px;">
+                        <hr />
+                        <div style="font-size:20px;">
+                          <section
+                                class="col-12 text-center"
+                                style="margin-top:180px;"
+                            >
                                 Je soussigné, Nathanaël HARCQ, Directeur du CONSERVATOIRE ROYAL DE LIEGE certifie par la présente que
-                        </section>
-                        <section style="margin-top:40px;">
-                            <div class="col-9 col-offset-2">
-                                <b><span t-field="o.student_id.name"/>, né<t t-if="o.student_id.gender == 'female'">e</t> le <span t-field="o.student_id.birthdate_date"/> à <span t-field="o.student_id.birthplace"/></b>
-                            </div>
-                        </section>
-                        <section style="margin-top:40px;">
-                            <div class="col-10 col-offset-1">
-                                est régulièrement inscrit<t t-if="o.student_id.gender == 'female'">e</t> aux cours du jour de l'Enseignement Supérieur Artistique de type
-                                <span t-field="o.source_bloc_cycle_id.type"/> pour l'année <span t-field="o.year_id"/>.
-                                <p style="margin-top:10px;">
-                                    Les cours sont donnés du 15 septembre au 30 juin.
-                                </p>
-                            </div>
-                        </section>
-                        <section style="margin-top:20px;">
-                            <div class="col-10 col-offset-1">
-                                <u>Cours suivis dans la nouvelle structure:</u>
-                            </div>
-                        </section>
-                        <section style="margin-top:20px;">
-                            <div class="col-8 col-offset-2">
-                                <b><span t-field="o.source_bloc_cycle_id"/> - <span t-field="o.source_bloc_id.level"/> du domaine <span t-field="o.source_bloc_domain_id"/>, section <span t-field="o.source_bloc_section_id"/>, option <span t-field="o.source_bloc_track_id"/>, spécialité <span t-field="o.source_bloc_speciality_id"/>.</b>
-                            </div>
-                        </section>
-                        <section style="margin-top:50px;">
-                            <div class="col-10 col-offset-1">
-                                La présente attestation est délivrée pour renseignements administratifs.
-                            </div>
-                        </section>
-                        <section style="margin-top:80px;">
-                            <div class="col-4 col-offset-7">
-                                LIEGE, le <span t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"/>
-                            </div>
-                        </section>
-                        <section style="margin-top:80px;">
-                            <div class="col-4 col-offset-7">
-                                Le Directeur,<br/>
-                                Nathanaël HARCQ
-                            </div>
-                        </section>
+                          </section>
+                          <section style="margin-top:40px;">
+                              <div class="col-12 text-center">
+                                  <b><span t-field="o.student_id.name" />, né<t
+                                            t-if="o.student_id.gender == 'female'"
+                                        >e</t> le <span
+                                            t-field="o.student_id.birthdate_date"
+                                        /> à <span
+                                            t-field="o.student_id.birthplace"
+                                        /><t
+                                            t-if="o.student_id.birthcountry"
+                                        > (<t t-esc="o.student_id.birthcountry.name"></t>)</t></b>
+                              </div>
+                          </section>
+                          <section style="margin-top:40px;padding-right:100px;padding-left:100px;">
+                              <div class="col-12 text-center">
+                                  est régulièrement inscrit<t
+                                        t-if="o.student_id.gender == 'female'"
+                                    >e</t> aux cours du jour de l'Enseignement Supérieur Artistique de type
+                                  <span><t
+                                            t-esc="'long' if o.source_bloc_id.cycle_id.type=='long' else 'court'"
+                                        /></span> pour l'année <span
+                                        t-field="o.year_id"
+                                    />.
+                                  <p style="margin-top:10px;">
+                                      Les cours sont donnés du 14 septembre au 30 juin.
+                                  </p>
+                              </div>
+                          </section>
+                          <section style="margin-top:20px;padding-right:100px;padding-left:100px;">
+                              <div class="col-12 text-center">
+                                  <u>Cours suivis dans la nouvelle structure:</u>
+                              </div>
+                          </section>
+                          <section style="margin-top:20px;padding-right:100px;padding-left:100px;">
+                              <div class="col-12 text-center">
+                                  <b><span t-field="o.source_bloc_id.cycle_id" /> - <span
+                                            t-field="o.source_bloc_id.level"
+                                        /> du domaine <span
+                                            t-field="o.source_bloc_domain_id"
+                                        />, section <span
+                                            t-field="o.source_bloc_section_id"
+                                        />, option <span
+                                            t-field="o.source_bloc_track_id"
+                                        />, spécialité <span
+                                            t-field="o.source_bloc_speciality_id"
+                                        />.</b>
+                              </div>
+                          </section>
+                          <section style="margin-top:50px;">
+                              <div class="col-12">
+                                  La présente attestation est délivrée pour renseignements administratifs.
+                              </div>
+                          </section>
+                          <section style="margin-top:80px;">
+                              <div class="col-4">
+                                  LIEGE, le <span
+                                        t-esc="datetime.datetime.now().strftime('%d-%m-%Y')"
+                                    />
+                              </div>
+                          </section>
+                          <section style="margin-top:80px;">
+                              <div class="col-4">
+                                  Le Directeur,<br />
+                                  Nathanaël HARCQ
+                              </div>
+                          </section>
+                        </div>
                     </div>
                 </t>
             </t>
