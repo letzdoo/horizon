@@ -1,0 +1,229 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* google_documents
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 13:49+0000\n"
+"PO-Revision-Date: 2024-03-14 13:49+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: google_documents
+#: model:ir.model,name:google_documents.model_res_company
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: google_documents
+#: model_terms:ir.ui.view,arch_db:google_documents.google_drive_service
+msgid "Connect"
+msgstr "Connecter"
+
+#. module: google_documents
+#: model:ir.model,name:google_documents.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__create_uid
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__create_date
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__display_name
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__display_name
+msgid "Display Name"
+msgstr "Afficher le nom"
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__drive_credentials_json
+msgid "Drive Access Credentials"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__drive_auth_code
+msgid "Drive Auth Code"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__drive_client_config_json
+msgid "Drive Client Config JSON"
+msgstr ""
+
+#. module: google_documents
+#. odoo-python
+#: code:addons/google_documents/models/google_drive_folder_mixin.py:0
+#: code:addons/google_documents/models/google_drive_folder_mixin.py:0
+#: code:addons/google_documents/models/google_drive_folder_mixin.py:0
+#: code:addons/google_documents/models/google_drive_folder_mixin.py:0
+#, python-format
+msgid "Error creating the file in Google Drive : %s"
+msgstr ""
+
+#. module: google_documents
+#: model_terms:ir.ui.view,arch_db:google_documents.view_res_partner_form_google_docs
+msgid "Google Documents"
+msgstr ""
+
+#. module: google_documents
+#: model_terms:ir.ui.view,arch_db:google_documents.view_res_partner_form_google_docs
+msgid "Google Drive"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_folder_mixin__google_drive_files
+#: model:ir.model.fields,field_description:google_documents.field_res_partner__google_drive_files
+#: model:ir.model.fields,field_description:google_documents.field_res_users__google_drive_files
+msgid "Google Drive Files"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_folder_mixin__google_drive_folder_id
+#: model:ir.model.fields,field_description:google_documents.field_res_partner__google_drive_folder_id
+#: model:ir.model.fields,field_description:google_documents.field_res_users__google_drive_folder_id
+msgid "Google Drive Folder Id"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__googe_drive_id
+msgid "Google Drive Id"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_res_company__google_drive_id
+#: model_terms:ir.ui.view,arch_db:google_documents.google_drive_service
+msgid "Google Drive Service"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__id
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__id
+msgid "ID"
+msgstr "Identifiant"
+
+#. module: google_documents
+#: model:ir.model.fields,help:google_documents.field_ir_actions_report__google_drive_enabled
+msgid "If enabled, the report will be saved in Google Drive."
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_folder_mixin__google_drive_connected
+#: model:ir.model.fields,field_description:google_documents.field_res_partner__google_drive_connected
+#: model:ir.model.fields,field_description:google_documents.field_res_users__google_drive_connected
+msgid "Is Google Drive Connected"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file____last_update
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__write_uid
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__write_date
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__mimeType
+msgid "Mime Type"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__name
+msgid "Name"
+msgstr ""
+
+#. module: google_documents
+#: model_terms:ir.ui.view,arch_db:google_documents.view_res_partner_form_google_docs
+msgid "Open"
+msgstr ""
+
+#. module: google_documents
+#: model_terms:ir.ui.view,arch_db:google_documents.view_res_partner_form_google_docs
+msgid ""
+"Open\n"
+"                            Drive"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_ir_actions_report__google_drive_patner_field
+msgid "Partner property to save into"
+msgstr ""
+
+#. module: google_documents
+#: model_terms:ir.ui.view,arch_db:google_documents.google_drive_service
+#: model_terms:ir.ui.view,arch_db:google_documents.view_res_partner_form_google_docs
+msgid "Refresh"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__res_id
+msgid "Related Record ID"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__res_model
+msgid "Related Record Model"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model,name:google_documents.model_ir_actions_report
+msgid "Report Action"
+msgstr "Rapport"
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_ir_actions_report__google_drive_enabled
+msgid "Save in Google Drive"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,help:google_documents.field_ir_actions_report__google_drive_patner_field
+msgid ""
+"This field name is the Partner to which the Google Drive Forlder to save to."
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_file__url
+msgid "Url"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model,name:google_documents.model_google_drive_service
+msgid "google.drive.service"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model,name:google_documents.model_google_drive_file
+msgid "google_drive_file"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model,name:google_documents.model_google_drive_folder_mixin
+msgid "google_drive_folder.mixin"
+msgstr ""
+
+#. module: google_documents
+#: model:ir.model.fields,field_description:google_documents.field_google_drive_service__name
+msgid "name"
+msgstr ""

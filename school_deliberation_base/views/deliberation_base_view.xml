@@ -266,14 +266,14 @@
                     domain="[('year_sequence','=','current')]"
                 />
           <filter
-                    string="Next Year"
-                    name="next"
-                    domain="[('year_sequence','=','next')]"
-                />
-          <filter
                     string="Previous Year"
                     name="previous"
                     domain="[('year_sequence','=','previous')]"
+                />
+          <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('year_sequence','=','next')]"
                 />
           <separator />
           <filter string="Draft" name="draft" domain="[('state','=','draft')]" />

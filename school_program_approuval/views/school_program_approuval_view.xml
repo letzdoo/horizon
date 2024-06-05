@@ -267,30 +267,31 @@
       <field name="model">school.program_approuval</field>
       <field name="arch" type="xml">
         <search string="Search Program_approuval">
-          <field name="name" filter_domain="[('name', 'ilike',self)]" />
+          <field name="name" filter_domain="[('name', 'ilike',self)]" string="Nom" />
           <filter
                     string="Current Year"
                     name="current"
                     domain="[('year_sequence','=','current')]"
                 />
           <filter
-                    string="Next Year"
-                    name="next"
-                    domain="[('year_sequence','=','next')]"
-                />
-          <filter
                     string="Previous Year"
                     name="previous"
                     domain="[('year_sequence','=','previous')]"
                 />
+          <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('year_sequence','=','next')]"
+                />
           <separator />
-          <filter string="Draft" name="draft" domain="[('state','=','draft')]" />
           <filter string="Active" name="active" domain="[('state','=','active')]" />
           <filter
                     string="Archived"
                     name="archived"
                     domain="[('state','=','archived')]"
                 />
+          <filter string="Draft" name="draft" domain="[('state','=','draft')]" />
+          <separator />
           <searchpanel>
             <field name="state" icon="fa-users" enable_counters="1" />
           </searchpanel>

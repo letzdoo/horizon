@@ -31,8 +31,52 @@
             <field name="arch" type="xml">
                 <tree editable="bottom">
                     <field name="course_id" string="Course Group" />
+                    <field name="course_group_uid"/>
                     <field name="preriquisit_id" />
                 </tree>
+            </field>
+        </record>
+
+        <record id="view_prerequisit_filter" model="ir.ui.view">
+            <field name="name">prerequisit.select</field>
+            <field name="model">school.prerequisit</field>
+            <field name="arch" type="xml">
+                <search string="Search Prerequisit">
+                    <field
+                    name="name"
+                    filter_domain="['|',('course_id.name','ilike',self),('course_group_uid','ilike',self)]"
+                />
+                    <field
+                    name="course_group_uid"
+                    filter_domain="[('course_group_uid','ilike',self)]"
+                />
+                    <filter
+                    string="Current Year"
+                    name="current"
+                    domain="[('course_id.bloc_ids.year_sequence','=','current')]"
+                />
+                    <filter
+                    string="Previous Year"
+                    name="previous"
+                    domain="[('course_id.bloc_ids.year_sequence','=','previous')]"
+                />
+                    <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('course_id.bloc_ids.year_sequence','=','next')]"
+                />
+                    <separator />
+                    <filter
+                    name="music"
+                    string="Musique"
+                    domain="[('course_id.bloc_ids.speciality_id.domain_id', 'ilike','MUSIQUE')]"
+                />
+                    <filter
+                    name="theatre"
+                    string="Théâtre"
+                    domain="[('course_id.bloc_ids.speciality_id.domain_id', 'ilike','THEATRE')]"
+                />
+                </search>
             </field>
         </record>
 
@@ -40,9 +84,12 @@
             <field name="name">Prerequisits</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.prerequisit</field>
-
             <field name="view_mode">tree</field>
+            <field name="context">{"search_default_current":1}</field>
+            <field name="search_view_id" ref="view_prerequisit_filter" />
         </record>
+
+
 
         <record id="action_prerequisit_tree_view1" model="ir.actions.act_window.view">
             <field name="sequence" eval="1" />
@@ -66,8 +113,52 @@
             <field name="arch" type="xml">
                 <tree editable="bottom">
                     <field name="course_id" string="Course Group" />
+                    <field name="course_group_uid"/>
                     <field name="coriquisit_id" />
                 </tree>
+            </field>
+        </record>
+
+        <record id="view_corequisit_filter" model="ir.ui.view">
+            <field name="name">corequisit.select</field>
+            <field name="model">school.corequisit</field>
+            <field name="arch" type="xml">
+                <search string="Search Corequisit">
+                    <field
+                    name="name"
+                    filter_domain="['|',('course_id.name','ilike',self),('course_group_uid','ilike',self)]"
+                />
+                    <field
+                    name="course_group_uid"
+                    filter_domain="[('course_group_uid','ilike',self)]"
+                />
+                    <filter
+                    string="Current Year"
+                    name="current"
+                    domain="[('course_id.bloc_ids.year_sequence','=','current')]"
+                />
+                    <filter
+                    string="Previous Year"
+                    name="previous"
+                    domain="[('course_id.bloc_ids.year_sequence','=','previous')]"
+                />
+                    <filter
+                    string="Next Year"
+                    name="next"
+                    domain="[('course_id.bloc_ids.year_sequence','=','next')]"
+                />
+                    <separator />
+                    <filter
+                    name="music"
+                    string="Musique"
+                    domain="[('course_id.bloc_ids.speciality_id.domain_id', 'ilike','MUSIQUE')]"
+                />
+                    <filter
+                    name="theatre"
+                    string="Théâtre"
+                    domain="[('course_id.bloc_ids.speciality_id.domain_id', 'ilike','THEATRE')]"
+                />
+                </search>
             </field>
         </record>
 
@@ -75,8 +166,9 @@
             <field name="name">Corequisits</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">school.corequisit</field>
-
             <field name="view_mode">tree</field>
+            <field name="context">{"search_default_current":1}</field>
+            <field name="search_view_id" ref="view_corequisit_filter" />
         </record>
 
         <record id="action_corequisit_tree_view1" model="ir.actions.act_window.view">

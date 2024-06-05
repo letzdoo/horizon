@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 13:30+0000\n"
+"PO-Revision-Date: 2024-03-14 13:30+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -263,6 +265,11 @@ msgid "Individual Program"
 msgstr ""
 
 #. module: school_registration
+#: model:ir.ui.menu,name:school_registration.school_home_menu_students_registration
+msgid "Inscriptions"
+msgstr ""
+
+#. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__message_is_follower
 msgid "Is Follower"
 msgstr ""
@@ -379,6 +386,11 @@ msgstr ""
 #: model:ir.ui.menu,name:school_registration.menu_year_opening
 #: model_terms:ir.ui.view,arch_db:school_registration.year_opening_view
 msgid "Open a new Year"
+msgstr ""
+
+#. module: school_registration
+#: model:ir.ui.menu,name:school_registration.school_home_menu_administration_forms
+msgid "Paramètres des formulaires"
 msgstr ""
 
 #. module: school_registration

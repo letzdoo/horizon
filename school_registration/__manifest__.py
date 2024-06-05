@@ -25,6 +25,7 @@
     "website": "https://github.com/ito-invest-lu/horizon",
     "category": "School Management",
     "depends": [
+        "school_management",
         "base_automation",
         "school_dispense_approval",
         "formio",
@@ -37,6 +38,7 @@
         "security/ir.model.access.csv",
         "views/configuration_view.xml",
         "views/registration_view.xml",
+        "views/ir_ui_menu.xml",
         "wizard/year_opening.xml",
     ],
     "assets": {

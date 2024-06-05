@@ -90,7 +90,7 @@
             </field>
         </record>
 
-        <record id="view_individual_program_eval_filter" model="ir.ui.view">
+        <!-- <record id="view_individual_program_eval_filter" model="ir.ui.view">
             <field name="name">school.individual_program.eval.filter</field>
             <field name="model">school.individual_program</field>
             <field
@@ -108,29 +108,9 @@
                     domain="[('program_completed', '=', True)]"
                 />
                     <separator />
-                    <filter
-                    name="draft"
-                    string="Draft"
-                    domain="[('state', 'in', ['draft'])]"
-                />
-                    <filter
-                    name="progress"
-                    string="Progress"
-                    domain="[('state', 'in', ['progress'])]"
-                />
-                    <filter
-                    name="awarded"
-                    string="Awarded"
-                    domain="[('state', 'in', ['awarded'])]"
-                />
-                    <filter
-                    name="abandoned"
-                    string="Abandonned"
-                    domain="[('state', 'in', ['abandoned'])]"
-                />
                 </xpath>
             </field>
-        </record>
+        </record> -->
 
         <!-- Add evaluation to Individual Program form view -->
         <record id="individual_program_eval_form" model="ir.ui.view">
@@ -281,10 +261,16 @@
             >
                   <attribute name="default_order">state,uid</attribute>
                 </xpath>
+                <xpath
+                expr="//field[@name='course_group_summaries']//span[@id='is_valuated']"
+                position="inside"
+            >
+                  <t t-if="record.state.raw_value == '0_valuated'">[Valo] </t>
+                </xpath>
                <xpath
                 expr="//div[contains(@t-attf-class, 'horizon_cgs')]"
                 position="attributes"
-            >-->
+            >
                    <attribute
                     name="t-attf-class"
                 >horizon_cgs horizon_cgs_{{record.state.raw_value}}</attribute>
@@ -929,7 +915,9 @@
           <field name="res_model">school.individual_course</field>
 
           <field name="view_mode">tree,form</field>
-          <field name="context">{"search_default_current":1}</field>
+          <field
+            name="context"
+        >{"search_default_current":1, "search_default_active":1}</field>
           <field
             name="search_view_id"
             ref="school_management.view_individual_courses_filter"
@@ -950,7 +938,9 @@
           <field name="res_model">school.individual_course</field>
 
           <field name="view_mode">tree,form</field>
-          <field name="context">{"search_default_my_current_courses":1}</field>
+          <field
+            name="context"
+        >{"search_default_my_current_courses":1, "search_default_active":1}</field>
           <field
             name="search_view_id"
             ref="school_management.view_individual_courses_filter"
@@ -977,5 +967,49 @@
         sequence="40"
         groups="school_management.group_teacher"
     />
+
+    <record id="view_individual_course_groups_grades_filter" model="ir.ui.view">
+        <field name="name">school.individual_course_group.grades.filter</field>
+        <field name="model">school.individual_course_group</field>
+        <field
+            name="inherit_id"
+            ref="school_management.view_individual_course_groups_filter"
+        />
+        <field eval="25" name="priority" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='no_responsible']" position="after">
+                <filter
+                    name="has_no_grades"
+                    string="Pas de notes encodées"
+                    domain="[
+                    '&amp;',
+                        '|',('first_session_result', '=', 0), ('first_session_result', '=', None),
+                        '|',('second_session_result', '=', 0), ('second_session_result', '=', None)
+                ]"
+                />
+                <separator />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_individual_course_grades_filter" model="ir.ui.view">
+        <field name="name">school.individual_course.grades.filter</field>
+        <field name="model">school.individual_course</field>
+        <field
+            name="inherit_id"
+            ref="school_management.view_individual_courses_filter"
+        />
+        <field eval="25" name="priority" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='active']" position="after">
+                <filter
+                    name="has_no_grades"
+                    string="Pas de notes encodées"
+                    domain="['&amp;',('partial_result', '=', None),('final_result', '=', None),('second_result', '=', None)]"
+                />
+                <separator />
+            </xpath>
+        </field>
+    </record>
 
 </odoo>

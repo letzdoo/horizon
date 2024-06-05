@@ -412,7 +412,7 @@ msgstr "Nom"
 #. module: school_deliberation_base
 #: model_terms:ir.ui.view,arch_db:school_deliberation_base.view_deliberation_filter
 msgid "Next Year"
-msgstr "Année suivante"
+msgstr "Année prochaine"
 
 #. module: school_deliberation_base
 #: model_terms:ir.ui.view,arch_db:school_deliberation_base.view_individual_bloc_filter_delib

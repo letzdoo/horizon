@@ -4,19 +4,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0+e\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-31 08:54+0000\n"
-"PO-Revision-Date: 2023-09-28 09:59+0000\n"
-"Last-Translator: Weblate Admin <jerome.sonnet@ito-invest.lu>\n"
-"Language-Team: French (Belgium) <http://weblate.ito-invest.lu/projects/"
-"horizon/school-registration/fr_BE/>\n"
-"Language: fr_BE\n"
+"POT-Creation-Date: 2024-03-14 13:30+0000\n"
+"PO-Revision-Date: 2024-03-14 13:30+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0.2\n"
+"Plural-Forms: \n"
 
 #. module: school_registration
 #: model:ir.model.fields,help:school_registration.field_school_registration__state
@@ -35,6 +32,11 @@ msgstr "<span class=\"o_form_label\">Employé qui gère les inscriptions</span>"
 #: model_terms:ir.ui.view,arch_db:school_registration.res_config_settings_view_form
 msgid "<span class=\"o_form_label\">Open year for registration</span>"
 msgstr "<span class=\"o_form_label\">Année ouverte pour les inscriptions</span>"
+
+#. module: school_registration
+#: model_terms:ir.ui.view,arch_db:school_registration.registration_request_confirmation_template
+msgid "<strong>Thank you for your registration request.</strong>"
+msgstr "<strong>Merci pour votre demande d'inscription.</strong>"
 
 #. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__message_needaction
@@ -59,6 +61,11 @@ msgid "Archived"
 msgstr "Archivé"
 
 #. module: school_registration
+#: model_terms:ir.ui.view,arch_db:school_registration.view_student_form_school_docs
+msgid "Assign Program"
+msgstr "Assigner un programme"
+
+#. module: school_registration
 #: model_terms:ir.ui.view,arch_db:school_registration.registration_form
 msgid "Attachements"
 msgstr "Fichiers attachés"
@@ -72,6 +79,11 @@ msgstr "Nombre de fichiers attachés"
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__forms_attachment_ids
 msgid "Attachments"
 msgstr "Fichiers attachés"
+
+#. module: school_registration
+#: model:ir.model.fields,field_description:school_registration.field_school_registration__forms_attachment_ids_count
+msgid "Attachments Count"
+msgstr ""
 
 #. module: school_registration
 #: model:ir.model.fields.selection,name:school_registration.selection__school_registration__kanban_state__blocked
@@ -186,6 +198,11 @@ msgid "Employee Managing Registrations"
 msgstr "Employé qui gère les inscriptions"
 
 #. module: school_registration
+#: model_terms:ir.ui.view,arch_db:school_registration.registration_form
+msgid "Envoyer les documents vers Google Drive"
+msgstr ""
+
+#. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__message_follower_ids
 msgid "Followers"
 msgstr ""
@@ -201,6 +218,11 @@ msgid "Form"
 msgstr "De"
 
 #. module: school_registration
+#: model:ir.model,name:school_registration.model_ir_http
+msgid "HTTP Routing"
+msgstr "Routage HTTP"
+
+#. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__has_message
 msgid "Has Message"
 msgstr "Message"
@@ -209,7 +231,7 @@ msgstr "Message"
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__id
 #: model:ir.model.fields,field_description:school_registration.field_school_year_opening__id
 msgid "ID"
-msgstr ""
+msgstr "Identifiant"
 
 #. module: school_registration
 #: model:ir.model.fields,help:school_registration.field_school_registration__message_needaction
@@ -218,7 +240,6 @@ msgstr ""
 
 #. module: school_registration
 #: model:ir.model.fields,help:school_registration.field_school_registration__message_has_error
-#: model:ir.model.fields,help:school_registration.field_school_registration__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 
@@ -244,6 +265,11 @@ msgid "Individual Program"
 msgstr "Cycle individuel"
 
 #. module: school_registration
+#: model:ir.ui.menu,name:school_registration.school_home_menu_students_registration
+msgid "Inscriptions"
+msgstr ""
+
+#. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__message_is_follower
 msgid "Is Follower"
 msgstr ""
@@ -252,7 +278,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:school_registration.field_school_registration____last_update
 #: model:ir.model.fields,field_description:school_registration.field_school_year_opening____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__write_uid
@@ -307,6 +333,20 @@ msgid "New Registration"
 msgstr "Nouvelle inscription"
 
 #. module: school_registration
+#. odoo-python
+#: code:addons/school_registration/models/registration.py:0
+#, python-format
+msgid "No Google Drive Folder found for this student !"
+msgstr "Aucun dossier Google Drive n'a été trouvé pour cet étudiant."
+
+#. module: school_registration
+#. odoo-python
+#: code:addons/school_registration/models/registration.py:0
+#, python-format
+msgid "No Google Drive Service found please contact your Administrator !"
+msgstr "Aucun dossier Google Drive n'a été trouvé. Veuillez contacter votre administrateur."
+
+#. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__message_needaction_counter
 msgid "Number of Actions"
 msgstr "Nombre d'actions"
@@ -351,6 +391,16 @@ msgid "Open a new Year"
 msgstr "Démarrer une nouvelle année"
 
 #. module: school_registration
+#: model:ir.ui.menu,name:school_registration.school_home_menu_administration_forms
+msgid "Paramètres des formulaires"
+msgstr ""
+
+#. module: school_registration
+#: model_terms:ir.ui.view,arch_db:school_registration.registration_form
+msgid "Pas d'attachement à importer"
+msgstr ""
+
+#. module: school_registration
 #. odoo-python
 #: code:addons/school_registration/models/individual_program.py:0
 #, python-format
@@ -370,9 +420,9 @@ msgid "Program to Duplicate"
 msgstr "Cycle à dupliquer"
 
 #. module: school_registration
-#: model_terms:ir.ui.view,arch_db:school_registration.year_opening_view
-msgid "Program to duplicate"
-msgstr "Cycle à dupliquer"
+#: model:res.partner.category,name:school_registration.res_partner_category_registration_request
+msgid "REGISTRATION_REQUEST"
+msgstr ""
 
 #. module: school_registration
 #: model:ir.model.fields.selection,name:school_registration.selection__school_registration__kanban_state__done
@@ -416,15 +466,9 @@ msgstr "Inscription de nouveaux étudiants"
 #: model:ir.actions.act_window,name:school_registration.action_registration_form
 #: model:ir.ui.menu,name:school_registration.menu_registration
 #: model_terms:ir.ui.view,arch_db:school_registration.registration_form
-#: model_terms:ir.ui.view,arch_db:school_registration.registration_tree_view
 #: model_terms:ir.ui.view,arch_db:school_registration.res_config_settings_view_form
 msgid "Registrations"
 msgstr "Inscriptions"
-
-#. module: school_registration
-#: model:ir.model.fields,field_description:school_registration.field_school_registration__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr ""
 
 #. module: school_registration
 #: model_terms:ir.ui.view,arch_db:school_registration.view_registration_filter
@@ -445,7 +489,7 @@ msgstr "Spécialités"
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__kanban_state
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__state
 msgid "Status"
-msgstr "Status"
+msgstr "Statut"
 
 #. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__student_id
@@ -487,13 +531,13 @@ msgstr ""
 #. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__uid
 msgid "UID"
-msgstr "UID"
+msgstr ""
 
 #. module: school_registration
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__contact_form_uuid
 #: model:ir.model.fields,field_description:school_registration.field_school_registration__registration_form_uuid
 msgid "UUID"
-msgstr "UUID"
+msgstr ""
 
 #. module: school_registration
 #: model_terms:ir.ui.view,arch_db:school_registration.registration_form
@@ -529,6 +573,13 @@ msgid "Year Sequence"
 msgstr "Séquence d'année"
 
 #. module: school_registration
+#: model_terms:ir.ui.view,arch_db:school_registration.registration_request_confirmation_template
+msgid ""
+"Your request has been sent to the school administration. You will receive an"
+" email with information request to complete the process."
+msgstr ""
+
+#. module: school_registration
 #: model_terms:ir.ui.view,arch_db:school_registration.year_opening_view
 msgid "or"
 msgstr "ou"
@@ -537,3 +588,10 @@ msgstr "ou"
 #: model_terms:ir.ui.view,arch_db:school_registration.registration_form
 msgid "registration"
 msgstr "inscription"
+
+#. module: school_registration
+#. odoo-python
+#: code:addons/school_registration/models/registration.py:0
+#, python-format
+msgid "{} new files have been uploaded to Google Drive !"
+msgstr ""

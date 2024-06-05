@@ -1,0 +1,1065 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom_reports
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 13:54+0000\n"
+"PO-Revision-Date: 2024-03-14 13:54+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"(Cadre des certifications de l’enseignement supérieur de la Communauté "
+"française)."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid ""
+",\n"
+"                        les conditions d’accès aux études"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ", de"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid ", le"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+", prévue par l’article 110 du décret du 07 novembre 2013 pour l’accès dans une École supérieure des Arts.\n"
+"                    <br/><br/>Condition remplie par l’étudiant"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"/ <span class=\"text--special\">Overall classification of the "
+"graduate</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "/20"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "1. INFORMATIONS SUR"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "107"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "111"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "120"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "180"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"2. INFORMATIONS SUR LE DIPLÔME / <span class=\"text--special\">Information "
+"identifying the qualification</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"3. INFORMATIONS SUR LE NIVEAU DE QUALIFICATION / <span class=\"text--"
+"special\">Information on the level of the qualification</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"4. INFORMATIONS SUR LE CONTENU ET SUR LES RÉSULTATS OBTENUS / <span "
+"class=\"text--special\">Information on the contents and results "
+"gained</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"5. INFORMATIONS SUR LA FONCTION DE QUALIFICATION / <span class=\"text--"
+"special\">Information on the function of the qualification</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"6. INFORMATIONS COMPLÉMENTAIRES / <span class=\"text--special\">Additional "
+"information</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"7. CERTIFICATION DU SUPPLEMENT / <span class=\"text--special\">Certification"
+" on the supplement</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"8. INFORMATION SUR LE SYSTÈME NATIONAL D’ENSEIGNEMENT SUPERIEUR / <span "
+"class=\"text--special\">Information on the national higher education "
+"system</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+":\n"
+"                    <span class=\"text--break\">Conformément aux articles 139 et 140 du décret du 7 novembre 2013, l’évaluation finale d’une unité d’enseignement s’exprime sous la forme d’une note, comprise entre 0 et 20. Le seuil de réussite étant 10/20. </span>\n"
+"                    <span class=\"text--break\">Si ce seuil n’est pas atteint, le jury peut souverainement proclamer la réussite d’une unité d’enseignement, de l’ensemble des unités suivies durant une année académique ou d’un cycle d’études.</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ": <br/>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ": <br/>Enseignement de type"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ": <br/>Le programme contient un minimum de"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ": <br/>Réussite de l’épreuve d’admission, organisée en date du"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+":<br/>\n"
+"                    <span class=\"table__title\"> Unités d'enseignement du cycle</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<br/><br/>Conformément à l’article 113 du décret du 07 novembre 2013, "
+"l’étudiante a apporté une preuve de la maitrise suffisante de la langue "
+"française :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<em>AVERTISSEMENT: ce présent supplément ne vaut qu’accompagné du diplôme "
+"officiel.</em> / <span class=\"text--special\">This Diploma Supplement is "
+"only valid if presented with the official diploma.</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">1.1.</span>\tNom(s) de famille / <span "
+"class=\"text--special\">Family name(s)</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">1.2.</span>\tPrénom(s) / <span class=\"text--"
+"special\">Given name(s)</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">1.3.</span> Date (jour / mois / année) et lieu "
+"de naissance (pays) / <span class=\"text--special\">Date (day / month / "
+"year) and place of birth (country)</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">1.4.</span> Numéro de matricule  / <span "
+"class=\"text--special\">Identification number </span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">2.1.</span>Intitulé du diplôme et du titre "
+"conféré / <span class=\"text--special\">Name of qualification and title "
+"conferred</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">2.2.</span>Domaine(s) d’études correspondant au"
+" diplôme  / <span class=\"text--special\">Main field(s) of study for the "
+"qualification</span><span class=\"info__value\"> : <br/>Domaine de la "
+"musique</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">2.3.</span>Nom et statut de l’établissement "
+"ayant délivré le diplôme (dans la langue originale) / <span class=\"text--"
+"special\">Name and status of awarding institution(s) (in original "
+"language)</span><span class=\"info__value\"> : <br/>Conservatoire royal de "
+"Liège, École supérieure des Arts organisée par la Communauté française de "
+"Belgique.<br/>Etablissement officiellement reconnu par la Communauté "
+"française conformément à l’article 12 du décret du 7 novembre 2013.</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">2.4.</span>(Si différent du 2.3.) Nom et statut"
+" de l’/des établissement(s) ayant dispensé les cours  / <span class=\"text--"
+"special\">(If different from 2.3.) Name and status of institution(s) "
+"administering studies</span><span class=\"info__value\"> : <br/>Non "
+"applicable</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">2.5.</span>Langue(s) de formation et "
+"d’évaluation / <span class=\"text--special\">Language(s) of instruction and "
+"examination</span><span class=\"info__value\"> : <br/>Français</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">3.1.</span>Niveau de qualification / <span "
+"class=\"text--special\">Level of qualification</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">3.2.</span>Durée officielle du programme / "
+"<span class=\"text--special\">Official length of programme</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">3.3.</span>Condition(s) d’accès / <span "
+"class=\"text--special\">Access requirement(s)</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">4.1.</span>Organisation des études / <span "
+"class=\"text--special\">Mode of study</span><span class=\"info__value\"> : "
+"<br/>Formation à temps plein</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">4.2.</span>Exigences du programme / <span "
+"class=\"text--special\">Programme requirements :<br/></span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">4.3.</span>Précisions sur le programme / <span "
+"class=\"text--special\">Programme details</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">4.4.</span>Système de notations et informations"
+" concernant la répartition des notes  / <span class=\"text--"
+"special\">Grading scheme and grade distribution guidance</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "<span class=\"info__number\">4.5.</span>Classification générale"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">5.1.</span>Accès au niveau d’études supérieures / <span class=\"text--special\">Acces to further study</span><span class=\"info__value\"> :\n"
+"                    <span class=\"text--break\">En règle générale, les titulaires d’un grade académique de bachelier de type court ont accès aux études conduisant à un grade académique de bachelier de spécialisation ;</span>\n"
+"                    <span class=\"text--break\">Les titulaires d’un grade académique de bachelier de type long ont accès à des études conduisant à un grade académique de bachelier de spécialisation ;</span>\n"
+"                    <span class=\"text--break\">Les titulaires d’un grade académique de bachelier de type long ont accès à des études conduisant au grade de master, médecin ou médecin vétérinaire ;</span>\n"
+"                    <span class=\"text--break\">Les titulaires d’un grade académique de master ont accès aux études sanctionnées par le grade académique d’agrégé de l’enseignement secondaire supérieur qui habilite à enseigner dans un établissement d’enseignement secondaire, à des études universitaires sanctionnées par un grade académique de master de spécialisation ;</span>\n"
+"                    <span class=\"text--break\">Les titulaires de master en 120 crédits au moins peuvent être admis aux études universitaires de 3e cycle.</span>\n"
+"                  </span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">5.2.</span>Statut professionnel (si applicable)"
+" / <span class=\"text--special\">Professional statuts (if "
+"applicable)</span><span class=\"info__value\"> : <br/>Non Applicable</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">6.1.</span>Informations complémentaires / <span"
+" class=\"text--special\">Additional information</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">6.2.</span>Autres sources d’informations / "
+"<span class=\"text--special\">Further information sources</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">7.1.</span>Date / <span class=\"text--"
+"special\">Date</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">7.2.</span>Signature / <span class=\"text--"
+"special\">signature</span><span class=\"info__value\"> : Ingisi MPEYE</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">7.3.</span>Fonction / <span class=\"text--"
+"special\">Capacity</span><span class=\"info__value\"> : Secrétaire du "
+"jury</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__number\">7.4.</span>Tampon officiel ou sceau / <span "
+"class=\"text--special\">Official stamp or seal</span><span "
+"class=\"info__value\"> :</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__value text--break\">A la fin du cycle du Bachelier de "
+"qualification en Formation musicale, l’étudiant·e doit être capable :</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"<span class=\"info__value text--break\">A la fin du cycle du Bachelier de "
+"transition, l’étudiant·e doit être capable :</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.view_individual_program_custom
+msgid "<span>Bachelier: </span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.view_individual_program_custom
+msgid "<span>Programme didactique: </span>"
+msgstr ""
+
+#. module: custom_reports
+#: model:ir.model.fields,field_description:custom_reports.field_school_individual_program__is_bac
+msgid "Bachelor Program"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Boulevard Piercot, 29 – 4000 Liège"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "COMMUNAUTÉ FRANÇAISE DE BELGIQUE"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Ce modèle de supplément au diplôme suit le modèle élaboré par la Commission "
+"européenne, le Conseil de l’Europe et l’UNESCO. Le supplément au diplôme "
+"vise à fournir des données indépendantes et suffisantes pour améliorer la « "
+"transparence » internationale et la reconnaissance académique et "
+"professionnelle équitable des qualifications (diplômes, acquis "
+"universitaires, certificats, brevets, etc.). Il est destiné à décrire la "
+"nature, le niveau, le contexte, le contenu et le statut des études "
+"accomplies avec succès par la personne désignée par la qualification "
+"originale à laquelle ce présent supplément est annexé. Il doit être dépourvu"
+" de tout jugement de valeur, déclaration d’équivalence ou suggestion de "
+"reconnaissance. Toutes les informations requises par les huits parties "
+"doivent être fournies. Lorsqu’une information fait défaut, une explication "
+"doit être donnée."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Code UE"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Conservatoire royal de Liège"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Crédits"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De comprendre et de manipuler les éléments constitutifs de systèmes musicaux"
+" qu’il·elle est amené·e à utiliser : écouter, analyser, déchiffrer et "
+"retranscrire par un système de notation ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De comprendre et de manipuler les éléments constitutifs des systèmes "
+"musicaux qu’il est amené à utiliser : écouter, déchiffrer et retranscrire "
+"par un système de notation ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De concevoir, de mettre en œuvre et de créer des dispositifs d’enseignement "
+"visant à développer la pratique musicale, la créativité, la curiosité et "
+"l’ouverture culturelle ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De connaitre et de maîtriser un répertoire varié, d’y établir des liens "
+"pertinents avec le contexte esthétique historique et sociologique, "
+"d’effectuer des recherches et de développer un intérêt pour d’autres champs "
+"musicaux ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De créer une relation pédagogique propice aux apprentissages en développant "
+"une identité d’enseignant·e-musicien·ne professionnel·le qui agit et fait "
+"agir de façon éthique, démocratique et responsable, en lien avec le projet "
+"pédagogique de l’établissement."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De justifier sa pratique pédagogique par une analyse réflexive associant les"
+" différents concepts théoriques avec l’expérience acquise lors de stages, "
+"mais aussi de démontrer sa capacité à la remettre en question :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De produire (instrument, voix, écriture) en faisant preuve de sa maîtrise "
+"technique et musicale, de sa connaissance du répertoire, de créativité et "
+"d’autonomie ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De s’orienter dans la littérature et la documentation musicales, d’apprécier"
+" les différents supports en mettant en œuvre des démarches analytiques et de"
+" faire des choix pertinents ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De s’orienter dans la littérature et la documentation psychopédagogique, "
+"didactique et pédagogique en faisant preuve d’esprit critique pour se "
+"constituer un répertoire d’outils méthodologiques pertinent ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De travailler en ensemble et de développer les qualités relationnelles "
+"nécessaires aux travaux en groupe ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"De travailler en équipe et de développer les qualités relationnelles "
+"nécessaires aux travaux en groupe ;"
+msgstr ""
+
+#. module: custom_reports
+#: model:ir.model.fields,field_description:custom_reports.field_school_individual_program__is_program_didact
+msgid "Didactic program"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Domaine de la Musique"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Démontrer des compétences fondées en pensée et conscience critique ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Démontrer une attitude positive envers la volonté de s’engager et de "
+"s’intéresser au développement personnel et professionnel continu tout au "
+"long de la vie."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Démontrer une capacité à créer, réaliser et exprimer ses propres concepts "
+"artistiques, en veillant à ce que tous les éventuels points faibles dans les"
+" compétences liées aux domaines de l’exercice individuel de leur art, de la "
+"répétition, de la lecture, de l’audition, de la créativité aient été "
+"abordés ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Démontrer une compréhension approfondie du rôle de musicien dans la société "
+"contemporaine, en recherchant, en s’engageant et en réfléchissant sur des "
+"environnements de travail et de contextes professionnels pertinents ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Démontrer une connaissance approfondie et critique des pratiques, des "
+"langages, des formes, des matériaux, des technologies et des techniques de "
+"la musique, des contextes historiques et théoriques, qui se traduit en des "
+"compétences artistiques approfondies et créatives par rapport aux "
+"répertoires, aux styles, aux traditions d’interprétation de leur "
+"discipline ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Démontrer une maîtrise dans une gamme de modes de communication associé à "
+"leur pratique et à leur présentation à des publics spécialisés et non "
+"spécialisés ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Développer, présenter et réaliser des programmes cohérents et adaptés à un "
+"large éventail de contextes d’exécution différents ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"D’acquérir une bonne maîtrise simultanée de sa voix, de son oreille, de son "
+"corps, du rythme, de la lecture musicale et d’un instrument accompagnateur "
+"en tant qu’outil de l’enseignant·e-musicien·ne ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"D’acquérir une maîtrise suffisante de sa voix et de son corps en tant "
+"qu’outil du musicien."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"D’analyser et de mettre en œuvre des outils permettant une analyse au "
+"service de l’interprétation des œuvres ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"D’établir des liens pertinents avec le contexte esthétique, historique et "
+"sociologique des œuvres et de développer un intérêt pour d’autres champs "
+"musicaux ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid ""
+"En foi de quoi, nous lui avons délivré le présent diplôme, attestant que les prescriptions\n"
+"                        légales relatives aux conditions d’accès, aux programmes,"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Enseignement supérieur de plein exercice de type"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Faire preuve d’aisance et de compétence dans l’utilisation d’une gamme de "
+"compétences sociales et de communications adaptées au contexte."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Identifier et utiliser la littérature pertinente et/ou d’autres ressources "
+"appropriées pour nourrir leur pratique et leur développement au sein de leur"
+" discipline, genre et/ou domaine d’étude ;"
+msgstr ""
+
+#. module: custom_reports
+#: model:ir.actions.report,name:custom_reports.report_school_general_diploma_report
+msgid "Imprimer Diplôme"
+msgstr ""
+
+#. module: custom_reports
+#: model:ir.actions.report,name:custom_reports.report_school_individual_program_supplement_general
+msgid "Imprimer Supplément"
+msgstr ""
+
+#. module: custom_reports
+#: model:ir.model.fields,help:custom_reports.field_school_individual_program__is_bac
+msgid ""
+"Indicates whether the program is a Bachelor or not, in which case is is a "
+"master's program. This field is used to determine the diploma report."
+msgstr ""
+
+#. module: custom_reports
+#: model:ir.model.fields,help:custom_reports.field_school_individual_program__is_program_didact
+msgid "Indicates whether the program is didactic or not"
+msgstr ""
+
+#. module: custom_reports
+#: model:ir.model,name:custom_reports.model_school_individual_program
+msgid "Individual Program"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Jouer leur rôle, constructif, dans le travail d’ensemble et/ou d’autres "
+"activités de collaboration ou projets ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "LA"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "LE"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "La"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "La Présidente du jury"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "Le"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "Le Secrétaire du jury"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Le règlement des examens se trouve dans le Règlement des études disponible "
+"sur le site du Conservatoire :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Logo de Europass"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Logo du Conservatoire Royal de Liège"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "L’Autorité académique"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Mention obtenue :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Mobilité ERASMUS :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Moyenne obtenue :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Note"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "Nous déclarons qu’"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid ""
+"Nous, Présidente, Secrétaire et Membres du jury chargé de conférer le grade académique concerné,\n"
+"                        déclarons que :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "Né"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.custom_layout_footer_supplement
+msgid "Page <span class=\"page\"/>sur<span class=\"topage\"/>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Reconnaître l’interrelation entre la théorie et la pratique, et appliquer "
+"ces connaissances pour étayer et renforcer leur propre développement "
+"artistique ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"Réaliser, recréer, créer, manipuler et/ou produire de la musique à un niveau"
+" professionnel élevé, en exprimant ses propres concepts artistiques et en "
+"reflétant une personnalité musicale bien développée ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Site web de l'établissement :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Site web de la Communauté française de Belgique :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Site web de l’ARES :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Site web des réseaux européens ENIC-NARIC :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Site web du centre ENIC-NARIC de la Communauté française :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Stage :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Sur base de l’ensemble des notes obtenues par l’étudiant"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"TITULAIRE DU DIPLÔME / <span class=\"text--special\">Information identifying"
+" the holder of the qualification</span>"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Tableau enseignement"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"This Diploma Supplement model follows the model developed by the European "
+"Commission, Council of Europe and UNESCO. The purpose of the supplement is "
+"to provide sufficient independent data to improve the international "
+"“transparency” and fair academic and professional recognition of "
+"qualification (diplomas, degrees, certificates, etc.). It is designed to "
+"provide a desciption of the nature, level, context, content and status of "
+"the studies that were pursued and successfully completed by the individual "
+"named on the orignial qualification to which this supplement is appended. It"
+" should be free from any value judgements, equivalence statements or "
+"suggestions about recognition. Information in all eight sections should be "
+"provided. Where information is not provided, an explanation should give the "
+"reason why."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Titre du mémoire et/ou TFE :"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid ""
+"Un supplément est annexé au présent diplôme. Il atteste notamment la liste\n"
+"                        des enseignements du programme d’études suivi par l’étudiant"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "Unités d'enseignement"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "VAL"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid ""
+"Vu le décret du 7 novembre 2013 définissant le paysage de l’enseignement supérieur et\n"
+"                        l’organisation académique des études ;"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "a acquis"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "a obtenu en l’année académique"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "a prêté publiquement le serment de Socrate au terme duquel"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid ""
+"au cours du cycle, le jury lui octroie éventuellement une mention "
+"conformément au Règlement des études (Attribution et pondération des notes –"
+" Art.94 -"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "au nombre de crédits y associés (minimum"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "conformément à l’article"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "crédits) et à la publicité des examens ont été observées."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "crédits."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "crédits. L’étudiant"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "cycle (voir rubrique 8), niveau"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "de la"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "diplômé"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "du"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "du décret du 07 novembre 2013:"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "elle"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "et"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "et les évaluations sanctionnées par le grade académique conféré."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "http://www.crlg.be"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "https://www.crlg.be"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "il"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "le grade académique de"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "service de l’éducation de tous les élèves qui lui seront confiés."
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "s’engage à mettre toutes ses forces et toute sa compétence au"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+msgid "titulaire"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "www.ares-ac.be"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "www.enic-naric.net"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "www.enseignement.be"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "www.enseignement.be/enic-naric"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "www.fwb.be"
+msgstr ""
+
+#. module: custom_reports
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page
+#: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
+msgid "École supérieure des Arts"
+msgstr ""

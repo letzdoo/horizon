@@ -31,6 +31,7 @@
         "security/ir.model.access.csv",
         "views/res_partner_view.xml",
         "views/ir_actions_report_view.xml",
+        "views/template.xml",
     ],
     "demo_xml": [],
     "installable": True,

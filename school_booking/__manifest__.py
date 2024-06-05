@@ -30,6 +30,7 @@
         "data/school_booking.xml",
         "views/school_booking_view.xml",
         "views/school_asset_view.xml",
+        "views/ir_ui_menu.xml",
         "wizard/school_booking_wizard.xml",
         "security/ir.model.access.csv",
     ],

@@ -1,0 +1,93 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school_program_migration
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 14:07+0000\n"
+"PO-Revision-Date: 2024-03-14 14:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: school_program_migration
+#: model:ir.actions.act_window,name:school_program_migration.action_add_bloc_wizard
+#: model:ir.model,name:school_program_migration.model_school_add_bloc_wizard
+#: model_terms:ir.ui.view,arch_db:school_program_migration.add_bloc_wizard_form
+msgid "Add Bloc Wizard"
+msgstr ""
+
+#. module: school_program_migration
+#: model_terms:ir.ui.view,arch_db:school_program_migration.add_bloc_wizard_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: school_program_migration
+#: model_terms:ir.ui.view,arch_db:school_program_migration.add_bloc_wizard_form
+msgid "Confirm"
+msgstr "Confirmer"
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: school_program_migration
+#: model:ir.model,name:school_program_migration.model_school_individual_program
+msgid "Individual Program"
+msgstr "Cycle individuel"
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard__source_bloc_id
+msgid "Source Bloc"
+msgstr ""
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard__individual_program_id
+msgid "Target Program"
+msgstr ""
+
+#. module: school_program_migration
+#: model:ir.model.fields,field_description:school_program_migration.field_school_add_bloc_wizard__year_id
+msgid "Year"
+msgstr "Année"
+
+#. module: school_program_migration
+#: model_terms:ir.ui.view,arch_db:school_program_migration.add_bloc_wizard_form
+msgid "or"
+msgstr "ou"

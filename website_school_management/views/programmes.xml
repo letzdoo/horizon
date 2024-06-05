@@ -33,6 +33,11 @@
                                 </t>
                             </div>
                             <hr class="my-0" />
+                            <p
+                            >Il existe également des programmes sur-mesure qui ne sont pas repris dans la liste ci-dessous. Vous pouvez les retrouvez <a
+                                    href="/programmes-"
+                                >ici</a>.</p>
+
                         </div>
                     </div>
                     <div class="col-12">
@@ -570,287 +575,344 @@
             </t>
         </dl>
         <div class="accordion" id="course_detail">
-            <t t-if="course_doc.schedule_text">
-                <div class="accordion-item border mb-4">
-                    <h2 class="accordion-header">
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            aria-expanded="false"
-                            data-bs-target="#collapse_horaire"
-                            aria-controls="collapse_horaire"
-                        >
-                            <span class="h4">
-                                Horaire
-                                <span class="accented-color">|</span>
-                                <span t-field="course_doc.schedule" />
-                            </span>
-                        </button>
-                    </h2>
-                    <div
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#course_detail"
-                        id="collapse_horaire"
-                    >
-                        <div class="accordion-body border-top px-2 px-lg-4">
-                            <div class="group-content p-3 border">
-                                <span t-raw="course_doc.schedule_text" />
-                            </div>
+            <t
+                t-if="not (course_doc.schedule_text and course_doc.content and course_doc.method and course_doc.learning_outcomes and course_doc.references and course_doc.pre_co_requiered and course_doc.evaluation_method )"
+            >
+                <div id="form_request_course_details">
+                    <p
+                    >La description de ce cours n'est pas disponible. Vous pouvez contacter le responsable pour lui demander de l'encoder.</p>
+                    <form id="request_description_form">
+                    <div class="row">
+                        <div class="col-12 col-lg-4 mt-2">
+                            <label for="request_first_name">Prénom :</label>
+                            <input
+                                    id="request_first_name"
+                                    type="text"
+                                    class="form-control"
+                                    name="first_name"
+                                    required="true"
+                                />
+                        </div>
+                        <div class="col-12 col-lg-4 mt-2">
+                            <label for="request_last_name">Nom :</label>
+                            <input
+                                    id="request_last_name"
+                                    type="text"
+                                    class="form-control"
+                                    name="last_name"
+                                    required="true"
+                                />
+                        </div>
+                        <div class="col-12 col-lg-4 mt-2">
+                            <label for="request_email">Email :</label>
+                            <input
+                                    id="request_email"
+                                    type="email"
+                                    class="form-control"
+                                    name="email"
+                                    required="true"
+                                />
+                        </div>
+                        <div class="col-12">
+                            <input
+                                    id="request_course_id"
+                                    type="hidden"
+                                    t-att-value="course.id"
+                                />
+                            <button
+                                    id="btn_request_course_details"
+                                    type="submit"
+                                    class="btn btn-primary mt-3"
+                                >Demander</button>
+                            <p class="mt-3 error_request_course_details" />
                         </div>
                     </div>
+                    </form>
                 </div>
             </t>
             <t t-else="">
-                <div class="border mb-4">
-                    <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Horaire
-                    </h2>
-                    <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
-                        Information non disponible.
-                    </p>
-                </div>
-            </t>
-            <t t-if="course_doc.content">
-                <div class="accordion-item border mb-4">
-                    <h2 class="accordion-header">
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            aria-expanded="false"
-                            data-bs-target="#collapse_contenu"
-                            aria-controls="collapse_contenu"
+                <t t-if="course_doc.schedule_text">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_horaire"
+                                aria-controls="collapse_horaire"
+                            >
+                                <span class="h4">
+                                    Horaire
+                                    <span class="accented-color">|</span>
+                                    <span t-field="course_doc.schedule" />
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_horaire"
                         >
-                            <span class="h4">
-                                Contenu
-                            </span>
-                        </button>
-                    </h2>
-                    <div
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#course_detail"
-                        id="collapse_contenu"
-                    >
-                        <div class="accordion-body border-top px-2 px-lg-4">
-                            <div class="group-content p-3 border">
-                                <span t-raw="course_doc.content" />
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.schedule_text" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </t>
-            <t t-else="">
-                <div class="border mb-4">
-                    <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Contenu
-                    </h2>
-                    <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
-                        Information non disponible.
-                    </p>
-                </div>
-            </t>
-            <t t-if="course_doc.method">
-                <div class="accordion-item border mb-4">
-                    <h2 class="accordion-header">
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            aria-expanded="false"
-                            data-bs-target="#collapse_methode"
-                            aria-controls="collapse_methode"
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Horaire
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.content">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_contenu"
+                                aria-controls="collapse_contenu"
+                            >
+                                <span class="h4">
+                                    Contenu
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_contenu"
                         >
-                            <span class="h4">
-                                Méthode
-                            </span>
-                        </button>
-                    </h2>
-                    <div
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#course_detail"
-                        id="collapse_methode"
-                    >
-                        <div class="accordion-body border-top px-2 px-lg-4">
-                            <div class="group-content p-3 border">
-                                <span t-raw="course_doc.method" />
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.content" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </t>
-            <t t-else="">
-                <div class="border mb-4">
-                    <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Méthode
-                    </h2>
-                    <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
-                        Information non disponible.
-                    </p>
-                </div>
-            </t>
-            <t t-if="course_doc.learning_outcomes">
-                <div class="accordion-item border mb-4">
-                    <h2 class="accordion-header">
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            aria-expanded="false"
-                            data-bs-target="#collapse_resultats"
-                            aria-controls="collapse_resultats"
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Contenu
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.method">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_methode"
+                                aria-controls="collapse_methode"
+                            >
+                                <span class="h4">
+                                    Méthode
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_methode"
                         >
-                            <span class="h4">
-                                Résultats d'apprentissage
-                            </span>
-                        </button>
-                    </h2>
-                    <div
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#course_detail"
-                        id="collapse_resultats"
-                    >
-                        <div class="accordion-body border-top px-2 px-lg-4">
-                            <div class="group-content p-3 border">
-                                <span t-raw="course_doc.learning_outcomes" />
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.method" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </t>
-            <t t-else="">
-                <div class="border mb-4">
-                    <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Résultats d'apprentissage
-                    </h2>
-                    <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
-                        Information non disponible.
-                    </p>
-                </div>
-            </t>
-            <t t-if="course_doc.references">
-                <div class="accordion-item border mb-4">
-                    <h2 class="accordion-header">
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            aria-expanded="false"
-                            data-bs-target="#collapse_references"
-                            aria-controls="collapse_references"
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Méthode
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.learning_outcomes">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_resultats"
+                                aria-controls="collapse_resultats"
+                            >
+                                <span class="h4">
+                                    Résultats d'apprentissage
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_resultats"
                         >
-                            <span class="h4">
-                                Références
-                            </span>
-                        </button>
-                    </h2>
-                    <div
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#course_detail"
-                        id="collapse_references"
-                    >
-                        <div class="accordion-body border-top px-2 px-lg-4">
-                            <div class="group-content p-3 border">
-                                <span t-raw="course_doc.references" />
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.learning_outcomes" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </t>
-            <t t-else="">
-                <div class="border mb-4">
-                    <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Références
-                    </h2>
-                    <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
-                        Information non disponible.
-                    </p>
-                </div>
-            </t>
-            <t t-if="course_doc.pre_co_requiered">
-                <div class="accordion-item border mb-4">
-                    <h2 class="accordion-header">
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            aria-expanded="false"
-                            data-bs-target="#collapse_requis"
-                            aria-controls="collapse_requis"
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Résultats d'apprentissage
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.references">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_references"
+                                aria-controls="collapse_references"
+                            >
+                                <span class="h4">
+                                    Références
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_references"
                         >
-                            <span class="h4">
-                                Pré-requis/Co-requis
-                            </span>
-                        </button>
-                    </h2>
-                    <div
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#course_detail"
-                        id="collapse_requis"
-                    >
-                        <div class="accordion-body border-top px-2 px-lg-4">
-                            <div class="group-content p-3 border">
-                                <span t-raw="course_doc.pre_co_requiered" />
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.references" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </t>
-            <t t-else="">
-                <div class="border mb-4">
-                    <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Pré-requis/Co-requis
-                    </h2>
-                    <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
-                        Information non disponible.
-                    </p>
-                </div>
-            </t>
-            <t t-if="course_doc.evaluation_method">
-                <div class="accordion-item border mb-4">
-                    <h2 class="accordion-header">
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            aria-expanded="false"
-                            data-bs-target="#collapse_evalutation"
-                            aria-controls="collapse_evalutation"
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Références
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.pre_co_requiered">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_requis"
+                                aria-controls="collapse_requis"
+                            >
+                                <span class="h4">
+                                    Pré-requis/Co-requis
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_requis"
                         >
-                            <span class="h4">
-                                Méthode d'évaluation
-                            </span>
-                        </button>
-                    </h2>
-                    <div
-                        class="accordion-collapse collapse"
-                        aria-labelledby="headingOne"
-                        data-bs-parent="#course_detail"
-                        id="collapse_evalutation"
-                    >
-                        <div class="accordion-body border-top px-2 px-lg-4">
-                            <div class="group-content p-3 border">
-                                <span t-raw="course_doc.evaluation_method" />
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.pre_co_requiered" />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </t>
-            <t t-else="">
-                <div class="border mb-4">
-                    <h2 class="h4 mb-0 py-3 px-4 border-bottom">
-                        Méthode d'évaluation
-                    </h2>
-                    <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
-                        Information non disponible.
-                    </p>
-                </div>
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Pré-requis/Co-requis
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
+                <t t-if="course_doc.evaluation_method">
+                    <div class="accordion-item border mb-4">
+                        <h2 class="accordion-header">
+                            <button
+                                class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                aria-expanded="false"
+                                data-bs-target="#collapse_evalutation"
+                                aria-controls="collapse_evalutation"
+                            >
+                                <span class="h4">
+                                    Méthode d'évaluation
+                                </span>
+                            </button>
+                        </h2>
+                        <div
+                            class="accordion-collapse collapse"
+                            aria-labelledby="headingOne"
+                            data-bs-parent="#course_detail"
+                            id="collapse_evalutation"
+                        >
+                            <div class="accordion-body border-top px-2 px-lg-4">
+                                <div class="group-content p-3 border">
+                                    <span t-raw="course_doc.evaluation_method" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="border mb-4">
+                        <h2 class="h4 mb-0 py-3 px-4 border-bottom">
+                            Méthode d'évaluation
+                        </h2>
+                        <p class="accordion-body text-center text-muted my-0 pt-3 pb-3">
+                            Information non disponible.
+                        </p>
+                    </div>
+                </t>
             </t>
         </div>
     </template>
@@ -892,6 +954,24 @@
 
     <template id="close_list">
         &lt;/ul&gt;
+    </template>
+
+    <!-- //////////////////////////////////////////////////////////////// -->
+    <!-- //                            EMAIL                           // -->
+    <!-- //////////////////////////////////////////////////////////////// -->
+
+    <template id="cours_details_request">
+        <p>Bonjour,</p>
+        <p><t
+                t-esc="first_name + ' ' + last_name"
+            /> vous a envoyé une demande afin d'obtenir les informations concernant le cours <b
+            ><t t-esc="course.name" /></b>.</p>
+        <p>Vous pouvez recontacter cette personne via <a
+                t-att-href="'mailto:%s' %email"
+            >son adresse email</a>.</p>
+        <p>La fiche du cours est disponible à <a t-att-href="url">cette adresse</a>.</p>
+        <hr />
+        <p>Cet email a été envoyé automatiquement.</p>
     </template>
 
 </odoo>

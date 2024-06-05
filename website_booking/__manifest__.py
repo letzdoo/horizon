@@ -26,11 +26,13 @@
     "category": "School Management",
     "depends": [
         "website",
+        "school_management",
         "school_booking",
     ],
     "data": [
         "views/website_booking.xml",
         "views/snippets.xml",
+        "views/ir_ui_menu.xml",
     ],
     "assets": {
         "website.assets_wysiwyg": [

@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 14:12+0000\n"
+"PO-Revision-Date: 2024-03-14 14:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -51,11 +53,6 @@ msgstr ""
 #. module: school_registration_documents
 #: model:ir.model,name:school_registration_documents.model_school_add_documents_wizard
 msgid "Add Documents Wizard"
-msgstr ""
-
-#. module: school_registration_documents
-#: model_terms:ir.ui.view,arch_db:school_registration_documents.view_student_form_school_docs
-msgid "Add documents"
 msgstr ""
 
 #. module: school_registration_documents
@@ -113,7 +110,6 @@ msgstr ""
 #. module: school_registration_documents
 #. odoo-python
 #: code:addons/school_registration_documents/models/registration_document.py:0
-#: model_terms:ir.ui.view,arch_db:school_registration_documents.view_student_form_school_docs
 #, python-format
 msgid "Documents"
 msgstr ""
@@ -183,11 +179,6 @@ msgid "Missing"
 msgstr ""
 
 #. module: school_registration_documents
-#: model_terms:ir.ui.view,arch_db:school_registration_documents.view_student_form_school_docs
-msgid "Missing Documents"
-msgstr ""
-
-#. module: school_registration_documents
 #: model:ir.model.fields,field_description:school_registration_documents.field_res_partner__official_document_count
 #: model:ir.model.fields,field_description:school_registration_documents.field_res_partner__official_document_missing_count
 #: model:ir.model.fields,field_description:school_registration_documents.field_res_users__official_document_count
@@ -254,7 +245,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:school_registration_documents.field_res_partner__official_document_ids
 #: model:ir.model.fields,field_description:school_registration_documents.field_res_users__official_document_ids
 #: model:ir.ui.menu,name:school_registration_documents.menu_official_document_form
-#: model_terms:ir.ui.view,arch_db:school_registration_documents.view_student_form_school_docs
 msgid "Official Documents"
 msgstr ""
 

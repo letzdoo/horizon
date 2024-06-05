@@ -5,14 +5,37 @@
         name="Program Details Content supplement"
     >
         <head>
+
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
             <link
                 href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap"
                 rel="stylesheet"
             />
-            <title>Supplémént Diplôme</title>
+
+
+            <title>Supplément Diplôme</title>
             <style>
+
+
+              <!-- html{
+                background: grey;
+              }
+
+              body {
+
+                line-height: 1.5;
+                font-size: 12px;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                color:black;
+                margin:0px auto;
+              } -->
+
+
+
               p{
                 margin:0px;
                 padding:0px;
@@ -30,10 +53,12 @@
               }
 
               .pdf__page{
+                <!-- width:21cm;
+                height: 29.7cm; -->
                 background: white;
                 margin:0px auto;
                 position: relative;
-                margin-top:30px;
+                <!-- margin-top:30px; -->
                 line-height: 1.5;
                 font-size: 14px;
                 -webkit-font-smoothing: antialiased;
@@ -46,6 +71,7 @@
               .page__wrapper{
                 padding:1.5cm;
               }
+
 
               .diploma__place{
                 margin-bottom:20px;
@@ -92,6 +118,7 @@
                 font-size:1.5em;
                 font-weight:500;
                 margin-bottom:5px;
+
               }
 
               .diploma__name em{
@@ -157,6 +184,7 @@
                 font-style:normal;
               }
 
+
               .footer__page{
                 color: #b1b1b1;
                 font-size: 0.95em;
@@ -173,7 +201,7 @@
               }
 
               .infos__list{
-                margin-top: 30px;
+                <!-- margin-top: 30px; -->
                 margin-bottom: 50px;
               }
 
@@ -181,6 +209,7 @@
                 font-weight: 700;
                 font-size: 1.1em;
               }
+
 
                   .text--special{
                     font-style: italic;
@@ -195,6 +224,7 @@
                 .info__value, .requirement__item{
                   font-weight: 400;
                 }
+
 
 
                 .info__item .text--special{
@@ -229,12 +259,12 @@
                 }
 
                 .precisions__table{
-                  font-size: 1em;
+                  font-size: 0.8em;
                   width: 100%;
                   border-collapse: collapse;
                   text-align: left;
                   margin-top: 20px;
-                  margin-bottom: 20px;
+                  <!-- margin-bottom: 20px; -->
                 }
 
                 .precisions__table th, .table--total td{
@@ -253,6 +283,7 @@
                   border-bottom:none;
                   border-top: 1px solid lightgrey;
                 }
+
 
             </style>
           </head>
@@ -273,9 +304,10 @@
             t-value="True if doc.student_id.gender == 'male' else False"
         />
           <t t-set="student_birth_place_city" t-value="doc.student_id.birthplace" />
+          <!-- <t t-set="student_birth_place_country" t-value="doc.student_id.nationality_ids[0].name if doc.student_id.nationality_ids else False"/> -->
           <t
             t-set="student_birth_place_country"
-            t-value="doc.student_id.birthcountry.name"
+            t-value="doc.student_id.birthcountry.name if doc.student_id.birthcountry else False"
         />
           <t
             t-set="student_birth_date_formatted"
@@ -287,7 +319,9 @@
         />
           <t t-set="student_first_name" t-value="doc.student_id.firstname" />
           <t t-set="student_family_name" t-value="doc.student_id.lastname" />
-          <t t-set="student_matricule" t-value="doc.student_id.mat_number" />
+          <!-- <t t-set="student_matricule" t-value="doc.student_id.mat_number"/> -->
+          <t t-set="student_matricule" t-value="doc.student_id.id" />
+          <t t-set="student_access_titles" t-value="doc.student_id.access_titles_ids" />
           <t
             t-if="doc.grade"
             t-set="student_success_grade"
@@ -308,7 +342,7 @@
 
                   <div class="europass__logo">
                     <img
-                        src="/custom_reports/static/src/img/europass.png"
+                        src="https://horizon.student-crlg.be/custom_reports/static/src/img/europass.png"
                         class="europass__img"
                         alt="Logo de Europass"
                     />
@@ -344,25 +378,25 @@
                         class="complement__more"
                     >This Diploma Supplement model follows the model developed by the European Commission, Council of Europe and UNESCO. The purpose of the supplement is to provide sufficient independent data to improve the international “transparency” and fair academic and professional recognition of qualification (diplomas, degrees, certificates, etc.). It is designed to provide a desciption of the nature, level, context, content and status of the studies that were pursued and successfully completed by the individual named on the orignial qualification to which this supplement is appended. It should be free from any value judgements, equivalence statements or suggestions about recognition. Information in all eight sections should be provided. Where information is not provided, an explanation should give the reason why. </p>
                   </div>
+
+                  <br /><br /><br /><br /><br />
+                  <p class="complement__footer">
+                    <em
+                    >AVERTISSEMENT: ce présent supplément ne vaut qu’accompagné du diplôme officiel.</em> / <span
+                        class="text--special"
+                    >This Diploma Supplement is only valid if presented with the official diploma.</span>
+                  </p>
+
                   <!-- <p class="footer__page">Page 1 sur 5</p> -->
               </div>
             </div>
 
             <div class="pdf__page">
               <div class="page__wrapper">
-                <p class="complement__footer">
-                  <em
-                    >AVERTISSEMENT: ce présent supplément ne vaut qu’accompagné du diplôme officiel.</em> / <span
-                        class="text--special"
-                    >This Diploma Supplement is only valid if presented with the official diploma.</span>
-                </p>
 
-                <h2
-                    style="margin-top:20px;"
-                    class="title--section"
-                >1. INFORMATIONS SUR <t t-if="student_gender">LE</t><t
-                        t-else=""
-                    >LA</t> TITULAIRE DU DIPLÔME / <span
+                <h2 class="title--section">1. INFORMATIONS SUR <t
+                        t-if="student_gender"
+                    >LE</t><t t-else="">LA</t> TITULAIRE DU DIPLÔME / <span
                         class="text--special"
                     >Information identifying the holder of the qualification</span></h2>
 
@@ -380,7 +414,9 @@
                             class="text--special"
                         >Given name(s)</span><span class="info__value"> : <t
                                 t-esc="student_first_name"
-                            /></span></li>
+                            /><t
+                                t-if="doc.student_id.initials and doc.student_id.initials[0]"
+                            > <t t-esc="doc.student_id.initials[0]" />.</t></span></li>
                   <li class="info__item"><span
                             class="info__number"
                         >1.3.</span> Date (jour / mois / année) et lieu de naissance (pays) / <span
@@ -388,6 +424,8 @@
                         >Date (day / month / year) and place of birth (country)</span><span
                             class="info__value"
                         > : <t t-esc="student_birth_date_formatted" /> <t
+                                t-if="student_birth_place_city"
+                            >- <t t-esc="student_birth_place_city" /></t> <t
                                 t-if="student_birth_place_country"
                             >(<t t-esc="student_birth_place_country" />)</t></span></li>
                   <li class="info__item"><span
@@ -398,6 +436,7 @@
                                 t-esc="student_matricule"
                             /></span></li>
                 </ul>
+
 
                 <h2 class="title--section">2. INFORMATIONS SUR LE DIPLÔME / <span
                         class="text--special"
@@ -431,7 +470,7 @@
                             class="info__number"
                         >2.4.</span>(Si différent du 2.3.) Nom et statut de l’/des établissement(s) ayant dispensé les cours  / <span
                             class="text--special"
-                        >If different from 2.3.) Name and status of institution(s) administering studies</span><span
+                        >(If different from 2.3.) Name and status of institution(s) administering studies</span><span
                             class="info__value"
                         > : <br />Non applicable</span></li>
                   <li class="info__item"><span
@@ -442,6 +481,7 @@
                             class="info__value"
                         > : <br />Français</span></li>
                 </ul>
+
 
                 <h2
                     class="title--section"
@@ -458,7 +498,7 @@
                             />Enseignement de type <t t-esc="cycle_type" />, de <t
                                 t-esc="cycle_type_bis"
                             /> cycle (voir rubrique 8), niveau <t
-                                t-esc="7 if bac else 8"
+                                t-esc="6 if bac else 7"
                             /> (Cadre des certifications de l’enseignement supérieur de la Communauté française).</span></li>
                   <li class="info__item"><span
                             class="info__number"
@@ -471,7 +511,7 @@
                             >180</t><t t-if="master">120</t> crédits. L’étudiant<t
                                 t-if="not student_gender"
                             >e</t> a acquis <t
-                                t-esc="doc.source_program_id.total_credits"
+                                t-esc="doc.total_acquiered_credits"
                             /> crédits.</span></li>
                   <li class="info__item"><span
                             class="info__number"
@@ -482,29 +522,53 @@
                                 t-if="doc.student_id.admission_exam_date"
                             ><t
                                     t-esc="doc.student_id.admission_exam_date.strftime('%d-%m-%Y')"
-                                /></t>, prévue par l’article: 110 du décret du 07 novembre 2013 pour l’accès dans une École supérieure des Arts. Condition remplie par l’étudiant<t
+                                /></t>, prévue par l’article 110 du décret du 07 novembre 2013 pour l’accès dans une École supérieure des Arts.
+                    <br /><br />Condition remplie par l’étudiant<t
                                 t-if="not student_gender"
                             >e</t> conformément à l’article <t t-if="bac">107</t><t
                                 t-else=""
                             >111</t> du décret du 07 novembre 2013:
                     <t t-foreach="doc.student_id.access_titles_ids" t-as="at">
-                      <t
-                                    t-if="(('CESS' in at.name or 'equivalence' in at.name) and bac)"
-                                >
-                        <br /><t t-esc="at.title" /> - <t
-                                        t-esc="at.establishment"
-                                    /> - <t t-esc="at.city" /> (<t
-                                        t-esc="at.country"
-                                    />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                      <t t-if="bac">
+                        <t
+                                        t-if="(at.type != 'bachelor' and at.type != 'mastery_of_french')"
+                                    >
+                          <br /><t t-if="at.name">- <t t-esc="at.name" /></t><t
+                                            t-if="at.title"
+                                        > - <t t-esc="at.title" /></t> - <t
+                                            t-esc="at.establishment"
+                                        /> - <t t-esc="at.city" /> (<t
+                                            t-esc="at.country_id.name if at.country_id else at.country"
+                                        />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                        </t>
                       </t>
-                      <t
-                                    t-if="(('Bachelier' in at.name or 'VAE' in at.name) and master)"
-                                >
-                        <br /><t t-esc="at.title" /> - <t
-                                        t-esc="at.establishment"
-                                    /> - <t t-esc="at.city" /> (<t
-                                        t-esc="at.country"
-                                    />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                      <t t-else="">
+                        <t
+                                        t-if="(at.type != 'cess' and at.type != 'mastery_of_french')"
+                                    >
+                          <br /><t t-if="at.name">- <t t-esc="at.name" /></t><t
+                                            t-if="at.title"
+                                        > - <t t-esc="at.title" /></t> - <t
+                                            t-esc="at.establishment"
+                                        /> - <t t-esc="at.city" /> (<t
+                                            t-esc="at.country_id.name if at.country_id else at.country"
+                                        />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                        </t>
+                      </t>
+                    </t>
+                    <t t-if="master_dict">
+                      <br /><br
+                                />Conformément à l’article 113 du décret du 07 novembre 2013, l’étudiante a apporté une preuve de la maitrise suffisante de la langue française :
+                      <t t-foreach="doc.student_id.access_titles_ids" t-as="at">
+                        <t t-if="at.type == 'mastery_of_french'">
+                          <br /><t t-if="at.name">- <t t-esc="at.name" /></t><t
+                                            t-if="at.title"
+                                        > - <t t-esc="at.title" /></t> - <t
+                                            t-esc="at.establishment"
+                                        /> - <t t-esc="at.city" /> (<t
+                                            t-esc="at.country_id.name if at.country_id else at.country"
+                                        />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                        </t>
                       </t>
                     </t>
                     </span></li>
@@ -512,8 +576,8 @@
 
                 <!-- <p class="footer__page">Page 2 sur 5</p> -->
 
+                <br />
                 <h2
-                    style="margin-top:20px; padding-top:20px;"
                     class="title--section"
                 >4. INFORMATIONS SUR LE CONTENU ET SUR LES RÉSULTATS OBTENUS / <span
                         class="text--special"
@@ -671,6 +735,7 @@
                       </ul>
                     </t>
 
+
                   </li>
 
                   <li class="info__item"><span
@@ -690,24 +755,39 @@
                       </thead>
                       <tbody>
                         <t t-set="credit_total" t-value="0" />
-                        <t t-foreach="doc.acquired_ind_course_group_ids" t-as="acquired_ind_course_group">
+                        <t
+                                        t-foreach="doc.acquired_ind_course_group_ids"
+                                        t-as="acquired_ind_course_group"
+                                    >
                             <tr>
-                              <td><t t-esc="acquired_ind_course_group.uid"/></td>
-                              <td><t t-esc="acquired_ind_course_group.name"/></td>
-                              <td><t t-esc="acquired_ind_course_group.source_course_group_id.total_credits"/></td>
+                              <td><t
+                                                    t-esc="acquired_ind_course_group.source_course_group_id.uid"
+                                                /></td>
+                              <td><t t-esc="acquired_ind_course_group.name" /></td>
+                              <td><t
+                                                    t-esc="acquired_ind_course_group.source_course_group_id.total_credits"
+                                                /></td>
                               <td>
-                                <t t-if="acquired_ind_course_group.state == '0_valuated'">VAL</t>
-                                <t t-else="" t-esc="acquired_ind_course_group.final_result"/>
+                                <t
+                                                    t-if="acquired_ind_course_group.state == '0_valuated'"
+                                                >VAL</t>
+                                <t
+                                                    t-else=""
+                                                    t-esc="acquired_ind_course_group.final_result"
+                                                />
                               </td>
-                              <t t-set="credit_total" t-value="credit_total + acquired_ind_course_group.source_course_group_id.total_credits"/>
+                              <t
+                                                t-set="credit_total"
+                                                t-value="credit_total + acquired_ind_course_group.source_course_group_id.total_credits"
+                                            />
                             </tr>
                         </t>
 
                         <tr class="table--total">
-                          <td>&#160;</td>
-                          <td>&#160;</td>
+                          <td> </td>
+                          <td> </td>
                           <td><t t-esc="credit_total" /></td>
-                          <td>&#160;</td>
+                          <td> </td>
                         </tr>
 
                       </tbody>
@@ -778,7 +858,9 @@
                                 >https://www.crlg.be</a>)</span>
                     <span class="text--break">Mention obtenue : <t
                                     t-esc="student_success_grade"
-                                /><t t-if="doc.grade_comments"> - <t
+                                /><t
+                                    t-if="doc.grade_comments and len(doc.grade_comments) &gt; 1"
+                                > - <t t-esc="doc.grade_comments" /><t
                                         t-esc="doc.grade_comments"
                                     /></t></span>
                   </span></li>
@@ -820,7 +902,7 @@
                             class="text--special"
                         >Professional statuts (if applicable)</span><span
                             class="info__value"
-                        > : {{Non Applicable}}}</span></li>
+                        > : <br />Non Applicable</span></li>
                 </ul>
 
                 <h2 class="title--section">6. INFORMATIONS COMPLÉMENTAIRES / <span
@@ -918,6 +1000,7 @@
                         >signature</span><span
                             class="info__value"
                         > : Ingisi MPEYE</span></li>
+                  <br />
                 </ul>
 
                 <ul class="infos__list">
@@ -935,6 +1018,10 @@
                         >Official stamp or seal</span><span
                             class="info__value"
                         > :</span></li>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
                 </ul>
 
                 <h2
@@ -943,7 +1030,7 @@
                         class="text--special"
                     >Information on the national higher education system</span></h2>
                 <img
-                    src="/custom_reports/static/src/img/tableau.png"
+                    src="https://horizon.student-crlg.be/custom_reports/static/src/img/tableau.png"
                     alt="Tableau enseignement"
                     class="learning__img"
                 />
@@ -956,7 +1043,6 @@
 
 
 
-
     </template>
 
 
@@ -965,31 +1051,36 @@
           <t t-foreach="docs" t-as="doc">
           <t t-call="custom_reports.custom_supplement_layout">
             <!-- Conditions to choose the appropriate report based on program -->
-            <t t-if="doc.is_program_didact">
-              <!-- Didactic programs -->
-              <t t-if="doc.is_bac">
-                <!-- Didactic Bachelor -->
-                <t t-set="bac" t-value="True" />
-                <t t-set="bac_dict" t-value="True" />
-              </t>
-              <t t-else="">
-                <!-- Didactic Master -->
-                <t t-set="master" t-value="True" />
-                <t t-set="master_dict" t-value="True" />
-              </t>
+            <t
+                        t-if="doc.cycle_id.name != None and 'didactique' in (doc.cycle_id.name).lower()"
+                    >
+               <!-- Didactic programs -->
+                <t
+                            t-if="doc.cycle_id.name != None and 'bachelier' in (doc.cycle_id.name).lower()"
+                        >
+                  <!-- Didactic Bachelor -->
+                  <t t-set="bac" t-value="True" />
+                  <t t-set="bac_dict" t-value="True" />
+                </t>
+                <t t-else="">
+                  <!-- Didactic Master -->
+                  <t t-set="master" t-value="True" />
+                  <t t-set="master_dict" t-value="True" />
+                </t>
             </t>
             <t t-else="">
-              <!-- Non-Didactic programs -->
-              <t t-if="doc.is_bac">
-                <!-- Non-Didactic Bachelor -->
-                <t t-set="bac" t-value="True" />
-              </t>
-              <t t-else="">
-                <!-- Non-Didactic Master -->
-                <t t-set="master" t-value="True" />
-              </t>
+               <!-- Non-Didactic programs -->
+               <t
+                            t-if="doc.cycle_id.name != None and 'bachelier' in (doc.cycle_id.name).lower()"
+                        >
+                  <!-- Non-Didactic Bachelor -->
+                  <t t-set="bac" t-value="True" />
+                </t>
+                <t t-else="">
+                  <!-- Non-Didactic Master -->
+                  <t t-set="master" t-value="True" />
+                </t>
             </t>
-
             <div class="page">
                 <t
                             t-call="custom_reports.report_school_individual_program_supplement_content_page"

@@ -29,6 +29,7 @@
     "data": [
         "security/ir.model.access.csv",
         "views/description.xml",
+        "views/ir_ui_menu.xml",
         "report/school_description_report.xml",
         "wizard/add_description_wizard.xml",
     ],

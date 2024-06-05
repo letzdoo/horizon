@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright 2024 Neodiensis
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+-->
+<odoo>
+    <!-- Horizon Home Menu - Niveau 2 -->
+    <record id="school_home_menu_course_desc" model="ir.ui.menu">
+        <field name="name">Description des activités</field>
+        <field name="parent_id" ref="school_management.school_home_menu_course" />
+        <field name="sequence" eval="20" />
+        <field name="action" ref="action_course_documentation_list" />
+        <field name="display_in_home_menu">True</field>
+        <field name="simulated_id" ref="menu_course_documentation_list" />
+    </record>
+</odoo>

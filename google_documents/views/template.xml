@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+##############################################################################
+#
+#    Copyright (c) 2023 ito-invest.lu
+#                       Jerome Sonnet <jerome.sonnet@ito-invest.lu>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as
+#    published by the Free Software Foundation, either version 3 of the
+#    License, or (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+-->
+<odoo>
+    <template id="file_404" name="File not found">
+        <t t-call="website.layout"> <!-- Affiche le layout du site web -->
+            <div class="o_not_editable bg-100 pt40">
+                <div class="container">
+                    <div class="text-center my-5">
+                        <h1>File not found</h1>
+                        <p>Sorry, the file you are trying to access cannot be found.</p>
+                        <a
+                            class="btn btn-primary btn_cta my-5"
+                            href="/"
+                        >Back to home page</a>
+                    </div>
+                </div>
+                <hr/>
+            </div>
+        </t>
+    </template>
+</odoo>

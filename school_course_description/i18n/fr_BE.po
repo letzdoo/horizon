@@ -1,0 +1,733 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school_course_description
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 13:59+0000\n"
+"PO-Revision-Date: 2024-03-14 13:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__state
+msgid ""
+" * The 'Draft' status is used when a new program is created and not published yet.\n"
+" * The 'Published' status is when a program is published and available for use.\n"
+" * The 'Archived' status is used when a program is obsolete and not publihed anymore."
+msgstr ""
+" * Le statut \"Brouillon\" est utilisé quand un programme n'est pas encore publié.\n"
+" * Le statut \"Publié\" est utilisé quand le programme est disponible et publié sur le site publique.\n"
+" * Le statut \"Archivé\" est utilisé quand le programme ne doit plus être publié."
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_needaction
+msgid "Action Needed"
+msgstr "A besoin d'une action"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_ids
+msgid "Activities"
+msgstr "Activités"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.actions.act_window,name:school_course_description.action_add_description_wizard_view
+#: model:ir.model,name:school_course_description.model_school_add_description_wizard
+#: model_terms:ir.ui.view,arch_db:school_course_description.add_description_wizard_view
+msgid "Add Description Wizard"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_doc_form
+msgid "Add doc"
+msgstr "Ajouter un document"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__course_ids
+msgid "All Courses"
+msgstr "Activités décrites"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course__documentation_ids
+msgid "All Docs"
+msgstr "Tous les docs"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course__all_documentation_ids
+msgid "All Documentations"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+msgid "Archive"
+msgstr "Archiver"
+
+#. module: school_course_description
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__state__archived
+msgid "Archived"
+msgstr "Archivé"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_attachment_count
+msgid "Attachment Count"
+msgstr "Nombre de pièces jointes"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__author_id
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__author_id
+msgid "Author"
+msgstr "Auteur"
+
+#. module: school_course_description
+#. odoo-javascript
+#: code:addons/school_course_description/static/src/js/course_description.js:0
+#, python-format
+msgid "Changes saved"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.actions.act_window,help:school_course_description.action_course_documentation_list
+msgid "Cliquez ici pour ajouter un nouveau document"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Code"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__content
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Content"
+msgstr "Contenu"
+
+#. module: school_course_description
+#: model:ir.model,name:school_course_description.model_school_course
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__course_id
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__course_id
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+#: model_terms:ir.ui.view,arch_db:school_course_description.view_course_documentation_list
+msgid "Course"
+msgstr "Activité d'apprentissage"
+
+#. module: school_course_description
+#: model:ir.ui.menu,name:school_course_description.menu_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Course Description"
+msgstr "Description des activités"
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+msgid "Course Description -"
+msgstr "Descriptif d'activité"
+
+#. module: school_course_description
+#: model:ir.actions.act_window,name:school_course_description.action_course_documentation_list
+#: model:ir.actions.report,name:school_course_description.report_diploma_for_student
+#: model:ir.ui.menu,name:school_course_description.menu_course_documentation_list
+msgid "Course Documentation"
+msgstr "Description des activités"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__course_group_id
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Course Group"
+msgstr "Unité d'enseignement"
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Course Group Description"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.actions.report,name:school_course_description.report_course_group_description
+msgid "Course Group Documentation"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Course Group Informations"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Course Informations"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.add_description_wizard_view
+msgid "Create New"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__create_uid
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__create_date
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__credits
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Credits"
+msgstr "ECTS"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__cycle_id
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Cycle"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.individual_course_eval_tree
+msgid "Description"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.ui.menu,name:school_course_description.school_home_menu_course_desc
+msgid "Description des activités"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__display_name
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course__documentation_id
+msgid "Documentation"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course__all_documentation_count
+msgid "Documentation Count"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model,name:school_course_description.model_school_course_documentation
+msgid "Documentation about a course"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__state__draft
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: school_course_description
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__language__e
+msgid "English"
+msgstr "Anglais"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__evaluation_method
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Evaluation method"
+msgstr "Méthode d'évaluation"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__filter_authors
+msgid "Filter Authors"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_follower_ids
+msgid "Followers"
+msgstr "Abonnés"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__language__f
+msgid "French"
+msgstr "Français"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_individual_course__has_documentation
+msgid "Has Documentation"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__hours
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Hours"
+msgstr "Heures"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__id
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__id
+msgid "ID"
+msgstr "Identifiant"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_exception_icon
+msgid "Icon"
+msgstr "Icône"
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "si elle est cochée, de nouveaux messages requièrent votre attention."
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_documentation_content
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Imprimé le"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model,name:school_course_description.model_school_individual_course
+msgid "Individual Course"
+msgstr "Activité d'apprentissage individuelle"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_is_follower
+msgid "Is Follower"
+msgstr "Est un abonné"
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__language
+msgid ""
+"La langue d'enseignement et d'évaluation est en principe le français. L'obligation n'est totale que pour les masters à finalité didactique (pour lesquels une connaissance approfondie de la langue française est exigée). Des exceptions existent cependant au niveau des travaux de fin d'études, des enseignements de langues étrangères (évidemment...) et des activités d'intégration professionnelle.\n"
+"                D'après le décret paysage (article 75), «de manière générale, toute activité d'apprentissage d'un cursus de premier ou deuxième cycle peut être organisée et évaluée dans une autre langue si elle est organisée également en français; cette obligation est satisfaite pour les options ou pour les activités au choix individuel de l'étudiant, s'il existe au moins un autre choix possible d'options ou d'activités organisées en français.»\n"
+"                Pour le reste, «des activités peuvent être dispensées et évaluées dans une autre langue :\n"
+"                1° dans le premier cycle d'études, à raison d'au plus un quart des crédits;\n"
+"                2° pour les études menant au grade académique de master, sauf pour les crédits spécifiques à la finalité didactique, à raison de la moitié des crédits.»"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__language
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Language"
+msgstr "Langue"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard____last_update
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__write_uid
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__write_date
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__credits
+msgid ""
+"Le nombre de crédits correspondant à l'activité est également une information préremplie par l'administration, en se  référant au profil d'enseignement du cursus.\n"
+"             ECTS signifie European Credits Transfer System, faisant référence au processus de Bologne. Au sens du décret paysage, 1 ECTS correspond à un investissement de temps de travail complet (cours, travaux, stages, travail personnel, évaluation,...) de la part de l'étudiant d'environ 30 heures.\n"
+"             Un programme annuel de 60 crédits correspond donc en moyenne à un investissement de temps de travail complet de la part de l'étudiant d'environ 1800 heures."
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__learning_outcomes
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Learning outcomes"
+msgstr "Acquis d'apprentissage spécifiques"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__level
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Level"
+msgstr "Niveau"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__mandatory
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Mandatory"
+msgstr "Caractère obligatoire"
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.view_course_documentation_filter
+msgid "Mes descriptifs"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__method
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Method"
+msgstr "Méthode"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: school_course_description
+#: model:ir.actions.act_window,name:school_course_description.action_new_course_documentation
+msgid "New Course Documentation"
+msgstr "Nouvelle description d'activité"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.individual_course_eval_tree
+msgid "No Description"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_documentation_no_content
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_no_content
+msgid "No description found"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.view_course_documentation_filter
+msgid "Nom de l'activité"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Nombre d'Actions"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__message_has_error_counter
+msgid "Number of errors"
+msgstr "Nombre d'erreurs"
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Nombre de messages demandant une action"
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__language__o
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__schedule__o
+msgid "Other"
+msgstr "Autre"
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__partner_id
+msgid "Partner-related data of the user"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Pas de descriptif disponible."
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Period"
+msgstr "Période"
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_documentation_no_content
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_no_content
+msgid ""
+"Please contact the secretary or your teacher for more information about this"
+" activity."
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__weight
+msgid ""
+"Poids de l'évaluation de l'activité dans l'évaluation totale de l'unité. Cette pondération est définie par le tableau du règlement des études\n"
+"\n"
+"            Crédits de              Coefficient               Cote finale sur\n"
+"            l'activité              multiplicateur\n"
+"            considérée\n"
+"                1 à 3                   1                       20\n"
+"                4 à 6                   2                       40\n"
+"                7 à 10                  3                       60\n"
+"                11 à 14                 4                       80\n"
+"                15 à 19                 5                       100\n"
+"                20 et plus              6                       120\n"
+"            (Domaine de la Musique)\n"
+"                20 à 23 (DTAP)          6                       120\n"
+"                24 à 29 (DTAP)          9                       180\n"
+"                30 et plus (DTAP)       12                      240\n"
+"\n"
+"            La pondération n'est évidemment pas nécessaire si l'UE ne comprend qu'une AA...\n"
+"            Exemple:\n"
+"            •\tL'AA «banjo»vaut 23 crédits et possède donc une pondération 6 pour une cote finale d'évaluation sur 120;\n"
+"            •\tL'AA «écoute critique de la discographie consacrée au banjo» vaut 1 crédit et possède donc une pondération 1 pour une cote finale d'évaluation sur 20;\n"
+"            •\tL'UE «finalité principale» du « formation instrumentale / cordes / banjo» vaut au final 24 crédits avec une cote finale sur 140, somme des cotes des 2 AA. Cette cote finale est ensuite ramenée sur 20 pour l'encodage sur «Horizon»\n"
+"\n"
+"            Note: Il est conservé la notion de pondération de l'UE au sein du programme du cycle à fin de calcul de la moyenne d'année ou du cycle. Cette moyenne ne conserve qu'un intérêt informatif pour les décisions de réussite de certaines unités d'enseignement par le jury de cycle ou pour l'attribution des mentions en fin de cycle. La pondération n'est pas demandée dans les descriptifs d'activités, elle est prévue par l'article 96 du Règlement des Études.\n"
+"            "
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+msgid "Pre-Co Requiered"
+msgstr "Corequis et/ou Prérequis"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__pre_co_requiered
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Pre-Co requiered"
+msgstr "Pre-Co Requis"
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+msgid "Publish"
+msgstr "Publier"
+
+#. module: school_course_description
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__state__published
+msgid "Published"
+msgstr "Publié"
+
+#. module: school_course_description
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__schedule__q1
+msgid "Q1"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__schedule__q1q2
+msgid "Q1 & Q2"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields.selection,name:school_course_description.selection__school_course_documentation__schedule__q2
+msgid "Q2"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__references
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "References"
+msgstr "Références"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__partner_id
+msgid "Related Partner"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__remarks
+msgid "Remarks"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+msgid "Remarques"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+msgid "Reset to Draft"
+msgstr "Remettre en brouillon"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__schedule
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+msgid "Schedule"
+msgstr "Horaire"
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Schedule -"
+msgstr "Horaire -"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__schedule_text
+msgid "Schedule Text"
+msgstr "Détails de l'horaire"
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.view_course_documentation_filter
+msgid "Search Groups"
+msgstr "Chercher dans les groupes"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__state
+msgid "Status"
+msgstr "État"
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Teacher"
+msgstr "Enseignant"
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__staff_ids
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "Teachers"
+msgstr "Enseignants"
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Title"
+msgstr "Titre"
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.add_description_wizard_view
+msgid "Use Existing"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_add_description_wizard__documentation_id
+msgid "Use Existing Documentation"
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+msgid ""
+"Vous pouvez écrire ici vos remarques et commentaires à propose de cette "
+"fiche."
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,help:school_course_description.field_school_course_documentation__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: school_course_description
+#: model:ir.model.fields,field_description:school_course_description.field_school_course_documentation__weight
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_group_documentation_content
+msgid "Weight"
+msgstr "Poids"
+
+#. module: school_course_description
+#. odoo-javascript
+#: code:addons/school_course_description/static/src/js/course_description.js:0
+#, python-format
+msgid "You changes are saved, they are to be reviewed before being published."
+msgstr ""
+
+#. module: school_course_description
+#: model_terms:ir.ui.view,arch_db:school_course_description.course_documentation_form
+#: model_terms:ir.ui.view,arch_db:school_course_description.report_course_doc_section
+msgid "by"
+msgstr "par"

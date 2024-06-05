@@ -10,7 +10,6 @@
         "partner_contact_gender",
         "partner_contact_birthdate",
         "partner_firstname",
-        "custom_partner_fields",
     ],
     "data": [
         "templates/layouts/diploma_layout.xml",

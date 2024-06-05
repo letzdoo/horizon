@@ -74,6 +74,9 @@ class Year(models.Model):
     previous = fields.Many2one("school.year", string="Previous Year")
     next = fields.Many2one("school.year", string="Next Year")
 
+    startdate = fields.Date("Start date")
+    enddate = fields.Date("End date")
+
     @api.model_create_multi
     def create(self, vals_list):
         years = super().create(vals_list)
@@ -128,7 +131,7 @@ class Partner(models.Model):
     marial_status = fields.Selection([("M", "Maried"), ("S", "Single")])
     registration_date = fields.Date("Registration Date")
     email_personnel = fields.Char("Email personnel")
-    reg_number = fields.Char("Registration Number")
+    reg_number = fields.Char("Registration Number", size=11)
     mat_number = fields.Char("Matricule Number")
 
     student_program_ids = fields.One2many(
@@ -266,6 +269,42 @@ class Partner(models.Model):
                 ]
             )
 
+    # custom_partner_fields
+
+    second_first_name = fields.Char(string="Autre(s) prénom(s)")
+
+    # Section Titre d'acces
+    admission_exam_date = fields.Date(string="Examen d'admission")
+    access_titles_ids = fields.One2many(
+        "custom_partner_fields.access_title", "partner_id", string="Titres d'accès"
+    )
+    memoir_titles_ids = fields.One2many(
+        "custom_partner_fields.memoir_title", "partner_id", string="Titres de mémoires"
+    )
+    internships_ids = fields.One2many(
+        "custom_partner_fields.internship", "partner_id", string="Stage(s)"
+    )
+    erasmus_ids = fields.One2many(
+        "custom_partner_fields.erasmus", "partner_id", string="Erasmus"
+    )
+
+    def check_access(self):
+        # Override google_drive_folder.mixin.check_access()
+        if self.env.user._is_admin():
+            _logger.debug("check_access() : Administrator can access anyone's files")    
+            return True
+
+        current = self.env.user.partner_id
+        if current == self:
+            _logger.debug("check_access() : Partner can always access his own files")    
+            return True
+
+        if current.employee:
+            _logger.debug("check_access() : Employee can access anyone's files")    
+            return True
+        
+        _logger.debug("check_access() : No access is granted")
+        return False
 
 class Company(models.Model):
     _inherit = "res.company"
@@ -283,3 +322,74 @@ class Country(models.Model):
     nis_code = fields.Char(string="NIS-code")
 
     in_use = fields.Boolean(string="In Use")
+
+
+# custom_partner_fields
+
+
+class TitleAccess(models.Model):
+    _name = "custom_partner_fields.access_title"
+    _description = "Title Access"
+
+    name = fields.Char(
+        string="Name of the access title",
+        help="e.g.: Titre d'accès 1er cycle (art. 107)",
+    )
+    title = fields.Char(string="Intitulé")
+    establishment = fields.Char(string="Etablissement")
+    city = fields.Char(string="Ville")
+    country_id = fields.Many2one("res.country", "Pays", ondelete="restrict")
+    country = fields.Char(string="Pays (Ancien champ)", readonly=True)
+    date = fields.Date(string="Date")
+
+    partner_id = fields.Many2one("res.partner", string="Contact")
+
+    type = fields.Selection(
+        [
+            ("mastery_of_french", "Mastery of French"),
+            ("cess", "CESS"),
+            ("bachelor", "Bachelor"),
+        ],
+        string="Type",
+        tracking=True,
+    )
+
+
+class Erasmus(models.Model):
+    _name = "custom_partner_fields.erasmus"
+    _description = "Erasmus"
+
+    establishment = fields.Char(string="Etablissement")
+    city = fields.Char(string="Ville")
+    country_id = fields.Many2one("res.country", "Pays", ondelete="restrict")
+    country = fields.Char(string="Pays (Ancien champ)", readonly=True)
+
+    start_date = fields.Date(string="Date de début")
+    end_date = fields.Date(string="Date de fin")
+
+    language = fields.Char(string="Langue")
+
+    partner_id = fields.Many2one("res.partner", string="Contact")
+
+
+class Internship(models.Model):
+    _name = "custom_partner_fields.internship"
+    _description = "Internship"
+
+    establishment = fields.Char(string="Etablissement")
+    city = fields.Char(string="Ville")
+    country_id = fields.Many2one("res.country", "Pays", ondelete="restrict")
+    country = fields.Char(string="Pays (Ancien champ)", readonly=True)
+
+    start_date = fields.Date(string="Date de début")
+    end_date = fields.Date(string="Date de fin")
+
+    partner_id = fields.Many2one("res.partner", string="Contact")
+
+
+class MemoirTitle(models.Model):
+    _name = "custom_partner_fields.memoir_title"
+    _description = "Memoir Title"
+
+    name = fields.Char(string="Titre du mémoire/TFE")
+    partner_id = fields.Many2one("res.partner", string="Contact")

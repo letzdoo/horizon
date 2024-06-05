@@ -38,8 +38,13 @@ class IrActionsReport(models.Model):
     google_drive_patner_field = fields.Char(
         string="Partner property to save into",
         help="This field name is the Partner to which the Google Drive Forlder to save to.",
-    )
+    ) # WARNING TYPO "patner" !
 
+    # Disclaimer: The mention of "pa(r)tner_field" or "partner_id" is not appropriate as long as 
+    # the google_drive_folder_mixin can be added to any Model, not just to res_partner. This naming
+    # is due to the fact that res_partner has been used to build the process and still implements 
+    # this mixin by default in the present module. Thus "res_field" and "res_id" would be better terms:
+    # you can use this report class overload for any Model that implements google_drive_folder_mixin.    
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
 
         pdf_content, content_type = super(IrActionsReport, self)._render_qweb_pdf(

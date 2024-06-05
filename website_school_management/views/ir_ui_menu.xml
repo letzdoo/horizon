@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright 2024 Neodiensis
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+-->
+<odoo>
+    <!-- Horizon Home Menu - Niveau 2 -->
+    <record id="school_home_menu_administration_web" model="ir.ui.menu">
+        <field name="name">Paramètres du site Web</field>
+        <field
+            name="parent_id"
+            ref="school_management.school_home_menu_administration"
+        />
+        <field name="sequence" eval="30" />
+        <field name="action" ref="website.action_website_configuration" />
+        <field name="display_in_home_menu">True</field>
+        <field name="simulated_id" ref="website.menu_website_website_settings" />
+    </record>
+
+</odoo>

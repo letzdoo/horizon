@@ -25,11 +25,13 @@
     "website": "https://github.com/ito-invest-lu/horizon",
     "category": "School Management",
     "depends": [
+        "base",
         "mail",
         "partner_contact_gender",
         "partner_second_lastname",
         "partner_contact_birthdate",
         "partner_contact_birthplace",
+        "web_responsive",
     ],
     "init_xml": [],
     "data": [
@@ -38,6 +40,7 @@
         "views/program_view.xml",
         "views/individual_program_view.xml",
         "views/configuration_view.xml",
+        "views/ir_ui_menu.xml",
         "report/report_program.xml",
         "sequences/school_sequence.xml",
         "security/ir.model.access.csv",
@@ -49,6 +52,7 @@
         ],
         "web.assets_backend": [
             "school_management/static/src/scss/program_management.scss",
+            "school_management/static/src/xml/menu.xml",
         ],
         "web.report_assets_common": [
             "school_management/static/src/css/pure-nr.css",

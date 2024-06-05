@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 14:19+0000\n"
+"PO-Revision-Date: 2024-03-14 14:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -99,48 +101,48 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid ""
 "<span class=\"h4\">\n"
-"                                Contenu\n"
-"                            </span>"
+"                                    Contenu\n"
+"                                </span>"
 msgstr ""
 
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid ""
 "<span class=\"h4\">\n"
-"                                Méthode\n"
-"                            </span>"
+"                                    Méthode\n"
+"                                </span>"
 msgstr ""
 
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid ""
 "<span class=\"h4\">\n"
-"                                Méthode d'évaluation\n"
-"                            </span>"
+"                                    Méthode d'évaluation\n"
+"                                </span>"
 msgstr ""
 
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid ""
 "<span class=\"h4\">\n"
-"                                Pré-requis/Co-requis\n"
-"                            </span>"
+"                                    Pré-requis/Co-requis\n"
+"                                </span>"
 msgstr ""
 
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid ""
 "<span class=\"h4\">\n"
-"                                Références\n"
-"                            </span>"
+"                                    Références\n"
+"                                </span>"
 msgstr ""
 
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid ""
 "<span class=\"h4\">\n"
-"                                Résultats d'apprentissage\n"
-"                            </span>"
+"                                    Résultats d'apprentissage\n"
+"                                </span>"
 msgstr ""
 
 #. module: website_school_management
@@ -210,8 +212,18 @@ msgid "Année académique"
 msgstr ""
 
 #. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "Bonjour,"
+msgstr ""
+
+#. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
 msgid "Caractère obligatoire : OUI"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "Cet email a été envoyé automatiquement."
 msgstr ""
 
 #. module: website_school_management
@@ -290,6 +302,11 @@ msgid "Cycle Sub-type Slug"
 msgstr ""
 
 #. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Demander"
+msgstr ""
+
+#. module: website_school_management
 #: model:ir.model.fields,field_description:website_school_management.field_school_domain__slug
 #: model:ir.model.fields,field_description:website_school_management.field_school_program__domain_slug
 msgid "Domain Slug"
@@ -321,6 +338,11 @@ msgstr ""
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
 msgid "ECTS&amp;nbsp;:"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Email :"
 msgstr ""
 
 #. module: website_school_management
@@ -366,7 +388,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid ""
 "Horaire\n"
-"                                <span class=\"accented-color\">|</span>"
+"                                    <span class=\"accented-color\">|</span>"
 msgstr ""
 
 #. module: website_school_management
@@ -382,6 +404,13 @@ msgstr ""
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.program_form
 msgid "If needed for the cycle type..."
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programmes_liste
+msgid ""
+"Il existe également des programmes sur-mesure qui ne sont pas repris dans la"
+" liste ci-dessous. Vous pouvez les retrouvez"
 msgstr ""
 
 #. module: website_school_management
@@ -402,6 +431,18 @@ msgstr ""
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid "Information non disponible."
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid ""
+"La description de ce cours n'est pas disponible. Vous pouvez contacter le "
+"responsable pour lui demander de l'encoder."
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "La fiche du cours est disponible à"
 msgstr ""
 
 #. module: website_school_management
@@ -438,6 +479,11 @@ msgstr ""
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
 msgid "Nom"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Nom :"
 msgstr ""
 
 #. module: website_school_management
@@ -496,6 +542,11 @@ msgstr ""
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid "Par"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.ui.menu,name:website_school_management.school_home_menu_administration_web
+msgid "Paramètres du site Web"
 msgstr ""
 
 #. module: website_school_management
@@ -572,6 +623,11 @@ msgstr ""
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
 msgid "Pré-requis/Co-requis"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Prénom :"
 msgstr ""
 
 #. module: website_school_management
@@ -697,6 +753,11 @@ msgid "Volume horaire :"
 msgstr ""
 
 #. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "Vous pouvez recontacter cette personne via"
+msgstr ""
+
+#. module: website_school_management
 #: model:ir.model.fields,field_description:website_school_management.field_school_program__year_name
 msgid "Year Full Name"
 msgstr ""
@@ -704,6 +765,16 @@ msgstr ""
 #. module: website_school_management
 #: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
 msgid "by"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "cette adresse"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programmes_liste
+msgid "ici"
 msgstr ""
 
 #. module: website_school_management
@@ -724,6 +795,18 @@ msgstr ""
 #. module: website_school_management
 #: model:ir.model,name:website_school_management.model_school_track
 msgid "school.track"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "son adresse email"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid ""
+"vous a envoyé une demande afin d'obtenir les informations concernant le "
+"cours"
 msgstr ""
 
 #. module: website_school_management

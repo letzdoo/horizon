@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright 2024 Neodiensis
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+-->
+<odoo>
+    <!-- Horizon Home Menu - Niveau 2 -->
+    <record id="school_home_menu_rooms_online" model="ir.ui.menu">
+        <field name="name">Online Booking</field>
+        <field name="parent_id" ref="school_management.school_home_menu_rooms" />
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_website_booking" />
+        <field name="display_in_home_menu">True</field>
+        <field name="simulated_id" ref="menu_school_booking" />
+    </record>
+
+</odoo>

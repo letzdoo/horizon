@@ -470,11 +470,13 @@ class IndividualBloc(models.Model):
                     bloc.source_bloc_id.speciality_id.section_id
                 )
                 bloc.source_bloc_track_id = bloc.source_bloc_id.speciality_id.track_id
+                bloc.source_bloc_cycle_id = bloc.source_bloc_id.cycle_id
             elif bloc.program_id.speciality_id:
                 bloc.source_bloc_speciality_id = bloc.program_id.speciality_id
                 bloc.source_bloc_domain_id = bloc.program_id.speciality_id.domain_id
                 bloc.source_bloc_section_id = bloc.program_id.speciality_id.section_id
                 bloc.source_bloc_track_id = bloc.program_id.speciality_id.track_id
+                bloc.source_bloc_cycle_id = bloc.program_id.cycle_id
 
     image_1920 = fields.Binary(
         "Image", attachment=True, related="student_id.image_1920"

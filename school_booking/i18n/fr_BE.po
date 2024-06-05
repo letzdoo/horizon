@@ -1,0 +1,834 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school_booking
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 13:56+0000\n"
+"PO-Revision-Date: 2024-03-14 13:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_asset__booking_policy
+msgid ""
+" * The 'Available' available to all users.\n"
+" * The 'Preserved' only employee can book.\n"
+" * The 'Out' no one can book.\n"
+msgstr ""
+
+#. module: school_booking
+#. odoo-javascript
+#: code:addons/school_booking/static/src/js/booking_calendar.js:0
+#, python-format
+msgid " [Me]"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__abandonned_date
+msgid "Abandonned Date"
+msgstr "Date d'abandon"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_needaction
+msgid "Action Needed"
+msgstr "A besoin d'une action"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__active
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__active
+msgid "Active"
+msgstr "Actif"
+
+#. module: school_booking
+#. odoo-javascript
+#: code:addons/school_booking/static/src/js/booking_calendar.js:0
+#, python-format
+msgid "Add Asset Calendar"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.actions.act_window,name:school_booking.action_booking_tree
+#: model:ir.ui.menu,name:school_booking.menu_booking_booking_tree
+msgid "All Bookings"
+msgstr "Toutes les réservations"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__asset_id
+#: model_terms:ir.ui.view,arch_db:school_booking.asset_form
+msgid "Asset"
+msgstr "Actif"
+
+#. module: school_booking
+#: model:ir.actions.act_window,name:school_booking.school_asset_category_action
+#: model:ir.ui.menu,name:school_booking.menu_asset_category
+#: model_terms:ir.ui.view,arch_db:school_booking.school_asset_category_form_view
+msgid "Asset Categories"
+msgstr "Catégories d'actifs"
+
+#. module: school_booking
+#: model:ir.model,name:school_booking.model_school_asset_category
+msgid "Asset Category"
+msgstr "Catégorie d'actifs"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_tag__name
+msgid "Asset Tag"
+msgstr "Tag sur actif"
+
+#. module: school_booking
+#: model:ir.model,name:school_booking.model_school_asset_tag
+msgid "Asset Tags"
+msgstr "Tags sur actif"
+
+#. module: school_booking
+#: model:ir.actions.act_window,name:school_booking.action_asset_type_tree
+#: model:ir.model,name:school_booking.model_school_asset_type
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__asset_type_id
+#: model:ir.ui.menu,name:school_booking.menu_asset_type_tree
+#: model_terms:ir.ui.view,arch_db:school_booking.asset_type_form
+msgid "Asset Type"
+msgstr "Type d'actif"
+
+#. module: school_booking
+#: model:ir.actions.act_window,name:school_booking.action_asset_tree
+#: model:ir.model.fields,field_description:school_booking.field_calendar_event__asset_ids
+#: model:ir.ui.menu,name:school_booking.menu_asset_tree
+#: model:ir.ui.menu,name:school_booking.menu_assets
+msgid "Assets"
+msgstr "Actifs"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_attachment_count
+msgid "Attachment Count"
+msgstr "Nombre de pièces jointes"
+
+#. module: school_booking
+#: model:ir.model.fields.selection,name:school_booking.selection__school_asset__booking_policy__available
+msgid "Available"
+msgstr "Disponible"
+
+#. module: school_booking
+#: model:ir.ui.menu,name:school_booking.menu_main_booking
+msgid "Booking"
+msgstr "Gestion des Réservations"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__booking_policy
+msgid "Booking policy"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model,name:school_booking.model_school_building
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__building_id
+#: model_terms:ir.ui.view,arch_db:school_booking.building_form
+msgid "Building"
+msgstr "Bâtiment"
+
+#. module: school_booking
+#: model:ir.actions.act_window,name:school_booking.action_building_tree
+#: model:ir.ui.menu,name:school_booking.menu_building_tree
+msgid "Buildings"
+msgstr "Bâtiments"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__calendar_id
+#: model_terms:ir.ui.view,arch_db:school_booking.calendar_form
+msgid "Calendar"
+msgstr "Calendrier"
+
+#. module: school_booking
+#: model:ir.model,name:school_booking.model_calendar_event
+msgid "Calendar Event"
+msgstr ""
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.school_booking_wizard_view
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.school_asset_category_action
+msgid ""
+"Categories are used to browse your asset through the\n"
+"                touchscreen interface."
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__category_id
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__category_id
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__child_ids
+msgid "Children Categories"
+msgstr "Catégorie enfant"
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_asset_tree
+msgid "Click to add a asset."
+msgstr ""
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_asset_type_tree
+msgid "Click to add a asset_type."
+msgstr ""
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_booking_tree
+msgid "Click to add a booking."
+msgstr ""
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_building_tree
+msgid "Click to add a building."
+msgstr ""
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_booking_man_tree
+#: model_terms:ir.actions.act_window,help:school_booking.action_booking_stud_tree
+#: model_terms:ir.actions.act_window,help:school_booking.action_booking_teach_tree
+msgid "Click to add a recurring booking."
+msgstr "Cliquez pour ajouter une réservation récurrente"
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.school_asset_category_action
+msgid "Click to define a new category."
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_tag__color
+msgid "Color Index"
+msgstr "Couleur"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__create_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__create_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_tag__create_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__create_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_building__create_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__create_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__create_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__create_date
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__create_date
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_tag__create_date
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__create_date
+#: model:ir.model.fields,field_description:school_booking.field_school_building__create_date
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__create_date
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__create_date
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_year__calendar_id
+msgid "Default Calendar"
+msgstr "Calendrier par défaut"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__description
+#: model_terms:ir.ui.view,arch_db:school_booking.asset_form
+msgid "Description"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__display_name
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__display_name
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_tag__display_name
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__display_name
+#: model:ir.model.fields,field_description:school_booking.field_school_building__display_name
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__display_name
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__display_name
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: school_booking
+#. odoo-python
+#: code:addons/school_booking/models/school_asset.py:0
+#, python-format
+msgid "Error ! You cannot create recursive categories."
+msgstr ""
+
+#. module: school_booking
+#. odoo-javascript
+#: code:addons/school_booking/static/src/js/booking_calendar.js:0
+#, python-format
+msgid "Everybody's calendars"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.actions.act_window,name:school_booking.action_school_booking_wizard_view
+#: model:ir.ui.menu,name:school_booking.menu_school_booking_wizard
+#: model_terms:ir.ui.view,arch_db:school_booking.school_booking_wizard_view
+msgid "Find a room"
+msgstr "Trouver un local"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_follower_ids
+msgid "Followers"
+msgstr "Abonnés"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__friday
+msgid "Friday"
+msgstr "Vendredi"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__friday_from
+#: model:ir.model.fields,field_description:school_booking.field_school_building__friday_to
+msgid "Friday From"
+msgstr "Vendredi de"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__from_date
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__to_date
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__from_date
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__to_date
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard__from_date
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard__to_date
+msgid "From Date"
+msgstr "De"
+
+#. module: school_booking
+#: model:ir.ui.menu,name:school_booking.school_home_menu_rooms_booking
+#: model:res.groups,name:school_booking.group_booking_manager
+msgid "Gestion des réservations"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_asset_category__sequence
+msgid "Gives the sequence order when displaying a list of asset categories."
+msgstr "Donner une séquence pour ordonner les catégories."
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__has_responsible
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__has_responsible
+msgid "Has a responsible"
+msgstr "A un responsible"
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_asset_type_tree
+msgid "Horizon helps you easily track your asset_types."
+msgstr "Horizon vous aide à gérer vos types d'actifs."
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_asset_tree
+msgid "Horizon helps you easily track your assets."
+msgstr "Horizon vous aide à gérer vos actifs."
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_booking_tree
+msgid "Horizon helps you easily track your bookings."
+msgstr "Horizon vous aide à gérer vos réservations."
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_building_tree
+msgid "Horizon helps you easily track your buildings."
+msgstr "Horizon vous aide à gérer vos bâtiments."
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.action_booking_man_tree
+#: model_terms:ir.actions.act_window,help:school_booking.action_booking_stud_tree
+#: model_terms:ir.actions.act_window,help:school_booking.action_booking_teach_tree
+msgid "Horizon helps you easily track your recurring bookings."
+msgstr "Horizon vous aide à gérer vos réservations récurrentes."
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__id
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__id
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_tag__id
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__id
+#: model:ir.model.fields,field_description:school_booking.field_school_building__id
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__id
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__id
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard__id
+msgid "ID"
+msgstr "Identifiant"
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_asset__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "si elle est cochée, de nouveaux messages requièrent votre attention."
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_asset__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_calendar_leave__category_id
+msgid "If set, the leave is only for the asset of this category."
+msgstr "Si coché, uniquement pour cette catégories d'actifs."
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_calendar_leave__asset_id
+msgid "If set, the leave is only for the asset."
+msgstr "Si coché, uniquement pour cet actif."
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_calendar_leave__partner_id
+msgid "If set, the leave is only for the specified partner."
+msgstr "Si coché, uniquement pour ce partenaire (étudiant, enseignant,...)"
+
+#. module: school_booking
+#: model_terms:ir.actions.act_window,help:school_booking.school_asset_category_action
+msgid ""
+"If you put a photo on the category, the layout of the\n"
+"                touchscreen interface will automatically. We suggest not to put\n"
+"                a photo on categories for small (1024x768) screens."
+msgstr ""
+"Vous pouvez mettre une photo qui sera présentée sur l'interface "
+"“Touchscreen”."
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__image_1920
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__image_1920
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__image_1920
+#: model:ir.model.fields,field_description:school_booking.field_school_building__image_1920
+msgid "Image"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__image_1024
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__image_1024
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__image_1024
+#: model:ir.model.fields,field_description:school_booking.field_school_building__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__image_128
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__image_128
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__image_128
+#: model:ir.model.fields,field_description:school_booking.field_school_building__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__image_256
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__image_256
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__image_256
+#: model:ir.model.fields,field_description:school_booking.field_school_building__image_256
+msgid "Image 256"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__image_512
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__image_512
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__image_512
+#: model:ir.model.fields,field_description:school_booking.field_school_building__image_512
+msgid "Image 512"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_is_follower
+msgid "Is Follower"
+msgstr "Est un abonné"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__is_leaf
+msgid "Is Leaf"
+msgstr "Est une feuille"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__is_room
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__is_room
+msgid "Is a room"
+msgstr "Est un local"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__linked_to_room
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__linked_to_room
+msgid "Is linked to a room"
+msgstr "Est lié à un local"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset____last_update
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category____last_update
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_tag____last_update
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type____last_update
+#: model:ir.model.fields,field_description:school_booking.field_school_building____last_update
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar____last_update
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave____last_update
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__write_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__write_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_tag__write_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__write_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_building__write_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__write_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__write_uid
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__write_date
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__write_date
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_tag__write_date
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__write_date
+#: model:ir.model.fields,field_description:school_booking.field_school_building__write_date
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__write_date
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__write_date
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__leave_ids
+msgid "Leaves"
+msgstr "Congés"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__room_id
+msgid "Linked Room"
+msgstr "Local lié"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__location
+#: model_terms:ir.ui.view,arch_db:school_booking.building_form
+msgid "Location"
+msgstr "Local"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_calendar_event__main_categ_id
+msgid "Main Categ"
+msgstr "Identifiant de catégorie principale"
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_booking_filter
+msgid "Management Booking"
+msgstr "Réservation des administrateurs"
+
+#. module: school_booking
+#: model:ir.actions.act_window,name:school_booking.action_booking_man_tree
+#: model:ir.ui.menu,name:school_booking.menu_booking_man_tree
+msgid "Management Bookings"
+msgstr "Réservations Direction"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__monday
+msgid "Monday"
+msgstr "Lundi"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__monday_from
+#: model:ir.model.fields,field_description:school_booking.field_school_building__monday_to
+msgid "Monday From"
+msgstr "Lundi de"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__name
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__name
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__name
+#: model:ir.model.fields,field_description:school_booking.field_school_building__name
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__name
+#: model_terms:ir.ui.view,arch_db:school_booking.asset_form
+#: model_terms:ir.ui.view,arch_db:school_booking.asset_type_form
+#: model_terms:ir.ui.view,arch_db:school_booking.building_form
+#: model_terms:ir.ui.view,arch_db:school_booking.calendar_form
+msgid "Name"
+msgstr "Nom"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Nombre d'Actions"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__message_has_error_counter
+msgid "Number of errors"
+msgstr "Nombre d'erreurs"
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_asset__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Nombre de messages demandant une action"
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_asset__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields.selection,name:school_booking.selection__school_asset__booking_policy__out
+msgid "Out"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__parent_id
+msgid "Parent Category"
+msgstr "Catégorie mère"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar_leave__partner_id
+msgid "Partner"
+msgstr "Partenaire"
+
+#. module: school_booking
+#: model:ir.model.fields.selection,name:school_booking.selection__school_asset__booking_policy__preserved
+msgid "Preserved"
+msgstr ""
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_booking_filter
+msgid "Recurring"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__require_validation
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_type__require_validation
+msgid "Require validation"
+msgstr "Demande une validation"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__responsible_id
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_calendar_event__room_id
+msgid "Room"
+msgstr "Local"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__saturday
+msgid "Saturday"
+msgstr "Samedi"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__saturday_from
+#: model:ir.model.fields,field_description:school_booking.field_school_building__saturday_to
+msgid "Saturday From"
+msgstr "Samedi de"
+
+#. module: school_booking
+#: model:ir.model,name:school_booking.model_school_asset
+msgid "School Asset"
+msgstr "Actif"
+
+#. module: school_booking
+#: model:ir.model,name:school_booking.model_school_school_booking_wizard
+msgid "School Booking Wizard"
+msgstr ""
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_asset_filter
+msgid "Search Asset"
+msgstr ""
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_asset_type_filter
+msgid "Search Asset Type"
+msgstr "Recherche un type d'actif"
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_booking_filter
+msgid "Search Booking"
+msgstr "Rechercher une réservation"
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_building_filter
+msgid "Search Building"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_school_booking_wizard__room_id
+msgid "Selected Room"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__sequence
+#: model:ir.model.fields,field_description:school_booking.field_school_asset_category__sequence
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__short_name
+msgid "Short Name"
+msgstr "Short name"
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_booking_filter
+msgid "Student Booking"
+msgstr "Réservation étudiante"
+
+#. module: school_booking
+#: model:ir.actions.act_window,name:school_booking.action_booking_stud_tree
+#: model:ir.ui.menu,name:school_booking.menu_booking_rec_tree
+msgid "Student Bookings"
+msgstr "Réservations d'étudiants"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__sunday
+msgid "Sunday"
+msgstr "Dimanche"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__sunday_from
+#: model:ir.model.fields,field_description:school_booking.field_school_building__sunday_to
+msgid "Sunday From"
+msgstr "Dimanche de"
+
+#. module: school_booking
+#: model:ir.model.constraint,message:school_booking.constraint_school_asset_tag_name_uniq
+msgid "Tag name already exists !"
+msgstr "Ce nom d'étiquette existe déjà !"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__tag_ids
+msgid "Tags"
+msgstr "Étiquettes"
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_booking_filter
+msgid "Teacher Booking"
+msgstr "Réservation - enseignant"
+
+#. module: school_booking
+#: model:ir.actions.act_window,name:school_booking.action_booking_teach_tree
+#: model:ir.ui.menu,name:school_booking.menu_booking_teach_tree
+msgid "Teacher Bookings"
+msgstr "Réservations Enseignants"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__thursday
+msgid "Thursday"
+msgstr "Jeudi"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__thursday_from
+#: model:ir.model.fields,field_description:school_booking.field_school_building__thursday_to
+msgid "Thursday From"
+msgstr "Jeudi de"
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_booking_filter
+msgid "Today"
+msgstr "Aujourd'hui"
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.view_booking_filter
+msgid "Tomorrow"
+msgstr "Demain"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__tuesday
+msgid "Tuesday"
+msgstr "mardi"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__tuesday_from
+#: model:ir.model.fields,field_description:school_booking.field_school_building__tuesday_to
+msgid "Tuesday From"
+msgstr "Mardi de"
+
+#. module: school_booking
+#: model:ir.model.constraint,message:school_booking.constraint_school_asset_type_name_uniq
+msgid "Type name already exists !"
+msgstr ""
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.school_booking_wizard_view
+msgid "Validate"
+msgstr "Valider"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_asset__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,help:school_booking.field_school_asset__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__wednesday
+msgid "Wednesday"
+msgstr "Mercredi"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_building__wednesday_from
+#: model:ir.model.fields,field_description:school_booking.field_school_building__wednesday_to
+msgid "Wednesday From"
+msgstr "Mercredi de"
+
+#. module: school_booking
+#: model:ir.model.fields,field_description:school_booking.field_school_calendar__year_id
+msgid "Year"
+msgstr "Année académique"
+
+#. module: school_booking
+#. odoo-python
+#: code:addons/school_booking/models/school_booking.py:0
+#, python-format
+msgid "You cannot book in the past."
+msgstr ""
+
+#. module: school_booking
+#: model:ir.ui.menu,name:school_booking.menu_booking_tree
+msgid "menu_booking_tree"
+msgstr "Toutes les réservations"
+
+#. module: school_booking
+#: model_terms:ir.ui.view,arch_db:school_booking.school_booking_wizard_view
+msgid "or"
+msgstr "ou"
+
+#. module: school_booking
+#: model:ir.model,name:school_booking.model_school_calendar
+msgid "school.calendar"
+msgstr "Calendrier"
+
+#. module: school_booking
+#: model:ir.model,name:school_booking.model_school_calendar_leave
+msgid "school.calendar.leave"
+msgstr "Calendrier d'absence"
+
+#. module: school_booking
+#: model:ir.model,name:school_booking.model_school_year
+msgid "school.year"
+msgstr "Année académique"

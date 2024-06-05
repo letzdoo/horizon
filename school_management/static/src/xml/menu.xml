@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2024 Neodiensis
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<templates>
+    <t t-inherit="web_responsive.AppsMenu" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('dropdown-menu-custom')]/*[1]" position="before">
+            <div class="d-block mb-4 w-100 container">
+                <h1
+                    class="text-center mt-5 mb-2"
+                >Horizon v.3.0</h1><!-- TODO Paramètre global pour la version ? -->
+                <p class="text-end mb-4"><a href="/">Revenir vers le site Web</a></p>
+                <t t-set="apps" t-value="menuService.getApps()" />
+                <t
+                    t-foreach="apps"
+                    t-as="app"
+                    t-key="app.id"
+                    t-if="app.displayInHomeMenu"
+                >
+                    <h2 t-esc="app.name" class="mb-5" />
+                    <div class="row">
+                        <t
+                            t-set="apptree"
+                            t-value="menuService.getMenuAsTree(app.id)"
+                        />
+                        <t
+                            t-foreach="apptree.childrenTree"
+                            t-as="l1_submenu"
+                            t-key="l1_submenu.id"
+                            t-if="l1_submenu.displayInHomeMenu"
+                        >
+                            <div class="col-12 col-md-4">
+                                <div class="school-menu-block">
+                                    <h3 t-esc="l1_submenu.name" />
+                                    <!--
+                                    <ul t-foreach="Object.entries(l1_submenu)" t-as="value" t-key="key">
+                                        <li><span t-esc="value[0]"/> : <span t-esc="value[1]"/></li>
+                                    </ul>
+                                    -->
+                                    <ul>
+                                        <t
+                                            t-foreach="l1_submenu.childrenTree"
+                                            t-as="l2_submenu"
+                                            t-key="l2_submenu.id"
+                                            t-if="l2_submenu.displayInHomeMenu"
+                                        >
+                                            <t
+                                                t-set="href"
+                                                t-value="'#menu_id='+l2_submenu.simulatedMenuID"
+                                            />
+                                            <t t-if="l2_submenu.actionID">
+                                                <t
+                                                    t-set="href"
+                                                    t-value="'#menu_id='+l2_submenu.simulatedMenuID+'&amp;action_id='+l2_submenu.actionID"
+                                                />
+                                            </t>
+                                            <li><a t-att-href="href"><t
+                                                        t-esc="l2_submenu.name"
+                                                    /></a></li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+                <hr class="my-5" />
+                <h2>Menu classique Odoo</h2>
+            </div>
+        </xpath>
+    </t>
+</templates>

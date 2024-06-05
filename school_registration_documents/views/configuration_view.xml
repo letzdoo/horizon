@@ -107,5 +107,31 @@
         sequence="10"
     />
 
+    <record id="view_official_document_filter" model="ir.ui.view">
+      <field name="name">official_document.select</field>
+      <field name="model">school.official_document</field>
+      <field name="arch" type="xml">
+        <search string="Search Official Document">
+          <field
+                    name="name"
+                    string="Nom"
+                    filter_domain="[('name','ilike',self)]"
+                />
+            <field
+                    name="student_id"
+                />
+          <filter name="is_available" string="Demandé" domain="[('is_available','=',True)]" />
+        </search>
+      </field>
+    </record>
+
+    <record id="action_official_document_form" model="ir.actions.act_window">
+      <field name="name">Official Documents</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">school.official_document</field>
+      <field name="view_mode">tree,form</field>
+      <field name="search_view_id" ref="view_official_document_filter" />
+    </record>
+
 
 </odoo>

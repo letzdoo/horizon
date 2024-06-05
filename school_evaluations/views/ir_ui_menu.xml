@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright 2024 Neodiensis
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+-->
+<odoo>
+    <!-- Horizon Home Menu - Niveau 2 -->
+    <record id="school_home_menu_students_evaluations" model="ir.ui.menu">
+        <field name="name">Gestion des évaluations</field>
+        <field name="parent_id" ref="school_management.school_home_menu_students" />
+        <field name="sequence" eval="40" />
+        <field name="action" ref="action_individual_course_form" />
+        <field name="display_in_home_menu">True</field>
+        <field name="simulated_id" ref="menu_individual_course_form" />
+    </record>
+</odoo>

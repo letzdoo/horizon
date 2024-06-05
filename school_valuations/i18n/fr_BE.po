@@ -1,0 +1,397 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school_valuations
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 14:14+0000\n"
+"PO-Revision-Date: 2024-03-14 14:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: school_valuations
+#: model:ir.model.fields,help:school_valuations.field_school_valuation_followup__state
+msgid ""
+" * The 'Draft' status is used when course group is only plan.\n"
+" * The 'Irregular' status is used when course group is in an irregular program.\n"
+" * The 'In Progress' status is used when results are not confirmed yet.\n"
+" * The 'Confirmed' status is when restults are confirmed.\n"
+" * The 'Success' status is when delibration has confirmed success.\n"
+" * The 'Failed' status is when delibration has confirmed failure.\n"
+" * The 'Rejected' status is used when the course group is rejected for valuation.\n"
+" * The 'Candidate' status is used when the course group is candidate for valuation.\n"
+" * The 'Confirmed' status is used when the course group is confirmed for valuation.\n"
+" * The 'Valuated' status is used when the course group is confirmed for valuation."
+msgstr ""
+
+#. module: school_valuations
+#: model:mail.template,body_html:school_valuations.email_template_valuation_teacher
+msgid ""
+"<div style=\"font-family: 'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"                <p>Bonjour <t t-out=\"object.responsible_id.name\"/>,</p>\n"
+"                <br/>\n"
+"                <p>L'étudiant <t t-out=\"object.student_id.name\"/> a demadné la valorisation de l'unité <t t-out=\"object.name\"/> dont vous êtes le responsable</p>\n"
+"                <br/>\n"
+"                <p>Merci de vous connecter à Horizon pour analyser la demande et prendre position : .</p>\n"
+"                <br/>\n"
+"            </div>\n"
+"        "
+msgstr ""
+"<div style=\"font-family:'Lucida Grande', Ubuntu, Arial, Verdana, sans-serif;font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"                <p>Bonjour <t t-out=\"object.responsible_id.name\"/>,\n"
+"                </p><br/>\n"
+"                <p>L'étudiant <t t-out=\"object.student_id.name\"/> a demandé la valorisation de l'unité <t t-out=\"object.name\"/> dont vous êtes le responsable </p><br/>\n"
+"                <p>Merci de vous connecter à Horizon pour analyser la demande et prendre position :</p><p><br/></p><a class=\"btn btn-primary\" target=\"_blank\" t-attf-href=\"{{ object.get_base_url() }}/web#id={{ object.id }}&amp;action=793&amp;model=school.valuation_followup&amp;view_type=form\">Accéder à la valorisation</a><p>\n"
+"                </p><br/>Merci</div>\n"
+"        "
+
+#. module: school_valuations
+#: model:ir.model.fields.selection,name:school_valuations.selection__school_valuation_followup__responsible_decision__accept
+msgid "Accepted"
+msgstr "Accepté"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__active
+msgid "Active"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__administration_comments
+msgid "Administration Comments"
+msgstr "Commentaire de l'administration\n"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.view_valuation_filter
+msgid "Archived"
+msgstr "Archivé"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_attachment_count
+msgid "Attachment Count"
+msgstr "# Documents attachés"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__attachment_ids
+msgid "Attachments"
+msgstr "Documents attachés"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.valuation_form
+msgid "Check"
+msgstr "Est contrôlé"
+
+#. module: school_valuations
+#: model_terms:ir.actions.act_window,help:school_valuations.action_valuation_form
+msgid "Click to add a Valuation."
+msgstr ""
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.valuation_form
+msgid "Confirm valuation"
+msgstr "Confirmer"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: school_valuations
+#: model:mail.template,subject:school_valuations.email_template_valuation_teacher
+msgid "Demande de valorisation d'une unité d'enseignement"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.view_valuation_filter
+msgid "Draft"
+msgstr "Brouillon"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.view_valuation_filter
+msgid "Group By"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__id
+msgid "ID"
+msgstr "Identifiant"
+
+#. module: school_valuations
+#: model:ir.model.fields,help:school_valuations.field_school_valuation_followup__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,help:school_valuations.field_school_valuation_followup__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__image_128
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__image_1920
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__image_512
+msgid "Image"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model,name:school_valuations.model_school_individual_course_group
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__individual_course_group_id
+msgid "Individual Course Group"
+msgstr "Unité d'enseignement individuelle"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__program_id
+msgid "Individual Program"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.view_valuation_filter
+msgid "Mes valorisations"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__name
+msgid "Name"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,help:school_valuations.field_school_valuation_followup__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,help:school_valuations.field_school_valuation_followup__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: school_valuations
+#: model_terms:ir.actions.act_window,help:school_valuations.action_valuation_form
+msgid "Odoo helps you easily track all activities related to a Valuation."
+msgstr ""
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.view_valuation_filter
+msgid "Published"
+msgstr "Publié"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.valuation_form
+msgid "Reject"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields.selection,name:school_valuations.selection__school_valuation_followup__responsible_decision__reject
+msgid "Rejected"
+msgstr "Rejeté"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.valuation_form
+msgid "Remarques administratives"
+msgstr ""
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.valuation_form
+msgid "Remarques du responsable d'unité"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__responsible_id
+#: model_terms:ir.ui.view,arch_db:school_valuations.view_valuation_filter
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__responsible_comments
+msgid "Responsible Comments"
+msgstr "Commentaire du responsable"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__responsible_decision
+msgid "Responsible Decision"
+msgstr "Décision du responsable"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__responsible_uid
+msgid "Responsible Uid"
+msgstr "Identifiant du responsable"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.view_valuation_filter
+msgid "Search Valuation"
+msgstr "Rechercher une valorisation"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__state
+msgid "Status"
+msgstr "Etat"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__student_id
+#: model_terms:ir.ui.view,arch_db:school_valuations.view_valuation_filter
+msgid "Student"
+msgstr "Etudiant"
+
+#. module: school_valuations
+#: model:ir.model.fields,help:school_valuations.field_school_valuation_followup__active
+msgid ""
+"The active field allows you to hide the course group without removing it."
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__title
+msgid "Title"
+msgstr "Titre"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.valuation_form
+msgid "To candidate"
+msgstr "En candidat"
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__uid
+msgid "UID"
+msgstr "Identifiant unique"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.valuation_form
+msgid "Valuate"
+msgstr "Valoriser"
+
+#. module: school_valuations
+#: model:ir.model.fields.selection,name:school_valuations.selection__school_valuation_followup__valuation_type__c
+msgid "Valuated based on credits"
+msgstr "Valorisation des crédits dans l’enseignement supérieur"
+
+#. module: school_valuations
+#: model:ir.model.fields.selection,name:school_valuations.selection__school_valuation_followup__valuation_type__a
+msgid "Valuated based on experience"
+msgstr "Valorisation sur base des acquis de l’expérience"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.valuation_form
+msgid "Valuation"
+msgstr "Valorisation"
+
+#. module: school_valuations
+#: model:mail.template,name:school_valuations.email_template_valuation_teacher
+msgid "Valuation - Teacher Mail"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model,name:school_valuations.model_school_valuation_followup
+#: model:ir.model.fields,field_description:school_valuations.field_school_individual_course_group__valuation_followup
+msgid "Valuation Followup"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__valuation_type
+msgid "Valuation Type"
+msgstr "Type de valorisation"
+
+#. module: school_valuations
+#: model:ir.actions.act_window,name:school_valuations.action_valuation_form
+#: model:ir.ui.menu,name:school_valuations.menu_valuation_form
+msgid "Valuations"
+msgstr "Valorisations"
+
+#. module: school_valuations
+#: model_terms:ir.ui.view,arch_db:school_valuations.valuation_form
+msgid ""
+"Vous pouvez écrire ici vos remarques et commentaires à propose de cette "
+"valorisation."
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,field_description:school_valuations.field_school_valuation_followup__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model.fields,help:school_valuations.field_school_valuation_followup__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: school_valuations
+#: model:ir.model,name:school_valuations.model_school_individual_course_summary
+msgid "school.individual_course_summary"
+msgstr ""

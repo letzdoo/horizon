@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 13:39+0000\n"
+"PO-Revision-Date: 2024-03-14 13:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -36,6 +38,18 @@ msgid "Course Group"
 msgstr ""
 
 #. module: school_prerequisits
+#: model:ir.model.fields,field_description:school_prerequisits.field_school_corequisit__name
+#: model:ir.model.fields,field_description:school_prerequisits.field_school_prerequisit__name
+msgid "Course Group Name"
+msgstr ""
+
+#. module: school_prerequisits
+#: model:ir.model.fields,field_description:school_prerequisits.field_school_corequisit__uid
+#: model:ir.model.fields,field_description:school_prerequisits.field_school_prerequisit__uid
+msgid "Course Group UID"
+msgstr ""
+
+#. module: school_prerequisits
 #: model:ir.model,name:school_prerequisits.model_school_course_group
 msgid "Courses Group"
 msgstr ""
@@ -50,6 +64,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:school_prerequisits.field_school_corequisit__create_date
 #: model:ir.model.fields,field_description:school_prerequisits.field_school_prerequisit__create_date
 msgid "Created on"
+msgstr ""
+
+#. module: school_prerequisits
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_corequisit_filter
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_prerequisit_filter
+msgid "Current Year"
 msgstr ""
 
 #. module: school_prerequisits
@@ -88,8 +108,20 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: school_prerequisits
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_corequisit_filter
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_prerequisit_filter
+msgid "Musique"
+msgstr ""
+
+#. module: school_prerequisits
 #: model_terms:ir.ui.view,arch_db:school_prerequisits.course_prerequisit_form
 msgid "Name"
+msgstr ""
+
+#. module: school_prerequisits
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_corequisit_filter
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_prerequisit_filter
+msgid "Next Year"
 msgstr ""
 
 #. module: school_prerequisits
@@ -104,6 +136,28 @@ msgstr ""
 #: model:ir.ui.menu,name:school_prerequisits.menu_prerequisit_list
 #: model_terms:ir.ui.view,arch_db:school_prerequisits.course_prerequisit_form
 msgid "Prerequisits"
+msgstr ""
+
+#. module: school_prerequisits
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_corequisit_filter
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_prerequisit_filter
+msgid "Previous Year"
+msgstr ""
+
+#. module: school_prerequisits
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_corequisit_filter
+msgid "Search Corequisit"
+msgstr ""
+
+#. module: school_prerequisits
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_prerequisit_filter
+msgid "Search Prerequisit"
+msgstr ""
+
+#. module: school_prerequisits
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_corequisit_filter
+#: model_terms:ir.ui.view,arch_db:school_prerequisits.view_prerequisit_filter
+msgid "Théâtre"
 msgstr ""
 
 #. module: school_prerequisits

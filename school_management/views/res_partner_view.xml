@@ -39,6 +39,8 @@
                         Archiver
                     </button>
                 </xpath>
+                <xpath expr="//button[@name='schedule_meeting']" position="replace">
+                </xpath>
                 <xpath expr="//field[contains(@name, 'image_1920')]" position="replace">
                     <field
                     name="image_1920"
@@ -95,6 +97,10 @@
                                 <field name='employee' />
                                 <field name='lastname' />
             					<field name='firstname' />
+                                <field
+                                name="second_first_name"
+                                string="Autre(s) prénom(s)"
+                            />
                                 <field
                                 name="function"
                                 placeholder="e.g. Sales Director"
@@ -332,7 +338,7 @@
                                 <group>
                                     <group string="Other Info">
                                         <field name='email_personnel' />
-                                        <field name="phone" widget="phone" />
+                                        <!-- <field name="phone" widget="phone" /> -->
                                         <field name="mobile" widget="phone" />
                                     </group>
                                 </group>
@@ -348,7 +354,15 @@
             				    <field name="title" options="{&quot;no_open&quot;: True}" />
             				    <field name="lang" />
             				    <field name="gender" />
-                                <field name="nationality_ids" widget="many2many_tags" />
+                                <field
+                                    name="nationality_ids"
+                                    widget="many2many_tags"
+                                    options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+                                />
+                                <field
+                                    name="birthcountry"
+                                    options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+                                />
             				  </group>
             				  <group>
                                 <field name="birthplace" />
@@ -358,10 +372,141 @@
             				  </group>
             				</group>
             			</page>
+                        <page
+                        name="access_titles_page"
+                        string="Titres d'accès"
+                        groups="school_management.group_employee"
+                    >
+                            <group>
+                                <field name="admission_exam_date" />
+                                <field name="access_titles_ids" mode="tree">
+                                    <tree>
+                                        <field name="name" />
+                                        <field name="title" />
+                                        <field name="establishment" />
+                                        <field name="city" />
+                                        <field name="country_id" />
+                                        <field name="date" />
+                                        <field name="type" />
+                                        <field name="country" />
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+
+                        <page
+                        name="erasmus_page"
+                        string="Divers"
+                        groups="school_management.group_employee"
+                    >
+                            <group>
+                                <field name="memoir_titles_ids">
+                                    <tree>
+                                        <field name="name" />
+                                    </tree>
+                                </field>
+                                <field name="internships_ids" mode="tree">
+                                    <tree>
+                                        <field name="establishment" />
+                                        <field name="city" />
+                                        <field name="country_id" />
+                                        <field name="start_date" />
+                                        <field name="end_date" />
+                                        <field name="country" />
+                                    </tree>
+                                </field>
+                                <field name="erasmus_ids" mode="tree">
+                                    <tree>
+                                        <field name="establishment" />
+                                        <field name="city" />
+                                        <field name="country_id" />
+                                        <field name="start_date" />
+                                        <field name="end_date" />
+                                        <field name="language" />
+                                        <field name="country" />
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
             		</notebook>
                 </xpath>
             </field>
         </record>
+
+        <!-- Vue du form d'un titre d'accèss -->
+        <record id="view_access_title_form" model="ir.ui.view">
+            <field name="name">custom_partner_fields.access_title.form</field>
+            <field name="model">custom_partner_fields.access_title</field>
+            <field eval="8" name="priority" />
+            <field name="arch" type="xml">
+                <form string="Titre d'accès">
+                    <sheet>
+                    <group col="2">
+                        <field name="name" />
+                        <field name="title" />
+                        <field name="establishment" />
+                        <field name="city" />
+                        <field
+                            name="country_id"
+                            options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+                        />
+                        <field name="date" />
+                        <field name="type" />
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vue du form d'un erasmus -->
+        <record id="view_erasmus_form" model="ir.ui.view">
+            <field name="name">custom_partner_fields.erasmus.form</field>
+            <field name="model">custom_partner_fields.erasmus</field>
+            <field eval="8" name="priority" />
+            <field name="arch" type="xml">
+                <form string="Erasmus">
+                    <sheet>
+                    <group col="2">
+                        <field name="establishment" />
+                        <field name="city" />
+                        <field
+                            name="country_id"
+                            options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+                        />
+                        <field name="start_date" />
+                        <field name="end_date" />
+                        <field name="language" />
+                        <field name="country" />
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vue du form d'un stage -->
+        <record id="view_internship_form" model="ir.ui.view">
+            <field name="name">custom_partner_fields.internship.form</field>
+            <field name="model">custom_partner_fields.internship</field>
+            <field eval="8" name="priority" />
+            <field name="arch" type="xml">
+                <form string="Stage">
+                    <sheet>
+                    <group col="2">
+                        <field name="establishment" />
+                        <field name="city" />
+                        <field
+                            name="country_id"
+                            options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+                        />
+                        <field name="start_date" />
+                        <field name="end_date" />
+                        <field name="country" />
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
 
         <!-- Top menu item -->
         <menuitem
@@ -409,31 +554,13 @@
                     domain="[('active','=',False),('type','=','contact')]"
                 />
                     <separator />
-                    <filter
-                    string="Registered current"
-                    name="registered_cur"
-                    domain="[('year_sequence','=','current')]"
-                />
-                    <filter
-                    string="Registered previous"
-                    name="registered_prev"
-                    domain="[('year_sequence','=','previous')]"
-                />
-                    <filter
-                    string="Registered next"
-                    name="registered_next"
-                    domain="[('year_sequence','=','next')]"
-                />
-                    <filter
-                    string="Never registered"
-                    name="registered_never"
-                    domain="[('year_sequence','=','never')]"
-                />
-                    <separator />
                    <field
                     name="category_id"
                     string="Tag"
                     filter_domain="[('category_id','ilike', self)]"
+                />
+                <field
+                    name="id"
                 />
                 </search>
             </field>
@@ -488,7 +615,7 @@
         </record>
 
         <record id="action_student_form" model="ir.actions.act_window">
-            <field name="name">Students</field>
+            <field name="name">Contacts</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
 
@@ -530,10 +657,11 @@
         parent="menu_contacts"
         action="action_student_form"
         sequence="5"
+        name="Students"
     />
 
         <record id="action_teacher_form" model="ir.actions.act_window">
-            <field name="name">Teachers</field>
+            <field name="name">Contacts</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
 
@@ -618,10 +746,11 @@
         parent="menu_contacts"
         action="action_teacher_form"
         sequence="10"
+        name="Teachers"
     />
 
         <record id="action_employee_form" model="ir.actions.act_window">
-            <field name="name">Employees</field>
+            <field name="name">Contacts</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.partner</field>
 
@@ -663,6 +792,7 @@
         parent="menu_contacts"
         action="action_employee_form"
         sequence="20"
+        name="Employees"
     />
 
 

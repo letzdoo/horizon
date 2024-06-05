@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright 2024 Neodiensis
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
+-->
+<odoo>
+    <!-- Horizon Home Menu - Racine -->
+    <record id="school_home_menu" model="ir.ui.menu">
+        <field name="name">Menu Horizon</field>
+        <field name="sequence" eval="1" />
+        <field name="action" ref="action_student_form" />
+        <field name="display_in_home_menu">True</field>
+
+    </record>
+
+    <!-- Horizon Home Menu - Niveau 1 -->
+    <record id="school_home_menu_students" model="ir.ui.menu">
+        <field name="name">Étudiants</field>
+        <field name="parent_id" ref="school_home_menu" />
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_student_form" />
+        <field name="display_in_home_menu">True</field>
+    </record>
+
+    <record id="school_home_menu_course" model="ir.ui.menu">
+        <field name="name">Études</field>
+        <field name="parent_id" ref="school_home_menu" />
+        <field name="sequence" eval="20" />
+        <field name="action" ref="action_student_form" />
+        <field name="display_in_home_menu">True</field>
+    </record>
+
+    <record id="school_home_menu_rooms" model="ir.ui.menu">
+        <field name="name">Locaux</field>
+        <field name="parent_id" ref="school_home_menu" />
+        <field name="sequence" eval="30" />
+        <field name="action" ref="action_student_form" />
+        <field name="display_in_home_menu">True</field>
+    </record>
+
+    <record id="school_home_menu_administration" model="ir.ui.menu">
+        <field name="name">Administration</field>
+        <field name="parent_id" ref="school_home_menu" />
+        <field name="sequence" eval="40" />
+        <field name="action" ref="action_student_form" />
+        <field name="display_in_home_menu">True</field>
+    </record>
+
+    <!-- Horizon Home Menu - Niveau 2 -->
+    <record id="school_home_menu_students_contact" model="ir.ui.menu">
+        <field name="name">Contacts</field>
+        <field name="parent_id" ref="school_home_menu_students" />
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_student_form" />
+        <field name="display_in_home_menu">True</field>
+        <field name="simulated_id" ref="menu_student_form" />
+    </record>
+
+        <!-- STUDENT 20 - Inscriptions dans SCHOOL_REGISTRATION-->
+
+    <record id="school_home_menu_students_individual" model="ir.ui.menu">
+        <field name="name">Parcours étudiant</field>
+        <field name="parent_id" ref="school_home_menu_students" />
+        <field name="sequence" eval="30" />
+        <field name="action" ref="action_individual_program_form" />
+        <field name="display_in_home_menu">True</field>
+        <field name="simulated_id" ref="menu_individual_program_form" />
+    </record>
+
+        <!-- STUDENT 40 - Gestion des évaluations dans SCHOOL_EVALUATIONS-->
+
+    <record id="school_home_menu_course_programs" model="ir.ui.menu">
+        <field name="name">Profils d'enseignement</field>
+        <field name="parent_id" ref="school_home_menu_course" />
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_program_form" />
+        <field name="display_in_home_menu">True</field>
+        <field name="simulated_id" ref="menu_program_form" />
+    </record>
+
+        <!-- ROOMS 10 - Online Booking dans WEBSITE_BOOKING -->
+
+        <!-- ROOMS 20 - Gestion des réservations dans SCHOOL_BOOKING -->
+
+    <record id="school_home_menu_administration_admin" model="ir.ui.menu">
+        <field name="name">Administration Horizon</field>
+        <field name="parent_id" ref="school_home_menu_administration" />
+        <field name="sequence" eval="10" />
+        <field name="action" ref="action_year_list" />
+        <field name="display_in_home_menu">True</field>
+        <field name="simulated_id" ref="menu_year_list" />
+    </record>
+
+    <record id="school_home_menu_administration_settings" model="ir.ui.menu">
+        <field name="name">Paramètres Odoo</field>
+        <field name="parent_id" ref="school_home_menu_administration" />
+        <field name="sequence" eval="20" />
+        <field name="action" ref="base_setup.action_general_configuration" />
+        <field name="display_in_home_menu">True</field>
+        <field name="simulated_id" ref="base_setup.menu_config" />
+    </record>
+
+        <!-- ADMIN 30 - Paramètres du site Web dans WEBSITE_SCHOOL_MANAGEMENT -->
+
+        <!-- ADMIN 40 - Paramètres des formulaires dans SCHOOL_REGISTRATION -->
+
+    <!-- Sélection des menus de l'écran d'accueil -->
+    <record id="edit_menu_access_school" model="ir.ui.view">
+        <field name="name">view.ir.ui.menu.form.school</field>
+        <field name="model">ir.ui.menu</field>
+        <field name="inherit_id" ref="base.edit_menu_access" />
+        <field eval="25" name="priority" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sequence']" position="after">
+                <field name="display_in_home_menu" />
+                <field
+                    name="simulated_id"
+                    attrs="{'readonly': [('display_in_home_menu', '!=', True)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

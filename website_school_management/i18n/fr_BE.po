@@ -1,0 +1,815 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_school_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-14 14:20+0000\n"
+"PO-Revision-Date: 2024-03-14 14:20+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.close_list
+msgid "&lt;/ul&gt;"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.open_list
+msgid "&lt;ul class=\"ps-3 ps-sm-5 list-group\"&gt;"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.actions.report,print_report_name:website_school_management.action_impression_programme_id
+msgid "'Programme de cours'"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content
+msgid "<font color=\"grey\">CYCLE</font>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content
+msgid "<font color=\"grey\">DOMAINE</font>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content
+msgid "<font color=\"grey\">ORIENTATION</font>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content
+msgid "<font color=\"grey\">SECTION</font>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content
+msgid "<font color=\"grey\">SPÉCIALITÉ</font>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content_global
+msgid ""
+"<i class=\"fa fa-print fa-2x\" title=\"Settings\" aria-hidden=\"true\"/>\n"
+"                          <span class=\"sr-only\">Print</span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid ""
+"<span class=\"cell-value\">\n"
+"                                                    /\n"
+"                                                    </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid ""
+"<span class=\"d-none d-lg-inline\">Responsable&amp;nbsp;:</span>\n"
+"                                <span class=\"d-inline d-lg-none\">Resp.:</span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "<span class=\"d-none d-lg-inline\">Unité d’enseignement&amp;nbsp;: </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programme_fiche
+msgid ""
+"<span class=\"d-sm-none fw-bold\">Imprimer le programme</span>\n"
+"                                <i class=\"fa fa-print fs-3\" aria-hidden=\"true\"/>\n"
+"                                <span class=\"sr-only\">Imprimer le programme de cours</span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programmes_liste
+msgid ""
+"<span class=\"fw-bold d-flex align-items-center\"><i class=\"fa fa-filter "
+"fs-4 me-1 accented-color\" aria-hidden=\"true\"/>Sélectionner :</span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid ""
+"<span class=\"h4\">\n"
+"                                    Contenu\n"
+"                                </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid ""
+"<span class=\"h4\">\n"
+"                                    Méthode\n"
+"                                </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid ""
+"<span class=\"h4\">\n"
+"                                    Méthode d'évaluation\n"
+"                                </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid ""
+"<span class=\"h4\">\n"
+"                                    Pré-requis/Co-requis\n"
+"                                </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid ""
+"<span class=\"h4\">\n"
+"                                    Références\n"
+"                                </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid ""
+"<span class=\"h4\">\n"
+"                                    Résultats d'apprentissage\n"
+"                                </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid ""
+"<span style=\"color: #6e6e6e;\">\n"
+"                                                ECTS&amp;nbsp;:\n"
+"                                          </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid ""
+"<span style=\"color: #6e6e6e;\">\n"
+"                                                Heures&amp;nbsp;:\n"
+"                                          </span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "<span>|</span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "<strong>Code d'unité</strong> –"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "<strong>Cycle</strong> –"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "<strong>ECTS</strong> –"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "<strong>Enseignant</strong> –"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "<strong>Heures</strong> –"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "<strong>Obligatoire</strong> –"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "<strong>Période</strong> –"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Acquis d'apprentissage spécifiques"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Année académique"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "Bonjour,"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Caractère obligatoire : OUI"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "Cet email a été envoyé automatiquement."
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.no_description
+msgid "Close"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Co-requis"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Code"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Contenu"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Cours"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model,name:website_school_management.model_school_course
+msgid "Course"
+msgstr "Activité d'apprentissage"
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Crédits"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Crédits ECTS"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+#: model_terms:ir.ui.view,arch_db:website_school_management.programme_details_contenu
+msgid "Cycle"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__cycle_grade
+msgid "Cycle Grade"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__cycle_sequence
+msgid "Cycle Grade Order"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__cycle_grade_slug
+msgid "Cycle Grade Slug"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__cycle_subtype
+msgid "Cycle Sub-type"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__cycle_subtype_slug
+msgid "Cycle Sub-type Slug"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Demander"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_domain__slug
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__domain_slug
+msgid "Domain Slug"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programme_details_contenu
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Domaine"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Détails des activités"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content_global
+msgid "Détails du programme"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "ECTS"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "ECTS&amp;nbsp;:"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Email :"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_cycle__slug_grade
+msgid "Grade Slug"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Grade&amp;nbsp;générique"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc
+msgid "Grille du bloc -"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Groupe de cours"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Heures"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Heures&amp;nbsp;:"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Horaire"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid ""
+"Horaire\n"
+"                                    <span class=\"accented-color\">|</span>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "ID Cycle"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Identification"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_form
+msgid "If needed for the cycle type..."
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programmes_liste
+msgid ""
+"Il existe également des programmes sur-mesure qui ne sont pas repris dans la"
+" liste ci-dessous. Vous pouvez les retrouvez"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programme_fiche
+msgid "Imprimer le programme de cours"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.no_description
+msgid "Information"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Information générale"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Information non disponible."
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid ""
+"La description de ce cours n'est pas disponible. Vous pouvez contacter le "
+"responsable pour lui demander de l'encoder."
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "La fiche du cours est disponible à"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Langue"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Logo"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Modes d'évaluation"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Méthode"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Méthode d'évaluation"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Niveau"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Nom"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Nom :"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Nombre de crédits associés :"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Non"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Obligatoire"
+msgstr ""
+
+#. module: website_school_management
+#: model:website.menu,name:website_school_management.menu_website_programs
+msgid "Offre pédagogique"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Option"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programme_details_contenu
+msgid "Orientation"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Oui"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content
+msgid "PROFIL D’ENSEIGNEMENT"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content
+msgid "PROGRAMME DES COURS"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Page : <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Par"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.ui.menu,name:website_school_management.school_home_menu_administration_web
+msgid "Paramètres du site Web"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Pas de descriptif disponible."
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.no_description
+msgid "Pas de description disponible pour cette activité."
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Poid"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc
+msgid "Pond"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Pondération"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Pondération au sein de l’UE :"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Pre-Co Requis"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Professeurs"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model,name:website_school_management.model_school_program
+msgid "Program made of several Blocs"
+msgstr "Programme constitutés de plusieurs blocs."
+
+#. module: website_school_management
+#: model:ir.actions.report,name:website_school_management.action_impression_programme_id
+msgid "Programme de cours PDF"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programme_details_contenu
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Programme des cours"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_content
+#: model_terms:ir.ui.view,arch_db:website_school_management.programmes_liste
+msgid "Programmes"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Pré-requis"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Pré-requis/Co-requis"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Prénom :"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid ""
+"Période de l’activité d’apprentissage : 1er Quadrimestre et 2e Quadrimestre"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc_contenu
+msgid "Quadri"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Responsable"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Références"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_fiche_details
+msgid "Résultats d'apprentissage"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programme_details_contenu
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Section"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_cycle__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__speciality_name
+msgid "Speciality Name"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__speciality_slug
+#: model:ir.model.fields,field_description:website_school_management.field_school_speciality__slug
+msgid "Speciality Slug"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__specialization
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__specialization_slug
+msgid "Specialization"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programme_details_contenu
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Spécialité"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_cycle__subtype
+msgid "Sub-type"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_cycle__slug_subtype
+msgid "Sub-type Slug"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Titre"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc
+msgid "Total :"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__track_name
+msgid "Track Name"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__track_slug
+#: model:ir.model.fields,field_description:website_school_management.field_school_track__slug
+msgid "Track Slug"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.report_program
+msgid "Type"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc
+msgid "UID"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.school_bloc
+msgid "Unités d’enseignement"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.program_details_content
+msgid "VADE MECUM"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programme_details_contenu
+msgid "Vade-mecum"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Volume horaire :"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "Vous pouvez recontacter cette personne via"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model.fields,field_description:website_school_management.field_school_program__year_name
+msgid "Year Full Name"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "by"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "cette adresse"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.programmes_liste
+msgid "ici"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model,name:website_school_management.model_school_cycle
+msgid "school.cycle"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model,name:website_school_management.model_school_domain
+msgid "school.domain"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model,name:website_school_management.model_school_speciality
+msgid "school.speciality"
+msgstr ""
+
+#. module: website_school_management
+#: model:ir.model,name:website_school_management.model_school_track
+msgid "school.track"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid "son adresse email"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.cours_details_request
+msgid ""
+"vous a envoyé une demande afin d'obtenir les informations concernant le "
+"cours"
+msgstr ""
+
+#. module: website_school_management
+#: model_terms:ir.ui.view,arch_db:website_school_management.course_group_details_content
+msgid "Éléments de référence"
+msgstr ""

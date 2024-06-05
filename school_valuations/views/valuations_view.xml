@@ -69,7 +69,7 @@
         <tree create="0">
           <field name="uid" />
           <field name="student_id" />
-          <field name="title" />
+          <field name="title" string="Nom" />
           <field name="responsible_id" />
           <field name="state" />
         </tree>
@@ -211,15 +211,33 @@
         <search string="Search Valuation">
           <field
                     name="name"
+                    string="Nom"
                     filter_domain="['|',('name','ilike',self),('uid','ilike',self)]"
                 />
+          <field name="uid" filter_domain="[('uid','ilike',self)]" />
           <field name="responsible_id" string="Responsible" />
           <field name="student_id" string="Student" />
+          <filter name="draft" string="Draft" domain="[('state', 'in', ['9_draft'])]" />
+          <filter name="progress" string="In progress" domain="[('state', 'in', ['5_progress'])]" />
+          <filter name="rejected" string="Rejected" domain="[('state', 'in', ['3_rejected'])]" />
+          <filter name="candidate" string="Candidate" domain="[('state', 'in', ['2_candidate'])]" />
+          <filter name="confirmed" string="Confirmed" domain="[('state', 'in', ['1_confirmed'])]" />
+          <filter name="checked" string="Checked" domain="[('state', 'in', ['1_1_checked'])]" />
+          <filter name="valuated" string="Valuated" domain="[('state', 'in', ['0_valuated'])]" />
+          <filter string="Archived" name="inactive" domain="[('active','=',False)]" />
+          <separator />
           <filter
                     name="my_val"
                     string="Mes valorisations"
                     domain="[('responsible_uid','=',uid),('state','!=','0_valuated'),('state','!=','3_rejected')]"
                 />
+          <group expand="1" string="Group By">
+              <filter
+                        string="Responsible"
+                        name="responsible_id"
+                        context="{'group_by':'responsible_id'}"
+                    />
+          </group>
         </search>
       </field>
     </record>

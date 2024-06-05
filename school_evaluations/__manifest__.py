@@ -30,6 +30,7 @@
         "data/school_evaluations.xml",
         "views/evaluation_view.xml",
         "views/configuration_view.xml",
+        "views/ir_ui_menu.xml",
         "report/report_evaluation.xml",
         "wizard/evaluation_summary.xml",
     ],

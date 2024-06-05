@@ -384,3 +384,46 @@ class programmes(http.Controller):
             return request.render("website_school_management.cours_fiche", values)
         else:
             return Response(template="website.page_404", status=404)
+
+    @http.route("/cours/cours_demande_description", type="json", auth="public")
+    def request_details_cours(self, **post):
+        course_id = post.get("course_id")
+        course = request.env["school.course"].sudo().search([("id", "=", course_id)])
+        if course:
+            emailResponsible = course.course_group_id.responsible_id.email
+            email = post.get("email")
+            first_name = post.get("first_name")
+            last_name = post.get("last_name")
+            if email and first_name and last_name:
+                vals = {
+                    "emailObject": "Demande de description de cours",
+                    "emailResponsible": emailResponsible,
+                    "email": email,
+                    "first_name": first_name,
+                    "last_name": last_name,
+                    "course": course,
+                    "url": request.httprequest.url_root + "cours/" + slug(course),
+                }
+                self.send_email(vals)
+                return {"result": "success"}
+        return {"result": "failure"}
+
+    def send_email(self, vals):
+        mail_body = request.env["ir.qweb"]._render(
+            "website_school_management.cours_details_request", vals
+        )
+
+        mail = (
+            request.env["mail.mail"]
+            .sudo()
+            .create(
+                {
+                    "subject": vals["emailObject"],
+                    "email_from": "no-reply@horizon.com",
+                    "author_id": request.env.user.partner_id.id,
+                    "email_to": vals["emailResponsible"],
+                    "body_html": mail_body,
+                }
+            )
+        )
+        mail.send()

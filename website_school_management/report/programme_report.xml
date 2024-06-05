@@ -1,467 +1,189 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-      <record id="programme_page" model="report.paperformat">
-            <field name="name">Custom Paper</field>
-            <field name="default" eval="True" />
-            <field name="format">custom</field>
-            <field name="page_height">297</field>
-            <field name="page_width">210</field>
-            <field name="orientation">Portrait</field>
-            <field name="margin_top">30</field>
-            <field name="margin_bottom">13</field>
-            <field name="margin_left">10</field>
-            <field name="margin_right">10</field>
-            <field name="header_line" eval="False" />
-            <field name="header_spacing">32</field>
-            <field name="dpi">80</field>
-      </record>
 
-    <!-- Création action report pdf -->
+    <!-- Creation action report pdf -->
       <record id="action_impression_programme_id" model="ir.actions.report">
             <field name="name">Programme de cours PDF</field>
             <field name="model">school.program</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">website_school_management.report_program</field>
             <field name="print_report_name">'Programme de cours'</field>
-            <field name="binding_model_id" ref="model_school_program" />
+            <field name="binding_model_id" ref="model_school_program"/>
             <field name="binding_type">report</field>
-            <field name="paperformat_id" ref="programme_page" />
-      </record>
+            <field name="paperformat_id" ref="school_management.pdf_a4"/>
+      </record>  
 
-     <!-- Tempate PDF report -->
+     <!-- Program report -->
       <template id="report_program">
             <t t-call="web.html_container">
-                  <xpath expr="//head" position="inside">
-                        <meta charset="utf-8" />
-                  </xpath>
-                  <xpath expr="//title" position="replace">
-                        <title><t t-out="docs[0].title or 'Odoo Report'" /></title>
-                  </xpath>
-                  <t t-set="font" t-value="'env.company.font' or 'Lato'" />
-                  <t t-set="primary" t-value="env.company.primary_color or 'black'" />
-                  <t
-                t-set="secondary"
-                t-value="env.company.secondary_color or 'black'"
-            />
-                  <style>
-                        * {
-                              font-family: <t t-out="font" />; // Ne marche pas ?
-                        }
-                        .row {
-                            display: -webkit-box; /* wkhtmltopdf uses this one */
-                            display: flex;
-                            -webkit-box-pack: center; /* wkhtmltopdf uses this one */
-                            justify-content: center;
-                        }
-
-                        .row > div {
-                            -webkit-box-flex: 1;
-                            -webkit-flex: 1;
-                            flex: 1;
-                        }
-
-                        .row > div:last-child {
-                            margin-right: 0;
-                        }
-                        table {
-                              border-collapse: collapse;
-                        }
-                        th, td {
-                              vertical-align: top;
-                        }
-                        .table-row-title th, .table-row-title td {
-                              vertical-align: middle;
-                        }
-                  </style>
-
-                  <div class="header" style="padding-top: 10mm;">
-                        <div
-                    class="row"
-                    t-attf-style="padding-bottom: 5mm; border-bottom: 1px solid {{secondary}};"
-                >
-                              <div class="col-3">
-                                    <img
-                            style="max-height: 15mm;"
-                            t-if="env.company.logo"
-                            t-att-src="image_data_uri(env.company.logo)"
-                            alt="Logo"
-                        />
-                              </div>
-                              <div class="col-9 text-end">
-                                    <h3
-                            style="padding-top: 4mm; color: #6e6e6e;"
-                            t-out="env.company.name"
-                        />
-                              </div>
-                        </div>
-                  </div>
-                  <t t-foreach="docs" t-as="program">
-                        <h2
-                    t-attf-style="padding-top: 1mm; margin-bottom: 4mm; color: {{primary}}; font-weight: 400;"
-                    t-out="program.title"
-                />
-                        <table
-                    style="font-size: 0.8em; margin-bottom: 5mm; border: 1px solid #eaeaea;"
-                >
-                              <tr>
-                                    <td
-                            t-attf-style="font-weight: 600; text-align: right; padding-top: 1mm; padding-bottom: 1mm; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
-                        >ID Cycle</td>
-                                    <td
-                            style="text-transform: capitalize; padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm;"
-                            t-out="program.uid"
-                        />
-                                    <td
-                            t-attf-style="padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm; color: {{primary}};"
-                        >|</td>
-                                    <td
-                            t-attf-style="font-weight: 600; text-align: right; padding-top: 1mm; padding-bottom: 1mm; padding-right: 3mm; color: {{secondary}};"
-                        >Année académique</td>
-                                    <td
-                            style="padding-top: 1mm; padding-bottom: 1mm; padding-right: 2mm; text-transform: capitalize;"
-                            t-out="program.year_id.name"
-                        />
-                              </tr>
-                        </table>
-                        <div class="row" style="gap: 2mm;">
-                              <div>
-                                    <table
-                            t-attf-style="font-size: 0.8em; border: 1px solid #eaeaea; margin-right: 3mm;"
-                        >
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-top: 1mm; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
-                                >Domaine</th>
-                                                <td
-                                    style="width: 100%; text-transform: capitalize; padding-top: 1mm;"
-                                    t-out="program.domain_name.lower()"
-                                />
+                    <t t-foreach="docs" t-as="program">
+                        <t t-call="school_management.header_footer_document"> 
+                              <h2 class="font-size-1_3 colored-primary text-regular pt-1 mb-5" t-out="program.name" />
+                              <table class="font-size-0_8 mb-5 case">
+                                    <tr>
+                                          <td class="text-bold text-align-right pt-1 pb-1 pl-2 pr-3 colored-secondary">ID Cycle</td>
+                                          <td class="text-capitalized pt-1 pb-1 pr-3" t-out="program.uid"/>
+                                          <td class="text-capitalized pt-1 pb-1 pr-3 colored-primary">|</td>
+                                          <td class="text-bold text-align-right pt-1 pb-1 pr-3 colored-secondary">Année académique</td>
+                                          <td class="text-capitalized pt-1 pb-1 pr-2" t-out="program.year_id.name"/>
+                                    </tr>
+                              </table>
+                              <div class="row">
+                                    <div>
+                                          <table class="font-size-0_8 mb-5 case mr-3">
+                                                <tr class="border-bottom-grey">
+                                                      <th class="text-align-right pt-1 pl-2 pr-3 colored-secondary">Domaine</th>
+                                                      <td class="w-100 text-capitalized pt-1" t-out="program.domain_name.lower()"/>
+                                                </tr>
+                                                <tr class="border-bottom-grey">
+                                                      <th class="text-align-right pl-2 pr-3 colored-secondary">Section</th>
+                                                      <td class="w-100 text-capitalized" t-out="program.speciality_id.section_id.name.lower()"/>
+                                                </tr>
+                                                <tr>
+                                                      <th class="text-align-right pl-2 pr-3 pb-1 colored-secondary">Option</th>
+                                                      <td  class="w-100 text-capitalized pb-1" t-out="program.speciality_id.track_id.name.lower()"/>
+                                                </tr>
+                                          </table>
+                                    </div>
+                                    <div>
+                                          <table  class="font-size-0_8 mb-5 case">
+                                          <tr class="border-bottom-grey">
+                                                <th class="text-align-right pt-1 pl-2 pr-3 colored-secondary">Spécialité</th>
+                                                <td class="w-100 text-capitalized" t-out="program.speciality_id.name.lower()"/>
                                           </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
-                                >Section</th>
-                                                <td
-                                    style="width: 100%; text-transform: capitalize;"
-                                    t-out="program.speciality_id.section_id.name.lower()"
-                                />
-                                          </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; padding-bottom: 1mm;  color: {{secondary}};"
-                                >Option</th>
-                                                <td
-                                    style="width: 100%; text-transform: capitalize; padding-bottom: 1mm;"
-                                    t-out="program.speciality_id.track_id.name.lower()"
-                                />
-                                          </tr>
-
-                                    </table>
-                              </div>
-                              <div>
-                                    <table
-                            t-attf-style="font-size: 0.8em; border: 1px solid #eaeaea; margin-right: 3mm;"
-                        >
-                                 <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
-                                >Spécialité</th>
-                                                <td
-                                    style="width: 100%; text-transform: capitalize;"
-                                    t-out="program.speciality_id.name.lower()"
-                                />
-                                          </tr>
-                                          <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
-                                >Grade&amp;nbsp;générique</th>
-                                                <td
-                                    style=" width: 100%; text-transform: capitalize;"
-                                    t-out="program.cycle_id.grade"
-                                />
-                                          </tr>
-                                             <tr>
-                                                <th
-                                    t-attf-style="text-align: right; padding-bottom: 1mm; padding-left: 2mm; padding-right: 3mm; color: {{secondary}};"
-                                >Type</th>
-                                                <t
-                                    t-set="cycle_type"
-                                    t-value="'Long' if program.cycle_id.type=='long' else 'Court'"
-                                />
-                                                <td
-                                    style="width: 100%; text-transform: capitalize; padding-bottom: 1mm;"
-                                    t-out="cycle_type"
-                                /> <!-- TODO : À vérifier-->
-                                          </tr>
-                                    </table>
-                              </div>
-                        </div>
-                        <div t-if="program.description" style="margin-top: 6mm;">
-                              <p
-                        style="font-size: 0.8em; margin-top: 2mm;"
-                        t-out="program.description"
-                    />
-                        </div>
-                        <h3
-                    t-attf-style="padding-top: 1mm; margin-bottom: 0; color: {{primary}}; font-weight: 400;"
-                >
-                              Programme des cours
-                        </h3>
-                        <t t-foreach="program.bloc_ids" t-as="bloc">
-                              <h4>
-                                    <span
-                            style="font-size: 1.6em; font-style: italic; font-weight: 400; color: #6e6e6e;"
-                        >
-                                          <t t-out="bloc.name" />
-                                    </span>
-                                    <span
-                            style="display:block; font-weight: 400; margin-top: 1mm;"
-                        >
-                                          <span style="color: #6e6e6e;">
-                                                Heures&amp;nbsp;:
-                                          </span>
-                                          <span
-                                t-attf-style="color: {{secondary}}; padding-right : 16px;"
-                                t-out="bloc.total_hours"
-                            />
-                                          <span style="color: #6e6e6e;">
-                                                ECTS&amp;nbsp;:
-                                          </span>
-                                          <span
-                                t-attf-style="color: {{secondary}}"
-                                t-out="bloc.total_credits"
-                            />
-                                    </span>
-                              </h4>
-                              <div style="padding-left : 5mm;">
-                                    <t t-set="course_group_group" t-value="" />
-                                    <!-- Groupes de cours -->
-                                    <div style="padding-left : 5mm;">
-                                          <table
-                                class="table-program"
-                                style="width: 100%; font-size: 0.9em;"
-                            >
-                                                <thead>
-                                                      <tr
-                                        style="border-top: 1px solid #eaeaea; border-bottom: 1px solid #eaeaea;"
-                                        class="table-row-title"
-                                    >
-                                                            <th colspan="2" />
-                                                            <th
-                                            style="color: #6e6e6e; font-size: 0.7em; padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; text-align: left; white-space: nowrap;"
-                                        >Responsable</th>
-                                                            <th
-                                            style="color: #6e6e6e; font-size: 0.7em; padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; text-align: left; white-space: nowrap;"
-                                        >Heures</th>
-                                                            <th
-                                            style="color: #6e6e6e; font-size: 0.7em; padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; text-align: left; white-space: nowrap;"
-                                        >ECTS</th>
-                                                            <th
-                                            style="color: #6e6e6e; font-size: 0.7em; padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; text-align: left; white-space: nowrap;"
-                                        >Pondération</th>
-                                                            <th
-                                            style="color: #6e6e6e; font-size: 0.7em; padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; text-align: left; white-space: nowrap;"
-                                        >Pré-requis</th>
-                                                            <th
-                                            style="color: #6e6e6e; font-size: 0.7em; padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; text-align: left; white-space: nowrap;"
-                                        >Co-requis</th>
-                                                            <th
-                                            style="color: #6e6e6e; font-size: 0.7em; padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; text-align: left; white-space: nowrap;"
-                                        >Quadri</th>
-                                                      </tr>
-                                                </thead>
-                                                <t
-                                    t-set="display_header"
-                                    t-value="True"
-                                />
-                                                <t
-                                    t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)"
-                                    t-as="course_group"
-                                >
+                                                <tr class="border-bottom-grey">
+                                                      <th class="text-align-right pl-2 pr-3 colored-secondary" 
+                                    >Grade&amp;nbsp;générique</th>
+                                                      <td class="w-100 text-capitalized" t-out="program.cycle_id.grade"
+                                    />
+                                                </tr>
+                                                <tr>
+                                                      <th class="text-align-right pl-2 pr-3 pb-1 colored-secondary"
+                                    >Type</th>
                                                       <t
-                                        t-if="(course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group) or display_header == True"
-                                    >
-                                                            <tr
-                                            style="border-top: 1px solid #eaeaea; border-bottom: 1px solid #eaeaea;"
-                                            class="table-row-title"
-                                        >
-                                                                  <th
-                                                style="color: #6e6e6e; font-size: 0.9em; padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; font-weight: 400; padding-bottom: 2mm; text-align: left;"
-                                                colspan="9"
-                                            >
-                                                                        <t
-                                                    t-if="course_group.cg_grouping.id"
-                                                >
-                                                                              <t
-                                                        t-out="course_group.cg_grouping.name"
-                                                    />
-                                                                        </t>
-                                                                  </th>
-                                                            </tr>
-                                                            <t
-                                            t-if="(course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group) or (course_group.cg_grouping.id == False and display_header == True)"
-                                        >
-                                                                  <t
-                                                t-set="display_header"
-                                                t-value="False"
-                                            />
-                                                            </t>
-                                                            <t
-                                            t-set="course_group_group"
-                                            t-value="course_group.cg_grouping.id"
-                                        />
-                                                      </t>
-                                                      <tbody style="font-size: 0.8em;">
-                                                            <tr
-                                            style="border-top: 1px solid #eaeaea;"
-                                        >
-                                                                  <td
-                                                t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; font-weight: 600; color: {{primary}}; font-size: 0.9em; white-space: nowrap;"
-                                                t-out="course_group.ue_id"
-                                            />
-                                                                  <td
-                                                t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; color: {{primary}};"
-                                                t-out="course_group.title"
-                                            />
-                                                                  <td
-                                                t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; font-style: italic; color: {{primary}}; font-size: 0.8em;"
-                                                t-out="course_group.responsible_id.name"
-                                            />
-                                                                  <td
-                                                t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; color: {{primary}};"
-                                                t-out="course_group.total_hours"
-                                            />
-                                                                  <td
-                                                t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; color: {{primary}};"
-                                                t-out="course_group.total_credits"
-                                            />
-                                                                  <td />
-                                                                  <td
-                                                t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; color: {{primary}}; font-size: 0.8em;"
-                                            >
-                                                                        <t
-                                                    t-if="course_group.pre_requisit_ids"
-                                                >
-                                                                              <span
-                                                        t-out="', '.join(map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids))"
-                                                    />
-                                                                        </t>
-                                                                        <t
-                                                    t-if="not(course_group.pre_requisit_ids)"
-                                                >
-                                                                              /
-                                                                        </t>
-                                                                  </td>
-                                                                  <td
-                                                t-attf-style="padding-top: 2mm; padding-left: 2mm; padding-right: 2mm; padding-bottom: 2mm; color: {{primary}}; font-size: 0.8em;"
-                                            >
-                                                                        <t
-                                                    t-if="course_group.co_requisit_ids"
-                                                >
-                                                                              <span
-                                                        t-out="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"
-                                                    />
-                                                                        </t>
-                                                                        <t
-                                                    t-if="not(course_group.co_requisit_ids)"
-                                                >
-                                                                              /
-                                                                        </t>
-                                                                  </td>
-                                                                  <td />
-                                                            </tr>
-                                                            <t
-                                            t-foreach="course_group.course_ids"
-                                            t-as="course"
-                                        >
-                                                                  <tr>
-                                                                        <td
-                                                    style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                />
-                                                                        <td
-                                                    style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                    t-out="course.title"
-                                                    t-att-href="'/cours/%s' % slug(course)"
-                                                    target="new"
-                                                />
-                                                                        <td
-                                                    style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                />
-                                                                        <td
-                                                    style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                    t-out="course.hours"
-                                                />
-                                                                        <td
-                                                    style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                    t-out="course.credits"
-                                                />
-                                                                        <td
-                                                    style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                    t-out="course.weight"
-                                                />
-                                                                        <td
-                                                    style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                />
-                                                                        <td
-                                                    style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                />
-                                                                        <td
-                                                    style="padding-top: 1px; padding-left: 2mm; padding-right: 2mm; padding-bottom: 1mm;"
-                                                >
-                                                                              <t
-                                                        t-if="course.quadri"
-                                                    >
-                                                                                    <t
-                                                            t-out="course.quadri"
-                                                        />
-                                                                              </t>
-                                                                              <t
-                                                        t-else=""
-                                                    >
-                                                                                    /
-                                                                              </t>
-                                                                        </td>
-                                                                  </tr>
-                                                            </t>
-                                                      </tbody>
-                                                </t>
+                                          t-set="cycle_type"
+                                          t-value="'Long' if program.cycle_id.type=='long' else 'Court'"
+                                    />
+                                                      <td class="w-100 text-capitalized pb-1"
+                                          t-out="cycle_type"
+                                    />
+                                                </tr>
                                           </table>
                                     </div>
                               </div>
-                              <t t-if="bloc_index != (bloc_size - 1)">
-                                    <hr style="margin-top: 7mm; margin-bottom: 7mm;" />
+                              <div t-if="program.description" style="margin-top: 6mm;">
+                                    <p class="font-size-0_8 mt-2"
+                              t-out="program.description"/>
+                              </div>
+                              <h3 class="font-size-1_2 pt-1 mt-4 mb-4 colored-primary text-regular">
+                                    Programme des cours
+                              </h3>
+                              <t t-foreach="program.bloc_ids" t-as="bloc">
+                              <div t-if="bloc_index != 0" style="page-break-before: always;"/>
+                                    <h4 class="font-size-1_2 mb-5">
+                                          <span class="text-italic text-regular colored-grey">
+                                                <t t-out="bloc.name"/>
+                                          </span>
+                                          <span class="font-size-0_8 d-block text-regular mt-1">
+                                                <span class="colored-grey">
+                                                      Heures&amp;nbsp;: 
+                                                </span>
+                                                <span class="colored-secondary pr-5" t-out="bloc.total_hours"/>
+                                                <span class="colored-grey">
+                                                      ECTS&amp;nbsp;: 
+                                                </span>
+                                                <span class="colored-secondary" t-out="bloc.total_credits"/>
+                                          </span>
+                                    </h4>
+                                    <div>
+                                          <t t-set="course_group_group" t-value=""/>
+                                          <!-- Groupes de cours -->
+                                          <div>
+                                                <table class="table-program w-100 font-size-0_9">
+                                                      <thead>
+                                                            <tr class="table-row-title border-top-grey border-bottom-grey">
+                                                                  <th colspan="2"></th>
+                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Responsable</th>
+                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Heures</th>
+                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">ECTS</th>
+                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Pondération</th>
+                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Pré-requis</th>
+                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Co-requis</th>
+                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Quadri</th>
+                                                            </tr>
+                                                      </thead>
+                                                      <t t-set="display_header" t-value="True"/>
+                                                      <t t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)" t-as="course_group">
+                                                            <t t-if="(course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group) or display_header == True">
+                                                                  <tr class="table-row-title">
+                                                                        <th class="colored-grey font-size-0_9 p-2 text-align-left text-regular" colspan="9">
+                                                                              <t t-if="course_group.cg_grouping.id">
+                                                                                    <t t-out="course_group.cg_grouping.name"/>
+                                                                              </t>
+                                                                        </th>
+                                                                  </tr>
+                                                                  <t t-if="(course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group) or (course_group.cg_grouping.id == False and display_header == True)">
+                                                                        <t t-set="display_header" t-value="False"/>
+                                                                  </t>
+                                                                  <t t-set="course_group_group" t-value="course_group.cg_grouping.id"/>
+                                                            </t>
+                                                            <tbody class="font-size-0_8">
+                                                                  <tr class="border-top-grey">
+                                                                        <td class="p-2 text-bold colored-primary white-space-nowrap" t-out="course_group.ue_id"/>
+                                                                        <td class="p-2 colored-primary"  t-out="course_group.title"/>
+                                                                        <td class="p-2 colored-primary text-italic colored-primary" t-out="course_group.responsible_id.name"/>
+                                                                        <td class="p-2 colored-primary" t-out="course_group.total_hours"/>
+                                                                        <td class="p-2 colored-primary" t-out="course_group.total_credits"/>
+                                                                        <td></td>
+                                                                        <td class="p-2 colored-primary">
+                                                                              <t t-if="course_group.pre_requisit_ids">
+                                                                                    <t t-foreach="map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids)" t-as="pre_requisit">
+                                                                                          <t t-if="pre_requisit_index != 0">, </t>
+                                                                                          <span class="white-space-nowrap" t-out="pre_requisit"/>
+                                                                                    </t>
+                                                                              </t>
+                                                                              <t t-if="not(course_group.pre_requisit_ids)">
+                                                                                    /
+                                                                              </t>
+                                                                        </td>
+                                                                        <td class="p-2 colored-primary">
+                                                                              <t t-if="course_group.co_requisit_ids">
+                                                                                    <span t-out="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"/>
+                                                                              </t>
+                                                                              <t t-if="not(course_group.co_requisit_ids)">
+                                                                                    /
+                                                                              </t>
+                                                                        </td>
+                                                                        <td></td>
+                                                                  </tr>
+                                                                  <t t-foreach="course_group.course_ids" t-as="course">
+                                                                        <tr>
+                                                                              <td class="p-2"></td>
+                                                                              <td class="p-2 border-top-light-grey" t-out="course.title" t-att-href="'/cours/%s' % slug(course)"      target="new"/>
+                                                                              <td class="p-2 border-top-light-grey"></td>
+                                                                              <td class="p-2 border-top-light-grey" t-out="course.hours"/>
+                                                                              <td class="p-2 border-top-light-grey" t-out="course.credits"/>
+                                                                              <td class="p-2 border-top-light-grey" t-out="course.weight"/>
+                                                                              <td class="p-2 border-top-light-grey"></td>
+                                                                              <td class="p-2 border-top-light-grey"></td>
+                                                                              <td class="p-2 border-top-light-grey">
+                                                                                    <t t-if="course.quadri">
+                                                                                          <t t-out="course.quadri"/>
+                                                                                    </t>
+                                                                                    <t t-else="">
+                                                                                          /
+                                                                                    </t>
+                                                                              </td>
+                                                                        </tr>
+                                                                  </t>
+                                                      </tbody>
+                                                      </t>
+                                                </table>
+                                          </div>
+                                    </div>
                               </t>
                         </t>
                   </t>
-                  <div
-                class="footer"
-                t-attf-style="border-top: 1px solid {{secondary}}; padding-top: 4mm; font-size: 0.7em; color: #6e6e6e;"
-            >
-                        <div class="row">
-                              <div class="col-11">
-                                    <p>
-                                          <t t-out="env.company.website" />
-                                          <span
-                                t-attf-style="color: {{primary}}; padding-left: 1mm; padding-right: 1mm;"
-                            >|</span>
-                                          <t t-out="env.company.email" />
-                                          <span
-                                t-attf-style="color: {{primary}}; padding-left: 1mm; padding-right: 1mm;"
-                            >|</span>
-                                          <t t-out="env.company.street" />
-                                          <t t-out="env.company.street2" />
-                                          -
-                                          <t t-out="env.company.zip" />
-                                          <t t-out="env.company.city" />
-                                    </p>
-                              </div>
-                              <div class="col-1 text-end">
-                                    Page : <span class="page" /> / <span
-                            class="topage"
-                        />
-                              </div>
-                        </div>
-                  </div>
             </t>
       </template>
 </odoo>

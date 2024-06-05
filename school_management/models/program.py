@@ -514,6 +514,7 @@ class Course(models.Model):
     url_ref = fields.Char(string="Url Reference")
 
     course_group_id = fields.Many2one("school.course_group", string="Course Group")
+    course_group_uid = fields.Char(related="course_group_id.uid", string="Code UE", store=False)
 
     level = fields.Integer(
         related="course_group_id.level", string="Level", readonly=True

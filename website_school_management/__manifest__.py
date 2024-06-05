@@ -27,6 +27,7 @@
     "depends": [
         "web",
         "website",
+        "school_management",
         "school_booking",
     ],
     "data": [
@@ -34,11 +35,13 @@
         "views/templates.xml",
         "views/programmes.xml",
         "views/backoffice.xml",
+        "views/ir_ui_menu.xml",
         "report/programme_report.xml",
     ],
     "assets": {
         "web.assets_frontend": [
             "website_school_management/static/src/scss/base.scss",
+            "website_school_management/static/src/js/cours_demande_description.js",
         ]
     },
     "installable": True,

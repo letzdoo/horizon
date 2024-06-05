@@ -294,41 +294,47 @@
     <template id="report_school_individual_program_diploma_general">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
-                <t t-call="custom_reports.custom_diploma_layout">
+            <t t-call="custom_reports.custom_diploma_layout">
 
-                    <!-- Conditions to choose the appropriate report based on program -->
-                    <t t-if="doc.is_program_didact">
-                        <!-- Didactic programs -->
-                        <t t-if="doc.is_bac">
-                            <!-- Didactic Bachelor -->
-                            <t t-set="bac" t-value="True" />
-                            <t t-set="bac_dict" t-value="True" />
-                        </t>
-                        <t t-else="">
-                            <!-- Didactic Master -->
-                            <t t-set="master" t-value="True" />
-                            <t t-set="master_dict" t-value="True" />
-                        </t>
-                    </t>
-                    <t t-else="">
-                        <!-- Non-Didactic programs -->
-                        <t t-if="doc.is_bac">
-                            <!-- Non-Didactic Bachelor -->
-                            <t t-set="bac" t-value="True" />
-                        </t>
-                        <t t-else="">
-                            <!-- Non-Didactic Master -->
-                            <t t-set="master" t-value="True" />
-                        </t>
-                    </t>
+              <!-- Conditions to choose the appropriate report based on program -->
+              <t
+                        t-if="doc.cycle_id.name != None and 'didactique' in (doc.cycle_id.name).lower()"
+                    >
+                <!-- Didactic programs -->
+                <t
+                            t-if="doc.cycle_id.name != None and 'bachelier' in (doc.cycle_id.name).lower()"
+                        >
+                  <!-- Didactic Bachelor -->
+                  <t t-set="bac" t-value="True" />
+                  <t t-set="bac_dict" t-value="True" />
+                </t>
+                <t t-else="">
+                  <!-- Didactic Master -->
+                  <t t-set="master" t-value="True" />
+                  <t t-set="master_dict" t-value="True" />
+                </t>
+              </t>
+              <t t-else="">
+                 <!-- Non-Didactic programs -->
+                 <t
+                            t-if="doc.cycle_id.name != None and 'bachelier' in (doc.cycle_id.name).lower()"
+                        >
+                    <!-- Non-Didactic Bachelor -->
+                    <t t-set="bac" t-value="True" />
+                  </t>
+                  <t t-else="">
+                    <!-- Non-Didactic Master -->
+                    <t t-set="master" t-value="True" />
+                  </t>
+              </t>
 
-                    <div class="page">
-                        <t
+              <div class="page">
+                  <t
                             t-call="custom_reports.report_school_individual_program_diploma_content_page"
                         />
-                    </div>
+              </div>
 
-                </t>
+            </t>
             </t>
         </t>
     </template>
