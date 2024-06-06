@@ -227,8 +227,7 @@ class programmes(http.Controller):
             .sudo()
             .search(
                 searchParams,
-                # order="year_short_name ASC, domain_name ASC, cycle_sequence ASC, cycle_subtype ASC, name ASC",
-                order="year_short_name ASC, domain_name ASC, cycle_subtype ASC, name ASC",
+                order="year_short_name ASC, domain_name ASC, cycle_sequence ASC, cycle_subtype ASC, name ASC",
             )
         )
 
