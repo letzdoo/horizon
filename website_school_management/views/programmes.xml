@@ -291,7 +291,7 @@
                                     <div class="table-row">
                                         <div class="cell border" data-title="Code">
                                             <span class="cell-value">
-                                                <t t-esc="course_group.ue_id" />
+                                                <t t-esc="course_group.uid" />
                                             </span>
                                         </div>
                                         <div class="cell border" data-title="Heures">
@@ -355,6 +355,9 @@
                                             Nom
                                         </div>
                                         <div class="cell border">
+                                            Code
+                                        </div>
+                                        <div class="cell border">
                                             Heures
                                         </div>
                                         <div class="cell border">
@@ -383,6 +386,14 @@
                                                             t-att-href="'/cours/%s' % slug(course)"
                                                             target="_blank"
                                                         />
+                                                </span>
+                                            </div>
+                                            <div
+                                                    class="cell border"
+                                                    data-title="Code"
+                                                >
+                                                <span class="cell-value">
+                                                    <t t-esc="course.uid" />
                                                 </span>
                                             </div>
                                             <div
@@ -488,6 +499,18 @@
                         <span t-field="course.course_group_id.ue_id" /> - <span
                             t-field="course.course_group_id"
                         />
+                    </dd>
+                </div>
+            </t>
+            <t t-if="course.uid">
+                <div class="flex-grow-1">
+                    <dt
+                        class="border text-center d-block w-100 py-2 px-3 o_cc5"
+                    >Code</dt>
+                    <dd
+                        class="border text-center border-top-0 d-block w-100 py-2 px-3 mb-3"
+                    >
+                        <span t-field="course.uid" />
                     </dd>
                 </div>
             </t>
