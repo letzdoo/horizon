@@ -54,32 +54,42 @@ class IrActionsReport(models.Model):
         content = io.BytesIO(pdf_content)
 
         google_service = self.env.company.google_drive_id
+        
+        # self doesn't have any attributes set and has no id, despite being a ir.actions.report object. We retreive the report based on report_ref.
+        report = self.env['ir.actions.report']._get_report_from_name(report_ref)
 
         self.sudo()
+        if google_service and report.google_drive_enabled and len(res_ids) == 1:
+            record = self.env[report.model].browse(res_ids)
 
-        if google_service and self.google_drive_enabled and len(res_ids) == 1:
-            record = self.env[self.model].browse(res_ids)
-            partner_id = record.mapped(self.google_drive_patner_field)
-            if partner_id.google_drive_folder_id:
+            ref_item = record.mapped(report.google_drive_patner_field)
+            
+            if ref_item.google_drive_folder_id:
                 report_name = safe_eval(
-                    self.print_report_name, {"object": record, "time": time}
+                    report.print_report_name, {"object": record, "time": time}
                 )
+
                 file = google_service.create_file(
                     content,
                     report_name,
                     "application/pdf",
-                    partner_id.google_drive_folder_id,
+                    ref_item.google_drive_folder_id,
                 )
+
                 google_drive_file = self.env["google_drive_file"].create(
                     {
                         "name": file["name"],
                         "googe_drive_id": file["id"],
                         "mimeType": file["mimeType"],
                         "url": file["webViewLink"],
-                        "res_model": partner_id._name,
+                        "res_model": ref_item._name,
+                        "res_model_report" : report.model,
+                        "res_id_report" : record.id,
+                        "report_id": report.id
                     }
                 )
-                partner_id.google_drive_files += google_drive_file
+
+                ref_item.google_drive_files += google_drive_file
 
         content.seek(0)
         return content.read(), content_type

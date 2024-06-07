@@ -105,6 +105,10 @@ class GoogleDriveFile(models.Model):
     res_model = fields.Char("Related Record Model")
     res_id = fields.Many2oneReference("Related Record ID", model_field="res_model")
 
+    res_model_report = fields.Char("Related Record Model within Report")
+    res_id_report = fields.Many2one("Related Record ID within Report", model_field="res_model_report")
+    report_id = fields.Many2one("ir.actions.report", string="Action Report ID")
+
     name = fields.Char("Name")
     url = fields.Char("Url")
     mimeType = fields.Char("Mime Type")
