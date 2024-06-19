@@ -350,10 +350,11 @@ class programmes(http.Controller):
             .search([("state", "=", "published"), ("id", "=", program_id)])
         )
         if program:
-            pdf = request.env.ref(
+            report = request.env.ref(
                 "website_school_management.action_impression_programme_id"
-            )._render_qweb_pdf(
-                "website_school_management.action_impression_programme_id", [program.id]
+            )
+            pdf = report._render_qweb_pdf(
+                report, [program.id]
             )[
                 0
             ]

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-16 16:29+0000\n"
-"PO-Revision-Date: 2024-05-16 16:29+0000\n"
+"POT-Creation-Date: 2024-06-17 12:08+0000\n"
+"PO-Revision-Date: 2024-06-17 12:08+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -232,7 +232,7 @@ msgstr "Note d'année"
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_individual_bloc_definition_content
 msgid "Année académique"
-msgstr "Année académique"
+msgstr ""
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_course_eval_form
@@ -360,8 +360,8 @@ msgstr "Créé le"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_individual_bloc_definition_content
-msgid "Crédits"
-msgstr ""
+msgid "Crédit"
+msgstr "Crédits"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_deliberation_annexe_content
@@ -381,7 +381,7 @@ msgstr "Année en cours pour les évaluations"
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
 msgid "Cycle non réussi, actuellement au stade «"
-msgstr ""
+msgstr "Cycle non réussi, actuellement au stade de :"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_individual_bloc_definition_content
@@ -532,7 +532,7 @@ msgstr "Évaluation"
 #: model:mail.template,report_name:school_evaluations.email_template_evaluation_for_student
 #: model:mail.template,subject:school_evaluations.email_template_evaluation_for_student
 msgid "Evaluation Report"
-msgstr ""
+msgstr "Rapport d'évaluation"
 
 #. module: school_evaluations
 #: model:mail.template,name:school_evaluations.email_template_evaluation_for_student
@@ -827,7 +827,7 @@ msgstr "Unité d'enseignement individuelle"
 #. module: school_evaluations
 #: model:ir.model,name:school_evaluations.model_school_individual_program
 msgid "Individual Program"
-msgstr "Cycle individuel"
+msgstr "Bloc individuel"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_evaluation_for_student_content
@@ -867,8 +867,6 @@ msgid ""
 "Je soussigné, Nathanaël HARCQ, Directeur du Conservatoire Royal de Liège, "
 "certifie que"
 msgstr ""
-"Je soussigné, Nathanaël HARCQ, Directeur du Conservatoire Royal de Liège, "
-"certifie que"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_evaluation_by_teacher_content
@@ -931,7 +929,7 @@ msgstr "Dernière mise à jour le"
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_content
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
 msgid "Le Directeur,"
-msgstr ""
+msgstr "Le Directeur"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.evaluation_summary_content
@@ -1141,12 +1139,12 @@ msgstr "Programme"
 #. module: school_evaluations
 #: model:ir.model.fields,field_description:school_evaluations.field_school_individual_program__program_completed
 msgid "Program Completed"
-msgstr ""
+msgstr "Programme complété"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_content
 msgid "Programme non réussi, actuellement au stade «"
-msgstr ""
+msgstr "Programme non réussi, actuellement au stade de :"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_bloc_eval_form
@@ -1578,6 +1576,11 @@ msgid ""
 "object.name+' - Attestation de réussite de cycle - "
 "'+time.strftime('%d-%m-%Y')"
 msgstr "object.name+'-CERT-'+time.strftime('%d-%m-%Y')+'.pdf'"
+
+#. module: school_evaluations
+#: model:ir.actions.report,print_report_name:school_evaluations.report_deliberation_annexe
+msgid "object.name+' - Deliberation Report - '+time.strftime('%d-%m-%Y')"
+msgstr "object.name+' - Rapport de délibération - '+time.strftime('%d-%m-%Y')"
 
 #. module: school_evaluations
 #: model:ir.actions.report,print_report_name:school_evaluations.report_individual_bloc_definition

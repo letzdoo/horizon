@@ -46,20 +46,17 @@ class IrActionsReport(models.Model):
     # this mixin by default in the present module. Thus "res_field" and "res_id" would be better terms:
     # you can use this report class overload for any Model that implements google_drive_folder_mixin.    
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
-
         pdf_content, content_type = super(IrActionsReport, self)._render_qweb_pdf(
             report_ref=report_ref, res_ids=res_ids, data=data
         )
-
         content = io.BytesIO(pdf_content)
 
         google_service = self.env.company.google_drive_id
         
         # self doesn't have any attributes set and has no id, despite being a ir.actions.report object. We retreive the report based on report_ref.
-        report = self.env['ir.actions.report']._get_report_from_name(report_ref)
-
+        report = self._get_report(report_ref)
         self.sudo()
-        if google_service and report.google_drive_enabled and len(res_ids) == 1:
+        if google_service and report.google_drive_enabled and len(res_ids) == 1 and report.google_drive_patner_field:
             record = self.env[report.model].browse(res_ids)
 
             ref_item = record.mapped(report.google_drive_patner_field)

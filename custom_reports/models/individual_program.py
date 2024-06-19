@@ -14,33 +14,35 @@ class IndividualProgramInherit(models.Model):
     )
 
     def return_date_formatted(self, date):
-        birth_month = date.strftime("%m")
-        birth_month_french = ""
-        if birth_month == "01":
-            birth_month_french = "janvier"
-        elif birth_month == "02":
-            birth_month_french = "février"
-        elif birth_month == "03":
-            birth_month_french = "mars"
-        elif birth_month == "04":
-            birth_month_french = "avril"
-        elif birth_month == "05":
-            birth_month_french = "mai"
-        elif birth_month == "06":
-            birth_month_french = "juin"
-        elif birth_month == "07":
-            birth_month_french = "juillet"
-        elif birth_month == "08":
-            birth_month_french = "août"
-        elif birth_month == "09":
-            birth_month_french = "septembre"
-        elif birth_month == "10":
-            birth_month_french = "octobre"
-        elif birth_month == "11":
-            birth_month_french = "novembre"
-        elif birth_month == "12":
-            birth_month_french = "décembre"
-        full_birth_month = (
-            date.strftime("%d") + " " + birth_month_french + " " + date.strftime("%Y")
+        if not date:
+            return "?"
+        month = date.strftime("%m")
+        month_french = ""
+        if month == "01":
+            month_french = "janvier"
+        elif month == "02":
+            month_french = "février"
+        elif month == "03":
+            month_french = "mars"
+        elif month == "04":
+            month_french = "avril"
+        elif month == "05":
+            month_french = "mai"
+        elif month == "06":
+            month_french = "juin"
+        elif month == "07":
+            month_french = "juillet"
+        elif month == "08":
+            month_french = "août"
+        elif month == "09":
+            month_french = "septembre"
+        elif month == "10":
+            month_french = "octobre"
+        elif month == "11":
+            month_french = "novembre"
+        elif month == "12":
+            month_french = "décembre"
+        full_month = (
+            date.strftime("%d") + " " + month_french + " " + date.strftime("%Y")
         )
-        return full_birth_month
+        return full_month

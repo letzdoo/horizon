@@ -64,7 +64,7 @@ class GoogleServiceController(http.Controller):
                 return Response(template="google_documents.file_404", status=404)
             google_service = request.env.company.google_drive_id
             try:
-                google_drive_file_bytes = google_service.get_file(google_drive_file)
+                google_drive_file_bytes = google_service.sudo().get_file(google_drive_file)
                 google_drive_file_content = io.BytesIO(google_drive_file_bytes)
             except:
                 return Response(template="google_documents.file_404", status=404)

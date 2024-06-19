@@ -687,7 +687,7 @@
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
         <field name="paperformat_id" ref="school_management.pdf_a4"/>
-
+        <field name="print_report_name">object.name+' - Deliberation Report - '+time.strftime('%d-%m-%Y')</field>
     </record>
 
     <template id="report_deliberation_annexe_content">
