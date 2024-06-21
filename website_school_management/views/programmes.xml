@@ -43,16 +43,13 @@
 
     <template id="hz_v14_header" name="V14 Header">
         <header id="masthead" class="site-header">
-            <div class="custom-header">
-                <div class="custom-header-media">
-                    <img src="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1.jpg" width="2000" height="1199" alt="" srcset="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1.jpg 2000w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1-300x180.jpg 300w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1-1024x614.jpg 1024w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1-768x460.jpg 768w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1-1536x921.jpg 1536w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1-24x14.jpg 24w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1-36x22.jpg 36w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1-48x29.jpg 48w" sizes="100vw"/>
-                </div>
+            <div class="custom-header" style="background-image: url('https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-DSC_6475-1.jpg');background-size: cover;background-position-y: center;">
                 <div class="site-branding">
                     <div class="wrap">
-                        <a href="https://www.crlg.be/" class="custom-logo-link" rel="home"><img width="250" height="250" src="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png" class="custom-logo" alt="Conservatoire royal de Liège" decoding="async" srcset="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png 250w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND-150x150.png 150w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND-100x100.png 100w" sizes="100vw" /></a>
+                        <a href="https://www.crlg.be/" class="custom-logo-link" rel="home"><img width="250" height="250" src="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png" class="custom-logo" alt="Conservatoire royal de Liège" decoding="async" srcset="https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND.png 250w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND-150x150.png 150w, https://www.crlg.be/wp-content/uploads/2020/06/cropped-cropped-CRLG-ROND-100x100.png 100w" sizes="100vw"/></a>
                         <div class="site-branding-text">
-                            <p class="site-title"><a href="https://www.crlg.be/" rel="home">Conservatoire royal de Liège</a></p>
-                            <p class="site-description">École supérieure des arts de la Fédération Wallonie-Bruxelles</p>
+                            <p class="site-title"><a href="https://www.crlg.be/" rel="home" style="color: #fff;">Conservatoire royal de Liège</a></p>
+                            <p class="site-description" style="color: #fff;">École supérieure des arts de la Fédération Wallonie-Bruxelles</p>
                         </div>
                     </div>
                 </div>
