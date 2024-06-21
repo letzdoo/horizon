@@ -40,6 +40,7 @@
     "assets": {
         "web.assets_frontend": [
             "website_school_portal/static/src/js/snippet.js",
+            "website_school_portal/static/src/js/generate-doc.js",
             "website_school_portal/static/src/scss/main.scss",
         ]
     },

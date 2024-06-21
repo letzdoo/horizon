@@ -114,6 +114,8 @@ class GoogleDriveFile(models.Model):
     mimeType = fields.Char("Mime Type")
     googe_drive_id = fields.Char("Google Drive Id") # WARNING TYPO "googe" !
 
+    label = fields.Char("File type label", store=False)
+
     def _auto_init(self):
         res = super(GoogleDriveFile, self)._auto_init()
         tools.create_index(

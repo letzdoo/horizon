@@ -136,8 +136,7 @@
             <ul>
                 <t t-foreach="google_docs" t-as="google_doc">
                     <li><a t-att-href="'/google_documents/view_file/%s' % google_doc.googe_drive_id" target="_blank">
-                        <strong><t t-esc="google_doc.name"/></strong>
-                        <!-- <small>(<t t-esc="google_doc.report_id.name"/> - <t t-esc="google_doc.res_model_report"/>::<t t-esc="google_doc.res_id_report"/>) - <t t-esc="google_doc.res_id"/></small> -->
+                        <strong><t t-esc="google_doc.label"/></strong> : <t t-esc="google_doc.name"/>
                     </a></li>
                 </t>
             </ul>
@@ -147,26 +146,36 @@
         </t>
         <h5>Demande de génération de documents</h5>
         <t t-if="len(docs_to_generate) > 0">
-            <form id="request_document_form" action="/my/generate-document" target="_blank" >
+            <form id="request_document_form" >
                 <div class="row">
                     <div class="col-12 col-lg-8 mt-2">
                         <label for="document_to_generate">Document :</label>
                         <select name="document_to_generate" id="document_to_generate" required="true" >
-                            <option><t t-esc="'Sélectionnez un document...'"/></option>
+                            <option value=""><t t-esc="'Sélectionnez un document...'"/></option>
                             <t t-foreach="docs_to_generate" t-as="doc_to_generate">
                                 <option t-att-value="doc_to_generate['code']"><t t-esc="doc_to_generate['label']"/></option>
                             </t>
                         </select>
                     </div>
+                    <div class="col-12 d-none" id="generate_msg"></div>
                     <div class="col-12">
                         <button
                                 id="btn_request_doc_generation"
-                                type="submit"
                                 class="btn btn-primary mt-3"
                             >Demander</button>
-                        <p class="mt-3 error_request_course_details" />
                     </div>
                 </div>
+                <dialog id="generateDialog">
+                    <h3>Génération de document</h3>
+                    <div class="row">
+                        <div class="col-12 d-flex" id="dialogContent">
+                            <p class="me-2">Votre document est en cours de génération...</p>
+                            <div id="generate_loader" class="o_portal_doc_spinner spinner-border text-o-color-2">
+                            </div>
+                        </div>
+                    </div>  
+                    <button class="btn btn-primary mt-2 buttonCloseDialog">Fermer</button>
+                </dialog>
             </form>
         </t>
         <t t-else="">

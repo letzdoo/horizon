@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 
 class WebsiteSchoolPortal(CustomerPortal):
     # Route appelée lors de la soumission du formulaire de génération d'un document
-    @route(['/my/generate-document'], type='http', auth="user", website=True)
+    @route(['/my/generate-document'], type='json', auth="user", website=True)
     def generate_document(self, **kw):
         document_to_generate = kw.get("document_to_generate")
         if document_to_generate:
@@ -32,7 +32,9 @@ class WebsiteSchoolPortal(CustomerPortal):
                 google_doc = request.env['google_drive_file'].sudo().search(searchParams, limit=1, order=order)
                 if (google_doc):
                     # Affichage
-                    return request.redirect("/google_documents/view_file/" + google_doc.googe_drive_id)
+                    return {"result": "success",
+                            "existing": True,
+                            "documentlink" : "/google_documents/view_file/" + google_doc.googe_drive_id}
                 
                 # Sinon, génération du document
                 report.sudo()._render_qweb_pdf(report_action, [int(res_id_report)])[0]
@@ -47,8 +49,10 @@ class WebsiteSchoolPortal(CustomerPortal):
                 google_doc = request.env['google_drive_file'].sudo().search(searchParams, limit=1, order=order)
                 if google_doc:
                     # Affichage
-                    return request.redirect("/google_documents/view_file/" + google_doc.googe_drive_id)
-        return Response(template="google_documents.file_404", status=404)
+                    return {"result": "success",
+                            "existing": False,
+                            "documentlink" : "/google_documents/view_file/" + google_doc.googe_drive_id}
+        return {"result": "failure"}
     
     # Héritage, prépare les données à afficher dans le portail
     def _prepare_portal_layout_values(self, **kw):
@@ -87,7 +91,7 @@ class WebsiteSchoolPortal(CustomerPortal):
             ('report_id', '=', report_id),
         ] 
         order = 'create_date DESC'
-        existing_docs = request.env['google_drive_file'].sudo().search(searchParams, order=order) # = C
+        existing_docs = request.env['google_drive_file'].sudo().search(searchParams, order=order)
 
         #######################################
         ### GESTION DES DOCUMENTS À MONTRER ###
@@ -98,6 +102,7 @@ class WebsiteSchoolPortal(CustomerPortal):
         # Boucle sur les documents existants pour ne reprendre que ceux qui sont à montrer.
         for doc in existing_docs:
             if  next((True for object in to_show if object.id == doc.res_id_report), False):
+                doc.label = label
                 docs_to_show.append(doc)
 
         #######################################
