@@ -534,7 +534,7 @@
 
     <template id="_hz_my_student" name="Horizon Student registered">
         <div class="oe_structure">
-            <h3>Ressources utiles:</h3>
+            <h3>Ressources utiles</h3>
             <ul>
                 <li><a href="/mes-donnees/mon-programme">Mon programme annuel</a></li>
                 <!-- <li><a
