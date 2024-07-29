@@ -21,10 +21,10 @@
                               <h2 class="font-size-1_3 colored-primary text-regular pt-1 mb-5" t-out="program.name" />
                               <table class="font-size-0_8 mb-5 case">
                                     <tr>
-                                          <td class="text-bold text-align-right pt-1 pb-1 pl-2 pr-3 colored-secondary">ID Cycle</td>
+                                          <td class="text-bold text-align-right pt-1 pb-1 pl-2 pr-3 colored-secondary">ID&amp;nbsp;Cycle</td>
                                           <td class="text-capitalized pt-1 pb-1 pr-3" t-out="program.uid"/>
                                           <td class="text-capitalized pt-1 pb-1 pr-3 colored-primary">|</td>
-                                          <td class="text-bold text-align-right pt-1 pb-1 pr-3 colored-secondary">Année académique</td>
+                                          <td class="text-bold text-align-right pt-1 pb-1 pr-3 colored-secondary">Année&amp;nbsp;académique</td>
                                           <td class="text-capitalized pt-1 pb-1 pr-2" t-out="program.year_id.name"/>
                                     </tr>
                               </table>
@@ -115,7 +115,7 @@
                                                       <t t-set="display_header" t-value="True"/>
                                                       <t t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)" t-as="course_group">
                                                             <t t-if="(course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group) or display_header == True">
-                                                                  <tr class="table-row-title">
+                                                                  <tr class="table-row-title border-top-grey">
                                                                         <th class="colored-grey font-size-0_9 p-2 text-align-left text-regular" colspan="9">
                                                                               <t t-if="course_group.cg_grouping.id">
                                                                                     <t t-out="course_group.cg_grouping.name"/>
