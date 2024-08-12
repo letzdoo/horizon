@@ -21,7 +21,7 @@
 import io
 import logging
 
-from odoo import fields, models
+from odoo import fields, models, api
 from odoo.tools.safe_eval import safe_eval, time
 
 _logger = logging.getLogger(__name__)
@@ -90,3 +90,11 @@ class IrActionsReport(models.Model):
 
         content.seek(0)
         return content.read(), content_type
+
+    def write(self, vals):    
+        if (vals['google_drive_enabled'] if 'google_drive_enabled' in vals else self.google_drive_enabled) : 
+            vals['attachment'] = ''
+            vals['attachment_use'] = ''
+        else:
+            vals['google_drive_patner_field'] = ''     
+        return super().write(vals)
