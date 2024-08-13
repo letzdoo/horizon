@@ -22,14 +22,8 @@ class WebsiteSchoolPortal(CustomerPortal):
                 report = request.env.ref(report_action).sudo()
 
                 # Est-ce que le rapport est déjà disponible sur google drive ?
-                searchParams = [
-                    ('res_id', '=', partner_id),
-                    ('res_model_report', '=', report.model),
-                    ('res_id_report', '=', int(res_id_report)),
-                    ('report_id', '=', report.id)
-                ]
-                order = 'create_date DESC'
-                google_doc = request.env['google_drive_file'].sudo().search(searchParams, limit=1, order=order)
+                google_service = self.env.company.google_drive_id
+                google_doc = google_service.get_report(partner_id,report.id,report.model,res_id_report)
                 if (google_doc):
                     # Affichage
                     return {"result": "success",

@@ -529,6 +529,7 @@
     <template id="report_individual_bloc_content">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="bloc">
+                <t t-set="o" t-value="bloc" />
                 <t t-call="school_management.header_footer_document"> 
 
                     <h2 class="font-size-1_3 colored-primary text-regular pt-1 mb-5" t-out="bloc.source_bloc_id.name" />
