@@ -348,6 +348,18 @@ class GoogleDriveService(models.Model):
         google_doc = self.env['google_drive_file'].sudo().search(searchParams, limit=1, order=order)
 
         return google_doc
+    
+    def get_reports(self, res_id, report_id, res_model_report):
+        searchParams = [
+                    ('res_id', '=', res_id),
+                    ('res_model_report', '=', res_model_report),
+                    ('res_id_report', '!=', None),
+                    ('report_id', '=', report_id)
+                ]
+        order = 'create_date DESC'
+        google_doc = self.env['google_drive_file'].sudo().search(searchParams, order=order)
+
+        return google_doc
 
     def _get_redirect_uri(self):
         return "%s/google_documents/authorize" % self.env.user.get_base_url()

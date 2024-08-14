@@ -22,7 +22,7 @@ class WebsiteSchoolPortal(CustomerPortal):
                 report = request.env.ref(report_action).sudo()
 
                 # Est-ce que le rapport est déjà disponible sur google drive ?
-                google_service = self.env.company.google_drive_id
+                google_service = request.env.company.google_drive_id
                 google_doc = google_service.get_report(partner_id,report.id,report.model,res_id_report)
                 if (google_doc):
                     # Affichage
@@ -78,26 +78,20 @@ class WebsiteSchoolPortal(CustomerPortal):
         return result
     
     # Fonction générique récupérant les documents à montrer et les documents à générer pour un rapport donné.
-    def _get_docs(self, student_id, res_model, report_code, report_id, label, can_generate = True, optional_params_to_show = [], optional_params_to_generate = []):
+    def _get_docs(self, student_id, report_code, report, label, can_generate = True, optional_params_to_show = [], optional_params_to_generate = []):
         docs_to_show = []
         docs_to_generate = []
 
         # Lecture des google docs existants pour le rapport.
-        searchParams = [
-            ('res_id', '=', student_id),
-            ('res_model_report', '=', res_model),
-            ('res_id_report', '!=', None),
-            ('report_id', '=', report_id),
-        ] 
-        order = 'create_date DESC'
-        existing_docs = request.env['google_drive_file'].sudo().search(searchParams, order=order)
+        google_service = request.env.company.google_drive_id
+        existing_docs = google_service.get_reports(student_id, report.id, report.model)
 
         #######################################
         ### GESTION DES DOCUMENTS À MONTRER ###
         #######################################
 
         # Lecture des objets métiers pour lesquels les document éventuels peuvent être montrés.
-        to_show = self._get_report_objects(student_id, res_model, optional_params_to_show)
+        to_show = self._get_report_objects(student_id, report.model, optional_params_to_show)
         # Boucle sur les documents existants pour ne reprendre que ceux qui sont à montrer.
         for doc in existing_docs:
             if  next((True for object in to_show if object.id == doc.res_id_report), False):
@@ -110,14 +104,14 @@ class WebsiteSchoolPortal(CustomerPortal):
 
         if can_generate:
             # Lecture des objets métiers pour lesquels les document éventuels peuvent être générés.
-            to_generate = self._get_report_objects(student_id, res_model, optional_params_to_generate)
+            to_generate = self._get_report_objects(student_id, report.model, optional_params_to_generate)
 
             # Boucle sur les documents pouvant être générés en ne reprenant que ceux qui n'existent pas déjà.
             for object in to_generate:
                 if next((False for doc in existing_docs if object.id == doc.res_id_report), True):
                     docs_to_generate.append({
                         "code": report_code+':'+str(object.id),
-                        "label": label + " : "+ object.name + " - " + (object.source_program_id.name if res_model == 'school.individual_program' else object.source_bloc_title),
+                        "label": label + " : "+ object.name + " - " + (object.source_program_id.name if report.model == 'school.individual_program' else object.source_bloc_title),
                     })
 
         return docs_to_show, docs_to_generate
@@ -134,12 +128,11 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = 'school_evaluations.report_success_certificate_prog'
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            res_model = 'school.individual_program'
             optional_params_to_show = [('name','not like','XXX')] # Exemple de critère d'exclusion pour les documents montrés.
             optional_params_to_generate = [('name','not like','XXX')] # Exemple de critère d'exclusion pour les documents à générer.
             label = "Attestation de réussite"
 
-            to_show, to_generate = self._get_docs(student_id, res_model, report_code, report.id, label, True, optional_params_to_show, optional_params_to_generate)
+            to_show, to_generate = self._get_docs(student_id, report_code, report, label, True, optional_params_to_show, optional_params_to_generate)
 
             if len(to_show) > 0:
                 docs_to_show += to_show
@@ -152,12 +145,11 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = 'school_management.report_attendance_for_student'
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            res_model = 'school.individual_bloc'
             optional_params_to_show = [] # TODO.
             optional_params_to_generate = [] # TODO.
             label = "Attestation de fréquentation"
 
-            to_show, to_generate = self._get_docs(student_id, res_model, report_code, report.id, label, True, optional_params_to_show, optional_params_to_generate)
+            to_show, to_generate = self._get_docs(student_id, report_code, report, label, True, optional_params_to_show, optional_params_to_generate)
 
             if len(to_show) > 0:
                 docs_to_show += to_show
@@ -170,12 +162,11 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = 'school_evaluations.report_individual_bloc_definition'
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            res_model = 'school.individual_program'
             optional_params_to_show = [] # TODO.
             optional_params_to_generate = [] # TODO.
             label = "Aperçu du cycle"
 
-            to_show, to_generate = self._get_docs(student_id, res_model, report_code, report.id, label, True, optional_params_to_show, optional_params_to_generate)
+            to_show, to_generate = self._get_docs(student_id, report_code, report, label, True, optional_params_to_show, optional_params_to_generate)
 
             if len(to_show) > 0:
                 docs_to_show += to_show
@@ -188,12 +179,11 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = 'custom_reports.report_school_general_diploma_report'
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            res_model = 'school.individual_program'
             optional_params_to_show = [] # TODO.
             optional_params_to_generate = [] # TODO.
             label = "Diplôme"
 
-            to_show, to_generate = self._get_docs(student_id, res_model, report_code, report.id, label, False, optional_params_to_show)
+            to_show, to_generate = self._get_docs(student_id, report_code, report, label, False, optional_params_to_show)
 
             if len(to_show) > 0:
                 docs_to_show += to_show
@@ -206,12 +196,11 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = 'custom_reports.report_school_individual_program_supplement_general'
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            res_model = 'school.individual_program'
             optional_params_to_show = [] # TODO.
             optional_params_to_generate = [] # TODO.
             label = "Supplément au diplôme"
 
-            to_show, to_generate = self._get_docs(student_id, res_model, report_code, report.id, label, False, optional_params_to_show)
+            to_show, to_generate = self._get_docs(student_id, report_code, report, label, False, optional_params_to_show)
 
             if len(to_show) > 0:
                 docs_to_show += to_show
@@ -224,12 +213,11 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = 'school_management.report_individual_bloc'
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            res_model = 'school.individual_bloc'
             optional_params_to_show = [] # TODO.
             optional_params_to_generate = [] # TODO.
             label = "PAE (Programme Annuel de l'Etudiant)"
 
-            to_show, to_generate = self._get_docs(student_id, res_model, report_code, report.id, label, True, optional_params_to_show, optional_params_to_generate)
+            to_show, to_generate = self._get_docs(student_id, report_code, report, label, True, optional_params_to_show, optional_params_to_generate)
 
             if len(to_show) > 0:
                 docs_to_show += to_show
@@ -242,12 +230,11 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = 'school_evaluations.report_deliberation_annexe'
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            res_model = 'school.individual_bloc'
             optional_params_to_show = [] # TODO.
             optional_params_to_generate = [] # TODO.
             label = "Rapport de délibération"
 
-            to_show, to_generate = self._get_docs(student_id, res_model, report_code, report.id, label, False, optional_params_to_show)
+            to_show, to_generate = self._get_docs(student_id, report_code, report, label, False, optional_params_to_show)
 
             if len(to_show) > 0:
                 docs_to_show += to_show
@@ -260,12 +247,11 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = 'school_evaluations.report_evaluation_for_student'
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            res_model = 'school.individual_bloc'
             optional_params_to_show = [] # TODO.
             optional_params_to_generate = [] # TODO.
             label = "Relevé de notes"
 
-            to_show, to_generate = self._get_docs(student_id, res_model, report_code, report.id, label, True, optional_params_to_show, optional_params_to_generate)
+            to_show, to_generate = self._get_docs(student_id, report_code, report, label, True, optional_params_to_show, optional_params_to_generate)
 
             if len(to_show) > 0:
                 docs_to_show += to_show
