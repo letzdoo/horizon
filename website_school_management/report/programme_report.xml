@@ -129,7 +129,7 @@
                                                             </t>
                                                             <tbody class="font-size-0_8">
                                                                   <tr class="border-top-grey">
-                                                                        <td class="p-2 text-bold colored-primary white-space-nowrap" t-out="course_group.ue_id"/>
+                                                                        <td class="p-2 text-bold colored-primary white-space-nowrap" t-out="course_group.uid"/>
                                                                         <td class="p-2 colored-primary"  t-out="course_group.title"/>
                                                                         <td class="p-2 colored-primary text-italic colored-primary" t-out="course_group.responsible_id.name"/>
                                                                         <td class="p-2 colored-primary" t-out="course_group.total_hours"/>
