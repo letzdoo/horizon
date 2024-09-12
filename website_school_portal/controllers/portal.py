@@ -60,7 +60,7 @@ class WebsiteSchoolPortal(CustomerPortal):
                             "documentlink": "/google_documents/view_file/"
                             + google_doc.googe_drive_id,
                         }
-                except:
+                except:  # noqa: disable=B001
                     _logger.error(
                         "generate_document() : an error occured while generating the document."
                     )
@@ -85,7 +85,9 @@ class WebsiteSchoolPortal(CustomerPortal):
         return values
 
     # Récupère les ids nécessaires à la création d'un rapport
-    def _get_report_objects(self, student_id, model, optional_params=[]):
+    def _get_report_objects(
+        self, student_id, model, optional_params=[]  # noqa: disable=B006
+    ):
         searchParams = [("state", "!=", "draft"), ("student_id", "=", student_id)]
         # Ajout de paramètres de recherche optionnels
         searchParams += optional_params
@@ -100,8 +102,8 @@ class WebsiteSchoolPortal(CustomerPortal):
         report,
         label,
         can_generate=True,
-        optional_params_to_show=[],
-        optional_params_to_generate=[],
+        optional_params_to_show=[],  # noqa: disable=B006
+        optional_params_to_generate=[],  # noqa: disable=B006
     ):
         docs_to_show = []
         docs_to_generate = []

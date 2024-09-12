@@ -132,7 +132,7 @@ class GoogleDriveFile(models.Model):
         # Check if the current user can access the referenced object.
         try:
             object = self.env[self.res_model].browse(self.res_id)
-        except:
+        except:  # noqa: disable=B001
             object = None
         if not object:
             _logger.warning(
@@ -320,7 +320,7 @@ class GoogleDriveService(models.Model):
                         + "' in parents and trashed=false"
                     )
                 else:
-                    folder_query = f"'{folder_queue[0]}' in parents and trashed=false"
+                    folder_query = f"'{folder_queue[0]}' in parents and trashed=false"  # noqa: disable=B907
                 folder_queue = []
                 file_list = (
                     drive.files()

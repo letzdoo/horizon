@@ -271,7 +271,7 @@ class Registration(models.Model):
                             attachment = self.env["ir.attachment"].browse(attachment_id)
                             if attachment and attachment.type == "binary":
                                 student_id.image_1920 = attachment.datas
-            except BaseException:
+            except BaseException:  # noqa: disable=B036
                 _logger.warning(msg="Error while updating image")
                 # We do our best here
             student_id.street = contact_data.get("adresseLigne", False)

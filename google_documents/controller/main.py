@@ -76,7 +76,7 @@ class GoogleServiceController(http.Controller):
                     google_drive_file
                 )
                 google_drive_file_content = io.BytesIO(google_drive_file_bytes)
-            except:
+            except:  # noqa: disable=B001
                 return Response(template="google_documents.file_404", status=404)
             if google_drive_file_content:
                 return send_file(
