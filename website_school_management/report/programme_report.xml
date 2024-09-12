@@ -8,169 +8,343 @@
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">website_school_management.report_program</field>
             <field name="print_report_name">'Programme de cours'</field>
-            <field name="binding_model_id" ref="model_school_program"/>
+            <field name="binding_model_id" ref="model_school_program" />
             <field name="binding_type">report</field>
-            <field name="paperformat_id" ref="school_management.pdf_a4"/>
-      </record>  
+            <field name="paperformat_id" ref="school_management.pdf_a4" />
+      </record>
 
      <!-- Program report -->
       <template id="report_program">
             <t t-call="web.html_container">
                     <t t-foreach="docs" t-as="program">
-                        <t t-call="school_management.header_footer_document"> 
-                              <h2 class="font-size-1_3 colored-primary text-regular pt-1 mb-5" t-out="program.name" />
+                        <t t-call="school_management.header_footer_document">
+                              <h2
+                        class="font-size-1_3 colored-primary text-regular pt-1 mb-5"
+                        t-out="program.name"
+                    />
                               <table class="font-size-0_8 mb-5 case">
                                     <tr>
-                                          <td class="text-bold text-align-right pt-1 pb-1 pl-2 pr-3 colored-secondary">ID&amp;nbsp;Cycle</td>
-                                          <td class="text-capitalized pt-1 pb-1 pr-3" t-out="program.uid"/>
-                                          <td class="text-capitalized pt-1 pb-1 pr-3 colored-primary">|</td>
-                                          <td class="text-bold text-align-right pt-1 pb-1 pr-3 colored-secondary">Année&amp;nbsp;académique</td>
-                                          <td class="text-capitalized pt-1 pb-1 pr-2" t-out="program.year_id.name"/>
+                                          <td
+                                class="text-bold text-align-right pt-1 pb-1 pl-2 pr-3 colored-secondary"
+                            >ID&amp;nbsp;Cycle</td>
+                                          <td
+                                class="text-capitalized pt-1 pb-1 pr-3"
+                                t-out="program.uid"
+                            />
+                                          <td
+                                class="text-capitalized pt-1 pb-1 pr-3 colored-primary"
+                            >|</td>
+                                          <td
+                                class="text-bold text-align-right pt-1 pb-1 pr-3 colored-secondary"
+                            >Année&amp;nbsp;académique</td>
+                                          <td
+                                class="text-capitalized pt-1 pb-1 pr-2"
+                                t-out="program.year_id.name"
+                            />
                                     </tr>
                               </table>
                               <div class="row">
                                     <div>
                                           <table class="font-size-0_8 mb-5 case mr-3">
                                                 <tr class="border-bottom-grey">
-                                                      <th class="text-align-right pt-1 pl-2 pr-3 colored-secondary">Domaine</th>
-                                                      <td class="w-100 text-capitalized pt-1" t-out="program.domain_name.lower()"/>
+                                                      <th
+                                        class="text-align-right pt-1 pl-2 pr-3 colored-secondary"
+                                    >Domaine</th>
+                                                      <td
+                                        class="w-100 text-capitalized pt-1"
+                                        t-out="program.domain_name.lower()"
+                                    />
                                                 </tr>
                                                 <tr class="border-bottom-grey">
-                                                      <th class="text-align-right pl-2 pr-3 colored-secondary">Section</th>
-                                                      <td class="w-100 text-capitalized" t-out="program.speciality_id.section_id.name.lower()"/>
+                                                      <th
+                                        class="text-align-right pl-2 pr-3 colored-secondary"
+                                    >Section</th>
+                                                      <td
+                                        class="w-100 text-capitalized"
+                                        t-out="program.speciality_id.section_id.name.lower()"
+                                    />
                                                 </tr>
                                                 <tr>
-                                                      <th class="text-align-right pl-2 pr-3 pb-1 colored-secondary">Option</th>
-                                                      <td  class="w-100 text-capitalized pb-1" t-out="program.speciality_id.track_id.name.lower()"/>
+                                                      <th
+                                        class="text-align-right pl-2 pr-3 pb-1 colored-secondary"
+                                    >Option</th>
+                                                      <td
+                                        class="w-100 text-capitalized pb-1"
+                                        t-out="program.speciality_id.track_id.name.lower()"
+                                    />
                                                 </tr>
                                           </table>
                                     </div>
                                     <div>
-                                          <table  class="font-size-0_8 mb-5 case">
+                                          <table class="font-size-0_8 mb-5 case">
                                           <tr class="border-bottom-grey">
-                                                <th class="text-align-right pt-1 pl-2 pr-3 colored-secondary">Spécialité</th>
-                                                <td class="w-100 text-capitalized" t-out="program.speciality_id.name.lower()"/>
+                                                <th
+                                        class="text-align-right pt-1 pl-2 pr-3 colored-secondary"
+                                    >Spécialité</th>
+                                                <td
+                                        class="w-100 text-capitalized"
+                                        t-out="program.speciality_id.name.lower()"
+                                    />
                                           </tr>
                                                 <tr class="border-bottom-grey">
-                                                      <th class="text-align-right pl-2 pr-3 colored-secondary" 
+                                                      <th
+                                        class="text-align-right pl-2 pr-3 colored-secondary"
                                     >Grade&amp;nbsp;générique</th>
-                                                      <td class="w-100 text-capitalized" t-out="program.cycle_id.grade"
+                                                      <td
+                                        class="w-100 text-capitalized"
+                                        t-out="program.cycle_id.grade"
                                     />
                                                 </tr>
                                                 <tr>
-                                                      <th class="text-align-right pl-2 pr-3 pb-1 colored-secondary"
+                                                      <th
+                                        class="text-align-right pl-2 pr-3 pb-1 colored-secondary"
                                     >Type</th>
                                                       <t
-                                          t-set="cycle_type"
-                                          t-value="'Long' if program.cycle_id.type=='long' else 'Court'"
+                                        t-set="cycle_type"
+                                        t-value="'Long' if program.cycle_id.type=='long' else 'Court'"
                                     />
-                                                      <td class="w-100 text-capitalized pb-1"
-                                          t-out="cycle_type"
+                                                      <td
+                                        class="w-100 text-capitalized pb-1"
+                                        t-out="cycle_type"
                                     />
                                                 </tr>
                                           </table>
                                     </div>
                               </div>
                               <div t-if="program.description" style="margin-top: 6mm;">
-                                    <p class="font-size-0_8 mt-2"
-                              t-out="program.description"/>
+                                    <p
+                            class="font-size-0_8 mt-2"
+                            t-out="program.description"
+                        />
                               </div>
-                              <h3 class="font-size-1_2 pt-1 mt-4 mb-4 colored-primary text-regular">
+                              <h3
+                        class="font-size-1_2 pt-1 mt-4 mb-4 colored-primary text-regular"
+                    >
                                     Programme des cours
                               </h3>
                               <t t-foreach="program.bloc_ids" t-as="bloc">
-                              <div t-if="bloc_index != 0" style="page-break-before: always;"/>
+                              <div
+                            t-if="bloc_index != 0"
+                            style="page-break-before: always;"
+                        />
                                     <h4 class="font-size-1_2 mb-5">
-                                          <span class="text-italic text-regular colored-grey">
-                                                <t t-out="bloc.name"/>
+                                          <span
+                                class="text-italic text-regular colored-grey"
+                            >
+                                                <t t-out="bloc.name" />
                                           </span>
-                                          <span class="font-size-0_8 d-block text-regular mt-1">
+                                          <span
+                                class="font-size-0_8 d-block text-regular mt-1"
+                            >
                                                 <span class="colored-grey">
-                                                      Heures&amp;nbsp;: 
+                                                      Heures&amp;nbsp;:
                                                 </span>
-                                                <span class="colored-secondary pr-5" t-out="bloc.total_hours"/>
+                                                <span
+                                    class="colored-secondary pr-5"
+                                    t-out="bloc.total_hours"
+                                />
                                                 <span class="colored-grey">
-                                                      ECTS&amp;nbsp;: 
+                                                      ECTS&amp;nbsp;:
                                                 </span>
-                                                <span class="colored-secondary" t-out="bloc.total_credits"/>
+                                                <span
+                                    class="colored-secondary"
+                                    t-out="bloc.total_credits"
+                                />
                                           </span>
                                     </h4>
                                     <div>
-                                          <t t-set="course_group_group" t-value=""/>
+                                          <t t-set="course_group_group" t-value="" />
                                           <!-- Groupes de cours -->
                                           <div>
-                                                <table class="table-program w-100 font-size-0_9">
+                                                <table
+                                    class="table-program w-100 font-size-0_9"
+                                >
                                                       <thead>
-                                                            <tr class="table-row-title border-top-grey border-bottom-grey">
-                                                                  <th colspan="2"></th>
-                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Responsable</th>
-                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Heures</th>
-                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">ECTS</th>
-                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Pondération</th>
-                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Pré-requis</th>
-                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Co-requis</th>
-                                                                  <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Quadri</th>
+                                                            <tr
+                                            class="table-row-title border-top-grey border-bottom-grey"
+                                        >
+                                                                  <th colspan="2" />
+                                                                  <th
+                                                class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                            >Responsable</th>
+                                                                  <th
+                                                class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                            >Heures</th>
+                                                                  <th
+                                                class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                            >ECTS</th>
+                                                                  <th
+                                                class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                            >Pondération</th>
+                                                                  <th
+                                                class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                            >Pré-requis</th>
+                                                                  <th
+                                                class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                            >Co-requis</th>
+                                                                  <th
+                                                class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                            >Quadri</th>
                                                             </tr>
                                                       </thead>
-                                                      <t t-set="display_header" t-value="True"/>
-                                                      <t t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)" t-as="course_group">
-                                                            <t t-if="(course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group) or display_header == True">
-                                                                  <tr class="table-row-title border-top-grey">
-                                                                        <th class="colored-grey font-size-0_9 p-2 text-align-left text-regular" colspan="9">
-                                                                              <t t-if="course_group.cg_grouping.id">
-                                                                                    <t t-out="course_group.cg_grouping.name"/>
+                                                      <t
+                                        t-set="display_header"
+                                        t-value="True"
+                                    />
+                                                      <t
+                                        t-foreach="bloc.course_group_ids.sorted(key=lambda r: r.cg_grouping_sequence)"
+                                        t-as="course_group"
+                                    >
+                                                            <t
+                                            t-if="(course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group) or display_header == True"
+                                        >
+                                                                  <tr
+                                                class="table-row-title border-top-grey"
+                                            >
+                                                                        <th
+                                                    class="colored-grey font-size-0_9 p-2 text-align-left text-regular"
+                                                    colspan="9"
+                                                >
+                                                                              <t
+                                                        t-if="course_group.cg_grouping.id"
+                                                    >
+                                                                                    <t
+                                                            t-out="course_group.cg_grouping.name"
+                                                        />
                                                                               </t>
                                                                         </th>
                                                                   </tr>
-                                                                  <t t-if="(course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group) or (course_group.cg_grouping.id == False and display_header == True)">
-                                                                        <t t-set="display_header" t-value="False"/>
+                                                                  <t
+                                                t-if="(course_group.cg_grouping.id and course_group.cg_grouping.id != course_group_group) or (course_group.cg_grouping.id == False and display_header == True)"
+                                            >
+                                                                        <t
+                                                    t-set="display_header"
+                                                    t-value="False"
+                                                />
                                                                   </t>
-                                                                  <t t-set="course_group_group" t-value="course_group.cg_grouping.id"/>
+                                                                  <t
+                                                t-set="course_group_group"
+                                                t-value="course_group.cg_grouping.id"
+                                            />
                                                             </t>
-                                                            <tbody class="font-size-0_8">
-                                                                  <tr class="border-top-grey">
-                                                                        <td class="p-2 text-bold colored-primary white-space-nowrap" t-out="course_group.uid"/>
-                                                                        <td class="p-2 colored-primary"  t-out="course_group.title"/>
-                                                                        <td class="p-2 colored-primary text-italic colored-primary" t-out="course_group.responsible_id.name"/>
-                                                                        <td class="p-2 colored-primary" t-out="course_group.total_hours"/>
-                                                                        <td class="p-2 colored-primary" t-out="course_group.total_credits"/>
-                                                                        <td></td>
-                                                                        <td class="p-2 colored-primary">
-                                                                              <t t-if="course_group.pre_requisit_ids">
-                                                                                    <t t-foreach="map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids)" t-as="pre_requisit">
-                                                                                          <t t-if="pre_requisit_index != 0">, </t>
-                                                                                          <span class="white-space-nowrap" t-out="pre_requisit"/>
+                                                            <tbody
+                                            class="font-size-0_8"
+                                        >
+                                                                  <tr
+                                                class="border-top-grey"
+                                            >
+                                                                        <td
+                                                    class="p-2 text-bold colored-primary white-space-nowrap"
+                                                    t-out="course_group.uid"
+                                                />
+                                                                        <td
+                                                    class="p-2 colored-primary"
+                                                    t-out="course_group.title"
+                                                />
+                                                                        <td
+                                                    class="p-2 colored-primary text-italic colored-primary"
+                                                    t-out="course_group.responsible_id.name"
+                                                />
+                                                                        <td
+                                                    class="p-2 colored-primary"
+                                                    t-out="course_group.total_hours"
+                                                />
+                                                                        <td
+                                                    class="p-2 colored-primary"
+                                                    t-out="course_group.total_credits"
+                                                />
+                                                                        <td />
+                                                                        <td
+                                                    class="p-2 colored-primary"
+                                                >
+                                                                              <t
+                                                        t-if="course_group.pre_requisit_ids"
+                                                    >
+                                                                                    <t
+                                                            t-foreach="map( lambda x: str(x.preriquisit_id.uid), course_group.pre_requisit_ids)"
+                                                            t-as="pre_requisit"
+                                                        >
+                                                                                          <t
+                                                                t-if="pre_requisit_index != 0"
+                                                            >, </t>
+                                                                                          <span
+                                                                class="white-space-nowrap"
+                                                                t-out="pre_requisit"
+                                                            />
                                                                                     </t>
                                                                               </t>
-                                                                              <t t-if="not(course_group.pre_requisit_ids)">
+                                                                              <t
+                                                        t-if="not(course_group.pre_requisit_ids)"
+                                                    >
                                                                                     /
                                                                               </t>
                                                                         </td>
-                                                                        <td class="p-2 colored-primary">
-                                                                              <t t-if="course_group.co_requisit_ids">
-                                                                                    <span t-out="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"/>
+                                                                        <td
+                                                    class="p-2 colored-primary"
+                                                >
+                                                                              <t
+                                                        t-if="course_group.co_requisit_ids"
+                                                    >
+                                                                                    <span
+                                                            t-out="', '.join(map( lambda x: str(x.coriquisit_id.uid), course_group.co_requisit_ids))"
+                                                        />
                                                                               </t>
-                                                                              <t t-if="not(course_group.co_requisit_ids)">
+                                                                              <t
+                                                        t-if="not(course_group.co_requisit_ids)"
+                                                    >
                                                                                     /
                                                                               </t>
                                                                         </td>
-                                                                        <td></td>
+                                                                        <td />
                                                                   </tr>
-                                                                  <t t-foreach="course_group.course_ids" t-as="course">
+                                                                  <t
+                                                t-foreach="course_group.course_ids"
+                                                t-as="course"
+                                            >
                                                                         <tr>
-                                                                              <td class="p-2"></td>
-                                                                              <td class="p-2 border-top-light-grey" t-out="course.title" t-att-href="'/cours/%s' % slug(course)"      target="new"/>
-                                                                              <td class="p-2 border-top-light-grey"></td>
-                                                                              <td class="p-2 border-top-light-grey" t-out="course.hours"/>
-                                                                              <td class="p-2 border-top-light-grey" t-out="course.credits"/>
-                                                                              <td class="p-2 border-top-light-grey" t-out="course.weight"/>
-                                                                              <td class="p-2 border-top-light-grey"></td>
-                                                                              <td class="p-2 border-top-light-grey"></td>
-                                                                              <td class="p-2 border-top-light-grey">
-                                                                                    <t t-if="course.quadri">
-                                                                                          <t t-out="course.quadri"/>
+                                                                              <td
+                                                        class="p-2"
+                                                    />
+                                                                              <td
+                                                        class="p-2 border-top-light-grey"
+                                                        t-out="course.title"
+                                                        t-att-href="'/cours/%s' % slug(course)"
+                                                        target="new"
+                                                    />
+                                                                              <td
+                                                        class="p-2 border-top-light-grey"
+                                                    />
+                                                                              <td
+                                                        class="p-2 border-top-light-grey"
+                                                        t-out="course.hours"
+                                                    />
+                                                                              <td
+                                                        class="p-2 border-top-light-grey"
+                                                        t-out="course.credits"
+                                                    />
+                                                                              <td
+                                                        class="p-2 border-top-light-grey"
+                                                        t-out="course.weight"
+                                                    />
+                                                                              <td
+                                                        class="p-2 border-top-light-grey"
+                                                    />
+                                                                              <td
+                                                        class="p-2 border-top-light-grey"
+                                                    />
+                                                                              <td
+                                                        class="p-2 border-top-light-grey"
+                                                    >
+                                                                                    <t
+                                                            t-if="course.quadri"
+                                                        >
+                                                                                          <t
+                                                                t-out="course.quadri"
+                                                            />
                                                                                     </t>
-                                                                                    <t t-else="">
+                                                                                    <t
+                                                            t-else=""
+                                                        >
                                                                                           /
                                                                                     </t>
                                                                               </td>

@@ -31,12 +31,16 @@
             <xpath expr="//page[@name='advanced']/group" position="replace">
                 <group>
                     <field name="google_drive_enabled" />
-                    <field name="google_drive_patner_field" 
-                           attrs="{'readonly': [('google_drive_enabled', '=', False)], 'required': [('google_drive_enabled', '=', True)]}"/>
-                    <field name="attachment"
-                           attrs="{'readonly': [('google_drive_enabled', '=', True)]}" />
-                    <field name="attachment_use" />       
-                </group>    
+                    <field
+                        name="google_drive_patner_field"
+                        attrs="{'readonly': [('google_drive_enabled', '=', False)], 'required': [('google_drive_enabled', '=', True)]}"
+                    />
+                    <field
+                        name="attachment"
+                        attrs="{'readonly': [('google_drive_enabled', '=', True)]}"
+                    />
+                    <field name="attachment_use" />
+                </group>
             </xpath>
         </field>
     </record>

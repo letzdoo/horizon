@@ -1102,7 +1102,10 @@
         print_report_name="Supplément Diplôme"
     /> -->
 
-    <record id="report_school_individual_program_supplement_general" model="ir.actions.report">
+    <record
+        id="report_school_individual_program_supplement_general"
+        model="ir.actions.report"
+    >
         <field name="name">Imprimer Supplément</field>
         <field name="model">school.individual_program</field>
         <field name="report_type">qweb-pdf</field>
@@ -1112,10 +1115,12 @@
         <field
             name="report_file"
         >custom_reports.report_school_individual_program_supplement_general_template</field>
-        <field name="print_report_name">object.name+' - Supplément Diplôme - '+time.strftime('%d-%m-%Y')</field>
+        <field
+            name="print_report_name"
+        >object.name+' - Supplément Diplôme - '+time.strftime('%d-%m-%Y')</field>
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
-        <field name="paperformat_id" ref="custom_reports.paperformat_supplement"/>
+        <field name="paperformat_id" ref="custom_reports.paperformat_supplement" />
     </record>
 
 </odoo>

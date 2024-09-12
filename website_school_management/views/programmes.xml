@@ -388,10 +388,7 @@
                                                         />
                                                 </span>
                                             </div>
-                                            <div
-                                                    class="cell border"
-                                                    data-title="Code"
-                                                >
+                                            <div class="cell border" data-title="Code">
                                                 <span class="cell-value">
                                                     <t t-esc="course.uid" />
                                                 </span>

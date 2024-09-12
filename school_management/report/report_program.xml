@@ -34,7 +34,7 @@
 
     <record id="pdf_a4" model="report.paperformat">
         <field name="name">Custom Paper</field>
-        <field name="default" eval="True"/>
+        <field name="default" eval="True" />
         <field name="format">custom</field>
         <field name="page_height">297</field>
         <field name="page_width">210</field>
@@ -43,7 +43,7 @@
         <field name="margin_bottom">16</field>
         <field name="margin_left">10</field>
         <field name="margin_right">10</field>
-        <field name="header_line" eval="False"/>
+        <field name="header_line" eval="False" />
         <field name="header_spacing">32</field>
         <field name="dpi">80</field>
     </record>
@@ -290,7 +290,7 @@
             td {
                 border: 0;
             }
-    
+
             th,
             td {
                 vertical-align: top;
@@ -363,9 +363,9 @@
                 margin-right: 0;
             }
             table {
-                border-collapse: collapse; 
+                border-collapse: collapse;
             }
-    
+
             .table-row-title th,
             .table-row-title td {
                 vertical-align: middle;
@@ -384,39 +384,63 @@
 
 
         <div class="header" style="padding-top: 10mm !important;">
-            <div class="row" t-attf-style="padding-bottom: 5mm !important; border-bottom: 1px solid {{secondary}};">
+            <div
+                class="row"
+                t-attf-style="padding-bottom: 5mm !important; border-bottom: 1px solid {{secondary}};"
+            >
                 <div class="col-9 d-flex align-items-center">
-                    <img style="max-height: 15mm !important;" t-if="env.company.logo" t-att-src="image_data_uri(env.company.logo)"/>
-                    <h3 t-attf-style="font-size: 20px; padding-top: 5mm !important; padding-left: 6mm; color: #6e6e6e; font-family: {{font}} !important;" t-out="env.company.name"/>
+                    <img
+                        style="max-height: 15mm !important;"
+                        t-if="env.company.logo"
+                        t-att-src="image_data_uri(env.company.logo)"
+                    />
+                    <h3
+                        t-attf-style="font-size: 20px; padding-top: 5mm !important; padding-left: 6mm; color: #6e6e6e; font-family: {{font}} !important;"
+                        t-out="env.company.name"
+                    />
                 </div>
                 <div class="col-3">
-                    <img style="max-height: 15mm !important;" src="/school_management/static/src/img/WBE_logo_horizontal.png"/>
+                    <img
+                        style="max-height: 15mm !important;"
+                        src="/school_management/static/src/img/WBE_logo_horizontal.png"
+                    />
                 </div>
             </div>
         </div>
 
-        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+        <div
+            class="article o_report_layout_standard"
+            t-att-data-oe-model="o and o._name"
+            t-att-data-oe-id="o and o.id"
+        >
             <t t-call="school_management.common_style_documents" />
             <t t-out="0" />
         </div>
 
-        <div class="footer" t-attf-style="border-top: 1px solid {{secondary}}; padding-top: 4mm !important; font-size: 0.7em; color: #6e6e6e; font-family: {{font}} !important;">
+        <div
+            class="footer"
+            t-attf-style="border-top: 1px solid {{secondary}}; padding-top: 4mm !important; font-size: 0.7em; color: #6e6e6e; font-family: {{font}} !important;"
+        >
             <div class="row">
                 <div class="col-11">
                     <p>
-                        <t t-out="env.company.website"/>
-                        <span t-attf-style="color: {{primary}}; padding-left: 1mm !important; padding-right: 1mm !important;">|   </span>
-                        <t t-out="env.company.email"/>
-                        <span t-attf-style="color: {{primary}}; padding-left: 1mm !important; padding-right: 1mm !important;">|   </span>
-                        <t t-out="env.company.street"/>
-                        <t t-out="env.company.street2"/>
+                        <t t-out="env.company.website" />
+                        <span
+                            t-attf-style="color: {{primary}}; padding-left: 1mm !important; padding-right: 1mm !important;"
+                        >|   </span>
+                        <t t-out="env.company.email" />
+                        <span
+                            t-attf-style="color: {{primary}}; padding-left: 1mm !important; padding-right: 1mm !important;"
+                        >|   </span>
+                        <t t-out="env.company.street" />
+                        <t t-out="env.company.street2" />
                         -
-                        <t t-out="env.company.zip"/>
-                        <t t-out="env.company.city"/>
+                        <t t-out="env.company.zip" />
+                        <t t-out="env.company.city" />
                     </p>
                 </div>
                 <div class="col-1 text-end">
-                    Page : <span class="page"/> / <span class="topage"/>
+                    Page : <span class="page" /> / <span class="topage" />
                 </div>
             </div>
         </div>
@@ -435,23 +459,33 @@
     />
 
     <record id="report_attendance_for_student" model="ir.actions.report">
-        <field name="print_report_name">object.name+' - Attestation de fréquentation - '+time.strftime('%d-%m-%Y')</field>
-        <field name="paperformat_id" ref="school_management.pdf_a4"/>
+        <field
+            name="print_report_name"
+        >object.name+' - Attestation de fréquentation - '+time.strftime('%d-%m-%Y')</field>
+        <field name="paperformat_id" ref="school_management.pdf_a4" />
     </record>
 
     <template id="report_attendance_for_student_content">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="school_management.header_footer_document"> 
+                <t t-call="school_management.header_footer_document">
                     <div class="row">
                         <div class="col-12 text-center pt-5">
-                            <h1 class="colored-primary pt-5 mb-5">ATTESTATION DE FRÉQUENTATION</h1>
+                            <h1
+                                class="colored-primary pt-5 mb-5"
+                            >ATTESTATION DE FRÉQUENTATION</h1>
                             <div class="pt-5 mt-5 pb-5 mb-5">
-                                <h2 class="color-black">Conservatoire royal de Liège</h2>
-                                <h6 class="color-grey">Boulevard Piercot, 29 - 4000 Liège</h6>
+                                <h2
+                                    class="color-black"
+                                >Conservatoire royal de Liège</h2>
+                                <h6
+                                    class="color-grey"
+                                >Boulevard Piercot, 29 - 4000 Liège</h6>
                             </div>
                             <div class="mt-5 mb-5">
-                                <h6 class="colored-grey">Année académique&amp;nbsp;:</h6>
+                                <h6
+                                    class="colored-grey"
+                                >Année académique&amp;nbsp;:</h6>
                                 <h3 class="colored-primary" t-field="o.year_id" />
                             </div>
                         </div>
@@ -463,19 +497,46 @@
                             </p>
                             <p>
                                 <t t-if="o.student_id.gender == 'male'">Monsieur</t>
-                                <t t-if="o.student_id.gender == 'female'">Madame</t> <span t-field="o.student_id" /> <span t-field="o.student_id.initials" /><br />Né<t t-if="o.student_id.gender == 'female'">e</t> à <span t-field="o.student_id.birthplace" /> le <span t-field="o.student_id.birthdate_date"/>
+                                <t
+                                    t-if="o.student_id.gender == 'female'"
+                                >Madame</t> <span t-field="o.student_id" /> <span
+                                    t-field="o.student_id.initials"
+                                /><br />Né<t
+                                    t-if="o.student_id.gender == 'female'"
+                                >e</t> à <span
+                                    t-field="o.student_id.birthplace"
+                                /> le <span t-field="o.student_id.birthdate_date" />
                             </p>
                             <p>
-                                est régulièrement inscrit<t t-if="o.student_id.gender == 'female'">e</t> aux cours du jour de l'Enseignement Supérieur Artistique de type <span><t t-esc="'long' if o.source_bloc_id.cycle_id.type=='long' else 'court'"/></span> pour l'année <span t-field="o.year_id" />.
+                                est régulièrement inscrit<t
+                                    t-if="o.student_id.gender == 'female'"
+                                >e</t> aux cours du jour de l'Enseignement Supérieur Artistique de type <span
+                                ><t
+                                        t-esc="'long' if o.source_bloc_id.cycle_id.type=='long' else 'court'"
+                                    /></span> pour l'année <span t-field="o.year_id" />.
                             </p>
                             <p>
-                                Les cours sont donnés du <span t-esc="datetime.datetime(o.year_id.startdate.year, o.year_id.startdate.month, o.year_id.startdate.day).strftime('%d/%m/%Y')" /> au <span t-esc="datetime.datetime(o.year_id.enddate.year, o.year_id.enddate.month, o.year_id.enddate.day).strftime('%d/%m/%Y')" />.
+                                Les cours sont donnés du <span
+                                    t-esc="datetime.datetime(o.year_id.startdate.year, o.year_id.startdate.month, o.year_id.startdate.day).strftime('%d/%m/%Y')"
+                                /> au <span
+                                    t-esc="datetime.datetime(o.year_id.enddate.year, o.year_id.enddate.month, o.year_id.enddate.day).strftime('%d/%m/%Y')"
+                                />.
                             </p>
                             <h6 class="mt-5 pt-5">
                                 Cours suivis dans la nouvelle structure&amp;nbsp;:
                             </h6>
                             <p>
-                                <span t-field="o.source_bloc_id.cycle_id" /> - <span t-field="o.source_bloc_id.level" /> du domaine <span t-field="o.source_bloc_domain_id" />, section <span t-field="o.source_bloc_section_id" />, option <span t-field="o.source_bloc_track_id" />, spécialité <span t-field="o.source_bloc_speciality_id" />.                            
+                                <span t-field="o.source_bloc_id.cycle_id" /> - <span
+                                    t-field="o.source_bloc_id.level"
+                                /> du domaine <span
+                                    t-field="o.source_bloc_domain_id"
+                                />, section <span
+                                    t-field="o.source_bloc_section_id"
+                                />, option <span
+                                    t-field="o.source_bloc_track_id"
+                                />, spécialité <span
+                                    t-field="o.source_bloc_speciality_id"
+                                />.
                             </p>
                         </div>
                     </div>
@@ -484,9 +545,14 @@
                             <p class="colored-grey text-align-center">
                                 La présente attestation est délivrée pour renseignements administratifs.
                             </p>
-                            <p class="mt-5 pt-5 mb-0 text-align-right">Liège, le <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')" />.</p>
+                            <p class="mt-5 pt-5 mb-0 text-align-right">Liège, le <span
+                                    t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"
+                                />.</p>
                             <p class="mt-1 text-align-right">Le Directeur,</p>
-                            <p class="text-align-right" style="margin-top:20mm;">Nathanaël HARCQ</p>
+                            <p
+                                class="text-align-right"
+                                style="margin-top:20mm;"
+                            >Nathanaël HARCQ</p>
                         </div>
                     </div>
                 </t>
@@ -513,16 +579,22 @@
     />
 
     <record id="report_individual_bloc_draft" model="ir.actions.report">
-        <field name="print_report_name">object.name+' - PAE Brouillon - '+time.strftime('%d-%m-%Y')</field>
-        <field name="paperformat_id" ref="school_management.pdf_a4"/>
+        <field
+            name="print_report_name"
+        >object.name+' - PAE Brouillon - '+time.strftime('%d-%m-%Y')</field>
+        <field name="paperformat_id" ref="school_management.pdf_a4" />
     </record>
 
     <record id="report_individual_bloc" model="ir.actions.report">
-        <field name="print_report_name">object.name+' - PAE - '+time.strftime('%d-%m-%Y')</field>
-        <field name="paperformat_id" ref="school_management.pdf_a4"/>
+        <field
+            name="print_report_name"
+        >object.name+' - PAE - '+time.strftime('%d-%m-%Y')</field>
+        <field name="paperformat_id" ref="school_management.pdf_a4" />
     </record>
 
-     <template id="report_individual_bloc_content_draft"> <!-- TODO : Ajouter module pour le filigrane + Voir avec cliente si le cadre "signature" est conditionnel, si oui, ajouter un t-set avant ici pour le récupérer dans "report_individual_bloc_content" et savoir qu'on est dans la version brouillon et masquer le cadre. + Demander des explications/précisions sur le cadre pour être sûr de ce à quoi il leur sert. -->
+     <template
+        id="report_individual_bloc_content_draft"
+    > <!-- TODO : Ajouter module pour le filigrane + Voir avec cliente si le cadre "signature" est conditionnel, si oui, ajouter un t-set avant ici pour le récupérer dans "report_individual_bloc_content" et savoir qu'on est dans la version brouillon et masquer le cadre. + Demander des explications/précisions sur le cadre pour être sûr de ce à quoi il leur sert. -->
         <t t-call="school_management.report_individual_bloc_content" />
     </template>
 
@@ -530,49 +602,106 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="bloc">
                 <t t-set="o" t-value="bloc" />
-                <t t-call="school_management.header_footer_document"> 
+                <t t-call="school_management.header_footer_document">
 
-                    <h2 class="font-size-1_3 colored-primary text-regular pt-1 mb-5" t-out="bloc.source_bloc_id.name" />
-                    <h3 class="font-size-1_2 colored-secondary"><t t-out="bloc.name" /></h3>
-                    <h4 class="font-size-0_9 colored-primary pb-5"><t t-out="bloc.uid" /></h4>
+                    <h2
+                        class="font-size-1_3 colored-primary text-regular pt-1 mb-5"
+                        t-out="bloc.source_bloc_id.name"
+                    />
+                    <h3 class="font-size-1_2 colored-secondary"><t
+                            t-out="bloc.name"
+                        /></h3>
+                    <h4 class="font-size-0_9 colored-primary pb-5"><t
+                            t-out="bloc.uid"
+                        /></h4>
                     <div class="pb-5">
                         <table class="table-program w-100 font-size-0_9 mb-5">
                             <thead>
-                                <tr class="table-row-title border-top-grey border-bottom-grey">
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Code UE</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Unités d'enseignement</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Heures</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">ECTS</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Pondération</th>
+                                <tr
+                                    class="table-row-title border-top-grey border-bottom-grey"
+                                >
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Code UE</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Unités d'enseignement</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Heures</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >ECTS</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Pondération</th>
                                 </tr>
                             </thead>
                             <tbody class="font-size-0_8">
-                                <t t-foreach="bloc.course_group_ids" t-as="course_group">
+                                <t
+                                    t-foreach="bloc.course_group_ids"
+                                    t-as="course_group"
+                                >
                                     <tr class="border-top-grey">
-                                        <td class="p-2 text-bold colored-primary  white-space-nowrap" t-out="course_group.source_course_group_id.uid"/>
-                                        <td class="p-2 colored-primary" t-out="course_group.title"/>
-                                        <td class="p-2 colored-primary text-italic colored-primary" t-out="course_group.total_hours"/>
-                                        <td class="p-2 colored-primary" t-out="course_group.total_credits"/>
-                                        <td class="p-2 colored-primary"/>
+                                        <td
+                                            class="p-2 text-bold colored-primary  white-space-nowrap"
+                                            t-out="course_group.source_course_group_id.uid"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary"
+                                            t-out="course_group.title"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary text-italic colored-primary"
+                                            t-out="course_group.total_hours"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary"
+                                            t-out="course_group.total_credits"
+                                        />
+                                        <td class="p-2 colored-primary" />
                                     </tr>
-                                    <t t-foreach="course_group.course_ids" t-as="course">
+                                    <t
+                                        t-foreach="course_group.course_ids"
+                                        t-as="course"
+                                    >
                                         <tr>
                                             <td class="p-2" />
-                                            <td class="p-2 border-top-light-grey" t-out="course.title"/>
-                                            <td class="p-2 border-top-light-grey" t-out="course.hours"/>
+                                            <td
+                                                class="p-2 border-top-light-grey"
+                                                t-out="course.title"
+                                            />
+                                            <td
+                                                class="p-2 border-top-light-grey"
+                                                t-out="course.hours"
+                                            />
                                             <td class="p-2 border-top-light-grey" />
-                                            <td class="p-2 border-top-light-grey" t-out="course.weight"/>
+                                            <td
+                                                class="p-2 border-top-light-grey"
+                                                t-out="course.weight"
+                                            />
                                         </tr>
                                     </t>
                                 </t>
-                                <tr class="border-top-grey" style="page-break-inside: avoid !important;">
-                                    <td></td>
-                                    <td class="p-2 colored-primary text-bold font-size-1_2">
+                                <tr
+                                    class="border-top-grey"
+                                    style="page-break-inside: avoid !important;"
+                                >
+                                    <td />
+                                    <td
+                                        class="p-2 colored-primary text-bold font-size-1_2"
+                                    >
                                         TOTAL
                                     </td>
-                                    <td class="p-2 colored-primary text-italic colored-primary text-bold font-size-1_2" t-out="bloc.total_hours" />
-                                    <td class="p-2 colored-primary text-bold font-size-1_2" t-out="bloc.total_credits" />
-                                    <td></td>
+                                    <td
+                                        class="p-2 colored-primary text-italic colored-primary text-bold font-size-1_2"
+                                        t-out="bloc.total_hours"
+                                    />
+                                    <td
+                                        class="p-2 colored-primary text-bold font-size-1_2"
+                                        t-out="bloc.total_credits"
+                                    />
+                                    <td />
                                 </tr>
                             </tbody>
                         </table>
@@ -584,11 +713,23 @@
                                 <p class="mt-0 mb-0">
                                     Date et signature de l'étudiant
                                 </p>
-                                <p t-if="bloc.student_signature_date" class="mt-0 mb-2 colored-grey font-size-0_9">
-                                    Le <span t-out="bloc.student_signature_date and bloc.student_signature_date.strftime('%d-%m-%Y')"/>
+                                <p
+                                    t-if="bloc.student_signature_date"
+                                    class="mt-0 mb-2 colored-grey font-size-0_9"
+                                >
+                                    Le <span
+                                        t-out="bloc.student_signature_date and bloc.student_signature_date.strftime('%d-%m-%Y')"
+                                    />
                                 </p>
-                                <div t-if="not bloc.student_signature" style="height:20mm; width:55mm;" />
-                                <img t-if="bloc.student_signature" style="height:20mm; width:55mm;" t-att-src="bloc.student_signature and image_data_uri(bloc.student_signature)"/>
+                                <div
+                                    t-if="not bloc.student_signature"
+                                    style="height:20mm; width:55mm;"
+                                />
+                                <img
+                                    t-if="bloc.student_signature"
+                                    style="height:20mm; width:55mm;"
+                                    t-att-src="bloc.student_signature and image_data_uri(bloc.student_signature)"
+                                />
                                 <p class="mt-5">
                                 Programme annuel approuvé par la commission des études (séance(s) : ...................................................
                                         <!-- <t t-foreach="bloc.approuval_ids" t-as="app">
@@ -602,20 +743,26 @@
                             <div class="row">
                                 <div class="col-6 pt-4 pl-4 pr-4 border-right-grey">
                                     <p>
-                                        Signature de la/du président(e)<br />de la commission des études
+                                        Signature de la/du président(e)<br
+                                        />de la commission des études
                                     </p>
                                     <div style="height:20mm; width:55mm;" />
 
                                 </div>
                                 <div class="col-6 pt-4 pl-4 pr-4">
                                     <p>
-                                        Signature de la/du secrétaire<br />de la commission des études
+                                        Signature de la/du secrétaire<br
+                                        />de la commission des études
                                     </p>
                                     <div style="height:20mm; width:55mm;" />
                                 </div>
                             </div>
                         </div>
-                        <p class="text-align-right colored-grey font-size-0_9 mt-5">Imprimé le <span t-out="datetime.datetime.now().strftime('%d/%m/%Y à %H:%M:%S')" /></p>
+                        <p
+                            class="text-align-right colored-grey font-size-0_9 mt-5"
+                        >Imprimé le <span
+                                t-out="datetime.datetime.now().strftime('%d/%m/%Y à %H:%M:%S')"
+                            /></p>
                     </div>
                 </t>
             </t>
@@ -802,7 +949,7 @@
             <t t-set="o" t-value="program" />
             <t t-call="web.external_layout">
                 <div class="page">
-                                
+
 
                     <t t-call="school_management.website_program_details_content" />
                 </div>
@@ -915,8 +1062,8 @@
         </div>
     </template>
 
-   
 
-   
+
+
 
 </odoo>

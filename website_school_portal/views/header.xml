@@ -27,9 +27,19 @@
         name="Horizon Home Page"
         priority="100"
     >
-        <xpath expr="//div[hasclass('o_frontend_to_backend_apps_menu')]" position="replace">
-            <div class="dropdown-menu o_frontend_to_backend_apps_menu o_test_tm" role="menu">
-                <a role="menuitem" class="dropdown-item" href="/web">Accès back-office</a>
+        <xpath
+            expr="//div[hasclass('o_frontend_to_backend_apps_menu')]"
+            position="replace"
+        >
+            <div
+                class="dropdown-menu o_frontend_to_backend_apps_menu o_test_tm"
+                role="menu"
+            >
+                <a
+                    role="menuitem"
+                    class="dropdown-item"
+                    href="/web"
+                >Accès back-office</a>
             </div>
         </xpath>
     </template>

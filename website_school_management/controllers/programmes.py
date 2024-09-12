@@ -353,11 +353,7 @@ class programmes(http.Controller):
             report = request.env.ref(
                 "website_school_management.action_impression_programme_id"
             )
-            pdf = report._render_qweb_pdf(
-                report, [program.id]
-            )[
-                0
-            ]
+            pdf = report._render_qweb_pdf(report, [program.id])[0]
             pdfhttpheaders = [
                 ("Content-Type", "application/pdf"),
                 ("Content-Length", "%s" % len(pdf)),

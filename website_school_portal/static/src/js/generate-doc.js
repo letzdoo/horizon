@@ -9,15 +9,23 @@ odoo.define("website_school_portal.generate_doc", function (require) {
     }
 
     function displayGeneratedMessage(documentLink) {
-        displayDialogContent('Le document a été généré. Vous pouvez le consulter <a href="' + documentLink + '"  target="_blank">ici</a>.')
+        displayDialogContent(
+            'Le document a été généré. Vous pouvez le consulter <a href="' +
+                documentLink +
+                '"  target="_blank">ici</a>.'
+        );
     }
 
     function displayExistingMessage(documentLink) {
-        displayDialogContent('Le document demandé existe déjà actuellement. Vous pouvez le consulter <a href="' + documentLink + '"  target="_blank">ici</a>.')
+        displayDialogContent(
+            'Le document demandé existe déjà actuellement. Vous pouvez le consulter <a href="' +
+                documentLink +
+                '"  target="_blank">ici</a>.'
+        );
     }
 
     function displayErrorMessage() {
-        displayDialogContent('Une erreur est survenue. Veuillez réessayer plus tard.')
+        displayDialogContent("Une erreur est survenue. Veuillez réessayer plus tard.");
     }
 
     function displayDialogContent(content) {
@@ -31,44 +39,44 @@ odoo.define("website_school_portal.generate_doc", function (require) {
     }
 
     function showDialogLoader() {
-        let dialog = document.querySelector("#generateDialog");
+        const dialog = document.querySelector("#generateDialog");
         dialog.showModal();
     }
 
-
-    let buttonsCloseDialog = document.querySelectorAll(".buttonCloseDialog");
-    buttonsCloseDialog.forEach(button => {
-        button.addEventListener("click", function(event) {
+    const buttonsCloseDialog = document.querySelectorAll(".buttonCloseDialog");
+    buttonsCloseDialog.forEach((button) => {
+        button.addEventListener("click", function (event) {
             event.preventDefault();
-            let dialog = document.querySelector("#generateDialog");
+            const dialog = document.querySelector("#generateDialog");
             dialog.close();
             window.location = window.location.pathname;
-        })
+        });
     });
 
-    const form = document.querySelector('#request_document_form');
+    const form = document.querySelector("#request_document_form");
     const btn = document.querySelector("#btn_request_doc_generation");
     if (btn) {
         btn.addEventListener("click", (event) => {
             if (form && form.reportValidity()) {
                 event.preventDefault();
-      
+
                 var route = "/my/generate-document";
                 var vals = {
-                    document_to_generate: document.getElementById("document_to_generate").value,
+                    document_to_generate:
+                        document.getElementById("document_to_generate").value,
                 };
 
-                showDialogLoader()
-    
+                showDialogLoader();
+
                 getAjaxJsonRpc(route, vals, function (data) {
                     if (data.result === "success") {
                         if (data.existing) {
-                            displayExistingMessage(data.documentlink)
+                            displayExistingMessage(data.documentlink);
                         } else {
-                            displayGeneratedMessage(data.documentlink)
+                            displayGeneratedMessage(data.documentlink);
                         }
                     } else {
-                        displayErrorMessage()
+                        displayErrorMessage();
                     }
                 });
             }

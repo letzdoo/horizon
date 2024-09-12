@@ -218,12 +218,36 @@
           <field name="responsible_id" string="Responsible" />
           <field name="student_id" string="Student" />
           <filter name="draft" string="Draft" domain="[('state', 'in', ['9_draft'])]" />
-          <filter name="progress" string="In progress" domain="[('state', 'in', ['5_progress'])]" />
-          <filter name="rejected" string="Rejected" domain="[('state', 'in', ['3_rejected'])]" />
-          <filter name="candidate" string="Candidate" domain="[('state', 'in', ['2_candidate'])]" />
-          <filter name="confirmed" string="Confirmed" domain="[('state', 'in', ['1_confirmed'])]" />
-          <filter name="checked" string="Checked" domain="[('state', 'in', ['1_1_checked'])]" />
-          <filter name="valuated" string="Valuated" domain="[('state', 'in', ['0_valuated'])]" />
+          <filter
+                    name="progress"
+                    string="In progress"
+                    domain="[('state', 'in', ['5_progress'])]"
+                />
+          <filter
+                    name="rejected"
+                    string="Rejected"
+                    domain="[('state', 'in', ['3_rejected'])]"
+                />
+          <filter
+                    name="candidate"
+                    string="Candidate"
+                    domain="[('state', 'in', ['2_candidate'])]"
+                />
+          <filter
+                    name="confirmed"
+                    string="Confirmed"
+                    domain="[('state', 'in', ['1_confirmed'])]"
+                />
+          <filter
+                    name="checked"
+                    string="Checked"
+                    domain="[('state', 'in', ['1_1_checked'])]"
+                />
+          <filter
+                    name="valuated"
+                    string="Valuated"
+                    domain="[('state', 'in', ['0_valuated'])]"
+                />
           <filter string="Archived" name="inactive" domain="[('active','=',False)]" />
           <separator />
           <filter

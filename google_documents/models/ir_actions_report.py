@@ -21,7 +21,7 @@
 import io
 import logging
 
-from odoo import fields, models, api
+from odoo import fields, models
 from odoo.tools.safe_eval import safe_eval, time
 
 _logger = logging.getLogger(__name__)
@@ -38,20 +38,25 @@ class IrActionsReport(models.Model):
     google_drive_patner_field = fields.Char(
         string="Partner property to save into",
         help="This field name is the Partner to which the Google Drive Forlder to save to.",
-    ) # WARNING TYPO "patner" !
+    )  # WARNING TYPO "patner" !
 
-    # Disclaimer: The mention of "pa(r)tner_field" or "partner_id" is not appropriate as long as 
+    # Disclaimer: The mention of "pa(r)tner_field" or "partner_id" is not appropriate as long as
     # the google_drive_folder_mixin can be added to any Model, not just to res_partner. This naming
-    # is due to the fact that res_partner has been used to build the process and still implements 
+    # is due to the fact that res_partner has been used to build the process and still implements
     # this mixin by default in the present module. Thus "res_field" and "res_id" would be better terms:
-    # you can use this report class overload for any Model that implements google_drive_folder_mixin.    
+    # you can use this report class overload for any Model that implements google_drive_folder_mixin.
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
         google_service = self.env.company.google_drive_id
         # self doesn't have any attributes set and has no id, despite being a ir.actions.report object. We retreive the report based on report_ref.
         report = self._get_report(report_ref)
         self.sudo()
         # If the report is not saved within Google Drive, simply call the ancestor.
-        if not (google_service and report.google_drive_enabled and len(res_ids) == 1 and report.google_drive_patner_field):
+        if not (
+            google_service
+            and report.google_drive_enabled
+            and len(res_ids) == 1
+            and report.google_drive_patner_field
+        ):
             return super(IrActionsReport, self)._render_qweb_pdf(
                 report_ref=report_ref, res_ids=res_ids, data=data
             )
@@ -62,7 +67,9 @@ class IrActionsReport(models.Model):
 
         if report.attachment_use:
             # Checks if the report already exists, and stream it if possible.
-            google_doc = google_service.get_report(partner.id,report.id,report.model,record.id)
+            google_doc = google_service.get_report(
+                partner.id, report.id, report.model, record.id
+            )
             if google_doc:
                 pdf_content = google_service.get_file(google_doc)
                 if pdf_content:
@@ -76,7 +83,7 @@ class IrActionsReport(models.Model):
             report_ref=report_ref, res_ids=res_ids, data=data
         )
         content = io.BytesIO(pdf_content)
-        
+
         if partner.google_drive_folder_id:
             report_name = safe_eval(
                 report.print_report_name, {"object": record, "time": time}
@@ -96,9 +103,9 @@ class IrActionsReport(models.Model):
                     "mimeType": file["mimeType"],
                     "url": file["webViewLink"],
                     "res_model": partner._name,
-                    "res_model_report" : report.model,
-                    "res_id_report" : record.id,
-                    "report_id": report.id
+                    "res_model_report": report.model,
+                    "res_id_report": record.id,
+                    "report_id": report.id,
                 }
             )
 
@@ -107,9 +114,13 @@ class IrActionsReport(models.Model):
         content.seek(0)
         return content.read(), content_type
 
-    def write(self, vals):    
-        if (vals['google_drive_enabled'] if 'google_drive_enabled' in vals else self.google_drive_enabled) : 
-            vals['attachment'] = ''
+    def write(self, vals):
+        if (
+            vals["google_drive_enabled"]
+            if "google_drive_enabled" in vals
+            else self.google_drive_enabled
+        ):
+            vals["attachment"] = ""
         else:
-            vals['google_drive_patner_field'] = ''     
+            vals["google_drive_patner_field"] = ""
         return super().write(vals)

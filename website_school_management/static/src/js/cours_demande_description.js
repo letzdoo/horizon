@@ -25,13 +25,13 @@ odoo.define("website_school_management.cours_details", function (require) {
         }
     }
 
-    const form = document.querySelector('#request_description_form');
+    const form = document.querySelector("#request_description_form");
     const btn = document.querySelector("#btn_request_course_details");
     if (btn) {
         btn.addEventListener("click", (event) => {
             if (form && form.reportValidity()) {
                 event.preventDefault();
-    
+
                 var route = "/cours/cours_demande_description";
                 var vals = {
                     email: document.getElementById("request_email").value,
@@ -39,7 +39,7 @@ odoo.define("website_school_management.cours_details", function (require) {
                     last_name: document.getElementById("request_last_name").value,
                     course_id: document.getElementById("request_course_id").value,
                 };
-    
+
                 getAjaxJsonRpc(route, vals, function (data) {
                     if (data.result === "success") {
                         displaySuccessMessage();

@@ -108,7 +108,7 @@
                     <div
                         class="o_portal_doc_spinner spinner-border text-o-color-2 align-self-center d-none"
                     />
-                    <p class="o_portal_no_doc_message mb-0 d-none"></p>
+                    <p class="o_portal_no_doc_message mb-0 d-none" />
                     <t t-call="website_school_portal.hz_account_documents" />
                 </div>
                 <div
@@ -136,10 +136,15 @@
             <ul class="dynamic-downloadable-list mt-3">
                 <t t-foreach="google_docs" t-as="google_doc">
                     <li>
-                        <span class="dynamic-downloadable-list_label"><t t-esc="google_doc.label"/></span> 
+                        <span class="dynamic-downloadable-list_label"><t
+                                t-esc="google_doc.label"
+                            /></span>
                         <span class="dynamic-downloadable-list_name">
-                            <a t-att-href="'/google_documents/view_file/%s' % google_doc.googe_drive_id" target="_blank">
-                                <t t-esc="google_doc.name"/>
+                            <a
+                                t-att-href="'/google_documents/view_file/%s' % google_doc.googe_drive_id"
+                                target="_blank"
+                            >
+                                <t t-esc="google_doc.name" />
                             </a>
                         </span>
                     </li>
@@ -151,34 +156,51 @@
         </t>
         <h5 class="mt-3">Demande de génération de documents</h5>
         <t t-if="len(docs_to_generate) > 0">
-            <form id="request_document_form" class="mb-4 mb-md-0" >
+            <form id="request_document_form" class="mb-4 mb-md-0">
                 <div class="row">
                     <div class="col-12 mt-2">
                         <div class="select-button w-100">
-                            <select id="document_to_generate" class="form-select" name="document_to_generate" required="true" >
-                                <option value=""><t t-esc="'Sélectionnez un document à générer...'"/></option>
+                            <select
+                                id="document_to_generate"
+                                class="form-select"
+                                name="document_to_generate"
+                                required="true"
+                            >
+                                <option value=""><t
+                                        t-esc="'Sélectionnez un document à générer...'"
+                                    /></option>
                                 <t t-foreach="docs_to_generate" t-as="doc_to_generate">
-                                    <option t-att-value="doc_to_generate['code']"><t t-esc="doc_to_generate['label']"/></option>
+                                    <option t-att-value="doc_to_generate['code']"><t
+                                            t-esc="doc_to_generate['label']"
+                                        /></option>
                                 </t>
                             </select>
                             <button
-                                    id="btn_request_doc_generation"
-                                    class="btn btn-primary"
-                                >Générer
+                                id="btn_request_doc_generation"
+                                class="btn btn-primary"
+                            >Générer
                             </button>
                         </div>
                     </div>
-                    <div class="col-12 d-none" id="generate_msg"></div>
+                    <div class="col-12 d-none" id="generate_msg" />
                 </div>
                 <dialog id="generateDialog">
                     <h3>Génération de document</h3>
-                    <div id="dialogContent" class="d-flex flex-column align-items-center pt-2 gap-2">
+                    <div
+                        id="dialogContent"
+                        class="d-flex flex-column align-items-center pt-2 gap-2"
+                    >
                         <p>Votre document est en cours de génération...</p>
-                        <div id="generate_loader" class="o_portal_doc_spinner spinner-border text-o-color-2 mb-3">
+                        <div
+                            id="generate_loader"
+                            class="o_portal_doc_spinner spinner-border text-o-color-2 mb-3"
+                        >
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-secondary mt-2 mx-auto buttonCloseDialog">Fermer</button>
+                        <button
+                            class="btn btn-secondary mt-2 mx-auto buttonCloseDialog"
+                        >Fermer</button>
                     </div>
                 </dialog>
             </form>
