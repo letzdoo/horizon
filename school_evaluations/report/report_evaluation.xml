@@ -24,7 +24,7 @@
     <!-- Success Certificate -->
 
     <record id="report_success_certificate" model="ir.actions.report">
-        <field name="name">Success Certificate</field>
+        <field name="name">Success Certificate PAE</field>
         <field name="model">school.individual_bloc</field>
         <field name="report_type">qweb-pdf</field>
         <field
@@ -35,7 +35,7 @@
         >school_evaluations.report_success_certificate_content</field>
         <field
             name="print_report_name"
-        >object.name+' - Attestation de réussite - '+time.strftime('%d-%m-%Y')</field>
+        >object.name+' - Attestation de réussite du PAE - '+time.strftime('%d-%m-%Y')</field>
         <field name="binding_model_id" ref="model_school_individual_bloc" />
         <field name="binding_type">report</field>
         <field name="paperformat_id" ref="school_management.pdf_a4" />
@@ -139,7 +139,7 @@
    <!-- Success Certificate on programs -->
 
     <record id="report_success_certificate_prog" model="ir.actions.report">
-        <field name="name">Success Certificate</field>
+        <field name="name">Success Certificate Cycle</field>
         <field name="model">school.individual_program</field>
         <field name="report_type">qweb-pdf</field>
         <field
@@ -950,7 +950,7 @@
     <!-- Evaluations report for deliberation annexe -->
 
     <record id="report_deliberation_program_annexe" model="ir.actions.report">
-        <field name="name">Deliberation Report Program</field>
+        <field name="name">Deliberation Report Program Cycle</field>
         <field name="model">school.individual_program</field>
         <field name="report_type">qweb-pdf</field>
         <field
@@ -962,6 +962,9 @@
         <field name="binding_model_id" ref="model_school_individual_program" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
+        <field
+            name="print_report_name"
+        >object.name+' - Deliberation Report Cycle - '+time.strftime('%d-%m-%Y')</field>
     </record>
 
     <template id="report_deliberation_annexe_program">
@@ -1058,7 +1061,7 @@
         <field name="paperformat_id" ref="school_management.pdf_a4" />
         <field
             name="print_report_name"
-        >object.name+' - Deliberation Report - '+time.strftime('%d-%m-%Y')</field>
+        >object.name+' - Deliberation Report PAE - '+time.strftime('%d-%m-%Y')</field>
     </record>
 
     <template id="report_deliberation_annexe_content">

@@ -163,7 +163,7 @@ class WebsiteSchoolPortal(CustomerPortal):
         docs_to_show = []
         docs_to_generate = []
 
-        # Attestation de réussite #
+        # Attestation de réussite de cycle #
 
         report_code = "school_evaluations.report_success_certificate_prog"
         report = request.env.ref(report_code).sudo()
@@ -174,7 +174,35 @@ class WebsiteSchoolPortal(CustomerPortal):
             optional_params_to_generate = [
                 ("name", "not like", "XXX")
             ]  # Exemple de critère d'exclusion pour les documents à générer.
-            label = "Attestation de réussite"
+            label = "Attestation de réussite de cycle"
+
+            to_show, to_generate = self._get_docs(
+                student_id,
+                report_code,
+                report,
+                label,
+                True,
+                optional_params_to_show,
+                optional_params_to_generate,
+            )
+
+            if len(to_show) > 0:
+                docs_to_show += to_show
+            if len(to_generate) > 0:
+                docs_to_generate += to_generate
+
+        # Attestation de réussite du PAE #
+
+        report_code = "school_evaluations.report_success_certificate"
+        report = request.env.ref(report_code).sudo()
+        if report.google_drive_enabled and report.google_drive_patner_field:
+            optional_params_to_show = [
+                ("name", "not like", "XXX")
+            ]  # Exemple de critère d'exclusion pour les documents montrés.
+            optional_params_to_generate = [
+                ("name", "not like", "XXX")
+            ]  # Exemple de critère d'exclusion pour les documents à générer.
+            label = "Attestation de réussite du PAE"
 
             to_show, to_generate = self._get_docs(
                 student_id,
@@ -301,14 +329,32 @@ class WebsiteSchoolPortal(CustomerPortal):
             if len(to_generate) > 0:
                 docs_to_generate += to_generate
 
-        # Rapport de délibération #
+        # Rapport de délibération de cycle #
+
+        report_code = "school_evaluations.report_deliberation_program_annexe"
+        report = request.env.ref(report_code).sudo()
+        if report.google_drive_enabled and report.google_drive_patner_field:
+            optional_params_to_show = []  # TODO.
+            optional_params_to_generate = []  # TODO.
+            label = "Rapport de délibération de cycle"
+
+            to_show, to_generate = self._get_docs(
+                student_id, report_code, report, label, False, optional_params_to_show
+            )
+
+            if len(to_show) > 0:
+                docs_to_show += to_show
+            if len(to_generate) > 0:
+                docs_to_generate += to_generate
+
+        # Rapport de délibération du PAE #
 
         report_code = "school_evaluations.report_deliberation_annexe"
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
             optional_params_to_show = []  # TODO.
             optional_params_to_generate = []  # TODO.
-            label = "Rapport de délibération"
+            label = "Rapport de délibération du PAE"
 
             to_show, to_generate = self._get_docs(
                 student_id, report_code, report, label, False, optional_params_to_show
