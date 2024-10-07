@@ -339,7 +339,7 @@ class WebsiteSchoolPortal(CustomerPortal):
             label = "Rapport de délibération de cycle"
 
             to_show, to_generate = self._get_docs(
-                student_id, report_code, report, label, False, optional_params_to_show
+                student_id, report_code, report, label, True, optional_params_to_show
             )
 
             if len(to_show) > 0:
@@ -357,7 +357,7 @@ class WebsiteSchoolPortal(CustomerPortal):
             label = "Rapport de délibération du PAE"
 
             to_show, to_generate = self._get_docs(
-                student_id, report_code, report, label, False, optional_params_to_show
+                student_id, report_code, report, label, True, optional_params_to_show
             )
 
             if len(to_show) > 0:

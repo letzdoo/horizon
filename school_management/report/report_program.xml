@@ -428,10 +428,6 @@
                         <span
                             t-attf-style="color: {{primary}}; padding-left: 1mm !important; padding-right: 1mm !important;"
                         >|   </span>
-                        <t t-out="env.company.email" />
-                        <span
-                            t-attf-style="color: {{primary}}; padding-left: 1mm !important; padding-right: 1mm !important;"
-                        >|   </span>
                         <t t-out="env.company.street" />
                         <t t-out="env.company.street2" />
                         -
@@ -523,7 +519,7 @@
                                 />.
                             </p>
                             <h6 class="mt-5 pt-5">
-                                Cours suivis dans la nouvelle structure&amp;nbsp;:
+                                Cours suivis au sein de l'établissement&amp;nbsp;:
                             </h6>
                             <p>
                                 <span t-field="o.source_bloc_id.cycle_id" /> - <span
@@ -711,7 +707,7 @@
                         <div class="case w-100">
                             <div class="p-4">
                                 <p class="mt-0 mb-0">
-                                    Date et signature de l'étudiant
+                                    Date et signature de l'étudiant<t t-if="bloc.student_id.gender == 'female'">e</t>
                                 </p>
                                 <p
                                     t-if="bloc.student_signature_date"
