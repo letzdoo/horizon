@@ -707,7 +707,9 @@
                         <div class="case w-100">
                             <div class="p-4">
                                 <p class="mt-0 mb-0">
-                                    Date et signature de l'étudiant<t t-if="bloc.student_id.gender == 'female'">e</t>
+                                    Date et signature de l'étudiant<t
+                                        t-if="bloc.student_id.gender == 'female'"
+                                    >e</t>
                                 </p>
                                 <p
                                     t-if="bloc.student_signature_date"

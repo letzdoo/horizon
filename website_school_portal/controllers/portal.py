@@ -168,12 +168,8 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = "school_evaluations.report_success_certificate_prog"
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            optional_params_to_show = [
-                ("state", "like", "awarded")
-            ]
-            optional_params_to_generate = [
-                ("state", "like", "awarded")
-            ]
+            optional_params_to_show = [("state", "like", "awarded")]
+            optional_params_to_generate = [("state", "like", "awarded")]
             label = "Attestation de réussite de cycle"
 
             to_show, to_generate = self._get_docs(
@@ -197,10 +193,14 @@ class WebsiteSchoolPortal(CustomerPortal):
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
             optional_params_to_show = [
-                "|", ("state", "like", "awarded_first_session"), ("state", "like", "awarded_second_session")
+                "|",
+                ("state", "like", "awarded_first_session"),
+                ("state", "like", "awarded_second_session"),
             ]
             optional_params_to_generate = [
-                "|", ("state", "like", "awarded_first_session"), ("state", "like", "awarded_second_session")
+                "|",
+                ("state", "like", "awarded_first_session"),
+                ("state", "like", "awarded_second_session"),
             ]
             label = "Attestation de réussite du PAE"
 
@@ -296,12 +296,8 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = "school_evaluations.report_deliberation_program_annexe"
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            optional_params_to_show = [
-                ("state", "like", "awarded")
-            ]
-            optional_params_to_generate = [
-                ("state", "like", "awarded")
-            ]
+            optional_params_to_show = [("state", "like", "awarded")]
+            optional_params_to_generate = [("state", "like", "awarded")]
             label = "Rapport de délibération de cycle"
 
             to_show, to_generate = self._get_docs(
@@ -318,7 +314,10 @@ class WebsiteSchoolPortal(CustomerPortal):
         report_code = "school_evaluations.report_deliberation_annexe"
         report = request.env.ref(report_code).sudo()
         if report.google_drive_enabled and report.google_drive_patner_field:
-            optional_params_to_show = [("state", "not like", "draft"), ("state", "not like", "progress")]
+            optional_params_to_show = [
+                ("state", "not like", "draft"),
+                ("state", "not like", "progress"),
+            ]
             optional_params_to_generate = []
             label = "Rapport de délibération du PAE"
 
