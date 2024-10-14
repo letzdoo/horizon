@@ -771,6 +771,9 @@
                                 name="is_light_bloc"
                                 attrs="{'readonly': ['!',('state', 'in', ('draft'))]}"
                             />
+                            <field
+                                name="deposit_paid"
+                            />
                         </group>
                         <group name="fields_second_group">
                             <field name="total_hours" />

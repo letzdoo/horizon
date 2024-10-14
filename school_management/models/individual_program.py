@@ -353,6 +353,8 @@ class IndividualBloc(models.Model):
     is_final_bloc = fields.Boolean(string="Is final bloc", tracking=True)
 
     is_light_bloc = fields.Boolean(string="Is a light bloc", tracking=True)
+    
+    deposit_paid = fields.Boolean(string="Deposit paid", tracking=True)
 
     tag_ids = fields.Many2many(
         "school.individual_bloc.tag",
