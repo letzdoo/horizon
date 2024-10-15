@@ -110,7 +110,9 @@ class WebsiteSchoolPortal(CustomerPortal):
 
         # Lecture des google docs existants pour le rapport.
         google_service = request.env.company.google_drive_id
-        existing_docs = google_service.get_reports(student_id, report.id, report.model)
+        existing_docs = google_service.get_reports(
+            student_id, report.id, report.model, 1
+        )
 
         # GESTION DES DOCUMENTS À MONTRER #
 

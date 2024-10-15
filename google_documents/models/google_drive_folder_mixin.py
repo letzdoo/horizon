@@ -366,7 +366,7 @@ class GoogleDriveService(models.Model):
 
         return google_doc
 
-    def get_reports(self, res_id, report_id, res_model_report):
+    def get_reports(self, res_id, report_id, res_model_report, limit=0):
         searchParams = [
             ("res_id", "=", res_id),
             ("res_model_report", "=", res_model_report),
@@ -374,9 +374,16 @@ class GoogleDriveService(models.Model):
             ("report_id", "=", report_id),
         ]
         order = "create_date DESC"
-        google_doc = (
-            self.env["google_drive_file"].sudo().search(searchParams, order=order)
-        )
+        if limit > 0:
+            google_doc = (
+                self.env["google_drive_file"]
+                .sudo()
+                .search(searchParams, order=order, limit=limit)
+            )
+        else:
+            google_doc = (
+                self.env["google_drive_file"].sudo().search(searchParams, order=order)
+            )
 
         return google_doc
 
