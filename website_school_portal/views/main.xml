@@ -337,7 +337,7 @@
             <div
                     t-attf-class="mb-3 #{error.get('name') and 'o_has_error' or ''} col-xl-6"
                 >
-                <label class="col-form-label" for="name">Name</label>
+                <label class="col-form-label" for="name">Nom</label>
                 <input
                         type="text"
                         name="name"
@@ -358,16 +358,10 @@
             </div>
 
             <div class="clearfix" />
-            <div t-if="not partner_can_edit_vat" class="col-12 d-none d-xl-block">
-                <small
-                        class="form-text text-muted"
-                    >Changing company name or VAT number is not allowed once document(s) have been issued for your account. <br
-                        />Please contact us directly for this operation.</small>
-            </div>
             <div
                     t-attf-class="mb-3 #{error.get('phone') and 'o_has_error' or ''} col-xl-6"
                 >
-                <label class="col-form-label" for="phone">Phone</label>
+                <label class="col-form-label" for="phone">Téléphone</label>
                 <input
                         type="tel"
                         name="phone"
@@ -380,7 +374,7 @@
             <div
                     t-attf-class="mb-3 #{error.get('street') and 'o_has_error' or ''} col-xl-6"
                 >
-                <label class="col-form-label" for="street">Street</label>
+                <label class="col-form-label" for="street">Rue et numéro</label>
                 <input
                         type="text"
                         name="street"
@@ -389,23 +383,12 @@
                     />
             </div>
             <div
-                    t-attf-class="mb-3 #{error.get('city') and 'o_has_error' or ''} col-xl-6"
-                >
-                <label class="col-form-label" for="city">City</label>
-                <input
-                        type="text"
-                        name="city"
-                        t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}"
-                        t-att-value="city or partner.city"
-                    />
-            </div>
-            <div
                     t-attf-class="mb-3 #{error.get('zip') and 'o_has_error' or ''} col-xl-6"
                 >
                 <label
                         class="col-form-label label-optional"
                         for="zipcode"
-                    >Zip / Postal Code</label>
+                    >Code postal</label>
                 <input
                         type="text"
                         name="zipcode"
@@ -414,14 +397,25 @@
                     />
             </div>
             <div
+                    t-attf-class="mb-3 #{error.get('city') and 'o_has_error' or ''} col-xl-6"
+                >
+                <label class="col-form-label" for="city">Ville</label>
+                <input
+                        type="text"
+                        name="city"
+                        t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}"
+                        t-att-value="city or partner.city"
+                    />
+            </div>
+            <div
                     t-attf-class="mb-3 #{error.get('country_id') and 'o_has_error' or ''} col-xl-6"
                 >
-                <label class="col-form-label" for="country_id">Country</label>
+                <label class="col-form-label" for="country_id">Pays</label>
                 <select
                         name="country_id"
                         t-attf-class="form-select #{error.get('country_id') and 'is-invalid' or ''}"
                     >
-                    <option value="">Country...</option>
+                    <option value="">Pays...</option>
                     <t t-foreach="countries or []" t-as="country">
                         <option
                                 t-att-value="country.id"
@@ -432,30 +426,7 @@
                     </t>
                 </select>
             </div>
-            <div
-                    t-attf-class="mb-3 #{error.get('state_id') and 'o_has_error' or ''} col-xl-6"
-                >
-                <label
-                        class="col-form-label label-optional"
-                        for="state_id"
-                    >State / Province</label>
-                <select
-                        name="state_id"
-                        t-attf-class="form-select #{error.get('state_id') and 'is-invalid' or ''}"
-                    >
-                    <option value="">select...</option>
-                    <t t-foreach="states or []" t-as="state">
-                        <option
-                                t-att-value="state.id"
-                                style="display:none;"
-                                t-att-data-country_id="state.country_id.id"
-                                t-att-selected="state.id == int(state_id) if state_id else state.id == partner.state_id.id"
-                            >
-                            <t t-esc="state.name" />
-                        </option>
-                    </t>
-                </select>
-            </div>
+
         </div>
         </xpath>
     </template>
