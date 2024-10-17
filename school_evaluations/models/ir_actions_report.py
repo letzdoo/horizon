@@ -31,10 +31,12 @@ class IrActionsReport(models.Model):
     _inherit = "ir.actions.report"
 
     def _render_qweb_pdf(self, report_ref, res_ids=None, data=None):
+        # Variable report_ref can be a report object OR the report name, so we must get the object.  
+        report = self._get_report(report_ref)
         self.sudo()
         # Is it "Deliberation Report Annexes" (ID report_deliberation_annexe) for ONE individual bloc(k) ?
         deliberation_report = self.env.ref('school_evaluations.report_deliberation_annexe')
-        if(len(res_ids) == 1 and report_ref == deliberation_report):
+        if(len(res_ids) == 1 and report == deliberation_report):
             # Generate "Evaluations for student" (ID report_evaluation_for_student).
             deliberation_report_for_student = self.env.ref('school_evaluations.report_evaluation_for_student')
             self._render_qweb_pdf(
