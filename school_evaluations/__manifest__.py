@@ -24,7 +24,7 @@
     "author": "ito-invest (Jerome Sonnet)",
     "website": "https://github.com/ito-invest-lu/horizon",
     "category": "School Management",
-    "depends": ["school_management"],
+    "depends": ["school_management","google_documents",],
     "init_xml": [],
     "data": [
         "data/school_evaluations.xml",

@@ -103,6 +103,7 @@ class IrActionsReport(models.Model):
                     "mimeType": file["mimeType"],
                     "url": file["webViewLink"],
                     "res_model": partner._name,
+                    "res_id": partner.id,
                     "res_model_report": report.model,
                     "res_id_report": record.id,
                     "report_id": report.id,

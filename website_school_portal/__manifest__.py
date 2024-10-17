@@ -30,6 +30,7 @@
         "website_school_management",
         "website_booking",
         "google_documents",
+        "school_evaluations",
     ],
     "data": [
         "init_horizon.xml",
