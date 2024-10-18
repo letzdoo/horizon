@@ -1050,23 +1050,37 @@
                                     class="border-top-grey"
                                     style="page-break-inside: avoid !important;"
                                 >
-                                    <td class="p-2 text-bold colored-primary white-space-nowrap">
+                                    <td
+                                        class="p-2 text-bold colored-primary white-space-nowrap"
+                                    >
                                         <t t-esc="course_group.uid" />
                                     </td>
                                     <td class="p-2 colored-primary">
                                         <t t-esc="course_group.title" />
                                     </td>
                                     <td class="p-2 colored-primary">
-                                        <t t-if="course_group.state == '0_valuated'"><t t-esc="course_group.source_course_group_id.total_hours"/></t>
-                                        <t t-else="course_group.total_hours"><t t-esc="course_group.total_hours"/></t>
+                                        <t t-if="course_group.state == '0_valuated'"><t
+                                                t-esc="course_group.source_course_group_id.total_hours"
+                                            /></t>
+                                        <t t-else="course_group.total_hours"><t
+                                                t-esc="course_group.total_hours"
+                                            /></t>
                                     </td>
                                     <td class="p-2 colored-primary">
-                                        <t t-if="course_group.state == '0_valuated'"><t t-esc="course_group.source_course_group_id.total_credits"/></t>
-                                        <t t-else="course_group.total_credits"><t t-esc="course_group.total_credits"/></t>
+                                        <t t-if="course_group.state == '0_valuated'"><t
+                                                t-esc="course_group.source_course_group_id.total_credits"
+                                            /></t>
+                                        <t t-else="course_group.total_credits"><t
+                                                t-esc="course_group.total_credits"
+                                            /></t>
                                     </td>
                                     <td class="p-2 colored-primary">
-                                        <t t-if="course_group.state == '0_valuated'">[Valorisation]</t>
-                                        <t t-else="course_group.final_result_disp"><t t-esc="course_group.final_result_disp"/></t>
+                                        <t
+                                            t-if="course_group.state == '0_valuated'"
+                                        >[Valorisation]</t>
+                                        <t t-else="course_group.final_result_disp"><t
+                                                t-esc="course_group.final_result_disp"
+                                            /></t>
                                     </td>
                                     <td class="p-2 colored-primary">
                                         <t t-esc="course_group.bloc_id.year_id.name" />
