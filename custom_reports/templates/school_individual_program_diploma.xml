@@ -340,7 +340,7 @@
     </template>
 
     <!-- One button for all reports -->
-    <report
+    <!-- <report
         id="report_school_general_diploma_report"
         model="school.individual_program"
         string="Imprimer Diplôme"
@@ -348,5 +348,25 @@
         name="custom_reports.report_school_individual_program_diploma_general"
         file="custom_reports.report_school_individual_program_diploma_general"
         paperformat="custom_reports.paperformat_diploma"
-    />
+        print_report_name="Diplôme"
+    /> -->
+
+
+    <record id="report_school_general_diploma_report" model="ir.actions.report">
+        <field name="name">Imprimer Diplôme</field>
+        <field name="model">school.individual_program</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >custom_reports.report_school_individual_program_diploma_general</field>
+        <field
+            name="report_file"
+        >custom_reports.report_school_individual_program_diploma_general</field>
+        <field
+            name="print_report_name"
+        >object.name+' - Diplôme - '+time.strftime('%d-%m-%Y')</field>
+        <field name="binding_type">report</field>
+        <field name="attachment_use">True</field>
+        <field name="paperformat_id" ref="custom_reports.paperformat_diploma" />
+    </record>
 </odoo>

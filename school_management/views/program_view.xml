@@ -436,7 +436,10 @@
                     filter_domain="['|',('name','ilike',self),('uid','ilike',self)]"
                 />
                 <field name="uid" filter_domain="[('uid','ilike',self)]" />
-                <field name="course_group_uid" filter_domain="[('course_group_uid','ilike',self)]" />
+                <field
+                    name="course_group_uid"
+                    filter_domain="[('course_group_uid','ilike',self)]"
+                />
                 <field
                     name="responsible_id"
                     filter_domain="[('responsible_id','ilike',self)]"

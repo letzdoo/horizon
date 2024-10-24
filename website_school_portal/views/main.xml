@@ -103,14 +103,13 @@
                     t-call="website_school_portal.hz_account_admin"
                     t-if="user_id._is_admin()"
                 />
-                <h3 class="o_not_editable">Documents</h3>
+                <h3 class="o_not_editable mt-4">Documents</h3>
                 <div class="o_portal_docs list-group">
                     <div
-                        class="o_portal_doc_spinner spinner-border text-o-color-2 align-self-center mt-5"
+                        class="o_portal_doc_spinner spinner-border text-o-color-2 align-self-center d-none"
                     />
-                    <p
-                        class="o_portal_no_doc_message d-none"
-                    >Vous n'avez pas de documents disponibles pour le moment.</p>
+                    <p class="o_portal_no_doc_message mb-0 d-none" />
+                    <t t-call="website_school_portal.hz_account_documents" />
                 </div>
                 <div
                     class="hz-editor-mode-only mt-5"
@@ -130,6 +129,85 @@
                 </div>
             </div>
         </xpath>
+    </template>
+
+    <template id="hz_account_documents" name="Horizon Student Documents">
+        <t t-if="len(google_docs) > 0">
+            <ul class="dynamic-downloadable-list mt-3">
+                <t t-foreach="google_docs" t-as="google_doc">
+                    <li>
+                        <span class="dynamic-downloadable-list_label"><t
+                                t-esc="google_doc.label"
+                            /></span>
+                        <span class="dynamic-downloadable-list_name">
+                            <a
+                                t-att-href="'/google_documents/view_file/%s' % google_doc.googe_drive_id"
+                                target="_blank"
+                            >
+                                <t t-esc="google_doc.name" />
+                            </a>
+                        </span>
+                    </li>
+                </t>
+            </ul>
+        </t>
+        <t t-else="">
+            <p>Vous n'avez pas de documents disponibles pour le moment.</p>
+        </t>
+        <h5 class="mt-3">Demande de génération de documents</h5>
+        <t t-if="len(docs_to_generate) > 0">
+            <form id="request_document_form" class="mb-4 mb-md-0">
+                <div class="row">
+                    <div class="col-12 mt-2">
+                        <div class="select-button w-100">
+                            <select
+                                id="document_to_generate"
+                                class="form-select"
+                                name="document_to_generate"
+                                required="true"
+                            >
+                                <option value=""><t
+                                        t-esc="'Sélectionnez un document à générer...'"
+                                    /></option>
+                                <t t-foreach="docs_to_generate" t-as="doc_to_generate">
+                                    <option t-att-value="doc_to_generate['code']"><t
+                                            t-esc="doc_to_generate['label']"
+                                        /></option>
+                                </t>
+                            </select>
+                            <button
+                                id="btn_request_doc_generation"
+                                class="btn btn-primary"
+                            >Générer
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 d-none" id="generate_msg" />
+                </div>
+                <dialog id="generateDialog">
+                    <h3>Génération de document</h3>
+                    <div
+                        id="dialogContent"
+                        class="d-flex flex-column align-items-center pt-2 gap-2"
+                    >
+                        <p>Votre document est en cours de génération...</p>
+                        <div
+                            id="generate_loader"
+                            class="o_portal_doc_spinner spinner-border text-o-color-2 mb-3"
+                        >
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button
+                            class="btn btn-secondary mt-2 mx-auto buttonCloseDialog"
+                        >Fermer</button>
+                    </div>
+                </dialog>
+            </form>
+        </t>
+        <t t-else="">
+            <p class="mb-4 mb-md-0">Aucun document ne peut être généré actuellement.</p>
+        </t>
     </template>
 
     <template id="hz_account_student" name="Horizon Student Account Page" priority="32">
@@ -239,6 +317,118 @@
             class="mt-3 o_not_editable"
         >Profil administrateur du système</h2>
         <a class="btn btn-primary mb-2" href="/web">Accès back-office</a>
+    </template>
+
+    <template
+        id="hz_portal_my_details_fields"
+        inherit_id="portal.portal_my_details_fields"
+        name="Horizon Portal Details Fields"
+        priority="100"
+    >
+        <xpath expr="." position="replace">
+        <div class="row">
+
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+            <div t-if="error_message" class="alert alert-danger" role="alert">
+                <div class="col-lg-12">
+                    <t t-foreach="error_message" t-as="err"><t t-esc="err" /><br /></t>
+                </div>
+            </div>
+            <div
+                    t-attf-class="mb-3 #{error.get('name') and 'o_has_error' or ''} col-xl-6"
+                >
+                <label class="col-form-label" for="name">Nom</label>
+                <input
+                        type="text"
+                        name="name"
+                        t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}"
+                        t-att-value="name or partner.name"
+                    />
+            </div>
+            <div
+                    t-attf-class="mb-3 #{error.get('email') and 'o_has_error' or ''} col-xl-6"
+                >
+                <label class="col-form-label" for="email">Email</label>
+                <input
+                        type="email"
+                        name="email"
+                        t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}"
+                        t-att-value="email or partner.email"
+                    />
+            </div>
+
+            <div class="clearfix" />
+            <div
+                    t-attf-class="mb-3 #{error.get('phone') and 'o_has_error' or ''} col-xl-6"
+                >
+                <label class="col-form-label" for="phone">Téléphone</label>
+                <input
+                        type="tel"
+                        name="phone"
+                        t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}"
+                        t-att-value="phone or partner.phone"
+                    />
+            </div>
+
+            <div class="clearfix" />
+            <div
+                    t-attf-class="mb-3 #{error.get('street') and 'o_has_error' or ''} col-xl-6"
+                >
+                <label class="col-form-label" for="street">Rue et numéro</label>
+                <input
+                        type="text"
+                        name="street"
+                        t-attf-class="form-control #{error.get('street') and 'is-invalid' or ''}"
+                        t-att-value="street or partner.street"
+                    />
+            </div>
+            <div
+                    t-attf-class="mb-3 #{error.get('zip') and 'o_has_error' or ''} col-xl-6"
+                >
+                <label
+                        class="col-form-label label-optional"
+                        for="zipcode"
+                    >Code postal</label>
+                <input
+                        type="text"
+                        name="zipcode"
+                        t-attf-class="form-control #{error.get('zip') and 'is-invalid' or ''}"
+                        t-att-value="zipcode or partner.zip"
+                    />
+            </div>
+            <div
+                    t-attf-class="mb-3 #{error.get('city') and 'o_has_error' or ''} col-xl-6"
+                >
+                <label class="col-form-label" for="city">Ville</label>
+                <input
+                        type="text"
+                        name="city"
+                        t-attf-class="form-control #{error.get('city') and 'is-invalid' or ''}"
+                        t-att-value="city or partner.city"
+                    />
+            </div>
+            <div
+                    t-attf-class="mb-3 #{error.get('country_id') and 'o_has_error' or ''} col-xl-6"
+                >
+                <label class="col-form-label" for="country_id">Pays</label>
+                <select
+                        name="country_id"
+                        t-attf-class="form-select #{error.get('country_id') and 'is-invalid' or ''}"
+                    >
+                    <option value="">Pays...</option>
+                    <t t-foreach="countries or []" t-as="country">
+                        <option
+                                t-att-value="country.id"
+                                t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id"
+                            >
+                            <t t-esc="country.name" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+
+        </div>
+        </xpath>
     </template>
 
 

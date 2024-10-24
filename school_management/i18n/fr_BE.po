@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-14 12:38+0000\n"
-"PO-Revision-Date: 2024-03-14 12:38+0000\n"
+"POT-Creation-Date: 2024-10-14 11:58+0000\n"
+"PO-Revision-Date: 2024-10-14 11:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -114,11 +114,6 @@ msgstr "(éditer)"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
-msgid ", né"
-msgstr ""
-
-#. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
 msgid ", option"
 msgstr ""
 
@@ -152,6 +147,11 @@ msgid ""
 msgstr ""
 "<br/>\n"
 "                                  ECTS :"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "<br/>Né"
+msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.website_program_details_content
@@ -194,24 +194,14 @@ msgid "<span>Cycle basé sur le profil d'enseignement:</span>"
 msgstr "<span>Cycle basé sur le profil d'enseignement :</span>"
 
 #. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
-msgid "Cours suivis dans la nouvelle structure&amp;nbsp;:"
-msgstr ""
-
-#. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
-msgid "ACADEMIC YEAR"
-msgstr "ANNÉE ACADÉMIQUE"
-
-#. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_school_program__ares_code
 msgid "ARES Code"
 msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
-msgid "ATTENDANCE REPORT"
-msgstr "ATTESTATION DE FRÉQUENTATION"
+msgid "ATTESTATION DE FRÉQUENTATION"
+msgstr ""
 
 #. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_bloc__state__abandoned
@@ -220,6 +210,7 @@ msgstr "Abandonné"
 
 #. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_program__state__abandonned
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_individual_program_filter
 msgid "Abandonned"
 msgstr "Abandonné"
@@ -248,7 +239,6 @@ msgstr "A besoin d'une action"
 #: model:ir.model.fields,field_description:school_management.field_school_course_group_group__active
 #: model:ir.model.fields,field_description:school_management.field_school_individual_bloc__active
 #: model:ir.model.fields,field_description:school_management.field_school_individual_program__active
-#: model_terms:ir.ui.view,arch_db:school_management.view_individual_courses_filter
 msgid "Active"
 msgstr "Actif"
 
@@ -270,12 +260,6 @@ msgstr ""
 #. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_school_individual_course__activity_type_icon
 msgid "Activity Type Icon"
-msgstr ""
-
-#. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.view_individual_course_groups_filter
-#: model_terms:ir.ui.view,arch_db:school_management.view_individual_courses_filter
-msgid "Activité"
 msgstr ""
 
 #. module: school_management
@@ -317,6 +301,11 @@ msgstr "Adresse secondaire"
 #: model:ir.model.fields.selection,name:school_management.selection__school_course_group__period__0
 msgid "Annual"
 msgstr "Annuel"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "Année académique&amp;nbsp;:"
+msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.program_form
@@ -375,15 +364,15 @@ msgid "Autre(s) prénom(s)"
 msgstr ""
 
 #. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
-msgid "Avis de la commission des études"
-msgstr ""
-
-#. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_program__state__awarded
 #: model_terms:ir.ui.view,arch_db:school_management.view_individual_program_filter
 msgid "Awarded"
 msgstr "Diplômé"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
+msgid "Awarded first session"
+msgstr ""
 
 #. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_bloc__state__awarded_first_session
@@ -394,6 +383,11 @@ msgstr "Réussi en 1re session"
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_bloc__state__awarded_second_session
 msgid "Awarded in Second Session"
 msgstr "Réussi en 2de session"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
+msgid "Awarded second session"
+msgstr ""
 
 #. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_bloc__level__1
@@ -477,13 +471,13 @@ msgid "Blocs"
 msgstr "Blocs annuels"
 
 #. module: school_management
-#: model:ir.model.fields.selection,name:school_management.selection__custom_partner_fields_access_title__type__cess
-msgid "CESS"
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "Boulevard Piercot, 29 - 4000 Liège"
 msgstr ""
 
 #. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
-msgid "CODE UE"
+#: model:ir.model.fields.selection,name:school_management.selection__custom_partner_fields_access_title__type__cess
+msgid "CESS"
 msgstr ""
 
 #. module: school_management
@@ -565,7 +559,12 @@ msgid "Code"
 msgstr ""
 
 #. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_course__course_group_uid
+#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
 #: model_terms:ir.ui.view,arch_db:school_management.school_bloc
+#: model_terms:ir.ui.view,arch_db:school_management.view_course_group_filter
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_course_group_tree
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_course_groups_filter
 #: model_terms:ir.ui.view,arch_db:school_management.website_school_bloc
 msgid "Code UE"
 msgstr ""
@@ -591,6 +590,11 @@ msgid "Confirmed"
 msgstr "Confirmé"
 
 #. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "Conservatoire royal de Liège"
+msgstr ""
+
+#. module: school_management
 #: model:ir.model,name:school_management.model_res_partner
 #: model:ir.model.fields,field_description:school_management.field_custom_partner_fields_access_title__partner_id
 #: model:ir.model.fields,field_description:school_management.field_custom_partner_fields_erasmus__partner_id
@@ -606,7 +610,7 @@ msgstr ""
 #: model:ir.ui.menu,name:school_management.menu_contacts
 #: model:ir.ui.menu,name:school_management.school_home_menu_students_contact
 msgid "Contacts"
-msgstr "Contacts"
+msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_partners_form_school
@@ -620,6 +624,11 @@ msgstr "Contacts & Adresses"
 #: model_terms:ir.ui.view,arch_db:school_management.view_partners_form_school
 msgid "Country"
 msgstr "Pays"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "Cours suivis au sein de l'établissement&amp;nbsp;:"
+msgstr ""
 
 #. module: school_management
 #: model:ir.model,name:school_management.model_school_course
@@ -706,7 +715,8 @@ msgstr "Unités d'enseignement"
 #. module: school_management
 #: model_terms:ir.actions.act_window,help:school_management.act_program_2_course
 msgid "Create a Course Group and add Courses to the program."
-msgstr "Créer une nouvelle unité d'enseignement et ajouter des cours au programme."
+msgstr ""
+"Créer une nouvelle unité d'enseignement et ajouter des cours au programme."
 
 #. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_custom_partner_fields_access_title__create_uid
@@ -875,9 +885,7 @@ msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
-msgid ""
-"Date et signature de l'étudiant<br/>\n"
-"                              Le"
+msgid "Date et signature de l'étudiant"
 msgstr ""
 
 #. module: school_management
@@ -890,6 +898,11 @@ msgstr "Responsable par défaut"
 #: model_terms:ir.ui.view,arch_db:school_management.individual_program_form
 msgid "Delete"
 msgstr "Supprimer"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_individual_bloc__deposit_paid
+msgid "Deposit paid"
+msgstr "Acompte payé"
 
 #. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_school_bloc__description
@@ -1041,6 +1054,11 @@ msgid "Employees"
 msgstr "Employés"
 
 #. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_courses_filter
+msgid "En cours"
+msgstr ""
+
+#. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_school_year__enddate
 msgid "End date"
 msgstr "Date de fin"
@@ -1074,6 +1092,7 @@ msgstr ""
 #. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_bloc__state__failed
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_course_group__state__7_failed
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
 msgid "Failed"
 msgstr "Échec"
 
@@ -1181,11 +1200,6 @@ msgid "Groups"
 msgstr "Groupes"
 
 #. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
-msgid "HEURES"
-msgstr ""
-
-#. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.individual_bloc_form
 #: model_terms:ir.ui.view,arch_db:school_management.individual_program_form
 msgid "HRS"
@@ -1215,6 +1229,7 @@ msgid "Has a second session"
 msgstr "Seconde session possible"
 
 #. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
 #: model_terms:ir.ui.view,arch_db:school_management.school_bloc
 #: model_terms:ir.ui.view,arch_db:school_management.website_school_bloc
 msgid "Heures"
@@ -1338,7 +1353,7 @@ msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
-msgid "Imprimé"
+msgid "Imprimé le"
 msgstr ""
 
 #. module: school_management
@@ -1352,6 +1367,11 @@ msgstr "En cours"
 #: model:ir.model.fields,field_description:school_management.field_res_country__in_use
 msgid "In Use"
 msgstr "En utilisation"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
+msgid "In progress"
+msgstr ""
 
 #. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_school_individual_program__ind_course_group_ids
@@ -1473,6 +1493,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_bloc__state__irregular
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_course_group__state__10_irregular
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_program__state__irregular
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
 msgid "Irregular"
 msgstr "Irrégulier"
 
@@ -1512,18 +1533,13 @@ msgstr "Année diplômante"
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
 msgid ""
-"Je soussigné, Nathanaël HARCQ, Directeur du CONSERVATOIRE ROYAL DE LIEGE "
-"certifie par la présente que"
+"Je soussigné, Nathanaël HARCQ, Directeur du Conservatoire Royal de Liège, "
+"certifie que"
 msgstr ""
 
 #. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_bloc__level__jt
 msgid "Jeune talent"
-msgstr ""
-
-#. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
-msgid "LIEGE, le"
 msgstr ""
 
 #. module: school_management
@@ -1618,13 +1634,14 @@ msgid "Last Updated on"
 msgstr "Dernière mise à jour le"
 
 #. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
-msgid ""
-"Le Directeur,<br/>\n"
-"                                  Nathanaël HARCQ"
+#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
+msgid "Le"
 msgstr ""
-"Le Directeur,<br/>\n"
-"                                Nathanaël HARCQ"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "Le Directeur,"
+msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
@@ -1642,6 +1659,11 @@ msgid "Level"
 msgstr "Niveau"
 
 #. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "Liège, le"
+msgstr ""
+
+#. module: school_management
 #: model:ir.ui.menu,name:school_management.school_home_menu_rooms
 msgid "Locaux"
 msgstr ""
@@ -1655,6 +1677,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:school_management.field_school_domain__long_name
 msgid "Long Name"
 msgstr "Nom Long"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "Madame"
+msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_partners_form_school
@@ -1783,6 +1810,11 @@ msgid "Messages"
 msgstr ""
 
 #. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "Monsieur"
+msgstr ""
+
+#. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_bloc_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_course_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_course_group_filter
@@ -1838,6 +1870,11 @@ msgid "Name of the access title"
 msgstr "Nom du titre d'accès"
 
 #. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "Nathanaël HARCQ"
+msgstr ""
+
+#. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_res_partner__nationality_ids
 #: model:ir.model.fields,field_description:school_management.field_res_users__nationality_ids
 msgid "Nationalities"
@@ -1853,11 +1890,6 @@ msgstr "Nationalité"
 #: model:ir.model.fields.selection,name:school_management.selection__res_partner__year_sequence__never
 msgid "Never"
 msgstr "Jamais"
-
-#. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.view_res_partner_filter
-msgid "Never registered"
-msgstr "Jamais enregistré"
 
 #. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_school_individual_bloc__new_source_course_group_id
@@ -1915,6 +1947,7 @@ msgid "No teacher"
 msgstr "Pas d'enseignant"
 
 #. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_course_groups_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_partners_form_school
 msgid "Nom"
 msgstr ""
@@ -2066,11 +2099,6 @@ msgid "PAEs"
 msgstr "PAE"
 
 #. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
-msgid "POND"
-msgstr ""
-
-#. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.website_program_details_content
 msgid "PROFIL D’ENSEIGNEMENT"
 msgstr "GRILLE THEORIQUE DE CYCLE"
@@ -2078,6 +2106,11 @@ msgstr "GRILLE THEORIQUE DE CYCLE"
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.website_program_details_content
 msgid "PROGRAMME DES COURS"
+msgstr ""
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.header_footer_document
+msgid "Page : <span class=\"page\"/> / <span class=\"topage\"/>"
 msgstr ""
 
 #. module: school_management
@@ -2144,12 +2177,18 @@ msgid "Pond"
 msgstr ""
 
 #. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
+msgid "Pondération"
+msgstr ""
+
+#. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_individual_course_form
 msgid "Porgram"
 msgstr "Programme"
 
 #. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_bloc__state__postponed
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
 msgid "Postponed"
 msgstr "Ajourné"
 
@@ -2208,7 +2247,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
 msgid ""
 "Programme annuel approuvé par la commission des études (séance(s) : "
-"...................................."
+"..................................................."
 msgstr ""
 
 #. module: school_management
@@ -2245,9 +2284,7 @@ msgstr "Publier le programme"
 
 #. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_program__state__published
-#: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_individual_course_groups_filter
-#: model_terms:ir.ui.view,arch_db:school_management.view_individual_program_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_program_filter
 msgid "Published"
 msgstr "Publié"
@@ -2293,21 +2330,6 @@ msgstr ""
 #. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_school_course_session__quarter
 msgid "Quarter"
-msgstr ""
-
-#. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.view_res_partner_filter
-msgid "Registered current"
-msgstr ""
-
-#. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.view_res_partner_filter
-msgid "Registered next"
-msgstr ""
-
-#. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.view_res_partner_filter
-msgid "Registered previous"
 msgstr ""
 
 #. module: school_management
@@ -2483,12 +2505,12 @@ msgstr "Nom court"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
-msgid "Signature de la/du président(e) de la commission des études"
+msgid "Signature de la/du président(e)<br/>de la commission des études"
 msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
-msgid "Signature de la/du secrétaire de la commission des études"
+msgid "Signature de la/du secrétaire<br/>de la commission des études"
 msgstr ""
 
 #. module: school_management
@@ -2578,6 +2600,8 @@ msgstr "Specialités"
 #: model:ir.model.fields,field_description:school_management.field_school_program__speciality_id
 #: model_terms:ir.ui.view,arch_db:school_management.view_bloc_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_course_groups_filter
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_courses_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_individual_program_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_program_filter
 msgid "Speciality"
@@ -2603,6 +2627,7 @@ msgstr "Date de début"
 #: model:ir.model.fields,field_description:school_management.field_res_partner__secondary_state_id
 #: model:ir.model.fields,field_description:school_management.field_res_users__secondary_state_id
 #: model_terms:ir.ui.view,arch_db:school_management.view_individual_bloc_filter
+#: model_terms:ir.ui.view,arch_db:school_management.view_individual_course_groups_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_individual_program_filter
 #: model_terms:ir.ui.view,arch_db:school_management.view_partners_form_school
 msgid "State"
@@ -2695,6 +2720,11 @@ msgstr "Cycles individuels des étudiants"
 #: model:ir.model.fields.selection,name:school_management.selection__school_individual_course_group__state__6_success
 msgid "Success"
 msgstr "Réussi"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
+msgid "TOTAL"
+msgstr ""
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_res_partner_filter
@@ -2827,7 +2857,6 @@ msgid "Titres de mémoires"
 msgstr ""
 
 #. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
 #: model_terms:ir.ui.view,arch_db:school_management.school_bloc
 #: model_terms:ir.ui.view,arch_db:school_management.website_school_bloc
 msgid "Total :"
@@ -2914,12 +2943,8 @@ msgid "UID"
 msgstr ""
 
 #. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
-msgid "UNITÉS D'ENSEIGNEMENT"
-msgstr ""
-
-#. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.individual_program_form
+#: model_terms:ir.ui.view,arch_db:school_management.report_individual_bloc_content
 msgid "Unités d'enseignement"
 msgstr ""
 
@@ -3059,6 +3084,11 @@ msgstr "Code postal"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
+msgid "au"
+msgstr ""
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
 msgid "aux cours du jour de l'Enseignement Supérieur Artistique de type"
 msgstr ""
 
@@ -3090,12 +3120,23 @@ msgstr "pour"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
-msgid "juin."
+msgid "le"
 msgstr ""
 
 #. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
-msgid "le"
+#: model:ir.actions.report,print_report_name:school_management.report_attendance_for_student
+msgid ""
+"object.name+' - Attestation de fréquentation - '+time.strftime('%d-%m-%Y')"
+msgstr ""
+
+#. module: school_management
+#: model:ir.actions.report,print_report_name:school_management.report_individual_bloc
+msgid "object.name+' - PAE - '+time.strftime('%d-%m-%Y')"
+msgstr ""
+
+#. module: school_management
+#: model:ir.actions.report,print_report_name:school_management.report_individual_bloc_draft
+msgid "object.name+' - PAE Brouillon - '+time.strftime('%d-%m-%Y')"
 msgstr ""
 
 #. module: school_management
@@ -3171,11 +3212,6 @@ msgstr "Année académique"
 #. module: school_management
 #: model:ir.model,name:school_management.model_school_year_sequence_mixin
 msgid "school.year_sequence.mixin"
-msgstr ""
-
-#. module: school_management
-#: model_terms:ir.ui.view,arch_db:school_management.report_attendance_for_student_content
-msgid "septembre au"
 msgstr ""
 
 #. module: school_management

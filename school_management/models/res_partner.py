@@ -291,20 +291,21 @@ class Partner(models.Model):
     def check_access(self):
         # Override google_drive_folder.mixin.check_access()
         if self.env.user._is_admin():
-            _logger.debug("check_access() : Administrator can access anyone's files")    
+            _logger.debug("check_access() : Administrator can access anyone's files")
             return True
 
         current = self.env.user.partner_id
         if current == self:
-            _logger.debug("check_access() : Partner can always access his own files")    
+            _logger.debug("check_access() : Partner can always access his own files")
             return True
 
         if current.employee:
-            _logger.debug("check_access() : Employee can access anyone's files")    
+            _logger.debug("check_access() : Employee can access anyone's files")
             return True
-        
+
         _logger.debug("check_access() : No access is granted")
         return False
+
 
 class Company(models.Model):
     _inherit = "res.company"

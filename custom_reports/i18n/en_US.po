@@ -697,7 +697,7 @@ msgstr ""
 #. module: custom_reports
 #: model:ir.model,name:custom_reports.model_school_individual_program
 msgid "Individual Program"
-msgstr "Bloc individuel"
+msgstr ""
 
 #. module: custom_reports
 #: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_supplement_content_page
@@ -1021,12 +1021,12 @@ msgstr ""
 #. module: custom_reports
 #: model:ir.actions.report,print_report_name:custom_reports.report_school_general_diploma_report
 msgid "object.name+' - Diplôme - '+time.strftime('%d-%m-%Y')"
-msgstr "object.name+' - Diplôme - '+time.strftime('%d-%m-%Y')"
+msgstr ""
 
 #. module: custom_reports
 #: model:ir.actions.report,print_report_name:custom_reports.report_school_individual_program_supplement_general
 msgid "object.name+' - Supplément Diplôme - '+time.strftime('%d-%m-%Y')"
-msgstr "object.name+' - Supplément Diplôme - '+time.strftime('%d-%m-%Y')"
+msgstr ""
 
 #. module: custom_reports
 #: model_terms:ir.ui.view,arch_db:custom_reports.report_school_individual_program_diploma_content_page

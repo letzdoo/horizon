@@ -95,9 +95,11 @@ class GoogleDriveFolderMixin(models.AbstractModel):
 
     def check_access(self):
         # By default
-        _logger.debug("check_access() - Default behavior, can be overridden within classes implementing this mixin")
+        _logger.debug(
+            "check_access() - Default behavior, can be overridden within classes implementing this mixin"
+        )
         return True
-    
+
 
 class GoogleDriveFile(models.Model):
     _name = "google_drive_file"
@@ -105,10 +107,16 @@ class GoogleDriveFile(models.Model):
     res_model = fields.Char("Related Record Model")
     res_id = fields.Many2oneReference("Related Record ID", model_field="res_model")
 
+    res_model_report = fields.Char(string="Related Record Model within Report")
+    res_id_report = fields.Integer(string="Related Record ID within Report")
+    report_id = fields.Many2one("ir.actions.report", string="Action Report ID")
+
     name = fields.Char("Name")
     url = fields.Char("Url")
     mimeType = fields.Char("Mime Type")
-    googe_drive_id = fields.Char("Google Drive Id") # WARNING TYPO "googe" !
+    googe_drive_id = fields.Char("Google Drive Id")  # WARNING TYPO "googe" !
+
+    label = fields.Char("File type label", store=False)
 
     def _auto_init(self):
         res = super(GoogleDriveFile, self)._auto_init()
@@ -119,23 +127,30 @@ class GoogleDriveFile(models.Model):
             ["res_model", "res_id"],
         )
         return res
-    
+
     def check_access(self):
         # Check if the current user can access the referenced object.
         try:
             object = self.env[self.res_model].browse(self.res_id)
-        except:
-            object = None 
+        except:  # noqa: disable=B001
+            object = None
         if not object:
-            _logger.warning("User with ID %s cannot access to %s(%s)" % (self.env.context.get('uid'), self.res_model, self.res_id))
+            _logger.warning(
+                "User with ID %s cannot access to %s(%s)"
+                % (self.env.context.get("uid"), self.res_model, self.res_id)
+            )
             return False
 
         # Ask the referenced object itself if the access is granted (Model-dependent business logic).
         try:
             return object.check_access()
         except AttributeError as err:
-            _logger.error("Cannot call check_access() on %s, maybe it does not implement google_drive_folder.mixin : %s" % (self.res_model, str(err)))
+            _logger.error(
+                "Cannot call check_access() on %s, maybe it does not implement google_drive_folder.mixin : %s"
+                % (self.res_model, str(err))
+            )
             return False
+
 
 class Company(models.Model):
     _inherit = "res.company"
@@ -268,21 +283,25 @@ class GoogleDriveService(models.Model):
             raise UserError(
                 _("Error deleting the file in Google Drive : %s" % error)
             ) from error
-        
+
     def get_file(self, google_drive_file):
         drive = googleapiclient.discovery.build(
             API_SERVICE_NAME, API_VERSION, credentials=self._get_credential()
         )
         _logger.info("Get %s" % (google_drive_file.googe_drive_id))
         try:
-            content = drive.files().get_media(
-                fileId=google_drive_file.googe_drive_id, supportsAllDrives=True
-            ).execute()
+            content = (
+                drive.files()
+                .get_media(
+                    fileId=google_drive_file.googe_drive_id, supportsAllDrives=True
+                )
+                .execute()
+            )
             return content
         except googleapiclient.errors.Error as error:
             raise UserError(
                 _("Error reading the file in Google Drive : %s" % error)
-            ) from error    
+            ) from error
 
     def get_files_from_folder_id(self, folderId):
 
@@ -301,7 +320,7 @@ class GoogleDriveService(models.Model):
                         + "' in parents and trashed=false"
                     )
                 else:
-                    folder_query = f"'{folder_queue[0]}' in parents and trashed=false"
+                    folder_query = f"'{folder_queue[0]}' in parents and trashed=false"  # noqa: disable=B907
                 folder_queue = []
                 file_list = (
                     drive.files()
@@ -330,6 +349,43 @@ class GoogleDriveService(models.Model):
                 _("Error creating the file in Google Drive : %s" % error)
             ) from error
         return all_file_list
+
+    def get_report(self, res_id, report_id, res_model_report, res_id_report):
+        searchParams = [
+            ("res_id", "=", res_id),
+            ("res_model_report", "=", res_model_report),
+            ("res_id_report", "=", int(res_id_report)),
+            ("report_id", "=", report_id),
+        ]
+        order = "create_date DESC"
+        google_doc = (
+            self.env["google_drive_file"]
+            .sudo()
+            .search(searchParams, limit=1, order=order)
+        )
+
+        return google_doc
+
+    def get_reports(self, res_id, report_id, res_model_report, limit=0):
+        searchParams = [
+            ("res_id", "=", res_id),
+            ("res_model_report", "=", res_model_report),
+            ("res_id_report", "!=", None),
+            ("report_id", "=", report_id),
+        ]
+        order = "create_date DESC"
+        if limit > 0:
+            google_doc = (
+                self.env["google_drive_file"]
+                .sudo()
+                .search(searchParams, order=order, limit=limit)
+            )
+        else:
+            google_doc = (
+                self.env["google_drive_file"].sudo().search(searchParams, order=order)
+            )
+
+        return google_doc
 
     def _get_redirect_uri(self):
         return "%s/google_documents/authorize" % self.env.user.get_base_url()

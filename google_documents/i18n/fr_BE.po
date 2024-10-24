@@ -88,25 +88,25 @@ msgstr ""
 #: model:ir.model.fields,field_description:google_documents.field_res_partner__google_drive_files
 #: model:ir.model.fields,field_description:google_documents.field_res_users__google_drive_files
 msgid "Google Drive Files"
-msgstr ""
+msgstr "Fichiers Google Drive"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_folder_mixin__google_drive_folder_id
 #: model:ir.model.fields,field_description:google_documents.field_res_partner__google_drive_folder_id
 #: model:ir.model.fields,field_description:google_documents.field_res_users__google_drive_folder_id
 msgid "Google Drive Folder Id"
-msgstr ""
+msgstr "ID répertoire Google Drive"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file__googe_drive_id
 msgid "Google Drive Id"
-msgstr ""
+msgstr "ID Google Drive"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_res_company__google_drive_id
 #: model_terms:ir.ui.view,arch_db:google_documents.google_drive_service
 msgid "Google Drive Service"
-msgstr ""
+msgstr "Service Google Drive"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file__id
@@ -117,14 +117,14 @@ msgstr "Identifiant"
 #. module: google_documents
 #: model:ir.model.fields,help:google_documents.field_ir_actions_report__google_drive_enabled
 msgid "If enabled, the report will be saved in Google Drive."
-msgstr ""
+msgstr "Si la case est cochée, le rapport généré sera sauvegardé dans Google Drive."
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_folder_mixin__google_drive_connected
 #: model:ir.model.fields,field_description:google_documents.field_res_partner__google_drive_connected
 #: model:ir.model.fields,field_description:google_documents.field_res_users__google_drive_connected
 msgid "Is Google Drive Connected"
-msgstr ""
+msgstr "Connexion à Google Drive ?"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file____last_update
@@ -136,13 +136,13 @@ msgstr "Dernière modification le"
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file__write_uid
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_service__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file__write_date
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_service__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file__mimeType
@@ -152,12 +152,12 @@ msgstr ""
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file__name
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: google_documents
 #: model_terms:ir.ui.view,arch_db:google_documents.view_res_partner_form_google_docs
 msgid "Open"
-msgstr ""
+msgstr "Ouvrir"
 
 #. module: google_documents
 #: model_terms:ir.ui.view,arch_db:google_documents.view_res_partner_form_google_docs
@@ -165,27 +165,29 @@ msgid ""
 "Open\n"
 "                            Drive"
 msgstr ""
+"Ouvrir\n"
+"                            le Drive"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_ir_actions_report__google_drive_patner_field
 msgid "Partner property to save into"
-msgstr ""
+msgstr "Champ reprenant le contact"
 
 #. module: google_documents
 #: model_terms:ir.ui.view,arch_db:google_documents.google_drive_service
 #: model_terms:ir.ui.view,arch_db:google_documents.view_res_partner_form_google_docs
 msgid "Refresh"
-msgstr ""
+msgstr "Rafraîchir"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file__res_id
 msgid "Related Record ID"
-msgstr ""
+msgstr "ID de la donnée principale"
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file__res_model
 msgid "Related Record Model"
-msgstr ""
+msgstr "Modèle de la donnée principale"
 
 #. module: google_documents
 #: model:ir.model,name:google_documents.model_ir_actions_report
@@ -195,13 +197,13 @@ msgstr "Rapport"
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_ir_actions_report__google_drive_enabled
 msgid "Save in Google Drive"
-msgstr ""
+msgstr "Sauvegarder dans Google Drive"
 
 #. module: google_documents
 #: model:ir.model.fields,help:google_documents.field_ir_actions_report__google_drive_patner_field
 msgid ""
 "This field name is the Partner to which the Google Drive Forlder to save to."
-msgstr ""
+msgstr "Propriété du rapport dans laquelle se trouve l'identifiant du contact auquel il faut associer le rapport. Tous les documents de ce contact (donnée principale) seront placés dans un même répertoire Google Drive."
 
 #. module: google_documents
 #: model:ir.model.fields,field_description:google_documents.field_google_drive_file__url

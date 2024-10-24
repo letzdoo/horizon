@@ -112,15 +112,13 @@
       <field name="model">school.official_document</field>
       <field name="arch" type="xml">
         <search string="Search Official Document">
-          <field
-                    name="name"
-                    string="Nom"
-                    filter_domain="[('name','ilike',self)]"
+          <field name="name" string="Nom" filter_domain="[('name','ilike',self)]" />
+            <field name="student_id" />
+          <filter
+                    name="is_available"
+                    string="Demandé"
+                    domain="[('is_available','=',True)]"
                 />
-            <field
-                    name="student_id"
-                />
-          <filter name="is_available" string="Demandé" domain="[('is_available','=',True)]" />
         </search>
       </field>
     </record>

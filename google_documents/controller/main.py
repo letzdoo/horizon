@@ -18,13 +18,14 @@
 #
 ##############################################################################
 
+import io
 import logging
 
 import werkzeug.utils
 
 from odoo import http
 from odoo.http import Response, request
-import io
+
 try:
     from werkzeug.utils import send_file
 except ImportError:
@@ -49,7 +50,7 @@ class GoogleServiceController(http.Controller):
     def google_drive_service_refresh_token(self, redirect=None, *args, **kw):
         _logger.info("Refresh Token response : %s" % (request))
         return "done"
-    
+
     @http.route(
         "/google_documents/view_file/<string:google_drive_file_id>",
         type="http",
@@ -57,18 +58,33 @@ class GoogleServiceController(http.Controller):
         website=True,
     )
     def google_drive_view_file(self, google_drive_file_id, redirect=None, **post):
-        google_drive_file = request.env["google_drive_file"].sudo().search([("googe_drive_id", "=", google_drive_file_id)]) # WARNING TYPO "googe" !
+        google_drive_file = (
+            request.env["google_drive_file"]
+            .sudo()
+            .search([("googe_drive_id", "=", google_drive_file_id)])
+        )  # WARNING TYPO "googe" !
         if google_drive_file:
             if not google_drive_file.check_access():
-                _logger.error("Forbidden access to Google Drive file %s by user with ID %s" % (google_drive_file.googe_drive_id, request.session.uid))
+                _logger.error(
+                    "Forbidden access to Google Drive file %s by user with ID %s"
+                    % (google_drive_file.googe_drive_id, request.session.uid)
+                )
                 return Response(template="google_documents.file_404", status=404)
             google_service = request.env.company.google_drive_id
             try:
-                google_drive_file_bytes = google_service.get_file(google_drive_file)
+                google_drive_file_bytes = google_service.sudo().get_file(
+                    google_drive_file
+                )
                 google_drive_file_content = io.BytesIO(google_drive_file_bytes)
-            except:
+            except:  # noqa: disable=B001
                 return Response(template="google_documents.file_404", status=404)
             if google_drive_file_content:
-                return send_file(google_drive_file_content, request.httprequest.environ,google_drive_file.mimeType,False,google_drive_file.name)
-        
+                return send_file(
+                    google_drive_file_content,
+                    request.httprequest.environ,
+                    google_drive_file.mimeType,
+                    False,
+                    google_drive_file.name,
+                )
+
         return Response(template="google_documents.file_404", status=404)

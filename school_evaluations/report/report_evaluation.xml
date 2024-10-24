@@ -24,7 +24,7 @@
     <!-- Success Certificate -->
 
     <record id="report_success_certificate" model="ir.actions.report">
-        <field name="name">Success Certificate</field>
+        <field name="name">Success Certificate PAE</field>
         <field name="model">school.individual_bloc</field>
         <field name="report_type">qweb-pdf</field>
         <field
@@ -35,26 +35,35 @@
         >school_evaluations.report_success_certificate_content</field>
         <field
             name="print_report_name"
-        >object.name+' - Attestation de réussite - '+time.strftime('%d-%m-%Y')</field>
+        >object.name+' - Attestation de réussite du PAE - '+time.strftime('%d-%m-%Y')</field>
         <field name="binding_model_id" ref="model_school_individual_bloc" />
         <field name="binding_type">report</field>
-        <field name="paperformat_id" ref="school_management.pdf_a4"/>
+        <field name="paperformat_id" ref="school_management.pdf_a4" />
     </record>
 
     <template id="report_success_certificate_content">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="school_management.header_footer_document"> 
+                <t t-call="school_management.header_footer_document">
                     <div class="row">
                         <div class="col-12 text-center pt-5">
-                            <h1 class="colored-primary pt-5 mb-5">ATTESTATION DE RÉUSSITE</h1>
+                            <h1
+                                class="colored-primary pt-5 mb-5"
+                            >ATTESTATION DE RÉUSSITE</h1>
                             <div class="pt-5 mt-5 pb-5 mb-5">
-                                <h2 class="color-black">Conservatoire royal de Liège</h2>
-                                <h6 class="color-grey">Boulevard Piercot, 29 - 4000 Liège</h6>
+                                <h2
+                                    class="color-black"
+                                >Conservatoire royal de Liège</h2>
+                                <h6
+                                    class="color-grey"
+                                >Boulevard Piercot, 29 - 4000 Liège</h6>
                             </div>
                             <div class="mt-5 mb-5">
                                 <h6 class="colored-grey">Domaine&amp;nbsp;:</h6>
-                                <h3 class="colored-primary" t-field="o.source_bloc_domain_id.long_name" />
+                                <h3
+                                    class="colored-primary"
+                                    t-field="o.source_bloc_domain_id.long_name"
+                                />
                             </div>
                         </div>
                     </div>
@@ -62,7 +71,9 @@
                         <div class="row mt-5 mb-5 pt-5">
                             <div class="col-12 pt-5">
                                 <div class="case-danger mt-5 mb-5">
-                                    Programme non réussi, actuellement au stade «<span t-field="o.state" />».
+                                    Programme non réussi, actuellement au stade «<span
+                                        t-field="o.state"
+                                    />».
                                 </div>
                             </div>
                         </div>
@@ -74,13 +85,33 @@
                             </p>
                             <p>
                                 <t t-if="o.student_id.gender == 'male'">Monsieur</t>
-                                <t t-if="o.student_id.gender == 'female'">Madame</t> <span t-field="o.student_id" /> <span t-field="o.student_id.initials" /><br />Né<t t-if="o.student_id.gender == 'female'">e</t> à <span t-field="o.student_id.birthplace" /> le <span t-field="o.student_id.birthdate_date"/>
+                                <t
+                                    t-if="o.student_id.gender == 'female'"
+                                >Madame</t> <span t-field="o.student_id" /> <span
+                                    t-field="o.student_id.initials"
+                                /><br />Né<t
+                                    t-if="o.student_id.gender == 'female'"
+                                >e</t> à <span
+                                    t-field="o.student_id.birthplace"
+                                /> le <span t-field="o.student_id.birthdate_date" />
                             </p>
                             <p>
-                                A réussi en l'année académique <span t-field="o.year_id" /> son programme en <span t-field="o.source_bloc_domain_id" /> option <span t-field="o.source_bloc_speciality_id" /> pour un total de <span t-field="o.total_acquiered_credits" /> ECTS.
+                                A réussi en l'année académique <span
+                                    t-field="o.year_id"
+                                /> son programme en <span
+                                    t-field="o.source_bloc_domain_id"
+                                /> option <span
+                                    t-field="o.source_bloc_speciality_id"
+                                /> pour un total de <span
+                                    t-field="o.total_acquiered_credits"
+                                /> ECTS.
                             </p>
                             <p t-if="o.total_acquiered_credits &lt; o.total_credits">
-                                Un complément de <span t-esc="o.total_credits-o.total_acquiered_credits" /> reste<t t-if="o.total_credits-o.total_acquiered_credits &gt; 1">nt</t> à obtenir pour compléter le programme.
+                                Un complément de <span
+                                    t-esc="o.total_credits-o.total_acquiered_credits"
+                                /> reste<t
+                                    t-if="o.total_credits-o.total_acquiered_credits &gt; 1"
+                                >nt</t> à obtenir pour compléter le programme.
                             </p>
                         </div>
                     </div>
@@ -89,9 +120,14 @@
                             <p class="colored-grey text-align-center">
                                 La présente attestation est délivrée pour renseignements administratifs.
                             </p>
-                            <p class="mt-5 pt-5 mb-0 text-align-right">Liège, le <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')" />.</p>
+                            <p class="mt-5 pt-5 mb-0 text-align-right">Liège, le <span
+                                    t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"
+                                />.</p>
                             <p class="mt-1 text-align-right">Le Directeur,</p>
-                            <p class="text-align-right" style="margin-top:20mm;">Nathanaël HARCQ</p>
+                            <p
+                                class="text-align-right"
+                                style="margin-top:20mm;"
+                            >Nathanaël HARCQ</p>
                         </div>
                     </div>
                 </t>
@@ -103,7 +139,7 @@
    <!-- Success Certificate on programs -->
 
     <record id="report_success_certificate_prog" model="ir.actions.report">
-        <field name="name">Success Certificate</field>
+        <field name="name">Success Certificate Cycle</field>
         <field name="model">school.individual_program</field>
         <field name="report_type">qweb-pdf</field>
         <field
@@ -118,23 +154,32 @@
         <field name="binding_model_id" ref="model_school_individual_program" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
-        <field name="paperformat_id" ref="school_management.pdf_a4"/>
+        <field name="paperformat_id" ref="school_management.pdf_a4" />
     </record>
 
     <template id="report_success_certificate_prog_content">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="school_management.header_footer_document"> 
+                <t t-call="school_management.header_footer_document">
                     <div class="row">
                         <div class="col-12 text-center pt-5">
-                            <h1 class="colored-primary pt-5 mb-5">ATTESTATION DE RÉUSSITE</h1>
+                            <h1
+                                class="colored-primary pt-5 mb-5"
+                            >ATTESTATION DE RÉUSSITE</h1>
                             <div class="pt-5 mt-5 pb-5 mb-5">
-                                <h2 class="color-black">Conservatoire royal de Liège</h2>
-                                <h6 class="color-grey">Boulevard Piercot, 29 - 4000 Liège</h6>
+                                <h2
+                                    class="color-black"
+                                >Conservatoire royal de Liège</h2>
+                                <h6
+                                    class="color-grey"
+                                >Boulevard Piercot, 29 - 4000 Liège</h6>
                             </div>
                             <div class="mt-5 mb-5">
                                 <h6 class="colored-grey">Domaine&amp;nbsp;:</h6>
-                                <h3 class="colored-primary" t-field="o.domain_id.long_name" />
+                                <h3
+                                    class="colored-primary"
+                                    t-field="o.domain_id.long_name"
+                                />
                             </div>
                         </div>
                     </div>
@@ -142,7 +187,9 @@
                         <div class="row mt-5 mb-5 pt-5">
                             <div class="col-12 pt-5">
                                 <div class="case-danger mt-5 mb-5">
-                                    Cycle non réussi, actuellement au stade «<span t-field="o.state" />».
+                                    Cycle non réussi, actuellement au stade «<span
+                                        t-field="o.state"
+                                    />».
                                 </div>
                             </div>
                         </div>
@@ -154,10 +201,26 @@
                             </p>
                             <p>
                                 <t t-if="o.student_id.gender == 'male'">Monsieur</t>
-                                <t t-if="o.student_id.gender == 'female'">Madame</t> <span t-field="o.student_id" /> <span t-field="o.student_id.initials" /><br />Né<t t-if="o.student_id.gender == 'female'">e</t> à <span t-field="o.student_id.birthplace" /> le <span t-field="o.student_id.birthdate_date"/>
+                                <t
+                                    t-if="o.student_id.gender == 'female'"
+                                >Madame</t> <span t-field="o.student_id" /> <span
+                                    t-field="o.student_id.initials"
+                                /><br />Né<t
+                                    t-if="o.student_id.gender == 'female'"
+                                >e</t> à <span
+                                    t-field="o.student_id.birthplace"
+                                /> le <span t-field="o.student_id.birthdate_date" />
                             </p>
                             <p>
-                                A réussi en l'année académique <span t-field="o.grade_year_id" /> le <span t-out="o.source_program_id.title.lower()" /> <t t-if="o.grade and o.grade != 'without'">avec <span t-field="o.grade.lower()" /></t> pour un total de <span t-field="o.total_acquiered_credits" /> ECTS.
+                                A réussi en l'année académique <span
+                                    t-field="o.grade_year_id"
+                                /> le <span
+                                    t-out="o.source_program_id.title.lower()"
+                                /> <t t-if="o.grade and o.grade != 'without'">avec <span
+                                        t-field="o.grade.lower()"
+                                    /></t> pour un total de <span
+                                    t-field="o.total_acquiered_credits"
+                                /> ECTS.
                             </p>
                         </div>
                     </div>
@@ -166,9 +229,14 @@
                             <p class="colored-grey text-align-center">
                                 La présente attestation est délivrée pour renseignements administratifs.
                             </p>
-                            <p class="mt-5 pt-5 mb-0 text-align-right">Liège, le <span t-esc="datetime.datetime.now().strftime('%d/%m/%Y')" />.</p>
+                            <p class="mt-5 pt-5 mb-0 text-align-right">Liège, le <span
+                                    t-esc="datetime.datetime.now().strftime('%d/%m/%Y')"
+                                />.</p>
                             <p class="mt-1 text-align-right">Le Directeur,</p>
-                            <p class="text-align-right" style="margin-top:20mm;">Nathanaël HARCQ</p>
+                            <p
+                                class="text-align-right"
+                                style="margin-top:20mm;"
+                            >Nathanaël HARCQ</p>
                         </div>
                     </div>
                 </t>
@@ -188,76 +256,187 @@
         <field
             name="report_file"
         >school_evaluations.report_individual_bloc_definition_content</field>
-        <field name="print_report_name">object.name+' - Fiche de cycle individuel - '+time.strftime('%d-%m-%Y')</field>
+        <field
+            name="print_report_name"
+        >object.name+' - Fiche de cycle individuel - '+time.strftime('%d-%m-%Y')</field>
         <field name="binding_model_id" ref="model_school_individual_program" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
-        <field name="paperformat_id" ref="school_management.pdf_a4"/>
+        <field name="paperformat_id" ref="school_management.pdf_a4" />
     </record>
 
     <template id="report_individual_bloc_definition_content">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="program">
-                <t t-call="school_management.header_footer_document"> 
-                    <h2 class="font-size-1_3 colored-primary text-regular pt-1 mb-5">Fiche de cycle individuel de l'étudiant<t t-if="program.student_id.gender == 'female'">e</t> <t t-out="program.student_id.name" /></h2>
-                    <h3 class="font-size-1_2 colored-secondary">Cycle&amp;nbsp;: <t t-out="program.source_program_id.name" /></h3>
-                    <h4 class="font-size-0_9 colored-primary pb-5">Identifiant du cycle individuel&amp;nbsp;: <t t-out="program.uid" /></h4>
+                <t t-call="school_management.header_footer_document">
+                    <h2
+                        class="font-size-1_3 colored-primary text-regular pt-1 mb-5"
+                    >Fiche de cycle individuel de l'étudiant<t
+                            t-if="program.student_id.gender == 'female'"
+                        >e</t> <t t-out="program.student_id.name" /></h2>
+                    <h3 class="font-size-1_2 colored-secondary">Cycle&amp;nbsp;: <t
+                            t-out="program.source_program_id.name"
+                        /></h3>
+                    <h4
+                        class="font-size-0_9 colored-primary pb-5"
+                    >Identifiant du cycle individuel&amp;nbsp;: <t
+                            t-out="program.uid"
+                        /></h4>
 
                     <t t-if="program.total_valuated_credits &gt; 0">
-                        <h4 class="text-italic colored-grey font-size-1_2 mt-5 pt-5">Valorisation<t t-if="program.total_valuated_credits &gt; 1">s</t> accordée<t t-if="program.total_valuated_credits &gt; 1">s</t>&amp;nbsp;: <span class="colored-secondary" t-out="program.total_valuated_credits"/> ECTS</h4>
+                        <h4
+                            class="text-italic colored-grey font-size-1_2 mt-5 pt-5"
+                        >Valorisation<t
+                                t-if="program.total_valuated_credits &gt; 1"
+                            >s</t> accordée<t
+                                t-if="program.total_valuated_credits &gt; 1"
+                            >s</t>&amp;nbsp;: <span
+                                class="colored-secondary"
+                                t-out="program.total_valuated_credits"
+                            /> ECTS</h4>
                         <table class="table-program w-100 font-size-0_9">
                             <thead>
-                                <tr class="table-row-title border-top-grey border-bottom-grey">
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Code UE</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Unités d'enseignement</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Heures</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">ECTS</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Type de valorisation</th>
+                                <tr
+                                    class="table-row-title border-top-grey border-bottom-grey"
+                                >
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Code UE</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Unités d'enseignement</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Heures</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >ECTS</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Type de valorisation</th>
                                 </tr>
                             </thead>
                             <tbody class="font-size-0_8">
-                                <t t-foreach="program.valuated_course_group_ids" t-as="course_group">
-                                    <tr class="border-top-grey" style="page-break-inside: avoid !important;">
-                                        <td class="p-2 text-bold colored-primary white-space-nowrap" t-out="course_group.source_course_group_id.uid"/>
-                                        <td class="p-2 colored-primary" t-out="course_group.title"/>
-                                        <td class="p-2 colored-primary text-italic" t-out="course_group.source_course_group_id.total_hours"/>
-                                        <td class="p-2 colored-primary" t-out="course_group.source_course_group_id.total_credits"/>
-                                        <td class="p-2 colored-primary" t-out="course_group.valuation_followup.valuation_type if course_group.valuation_followup else ''"/>
+                                <t
+                                    t-foreach="program.valuated_course_group_ids"
+                                    t-as="course_group"
+                                >
+                                    <tr
+                                        class="border-top-grey"
+                                        style="page-break-inside: avoid !important;"
+                                    >
+                                        <td
+                                            class="p-2 text-bold colored-primary white-space-nowrap"
+                                            t-out="course_group.source_course_group_id.uid"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary"
+                                            t-out="course_group.title"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary text-italic"
+                                            t-out="course_group.source_course_group_id.total_hours"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary"
+                                            t-out="course_group.source_course_group_id.total_credits"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary"
+                                            t-out="course_group.valuation_followup.valuation_type if course_group.valuation_followup else ''"
+                                        />
                                     </tr>
                                 </t>
                             </tbody>
                         </table>
                     </t>
 
-                    <h4 class="text-italic colored-grey font-size-1_2 mt-5 pt-5">Crédit<t t-if="program.total_valuated_credits &gt; 1">s</t> obtenu<t t-if="program.total_acquiered_credits - program.total_valuated_credits &gt; 1">s</t>&amp;nbsp;: <span class="colored-secondary"><t t-out="program.total_acquiered_credits - program.total_valuated_credits"/>/<t t-out="program.source_program_id.total_credits - program.total_valuated_credits"/></span> Crédit<t t-if="program.total_valuated_credits &gt; 1">s</t></h4>
-                    <div t-if="(program.total_acquiered_credits - program.total_valuated_credits) &gt; 0" >
+                    <h4
+                        class="text-italic colored-grey font-size-1_2 mt-5 pt-5"
+                    >Crédit<t
+                            t-if="program.total_valuated_credits &gt; 1"
+                        >s</t> obtenu<t
+                            t-if="program.total_acquiered_credits - program.total_valuated_credits &gt; 1"
+                        >s</t>&amp;nbsp;: <span class="colored-secondary"><t
+                                t-out="program.total_acquiered_credits - program.total_valuated_credits"
+                            />/<t
+                                t-out="program.source_program_id.total_credits - program.total_valuated_credits"
+                            /></span> Crédit<t
+                            t-if="program.source_program_id.total_credits - program.total_valuated_credits &gt; 1"
+                        >s</t></h4>
+                    <div
+                        t-if="(program.total_acquiered_credits - program.total_valuated_credits) &gt; 0"
+                    >
                         <table class="table-program w-100 font-size-0_9">
                             <thead style="position: relative; z-index: 99999;">
-                                <tr class="table-row-title border-top-grey border-bottom-grey">
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Code UE</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Nom</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Heures</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">ECTS</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Résultat final</th>
-                                    <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Origine</th>
+                                <tr
+                                    class="table-row-title border-top-grey border-bottom-grey"
+                                >
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Code UE</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Nom</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Heures</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >ECTS</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Résultat final</th>
+                                    <th
+                                        class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                    >Origine</th>
                                 </tr>
                             </thead>
                             <tbody class="font-size-0_8">
-                                <t t-foreach="program.ind_course_group_ids.filtered(lambda ic: ic.acquiered == 'A')" t-as="course_group">
-                                    <tr class="border-top-grey" style="page-break-inside: avoid !important;">
-                                        <td class="p-2 text-bold colored-primary white-space-nowrap" t-out="course_group.source_course_group_id.uid"/>
-                                        <td class="p-2 colored-primary" t-out="course_group.title"/>
-                                        <td class="p-2 colored-primary text-italic" t-out="course_group.total_hours"/>
-                                        <td class="p-2 colored-primary" t-out="course_group.total_credits"/>
-                                        <td class="p-2 colored-primary" t-out="course_group.final_result_disp"/>
-                                        <td class="p-2 colored-primary white-space-nowrap">
+                                <t
+                                    t-foreach="program.ind_course_group_ids.filtered(lambda ic: ic.acquiered == 'A')"
+                                    t-as="course_group"
+                                >
+                                    <tr
+                                        class="border-top-grey"
+                                        style="page-break-inside: avoid !important;"
+                                    >
+                                        <td
+                                            class="p-2 text-bold colored-primary white-space-nowrap"
+                                            t-out="course_group.source_course_group_id.uid"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary"
+                                            t-out="course_group.title"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary text-italic"
+                                            t-out="course_group.total_hours"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary"
+                                            t-out="course_group.total_credits"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary"
+                                            t-out="course_group.final_result_disp"
+                                        />
+                                        <td
+                                            class="p-2 colored-primary white-space-nowrap"
+                                        >
                                             <t t-if="course_group.bloc_id">
-                                                PAE <t t-out="course_group.bloc_id.year_id.name" />
+                                                PAE <t
+                                                    t-out="course_group.bloc_id.year_id.name"
+                                                />
                                             </t>
-                                            <t t-if="not course_group.bloc_id and course_group.state == 'candidate'">
+                                            <t
+                                                t-if="not course_group.bloc_id and course_group.state == 'candidate'"
+                                            >
                                                 Attente
                                             </t>
-                                            <t t-if="not course_group.bloc_id and course_group.state == 'confirmed'">
+                                            <t
+                                                t-if="not course_group.bloc_id and course_group.state == 'confirmed'"
+                                            >
                                                 Valorisation
                                             </t>
                                         </td>
@@ -265,19 +444,36 @@
                                 </t>
                                 <t t-foreach="course_group.course_ids" t-as="course">
                                     <tr>
-                                        <td class="p-2"/>
-                                        <td class="p-2 border-top-light-grey" t-out="course.title"/>
-                                        <td class="p-2 text-italic border-top-light-grey" t-out="course.hours"/>
-                                        <td class="p-2 border-top-light-grey" t-out="course.credits"/>
-                                        <td class="p-2 white-space-nowrap border-top-light-grey">
+                                        <td class="p-2" />
+                                        <td
+                                            class="p-2 border-top-light-grey"
+                                            t-out="course.title"
+                                        />
+                                        <td
+                                            class="p-2 text-italic border-top-light-grey"
+                                            t-out="course.hours"
+                                        />
+                                        <td
+                                            class="p-2 border-top-light-grey"
+                                            t-out="course.credits"
+                                        />
+                                        <td
+                                            class="p-2 white-space-nowrap border-top-light-grey"
+                                        >
                                             <t t-if="course.second_session_result_bool">
-                                                <t t-out="course.second_session_result_disp" />
+                                                <t
+                                                    t-out="course.second_session_result_disp"
+                                                />
                                             </t>
-                                            <t t-if="not course.second_session_result_bool">
-                                                <t t-out="course.first_session_result_disp" />
+                                            <t
+                                                t-if="not course.second_session_result_bool"
+                                            >
+                                                <t
+                                                    t-out="course.first_session_result_disp"
+                                                />
                                             </t>
                                         </td>
-                                        <td class="p-2 border-top-light-grey"/>
+                                        <td class="p-2 border-top-light-grey" />
                                     </tr>
                                 </t>
                             </tbody>
@@ -285,86 +481,206 @@
                     </div>
                     <t t-if="program.state != 'awarded'">
                         <div t-if="len(program.bloc_ids) &gt; 0">
-                            <h4 class="text-italic colored-grey font-size-1_2 mt-5 pt-5">
-                                PAE en cours&amp;nbsp;: <span class="colored-secondary" t-out="program.bloc_ids[-1].uid" /> de <span class="colored-secondary" t-out="program.bloc_ids[-1].total_credits" /> Crédit<t t-if="program.bloc_ids[-1].total_credits &gt; 1">s</t>
-                                <span class="font-size-0_8 d-block text-regular mt-1 colored-grey">
-                                    Année académique <span class="colored-secondary" t-out="program.bloc_ids[-1].year_id.name" />
+                            <h4
+                                class="text-italic colored-grey font-size-1_2 mt-5 pt-5"
+                            >
+                                PAE en cours&amp;nbsp;: <span
+                                    class="colored-secondary"
+                                    t-out="program.bloc_ids[-1].uid"
+                                /> de <span
+                                    class="colored-secondary"
+                                    t-out="program.bloc_ids[-1].total_credits"
+                                /> Crédit<t
+                                    t-if="program.bloc_ids[-1].total_credits &gt; 1"
+                                >s</t>
+                                <span
+                                    class="font-size-0_8 d-block text-regular mt-1 colored-grey"
+                                >
+                                    Année académique <span
+                                        class="colored-secondary"
+                                        t-out="program.bloc_ids[-1].year_id.name"
+                                    />
                                 </span>
                             </h4>
                             <table class="table-program w-100 font-size-0_9">
                                 <thead>
                                     <tr class="table-row-title border-top-grey">
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Code UE</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Nom</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Heures</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">ECTS</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Résultat final</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">ECTS acquis</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Commentaire</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >Code UE</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >Nom</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >Heures</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >ECTS</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >Résultat final</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >ECTS acquis</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >Commentaire</th>
                                     </tr>
                                 </thead>
                                 <tbody class="font-size-0_8">
-                                    <t t-foreach="program.bloc_ids[-1].course_group_ids" t-as="course_group">
-                                        <tr class="border-top-grey" style="page-break-inside: avoid !important;">
-                                            <td class="p-2 text-bold colored-primary white-space-nowrap" t-out="course_group.source_course_group_id.uid"/>
-                                            <td class="p-2 colored-primary" t-out="course_group.title"/>
-                                            <td class="p-2 colored-primary text-italic" t-out="course_group.total_hours"/>
-                                            <td class="p-2 colored-primary" t-out="course_group.total_credits"/>
-                                            <td class="p-2 colored-primary white-space-nowrap">
-                                                <t t-if="course_group.final_result_bool">
-                                                    <t t-out="course_group.final_result_disp" />
+                                    <t
+                                        t-foreach="program.bloc_ids[-1].course_group_ids"
+                                        t-as="course_group"
+                                    >
+                                        <tr
+                                            class="border-top-grey"
+                                            style="page-break-inside: avoid !important;"
+                                        >
+                                            <td
+                                                class="p-2 text-bold colored-primary white-space-nowrap"
+                                                t-out="course_group.source_course_group_id.uid"
+                                            />
+                                            <td
+                                                class="p-2 colored-primary"
+                                                t-out="course_group.title"
+                                            />
+                                            <td
+                                                class="p-2 colored-primary text-italic"
+                                                t-out="course_group.total_hours"
+                                            />
+                                            <td
+                                                class="p-2 colored-primary"
+                                                t-out="course_group.total_credits"
+                                            />
+                                            <td
+                                                class="p-2 colored-primary white-space-nowrap"
+                                            >
+                                                <t
+                                                    t-if="course_group.final_result_bool"
+                                                >
+                                                    <t
+                                                        t-out="course_group.final_result_disp"
+                                                    />
                                                 </t>
                                             </td>
-                                            <td class="p-2 colored-primary white-space-nowrap">
-                                                <t t-if="course_group.acquiered == 'A'">Acquis</t>
-                                                <t t-if="course_group.acquiered  == 'NA'">Non-Acquis</t>
+                                            <td
+                                                class="p-2 colored-primary white-space-nowrap"
+                                            >
+                                                <t
+                                                    t-if="course_group.acquiered == 'A'"
+                                                >Acquis</t>
+                                                <t
+                                                    t-if="course_group.acquiered  == 'NA'"
+                                                >Non-Acquis</t>
                                             </td>
-                                            <td class="p-2"/>
+                                            <td class="p-2" />
                                         </tr>
                                     </t>
-                                    <t t-foreach="course_group.course_ids" t-as="course">
+                                    <t
+                                        t-foreach="course_group.course_ids"
+                                        t-as="course"
+                                    >
                                         <tr class="">
-                                            <td class="p-2"/>
-                                            <td class="p-2 border-top-light-grey" t-out="course.title"/>
-                                            <td class="p-2 text-italic border-top-light-grey" t-out="course.hours"/>
-                                            <td class="p-2 border-top-light-grey" t-out="course.credits"/>
-                                            <td class="p-2 white-space-nowrap border-top-light-grey">
-                                                <t t-if="course.second_session_result_bool" >
-                                                    <t t-out="course.second_session_result_disp" />
+                                            <td class="p-2" />
+                                            <td
+                                                class="p-2 border-top-light-grey"
+                                                t-out="course.title"
+                                            />
+                                            <td
+                                                class="p-2 text-italic border-top-light-grey"
+                                                t-out="course.hours"
+                                            />
+                                            <td
+                                                class="p-2 border-top-light-grey"
+                                                t-out="course.credits"
+                                            />
+                                            <td
+                                                class="p-2 white-space-nowrap border-top-light-grey"
+                                            >
+                                                <t
+                                                    t-if="course.second_session_result_bool"
+                                                >
+                                                    <t
+                                                        t-out="course.second_session_result_disp"
+                                                    />
                                                 </t>
-                                                <t t-if="not course.second_session_result_bool">
-                                                    <t t-out="course.first_session_result_disp" />
+                                                <t
+                                                    t-if="not course.second_session_result_bool"
+                                                >
+                                                    <t
+                                                        t-out="course.first_session_result_disp"
+                                                    />
                                                 </t>
                                             </td>
-                                            <td class="p-2 border-top-light-grey"/>
-                                            <td class="p-2 border-top-light-grey"/>
+                                            <td class="p-2 border-top-light-grey" />
+                                            <td class="p-2 border-top-light-grey" />
                                         </tr>
                                     </t>
                                 </tbody>
                             </table>
                         </div>
                         <h4 class="text-italic colored-grey font-size-1_2 mt-5 pt-5">
-                             Crédit<t t-if="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits')) &gt; 1" >s</t> à acquérir&amp;nbsp;: <span class="colored-secondary" t-out="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits'))" /> Crédit<t t-if="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits')) &gt; 1" >s</t>
+                             Crédit<t
+                                t-if="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits')) &gt; 1"
+                            >s</t> à acquérir&amp;nbsp;: <span
+                                class="colored-secondary"
+                                t-out="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits'))"
+                            /> Crédit<t
+                                t-if="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits')) &gt; 1"
+                            >s</t>
                          </h4>
-                        <div  t-if="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits')) &gt; 0" >
+                        <div
+                            t-if="sum(program.remaining_not_planned_course_group_ids.mapped('total_credits')) &gt; 0"
+                        >
                             <table class="table-program w-100 font-size-0_9">
                                 <thead>
-                                    <tr class="table-row-title border-top-grey border-bottom-grey">
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Code UE</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Nom</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Heures</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">ECTS</th>
-                                        <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Commentaire</th>
+                                    <tr
+                                        class="table-row-title border-top-grey border-bottom-grey"
+                                    >
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >Code UE</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >Nom</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >Heures</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >ECTS</th>
+                                        <th
+                                            class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                        >Commentaire</th>
                                     </tr>
                                 </thead>
                                 <tbody class="font-size-0_8">
-                                    <t t-foreach="program.remaining_not_planned_course_group_ids" t-as="course_group">
-                                        <tr class="border-top-grey" style="page-break-inside: avoid !important;">
-                                            <td class="p-2 text-bold colored-primary white-space-nowrap" t-out="course_group.uid"/>
-                                            <td class="p-2 colored-primary" t-out="course_group.title"/>
-                                            <td class="p-2 colored-primary text-italic" t-out="course_group.total_hours"/>
-                                            <td class="p-2 colored-primary" t-out="course_group.total_credits"/>
-                                            <td class="p-2"/>
+                                    <t
+                                        t-foreach="program.remaining_not_planned_course_group_ids"
+                                        t-as="course_group"
+                                    >
+                                        <tr
+                                            class="border-top-grey"
+                                            style="page-break-inside: avoid !important;"
+                                        >
+                                            <td
+                                                class="p-2 text-bold colored-primary white-space-nowrap"
+                                                t-out="course_group.uid"
+                                            />
+                                            <td
+                                                class="p-2 colored-primary"
+                                                t-out="course_group.title"
+                                            />
+                                            <td
+                                                class="p-2 colored-primary text-italic"
+                                                t-out="course_group.total_hours"
+                                            />
+                                            <td
+                                                class="p-2 colored-primary"
+                                                t-out="course_group.total_credits"
+                                            />
+                                            <td class="p-2" />
                                         </tr>
                                     </t>
                                 </tbody>
@@ -388,11 +704,13 @@
         <field
             name="report_file"
         >school_evaluations.report_evaluation_for_student_content</field>
-        <field name="print_report_name">object.name+' - Relevé de notes - '+time.strftime('%d-%m-%Y')</field>
+        <field
+            name="print_report_name"
+        >object.name+' - Relevé de notes - '+time.strftime('%d-%m-%Y')</field>
         <field name="binding_model_id" ref="model_school_individual_bloc" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
-        <field name="paperformat_id" ref="school_management.pdf_a4"/>
+        <field name="paperformat_id" ref="school_management.pdf_a4" />
     </record>
 
     <template id="report_evaluation_for_student_content">
@@ -411,25 +729,49 @@
                             </div>
                         </div>
                     -->
-                    <h2 class="font-size-1_3 colored-primary text-regular pt-1 mb-5" t-out="o.source_bloc_name" />
-                    <h3 class="font-size-1_2 colored-secondary"><t t-out="o.name" /></h3>
+                    <h2
+                        class="font-size-1_3 colored-primary text-regular pt-1 mb-5"
+                        t-out="o.source_bloc_name"
+                    />
+                    <h3 class="font-size-1_2 colored-secondary"><t
+                            t-out="o.name"
+                        /></h3>
                     <h4 class="font-size-0_9 colored-primary pb-5">Relevé de notes</h4>
-                
+
                     <table class="table-program w-100 font-size-0_9 mb-5">
                         <thead>
-                            <tr class="table-row-title border-top-grey border-bottom-grey">
-                                <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Intitulé du cours</th>
-                                <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Résultats</th>
-                                <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">ECTS</th>
-                                <th class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap">Acquis</th>
+                            <tr
+                                class="table-row-title border-top-grey border-bottom-grey"
+                            >
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Intitulé du cours</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Résultats</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >ECTS</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Acquis</th>
                             </tr>
                         </thead>
                         <tbody class="font-size-0_8">
                             <t t-foreach="o.course_group_ids" t-as="course_group">
                                 <tr class="border-top-grey">
-                                    <td class="p-2 text-bold colored-primary white-space-nowrap" t-out="course_group.title"/>
-                                    <td class="p-2 colored-primary" t-out="course_group.final_result_disp"/>
-                                    <td class="p-2 colored-primary text-italic colored-primary" t-out="course_group.total_credits"/>
+                                    <td
+                                        class="p-2 text-bold colored-primary white-space-nowrap"
+                                        t-out="course_group.title"
+                                    />
+                                    <td
+                                        class="p-2 colored-primary"
+                                        t-out="course_group.final_result_disp"
+                                    />
+                                    <td
+                                        class="p-2 colored-primary text-italic colored-primary"
+                                        t-out="course_group.total_credits"
+                                    />
                                     <t t-if="course_group.acquiered == 'A'">
                                         <td class="p-2 colored-primary">
                                             Acquis
@@ -444,18 +786,30 @@
                                 <t t-foreach="course_group.course_ids" t-as="course">
                                     <tr>
                                         <td class="p-2 border-top-light-grey">
-                                            <t t-out="course.title" /> - <t t-out="course.level"/><t t-if="course.teacher_id"> - <t t-out="course.teacher_id.name" /><t t-if="not course.source_course_id.has_second_session"> *</t></t>
+                                            <t t-out="course.title" /> - <t
+                                                t-out="course.level"
+                                            /><t t-if="course.teacher_id"> - <t
+                                                    t-out="course.teacher_id.name"
+                                                /><t
+                                                    t-if="not course.source_course_id.has_second_session"
+                                                > *</t></t>
                                         </td>
                                         <td class="p-2 border-top-light-grey">
                                             <t t-if="course.second_session_result_bool">
-                                                <t t-out="course.second_session_result_disp" />
+                                                <t
+                                                    t-out="course.second_session_result_disp"
+                                                />
                                             </t>
-                                            <t t-if="course.second_session_result_bool == False">
-                                                <t t-out="course.first_session_result_disp"/>
-                                            </t> 
+                                            <t
+                                                t-if="course.second_session_result_bool == False"
+                                            >
+                                                <t
+                                                    t-out="course.first_session_result_disp"
+                                                />
+                                            </t>
                                         </td>
-                                        <td class="p-2 border-top-light-grey"/>
-                                        <td class="p-2 border-top-light-grey"/>
+                                        <td class="p-2 border-top-light-grey" />
+                                        <td class="p-2 border-top-light-grey" />
                                     </tr>
                                 </t>
                             </t>
@@ -464,9 +818,20 @@
                     <p class="mt-0 mb-5 font-size-0_7">
                         * Pas de seconde session possible pour cette activité.
                     </p>
-                    <h4 class="font-size-1_2 colored-grey mb-5">A acquis ou valorisé <span class="colored-secondary"><t t-out="o.total_acquiered_credits" /></span> crédit<t t-if="o.total_acquiered_credits &gt; 1">s</t> ECTS<t t-if="o.total_credits == o.total_acquiered_credits" > et a réussi l'ensemble de son PAE</t>.
+                    <h4
+                        class="font-size-1_2 colored-grey mb-5"
+                    >A acquis ou valorisé <span class="colored-secondary"><t
+                                t-out="o.total_acquiered_credits"
+                            /></span> crédit<t
+                            t-if="o.total_acquiered_credits &gt; 1"
+                        >s</t> ECTS<t
+                            t-if="o.total_credits == o.total_acquiered_credits"
+                        > et a réussi l'ensemble de son PAE</t>.
                             </h4>
-                    <div class="case w-100" style="page-break-inside: avoid !important;">
+                    <div
+                        class="case w-100"
+                        style="page-break-inside: avoid !important;"
+                    >
                         <div class="p-4">
                                 <p style="margin-bottom: 25mm;">
                                     Remarques :
@@ -478,12 +843,18 @@
                                 <div style="height:20mm; width:55mm;" />
                             </div>
                             <div class="col-6 col-6 pt-4 pl-4 pr-4">
-                                L'étudiant, pour réception,
+                                L'étudiant<t
+                                    t-if="o.student_id.gender == 'female'"
+                                >e</t>, pour réception,
                                 <div style="height:20mm; width:55mm;" />
                             </div>
                         </div>
                     </div>
-                    <p class="text-align-right colored-grey font-size-0_9 mt-5">Imprimé le <span t-out="datetime.datetime.now().strftime('%d/%m/%Y à %H:%M:%S')" /></p>
+                    <p
+                        class="text-align-right colored-grey font-size-0_9 mt-5"
+                    >Imprimé le <span
+                            t-out="datetime.datetime.now().strftime('%d/%m/%Y à %H:%M:%S')"
+                        /></p>
                 </t>
             </t>
         </t>
@@ -581,7 +952,7 @@
     <!-- Evaluations report for deliberation annexe -->
 
     <record id="report_deliberation_program_annexe" model="ir.actions.report">
-        <field name="name">Deliberation Report Program</field>
+        <field name="name">Deliberation Report Program Cycle</field>
         <field name="model">school.individual_program</field>
         <field name="report_type">qweb-pdf</field>
         <field
@@ -590,85 +961,140 @@
         <field
             name="report_file"
         >school_evaluations.report_deliberation_annexe_program</field>
+        <field
+            name="print_report_name"
+        >object.name+' - Deliberation Report Cycle - '+time.strftime('%d-%m-%Y')</field>
         <field name="binding_model_id" ref="model_school_individual_program" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
+        <field name="paperformat_id" ref="school_management.pdf_a4" />
     </record>
 
     <template id="report_deliberation_annexe_program">
         <t t-call="web.html_container">
-            <t t-call="web.external_layout">
-              <t t-foreach="docs" t-as="o">
-              <div class="page">
-                <div class="container">
-
-                  <h2>Rapport de délibération de cycle</h2>
-                  <h2><t t-esc="o.student_id.name" /></h2>
-                  <h4><t t-esc="o.uid" /> - <t t-esc="o.source_program_id.name" /></h4>
-                  <h5>Crédits du cycle obtenus (<t
-                                    t-esc="o.total_acquiered_credits"
-                                /> / <t
-                                    t-esc="o.source_program_id.total_credits"
-                                />)</h5>
-                    <t
-                                t-if="o.grade"
-                                t-set="student_success_grade"
-                                t-value="dict(o.fields_get(allfields=['grade'])['grade']['selection'])[o.grade]"
+            <t t-foreach="docs" t-as="o">
+                <t t-call="school_management.header_footer_document">
+                     <h2 class="font-size-1_3 colored-primary text-regular pt-1 mb-5">
+                        Rapport de délibération de cycle de l'étudiant<t
+                            t-if="o.student_id.gender == 'female'"
+                        >e</t> <t t-esc="o.student_id.name" />
+                    </h2>
+                    <h3 class="font-size-1_2 colored-secondary">
+                        Cycle&amp;nbsp;: <t t-esc="o.source_program_id.name" />
+                    </h3>
+                    <h4 class="font-size-0_9 colored-primary pb-5">
+                        Identifiant du cycle individuel&amp;nbsp;:
+                        <t t-esc="o.uid" />
+                    </h4>
+                    <h4
+                        t-if="student_success_grade"
+                        class="text-italic colored-grey font-size-1_2 mt-5 pt-5"
+                    >
+                        Grade obtenu&amp;nbsp;:
+                        <span class="colored-secondary">
+                            <t t-esc="student_success_grade" />
+                        </span>
+                    </h4>
+                    <h4 class="text-italic colored-grey font-size-1_2 mt-5 pt-5">
+                        Crédit<t
+                            t-if="o.total_acquiered_credits &gt; 1"
+                        >s</t> du cycle obtenu<t
+                            t-if="o.total_acquiered_credits &gt; 1"
+                        >s</t>&amp;nbsp;: <span class="colored-secondary"><t
+                                t-esc="o.total_acquiered_credits"
+                            />/<t
+                                t-esc="o.source_program_id.total_credits"
+                            /></span> Crédit<t
+                            t-if="o.source_program_id.total_credits &gt; 1"
+                        >s</t>
+                        <span
+                            class="font-size-0_8 d-block text-regular mt-1 colored-grey"
+                        >
+                            Année académique <span
+                                class="colored-secondary"
+                                t-out="o.year_id.name"
                             />
-                  <h5>Grade obtenu : <t t-esc="student_success_grade" /></h5>
-                </div>
-                <div class="container">
-                  <table class="table table-sm">
-                      <thead>
-                          <tr>
-                              <th>UE Id</th>
-                              <th>Nom</th>
-                              <th>Heures</th>
-                              <th>ECTS</th>
-                              <th>Résultat final</th>
-                              <th>Réussi en</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <t
-                                        t-foreach="o.acquired_ind_course_group_ids"
-                                        t-as="course_group"
-                                    >
-                            <tr class="course_group">
-                              <td>
-                                  <t t-esc="course_group.uid" />
-                              </td>
-                              <td>
-                                  <t t-esc="course_group.title" />
-                              </td>
-                              <td>
-                                  <t t-esc="course_group.total_hours" />
-                              </td>
-                              <td>
-                                  <t t-esc="course_group.total_credits" />
-                              </td>
-                              <td>
-                                  <t t-esc="course_group.final_result_disp" />
-                              </td>
-                              <td>
-                                  <t t-esc="course_group.bloc_id.year_id.name" />
-                              </td>
+                        </span>
+                    </h4>
+                    <table class="table-program w-100 font-size-0_9">
+                        <thead style="position: relative; z-index: 99999;">
+                            <tr
+                                class="table-row-title border-top-grey border-bottom-grey"
+                            >
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Code UE</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Nom</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Heures</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >ECTS</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Résultat final</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Réussi en</th>
                             </tr>
-                          </t>
-                      </tbody>
-                  </table>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            Imprimé le <span
-                                        t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
-                                    />
-                        </div>
-                    </div>
-                </div>
-              </div>
-              </t>
+                        </thead>
+                        <tbody class="font-size-0_8">
+                            <t
+                                t-foreach="o.acquired_ind_course_group_ids"
+                                t-as="course_group"
+                            >
+                                <tr
+                                    class="border-top-grey"
+                                    style="page-break-inside: avoid !important;"
+                                >
+                                    <td
+                                        class="p-2 text-bold colored-primary white-space-nowrap"
+                                    >
+                                        <t t-esc="course_group.uid" />
+                                    </td>
+                                    <td class="p-2 colored-primary">
+                                        <t t-esc="course_group.title" />
+                                    </td>
+                                    <td class="p-2 colored-primary">
+                                        <t t-if="course_group.state == '0_valuated'"><t
+                                                t-esc="course_group.source_course_group_id.total_hours"
+                                            /></t>
+                                        <t t-else="course_group.total_hours"><t
+                                                t-esc="course_group.total_hours"
+                                            /></t>
+                                    </td>
+                                    <td class="p-2 colored-primary">
+                                        <t t-if="course_group.state == '0_valuated'"><t
+                                                t-esc="course_group.source_course_group_id.total_credits"
+                                            /></t>
+                                        <t t-else="course_group.total_credits"><t
+                                                t-esc="course_group.total_credits"
+                                            /></t>
+                                    </td>
+                                    <td class="p-2 colored-primary">
+                                        <t
+                                            t-if="course_group.state == '0_valuated'"
+                                        >[Valorisation]</t>
+                                        <t t-else="course_group.final_result_disp"><t
+                                                t-esc="course_group.final_result_disp"
+                                            /></t>
+                                    </td>
+                                    <td class="p-2 colored-primary">
+                                        <t t-esc="course_group.bloc_id.year_id.name" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                    <p class="text-align-right colored-grey font-size-0_9 mt-5">
+                        Imprimé le <span
+                            t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
+                        />
+                    </p>
+                </t>
             </t>
         </t>
     </template>
@@ -683,107 +1109,152 @@
         <field
             name="report_file"
         >school_evaluations.report_deliberation_annexe_content</field>
+        <field
+            name="print_report_name"
+        >object.name+' - Deliberation Report PAE - '+time.strftime('%d-%m-%Y')</field>
         <field name="binding_model_id" ref="model_school_individual_bloc" />
         <field name="binding_type">report</field>
         <field name="attachment_use">True</field>
-        <field name="paperformat_id" ref="school_management.pdf_a4"/>
-
+        <field name="paperformat_id" ref="school_management.pdf_a4" />
     </record>
 
     <template id="report_deliberation_annexe_content">
         <t t-call="web.html_container">
-            <t t-call="web.external_layout">
-              <t t-foreach="docs" t-as="o">
-              <div class="page">
-                <div class="container">
-
-                  <h2>Rapport de délibération du programme annuel de l'étudiant</h2>
-                  <h2><t t-esc="o.student_id.name" /></h2>
-                  <h4><t t-esc="o.uid" /> - <t t-esc="o.source_bloc_id.name" /></h4>
-                  <h5>Crédits du PAE obtenus (<t
-                                    t-esc="o.total_acquiered_credits"
-                                /> / <t t-esc="o.total_credits" />)</h5>
-                  <h5>Décision du jury : <t t-esc="o.decision" /></h5>
-                </div>
-                <div class="container">
-                  <table class="table table-sm">
-                      <thead>
-                          <tr>
-                              <th>UE Id</th>
-                              <th>Nom</th>
-                              <th>Heures</th>
-                              <th>ECTS</th>
-                              <th>Résultat final</th>
-                              <th>Acquis</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <t t-foreach="o.course_group_ids" t-as="course_group">
-                            <tr class="course_group">
-                              <td>
-                                  <t t-esc="course_group.uid" />
-                              </td>
-                              <td>
-                                  <t t-esc="course_group.title" />
-                              </td>
-                              <td class="text-center">
-                                  <t t-esc="course_group.total_hours" />
-                              </td>
-                              <td class="text-center">
-                                  <t t-esc="course_group.total_credits" />
-                              </td>
-                              <td class="text-center">
-                                  <t t-esc="course_group.final_result_disp" />
-                              </td>
-                              <td class="text-center">
-                                  <t t-esc="course_group.acquiered" />
-                              </td>
-                            </tr>
-                            <t t-foreach="course_group.course_ids" t-as="course">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="school_management.header_footer_document">
+                    <h2 class="font-size-1_3 colored-primary text-regular pt-1 mb-5">
+                        Rapport de délibération du programme annuel de l'étudiant<t
+                            t-if="o.student_id.gender == 'female'"
+                        >e</t> <t t-esc="o.student_id.name" />
+                    </h2>
+                    <h3 class="font-size-1_2 colored-secondary">
+                        <t t-esc="o.source_bloc_id.name" />
+                    </h3>
+                    <h4 class="font-size-0_9 colored-primary pb-5">
+                        Identifiant du programme annuel&amp;nbsp;:
+                        <t t-esc="o.uid" />
+                    </h4>
+                    <h4
+                        t-if="student_success_grade"
+                        class="text-italic colored-grey font-size-1_2 mt-5 pt-5"
+                    >
+                        Décision du jury&amp;nbsp;: <span class="colored-secondary"><t
+                                t-esc="o.decision"
+                            /></span>
+                    </h4>
+                    <h4 class="text-italic colored-grey font-size-1_2 mt-5 pt-5">
+                        Crédit<t
+                            t-if="o.total_acquiered_credits &gt; 1"
+                        >s</t> du cycle obtenu<t
+                            t-if="o.total_acquiered_credits &gt; 1"
+                        >s</t>&amp;nbsp;: <span class="colored-secondary"><t
+                                t-esc="o.total_acquiered_credits"
+                            />/<t t-esc="o.total_credits" /></span> Crédit<t
+                            t-if="o.total_credits &gt; 1"
+                        >s</t>
+                        <span
+                            class="font-size-0_8 d-block text-regular mt-1 colored-grey"
+                        >
+                            Année académique <span
+                                class="colored-secondary"
+                                t-out="o.year_id.name"
+                            />
+                        </span>
+                    </h4>
+                    <table class="table-program w-100 font-size-0_9">
+                        <thead style="position: relative; z-index: 99999;">
                             <tr
-                                                class="course"
-                                                style="font-style: italic;font-weight: lighter;font-size: 80%;"
-                                            >
-                              <td>
-                                  <t t-esc="course.uid" />
-                              </td>
-                              <td>
-                                  <t t-esc="course.title" />
-                              </td>
-                              <td class="text-center">
-                                  <t t-esc="course.hours" />
-                              </td>
-                              <td class="text-center">
-                                  <t t-esc="course.credits" />
-                              </td>
-                              <td class="text-center">
-                                  <t t-esc="course.final_result_disp" />
-                              </td>
-                              <td>
-                              </td>
+                                class="table-row-title border-top-grey border-bottom-grey"
+                            >
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Code UE</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Nom</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Heures</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >ECTS</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Résultat final</th>
+                                <th
+                                    class="colored-grey font-size-0_7 p-2 text-align-left white-space-nowrap"
+                                >Acquis</th>
                             </tr>
-                            </t>
-                          </t>
-                      </tbody>
-                  </table>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            Imprimé le <span
-                                        t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
+                        </thead>
+                        <tbody class="font-size-0_8">
+                            <t t-foreach="o.course_group_ids" t-as="course_group">
+                                <tr
+                                    class="border-top-grey"
+                                    style="page-break-inside: avoid !important;"
+                                >
+                                    <td
+                                        class="p-2 text-bold colored-primary white-space-nowrap"
+                                        t-esc="course_group.source_course_group_id.uid"
                                     />
-                        </div>
-                    </div>
-                </div>
-              </div>
-              </t>
+                                    <td
+                                        class="p-2 colored-primary"
+                                        t-esc="course_group.title"
+                                    />
+                                    <td
+                                        class="p-2 colored-primary text-italic"
+                                        t-esc="course_group.total_hours"
+                                    />
+                                    <td
+                                        class="p-2 colored-primary"
+                                        t-esc="course_group.total_credits"
+                                    />
+                                    <td
+                                        class="p-2 colored-primary"
+                                        t-esc="course_group.final_result_disp"
+                                    />
+                                    <td
+                                        class="p-2 colored-primary"
+                                        t-esc="course_group.acquiered"
+                                    />
+                                </tr>
+                                <t t-foreach="course_group.course_ids" t-as="course">
+                                    <tr>
+                                        <td class="p-2" />
+                                        <td
+                                            class="p-2 border-top-light-grey"
+                                            t-esc="course.title"
+                                        />
+                                        <td
+                                            class="p-2 border-top-light-grey"
+                                            t-esc="course.hours"
+                                        />
+                                        <td
+                                            class="p-2 border-top-light-grey"
+                                            t-esc="course.credits"
+                                        />
+                                        <td
+                                            class="p-2 border-top-light-grey"
+                                            t-esc="course.final_result_disp"
+                                        />
+                                        <td class="p-2 border-top-light-grey" />
+                                    </tr>
+                                </t>
+
+                            </t>
+                        </tbody>
+                    </table>
+                    <p class="text-align-right colored-grey font-size-0_9 mt-5">
+                        Imprimé le <span
+                            t-esc="datetime.datetime.now().strftime('%d-%m-%Y à %H:%M:%S')"
+                        />
+                    </p>
+                </t>
             </t>
         </t>
     </template>
 
 
- 
+
 
     <!--
 

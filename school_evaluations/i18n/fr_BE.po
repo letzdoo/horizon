@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-16 16:29+0000\n"
-"PO-Revision-Date: 2024-05-16 16:29+0000\n"
+"POT-Creation-Date: 2024-10-03 12:58+0000\n"
+"PO-Revision-Date: 2024-10-03 12:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -77,9 +77,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
 msgid "<br/>Né"
 msgstr ""
-"<br/>\n"
-"                                <br/>\n"
-"                                Né"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.res_config_settings_view_form
@@ -232,7 +229,7 @@ msgstr "Note d'année"
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_individual_bloc_definition_content
 msgid "Année académique"
-msgstr "Année académique"
+msgstr ""
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.individual_course_eval_form
@@ -360,7 +357,7 @@ msgstr "Créé le"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_individual_bloc_definition_content
-msgid "Crédits"
+msgid "Crédit"
 msgstr ""
 
 #. module: school_evaluations
@@ -416,12 +413,12 @@ msgstr "Résultat de délibération"
 #. module: school_evaluations
 #: model:ir.actions.report,name:school_evaluations.report_deliberation_annexe
 msgid "Deliberation Report Annexes"
-msgstr "Rapport de délibération"
+msgstr "Rapport de délibération du PAE"
 
 #. module: school_evaluations
 #: model:ir.actions.report,name:school_evaluations.report_deliberation_program_annexe
-msgid "Deliberation Report Program"
-msgstr "Rapport de délibération"
+msgid "Deliberation Report Program Cycle"
+msgstr "Rapport de délibération de cycle"
 
 #. module: school_evaluations
 #: model:ir.model.fields,field_description:school_evaluations.field_school_evaluations_report_evaluation_by_teacher__display_results
@@ -532,7 +529,7 @@ msgstr "Évaluation"
 #: model:mail.template,report_name:school_evaluations.email_template_evaluation_for_student
 #: model:mail.template,subject:school_evaluations.email_template_evaluation_for_student
 msgid "Evaluation Report"
-msgstr ""
+msgstr "Rapport d'évaluation"
 
 #. module: school_evaluations
 #: model:mail.template,name:school_evaluations.email_template_evaluation_for_student
@@ -867,8 +864,6 @@ msgid ""
 "Je soussigné, Nathanaël HARCQ, Directeur du Conservatoire Royal de Liège, "
 "certifie que"
 msgstr ""
-"Je soussigné, Nathanaël HARCQ, Directeur du Conservatoire Royal de Liège, "
-"certifie que"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_evaluation_by_teacher_content
@@ -931,7 +926,7 @@ msgstr "Dernière mise à jour le"
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_content
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_prog_content
 msgid "Le Directeur,"
-msgstr ""
+msgstr "Le Directeur"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.evaluation_summary_content
@@ -1009,7 +1004,7 @@ msgstr ""
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_evaluation_for_student_content
 msgid "Non Acquis"
-msgstr "Non-acquis"
+msgstr ""
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_individual_bloc_definition_content
@@ -1141,7 +1136,7 @@ msgstr "Programme"
 #. module: school_evaluations
 #: model:ir.model.fields,field_description:school_evaluations.field_school_individual_program__program_completed
 msgid "Program Completed"
-msgstr ""
+msgstr "Programme complété"
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_content
@@ -1408,10 +1403,18 @@ msgstr "Réussi"
 
 #. module: school_evaluations
 #: model:ir.actions.report,name:school_evaluations.action_report_evaluation_summary
-#: model:ir.actions.report,name:school_evaluations.report_success_certificate
-#: model:ir.actions.report,name:school_evaluations.report_success_certificate_prog
 msgid "Success Certificate"
 msgstr "Attestation de réussite"
+
+#. module: school_evaluations
+#: model:ir.actions.report,name:school_evaluations.report_success_certificate_prog
+msgid "Success Certificate Cycle"
+msgstr "Attestation de réussite du cycle"
+
+#. module: school_evaluations
+#: model:ir.actions.report,name:school_evaluations.report_success_certificate
+msgid "Success Certificate PAE"
+msgstr "Attestation de réussite du PAE"
 
 #. module: school_evaluations
 #: model:mail.template,report_name:school_evaluations.email_template_success_certificate
@@ -1554,7 +1557,7 @@ msgstr ""
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_evaluation_for_student_content
 msgid "et a réussi l'ensemble de son PAE"
-msgstr "A réussi l'ensemble de son PAE."
+msgstr ""
 
 #. module: school_evaluations
 #: model_terms:ir.ui.view,arch_db:school_evaluations.report_success_certificate_content
@@ -1568,16 +1571,31 @@ msgid "nt"
 msgstr ""
 
 #. module: school_evaluations
-#: model:ir.actions.report,print_report_name:school_evaluations.report_success_certificate
-msgid "object.name+' - Attestation de réussite - '+time.strftime('%d-%m-%Y')"
-msgstr ""
-
-#. module: school_evaluations
 #: model:ir.actions.report,print_report_name:school_evaluations.report_success_certificate_prog
 msgid ""
 "object.name+' - Attestation de réussite de cycle - "
 "'+time.strftime('%d-%m-%Y')"
 msgstr "object.name+'-CERT-'+time.strftime('%d-%m-%Y')+'.pdf'"
+
+#. module: school_evaluations
+#: model:ir.actions.report,print_report_name:school_evaluations.report_success_certificate
+msgid ""
+"object.name+' - Attestation de réussite du PAE - '+time.strftime('%d-%m-%Y')"
+msgstr ""
+
+#. module: school_evaluations
+#: model:ir.actions.report,print_report_name:school_evaluations.report_deliberation_program_annexe
+msgid ""
+"object.name+' - Deliberation Report Cycle - '+time.strftime('%d-%m-%Y')"
+msgstr ""
+"object.name+' - Rapport de délibération de cycle - "
+"'+time.strftime('%d-%m-%Y')"
+
+#. module: school_evaluations
+#: model:ir.actions.report,print_report_name:school_evaluations.report_deliberation_annexe
+msgid "object.name+' - Deliberation Report PAE - '+time.strftime('%d-%m-%Y')"
+msgstr ""
+"object.name+' - Rapport de délibération du PAE - '+time.strftime('%d-%m-%Y')"
 
 #. module: school_evaluations
 #: model:ir.actions.report,print_report_name:school_evaluations.report_individual_bloc_definition

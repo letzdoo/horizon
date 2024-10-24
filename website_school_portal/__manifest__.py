@@ -24,7 +24,14 @@
     "author": "Neodiensis,ito-invest (Jerome Sonnet)",
     "website": "https://github.com/ito-invest-lu/horizon",
     "category": "School Management",
-    "depends": ["web", "website", "website_school_management", "website_booking"],
+    "depends": [
+        "web",
+        "website",
+        "website_school_management",
+        "website_booking",
+        "google_documents",
+        "school_evaluations",
+    ],
     "data": [
         "init_horizon.xml",
         "views/main.xml",
@@ -40,6 +47,7 @@
     "assets": {
         "web.assets_frontend": [
             "website_school_portal/static/src/js/snippet.js",
+            "website_school_portal/static/src/js/generate-doc.js",
             "website_school_portal/static/src/scss/main.scss",
         ]
     },

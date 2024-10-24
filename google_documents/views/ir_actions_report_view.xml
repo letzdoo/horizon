@@ -28,9 +28,19 @@
         <field name="inherit_id" ref="base.act_report_xml_view" />
         <field name="priority">50</field>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='attachment']" position="after">
-                <field name="google_drive_enabled" />
-                <field name="google_drive_patner_field" />
+            <xpath expr="//page[@name='advanced']/group" position="replace">
+                <group>
+                    <field name="google_drive_enabled" />
+                    <field
+                        name="google_drive_patner_field"
+                        attrs="{'readonly': [('google_drive_enabled', '=', False)], 'required': [('google_drive_enabled', '=', True)]}"
+                    />
+                    <field
+                        name="attachment"
+                        attrs="{'readonly': [('google_drive_enabled', '=', True)]}"
+                    />
+                    <field name="attachment_use" />
+                </group>
             </xpath>
         </field>
     </record>

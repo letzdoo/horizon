@@ -306,7 +306,7 @@ class IndividualCourseSummary(models.Model):
             rec.ind_course_group_ids |= (
                 rec.program_id.valuated_course_group_ids.filtered(
                     lambda item: item.source_course_group_id.id
-                    == rec.course_group_id.id
+                    == rec.course_group_id.id  # noqa: disable=B023
                 )
             )
         return ret

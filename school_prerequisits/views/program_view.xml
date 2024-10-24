@@ -31,7 +31,7 @@
             <field name="arch" type="xml">
                 <tree editable="bottom">
                     <field name="course_id" string="Course Group" />
-                    <field name="course_group_uid"/>
+                    <field name="course_group_uid" />
                     <field name="preriquisit_id" />
                 </tree>
             </field>
@@ -113,7 +113,7 @@
             <field name="arch" type="xml">
                 <tree editable="bottom">
                     <field name="course_id" string="Course Group" />
-                    <field name="course_group_uid"/>
+                    <field name="course_group_uid" />
                     <field name="coriquisit_id" />
                 </tree>
             </field>
