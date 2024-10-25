@@ -131,10 +131,10 @@ class GoogleDriveFile(models.Model):
     def check_access(self):
         # Check if the current user can access the referenced object.
         try:
-            object = self.env[self.res_model].browse(self.res_id)
+            obj = self.env[self.res_model].browse(self.res_id)
         except:  # noqa: disable=B001
-            object = None
-        if not object:
+            obj = None
+        if not obj:
             _logger.warning(
                 "User with ID %s cannot access to %s(%s)"
                 % (self.env.context.get("uid"), self.res_model, self.res_id)
@@ -143,7 +143,7 @@ class GoogleDriveFile(models.Model):
 
         # Ask the referenced object itself if the access is granted (Model-dependent business logic).
         try:
-            return object.check_access()
+            return obj.check_access()
         except AttributeError as err:
             _logger.error(
                 "Cannot call check_access() on %s, maybe it does not implement google_drive_folder.mixin : %s"

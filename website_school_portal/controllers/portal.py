@@ -86,8 +86,10 @@ class WebsiteSchoolPortal(CustomerPortal):
 
     # Récupère les ids nécessaires à la création d'un rapport
     def _get_report_objects(
-        self, student_id, model, optional_params=[]  # noqa: disable=B006
+        self, student_id, model, optional_params=None  # noqa: disable=B006
     ):
+        if optional_params is None:
+            optional_params = []
         searchParams = [("state", "!=", "draft"), ("student_id", "=", student_id)]
         # Ajout de paramètres de recherche optionnels
         searchParams += optional_params
@@ -102,9 +104,13 @@ class WebsiteSchoolPortal(CustomerPortal):
         report,
         label,
         can_generate=True,
-        optional_params_to_show=[],  # noqa: disable=B006
-        optional_params_to_generate=[],  # noqa: disable=B006
+        optional_params_to_show=None,  # noqa: disable=B006
+        optional_params_to_generate=None,  # noqa: disable=B006
     ):
+        if optional_params_to_show is None:
+            optional_params_to_show = []
+        if optional_params_to_generate is None:
+            optional_params_to_generate = []
         docs_to_show = []
         docs_to_generate = []
 
@@ -137,22 +143,22 @@ class WebsiteSchoolPortal(CustomerPortal):
             )
 
             # Boucle sur les documents pouvant être générés en ne reprenant que ceux qui n'existent pas déjà.
-            for object in to_generate:
+            for obj in to_generate:
                 if next(
-                    (False for doc in existing_docs if object.id == doc.res_id_report),
+                    (False for doc in existing_docs if obj.id == doc.res_id_report),
                     True,
                 ):
                     docs_to_generate.append(
                         {
-                            "code": report_code + ":" + str(object.id),
+                            "code": report_code + ":" + str(obj.id),
                             "label": label
                             + " : "
-                            + object.name
+                            + obj.name
                             + " - "
                             + (
-                                object.source_program_id.name
+                                obj.source_program_id.name
                                 if report.model == "school.individual_program"
-                                else object.source_bloc_title
+                                else obj.source_bloc_title
                             ),
                         }
                     )

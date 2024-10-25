@@ -8,6 +8,16 @@ odoo.define("website_school_portal.generate_doc", function (require) {
         });
     }
 
+    function displayDialogContent(content) {
+        const div = document.querySelector("#dialogContent");
+        if (div) {
+            div.innerHTML = "";
+            var p = document.createElement("p");
+            p.innerHTML = content;
+            div.append(p);
+        }
+    }
+
     function displayGeneratedMessage(documentLink) {
         displayDialogContent(
             'Le document a été généré. Vous pouvez le consulter <a href="' +
@@ -26,16 +36,6 @@ odoo.define("website_school_portal.generate_doc", function (require) {
 
     function displayErrorMessage() {
         displayDialogContent("Une erreur est survenue. Veuillez réessayer plus tard.");
-    }
-
-    function displayDialogContent(content) {
-        const div = document.querySelector("#dialogContent");
-        if (div) {
-            div.innerHTML = "";
-            var p = document.createElement("p");
-            p.innerHTML = content;
-            div.append(p);
-        }
     }
 
     function showDialogLoader() {
