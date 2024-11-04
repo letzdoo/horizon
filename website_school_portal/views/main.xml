@@ -89,7 +89,7 @@
                 />
                 <t
                     t-call="website_school_portal.hz_account_student"
-                    t-if="user_id.partner_id.student == True or horizon_state in ('no-form','info-form','info-form-complete')"
+                    t-if="user_id.partner_id.teacher == False and user_id.partner_id.employee == False and not user_id._is_admin()"
                 />
                 <t
                     t-call="website_school_portal.hz_account_teacher"
