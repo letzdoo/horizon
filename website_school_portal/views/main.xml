@@ -85,7 +85,7 @@
                 <t t-set="horizon_state" t-value="session_info['horizon_state']" />
                 <t
                     t-set="horizon_user_form_id"
-                    t-value="'-' if len(session_info['horizon_user_forms']) == 0 else str(session_info['horizon_user_forms'][0][0])"
+                    t-value="'-' if len(session_info['horizon_user_forms']) == 0 else str(session_info['horizon_user_forms'][0][3])"
                 />
                 <t
                     t-call="website_school_portal.hz_account_student"
