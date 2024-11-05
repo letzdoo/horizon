@@ -486,3 +486,5 @@ class Form(models.Model):
                         rec.program_id = False
                 else:
                     rec.program_id = False
+            else:
+                rec.program_id = False
