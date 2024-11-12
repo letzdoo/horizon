@@ -338,7 +338,7 @@
                                 <group>
                                     <group string="Other Info">
                                         <field name='email_personnel' />
-                                        <!-- <field name="phone" widget="phone" /> -->
+                                        <field name="phone" widget="phone" />
                                         <field name="mobile" widget="phone" />
                                     </group>
                                 </group>
