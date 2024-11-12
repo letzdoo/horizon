@@ -249,7 +249,7 @@
             <t t-call="website_school_portal._hz_my_student_info_form" />
             <p class="text-center">
                 <a
-                    t-att-href="'/my/formio/form/' + horizon_user_form_id.uuid"
+                    t-att-href="'/my/formio/form/' + horizon_user_form_id"
                     class="btn btn-primary rounded-circle o_we_force_no_transition o_not_editable"
                 >Aller vers mon formulaire</a>
             </p>
