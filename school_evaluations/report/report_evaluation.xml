@@ -217,7 +217,7 @@
                                 /> le <span
                                     t-esc="o.source_program_id.title.lower()"
                                 /> <t t-if="o.grade and o.grade != 'without'">avec <span
-                                        t-esc="o.grade.lower()"
+                                        t-esc="dict(o.fields_get(allfields=['grade'])['grade']['selection'])[o.grade].lower()"
                                     /></t> pour un total de <span
                                     t-field="o.total_acquiered_credits"
                                 /> ECTS.
