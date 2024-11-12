@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class Menu(models.Model):
     _inherit = "website.menu"
 
-    public = fields.Boolean("Public", default=True)
+    public = fields.Boolean("Public", default=True, help="Cochez uniquement 'public' s'il s'agit d'une page du CMS dont la sécurité est gérée grâce aux groupes natifs Odoo. Cochez les cases appropriées s'il s'agit d'un contrôleur et non d'une page CMS, la sécurité par groupe ne pouvant s'appliquer aux menus que s'ils pointent vers une page.")
     student = fields.Boolean("Student", default=False)
     teacher = fields.Boolean("Teacher", default=False)
     employee = fields.Boolean("Employee", default=False)
