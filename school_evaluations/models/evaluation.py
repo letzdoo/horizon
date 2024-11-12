@@ -353,7 +353,8 @@ class IndividualCourseSummary(models.Model):
                 ]
             ).write({"state": "0_valuated"})
         return {
-            "type": "ir.actions.act_view_reload",
+            'type': 'ir.actions.client',
+            'tag': 'reload',
         }
 
     def action_confirm_valuate_course_group(self):
@@ -365,7 +366,8 @@ class IndividualCourseSummary(models.Model):
                 ]
             ).write({"state": "1_confirmed"})
         return {
-            "type": "ir.actions.act_view_reload",
+            'type': 'ir.actions.client',
+            'tag': 'reload',
         }
 
     def action_candidate_valuate_course_group(self):
@@ -379,13 +381,15 @@ class IndividualCourseSummary(models.Model):
             )
             rec.program_id.valuated_course_group_ids |= valuated_cg
         return {
-            "type": "ir.actions.act_view_reload",
+            'type': 'ir.actions.client',
+            'tag': 'reload',
         }
 
     def action_delete_course_group(self):
         self.unlink()
         return {
-            "type": "ir.actions.act_view_reload",
+            'type': 'ir.actions.client',
+            'tag': 'reload',
         }
 
 
