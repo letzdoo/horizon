@@ -215,9 +215,9 @@
                                 A réussi en l'année académique <span
                                     t-field="o.grade_year_id"
                                 /> le <span
-                                    t-out="o.source_program_id.title.lower()"
+                                    t-esc="o.source_program_id.title.lower()"
                                 /> <t t-if="o.grade and o.grade != 'without'">avec <span
-                                        t-field="o.grade.lower()"
+                                        t-esc="o.grade.lower()"
                                     /></t> pour un total de <span
                                     t-field="o.total_acquiered_credits"
                                 /> ECTS.
