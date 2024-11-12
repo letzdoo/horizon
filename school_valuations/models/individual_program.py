@@ -58,7 +58,8 @@ class IndividualCourseSummary(models.Model):
                 if cg.state in ["2_candidate", "1_confirmed", "1_1_checked"]:
                     cg.write({"state", "3_rejected"})
         return {
-            "type": "ir.actions.act_view_reload",
+            'type': 'ir.actions.client',
+            'tag': 'reload',
         }
 
     def action_candidate_valuate_course_group(self):
@@ -76,7 +77,8 @@ class IndividualCourseSummary(models.Model):
                 {"individual_course_group_id": valuated_cg.id}
             )
         return {
-            "type": "ir.actions.act_view_reload",
+            'type': 'ir.actions.client',
+            'tag': 'reload',
         }
 
 
