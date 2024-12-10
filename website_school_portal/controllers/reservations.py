@@ -18,7 +18,13 @@ class ReservationsController(http.Controller):
         to_hours = []
         for i in range(8, 23):
             from_hours.append(str(i).zfill(2) + ":00")
+            from_hours.append(str(i).zfill(2) + ":15")
+            from_hours.append(str(i).zfill(2) + ":30")
+            from_hours.append(str(i).zfill(2) + ":45")
             to_hours.append(str(i + 1).zfill(2) + ":00")
+            to_hours.append(str(i + 1).zfill(2) + ":15")
+            to_hours.append(str(i + 1).zfill(2) + ":30")
+            to_hours.append(str(i + 1).zfill(2) + ":45")
 
         values = {
             "user": request.env.user,
