@@ -266,9 +266,9 @@
         <field name="model">school.individual_program</field>
         <field name="arch" type="xml">
             <search string="Search Programs">
+                <field name="student_id" domain="[('type', '=', 'contact')]" />
                 <field name="name" string="Nom du programme de cycle" />
                 <field name="uid" />
-                <field name="student_id" domain="[('type', '=', 'contact')]" />
                 <filter
                     string="Current Year"
                     name="current"

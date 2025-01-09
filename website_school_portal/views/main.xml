@@ -85,11 +85,11 @@
                 <t t-set="horizon_state" t-value="session_info['horizon_state']" />
                 <t
                     t-set="horizon_user_form_id"
-                    t-value="'-' if len(session_info['horizon_user_forms']) == 0 else str(session_info['horizon_user_forms'][0][0])"
+                    t-value="'-' if len(session_info['horizon_user_forms']) == 0 else str(session_info['horizon_user_forms'][0][3])"
                 />
                 <t
                     t-call="website_school_portal.hz_account_student"
-                    t-if="user_id.partner_id.student == True"
+                    t-if="user_id.partner_id.teacher == False and user_id.partner_id.employee == False and not user_id._is_admin()"
                 />
                 <t
                     t-call="website_school_portal.hz_account_teacher"
@@ -249,7 +249,7 @@
             <t t-call="website_school_portal._hz_my_student_info_form" />
             <p class="text-center">
                 <a
-                    t-att-href="'/my/formio/form/' + horizon_user_form_id.uuid"
+                    t-att-href="'/my/formio/form/' + horizon_user_form_id"
                     class="btn btn-primary rounded-circle o_we_force_no_transition o_not_editable"
                 >Aller vers mon formulaire</a>
             </p>

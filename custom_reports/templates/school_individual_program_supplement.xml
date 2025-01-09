@@ -558,7 +558,9 @@
                     </t>
                     <t t-if="master_dict">
                       <br /><br
-                                />Conformément à l’article 113 du décret du 07 novembre 2013, l’étudiante a apporté une preuve de la maitrise suffisante de la langue française :
+                                />Conformément à l’article 113 du décret du 07 novembre 2013, l’étudiant<t
+                                t-if="not student_gender"
+                            >e</t> a apporté une preuve de la maitrise suffisante de la langue française :
                       <t t-foreach="doc.student_id.access_titles_ids" t-as="at">
                         <t t-if="at.type == 'mastery_of_french'">
                           <br /><t t-if="at.name">- <t t-esc="at.name" /></t><t
