@@ -44,13 +44,14 @@ class YearOpening(models.TransientModel):
         program_ids = self.env["school.program"].search(
             [["year_id", "=", current_year_id.id]]
         )
-        return res.update(
+        res.update(
             {
                 "program_to_duplicate_ids": [
                     (4, program_id.id, False) for program_id in program_ids
                 ],
             }
         )
+        return res
 
     def action_open_year(self):
         self.ensure_one()
