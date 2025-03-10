@@ -19,6 +19,8 @@
 ##############################################################################
 import logging
 
+import json
+
 from odoo import http
 from odoo.http import request
 
@@ -28,6 +30,33 @@ _logger = logging.getLogger(__name__)
 
 
 class CustomerPortal(CustomerPortal):
+
+    @http.route(["/formio/form/<string:uuid>/get_countries"], type='http', auth='public', methods=['GET'], csrf=False)
+    def form_get_countries(self):
+        countries = request.env["res.country"].search([
+            ('in_use', '=', True),
+        ])
+        return request.make_response(
+            json.dumps(countries.read(['id','name','code'])),
+            headers=[('Content-Type', 'application/json')]
+        )
+
+    @http.route(["/formio/form/<string:uuid>/get_programs"], type='http', auth='public', methods=['GET'], csrf=False)
+    def form_get_programs(self, **kwargs):
+        search_domain = [('year_id','=',int(kwargs.get('year', [])))]
+        domain = kwargs.get('domain', [])
+        if domain:
+            search_domain.append(('domain_name', '=', domain))
+        cycle_code = kwargs.get('cycle_code', False)
+        if cycle_code:
+            search_domain.append(('cycle_code', '=', cycle_code))
+
+        programs = request.env["school.program"].search(search_domain)
+        return request.make_response(
+            json.dumps(programs.read(['id','name'])),
+            headers=[('Content-Type', 'application/json')]
+        )
+    
     @http.route(["/confirm_registration"], type="http", auth="user", website=True)
     def portal_order_page(self, **kw):
         partner_id = request.env.user.partner_id
