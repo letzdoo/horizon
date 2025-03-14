@@ -31,9 +31,11 @@ _logger = logging.getLogger(__name__)
 
 class CustomerPortal(CustomerPortal):
 
-    @http.route(
-            ["/formio/form/<string:uuid>/get_countries",
-             "/formio/portal/form/<string:uuid>/get_countries"]
+    @http.route([
+        "/formio/form/<string:uuid>/get_countries",
+        "/formio/portal/form/<string:uuid>/get_countries",
+        "/formio/portal/form/new/new_contact/get_countries"
+        ]
     , type='http', auth='public', methods=['GET'], csrf=False)
     def form_get_countries(self):
         countries = request.env["res.country"].search([
@@ -46,7 +48,8 @@ class CustomerPortal(CustomerPortal):
 
     @http.route([
         "/formio/form/<string:uuid>/get_programs",
-        "/formio/portal/form/<string:uuid>/get_programs"
+        "/formio/portal/form/<string:uuid>/get_programs",
+        "/formio/portal/form/new/new_registration/get_programs"
         ], type='http', auth='public', methods=['GET'], csrf=False)
     def form_get_programs(self, **kwargs):
         search_domain = [('year_id','=',int(kwargs.get('year', [])))]
