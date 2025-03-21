@@ -441,40 +441,40 @@
                                             </t>
                                         </td>
                                     </tr>
-                                </t>
-                                <t t-foreach="course_group.course_ids" t-as="course">
-                                    <tr>
-                                        <td class="p-2" />
-                                        <td
-                                            class="p-2 border-top-light-grey"
-                                            t-out="course.title"
-                                        />
-                                        <td
-                                            class="p-2 text-italic border-top-light-grey"
-                                            t-out="course.hours"
-                                        />
-                                        <td
-                                            class="p-2 border-top-light-grey"
-                                            t-out="course.credits"
-                                        />
-                                        <td
-                                            class="p-2 white-space-nowrap border-top-light-grey"
-                                        >
-                                            <t t-if="course.second_session_result_bool">
-                                                <t
-                                                    t-out="course.second_session_result_disp"
-                                                />
-                                            </t>
-                                            <t
-                                                t-if="not course.second_session_result_bool"
+                                    <t t-foreach="course_group.course_ids" t-as="course">
+                                        <tr>
+                                            <td class="p-2" />
+                                            <td
+                                                class="p-2 border-top-light-grey"
+                                                t-out="course.title"
+                                            />
+                                            <td
+                                                class="p-2 text-italic border-top-light-grey"
+                                                t-out="course.hours"
+                                            />
+                                            <td
+                                                class="p-2 border-top-light-grey"
+                                                t-out="course.credits"
+                                            />
+                                            <td
+                                                class="p-2 white-space-nowrap border-top-light-grey"
                                             >
+                                                <t t-if="course.second_session_result_bool">
+                                                    <t
+                                                        t-out="course.second_session_result_disp"
+                                                    />
+                                                </t>
                                                 <t
-                                                    t-out="course.first_session_result_disp"
-                                                />
-                                            </t>
-                                        </td>
-                                        <td class="p-2 border-top-light-grey" />
-                                    </tr>
+                                                    t-if="not course.second_session_result_bool"
+                                                >
+                                                    <t
+                                                        t-out="course.first_session_result_disp"
+                                                    />
+                                                </t>
+                                            </td>
+                                            <td class="p-2 border-top-light-grey" />
+                                        </tr>
+                                    </t>
                                 </t>
                             </tbody>
                         </table>
