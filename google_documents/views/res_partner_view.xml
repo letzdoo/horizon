@@ -61,6 +61,7 @@
                             type="object"
                             name="action_open_google_drive"
                             class="oe_highlight btn btn-primary"
+                            attrs="{'invisible': [('google_drive_folder_id','=',False)]}"
                         >Open
                             Drive
                         </button>
