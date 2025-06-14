@@ -250,7 +250,7 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
                 </thead>`);
             var $tbody = $("<tbody>");
             if (this.state.model == "school.individual_bloc") {
-                for (var i = 0; i < record.course_group_ids; i++) {
+                for (var i = 0; i < len(record.course_group_ids); i++) {
                     var course_group = this.state.courseGroupValues.find(
                         (r) => r.id == record.course_group_ids[i]
                     );
@@ -285,7 +285,7 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
                         </td>
                     </tr>`);
 
-                    for (var j = 0; j < course_group.course_ids; j++) {
+                    for (var j = 0; j < len(course_group.course_ids); j++) {
                         var course = course_group.course_ids[j];
                         course = this.state.courseValues.find(
                             (r) => r.id == course
