@@ -124,7 +124,33 @@ odoo.define("deliberation.DeliberationModel", function (require) {
                                 });
                             });
                         } else {
-                            resolve(localID);
+                            self._rpc({
+                                model: "school.individual_course_group",
+                                method: "search_read",
+                                domain: [
+                                    [
+                                        "program_id",
+                                        "=",
+                                        self.localData[localID].data.id,
+                                    ],
+                                ],
+                                fields: [
+                                    "uid",
+                                    "name",
+                                    "display_name",
+                                    "title",
+                                    "course_ids",
+                                    "responsible_id",
+                                    "final_result",
+                                    "final_result_disp",
+                                    "total_credits",
+                                    "total_hours",
+                                    "acquiered",
+                                ],
+                            }).then(function (result) {
+                                self.courseGroupValues[localID] = result;
+                                resolve(localID);
+                            });
                         }
                     })
                     .catch(reject);
