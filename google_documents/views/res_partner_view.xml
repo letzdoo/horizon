@@ -33,7 +33,6 @@
                 <page
                     name="google_document_list"
                     string="Google Documents"
-                    attrs="{'invisible': [('google_drive_folder_id','=',False)]}"
                     groups="school_management.group_employee"
                 >
                     <button
@@ -42,8 +41,9 @@
                         icon="fa-refresh"
                         string="Refresh"
                         type="object"
+                        attrs="{'invisible': [('google_drive_folder_id','=',False)]}"
                     />
-                    <field name="google_drive_files" mode="tree">
+                    <field name="google_drive_files" mode="tree" attrs="{'invisible': [('google_drive_folder_id','=',False)]}">
                         <tree create="0" delete="0">
                             <field name="name" />
                             <field name="mimeType" />
@@ -61,6 +61,7 @@
                             type="object"
                             name="action_open_google_drive"
                             class="oe_highlight btn btn-primary"
+                            attrs="{'invisible': [('google_drive_folder_id','=',False)]}"
                         >Open
                             Drive
                         </button>

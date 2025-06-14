@@ -332,7 +332,7 @@
         <field name="model">school.course</field>
         <field eval="8" name="priority" />
         <field name="arch" type="xml">
-            <tree create="0">
+            <tree>
                 <field name="uid" />
                 <field name="name" />
                 <field name="course_group_uid" />
