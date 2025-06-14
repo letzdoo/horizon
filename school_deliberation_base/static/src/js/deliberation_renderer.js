@@ -326,7 +326,7 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
                         </th>
                         <td>
                             ${
-                                course_group.year_id.data
+                                course_group.year_id
                                     ? course_group.year_id[1] +
                                       " - "
                                     : "Valo - "
