@@ -250,45 +250,45 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
                 </thead>`);
             var $tbody = $("<tbody>");
             if (this.state.model == "school.individual_bloc") {
-                for (var i = 0; i < record.course_group_ids.data.length; i++) {
+                for (var i = 0; i < record.course_group_ids; i++) {
                     var course_group = this.state.courseGroupValues.find(
-                        (r) => r.id == record.course_group_ids.data[i].data.id
+                        (r) => r.id == record.course_group_ids[i]
                     );
                     $tbody.append(`<tr class="course_group">
                         <th class="text-center" scope="row">
                             ${i + 1}
                         </th>
                         <td>
-                            ${course_group.data.title}${
-                        course_group.data.responsible_id
+                            ${course_group.title}${
+                        course_group.responsible_id
                             ? ' <span class="text-muted">- ' +
-                              course_group.data.responsible_id.data.display_name
+                              course_group.responsible_id.data.display_name
                             : ""
                     } <span class="text-muted" style="font-size: 60%;">(${
-                        course_group.data.uid
+                        course_group.uid
                     })</span>
                         </td>
                         <td class="text-right">
-                            ${course_group.data.final_result_disp}
+                            ${course_group.final_result_disp}
                         </td>
                         <td class="text-right">
-                            ${course_group.data.total_credits}
+                            ${course_group.total_credits}
                         </td>
                         <td class="text-center">
                             <h1 class="badge rounded-pill ${
-                                course_group.data.acquiered == "NA"
+                                course_group.acquiered == "NA"
                                     ? "bg-warning action_deliberate"
                                     : "bg-success action_deliberate"
                             }" style="font-size: 100%;" data-id="${
-                        course_group.data.id
-                    }">${course_group.data.acquiered}</h1>
+                        course_group.id
+                    }">${course_group.acquiered}</h1>
                         </td>
                     </tr>`);
 
-                    for (var j = 0; j < course_group.data.course_ids.data.length; j++) {
-                        var course = course_group.data.course_ids.data[j];
+                    for (var j = 0; j < course_group.course_ids; j++) {
+                        var course = course_group.course_ids[j];
                         course = this.state.courseValues.find(
-                            (r) => r.id == course.data.id
+                            (r) => r.id == course
                         );
                         $tbody.append(`
                         <tr style="font-style: italic;font-size:80%;">
