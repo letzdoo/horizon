@@ -3,7 +3,7 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
     "use strict";
 
     var BasicRenderer = require("web.BasicRenderer");
-    var utils = require("web.utils");s
+    var utils = require("web.utils");
 
     // Var core = require('web.core');
     // var qweb = core.qweb;
