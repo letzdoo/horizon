@@ -71,7 +71,7 @@ odoo.define("deliberation.DeliberationModel", function (require) {
                                 ],
                             }).then(function (result) {
                                 self.programValues[localID] = result[0];
-                                self._rpc({
+                                const courseGroupPromise = self._rpc({
                                     model: "school.individual_course_group",
                                     method: "search_read",
                                     domain: [
@@ -96,10 +96,9 @@ odoo.define("deliberation.DeliberationModel", function (require) {
                                     ],
                                 }).then(function (result) {
                                     self.courseGroupValues[localID] = result;
-                                    resolve(localID);
                                 });
 
-                                self._rpc({
+                                const coursePromise = self._rpc({
                                     model: "school.individual_course",
                                     method: "search_read",
                                     domain: [
@@ -118,6 +117,9 @@ odoo.define("deliberation.DeliberationModel", function (require) {
                                     ],
                                 }).then(function (result) {
                                     self.courseValues[localID] = result;
+                                });
+
+                                Promise.all([courseGroupPromise, coursePromise]).then(function () {
                                     resolve(localID);
                                 });
                             });
