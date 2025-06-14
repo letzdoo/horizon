@@ -285,7 +285,7 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
                         </td>
                     </tr>`);
 
-                    for (var j = 0; j < len(course_group.course_ids); j++) {
+                    for (var j = 0; j < course_group.course_ids.length; j++) {
                         var course = course_group.course_ids[j];
                         course = this.state.courseValues.find(
                             (r) => r.id == course
