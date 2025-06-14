@@ -3,7 +3,7 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
     "use strict";
 
     var BasicRenderer = require("web.BasicRenderer");
-    var utils = require("web.utils");
+    var utils = require("web.utils");s
 
     // Var core = require('web.core');
     // var qweb = core.qweb;
@@ -251,7 +251,9 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
             var $tbody = $("<tbody>");
             if (this.state.model == "school.individual_bloc") {
                 for (var i = 0; i < record.course_group_ids.data.length; i++) {
-                    var course_group = record.course_group_ids.data[i];
+                    var course_group = this.state.courseGroupValues.find(
+                        (r) => r.id == record.course_group_ids.data[i].data.id
+                    );
                     $tbody.append(`<tr class="course_group">
                         <th class="text-center" scope="row">
                             ${i + 1}
@@ -282,6 +284,7 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
                     }">${course_group.data.acquiered}</h1>
                         </td>
                     </tr>`);
+
                     for (var j = 0; j < course_group.data.course_ids.data.length; j++) {
                         var course = course_group.data.course_ids.data[j];
                         course = this.state.courseValues.find(
