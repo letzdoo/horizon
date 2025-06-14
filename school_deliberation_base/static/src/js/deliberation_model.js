@@ -10,6 +10,7 @@ odoo.define("deliberation.DeliberationModel", function (require) {
          */
         init: function () {
             this.programValues = {};
+            this.courseGroupValues = {};
             this.courseValues = {};
             this._super.apply(this, arguments);
         },
@@ -21,6 +22,9 @@ odoo.define("deliberation.DeliberationModel", function (require) {
             var result = this._super.apply(this, arguments);
             if (this.programValues[localID]) {
                 result.programValue = this.programValues[localID];
+            }
+            if (this.courseGroupValues[localID]) {
+                result.courseGroupValues = this.courseGroupValues[localID];
             }
             if (this.courseValues[localID]) {
                 result.courseValues = this.courseValues[localID];
