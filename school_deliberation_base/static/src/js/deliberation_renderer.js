@@ -317,43 +317,46 @@ odoo.define("deliberation.DeliberationRenderer", function (require) {
                     i++
                 ) {
                     var course_group = record.acquired_ind_course_group_ids.data[i];
+                    course_group = this.state.courseGroupValues.find(
+                        (r) => r.id == course_group.data.id
+                    );
                     $tbody.append(`<tr class="course_group">
                         <th class="text-center" scope="row">
                             ${i + 1}
                         </th>
                         <td>
                             ${
-                                course_group.data.year_id.data
-                                    ? course_group.data.year_id.data.display_name +
+                                course_group.year_id.data
+                                    ? course_group.year_id[1] +
                                       " - "
                                     : "Valo - "
-                            }${course_group.data.title}${
-                        course_group.data.responsible_id
+                            }${course_group.title}${
+                        course_group.responsible_id
                             ? ' <span class="text-muted">- ' +
-                              course_group.data.responsible_id.data.display_name
+                              course_group.responsible_id[1]
                             : ""
                     }</span> <span class="text-muted" style="font-size: 60%;">(${
-                        course_group.data.uid
+                        course_group.uid
                     })</span>
                         </td>
                         <td class="text-right">
-                            ${course_group.data.final_result_disp}
+                            ${course_group.final_result_disp}
                         </td>
                         <td class="text-right">
-                            ${course_group.data.total_credits}
+                            ${course_group.total_credits}
                         </td>
                         <td class="text-center">
                             <h1 class="badge rounded-pill ${
-                                course_group.data.year_id.data
-                                    ? course_group.data.acquiered == "NA"
+                                course_group.year_id.data
+                                    ? course_group.acquiered == "NA"
                                         ? "bg-warning"
                                         : "bg-success"
                                     : "bg-info"
                             }" style="font-size: 100%;" data-id="${
-                        course_group.data.id
+                        course_group.id
                     }">${
-                        course_group.data.year_id.data
-                            ? course_group.data.acquiered
+                        course_group.year_id.data
+                            ? course_group.acquiered
                             : "V"
                     }</h1>
                         </td>
