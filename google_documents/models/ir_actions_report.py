@@ -23,6 +23,7 @@ import logging
 
 from odoo import fields, models
 from odoo.tools.safe_eval import safe_eval, time
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -71,12 +72,16 @@ class IrActionsReport(models.Model):
                 partner.id, report.id, report.model, record.id
             )
             if google_doc:
-                pdf_content = google_service.get_file(google_doc)
-                if pdf_content:
-                    content_type = google_doc.mimeType
-                    content = io.BytesIO(pdf_content)
-                    content.seek(0)
-                    return content.read(), content_type
+                try:
+                    pdf_content = google_service.get_file(google_doc)
+                    if pdf_content:
+                        content_type = google_doc.mimeType
+                        content = io.BytesIO(pdf_content)
+                        content.seek(0)
+                        return content.read(), content_type
+                except UserError as e:
+                    # If we cannot read the file, we will generate it again.
+                    pass
 
         # The report must be generated and stored in Google Drive.
         pdf_content, content_type = super(IrActionsReport, self)._render_qweb_pdf(
