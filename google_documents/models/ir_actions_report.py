@@ -80,6 +80,9 @@ class IrActionsReport(models.Model):
                         content.seek(0)
                         return content.read(), content_type
                 except UserError as e:
+                    _logger.warning(
+                        "Error while trying to read the Google Drive file: %s", e
+                    )
                     # If we cannot read the file, we will generate it again.
                     pass
 
