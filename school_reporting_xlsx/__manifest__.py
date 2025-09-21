@@ -31,6 +31,6 @@
         'report/school_report_xlsx.xml',
     ],
     'demo_xml': [],
-    'installable': False,
+    'installable': True,
     'application': True,
 }
