@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_export_report_user,export.report.user,model_export_report,base.group_user,1,0,0,0
+access_export_report_manager,export.report.manager,model_export_report,base.group_system,1,1,1,1
+access_report_type_user,report.type.user,model_report_type,base.group_user,1,0,0,0
+access_report_type_manager,report.type.manager,model_report_type,base.group_system,1,1,1,1
+access_csv_data_source_user,csv.data.source.user,model_csv_data_source,base.group_user,1,0,0,0
+access_csv_data_source_manager,csv.data.source.manager,model_csv_data_source,base.group_system,1,1,1,1

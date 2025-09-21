@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Report Type Records -->
+
+        <record id="demo_report_type_programs" model="report.type">
+            <field name="code">programs</field>
+            <field name="name">Educational Programs Report</field>
+            <field name="csv_filename">school_programs.csv</field>
+            <field name="menu_sequence">10</field>
+            <field name="excel_template">{"headers": true, "autofit": true, "freeze_panes": "A2", "title": "Educational Programs Report"}</field>
+            <field name="column_mappings">{"auto_map": true, "special_formatting": ["program_name", "description"]}</field>
+            <field name="validation_rules">{"required_columns": ["id", "program_name"], "encoding": "utf-8", "min_records": 1}</field>
+        </record>
+
+        <record id="demo_report_type_students" model="report.type">
+            <field name="code">students</field>
+            <field name="name">Students Report</field>
+            <field name="csv_filename">school_students.csv</field>
+            <field name="menu_sequence">20</field>
+            <field name="excel_template">{"headers": true, "autofit": true, "freeze_panes": "A2", "title": "Students Report"}</field>
+            <field name="column_mappings">{"auto_map": true, "french_columns": ["nom", "prénom", "école"]}</field>
+            <field name="validation_rules">{"required_columns": ["id", "nom", "prénom"], "encoding": "utf-8", "french_support": true}</field>
+        </record>
+
+        <record id="demo_report_type_teachers" model="report.type">
+            <field name="code">teachers</field>
+            <field name="name">Teachers Report</field>
+            <field name="csv_filename">school_teachers.csv</field>
+            <field name="menu_sequence">30</field>
+            <field name="excel_template">{"headers": true, "autofit": true, "freeze_panes": "A2", "title": "Teachers Report"}</field>
+            <field name="column_mappings">{"auto_map": true, "french_columns": ["nom", "prénom", "matière"]}</field>
+            <field name="validation_rules">{"required_columns": ["id", "nom"], "encoding": "utf-8", "french_support": true}</field>
+        </record>
+
+        <record id="demo_report_type_blocs" model="report.type">
+            <field name="code">blocs</field>
+            <field name="name">Academic Blocs Report</field>
+            <field name="csv_filename">school_blocs.csv</field>
+            <field name="menu_sequence">40</field>
+            <field name="excel_template">{"headers": true, "autofit": true, "freeze_panes": "A2", "title": "Academic Blocs Report"}</field>
+            <field name="column_mappings">{"auto_map": true, "special_formatting": ["bloc_name", "credits"]}</field>
+            <field name="validation_rules">{"required_columns": ["id", "bloc_name"], "encoding": "utf-8", "numeric_columns": ["credits"]}</field>
+        </record>
+
+        <!-- Demo CSV Data Source Records -->
+
+        <record id="demo_csv_source_programs" model="csv.data.source">
+            <field name="file_path">/export/school_programs.csv</field>
+            <field name="encoding">utf-8</field>
+            <field name="validation_status">valid</field>
+        </record>
+
+        <record id="demo_csv_source_students" model="csv.data.source">
+            <field name="file_path">/export/school_students.csv</field>
+            <field name="encoding">utf-8</field>
+            <field name="validation_status">valid</field>
+        </record>
+
+        <record id="demo_csv_source_teachers" model="csv.data.source">
+            <field name="file_path">/export/school_teachers.csv</field>
+            <field name="encoding">utf-8</field>
+            <field name="validation_status">valid</field>
+        </record>
+
+        <record id="demo_csv_source_blocs" model="csv.data.source">
+            <field name="file_path">/export/school_blocs.csv</field>
+            <field name="encoding">utf-8</field>
+            <field name="validation_status">valid</field>
+        </record>
+
+        <!-- Demo Export Report Records -->
+
+        <record id="demo_export_report_programs" model="export.report">
+            <field name="name">Programs Report - Demo - 2023-12-01 10:30</field>
+            <field name="report_type">programs</field>
+            <field name="csv_source_path">/export/school_programs.csv</field>
+            <field name="status">success</field>
+            <field name="record_count">25</field>
+            <field name="file_size_bytes">2500</field>
+        </record>
+
+        <record id="demo_export_report_students" model="export.report">
+            <field name="name">Students Report - Demo - 2023-12-01 11:15</field>
+            <field name="report_type">students</field>
+            <field name="csv_source_path">/export/school_students.csv</field>
+            <field name="status">success</field>
+            <field name="record_count">150</field>
+            <field name="file_size_bytes">15000</field>
+        </record>
+
+        <record id="demo_export_report_teachers" model="export.report">
+            <field name="name">Teachers Report - Demo - 2023-12-01 14:20</field>
+            <field name="report_type">teachers</field>
+            <field name="csv_source_path">/export/school_teachers.csv</field>
+            <field name="status">success</field>
+            <field name="record_count">45</field>
+            <field name="file_size_bytes">4500</field>
+        </record>
+
+        <record id="demo_export_report_blocs" model="export.report">
+            <field name="name">Blocs Report - Demo - 2023-12-01 16:45</field>
+            <field name="report_type">blocs</field>
+            <field name="csv_source_path">/export/school_blocs.csv</field>
+            <field name="status">success</field>
+            <field name="record_count">12</field>
+            <field name="file_size_bytes">1200</field>
+        </record>
+
+        <!-- Demo Error Report -->
+
+        <record id="demo_export_report_error" model="export.report">
+            <field name="name">Students Report - ERROR - 2023-12-01 09:00</field>
+            <field name="report_type">students</field>
+            <field name="csv_source_path">/export/missing_students.csv</field>
+            <field name="status">error</field>
+            <field name="record_count">0</field>
+            <field name="file_size_bytes">0</field>
+            <field name="error_message">CSV file not found: missing_students.csv
+Attempted: generate_students_report
+Timestamp: 2023-12-01 09:00:00</field>
+        </record>
+
+    </data>
+</odoo>

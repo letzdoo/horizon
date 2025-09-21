@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Export Report Views -->
+
+        <!-- Export Report Tree View -->
+        <record id="view_export_report_tree" model="ir.ui.view">
+            <field name="name">export.report.tree</field>
+            <field name="model">export.report</field>
+            <field name="arch" type="xml">
+                <tree string="Export Reports" default_order="generation_timestamp desc">
+                    <field name="name"/>
+                    <field name="report_type"/>
+                    <field name="generation_timestamp"/>
+                    <field name="status" decoration-success="status=='success'"
+                           decoration-danger="status=='error'" decoration-warning="status=='pending'"/>
+                    <field name="record_count"/>
+                    <field name="file_size_bytes" widget="integer"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Export Report Form View -->
+        <record id="view_export_report_form" model="ir.ui.view">
+            <field name="name">export.report.form</field>
+            <field name="model">export.report</field>
+            <field name="arch" type="xml">
+                <form string="Export Report" create="false">
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="pending,success,error"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" readonly="1"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="report_type" readonly="1"/>
+                                <field name="generation_timestamp" readonly="1"/>
+                                <field name="csv_source_path" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="record_count" readonly="1"/>
+                                <field name="file_size_bytes" readonly="1" widget="integer"/>
+                            </group>
+                        </group>
+                        <group string="Error Details" attrs="{'invisible': [('status', '!=', 'error')]}">
+                            <field name="error_message" readonly="1" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Report Type Views -->
+
+        <!-- Report Type Tree View -->
+        <record id="view_report_type_tree" model="ir.ui.view">
+            <field name="name">report.type.tree</field>
+            <field name="model">report.type</field>
+            <field name="arch" type="xml">
+                <tree string="Report Types" default_order="menu_sequence,name">
+                    <field name="menu_sequence" widget="handle"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="csv_filename"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Report Type Form View -->
+        <record id="view_report_type_form" model="ir.ui.view">
+            <field name="name">report.type.form</field>
+            <field name="model">report.type</field>
+            <field name="arch" type="xml">
+                <form string="Report Type">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" placeholder="Display Name"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="csv_filename"/>
+                                <field name="menu_sequence"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Excel Template" name="excel_template">
+                                <field name="excel_template" widget="ace" options="{'mode': 'json'}" placeholder='{"headers": true, "autofit": true}'/>
+                            </page>
+                            <page string="Column Mappings" name="column_mappings">
+                                <field name="column_mappings" widget="ace" options="{'mode': 'json'}" placeholder='{"auto_map": true}'/>
+                            </page>
+                            <page string="Validation Rules" name="validation_rules">
+                                <field name="validation_rules" widget="ace" options="{'mode': 'json'}" placeholder='{"required_columns": [], "encoding": "utf-8"}'/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- CSV Data Source Views -->
+
+        <!-- CSV Data Source Tree View -->
+        <record id="view_csv_data_source_tree" model="ir.ui.view">
+            <field name="name">csv.data.source.tree</field>
+            <field name="model">csv.data.source</field>
+            <field name="arch" type="xml">
+                <tree string="CSV Data Sources">
+                    <field name="file_path"/>
+                    <field name="validation_status" decoration-success="validation_status=='valid'"
+                           decoration-danger="validation_status=='invalid'" decoration-warning="validation_status=='missing'"/>
+                    <field name="encoding"/>
+                    <field name="record_count"/>
+                    <field name="last_modified"/>
+                    <button name="_validate_csv_structure" string="Validate" type="object"
+                            icon="fa-check" class="btn-primary"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- CSV Data Source Form View -->
+        <record id="view_csv_data_source_form" model="ir.ui.view">
+            <field name="name">csv.data.source.form</field>
+            <field name="model">csv.data.source</field>
+            <field name="arch" type="xml">
+                <form string="CSV Data Source">
+                    <header>
+                        <button name="_validate_csv_structure" string="Validate File" type="object" class="btn-primary"/>
+                        <field name="validation_status" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="file_path" placeholder="Path to CSV file"/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="encoding"/>
+                                <field name="record_count" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="last_modified" readonly="1"/>
+                            </group>
+                        </group>
+                        <group string="CSV Headers" name="headers">
+                            <field name="header_row" readonly="1" nolabel="1"/>
+                        </group>
+                        <group string="Validation Errors" name="validation_errors" attrs="{'invisible': [('validation_status', '=', 'valid')]}">
+                            <field name="validation_errors" readonly="1" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

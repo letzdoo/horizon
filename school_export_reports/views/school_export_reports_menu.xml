@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menu Structure for School Export Reports -->
+
+        <!-- Main Export Reports Menu -->
+        <menuitem id="menu_export_reports_root"
+                  name="Export Reports"
+                  parent="school_management.menu_school_root"
+                  sequence="50"/>
+
+        <!-- Export Reports Sub-menu -->
+        <menuitem id="menu_export_reports"
+                  name="Export Reports"
+                  parent="menu_export_reports_root"
+                  action="action_export_report_list"
+                  sequence="10"/>
+
+        <!-- Individual Report Generation Menus -->
+        <menuitem id="menu_generate_programs_report"
+                  name="Generate Programs Report"
+                  parent="menu_export_reports_root"
+                  action="action_generate_programs_report"
+                  sequence="20"/>
+
+        <menuitem id="menu_generate_students_report"
+                  name="Generate Students Report"
+                  parent="menu_export_reports_root"
+                  action="action_generate_students_report"
+                  sequence="30"/>
+
+        <menuitem id="menu_generate_teachers_report"
+                  name="Generate Teachers Report"
+                  parent="menu_export_reports_root"
+                  action="action_generate_teachers_report"
+                  sequence="40"/>
+
+        <menuitem id="menu_generate_blocs_report"
+                  name="Generate Academic Blocs Report"
+                  parent="menu_export_reports_root"
+                  action="action_generate_blocs_report"
+                  sequence="50"/>
+
+        <!-- Configuration Sub-menu -->
+        <menuitem id="menu_export_reports_config"
+                  name="Configuration"
+                  parent="menu_export_reports_root"
+                  sequence="90"/>
+
+        <menuitem id="menu_report_types"
+                  name="Report Types"
+                  parent="menu_export_reports_config"
+                  action="action_report_type_list"
+                  sequence="10"/>
+
+        <menuitem id="menu_csv_data_sources"
+                  name="CSV Data Sources"
+                  parent="menu_export_reports_config"
+                  action="action_csv_data_source_list"
+                  sequence="20"/>
+
+        <!-- Window Actions -->
+
+        <!-- Export Report List Action -->
+        <record id="action_export_report_list" model="ir.actions.act_window">
+            <field name="name">Export Reports</field>
+            <field name="res_model">export.report</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No export reports yet!
+                </p>
+                <p>
+                    Generate Excel reports from CSV export files using the menu options above.
+                    The system supports four report types: Programs, Students, Teachers, and Academic Blocs.
+                </p>
+            </field>
+        </record>
+
+        <!-- Report Type List Action -->
+        <record id="action_report_type_list" model="ir.actions.act_window">
+            <field name="name">Report Types</field>
+            <field name="res_model">report.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Configure report types
+                </p>
+                <p>
+                    Define configurations for different CSV-to-Excel report types.
+                    Each report type specifies the CSV filename, Excel formatting, and validation rules.
+                </p>
+            </field>
+        </record>
+
+        <!-- CSV Data Source List Action -->
+        <record id="action_csv_data_source_list" model="ir.actions.act_window">
+            <field name="name">CSV Data Sources</field>
+            <field name="res_model">csv.data.source</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Monitor CSV files
+                </p>
+                <p>
+                    View status and validation details for CSV export files.
+                    This helps diagnose issues with file access, encoding, or structure.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>

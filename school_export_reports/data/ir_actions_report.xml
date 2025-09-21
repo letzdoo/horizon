@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Report Actions for Excel Generation -->
+
+        <!-- Programs Report Action -->
+        <record id="action_report_programs_xlsx" model="ir.actions.report">
+            <field name="name">Programs Excel Report</field>
+            <field name="model">export.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">school_export_reports.programs_xlsx</field>
+            <field name="report_file">school_export_reports.programs_xlsx</field>
+            <field name="print_report_name">'Programs_Report_' + time.strftime('%Y%m%d')</field>
+            <field name="binding_model_id" ref="model_export_report"/>
+        </record>
+
+        <!-- Students Report Action -->
+        <record id="action_report_students_xlsx" model="ir.actions.report">
+            <field name="name">Students Excel Report</field>
+            <field name="model">export.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">school_export_reports.students_xlsx</field>
+            <field name="report_file">school_export_reports.students_xlsx</field>
+            <field name="print_report_name">'Students_Report_' + time.strftime('%Y%m%d')</field>
+            <field name="binding_model_id" ref="model_export_report"/>
+        </record>
+
+        <!-- Teachers Report Action -->
+        <record id="action_report_teachers_xlsx" model="ir.actions.report">
+            <field name="name">Teachers Excel Report</field>
+            <field name="model">export.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">school_export_reports.teachers_xlsx</field>
+            <field name="report_file">school_export_reports.teachers_xlsx</field>
+            <field name="print_report_name">'Teachers_Report_' + time.strftime('%Y%m%d')</field>
+            <field name="binding_model_id" ref="model_export_report"/>
+        </record>
+
+        <!-- Blocs Report Action -->
+        <record id="action_report_blocs_xlsx" model="ir.actions.report">
+            <field name="name">Academic Blocs Excel Report</field>
+            <field name="model">export.report</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">school_export_reports.blocs_xlsx</field>
+            <field name="report_file">school_export_reports.blocs_xlsx</field>
+            <field name="print_report_name">'Blocs_Report_' + time.strftime('%Y%m%d')</field>
+            <field name="binding_model_id" ref="model_export_report"/>
+        </record>
+
+        <!-- Server Actions for Report Generation -->
+
+        <!-- Programs Report Generation Action -->
+        <record id="action_generate_programs_report" model="ir.actions.server">
+            <field name="name">Generate Programs Report</field>
+            <field name="model_id" ref="model_export_report"/>
+            <field name="state">code</field>
+            <field name="code">
+result = env['export.report'].generate_programs_report()
+if result.get('success'):
+    action = {
+        'type': 'ir.actions.client',
+        'tag': 'reload',
+        'params': {'menu_id': env.ref('school_export_reports.menu_export_reports').id}
+    }
+else:
+    action = {
+        'type': 'ir.actions.client',
+        'tag': 'display_notification',
+        'params': {
+            'type': 'danger',
+            'title': 'Report Generation Failed',
+            'message': 'Unable to generate programs report. Please check CSV file.',
+            'sticky': False,
+        }
+    }
+            </field>
+        </record>
+
+        <!-- Students Report Generation Action -->
+        <record id="action_generate_students_report" model="ir.actions.server">
+            <field name="name">Generate Students Report</field>
+            <field name="model_id" ref="model_export_report"/>
+            <field name="state">code</field>
+            <field name="code">
+result = env['export.report'].generate_students_report()
+if result.get('success'):
+    action = {
+        'type': 'ir.actions.client',
+        'tag': 'reload',
+        'params': {'menu_id': env.ref('school_export_reports.menu_export_reports').id}
+    }
+else:
+    action = {
+        'type': 'ir.actions.client',
+        'tag': 'display_notification',
+        'params': {
+            'type': 'danger',
+            'title': 'Report Generation Failed',
+            'message': 'Unable to generate students report. Please check CSV file.',
+            'sticky': False,
+        }
+    }
+            </field>
+        </record>
+
+        <!-- Teachers Report Generation Action -->
+        <record id="action_generate_teachers_report" model="ir.actions.server">
+            <field name="name">Generate Teachers Report</field>
+            <field name="model_id" ref="model_export_report"/>
+            <field name="state">code</field>
+            <field name="code">
+result = env['export.report'].generate_teachers_report()
+if result.get('success'):
+    action = {
+        'type': 'ir.actions.client',
+        'tag': 'reload',
+        'params': {'menu_id': env.ref('school_export_reports.menu_export_reports').id}
+    }
+else:
+    action = {
+        'type': 'ir.actions.client',
+        'tag': 'display_notification',
+        'params': {
+            'type': 'danger',
+            'title': 'Report Generation Failed',
+            'message': 'Unable to generate teachers report. Please check CSV file.',
+            'sticky': False,
+        }
+    }
+            </field>
+        </record>
+
+        <!-- Blocs Report Generation Action -->
+        <record id="action_generate_blocs_report" model="ir.actions.server">
+            <field name="name">Generate Academic Blocs Report</field>
+            <field name="model_id" ref="model_export_report"/>
+            <field name="state">code</field>
+            <field name="code">
+result = env['export.report'].generate_blocs_report()
+if result.get('success'):
+    action = {
+        'type': 'ir.actions.client',
+        'tag': 'reload',
+        'params': {'menu_id': env.ref('school_export_reports.menu_export_reports').id}
+    }
+else:
+    action = {
+        'type': 'ir.actions.client',
+        'tag': 'display_notification',
+        'params': {
+            'type': 'danger',
+            'title': 'Report Generation Failed',
+            'message': 'Unable to generate blocs report. Please check CSV file.',
+            'sticky': False,
+        }
+    }
+            </field>
+        </record>
+
+    </data>
+</odoo>
