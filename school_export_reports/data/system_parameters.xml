@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- System Parameters for CSV Export Path -->
+        <record id="csv_export_path_parameter" model="ir.config_parameter">
+            <field name="key">school_export_reports.csv_export_path</field>
+            <field name="value">/tmp/odoo_exports</field>
+        </record>
+    </data>
+</odoo>

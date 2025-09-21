@@ -1,0 +1,10 @@
+
+ID Etudiant,Etudiant? ,Etablissement,Etablissements,Nom de famille,Prénom,Nom d'usage ,Prénom d'usage,Matricule Etudiant,Email ,Email personnel,Téléphone 1,Téléphone 2,Rue,Numéro ,Ville,Code postal,Pays,Rue Secondaire,Ville secondaire,Numéro rue secondaire,Code postal secondaire,Pays secondaire,Date de naissance ,Pays de naissance,Nationalité,Statut national spécial,Numéro de registre national ou RN Bis,Genre,Pronom d'usage ,Décès de l'étudiant,Deuxième prénom ,Autre prénom,HUE?,Prénom contact d'urgence,Nom contact d'urgence,Téléphone contact d'urgence,Mail contact d'urgence,Prénom responsable légal,Nom responsable légal,Téléphone responsable légal,Email responsable légal
+res_partner_student_ESA_0001,TRUE,Conservatoire royal de Bruxelles,"Conservatoire royal de Bruxelles,Conservatoire royal de Liège",Hasbroucq,Benoit,Hasbroucq,Benoit,,benoit.hasbroucq@nsi-sa.be,benoit.hasbroucq@gmail.be,+325666666,+3359698744,rue du centre,59,Liège,4000,Belgique,,,,,,1990-10-06,Belgique,Belgique,Indéterminé ,,M,il/le,FALSE,,,FALSE,,,,,,,,
+res_partner_student_ESA_0002,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+res_partner_student_ESA_0003,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+res_partner_student_ESA_0004,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+res_partner_student_ESA_0005,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+res_partner_student_ESA_0006,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+res_partner_student_ESA_0007,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+res_partner_student_ESA_0008,TRUE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

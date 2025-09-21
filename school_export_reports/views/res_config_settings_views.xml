@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit Settings View to Add CSV Export Configuration -->
+        <record id="view_school_export_reports_config_settings" model="ir.ui.view">
+            <field name="name">school.export.reports.config.settings</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="School Export Reports" string="School Export Reports" data-key="school_export_reports">
+                        <h2>CSV File Configuration</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="csv_export_path"/>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="csv_export_path" string="CSV Export Directory"/>
+                                    <div class="text-muted">
+                                        Directory path where your CSV export files are stored.
+                                        This should be the location where your school management system exports CSV data.
+                                        <br/>
+                                        <strong>Examples:</strong>
+                                        <ul>
+                                            <li>/tmp/odoo_exports</li>
+                                            <li>/var/lib/odoo/exports</li>
+                                            <li>/home/odoo/csv_exports</li>
+                                        </ul>
+                                        <strong>Required files:</strong>
+                                        <ul>
+                                            <li>school_programs.csv</li>
+                                            <li>school_students.csv</li>
+                                            <li>school_teachers.csv</li>
+                                            <li>school_blocs.csv</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
