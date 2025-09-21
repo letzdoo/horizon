@@ -16,6 +16,9 @@
                            decoration-danger="status=='error'" decoration-warning="status=='pending'"/>
                     <field name="record_count"/>
                     <field name="file_size_bytes" widget="integer"/>
+                    <button name="download_excel" string="Download" type="object"
+                            icon="fa-download" class="btn-primary"
+                            attrs="{'invisible': [('excel_file', '=', False)]}"/>
                 </tree>
             </field>
         </record>
@@ -27,6 +30,8 @@
             <field name="arch" type="xml">
                 <form string="Export Report" create="false">
                     <header>
+                        <button name="download_excel" string="Download Excel" type="object"
+                                class="btn-primary" attrs="{'invisible': [('excel_file', '=', False)]}"/>
                         <field name="status" widget="statusbar" statusbar_visible="pending,success,error"/>
                     </header>
                     <sheet>
@@ -42,6 +47,7 @@
                             <group>
                                 <field name="record_count" readonly="1"/>
                                 <field name="file_size_bytes" readonly="1" widget="integer"/>
+                                <field name="excel_filename" readonly="1" attrs="{'invisible': [('excel_file', '=', False)]}"/>
                             </group>
                         </group>
                         <group string="Error Details" attrs="{'invisible': [('status', '!=', 'error')]}">

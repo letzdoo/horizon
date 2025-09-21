@@ -2,9 +2,15 @@
 import os
 import csv
 import logging
+import base64
+import io
 from datetime import datetime
 from odoo import api, fields, models
 from odoo.exceptions import UserError
+try:
+    import xlsxwriter
+except ImportError:
+    xlsxwriter = None
 
 _logger = logging.getLogger(__name__)
 
@@ -60,6 +66,15 @@ class ExportReport(models.Model):
         help='Detailed error message if generation failed'
     )
 
+    excel_file = fields.Binary(
+        string='Excel File',
+        help='Generated Excel file content'
+    )
+    excel_filename = fields.Char(
+        string='Excel Filename',
+        help='Name of the generated Excel file'
+    )
+
     @api.depends('csv_source_path', 'status')
     def _compute_file_stats(self):
         """Compute file size and record count from CSV source."""
@@ -104,8 +119,12 @@ class ExportReport(models.Model):
     def _generate_report(self, report_type, csv_filename):
         """Core report generation logic with fail-fast error handling."""
         try:
-            # Validate CSV file exists
-            csv_path = f'/export/{csv_filename}'
+            # Get CSV export path from system parameters
+            export_path = self.env['ir.config_parameter'].sudo().get_param(
+                'school_export_reports.csv_export_path',
+                '/tmp/odoo_exports'  # Default fallback path
+            )
+            csv_path = os.path.join(export_path, csv_filename)
             if not os.path.exists(csv_path):
                 error_msg = f"CSV file not found: {csv_filename}"
                 self._create_error_record(report_type, csv_path, error_msg)
@@ -122,22 +141,24 @@ class ExportReport(models.Model):
                 self._create_error_record(report_type, csv_path, error_msg)
                 raise UserError("CSV file validation failed")
 
-            # Create report record
+            # Generate Excel file content
+            excel_content, filename = self._generate_excel_content(csv_path, report_type)
+
+            # Create report record with binary content
             report = self.create({
                 'name': f'{report_type.title()} Report - {datetime.now().strftime("%Y-%m-%d %H:%M")}',
                 'report_type': report_type,
                 'csv_source_path': csv_path,
                 'status': 'success',
+                'excel_file': base64.b64encode(excel_content),
+                'excel_filename': filename,
             })
-
-            # Generate Excel file (simplified for MVP)
-            download_url = f'/web/content/export.report/{report.id}/excel_file'
 
             return {
                 'success': True,
                 'report_id': report.id,
-                'download_url': download_url,
                 'record_count': report.record_count,
+                'filename': filename,
             }
 
         except UserError:
@@ -156,6 +177,63 @@ class ExportReport(models.Model):
             'status': 'error',
             'error_message': f'{error_message}\nAttempted: generate_{report_type}_report\nTimestamp: {datetime.now()}'
         })
+
+    def _generate_excel_content(self, csv_path, report_type):
+        """Generate Excel file content from CSV data."""
+        if not xlsxwriter:
+            raise UserError("xlsxwriter library is required for Excel generation")
+
+        # Create Excel file in memory
+        output = io.BytesIO()
+        workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+        worksheet = workbook.add_worksheet(f'{report_type.title()} Report')
+
+        # Add header formatting
+        header_format = workbook.add_format({
+            'bold': True,
+            'bg_color': '#D3D3D3',
+            'border': 1
+        })
+
+        # Read CSV and write to Excel
+        with open(csv_path, 'r', encoding='utf-8') as csvfile:
+            reader = csv.reader(csvfile)
+
+            # Write header row
+            headers = next(reader, [])
+            for col, header in enumerate(headers):
+                worksheet.write(0, col, header, header_format)
+
+            # Write data rows
+            for row_idx, row in enumerate(reader, 1):
+                for col_idx, value in enumerate(row):
+                    worksheet.write(row_idx, col_idx, value)
+
+        # Auto-fit columns
+        for col_idx, header in enumerate(headers):
+            worksheet.set_column(col_idx, col_idx, max(len(header) + 2, 12))
+
+        workbook.close()
+        excel_content = output.getvalue()
+        output.close()
+
+        # Generate filename
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f'{report_type}_report_{timestamp}.xlsx'
+
+        return excel_content, filename
+
+    def download_excel(self):
+        """Return action to download the Excel file."""
+        self.ensure_one()
+        if not self.excel_file:
+            raise UserError("No Excel file available for download")
+
+        return {
+            'type': 'ir.actions.act_url',
+            'url': f'/web/content/export.report/{self.id}/excel_file/{self.excel_filename}?download=true',
+            'target': 'self',
+        }
 
     def write(self, vals):
         """Prevent modification of error reports (immutable once created)."""
