@@ -35,8 +35,8 @@ Dependencies:
     'data': [
         'security/ir.model.access.csv',
         'data/ir_actions_report.xml',
-        'views/school_export_reports_menu.xml',
         'views/export_report_views.xml',
+        'views/school_export_reports_menu.xml',
     ],
     'demo': [
         'demo/demo_reports.xml',
