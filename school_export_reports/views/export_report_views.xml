@@ -115,7 +115,7 @@
                     <field name="encoding"/>
                     <field name="record_count"/>
                     <field name="last_modified"/>
-                    <button name="_validate_csv_structure" string="Validate" type="object"
+                    <button name="validate_csv_structure" string="Validate" type="object"
                             icon="fa-check" class="btn-primary"/>
                 </tree>
             </field>
@@ -128,7 +128,7 @@
             <field name="arch" type="xml">
                 <form string="CSV Data Source">
                     <header>
-                        <button name="_validate_csv_structure" string="Validate File" type="object" class="btn-primary"/>
+                        <button name="validate_csv_structure" string="Validate File" type="object" class="btn-primary"/>
                         <field name="validation_status" widget="statusbar"/>
                     </header>
                     <sheet>

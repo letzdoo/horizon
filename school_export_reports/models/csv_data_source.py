@@ -157,6 +157,11 @@ class CSVDataSource(models.Model):
             self.validation_errors = f"Validation error: {str(e)}"
             _logger.error(f"CSV validation failed for {self.file_path}: {e}")
 
+    def validate_csv_structure(self):
+        """Public method to validate CSV structure (called from UI buttons)."""
+        self._validate_csv_structure()
+        return True
+
     def validate_required_columns(self, required_columns):
         """Validate that CSV contains all required columns."""
         if not self.header_row:
