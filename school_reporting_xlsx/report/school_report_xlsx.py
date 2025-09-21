@@ -137,7 +137,7 @@ class ProgramExportXlsx(models.AbstractModel):
             sheet.write(i, 1, obj.name)
             sheet.write(i, 3, "1er cycle" if obj.cycle_id.certification_profile == "bachelor" else "2e cycle")
             sheet.write(i, 6, f"{obj.cycle_id.name} ({obj.cycle_id.ects_required})")
-            sheet.write(i, 7, obj.speciality_id.name if obj.speciality_id else ""
+            sheet.write(i, 7, obj.speciality_id.name if obj.speciality_id else "")
             sheet.write(i, 9, obj.year_id.name if obj.academic_year_id else "")
             sheet.write(i, 11, obj.habilitation_code)
             sheet.write(i, 12, obj.ares_code)
