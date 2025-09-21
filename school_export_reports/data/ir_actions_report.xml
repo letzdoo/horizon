@@ -157,5 +157,45 @@ else:
             </field>
         </record>
 
+        <!-- CSV Data Source Validation Action -->
+        <record id="action_validate_csv_structure" model="ir.actions.server">
+            <field name="name">Validate CSV Structure</field>
+            <field name="model_id" ref="model_csv_data_source"/>
+            <field name="state">code</field>
+            <field name="code">
+for record in records:
+    try:
+        record._validate_csv_structure()
+        if record.validation_status == 'valid':
+            message = f"✓ CSV validation successful: {record.record_count} records found"
+            message_type = 'success'
+        else:
+            message = f"⚠ Validation issues found: {record.validation_errors}"
+            message_type = 'warning'
+
+        action = {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'type': message_type,
+                'title': 'CSV Validation Complete',
+                'message': message,
+                'sticky': False,
+            }
+        }
+    except Exception as e:
+        action = {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'type': 'danger',
+                'title': 'Validation Error',
+                'message': f'Error validating CSV file: {str(e)}',
+                'sticky': True,
+            }
+        }
+            </field>
+        </record>
+
     </data>
 </odoo>
