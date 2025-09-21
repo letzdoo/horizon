@@ -145,5 +145,5 @@ class ProgramExportXlsx(models.AbstractModel):
             sheet.write(i, 16, False)
             sheet.write(i, 17, False)
             sheet.write(i, 19, False)
-            sheet.write(i, 20, f"/ Art / {obj.speciality_id.domain} / {obj.speciality_id.track_id} / {obj.speciality_id.name}" if obj.speciality_id else "")
+            sheet.write(i, 20, f"/ Art / {obj.speciality_id.domain_id.name} / {obj.speciality_id.track_id} / {obj.speciality_id.name}" if obj.speciality_id else "")
             sheet.write(i, 21, "Actif")
