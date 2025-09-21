@@ -40,4 +40,16 @@
         file="school_reporting_xlsx.registration_export_xlsx"
         attachment_use="False"
     />
+
+    <report
+        id="programs_xlsx"
+        model="school.program"
+        string="Print to XLSX"
+        report_type="xlsx"
+        name="school_reporting_xlsx.program_export_xlsx"
+        file="school_reporting_xlsx.program_export_xlsx"
+        attachment_use="False"
+    />
+
+    
 </odoo>
