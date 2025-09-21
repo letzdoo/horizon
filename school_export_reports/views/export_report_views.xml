@@ -16,6 +16,7 @@
                            decoration-danger="status=='error'" decoration-warning="status=='pending'"/>
                     <field name="record_count"/>
                     <field name="file_size_bytes" widget="integer"/>
+                    <field name="excel_file" invisible="1"/>
                     <button name="download_excel" string="Download" type="object"
                             icon="fa-download" class="btn-primary"
                             attrs="{'invisible': [('excel_file', '=', False)]}"/>
