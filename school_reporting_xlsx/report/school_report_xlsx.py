@@ -209,8 +209,8 @@ class TeacherExportXlsx(models.AbstractModel):
         for i, obj in enumerate(partners):
             sheet.write(i+1, 0, f'res_partner_teacher_WBE_{obj.id}')
             sheet.write(i+1, 1, "TRUE")
-            sheet.write(i+1, 2, obj.last_name if obj.last_name else "")
-            sheet.write(i+1, 3, obj.first_name if obj.first_name else "")
+            sheet.write(i+1, 2, obj.lastname if obj.lastname else "")
+            sheet.write(i+1, 3, obj.firstname if obj.firstname else "")
             sheet.write(i+1, 4, obj.phone if obj.phone else "")
             sheet.write(i+1, 5, obj.mobile if obj.mobile else "")
             sheet.write(i+1, 6, obj.email_personel if obj.email_personel else "")
