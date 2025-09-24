@@ -52,7 +52,7 @@
     />
 
     <report
-        id="programs_xlsx"
+        id="blocs_xlsx"
         model="school.bloc"
         string="Print to XLSX"
         report_type="xlsx"
