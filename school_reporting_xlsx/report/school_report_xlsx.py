@@ -218,3 +218,104 @@ class TeacherExportXlsx(models.AbstractModel):
             sheet.write(i+1, 13, obj.lang if obj.lang else "")
             sheet.write(i+1, 14, "Conservatoire royal de Liège")
             sheet.write(i+1, 15, "Conservatoire royal de Liège")
+
+class StudentExportXlsx(models.AbstractModel):
+    _name = "report.school_reporting_xlsx.student_export_xlsx"
+    _description = "Report xlsx helpers"
+    _inherit = "report.report_xlsx.abstract"
+
+    #ID Etudiant	Etudiant? 	Etablissement	Etablissements	Nom de famille	
+    # Prénom	Nom d'usage 	Prénom d'usage	Matricule Etudiant	Email 	
+    # Email personnel	Téléphone 1	Téléphone 2	Rue	Numéro 	Ville	Code postal	Pays	
+    # Rue Secondaire	Ville secondaire	Numéro rue secondaire	Code postal secondaire	
+    # Pays secondaire	Date de naissance 	Pays de naissance	Nationalité	Statut national spécial	
+    # Numéro de registre national ou RN Bis	Genre	Pronom d'usage 	Décès de l'étudiant	
+    # Deuxième prénom 	Autre prénom	HUE?	Prénom contact d'urgence	Nom contact d'urgence	
+    # Téléphone contact d'urgence	Mail contact d'urgence	Prénom responsable légal	
+    # Nom responsable légal	Téléphone responsable légal	Email responsable légal
+    
+    def generate_xlsx_report(self, workbook, data, partners):
+        sheet = workbook.add_worksheet("Students")
+
+        # Write titles
+        bold = workbook.add_format({"bold": True})
+        sheet.write(0, 0, "ID Etudiant", bold)
+        sheet.write(0, 1, "Etudiant?", bold)
+        sheet.write(0, 2, "Etablissement", bold)
+        sheet.write(0, 3, "Etablissements", bold)
+        sheet.write(0, 4, "Nom de famille", bold)
+        sheet.write(0, 5, "Prénom", bold)
+        sheet.write(0, 6, "Nom d'usage", bold)
+        sheet.write(0, 7, "Prénom d'usage", bold)
+        sheet.write(0, 8, "Matricule Etudiant", bold)
+        sheet.write(0, 9, "Email", bold)
+        sheet.write(0, 10, "Email personnel", bold)
+        sheet.write(0, 11, "Téléphone 1", bold)
+        sheet.write(0, 12, "Téléphone 2", bold)
+        sheet.write(0, 13, "Rue", bold)
+        sheet.write(0, 14, "Numéro", bold)
+        sheet.write(0, 15, "Ville", bold)
+        sheet.write(0, 16, "Code postal", bold)
+        sheet.write(0, 17, "Pays", bold)
+        sheet.write(0, 18, "Rue Secondaire", bold)
+        sheet.write(0, 19, "Ville secondaire", bold)
+        sheet.write(0, 20, "Numéro rue secondaire", bold)
+        sheet.write(0, 21, "Code postal secondaire", bold)
+        sheet.write(0, 22, "Pays secondaire", bold)
+        sheet.write(0, 23, "Date de naissance", bold)
+        sheet.write(0, 24, "Pays de naissance", bold)
+        sheet.write(0, 25, "Nationalité", bold)
+        sheet.write(0, 26, "Statut national spécial", bold)
+        sheet.write(0, 27, "Numéro de registre national ou RN Bis", bold)
+        sheet.write(0, 28, "Genre", bold)
+        sheet.write(0, 29, "Pronom d'usage", bold)
+        sheet.write(0, 30, "Décès de l'étudiant", bold)
+        sheet.write(0, 31, "Deuxième prénom", bold)
+        sheet.write(0, 32, "Autre prénom", bold)
+        sheet.write(0, 33, "HUE?", bold)
+        sheet.write(0, 34, "Prénom contact d'urgence", bold)
+        sheet.write(0, 35, "Nom contact d'urgence", bold)
+        sheet.write(0, 36, "Téléphone contact d'urgence", bold)
+        sheet.write(0, 37, "Mail contact d'urgence", bold)
+        sheet.write(0, 38, "Prénom responsable légal", bold)
+        sheet.write(0, 39, "Nom responsable légal", bold)
+        sheet.write(0, 40, "Téléphone responsable légal", bold)
+        sheet.write(0, 41, "Email responsable légal", bold)
+        
+        for i, obj in enumerate(partners):
+            sheet.write(i+1, 0, f'res_partner_student_ESA_{obj.id}')
+            sheet.write(i+1, 1, "TRUE")
+            sheet.write(i+1, 2, "Conservatoire royal de Liège")
+            sheet.write(i+1, 3, "Conservatoire royal de Liège")
+            sheet.write(i+1, 4, obj.lastname if obj.lastname else "")
+            sheet.write(i+1, 5, obj.firstname if obj.firstname else "")
+            sheet.write(i+1, 6, obj.lastname if obj.lastname else "")
+            sheet.write(i+1, 7, obj.firstname if obj.firstname else "")
+            sheet.write(i+1, 8, obj.mat_number if obj.mat_number else "")
+            sheet.write(i+1, 9, obj.email if obj.email else "")
+            sheet.write(i+1, 10, obj.email_personnel if obj.email_personnel else "")
+            sheet.write(i+1, 11, obj.phone if obj.phone else "")
+            sheet.write(i+1, 12, obj.mobile if obj.mobile else "")
+            sheet.write(i+1, 13, obj.street if obj.street else "")
+            sheet.write(i+1, 14, "")
+            sheet.write(i+1, 15, obj.city if obj.city else "")
+            sheet.write(i+1, 16, obj.zip if obj.zip else "")
+            sheet.write(i+1, 17, obj.country_id.name if obj.country_id else "")
+            sheet.write(i+1, 18, obj.secondary_street if obj.secondary_street else "")
+            sheet.write(i+1, 19, obj.secondary_city if obj.secondary_city else "")
+            sheet.write(i+1, 20, "")
+            sheet.write(i+1, 21, obj.secondary_zip if obj.secondary_zip else "")
+            sheet.write(i+1, 22, obj.secondary_country_id.name if obj.secondary_country_id else "")
+            sheet.write(i+1, 23, fields.Date.to_string(obj.birthdate_date) if obj.birthdate_date else "")
+            sheet.write(i+1, 24, obj.birthcountry.name if obj.birthcountry else "")
+            nationalities = obj.nationality_ids.mapped('name')
+            sheet.write(i+1, 25, ", ".join(nationalities) if nationalities else "")
+            sheet.write(i+1, 26, "Indéterminée")
+            sheet.write(i+1, 27, obj.reg_number if obj.reg_number else "")
+            sheet.write(i+1, 28, "M" if obj.gender == "male" else "F")
+            sheet.write(i+1, 29, "")
+            sheet.write(i+1, 30, "FALSE")
+            sheet.write(i+1, 31, "")
+            sheet.write(i+1, 32, "")
+            sheet.write(i+1, 33, "FALSE")
+            # Rest we don't have the data for now

@@ -70,5 +70,15 @@
         file="school_reporting_xlsx.teacher_export_xlsx"
         attachment_use="False"
     />
+
+    <report
+        id="students_xlsx"
+        model="res.partner"
+        string="Students to XLSX"
+        report_type="xlsx"
+        name="school_reporting_xlsx.student_export_xlsx"
+        file="school_reporting_xlsx.student_export_xlsx"
+        attachment_use="False"
+    />
     
 </odoo>
