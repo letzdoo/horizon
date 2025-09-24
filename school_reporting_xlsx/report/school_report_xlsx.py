@@ -213,7 +213,7 @@ class TeacherExportXlsx(models.AbstractModel):
             sheet.write(i+1, 3, obj.firstname if obj.firstname else "")
             sheet.write(i+1, 4, obj.phone if obj.phone else "")
             sheet.write(i+1, 5, obj.mobile if obj.mobile else "")
-            sheet.write(i+1, 6, obj.email_personel if obj.email_personel else "")
+            sheet.write(i+1, 6, obj.email_personnel if obj.email_personnel else "")
             sheet.write(i+1, 7, obj.email if obj.email else "")
             sheet.write(i+1, 8, "M" if obj.gender == "male" else "F")
             sheet.write(i+1, 9, obj.mat_number if obj.mat_number else "")
