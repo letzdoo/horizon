@@ -147,3 +147,26 @@ class ProgramExportXlsx(models.AbstractModel):
             sheet.write(i+1, 19, False)
             sheet.write(i+1, 20, f"/ Art / {obj.speciality_id.domain_id.name} / {obj.speciality_id.track_id} / {obj.speciality_id.name}" if obj.speciality_id else "")
             sheet.write(i+1, 21, "Actif")
+
+class BlockExportXlsx(models.AbstractModel):
+    _name = "report.school_reporting_xlsx.block_export_xlsx"
+    _description = "Report xlsx helpers"
+    _inherit = "report.report_xlsx.abstract"
+    
+    def generate_xlsx_report(self, workbook, data, blocks):
+        sheet = workbook.add_worksheet("Blocks")
+        # Write titles
+        bold = workbook.add_format({"bold": True})
+        sheet.write(0, 0, "ID externe", bold)
+        sheet.write(0, 1, "Année académique", bold)
+        sheet.write(0, 2, "Bloc", bold)
+        sheet.write(0, 3, "Offres pédagogiques", bold)
+        sheet.write(0, 4, "ID de l'offre pédagogique", bold)
+        sheet.write(0, 5, "Établissement", bold)
+        for i, obj in enumerate(blocks):
+            sheet.write(i+1, 0, f'gwr.pedagogical.block_{obj.id}')
+            sheet.write(i+1, 1, obj.year_id.name if obj.year_id else "")
+            sheet.write(i+1, 2, f"Block {obj.sequence}")
+            sheet.write(i+1, 3, obj.program_id.name if obj.program_id else "")
+            sheet.write(i+1, 4, f"gwr.pedagogical.offer_{obj.program_id.id}" if obj.program_id else "")
+            sheet.write(i+1, 5, "Conservatoire Royal de Liège")
