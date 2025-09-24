@@ -218,7 +218,7 @@ class TeacherExportXlsx(models.AbstractModel):
             sheet.write(i+1, 8, "M" if obj.gender == "male" else "F")
             sheet.write(i+1, 9, obj.mat_number if obj.mat_number else "")
             sheet.write(i+1, 10, obj.reg_number if obj.reg_number else "")
-            sheet.write(i+1, 11, obj.birthdate_date, date_style)
+            sheet.write(i+1, 11, obj.birthdate_date, cell_format=date_style)
             sheet.write(i+1, 12, obj.birthcountry.name if obj.birthcountry else "")
             sheet.write(i+1, 13, obj.lang if obj.lang else "")
             sheet.write(i+1, 14, "Conservatoire royal de Liège")
