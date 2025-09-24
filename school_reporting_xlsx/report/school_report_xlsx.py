@@ -169,4 +169,57 @@ class BlockExportXlsx(models.AbstractModel):
             sheet.write(i+1, 2, f"Block {obj.sequence}")
             sheet.write(i+1, 3, obj.program_id.name if obj.program_id else "")
             sheet.write(i+1, 4, f"gwr.pedagogical.offer_{obj.program_id.id}" if obj.program_id else "")
-            sheet.write(i+1, 5, "Conservatoire Royal de Liège")
+            sheet.write(i+1, 5, "Conservatoire royal de Liège")
+
+class TeacherExportXlsx(models.AbstractModel):
+    _name = "report.school_reporting_xlsx.teacher_export_xlsx"
+    _description = "Report xlsx helpers"
+    _inherit = "report.report_xlsx.abstract"
+
+    #ID externe	Enseignant	Nom de famille	Prénom	Téléphone 1	Téléphone 2	Email personnel	E-mail	
+    #Genre	Matricule Enseignant / Administrateur ESA	national_registration_number	Date de naissance	
+    # Pays de naissance	Langue	Société	Etablissements
+    
+    def generate_xlsx_report(self, workbook, data, partners):
+        sheet = workbook.add_worksheet("Teachers")
+       
+        import xlwt  # noqa: PLC0415
+
+        date_style = xlwt.XFStyle()
+        date_style.num_format_str = 'yyyy-mm-dd'
+
+        # Write titles
+        bold = workbook.add_format({"bold": True})
+        sheet.write(0, 0, "ID externe", bold)
+        sheet.write(0, 1, "Enseignant", bold)
+        sheet.write(0, 2, "Nom de famille", bold)
+        sheet.write(0, 3, "Prénom", bold)
+        sheet.write(0, 4, "Téléphone 1", bold)
+        sheet.write(0, 5, "Téléphone 2", bold)
+        sheet.write(0, 6, "Email personnel", bold)
+        sheet.write(0, 7, "E-mail", bold)
+        sheet.write(0, 8, "Genre", bold)
+        sheet.write(0, 9, "Matricule Enseignant / Administrateur ESA", bold)
+        sheet.write(0, 10, "national_registration_number", bold)
+        sheet.write(0, 11, "Date de naissance", bold)
+        sheet.write(0, 12, "Pays de naissance", bold)
+        sheet.write(0, 13, "Langue", bold)
+        sheet.write(0, 14, "Société", bold)
+        sheet.write(0, 15, "Etablissements", bold)
+        for i, obj in enumerate(partners):
+            sheet.write(i+1, 0, f'res_partner_teacher_WBE_{obj.id}')
+            sheet.write(i+1, 1, "TRUE")
+            sheet.write(i+1, 2, obj.last_name if obj.last_name else "")
+            sheet.write(i+1, 3, obj.first_name if obj.first_name else "")
+            sheet.write(i+1, 4, obj.phone if obj.phone else "")
+            sheet.write(i+1, 5, obj.mobile if obj.mobile else "")
+            sheet.write(i+1, 6, obj.email_personel if obj.email_personel else "")
+            sheet.write(i+1, 7, obj.email if obj.email else "")
+            sheet.write(i+1, 8, "M" if obj.gender == "male" else "F")
+            sheet.write(i+1, 9, obj.mat_number if obj.mat_number else "")
+            sheet.write(i+1, 10, obj.reg_number if obj.reg_number else "")
+            sheet.write(i+1, 11, obj.birthdate_date, date_style)
+            sheet.write(i+1, 12, obj.birth_country_id.name if obj.birth_country else "")
+            sheet.write(i+1, 13, obj.lang_id.code if obj.lang_id else "")
+            sheet.write(i+1, 14, "Conservatoire royal de Liège")
+            sheet.write(i+1, 15, "Conservatoire royal de Liège")
