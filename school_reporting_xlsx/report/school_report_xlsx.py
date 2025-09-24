@@ -149,11 +149,11 @@ class ProgramExportXlsx(models.AbstractModel):
             sheet.write(i+1, 21, "Actif")
 
 class BlockExportXlsx(models.AbstractModel):
-    _name = "report.school_reporting_xlsx.block_export_xlsx"
+    _name = "report.school_reporting_xlsx.bloc_export_xlsx"
     _description = "Report xlsx helpers"
     _inherit = "report.report_xlsx.abstract"
     
-    def generate_xlsx_report(self, workbook, data, blocks):
+    def generate_xlsx_report(self, workbook, data, blocs):
         sheet = workbook.add_worksheet("Blocks")
         # Write titles
         bold = workbook.add_format({"bold": True})
@@ -163,7 +163,7 @@ class BlockExportXlsx(models.AbstractModel):
         sheet.write(0, 3, "Offres pédagogiques", bold)
         sheet.write(0, 4, "ID de l'offre pédagogique", bold)
         sheet.write(0, 5, "Établissement", bold)
-        for i, obj in enumerate(blocks):
+        for i, obj in enumerate(blocs):
             sheet.write(i+1, 0, f'gwr.pedagogical.block_{obj.id}')
             sheet.write(i+1, 1, obj.year_id.name if obj.year_id else "")
             sheet.write(i+1, 2, f"Block {obj.sequence}")
