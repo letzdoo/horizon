@@ -91,16 +91,16 @@ class ProgramApprouval(models.Model):
         string="Particpants",
     )
 
-    @api.onchange("individual_bloc_ids")
-    def _on_update_individual_bloc_ids(self):
-        for rec in self:
-            all_program_ids = rec.individual_bloc_ids.mapped("program_id")
-            rec.valuation_followup_ids = self.env["school.valuation_followup"].search(
-                [
-                    ["individual_program_id", "in", all_program_ids.ids],
-                    ["state", "!=", "0_valuated"],
-                ]
-            )
+    #@api.onchange("individual_bloc_ids")
+    #def _on_update_individual_bloc_ids(self):
+    #    for rec in self:
+    #        all_program_ids = rec.individual_bloc_ids.mapped("program_id")
+    #        rec.valuation_followup_ids = self.env["school.valuation_followup"].search(
+    #            [
+    #                ["individual_program_id", "in", all_program_ids.ids],
+    #                ["state", "!=", "0_valuated"],
+    #            ]
+    #        )
 
     def _compute_counts(self):
         for rec in self:
