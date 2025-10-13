@@ -90,37 +90,42 @@ class Bloc(models.Model):
             total_weight = 0.0
             has_sum_type = []
             for course_group in rec.course_group_ids:
-                if course_group.type == "OBLIGATOIRE":
+                if course_group.is_choice_course_group:
+                    if course_group.type == "OBLIGATOIRE":
+                        total_hours += course_group.total_hours
+                        total_credits += course_group.total_credits
+                        total_weight += course_group.total_weight
+                    elif course_group.type == "CHOIX":
+                        if course_group.type in has_sum_type:
+                            pass
+                        else:
+                            # Need to select two of those course groups
+                            has_sum_type.append(course_group.type)
+                            total_hours += 60
+                            total_credits += 6
+                            total_weight += 2
+                    elif course_group.type == "ORI1":
+                        if course_group.type in has_sum_type:
+                            pass
+                        else:
+                            # Need to select two of those course groups
+                            has_sum_type.append(course_group.type)
+                            total_hours += 60
+                            total_credits += 10
+                            total_weight += 4
+                    else:
+                        if course_group.type in has_sum_type:
+                            pass
+                        else:
+                            # Need to select two of those course groups
+                            has_sum_type.append(course_group.type)
+                            total_hours += 30
+                            total_credits += 4
+                            total_weight += 2
+                else:
                     total_hours += course_group.total_hours
                     total_credits += course_group.total_credits
                     total_weight += course_group.total_weight
-                elif course_group.type == "CHOIX":
-                    if course_group.type in has_sum_type:
-                        pass
-                    else:
-                        # Need to select two of those course groups
-                        has_sum_type.append(course_group.type)
-                        total_hours += 60
-                        total_credits += 6
-                        total_weight += 2
-                elif course_group.type == "ORI1":
-                    if course_group.type in has_sum_type:
-                        pass
-                    else:
-                        # Need to select two of those course groups
-                        has_sum_type.append(course_group.type)
-                        total_hours += 60
-                        total_credits += 10
-                        total_weight += 4
-                else:
-                    if course_group.type in has_sum_type:
-                        pass
-                    else:
-                        # Need to select two of those course groups
-                        has_sum_type.append(course_group.type)
-                        total_hours += 30
-                        total_credits += 4
-                        total_weight += 2
             rec.total_hours = total_hours
             rec.total_credits = total_credits
             rec.total_weight = total_weight
