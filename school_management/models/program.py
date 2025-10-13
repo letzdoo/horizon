@@ -74,7 +74,7 @@ class Program(models.Model):
         "school.open.form.mixin",
     ]
 
-    @api.depends("bloc_ids.total_hours", "bloc_ids.total_credits")
+    @api.depends("bloc_ids", "bloc_ids.total_hours", "bloc_ids.total_credits")
     def _compute_courses_total(self):
         for rec in self:
             total_hours = 0.0
@@ -210,6 +210,7 @@ class Bloc(models.Model):
     _order = "program_id,sequence"
 
     @api.depends(
+        "course_group_ids",
         "course_group_ids.total_hours",
         "course_group_ids.total_credits",
         "course_group_ids.total_weight",
@@ -434,7 +435,9 @@ class CourseGroup(models.Model):
 
     weight = fields.Integer(string="Weight")
 
-    @api.depends("course_ids.hours", "course_ids.credits", "course_ids.weight")
+    @api.depends(
+        "course_ids", "course_ids.hours", "course_ids.credits", "course_ids.weight"
+    )
     def _compute_courses_total(self):
         for rec in self:
             total_hours = 0.0
