@@ -35,7 +35,7 @@ class CourseGroup(models.Model):
             ("ORI2", "ORI2"),
             ("OBLIGATOIRE", "OBLIGATOIRE"),
         ],
-        string="Type", default="OBLIGATOIRE"
+        string="Type", default="OBLIGATOIRE", required=True
     )
 
     is_choice_course_group = fields.Boolean(
