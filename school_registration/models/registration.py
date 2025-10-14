@@ -317,7 +317,7 @@ class Registration(models.Model):
             for attachment in self.forms_attachment_ids:
                 if (
                     attachment.name not in existing_file_name_list
-                    and attachment.type == "binary"
+                    and attachment.type == "binary" and attachment.raw
                 ):
                     google_service.create_file(
                         BytesIO(attachment.raw),
