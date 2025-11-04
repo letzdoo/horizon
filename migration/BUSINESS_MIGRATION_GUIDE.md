@@ -1,6 +1,6 @@
 # Horizon CRLG to WBE - Business Migration Guide
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 **Date:** November 4, 2025
 **Purpose:** Data owner review and validation of migration mappings
 
@@ -443,67 +443,150 @@ Only 1 exact match: `name`
 
 ---
 
+## UNDERSTANDING THE MIGRATION IMPACT
+
+### Key Questions Answered by This Analysis
+
+1. **What data will be migrated?**
+   - Fields with "Exact Match" transfer directly
+   - Fields with "Renamed (High)" transfer with name changes
+   - Total: These fields are covered ✓
+
+2. **What data will be LOST from CRLG?**
+   - "Unmapped in Source" = CRLG fields that won't be migrated
+   - Example: If Contacts has 27 unmapped source fields, those 27 fields from CRLG won't go to WBE
+   - **❗ DATA LOSS RISK** - Review these carefully!
+
+3. **What WBE fields will be EMPTY after migration?**
+   - "Target Remains Empty" = WBE fields with no data from CRLG
+   - Example: If Contacts has 99 empty target fields, those 99 WBE fields will remain empty
+   - **❗ FUNCTIONALITY IMPACT** - Does WBE require these fields?
+
+### Critical Insights from the Analysis
+
+**Contacts (res.partner):**
+- ✅ 118 fields mapped (107 exact + 11 renamed)
+- ⚠️ 27 CRLG fields won't migrate (data loss)
+- ⚠️ 99 WBE fields will be empty (may need manual population)
+
+**PAE Cycles:**
+- ⚠️ Only 1 field mapped exactly
+- 🔴 10 CRLG fields won't migrate
+- 🔴 68 WBE fields will be empty
+- **Concern**: Are these two models actually equivalent?
+
+**Individual Courses (largest table: 48,006 records):**
+- ✅ 26 fields mapped
+- ⚠️ 42 CRLG fields won't migrate
+- ⚠️ 20 WBE fields will be empty
+- **Impact**: High due to data volume
+
+---
+
 ## SUMMARY TABLE: Migration Readiness
 
-| Entity | Volume | Exact Matches | Renamed Fields | Unmapped Fields | Status |
-|--------|--------|---------------|----------------|-----------------|--------|
-| Contacts (res.partner) | 2,115 | 107 | 11 | 27 | 🟢 Ready (review medium confidence) |
-| Academic Years | 39 | 1 | 2 | 3 | 🟢 Ready (minor review) |
-| Courses | 4,424 | 14 | 2 | 20 | 🟡 Review recommended |
-| Course Groups | 3,441 | 14 | 0 | 28 | 🟡 Review recommended |
-| Individual Courses | 48,006 | 26 | 0 | 42 | 🔴 Critical review needed |
-| Individual Course Groups | 42,108 | 14 | 1 | 42 | 🔴 Critical review needed |
-| Programs | 1,659 | 12 | 1 | 30 | 🟡 Review recommended |
-| Registrations | 845 | 13 | 1 | 19 | 🟡 Review recommended |
-| Individual PAE | 4,381 | 20 | 1 | 35 | 🟡 Review recommended |
-| PAE Cycles | 35 | 1 | 0 | 12 | 🔴 Critical review needed |
-| Annual Blocks | 5,210 | 2 | 0 | 28 | 🔴 Critical review needed |
-| Student Documents | 74 | 1 | 0 | 20 | 🔴 Critical review needed |
+| Entity | Volume | Source Fields | Target Fields | Exact Match | Renamed (High) | Unmapped in Source | Target Remains Empty | Status |
+|--------|--------|---------------|---------------|-------------|----------------|--------------------|--------------------|--------|
+| Contacts | 2,115 | 154 | 217 | 107 | 11 | 27 | 99 | 🔴 Critical review |
+| Academic Years | 39 | 7 | 5 | 1 | 2 | 3 | 2 | 🟢 Ready |
+| Courses | 4,424 | 39 | 50 | 14 | 2 | 20 | 34 | 🟡 Review recommended |
+| Course Groups | 3,441 | 45 | 56 | 14 | 0 | 28 | 42 | 🟡 Review recommended |
+| Individual Courses | 48,006 | 76 | 46 | 26 | 0 | 42 | 20 | 🔴 Critical review |
+| Individual Course Groups | 42,108 | 70 | 53 | 14 | 1 | 42 | 38 | 🔴 Critical review |
+| Programs | 1,659 | 47 | 79 | 12 | 1 | 30 | 66 | 🔴 Critical review |
+| Registrations | 845 | 38 | 60 | 13 | 1 | 19 | 46 | 🟡 Review recommended |
+| Individual PAE | 4,381 | 58 | 89 | 20 | 1 | 35 | 68 | 🔴 Critical review |
+| PAE Cycles | 35 | 13 | 69 | 1 | 0 | 10 | 68 | 🔴 Critical review |
+| Annual Blocks | 5,210 | 31 | 17 | 2 | 0 | 28 | 15 | 🟡 Review recommended |
+| Student Documents | 74 | 21 | 7 | 1 | 0 | 20 | 6 | 🟢 Ready |
+
+**Legend:**
+- **Source Fields**: Total fields in CRLG (source system)
+- **Target Fields**: Total fields in WBE (target system)
+- **Exact Match**: Fields with identical names that transfer directly
+- **Renamed (High)**: Fields that are renamed but have high-confidence mapping
+- **Unmapped in Source**: CRLG fields that **won't be migrated** (data will be lost)
+- **Target Remains Empty**: WBE fields that **will remain empty** after migration (no data from CRLG)
 
 ---
 
 ## REVIEW CHECKLIST FOR DATA OWNERS
 
-### High Priority Review Items
+### Critical: Data Loss Prevention
 
-1. **Individual Courses (48,006 records)**
+**❗ IMPORTANT:** These items involve potential data loss or missing functionality.
+
+1. **Contacts (res.partner) - 27 unmapped source fields**
+   - ❏ Review list of 27 CRLG fields that won't migrate (see section 1)
+   - ❏ Identify which fields contain critical data
+   - ❏ Determine if data needs to be preserved elsewhere
+   - ❏ 99 WBE fields will remain empty - is this acceptable?
+
+2. **Individual Courses - 42 unmapped source fields (48,006 records)**
    - ❏ Verify session result fields mapping
    - ❏ Confirm exam session logic
    - ❏ Review dispensation/exemption handling
+   - ❏ Identify critical unmapped fields
+   - **Risk**: High data volume means any missing field affects many records
 
-2. **Individual Course Groups (42,108 records)**
-   - ❏ Same as individual courses
+3. **Individual Course Groups - 42 unmapped source fields (42,108 records)**
+   - ❏ Same review as individual courses
+   - **Risk**: Second largest table
 
-3. **Contacts Secondary Address**
-   - ✅ Confirmed: `secondary_*` → `sec_*` mapping is correct
+4. **Programs - 30 unmapped source fields (1,659 records)**
+   - ❏ Review unmapped program fields
+   - ❏ 66 WBE fields will be empty - verify this is acceptable
+   - ❏ Are program structures equivalent between systems?
 
-4. **Academic Year Dates**
-   - ✅ Confirmed: `startdate` → `start_date`, `enddate` → `end_date`
+5. **Individual PAE - 35 unmapped source fields (4,381 records)**
+   - ❏ Review unmapped PAE workflow fields
+   - ❏ 68 WBE fields will be empty
+   - ❏ Does WBE handle PAE workflow differently?
+
+### High Priority Review Items
+
+6. **PAE Cycles - STRUCTURAL MISMATCH**
+   - 🔴 Only 1 field mapped out of 13 source fields
+   - 🔴 68 target fields will remain empty
+   - ❏ **CRITICAL**: Confirm these models are actually equivalent
+   - ❏ If not equivalent, migration strategy needs rethinking
+
+7. **Annual Blocks - LIMITED MAPPING**
+   - ⚠️ Only 2 fields mapped out of 31 source fields
+   - ❏ Confirm block concept equivalence between systems
+   - ❏ Identify remaining field mappings or accept data loss
+
+8. **Student Documents - STRUCTURAL MISMATCH**
+   - 🔴 Only 1 field mapped out of 21 source fields
+   - ❏ Confirm document model equivalence
+   - ❏ May need custom migration logic
+   - ❏ Consider alternative document storage approach
 
 ### Medium Priority Review Items
 
-5. **PAE Cycles**
-   - ❏ Confirm cycle structure equivalence
-   - ❏ Map remaining fields
+9. **Contacts - Validated Mappings**
+   - ✅ Confirmed: `secondary_*` → `sec_*` mapping is correct
+   - ❏ Review birth information fields (birthcountry, birth_state_id)
+   - ❏ Decide on email mapping (`email_personnel` → `email`?)
 
-6. **Annual Blocks**
-   - ❏ Confirm block concept equivalence
-   - ❏ Identify field mappings
+10. **Academic Year - Validated**
+    - ✅ Confirmed: `startdate` → `start_date`, `enddate` → `end_date`
+    - ❏ Minor: Review calendar and year linkage fields
 
-7. **Student Documents**
-   - ❏ Confirm document model equivalence
-   - ❏ May need custom migration
+### Empty Target Fields Review
 
-8. **Contacts - Birth Information**
-   - ❏ Decide: `birthcountry` → `country_id` or `birth_country_id`?
-   - ❏ Decide: `birth_state_id` → `state_id`?
+For each entity, WBE has fields that won't receive data from CRLG:
 
-9. **Contacts - Email**
-   - ❏ Decide: `email_personnel` → `email`?
+- **Contacts**: 99 empty fields
+- **Programs**: 66 empty fields
+- **PAE Cycles**: 68 empty fields
+- **Individual PAE**: 68 empty fields
 
-10. **Contacts - Unmapped Fields**
-    - ❏ Review 27 unmapped fields
-    - ❏ Determine which are still needed
+❏ **ACTION**: Review if any of these empty WBE fields are:
+- Required for WBE functionality
+- Need to be populated manually
+- Need default values
+- Can remain empty
 
 ---
 
