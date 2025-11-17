@@ -539,7 +539,7 @@
                                             t-esc="at.establishment"
                                         /> - <t t-esc="at.city" /> (<t
                                             t-esc="at.country_id.name if at.country_id else at.country"
-                                        />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                                        />) - <t t-esc="at.date.strftime('%d/%m/%Y') if at.date else ''" />
                         </t>
                       </t>
                       <t t-else="">
@@ -552,7 +552,7 @@
                                             t-esc="at.establishment"
                                         /> - <t t-esc="at.city" /> (<t
                                             t-esc="at.country_id.name if at.country_id else at.country"
-                                        />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                                        />) - <t t-esc="at.date.strftime('%d/%m/%Y') if at.date else ''" />
                         </t>
                       </t>
                     </t>
@@ -569,7 +569,7 @@
                                             t-esc="at.establishment"
                                         /> - <t t-esc="at.city" /> (<t
                                             t-esc="at.country_id.name if at.country_id else at.country"
-                                        />) - <t t-esc="at.date.strftime('%d/%m/%Y')" />
+                                        />) - <t t-esc="at.date.strftime('%d/%m/%Y') if at.date else ''" />
                         </t>
                       </t>
                     </t>
