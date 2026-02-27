@@ -35,6 +35,7 @@
     "init_xml": [],
     "data": [
         "registration_data.xml",
+        "data/mail_template_data.xml",
         "security/ir.model.access.csv",
         "views/configuration_view.xml",
         "views/registration_view.xml",

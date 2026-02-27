@@ -354,6 +354,77 @@ class Registration(models.Model):
             "target": "current",
         }
 
+    def action_send_incomplete_forms_reminder(self):
+        """Send reminder emails to students with incomplete forms"""
+        for rec in self:
+            missing_forms = []
+
+            # Check if contact form is incomplete
+            if not rec.contact_form_id or rec.contact_form_id.state != 'COMPLETE':
+                missing_forms.append(_('Contact Form'))
+
+            # Check if registration form is incomplete
+            if not rec.registration_form_id or rec.registration_form_id.state != 'COMPLETE':
+                missing_forms.append(_('Registration Form'))
+
+            # If there are missing forms, send the reminder email
+            if missing_forms:
+                template = self.env.ref('school_registration.email_template_incomplete_forms_reminder')
+                if template:
+                    # Store missing forms in context for email template
+                    ctx = {
+                        'missing_forms': ', '.join(missing_forms),
+                    }
+                    template.with_context(ctx).send_mail(rec.id, force_send=True)
+                    rec.sudo().message_post(
+                        body=_("Reminder email sent to %s for incomplete forms: %s") % (
+                            rec.email or rec.email_personnel,
+                            ', '.join(missing_forms)
+                        )
+                    )
+        return True
+
+    @api.model
+    def cron_send_incomplete_forms_reminder(self):
+        """Scheduled action to send reminders for incomplete registration forms"""
+        # Get the current registration year from system parameters
+        registration_open_year_id = int(
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param("school.registration_open_year_id", "0")
+        )
+
+        if not registration_open_year_id:
+            _logger.warning("No registration open year configured in system parameters")
+            return True
+
+        # Find all active registrations for the current year with incomplete forms
+        registrations = self.search([
+            ('year_id', '=', registration_open_year_id),
+            ('state', '!=', 'archived'),
+            '|', '|', '|',
+            ('contact_form_id', '=', False),
+            ('contact_form_id.state', '!=', 'COMPLETE'),
+            ('registration_form_id', '=', False),
+            ('registration_form_id.state', '!=', 'COMPLETE'),
+        ])
+
+        _logger.info(
+            "Found %d registrations with incomplete forms for year %d" %
+            (len(registrations), registration_open_year_id)
+        )
+
+        # Send reminder for each registration
+        for registration in registrations:
+            try:
+                registration.action_send_incomplete_forms_reminder()
+            except Exception as e:
+                _logger.error(
+                    "Error sending reminder for registration %s: %s" % (registration.id, str(e))
+                )
+
+        return True
+
     _sql_constraints = [
         (
             "registration_uniq",
