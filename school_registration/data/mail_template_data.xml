@@ -27,52 +27,52 @@
             <field name="name">Registration: Incomplete Forms Reminder</field>
             <field name="model_id" ref="model_school_registration"/>
             <field name="subject">Reminder: Please Complete Your Registration Forms</field>
-            <field name="email_to">${object.email or object.email_personnel or ''}</field>
+            <field name="email_to">{{ (object.email or object.email_personnel or '') }}</field>
             <field name="body_html" type="html">
                 <div style="margin: 0px; padding: 0px;">
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
-                        Dear ${object.name or 'Student'},
+                        Dear <t t-out="object.name or 'Student'"/>,
                     </p>
                     <br/>
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
-                        This is a friendly reminder that your registration for the academic year <strong>${object.year_id.name or ''}</strong> is incomplete.
+                        This is a friendly reminder that your registration for the academic year <strong><t t-out="object.year_id.name or ''"/></strong> is incomplete.
                     </p>
                     <br/>
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
                         We noticed that the following form(s) have not been completed yet:
                     </p>
                     <ul>
-                        % if not object.contact_form_id or object.contact_form_id.state != 'COMPLETE':
+                        <t t-if="not object.contact_form_id or object.contact_form_id.state != 'COMPLETE'">
                         <li><strong>Contact Form</strong></li>
-                        % endif
-                        % if not object.registration_form_id or object.registration_form_id.state != 'COMPLETE':
+                        </t>
+                        <t t-if="not object.registration_form_id or object.registration_form_id.state != 'COMPLETE'">
                         <li><strong>Registration Form</strong></li>
-                        % endif
+                        </t>
                     </ul>
                     <br/>
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
                         Please log in to your account and complete the missing information as soon as possible to finalize your registration.
                     </p>
                     <br/>
-                    % if object.contact_form_id and object.contact_form_id.state != 'COMPLETE':
+                    <t t-if="object.contact_form_id and object.contact_form_id.state != 'COMPLETE'">
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
-                        <a href="/formio/form/${object.contact_form_uuid}" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">Complete Contact Form</a>
+                        <a t-attf-href="/formio/form/{{ object.contact_form_uuid }}" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">Complete Contact Form</a>
                     </p>
                     <br/>
-                    % endif
-                    % if object.registration_form_id and object.registration_form_id.state != 'COMPLETE':
+                    </t>
+                    <t t-if="object.registration_form_id and object.registration_form_id.state != 'COMPLETE'">
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
-                        <a href="/formio/form/${object.registration_form_uuid}" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">Complete Registration Form</a>
+                        <a t-attf-href="/formio/form/{{ object.registration_form_uuid }}" style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px;">Complete Registration Form</a>
                     </p>
                     <br/>
-                    % endif
+                    </t>
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
                         If you have any questions or need assistance, please don't hesitate to contact us.
                     </p>
                     <br/>
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
                         Best regards,<br/>
-                        ${user.company_id.name or ''}
+                        <t t-out="user.company_id.name or ''"/>
                     </p>
                 </div>
             </field>
