@@ -411,17 +411,15 @@ class CourseGroup(models.Model):
         copy=False,
     )
 
-    name = fields.Char(string="Name", compute="_compute_ue_name", store=True)
-    ue_id = fields.Char(string="UE Id", compute="_compute_ue_name", store=True)
+    name = fields.Char(string="Name", related="title", store=True)
+    ue_id = fields.Char(string="UE Id")
 
-    @api.depends("title", "level")
-    def _compute_ue_name(self):
-        for course_g in self:
-            if course_g.level:
-                course_g.name = "%s - %s" % (course_g.title, course_g.level)
-            else:
-                course_g.name = course_g.title
-            course_g.ue_id = "UE-%s" % course_g.id
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        for rec in records:
+            rec.ue_id = "UE-%s" % rec.id
+        return records
 
     total_credits = fields.Integer(
         compute="_compute_courses_total", string="Total Credits", store=True
